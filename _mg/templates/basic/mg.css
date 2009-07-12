@@ -1,0 +1,202 @@
+/* html elements */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 10px 0 0 0;
+	font: 11px Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	color: #858e9a;
+}
+
+a {
+	color: #858e9a;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #191919;
+}
+
+a img {
+	border: none;
+}
+
+h1 {
+	float: left;
+	margin: 0 0 2px 0;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td img {
+	display: block;					/* baseline bottom gap fix */
+}
+
+/* basic formatting */
+
+#content {
+	width: 700px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+#styles {
+	float: right;
+	margin: 0 0 0 20px;
+}
+
+#styles li {
+	display: inline;
+}
+
+#styles a {
+	padding: 0 0 0 .4em;
+}
+
+#styles a.selected {
+	color: #191919;
+}
+
+#nav {
+	clear: both;
+	text-align: right;
+	padding: 0 10px;
+	background: #858e9a;
+	color: #191919;
+}
+
+#nav ul li {
+	display: inline;
+	padding: 0 0 0 6px;
+}
+
+#nav a {
+	line-height: 2em;
+	color: #c8d5e6;
+}
+
+#nav a:hover {
+	color: #e7dec7;
+}
+
+#cats {
+	height: 2em;
+	margin: 2px 0;
+	background: #858e9a;
+}
+
+#cats ul li {
+	display: inline;
+}
+
+#cats a {
+	display: block;
+	float: left;
+	padding: 0 10px;
+	border-right: 2px solid #fff;
+	line-height: 2em;
+	color: #191919;
+}
+
+#cats a:hover {
+	color: #656565;
+	background: #e7dec7;
+}
+
+#cats a.selected {
+	color: #c8d5e6;
+	background: #656565;
+}
+
+#footer {
+	margin: 10px 0;
+	text-align: center;
+	font-size: 9px;
+	letter-spacing: .2em;
+	color: #858e9a;
+}
+
+/* list view */
+
+#list table {
+	width: 699px; /* because Safari is my favorite browser :) */
+	margin: 2px 0 0 0;
+}
+
+#list td {
+	padding: 3px 5px;
+	border: 1px solid #b6c2d2;
+}
+
+#list td.selected {
+	background: #858e9a;
+}
+
+#list td.selected a {
+	color: #fff;
+}
+
+#list td.selected_up, #list td.selected_down {
+	background: #dce7f5;
+}
+
+/* file view */
+
+#file img {
+	border: 0; /* for IE to calculate the right width used in javascript */
+}
+
+#file_info {
+	padding: 0 10px;
+	line-height: 2em;
+	background: #858e9a;
+	color: #191919;
+}
+
+#file_info a {
+	color: #c8d5e6;
+}
+
+#file_info a:hover {
+	color: #e7dec7;
+}
+
+#file_count {
+	float: right;
+}
+
+#shot_location {
+	margin: 3px 0 0 0;
+	text-align: right;
+}
+
+#comment {
+	margin: 5px 0;
+	font-style: italic;
+	color: #191919;
+}
+
+#exif ul {
+	list-style-type: none;
+	border-left: 2px solid #858e9a;
+}
+
+#exif ul li {
+	margin: 5px;
+}
+
+/* stuff */
+
+#photoblogs {
+	margin: 10px 0;
+	text-align: center;
+}
