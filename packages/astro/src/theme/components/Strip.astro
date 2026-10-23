@@ -1,17 +1,18 @@
 ---
 /**
  * The filmstrip: the context's frames along the bottom of the viewer. Off
- * by default (the HUD toggle or `s`); frames load lazily, so a hidden strip
- * fetches nothing.
+ * by default (the HUD toggle or `s`). The frames are not in the HTML: they
+ * are built from the context JSON when the strip is on, so a page with the
+ * strip off carries and fetches nothing for it. With the JSON cached (any
+ * step after the first page), the inline call right after the list builds
+ * them during parsing, before first paint in every engine; otherwise the
+ * theme script does once the JSON arrives. Without script there is no
+ * strip (the toggle is hidden too).
+ *
+ * The strip carries the context the theme script works in: its id (the
+ * JSON), the `?in=` its links take (none for an album) and the photo shown.
  */
-import {
-  photoHref,
-  ratioOf,
-  thumbOf,
-  withBase,
-  type Context,
-  type Photo,
-} from '../../gallery.ts';
+import { withBase, type Context, type Photo } from '../../gallery.ts';
 
 interface Props {
   context: Context;
@@ -23,30 +24,12 @@ const n = context.photos.length;
 
 <nav
   class="strip surface stage_strip"
-  aria-label={`${context.label}, ${n} photo${n === 1 ? '' : 's'}`}>
-  <ol class="strip_list">
-    {context.photos.map((p) => {
-      const t = thumbOf(p);
-      return (
-        <li
-          class="strip_item"
-          style={`--ar: ${ratioOf(p)}; --photo: ${p.color}`}>
-          <a
-            class="strip_link"
-            href={photoHref(p, context)}
-            aria-current={p.id === current.id ? 'page' : undefined}>
-            <img
-              class="strip_image"
-              src={withBase(t.url)}
-              width={t.width}
-              height={t.height}
-              alt={p.title}
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
-        </li>
-      );
-    })}
-  </ol>
+  aria-label={`${context.label}, ${n} photo${n === 1 ? '' : 's'}`}
+  data-context={context.id}
+  data-in={context.kind === 'album' ? undefined : context.id}
+  data-photo={withBase(current.url)}>
+  <ol class="strip_list"></ol>
 </nav>
+<script is:inline>
+  mgStrip(document.currentScript.previousElementSibling);
+</script>

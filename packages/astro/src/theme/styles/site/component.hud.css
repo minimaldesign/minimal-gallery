@@ -26,7 +26,11 @@
   font-size: var(--mg-size-hud);
   transition: opacity var(--mg-duration-quick) var(--mg-ease-out);
 
-  :root:not(:has(input[name='fit']:checked)) & {
+  :root:is(
+      [data-fit='cover'],
+      :not([data-fit]):not(:has(input[name='fit']:checked))
+    )
+    & {
     margin: var(--xs3);
     border-width: var(--border-sm);
     border-radius: var(--radius-lg);
@@ -118,6 +122,14 @@
   align-items: center;
   gap: var(--xs1);
   margin-inline-start: auto;
+}
+
+/* The filmstrip is built by the theme script: no toggle without it. */
+
+.hud_strip {
+  :root:not([data-script]) & {
+    display: none;
+  }
 }
 
 /* The help button is hidden on touch screens. */

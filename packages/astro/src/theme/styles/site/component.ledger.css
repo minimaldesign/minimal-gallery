@@ -12,7 +12,11 @@
 
   display: none;
 
-  :root:has(input[name='view'][value='list']:checked) & {
+  :root:is(
+      [data-view='list'],
+      :not([data-view]):has(input[name='view'][value='list']:checked)
+    )
+    & {
     display: block;
   }
 

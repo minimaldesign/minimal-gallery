@@ -4,7 +4,10 @@
  * it, the panel with the context's photos as a grid and as a list. Home
  * and photo pages open on the viewer; album and facet pages open on the
  * panel (`start="grid"`). A photo page carries its album; `?in=` makes the
- * theme script swap in another context from its JSON.
+ * theme script swap in another context from its JSON. The grid is always
+ * in the HTML (its links are the no-script path); the strip and, except on
+ * pages that open on the panel, the list rows are built by the theme
+ * script from the context JSON when they are shown.
  */
 import config from 'virtual:minimalgallery/config';
 import {
@@ -83,11 +86,36 @@ const canonical = Astro.site
   title={title}
   description={description}
   class="viewer"
-  style={style}>
+  style={style}
+  start={start}>
   <Fragment slot="head">
     {canonical && <link rel="canonical" href={canonical} />}
     {next && <link rel="next" href={photoHref(next, context)} />}
     {prev && <link rel="prev" href={photoHref(prev, context)} />}
+    {
+      // the neighbors' photos, fetched at low priority with the hero's own
+      // srcset choice, for browsers that do not prerender them
+      (
+        [
+          ['next', next],
+          ['prev', prev],
+        ] as const
+      ).map(([rel, p]) => {
+        if (!p) return null;
+        const { srcset, src } = srcsetOf(p);
+        return (
+          <link
+            rel="preload"
+            as="image"
+            imagesrcset={srcset || undefined}
+            imagesizes={srcset ? '100vw' : undefined}
+            href={src}
+            fetchpriority="low"
+            data-near={rel}
+          />
+        );
+      })
+    }
     <script is:inline type="speculationrules" set:html={rules} />
     <slot name="head" />
   </Fragment>
@@ -107,11 +135,11 @@ const canonical = Astro.site
     aria-label={context.label}>
     <Hud photo={photo} context={context} />
     <div class="table_scroller">
-      <PanelHead context={context} />
+      <PanelHead context={context} list={start === 'grid'} />
       <div class="table_body">
         <div class="table_photos">
           <Thumbs context={context} current={photo} />
-          <Ledger context={context} current={photo} />
+          <Ledger context={context} current={photo} rows={start === 'grid'} />
         </div>
         <Rail context={context} />
       </div>

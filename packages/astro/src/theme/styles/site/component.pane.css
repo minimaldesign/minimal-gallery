@@ -38,7 +38,11 @@
     translate var(--mg-duration-quick) var(--mg-ease-out),
     display var(--mg-duration-quick) allow-discrete;
 
-  :root:has(input[name='fit']:checked) & {
+  :root:is(
+      [data-fit='contain'],
+      :not([data-fit]):has(input[name='fit']:checked)
+    )
+    & {
     --pane-top: calc(var(--mg-hud-height) + var(--xs3));
   }
 
@@ -75,8 +79,10 @@
 }
 
 /* open: each pane follows its own checkbox */
-:root:has(input[name='info']:checked) .pane-info,
-:root:has(input[name='keys']:checked) .pane-keys {
+:root:is([data-info='on'], :not([data-info]):has(input[name='info']:checked))
+  .pane-info,
+:root:is([data-keys='on'], :not([data-keys]):has(input[name='keys']:checked))
+  .pane-keys {
   display: block;
   opacity: 1;
   translate: 0 0;

@@ -6,6 +6,7 @@ import globalData from '@csstools/postcss-global-data';
 import postcssMixins from 'postcss-mixins';
 import postcssPresetEnv from 'postcss-preset-env';
 import { applyDefaultsToTokens, resolveConfig } from './config.ts';
+import { fontsourceVariable } from './fonts.ts';
 import { setSharedOptions, type MinimalgalleryOptions } from './options.ts';
 
 export type { MinimalgalleryOptions } from './options.ts';
@@ -45,6 +46,30 @@ export default function minimalgallery(
         const customCss = resolve(galleryDir, 'custom.css');
 
         updateConfig({
+          // Geist and Geist Mono, self-hosted: the variable files, Latin
+          // first (the layout preloads it), other subsets by unicode-range
+          fonts: [
+            {
+              provider: fontsourceVariable('@fontsource-variable/geist'),
+              name: 'Geist',
+              cssVariable: '--mg-font-text',
+              weights: ['100 900'],
+              styles: ['normal'],
+              subsets: ['latin', 'latin-ext'],
+              fallbacks: ['ui-sans-serif', 'system-ui', 'sans-serif'],
+              display: 'swap',
+            },
+            {
+              provider: fontsourceVariable('@fontsource-variable/geist-mono'),
+              name: 'Geist Mono',
+              cssVariable: '--mg-font-mono',
+              weights: ['100 900'],
+              styles: ['normal'],
+              subsets: ['latin', 'latin-ext'],
+              fallbacks: ['ui-monospace', 'monospace'],
+              display: 'swap',
+            },
+          ],
           vite: {
             // The helpers import `astro:content`, so Vite must bundle this
             // package rather than load it from node_modules as plain Node code.

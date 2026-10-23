@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@csstools/postcss-global-data": "^4.0.0",
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
     "@minimalgallery/pipeline": "workspace:*",
     "postcss": "^8.5.31",
     "postcss-mixins": "^12.1.2",

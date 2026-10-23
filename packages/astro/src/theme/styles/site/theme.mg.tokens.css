@@ -163,11 +163,13 @@
     --mg-white-a14: oklch(1 0 0 / 0.14);
     --mg-black-a50: oklch(0 0 0 / 0.5);
 
-    /* TYPE: Geist for everything, Geist Mono for exposure values.
+    /* TYPE: Geist for everything, Geist Mono for exposure values. Both
+       self-hosted (the integration registers them with Astro's Fonts API,
+       which defines --mg-font-text and --mg-font-mono with fallbacks).
        No uppercase anywhere; hierarchy comes from size, weight and ink. */
-    --text: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --text: var(--mg-font-text, ui-sans-serif, system-ui, sans-serif);
     --display: var(--text);
-    --mono: 'Geist Mono', ui-monospace, monospace;
+    --mono: var(--mg-font-mono, ui-monospace, monospace);
     --mg-size-small: 0.75rem;
     --mg-size-hud: 0.8125rem;
     --mg-weight-medium: 540;

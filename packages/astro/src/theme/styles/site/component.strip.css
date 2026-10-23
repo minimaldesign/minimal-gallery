@@ -2,7 +2,7 @@
 
    The filmstrip: the context's frames in a row along the bottom of the
    viewer, like slides in a tray, kept light. A setting, not a gesture: the
-   HUD toggle or F turns it on (input name strip, owner default --mg-strip).
+   HUD toggle or s turns it on (input name strip, owner default --mg-strip).
    When on it stays visible (it does not fade with the HUD); when off it is
    not shown. A CSS carousel: scroll snapping everywhere, ::scroll-button
    where supported. The current frame is at full opacity
@@ -12,8 +12,25 @@
   view-transition-name: strip;
   view-transition-class: chrome;
   border-width: var(--border-sm) 0 0;
-  :root:not(:has(input[name='strip']:checked)) & {
+
+  :root:is(
+      [data-strip='off'],
+      :not([data-strip]):not(:has(input[name='strip']:checked))
+    )
+    & {
     display: none;
+  }
+
+  /* the theme script builds the frames from the context JSON: nothing to
+     show until it has (and nothing at all without script) */
+  &:has(.strip_list:empty) {
+    display: none;
+  }
+
+  /* covered by the panel: not named, so a transition never draws it over
+     the photos */
+  :root[data-panel] & {
+    view-transition-name: none;
   }
 }
 

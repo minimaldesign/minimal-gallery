@@ -172,6 +172,12 @@ export function wranglerJsonc(project: string, date: string): string {
 export const HEADERS = `# Resized photos are content-addressed (<hash8>-<variant>), so they never change.
 /_mg/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Astro’s build assets (CSS, the theme script, fonts) carry a content hash in
+# their names, so they never change either. Without this rule the host serves
+# them with max-age=0, and browsers fetch the CSS and script again on every page.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
 `;
 
 const RUN: Record<PackageManager, string> = {
@@ -196,6 +202,12 @@ export function netlifyToml(pm: PackageManager): string {
 
 [[headers]]
   for = "/_mg/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Astro’s build assets carry a content hash in their names, so they never change.
+[[headers]]
+  for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 `;

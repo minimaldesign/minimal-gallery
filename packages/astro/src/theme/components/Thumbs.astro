@@ -2,7 +2,8 @@
 /**
  * The grid: square crops by default, justified rows in original mode, no
  * headings or groups. The first thumbnail of each year carries `y-<year>`
- * for the date rail. Each thumbnail has a tooltip (title, date and place).
+ * for the date rail. Each thumbnail has a tooltip (title, date and place),
+ * kept to a <b> and a text node: this markup repeats for every photo.
  */
 import {
   photoHref,
@@ -32,7 +33,7 @@ const firstOfYear = (p: Photo) => {
 
 <ol class="thumbs">
   {context.photos.map((p) => {
-    const { srcset } = srcsetOf(p, 1280);
+    const { srcset } = srcsetOf(p, 1280, { jpeg: false });
     const t = thumbOf(p);
     return (
       <li
@@ -47,16 +48,15 @@ const firstOfYear = (p: Photo) => {
             class="thumbs_image"
             src={withBase(t.url)}
             srcset={srcset || undefined}
-            sizes="(width < 768px) 34vw, 20vw"
+            sizes={srcset ? '(width < 768px) 34vw, 20vw' : undefined}
             width={t.width}
             height={t.height}
             alt={p.title}
             loading="lazy"
-            decoding="async"
           />
           <span class="thumbs_tip surface" aria-hidden="true">
-            <span class="thumbs_tipTitle">{p.title}</span>
-            <span class="thumbs_tipMeta">{tipOf(p)}</span>
+            <b>{p.title}</b>
+            {tipOf(p)}
           </span>
         </a>
       </li>

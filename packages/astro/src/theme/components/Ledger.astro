@@ -4,6 +4,11 @@
  * Headers sort the rows on real values (`data-sort`); hovering a thumbnail
  * shows a 320px print, fetched only on hover (a background on an element
  * that is not displayed until then).
+ *
+ * The rows are only in the HTML of pages that open on the panel (`rows`);
+ * elsewhere the theme script builds them from the context JSON the first
+ * time the list is shown, and without script the grid stands in for it
+ * (the view toggle is hidden).
  */
 import {
   cellsOf,
@@ -20,8 +25,10 @@ import {
 interface Props {
   context: Context;
   current: Photo;
+  /** Render the rows (pages that open on the panel). */
+  rows?: boolean;
 }
-const { context, current } = Astro.props;
+const { context, current, rows = false } = Astro.props;
 ---
 
 <div class="ledger">
@@ -42,50 +49,51 @@ const { context, current } = Astro.props;
       </tr>
     </thead>
     <tbody>
-      {context.photos.map((p, i) => {
-        const href = photoHref(p, context);
-        const t = thumbOf(p);
-        const style = `--ar: ${ratioOf(p)}; --photo: ${p.color}`;
-        return (
-          <tr data-i={i}>
-            <td>
-              <a class="ledger_thumb" href={href} tabindex="-1" style={style}>
-                <img
-                  class="ledger_image"
-                  src={withBase(t.url)}
-                  width={t.width}
-                  height={t.height}
-                  alt=""
-                  loading="lazy"
-                />
-                <span
-                  class="ledger_preview surface"
-                  aria-hidden="true"
-                  style={`--preview: url('${withBase(previewOf(p).url)}')`}>
-                  <span class="ledger_previewImage" />
-                </span>
-              </a>
-            </td>
-            <td data-sort={p.sortKeys[0]}>
-              <a
-                href={href}
-                aria-current={p.id === current.id ? 'page' : undefined}>
-                {p.title}
-              </a>
-            </td>
-            {cellsOf(p).map((cell, n) => (
-              <td data-sort={p.sortKeys[n + 1]}>
-                {cell.map(([text, h], k) => (
-                  <>
-                    {k > 0 && ' '}
-                    {h ? <a href={`${h}#grid`}>{text}</a> : text}
-                  </>
-                ))}
+      {rows &&
+        context.photos.map((p, i) => {
+          const href = photoHref(p, context);
+          const t = thumbOf(p);
+          const style = `--ar: ${ratioOf(p)}; --photo: ${p.color}`;
+          return (
+            <tr data-i={i}>
+              <td>
+                <a class="ledger_thumb" href={href} tabindex="-1" style={style}>
+                  <img
+                    class="ledger_image"
+                    src={withBase(t.url)}
+                    width={t.width}
+                    height={t.height}
+                    alt=""
+                    loading="lazy"
+                  />
+                  <span
+                    class="ledger_preview surface"
+                    aria-hidden="true"
+                    style={`--preview: url('${withBase(previewOf(p).url)}')`}>
+                    <span class="ledger_previewImage" />
+                  </span>
+                </a>
               </td>
-            ))}
-          </tr>
-        );
-      })}
+              <td data-sort={p.sortKeys[0]}>
+                <a
+                  href={href}
+                  aria-current={p.id === current.id ? 'page' : undefined}>
+                  {p.title}
+                </a>
+              </td>
+              {cellsOf(p).map((cell, n) => (
+                <td data-sort={p.sortKeys[n + 1]}>
+                  {cell.map(([text, h], k) => (
+                    <>
+                      {k > 0 && ' '}
+                      {h ? <a href={`${h}#grid`}>{text}</a> : text}
+                    </>
+                  ))}
+                </td>
+              ))}
+            </tr>
+          );
+        })}
     </tbody>
   </table>
 </div>

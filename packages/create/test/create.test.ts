@@ -126,6 +126,11 @@ describe('create-minimalgallery', () => {
       '"assets": { "directory": "./dist", "not_found_handling": "404-page" }'
     );
     expect(wrangler).not.toContain('pages_build_output_dir');
+    const headers = await readFile(join(dir, 'public/_headers'), 'utf8');
+    for (const path of ['/_mg/*', '/_astro/*'])
+      expect(headers).toContain(
+        `${path}\n  Cache-Control: public, max-age=31536000, immutable`
+      );
 
     const config = await parseConfig(dir);
     expect(config.name).toBe('Yann’s photos');
@@ -172,6 +177,9 @@ describe('create-minimalgallery', () => {
       opts
     );
     expect(nl).toContain('netlify.toml');
+    const toml = await readFile(join(tmp, 'nl', 'netlify.toml'), 'utf8');
+    expect(toml).toContain('for = "/_mg/*"');
+    expect(toml).toContain('for = "/_astro/*"');
     const nlPkg = JSON.parse(
       await readFile(join(tmp, 'nl', 'package.json'), 'utf8')
     );

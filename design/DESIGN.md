@@ -36,23 +36,25 @@ Page level: `page.viewer.css` (snap point and backdrop modes). Theme: `theme.mg.
 
 ## 4. State and persistence
 
-Applied by `restore()` in the render-blocking script (`defer blocking="render"`) and again on `pagereveal`. Checkboxes store their value or `data-off`.
+Each setting lives in localStorage as `mg-<name>` and is mirrored as `data-<name>` on `<html>`. A small inline script in the head (`restore.js`) runs before first paint in every engine and does only what is cheap and visible: the visitor’s stored settings become `data-*` attributes, hidden chrome carries over (`data-idle`), `data-script` marks that the theme script will run, a page that opens on the panel gets `data-panel` at once, and a `pagereveal` that fires before `mg.js` is kept for it. The CSS reads a setting as `:root:is([data-<name>='<value>'], :not([data-<name>]):has(input…:checked))`: the attribute wins when set, and the inputs are the no-script path. The deferred `mg.js` (`restore()`, run again on `pagereveal`) adds the owner’s token defaults, keeps the inputs in step and writes changes back. Checkboxes store their value or `data-off`.
+
+The strip’s frames and, on pages that open on the viewer, the list rows are not in the HTML; they are built from the context JSON. With the JSON cached, an inline call right after the strip builds its frames during parsing, before first paint. On `?in=` pages, prev/next, rel links, image preloads, prerender rules and the breadcrumb apply as soon as `mg.js` runs; the grid and rail are rebuilt only when the panel is wanted or the page is idle after the step’s transition. Without script the page keeps its album and the grid stands in for the list (the grid/list pair and the strip toggle are hidden).
 
 | State | Storage | Default | Owner token | Applied by |
 | --- | --- | --- | --- | --- |
-| Fit (`fit`) | localStorage `mg-fit` | cover | `--mg-fit` | `restore()` |
-| Strip (`strip`) | localStorage `mg-strip` | off | `--mg-strip` | `restore()` |
-| Crop (`crop`) | localStorage `mg-crop` | square | `--mg-grid-crop` | `restore()` |
-| View (`view`) | localStorage `mg-view` | grid (`meta mg-view` overrides) | `--mg-grid-view` | `restore()` |
-| Size (`size`) | localStorage `mg-size` | m | none | `restore()` |
-| Info pane (`info`) | localStorage `mg-info` | off | none | `restore()`, `placePane()` |
-| Keys pane (`keys`) | localStorage `mg-keys` | off | none | `restore()`, `placePane()` |
+| Fit (`fit`) | localStorage `mg-fit`, `data-fit` | cover | `--mg-fit` | `restore.js`, `restore()` |
+| Strip (`strip`) | localStorage `mg-strip`, `data-strip` | off | `--mg-strip` | `restore.js`, `restore()` |
+| Crop (`crop`) | localStorage `mg-crop`, `data-crop` | square | `--mg-grid-crop` | `restore.js`, `restore()` |
+| View (`view`) | localStorage `mg-view`, `data-view` | grid (`meta mg-view` overrides) | `--mg-grid-view` | `restore.js`, `restore()` |
+| Size (`size`) | localStorage `mg-size`, `data-size` | m | none | `restore.js`, `restore()` |
+| Info pane (`info`) | localStorage `mg-info`, `data-info` | off | none | `restore.js`, `restore()`, `placePane()` |
+| Keys pane (`keys`) | localStorage `mg-keys`, `data-keys` | off | none | `restore.js`, `restore()`, `placePane()` |
 | Pane positions | localStorage `mgPane-info`, `mgPane-keys` | top right / top left | none | `placePane()` |
-| Hidden chrome | sessionStorage `mgIdle` | shown | `--mg-hud-idle` | `restore()` |
-| Panel state | `data-panel` from scroll position | none | none | `syncPanel()` |
+| Hidden chrome | sessionStorage `mgIdle`, `data-idle` | shown | `--mg-hud-idle` | `restore.js`, `restore()` |
+| Panel state | `data-panel` from scroll position | none | none | `restore.js` (pages that open on the panel), `syncPanel()` |
 | Strip scroll on a step | sessionStorage `mgStripX` | none | none | `glide()` |
 | How the last page was left | sessionStorage `mgVia` | none | none | `pagereveal` |
-| Context data | sessionStorage `mgCtx-<id>` | fetched once | none | `applyCtx()` |
+| Context data | sessionStorage `mgCtx-<id>` | fetched once | none | `withCtx()`, `mgStrip()` |
 
 ## 5. Keyboard and touch
 
@@ -79,11 +81,16 @@ Durations scale with `--mg-motion`. Reduced motion keeps the crossfades, glides 
 
 **Naming rules:**
 
-- **Static names:** `hud`, `strip`, `info`, `keys`, with `view-transition-class: chrome` (no group motion).
+The baseline depends on no event and no transition type, so it holds in every engine with cross-document view transitions; the events only add to it.
+
+- **Static names:** `hud`, `strip`, `info`, `keys`, with `view-transition-class: chrome` (no group motion). In viewer state `.stage_frame` is named `stage` in CSS (`:root:not([data-panel])`); while the panel is up neither the stage nor the strip is named, so neither is drawn over the photos.
 - **Hidden chrome:** an idle HUD gets `view-transition-name: none`, so no empty blurred group is left over the photo.
-- **Steps:** the leaving page records `forward` or `back` (`pageswap`); both pages name `.stage_frame` `stage`. The old strip snapshot is hidden and the new one is live, so there is no strip crossfade.
-- **Thumbnail clicks:** the thumbnail’s image and the new `.stage_photo` are both named `photo`.
+- **Steps:** both pages name the stage, and the 900 ms crossfade on `::view-transition-old(stage)` and `::view-transition-new(stage)` is unconditional. The old strip snapshot is hidden and the new one is live, so there is no strip crossfade; only an old strip with no new one (`:only-child`) fades out. Only a bare `:only-child` may follow these pseudo-elements: Chrome drops `:not(:only-child)`.
+- **Enhancements where `pageswap` and `pagereveal` exist:** the leaving page records how it was left, and the arriving page adds the `forward` or `back` type and the morph names below.
+- **Thumbnail clicks:** the thumbnail’s image and the new `.stage_photo` are both named `photo` (the stage is unnamed for that transition).
 - **Arriving at a grid:** on a page that opens at the grid, the thumbnail of the photo you came from is named `photo`.
+
+**Performance baseline.** `examples/demo/bench/steps.mjs` is the regression check: with the built demo served (`astro preview --outDir <build> --port 4421 --ignore-lock`), run `node bench/steps.mjs --url http://localhost:4421 --latency 40 --dist <build>` from `examples/demo`. It steps five times by key and five by click in Chromium, WebKit and Firefox, cold and warm, on a 70-photo album, home and a `?in=grid` page, behind a proxy that adds 40 ms per response and applies the build’s `_headers`. Targets: hero visible under 300 ms median on warm steps in WebKit and Firefox, Chrome no worse, no console errors, the old strip snapshot hidden and the strip’s frames present on the first frame; a photo page under 60 KB of HTML for a 70-photo album and home under 150 KB. `bench/behaviours.mjs` checks the signed-off behaviours in the same three engines.
 
 ## 7. Token contract (`theme.mg.tokens.css`)
 
@@ -108,8 +115,10 @@ Durations scale with `--mg-motion`. Reduced motion keeps the crossfades, glides 
 
 ## 8. Gaps and caveats
 
-- **Render-blocking:** `blocking="render"` is Chrome only; elsewhere persisted state can flash for one frame.
-- **Firefox:** mostly crossfades for cross-document transitions; no scroll-driven effects; style queries unverified (backdrop modes fall back).
+- **Render-blocking:** `blocking="render"` is Chrome only. Persisted settings come from the inline `restore.js` before paint everywhere; what can still trail by a frame outside Chrome is the HUD toggles’ own checked look, which follows the inputs `mg.js` sets.
+- **Firefox:** the tested build (157) does not parse `@view-transition` and has no `pageswap` or `pagereveal`, so its steps are plain navigations with no view transition; no scroll-driven effects; style queries unverified (backdrop modes fall back).
+- **Blur:** turning `backdrop-filter` off made no measurable difference in headless WebKit, which does not composite like Safari on a GPU; the cost in real Safari is unmeasured.
+- **Prerender:** headless Chromium does not prerender, so the speculation-rules path is unmeasured; the bench’s Chrome numbers are plain navigations.
 - **Carousel and scroll-spy:** `::scroll-button`, `scroll-initial-target` and `:target-current` are Chrome only; `mg.js` centers the strip elsewhere, and rail ticks stay unmarked.
 - **Cursors:** 128px is the hard browser limit; Chrome shows the `pointer` fallback where the cursor crosses the window edge.
 - **Unverified headless:** real view transitions, hover, smooth-scroll and rAF timing, cursor rendering, touch gestures. Check them in Chrome, Safari 26 and Firefox on desktop and a phone.

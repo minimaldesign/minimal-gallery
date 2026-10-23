@@ -3,7 +3,9 @@
  * The panel header, the top of the window while the panel is up: the
  * breadcrumb (home / context) and the count; the crop pair and the size
  * triple (grid view only); then the grid/list pair and Filter at the right
- * end, so nothing moves between views. Radios, so they work without script.
+ * end, so nothing moves between views. Radios, so they work without script,
+ * except the grid/list pair on pages whose list rows are built by script
+ * (`list` false): hidden without it, and grid until it runs.
  */
 import config from 'virtual:minimalgallery/config';
 import { contextHref, withBase, type Context } from '../../gallery.ts';
@@ -12,9 +14,13 @@ import ToggleOption from './ToggleOption.astro';
 
 interface Props {
   context: Context;
+  /** The list rows are in the HTML. */
+  list?: boolean;
 }
-const { context } = Astro.props;
+const { context, list = false } = Astro.props;
 const { defaults } = config;
+// without script and without rows, the list would be empty: grid it is
+const view = list ? defaults.view : 'grid';
 const n = context.photos.length;
 ---
 
@@ -90,7 +96,8 @@ const n = context.photos.length;
         checked={defaults.size === 'large'}
       />
     </fieldset>
-    <fieldset class="toggle">
+    <fieldset
+      class:list={['toggle table_view', { 'table_view-script': !list }]}>
       <legend class="a11y-srOnly">View</legend>
       <ToggleOption
         type="radio"
@@ -100,7 +107,7 @@ const n = context.photos.length;
         icon="grid"
         shortcut="v"
         aria="Grid view"
-        checked={defaults.view === 'grid'}
+        checked={view === 'grid'}
       />
       <ToggleOption
         type="radio"
@@ -110,7 +117,7 @@ const n = context.photos.length;
         icon="list"
         shortcut="v"
         aria="List view"
-        checked={defaults.view === 'list'}
+        checked={view === 'list'}
       />
     </fieldset>
     <FilterButton />

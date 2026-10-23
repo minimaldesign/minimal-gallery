@@ -1,13 +1,29 @@
 ---
 /**
- * The document shell: head (fonts, the theme CSS, the owner's custom.css
- * last, the render-blocking theme script) and the body. Pages add head
+ * The document shell: head (the state restore, fonts, the theme CSS, the
+ * owner's custom.css last, the theme script) and the body. Pages add head
  * content through the `head` slot.
+ *
+ * The inline script in the head (`restore.js`) runs before first paint in
+ * every engine (`blocking="render"` is Chrome only), so it does only what
+ * is cheap and visible: the visitor's settings (`mg-<name>` in
+ * localStorage) become `data-<name>` on <html>, which the theme CSS reads
+ * ahead of the inputs; hidden chrome carries over from the last page
+ * (`data-idle`); `data-script` says the theme script will run; a page that
+ * opens on the panel is marked `data-panel` at once; and a `pagereveal`
+ * that fires before the deferred theme script is kept for it. Everything
+ * else is in `mg.js`.
+ *
+ * Fonts are self-hosted through Astro's Fonts API (the integration
+ * registers Geist and Geist Mono from their Fontsource packages), with the
+ * Latin Geist file preloaded: no third-party request on any page.
  */
+import { Font } from 'astro:assets';
 import '../styles/site/theme.mg.tokens.css';
 import '../styles/mg.css';
 import 'virtual:minimalgallery/custom.css';
 import { withBase } from '../../gallery.ts';
+import restore from '../scripts/restore.js?raw';
 import themeScript from '../scripts/mg.js?url';
 
 interface Props {
@@ -16,28 +32,27 @@ interface Props {
   /** Data the theme's CSS reads from the body (custom properties). */
   style?: string;
   class?: string;
+  /** Where the page opens: the viewer, or the panel (context pages). */
+  start?: 'view' | 'grid';
 }
-const { title, description, style, class: className } = Astro.props;
+const { title, description, style, class: className, start } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-start={start === 'grid' ? 'grid' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
+    <script is:inline set:html={restore} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0f0f0f" />
     <meta name="mg-root" content={withBase('/')} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..500&family=Geist:wght@300..700&display=swap"
-    />
+    <Font cssVariable="--mg-font-text" preload={[{ subset: 'latin' }]} />
+    <Font cssVariable="--mg-font-mono" />
     <script is:inline src={themeScript} defer blocking="render"></script>
     <slot name="head" />
   </head>

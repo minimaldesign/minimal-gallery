@@ -32,11 +32,23 @@
   padding: 0;
   outline: none;
 
-  :root:has(input[name='fit'][value='contain']:checked) & {
+  :root:is(
+      [data-fit='contain'],
+      :not([data-fit]):has(input[name='fit'][value='contain']:checked)
+    )
+    & {
     padding: var(--mg-view-inset);
   }
   /* horizontal swipes reach the script; vertical scroll and pinch stay */
   touch-action: pan-y pinch-zoom;
+
+  /* Named on every page in viewer state, so a step crossfades the photo in
+     every engine with cross-document view transitions, with no event or
+     type needed. Not while the panel is up: a page that opens on (or is
+     left from) the photos must not draw the stage over them. */
+  :root:not([data-panel]) & {
+    view-transition-name: stage;
+  }
 
   @supports (animation-timeline: scroll()) {
     @media (--motionOK) {
@@ -85,7 +97,11 @@
   background: var(--photo-placeholder, none) center / cover no-repeat
     var(--photo);
 
-  :root:has(input[name='fit'][value='contain']:checked) & {
+  :root:is(
+      [data-fit='contain'],
+      :not([data-fit]):has(input[name='fit'][value='contain']:checked)
+    )
+    & {
     width: min(100cqw, 100cqh * var(--photo-ratio));
     height: auto;
     aspect-ratio: var(--photo-ratio);
@@ -156,7 +172,11 @@
     transition-duration: 0s;
   }
 
-  :root:has(input[name='strip']:checked) & {
+  :root:is(
+      [data-strip='on'],
+      :not([data-strip]):has(input[name='strip']:checked)
+    )
+    & {
     display: none;
   }
 }

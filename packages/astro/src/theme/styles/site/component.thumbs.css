@@ -14,7 +14,11 @@
 .thumbs {
   --thumbs-size: var(--mg-row-height);
 
-  :root:has(input[name='view'][value='list']:checked) & {
+  :root:is(
+      [data-view='list'],
+      :not([data-view]):has(input[name='view'][value='list']:checked)
+    )
+    & {
     display: none;
   }
 
@@ -28,16 +32,28 @@
   padding: 0;
   list-style: none;
 
-  :root:has(input[name='size'][value='small']:checked) & {
+  :root:is(
+      [data-size='small'],
+      :not([data-size]):has(input[name='size'][value='small']:checked)
+    )
+    & {
     --thumbs-size: calc(var(--mg-row-height) * 0.6);
   }
 
-  :root:has(input[name='size'][value='large']:checked) & {
+  :root:is(
+      [data-size='large'],
+      :not([data-size]):has(input[name='size'][value='large']:checked)
+    )
+    & {
     --thumbs-size: calc(var(--mg-row-height) * 1.5);
   }
 
   /* original shape: justified rows; the filler takes the last row's slack */
-  :root:has(input[name='crop'][value='original']:checked) & {
+  :root:is(
+      [data-crop='original'],
+      :not([data-crop]):has(input[name='crop'][value='original']:checked)
+    )
+    & {
     display: flex;
     flex-wrap: wrap;
 
@@ -51,7 +67,11 @@
 .thumbs_item {
   min-width: 0;
 
-  :root:has(input[name='crop'][value='original']:checked) & {
+  :root:is(
+      [data-crop='original'],
+      :not([data-crop]):has(input[name='crop'][value='original']:checked)
+    )
+    & {
     flex: var(--ar) 1 calc(var(--ar) * var(--thumbs-size));
   }
 }
@@ -92,7 +112,11 @@
     filter: brightness(1.12);
   }
 
-  :root:has(input[name='crop'][value='original']:checked) & {
+  :root:is(
+      [data-crop='original'],
+      :not([data-crop]):has(input[name='crop'][value='original']:checked)
+    )
+    & {
     aspect-ratio: var(--ar);
   }
 
@@ -121,6 +145,7 @@
   padding: var(--xs2) var(--xs3);
   border-radius: var(--radius-md);
   box-shadow: var(--mg-surface-shadow);
+  color: var(--mg-ink-muted);
   font-size: var(--mg-size-hud);
   line-height: var(--leading-sm);
   opacity: 1;
@@ -172,17 +197,14 @@
       display: none;
     }
   }
-}
 
-.thumbs_tipTitle {
-  display: block;
-  font-weight: var(--mg-weight-medium);
-}
-
-.thumbs_tipMeta {
-  display: block;
-  margin-block-start: 2px;
-  color: var(--mg-ink-muted);
+  /* the title on its own line, then date and place, muted */
+  b {
+    display: block;
+    margin-block-end: 2px;
+    color: var(--mg-ink);
+    font-weight: var(--mg-weight-medium);
+  }
 }
 
 @keyframes thumbs-arrive {

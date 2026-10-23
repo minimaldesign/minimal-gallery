@@ -249,15 +249,32 @@ export const previewOf = (p: Photo) =>
     .sort((a, b) => b.width - a.width)[0] ??
   thumbOf(p);
 
-/** Every image of the photo as a srcset, smallest first, and the largest. */
-export function srcsetOf(p: Photo, maxWidth = Infinity) {
+/**
+ * Every image of the photo as a srcset, smallest first, and the largest.
+ * The JPEG joins as the widest candidate unless `jpeg` is false (the grid:
+ * a 900px JPEG is no better a thumbnail than the AVIF, and with a single
+ * candidate the srcset is left out, which keeps the grid's markup small).
+ */
+export function srcsetOf(
+  p: Photo,
+  maxWidth = Infinity,
+  { jpeg: withJpeg = true } = {}
+) {
   const list = avif(p).filter((v) => v.width <= maxWidth);
   const jpeg = p.variants.find((v) => v.format === 'jpeg');
-  if (jpeg && jpeg.width > (list.at(-1)?.width ?? 0) && jpeg.width <= maxWidth)
+  if (
+    withJpeg &&
+    jpeg &&
+    jpeg.width > (list.at(-1)?.width ?? 0) &&
+    jpeg.width <= maxWidth
+  )
     list.push(jpeg);
   const largest = list.at(-1) ?? thumbOf(p);
   return {
-    srcset: list.map((v) => `${withBase(v.url)} ${v.width}w`).join(', '),
+    srcset:
+      list.length > 1
+        ? list.map((v) => `${withBase(v.url)} ${v.width}w`).join(', ')
+        : '',
     src: withBase((jpeg ?? largest).url),
     largest,
   };
@@ -273,6 +290,12 @@ export function shortDate(p: Photo) {
   const m = MONTHS[+p.date.slice(5, 7) - 1].slice(0, 3);
   return `${m} ${+p.date.slice(8, 10)}, ${p.date.slice(0, 4)}`;
 }
+
+/** The viewer image as the context JSON carries it, for the neighbor preloads. */
+const heroOf = (p: Photo) => {
+  const { srcset, src } = srcsetOf(p);
+  return { src, srcset };
+};
 
 /** The thumbnail tooltip's second line: date and place. */
 export const tipOf = (p: Photo) =>
@@ -338,6 +361,7 @@ export function contextJson(ctx: Context) {
       href: withBase(p.url),
       thumb: withBase(thumbOf(p).url),
       preview: withBase(previewOf(p).url),
+      ...heroOf(p),
       title: p.title,
       ar: ratioOf(p),
       color: p.color,

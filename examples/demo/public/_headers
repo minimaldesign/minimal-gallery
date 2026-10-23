@@ -1,3 +1,10 @@
 # Derivatives are content-addressed (<hash8>-<variant>), so they never change.
 /_mg/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Astro's build assets (CSS, the theme script, fonts) carry a content hash in
+# their names, so they never change either. Without this rule the host
+# serves them with max-age=0, and every step revalidates the render-blocking
+# CSS and script before the new photo can show.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
