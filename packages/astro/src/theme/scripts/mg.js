@@ -1,5 +1,6 @@
 // minimal gallery theme script: enhancement only; every page works without
-// it. Loaded with `defer blocking="render"` (render-blocking in Chrome
+// it. With it, next and previous happen inside the page (STEP): no
+// navigation, a plain CSS crossfade between two images. Loaded with `defer blocking="render"` (render-blocking in Chrome
 // only); the visitor's settings are already on <html> from the inline
 // script in the head (restore.js), which runs before first paint in every
 // engine. Ported from the signed-off prototype (design/prototype/mg.js).
@@ -14,8 +15,8 @@ const base = $('meta[name="mg-root"]').content;
 const coarse = matchMedia('(pointer: coarse)').matches;
 // syncPanel() runs from restore(), early: its state is declared up here
 let synced = false;
-// set once pagereveal has been handled (the strip glides from then on)
-let revealed = false;
+// the strip's latest glide (center() runs early too): a newer one takes over
+let tween = 0;
 // the panel (the photos below the viewer) is up when it covers the window
 const panelUp = () => scrollY > innerHeight / 2;
 // snapped to the panel: the page (viewer + one-window panel) is at its end
@@ -134,9 +135,9 @@ d.addEventListener('change', (e) => {
     placePane($(`#${t.name}`));
   // zoom asks for the 1:1 derivative: the srcset's sizes follow the zoom
   if (t.matches('.stage_zoom')) {
-    const img = $('.stage_photo');
-    if (img.srcset)
-      img.sizes = t.checked ? `${tok('--photo-zoom-width')}px` : '100vw';
+    const img = $$('.stage_photo').at(-1);
+    const w = getComputedStyle(d.body).getPropertyValue('--photo-zoom-width');
+    if (img.srcset) img.sizes = t.checked ? `${w}px` : '100vw';
   }
   if (t.matches('.stage_zoom:checked')) {
     const s = $('.stage_scroller');
@@ -155,9 +156,10 @@ d.addEventListener('change', (e) => {
 // album) is in the HTML, except the strip and, on pages that open on the
 // viewer, the list rows, which are built from the JSON when shown. Without
 // script the page stays in its album and the grid stands in for the rest.
-// What a step needs before first paint is cheap (links, preloads, crumbs,
+// What a page needs before first paint is cheap (links, preloads, crumbs,
 // the strip when it is on); the grid and the list wait until they are
-// wanted or the page is idle, so a step never rebuilds them up front.
+// wanted or the page is idle. The JSON also carries everything the viewer
+// shows, so a step needs nothing else.
 const own = $('.strip').dataset;
 const ctx = new URLSearchParams(location.search).get('in');
 const ctxId = ctx || own.context;
@@ -166,13 +168,14 @@ const inCtx = (p) =>
   linkIn
     ? `${p.href}?in=${encodeURIComponent(linkIn).replace(/%2F/g, '/')}`
     : p.href;
-// the photo this page shows, matched by its page path (slugs repeat)
-const here = own.photo;
+// the photo shown, matched by its page path (slugs repeat); a step moves it
+let here = own.photo;
 let context; // { photos, i, title, href } once loaded
 const waiting = [];
-function withCtx(fn) {
+// `fn` once the context is loaded; `fail` if it cannot be
+function withCtx(fn, fail) {
   if (context) return fn(context);
-  waiting.push(fn);
+  waiting.push([fn, fail]);
   if (waiting.length > 1) return;
   const key = `mgCtx-${ctxId}`;
   const got = (t) => {
@@ -180,7 +183,7 @@ function withCtx(fn) {
     c.i = c.photos.findIndex((p) => p.href === here);
     if (c.i < 0) return;
     context = c;
-    for (const f of waiting.splice(0)) f(c);
+    for (const [f] of waiting.splice(0)) f(c);
   };
   if (ss[key]) return got(ss[key]);
   fetch(`${base}${ctxId}.json`)
@@ -191,12 +194,15 @@ function withCtx(fn) {
       } catch {} // over quota: fetched again next time
       got(t);
     })
-    .catch(() => {}); // the page keeps what its HTML has
+    // the page keeps what its HTML has; a step waiting on it navigates
+    .catch(() => waiting.splice(0).forEach(([, f]) => f?.()));
 }
 const attrs = (p) => `style="--ar: ${p.ar}; --photo: ${p.color}"`;
 const current = (p) => (p.href === here ? ' aria-current="page"' : '');
-// prev and next, rel links, the neighbors' photos, prerender rules and the
-// crumbs: small and visible, so applied at once on `?in=` pages. No
+// prev and next, the neighbors' photos and the crumbs: small and visible,
+// so applied at once on `?in=` pages and on every step. The static rel
+// next and prev links are dropped: steps stay in the page, and Firefox
+// would prefetch each next page's HTML for nothing. No
 // wrapping: at either end there is no link, so every way of stepping
 // (keys, click, swipe) does nothing there.
 function nav(c) {
@@ -215,9 +221,6 @@ function nav(c) {
     }
     a.href = inCtx(p);
     a.ariaLabel = `${rel === 'next' ? 'Next' : 'Previous'} photo: ${p.title}`;
-    d.head.append(
-      Object.assign(d.createElement('link'), { rel, href: a.href })
-    );
     // the neighbor's photo at low priority, with the hero's srcset choice
     const pre = d.createElement('link');
     const at = {
@@ -231,13 +234,6 @@ function nav(c) {
     for (const [k, v] of Object.entries(at)) pre.setAttribute(k, v);
     d.head.append(pre);
   }
-  const near = [$('.stage_next').href, $('.stage_prev').href].filter(Boolean);
-  const rules = d.createElement('script');
-  rules.type = 'speculationrules';
-  rules.textContent = JSON.stringify({
-    prerender: near.length ? [{ urls: near }] : [],
-  });
-  $('script[type="speculationrules"]').replaceWith(rules);
   const n = ps.length;
   $('.table_count').textContent = `${n} photo${n === 1 ? '' : 's'}`;
   for (const crumb of $$('.hud_context, .table_context'))
@@ -252,7 +248,7 @@ function nav(c) {
 // the inline call after the strip, in the head script)
 function strip(c) {
   mgStrip($('.strip'), c.photos);
-  revealed ? glide() : center();
+  center();
 }
 // the grid and the rail of another context (`?in=`)
 let gridDone = !ctx;
@@ -315,57 +311,169 @@ else {
   addEventListener('scroll', panel, { once: true, passive: true });
 }
 
-// VIEW TRANSITIONS: the stage is named in CSS (viewer state), so a step
-// crossfades in every engine. Where pageswap and pagereveal exist, the
-// page you leave records how you left it (a thumbnail, next, previous,
-// anything else) and the page you arrive on names the matching elements,
-// so a thumbnail morphs into the photo and back.
+// STEP: next and previous (keys, the click zones, a swipe, a strip frame,
+// back and forward between photos of this context) happen inside the page:
+// no navigation, nothing rebuilt. The new photo is a second image in the
+// stage that fades in over the old one (a CSS opacity transition) as soon
+// as it has decoded, or after 150ms on its color, so the step answers at
+// once; the old one fades out and is removed. Then the page's text, links,
+// selection and URL follow. Anything outside the context (or a failed
+// JSON fetch) is a normal page load.
+const site = $('.hud_crumbs a').textContent;
+const at0 = { path: location.pathname, photo: here };
+const photoIndex = (href) => {
+  const path = new URL(href, location.href).pathname;
+  return context.photos.findIndex((p) => p.href === path);
+};
+function step(href) {
+  withCtx(
+    () => {
+      const i = photoIndex(href);
+      i < 0 ? (location.href = href) : stepTo(i);
+    },
+    () => (location.href = href)
+  );
+}
+let pending = 0; // the latest step: an earlier one still decoding is dropped
+function stepTo(i, push = true) {
+  const c = context;
+  const p = c.photos[i];
+  if (!p || i === c.i) return;
+  const zoom = $('.stage_zoom');
+  if (zoom.checked) {
+    zoom.checked = false;
+    zoom.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  // the new image, preloaded with the hero's srcset choice (the neighbor
+  // preloads have usually fetched it already)
+  const img = new Image();
+  img.className = 'stage_photo is-hidden';
+  img.alt = p.title;
+  img.width = p.w;
+  img.height = p.h;
+  img.style.cssText = `--photo: ${p.color}; --photo-ratio: ${p.ar}; --photo-placeholder: none`;
+  if (p.srcset) {
+    img.sizes = '100vw';
+    img.srcset = p.srcset;
+  }
+  img.src = p.src;
+  const token = ++pending;
+  Promise.race([
+    img.decode().catch(() => {}),
+    new Promise((r) => setTimeout(r, 150)),
+  ]).then(() => {
+    if (token !== pending) return;
+    const stage = $('.stage_next');
+    const old = $$('.stage_photo', stage);
+    stage.append(img);
+    getComputedStyle(img).opacity; // start from 0
+    img.classList.remove('is-hidden');
+    for (const o of old) {
+      o.classList.add('is-hidden');
+      const gone = () => o.remove();
+      o.addEventListener('transitionend', gone, { once: true });
+      setTimeout(gone, 2000); // no transition (reduced motion, a hidden tab)
+    }
+  });
+  // everything else at once
+  c.i = i;
+  here = p.href;
+  const label = c.title ?? 'All photos';
+  d.title = `${p.title} · ${label} · ${site}`;
+  $('meta[name="description"]')?.setAttribute(
+    'content',
+    `${p.title}, a photograph in ${label}.`
+  );
+  $('link[rel="canonical"]')?.setAttribute(
+    'href',
+    new URL(p.href, location.href).href
+  );
+  $('.hud_title').textContent = p.title;
+  $('#info-title').textContent = p.title;
+  const cap = $('.info_caption');
+  cap.innerHTML = p.caption ?? '';
+  cap.hidden = !p.caption;
+  $('.info_list').innerHTML = p.info
+    .map(
+      (r) =>
+        `<div class="info_row"><dt class="info_term">${esc(r.term)}</dt><dd class="info_value${r.exposure ? ' info_value-exposure' : ''}">${r.html}</dd></div>`
+    )
+    .join('');
+  const body = d.body.style;
+  body.setProperty('--photo', p.color);
+  body.setProperty('--photo-ratio', p.ar);
+  body.setProperty('--photo-zoom-width', p.zoom);
+  body.removeProperty('--photo-placeholder');
+  nav(c);
+  for (const a of $$(
+    '.strip_link, .thumbs_link, .ledger tbody td:nth-child(2) a'
+  ))
+    a.pathname === p.href
+      ? a.setAttribute('aria-current', 'page')
+      : a.removeAttribute('aria-current');
+  center(true);
+  if (push) history.pushState({ mg: p.href }, '', inCtx(p));
+}
+// every entry of this document is a photo of this context (or a hash link
+// on one): back and forward step in place
+history.replaceState({ ...history.state, mg: here }, '');
+addEventListener('popstate', (e) => {
+  const href =
+    e.state?.mg ??
+    (location.pathname === at0.path ? at0.photo : location.pathname);
+  withCtx(
+    (c) => {
+      const i = photoIndex(href);
+      if (i < 0) location.reload();
+      else if (i !== c.i) stepTo(i, false);
+    },
+    () => location.reload()
+  );
+});
+// a click on the zones or a strip frame is a step; a modified click (a new
+// tab) is left to the browser
+const plain = (e) =>
+  !e.defaultPrevented &&
+  !e.button &&
+  !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+d.addEventListener('click', (e) => {
+  const a = e.target.closest?.('.stage_next, .stage_prev, .strip_link');
+  if (!a?.href || !plain(e)) return;
+  e.preventDefault();
+  step(a.href);
+});
+// load the context early, so the first step is in place too
+addEventListener('load', () => withCtx(() => {}), { once: true });
+
+// VIEW TRANSITIONS between pages (a thumbnail to its photo, the photo back
+// to the grid): where pageswap and pagereveal exist, the page you leave
+// records how you left it and the page you arrive on names the matching
+// elements, so the thumbnail morphs into the photo and back. Steps are not
+// navigations, so they have no part here.
 const vt = (el, n) => el && (el.style.viewTransitionName = n);
 let clicked;
 addEventListener('click', (e) => {
-  clicked = e.target.closest('.thumbs_link, .strip_link');
+  clicked = e.target.closest('.thumbs_link');
 });
 addEventListener('pageswap', (e) => {
   if (!e.viewTransition) return;
-  const to = e.activation?.entry?.url;
-  let dir =
-    to === $('.stage_next').href
-      ? 'forward'
-      : to === $('.stage_prev').href
-        ? 'back'
-        : '';
-  // a filmstrip frame is a step too
-  if (clicked?.matches('.strip_link')) {
-    const f = $$('.strip_link');
-    dir =
-      f.indexOf(clicked) > f.findIndex((a) => a.matches('[aria-current]'))
-        ? 'forward'
-        : 'back';
-    clicked = null;
-  }
-  ss.mgVia = clicked ? 'thumb' : dir || 'other';
-  ss.mgStripX = dir ? $('.strip_list').scrollLeft : '';
+  ss.mgVia = clicked ? 'thumb' : 'other';
   if (clicked) vt($('img', clicked), 'photo');
-  else if (!dir && scrollY < innerHeight / 2) vt($('.stage_photo'), 'photo');
+  else if (scrollY < innerHeight / 2) vt($$('.stage_photo').at(-1), 'photo');
 });
 // `late`: pagereveal fired before this deferred script ran (the head
 // script kept the event), too late to name anything
 function reveal(e, late) {
-  revealed = true;
   restore();
-  glide();
-  const via = ss.mgVia;
+  center();
   // where the Navigation API is missing, the referrer (same origin: the
   // full URL) says the same
   const from = self.navigation
     ? navigation.activation?.from?.url
     : d.referrer || null;
   if (late || !e.viewTransition || !from) return;
-  if (via === 'forward' || via === 'back') e.viewTransition.types.add(via);
-  else if (via === 'thumb') {
-    vt($('.stage_frame'), 'none');
-    vt($('.stage_photo'), 'photo');
-  } else {
+  if (ss.mgVia === 'thumb') vt($('.stage_photo'), 'photo');
+  else {
     const path = new URL(from).pathname;
     const a =
       atPanel() &&
@@ -432,12 +540,6 @@ for (const t of ['scroll', 'scrollend', 'load', 'resize'])
 
 // TOUCH: tap toggles the chrome, swipe changes photo, double tap zooms.
 const frame = $('.stage_frame');
-// a step only happens where there is a link: none past either end
-const step = (rel) => {
-  const a = $(`.stage_${rel}`);
-  if (a.href) location.href = a.href;
-  return !!a.href;
-};
 if (coarse) {
   let start, timer;
   // a tap must not follow the next link; only link clicks are cancelled, so
@@ -476,11 +578,12 @@ if (coarse) {
 // nearest one above or below, so square and justified grids both work),
 // Home and End, Enter opens (native link), Escape returns to the photo.
 // Focus is the only thing script adds here.
+// a step only happens where there is a link: none past either end
 function go(rel) {
-  if ($(`.stage_${rel}`).href) {
-    hide('key');
-    step(rel);
-  }
+  const a = $(`.stage_${rel}`);
+  if (!a.href) return;
+  hide('key');
+  step(a.href);
 }
 const palette = () => {
   const p = $('dialog.palette');
@@ -690,11 +793,11 @@ addEventListener('pointerdown', (e) => {
 });
 addEventListener('pointerup', () => (drag = null));
 
-// STRIP: the current frame is centered (the scroller clamps the ends).
-// On a step the new page starts the strip where the last page left it and
-// glides it to the new center (a 550ms ease-out tween), so it never jumps
-// first; reduced motion moves it at once.
+// STRIP: the current frame is centered (the scroller clamps the ends). On
+// a step the strip, which stays in the page, glides to the new current
+// frame (a 550ms ease-out tween); reduced motion moves it at once.
 function center(smooth) {
+  const id = ++tween;
   const c = $('.strip_link[aria-current]');
   if (!c || !c.offsetWidth) return;
   const l = c.closest('.strip_list');
@@ -708,6 +811,7 @@ function center(smooth) {
   const t0 = performance.now();
   l.style.scrollSnapType = 'none';
   const frame = (t) => {
+    if (id !== tween) return;
     const k = Math.min(1, (t - t0) / 550);
     l.scrollLeft = from + (left - from) * (1 - (1 - k) ** 3);
     if (k < 1) requestAnimationFrame(frame);
@@ -715,19 +819,6 @@ function center(smooth) {
   };
   requestAnimationFrame(frame);
 }
-function glide() {
-  const x = ss.mgStripX;
-  ss.mgStripX = '';
-  const l = $('.strip_list');
-  if (!x || !l.offsetWidth) return center();
-  l.scrollLeft = +x;
-  center(true);
-}
-// browsers with pagereveal glide there (or now, if it already fired);
-// the others glide now
-if (!('onpagereveal' in window)) glide();
-else if (self.mgReveal) reveal(self.mgReveal, true);
-else {
-  center();
-  addEventListener('pagereveal', (e) => reveal(e));
-}
+center();
+if (self.mgReveal) reveal(self.mgReveal, true);
+else addEventListener('pagereveal', (e) => reveal(e));

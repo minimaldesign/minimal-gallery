@@ -1,16 +1,15 @@
 /* GLOBAL: VIEW TRANSITIONS
 
    Bounded exception: every ::view-transition rule in the project lives
-   here, because moving between pages is one motion decision. Blocks name
-   their own elements (view-transition-name) in their own files, including
-   the stage in viewer state; where the pageswap and pagereveal events
-   exist, mg.js adds the names that depend on where you came from (photo,
-   for the thumbnail morph). This file only says how named things move,
-   and the baseline (the step crossfade, a strip that never crossfades)
-   depends on no event or type.
+   here, because moving between pages is one motion decision. Next and
+   previous are not page moves: they happen inside the page, as a CSS
+   crossfade on the stage's two images (component.stage.css). Blocks name
+   their own elements (view-transition-name) in their own files; where the
+   pageswap and pagereveal events exist, mg.js adds the names that depend
+   on where you came from (photo, for the thumbnail morph). This file only
+   says how named things move.
 
-   What changes: the photo (a slow crossfade between neighbors, a morph
-   between a thumbnail and the view). What crossfades: the page ground (root). What
+   What changes: the photo (a morph between a thumbnail and the view). What crossfades: the page ground (root). What
    never moves: the HUD, the strip and the info panel (class chrome).
    After an arrow key the HUD is already hidden on both pages, so the
    transition shows the photo alone. */
@@ -50,9 +49,9 @@
 
 /* The strip is never crossfaded between two pages: two strips scrolled
    to different frames read as the strip vanishing mid-step (the flicker).
-   When both pages have it, the old snapshot is hidden and the new strip is
-   shown live; mg.js starts it where the old page left it and glides it to
-   the new center. Only an old strip with no new one (the setting was
+   When both pages have it (a page load between two viewer pages, such as
+   the home link), the old snapshot is hidden and the new strip is shown
+   live. Only an old strip with no new one (the setting was
    turned off, or the new page opens on the panel) fades out, with the
    page. No type or event is needed, so it holds in every engine (only a
    bare :only-child may follow these pseudo-elements, not :not()). */
@@ -68,23 +67,6 @@
 
 ::view-transition-new(strip) {
   animation: none;
-}
-
-/* Next and previous: a slow, pure crossfade between the two photos, the
-   same both ways, on a symmetric curve so there is no visible start or
-   end. Only opacity changes, so it stays under reduced motion too. Both
-   pages name the stage in viewer state (component.stage.css), so this
-   needs no pageswap, pagereveal or transition type. */
-::view-transition-group(stage) {
-  animation-duration: var(--mg-duration-step);
-}
-
-::view-transition-old(stage) {
-  animation: var(--mg-duration-step) var(--mg-ease-fade) both mg-fade-out;
-}
-
-::view-transition-new(stage) {
-  animation: var(--mg-duration-step) var(--mg-ease-fade) both mg-fade-in;
 }
 
 /* Reduced motion: nothing travels or scales. Named elements jump to their

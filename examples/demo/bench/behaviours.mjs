@@ -189,16 +189,71 @@ async function run(engine) {
   await page.waitForTimeout(150);
   ok('Escape closes', !(await $eval('#palette', (d) => d.open)));
 
-  // A STEP: settings applied before the theme script ran
+  // A STEP happens inside the page: same document, everything follows
+  await page.evaluate(() => (window.__same = true));
+  const next = album.photos[ai + 1];
+  const href = () => page.evaluate(() => location.pathname + location.search);
   await page.keyboard.press('ArrowRight');
-  await page.waitForURL(opt.url + album.photos[ai + 1].href);
-  await page.waitForTimeout(500);
-  const e = await page.evaluate(() => window.__early);
+  await page.waitForTimeout(1200);
+  ok('step: same document', await page.evaluate(() => window.__same === true));
+  ok('step: URL pushed', (await href()) === next.href);
+  ok('step: title', (await page.title()).startsWith(next.title + ' · '));
   ok(
-    'step: strip and idle on <html> before mg.js',
-    e?.strip === 'on' && e?.idle === 'key'
+    'step: crumb',
+    (await $eval('.hud_title', (h) => h.textContent)) === next.title
   );
-  ok('step: strip built', (await count('.strip_item')) === album.photos.length);
+  ok(
+    'step: info pane',
+    (await $eval('#info-title', (h) => h.textContent.trim())) === next.title
+  );
+  ok(
+    'step: one hero, the new one',
+    (await page.$$eval('.stage_photo', (i) => i.map((x) => x.alt))).join() ===
+      next.title
+  );
+  ok('step: strip kept', (await count('.strip_item')) === album.photos.length);
+  ok(
+    'step: strip selection moved',
+    (await $eval('.strip_link[aria-current]', (a) => a.pathname)) === next.href
+  );
+  ok(
+    'step: next link moved',
+    (await $eval('.stage_next', (a) => a.pathname)) ===
+      album.photos[ai + 2].href
+  );
+  await page.mouse.click(1000, 450);
+  await page.waitForTimeout(1200);
+  ok(
+    'click step: in place',
+    (await href()) === album.photos[ai + 2].href &&
+      (await page.evaluate(() => window.__same))
+  );
+  await page.goBack({ waitUntil: 'commit' }).catch(() => {});
+  await page.waitForTimeout(1200);
+  ok(
+    'back: in place',
+    (await href()) === next.href && (await page.evaluate(() => window.__same))
+  );
+  ok(
+    'back: hero',
+    (await page.$$eval('.stage_photo', (i) => i.at(-1).alt)) === next.title
+  );
+  await page.goForward({ waitUntil: 'commit' }).catch(() => {});
+  await page.waitForTimeout(1200);
+  ok(
+    'forward: in place',
+    (await href()) === album.photos[ai + 2].href &&
+      (await page.evaluate(() => window.__same))
+  );
+  await page.reload();
+  await page.waitForTimeout(400);
+  ok(
+    'reload of a stepped URL',
+    (await $eval('.hud_title', (h) => h.textContent)) ===
+      album.photos[ai + 2].title
+  );
+  const e = await page.evaluate(() => window.__early);
+  ok('settings on <html> before mg.js', e?.strip === 'on');
 
   // ?in=grid: context from the JSON
   const all = await json('/grid.json');
@@ -258,6 +313,40 @@ async function run(engine) {
   );
   ok('no console errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   await context.close();
+
+  // TOUCH: a swipe steps in place (no touch emulation in Firefox)
+  if (engine !== 'firefox') {
+    const touch = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const t = await touch.newPage();
+    await t.goto(opt.url + ALBUM, { waitUntil: 'load' });
+    await t.waitForTimeout(600);
+    await t.evaluate(() => (window.__same = true));
+    await t.evaluate(() => {
+      const f = document.querySelector('.stage_frame');
+      const ev = (type, x) =>
+        f.dispatchEvent(
+          new PointerEvent(type, {
+            clientX: x,
+            clientY: 400,
+            bubbles: true,
+            pointerType: 'touch',
+          })
+        );
+      ev('pointerdown', 300);
+      ev('pointerup', 120);
+    });
+    await t.waitForTimeout(1200);
+    ok(
+      'touch: swipe steps in place',
+      (await t.evaluate(() => location.pathname)) ===
+        album.photos[ai + 1].href && (await t.evaluate(() => window.__same))
+    );
+    await touch.close();
+  }
 
   // NO SCRIPT: the grid stands in for the list, no strip toggle
   const bare = await browser.newContext({ javaScriptEnabled: false });

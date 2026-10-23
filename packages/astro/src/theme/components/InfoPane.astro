@@ -2,32 +2,16 @@
 /**
  * The info pane: the photo's record, every value a link to its context.
  * Opened by the Info checkbox (CSS, no script), remembered across photos;
- * only its Close label and `i` close it.
+ * only its Close label and `i` close it. The rows come from `infoOf()`,
+ * which the context JSON carries too: a step inside the page fills the
+ * pane with the same markup.
  */
-import { MONTHS } from '../../data/facets.ts';
-import {
-  facetHref,
-  facetOf,
-  type FacetKey,
-  type Photo,
-} from '../../gallery.ts';
+import { infoOf, type Photo } from '../../gallery.ts';
 
 interface Props {
   photo: Photo;
 }
 const { photo: p } = Astro.props;
-const href = (key: FacetKey) => {
-  const v = facetOf(p, key);
-  return v ? `${facetHref(key, v.slug)}#grid` : undefined;
-};
-const time = p.date?.slice(11, 16);
-const exposure: Array<[FacetKey, string | null]> = [
-  ['shutter', p.shutter],
-  ['aperture', p.aperture],
-  ['focal', p.focal],
-  ['iso', p.iso && `ISO ${p.iso}`],
-];
-const hasExposure = exposure.some(([, v]) => v);
 ---
 
 <aside
@@ -42,87 +26,20 @@ const hasExposure = exposure.some(([, v]) => v);
       Close
     </label>
   </div>
-  {p.captionHtml && <div class="info_caption" set:html={p.captionHtml} />}
+  <div
+    class="info_caption"
+    hidden={!p.captionHtml}
+    set:html={p.captionHtml ?? ''}
+  />
   <dl class="info_list">
-    {p.date && (
+    {infoOf(p).map((row) => (
       <div class="info_row">
-        <dt class="info_term">Date</dt>
-        <dd class="info_value">
-          <span>
-            <a href={href('month')}>{MONTHS[+p.date.slice(5, 7) - 1]}</a>&#32;
-            <a href={href('day')}>{+p.date.slice(8, 10)}</a>,&#32;
-            <a href={href('year')}>{p.date.slice(0, 4)}</a>
-          </span>
-          {time && time !== '00:00' && <span>{time}</span>}
-        </dd>
+        <dt class="info_term">{row.term}</dt>
+        <dd
+          class:list={['info_value', { 'info_value-exposure': row.exposure }]}
+          set:html={row.html}
+        />
       </div>
-    )}
-    {p.place && (
-      <div class="info_row">
-        <dt class="info_term">Place</dt>
-        <dd class="info_value">
-          {p.placeDetail && <span>{p.placeDetail},</span>}
-          <a href={href('place')}>{p.place}</a>
-        </dd>
-      </div>
-    )}
-    {p.camera && (
-      <div class="info_row">
-        <dt class="info_term">Camera</dt>
-        <dd class="info_value">
-          <a href={href('camera')}>{p.camera}</a>
-        </dd>
-      </div>
-    )}
-    {p.lens && (
-      <div class="info_row">
-        <dt class="info_term">Lens</dt>
-        <dd class="info_value">
-          <a href={href('lens')}>{p.lens}</a>
-        </dd>
-      </div>
-    )}
-    {hasExposure && (
-      <div class="info_row">
-        <dt class="info_term">Exposure</dt>
-        <dd class="info_value info_value-exposure">
-          {exposure.map(
-            ([key, text]) => text && <a href={href(key)}>{text}</a>
-          )}
-        </dd>
-      </div>
-    )}
-    {p.keywords.length > 0 && (
-      <div class="info_row">
-        <dt class="info_term">Keywords</dt>
-        <dd class="info_value">
-          {(p.facets.keyword ?? []).map((k) => (
-            <a href={`${facetHref('keyword', k.slug)}#grid`}>{k.label}</a>
-          ))}
-        </dd>
-      </div>
-    )}
-    {!p.camera && !p.date && (
-      <div class="info_row">
-        <dt class="info_term">Capture</dt>
-        <dd class="info_value">
-          <span class="info_empty">No camera data in this file</span>
-        </dd>
-      </div>
-    )}
-    <div class="info_row">
-      <dt class="info_term">Size</dt>
-      <dd class="info_value">
-        <span>
-          {p.width} × {p.height} px
-        </span>
-      </dd>
-    </div>
-    <div class="info_row">
-      <dt class="info_term">File</dt>
-      <dd class="info_value">
-        <span class="info_path">{p.source}</span>
-      </dd>
-    </div>
+    ))}
   </dl>
 </aside>

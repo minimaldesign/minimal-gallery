@@ -41,18 +41,13 @@ const { prev, next } = await neighbors(context.id, photo.id);
 const n = context.photos.length;
 const plural = `${n} photo${n === 1 ? '' : 's'}`;
 
-// no wrapping: the last photo has no next, the first no previous, so no
-// rel link and no prerender for the missing side
-const near = [next, prev]
-  .filter((x): x is Photo => !!x)
-  .map((x) => photoHref(x, context));
+// Chrome prerenders a thumbnail's page on hover (a real page load). The
+// neighbors are not prerendered: with script a step stays in the page, so
+// a prerendered neighbor would be thrown away; their photos are preloaded
+// below instead.
 const rules = JSON.stringify({
   prerender: [
-    ...(near.length ? [{ urls: near, eagerness: 'immediate' }] : []),
-    {
-      where: { selector_matches: '.thumbs_link, .strip_link' },
-      eagerness: 'moderate',
-    },
+    { where: { selector_matches: '.thumbs_link' }, eagerness: 'moderate' },
   ],
 });
 

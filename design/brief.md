@@ -230,8 +230,8 @@ Desktop keeps click to advance and showing the chrome on pointer movement.
 
 | What | Duration | Easing |
 | --- | --- | --- |
-| Next or previous (keys, click, swipe, a strip frame): a pure crossfade between the two photos, the same both ways, no scaling or drift, on a symmetric curve so there is no visible start or end | 900 ms | `cubic-bezier(0.45, 0, 0.55, 1)` |
-| The strip on a step: no crossfade; the new page starts it where the old page left it and glides it to center the new current frame (a `requestAnimationFrame` tween, the strip’s snapping paused meanwhile) | 550 ms | ease-out cubic |
+| Next or previous (keys, click, swipe, a strip frame, back and forward): inside the page, not a navigation; a pure CSS crossfade between two images in the stage, the same both ways, no scaling or drift, on a symmetric curve so there is no visible start or end; it starts once the new photo has decoded, or after 150 ms on its color | 900 ms (140 ms with reduced motion) | `cubic-bezier(0.45, 0, 0.55, 1)` |
+| The strip on a step: it stays in the page, never rebuilt, and glides to center the new current frame (a `requestAnimationFrame` tween, the strip’s snapping paused meanwhile) | 550 ms | ease-out cubic |
 | Thumbnail to photo and back: both snapshots use `object-fit: cover`, so the square crop opens into the whole photo | 440 ms | `cubic-bezier(0.16, 1, 0.3, 1)` |
 | Chrome appears on pointer movement or a tap | 140 ms | same |
 | Chrome fades after 2 s at rest | 600 ms | same |
@@ -240,7 +240,7 @@ Desktop keeps click to advance and showing the chrome on pointer movement.
 | Viewer recedes as the photos rise (scroll-driven, 12 to 80% of the window) | scroll-linked | linear |
 | Thumbnails arrive from 0.4 opacity (scroll-driven) | scroll-linked | linear |
 
-Never moves: the photo while viewed, and the HUD and panes during navigation (`view-transition-class: chrome`). Hidden chrome drops its `view-transition-name`, so no empty blurred group is left over the photo. Reduced motion: a step stays the crossfade (only opacity changes), the strip recenters at once, nothing travels or scales; reduced transparency makes every surface solid.
+Never moves: the photo while viewed, and the HUD and panes during navigation (`view-transition-class: chrome`). Hidden chrome drops its `view-transition-name`, so no empty blurred group is left over the photo. Reduced motion: a step stays the crossfade (only opacity changes, shortened to 140 ms), the strip recenters at once, nothing travels or scales; reduced transparency makes every surface solid.
 
 **Cursors:** over the photo, chevrons in the Lucide style (`chevron-right` for next on the right two thirds, `chevron-left` for previous on the left third), 128px with an 11.2px stroke, black at 70% over a white outline 1px wide on each side so they read on light and dark photos, hotspot at the center, `pointer` as the fallback. 128px is the hard browser limit: Chrome and Firefox drop larger cursor images. Chrome also shows the fallback wherever the cursor would cross the window’s edge. On the last photo there is no next and the cursor is the default; on the first there is no previous zone.
 
@@ -258,11 +258,12 @@ Never moves: the photo while viewed, and the HUD and panes during navigation (`v
 
 | Interaction | Carried by | Without script | Safari 26 | Firefox 148 |
 | --- | --- | --- | --- | --- |
-| Steps and morphs between pages | Cross-document view transitions, types, `view-transition-class`; the leaving page records how it left (`pageswap`), the arriving page names elements (`pagereveal`) | Root crossfade | Works | Partial: crossfade |
+| Next and previous | Inside the page: `mg.js` crossfades a second image in the stage (a CSS opacity transition) and updates the text, links, URL (`pushState`) and strip from the context JSON | A page load per step | Works | Works |
+| Morphs between pages | Cross-document view transitions; the leaving page records how it left (`pageswap`), the arriving page names elements (`pagereveal`) | Root crossfade | Works | No view transition |
 | Context on photo pages | `?in=` and `<id>.json` | Album context | Works | Works |
 | Context pages open at the grid | `scroll-initial-target`, `#grid` links | `#grid` links | `#grid`, mg.js scrolls direct visits | Same |
 | State before first paint | `<script defer blocking="render">` plus `pagereveal` | Defaults | Possible one-frame flash | Same |
-| Instant next and previous | Speculation Rules prerender | Normal loads | Normal loads | Normal loads |
+| Instant next and previous | Neighbor images preloaded (`link rel=preload as=image`, low priority); the step itself is in the page | Normal loads | Works | Works |
 | Display toggles | Radios and a checkbox read by `:root:has()` | Work, not remembered | Works | Works |
 | Two-state snapping | `scroll-snap-type: y mandatory`, two snap points | Works | Works | Works |
 | HUD hidden while the panel is up | `data-panel` from the scroll position; `@container scroll-state(snapped: block)` as an extra | HUD stays fixed over the panel | `data-panel` | `data-panel` |
@@ -271,7 +272,7 @@ Never moves: the photo while viewed, and the HUD and panes during navigation (`v
 | Strip carousel | `::scroll-button`, `::scroll-marker`, `scroll-initial-target` | Snapping row | Snapping row, centered by mg.js | Same |
 | Tooltips | One at a time: with a pointer (`data-pointer`) the hovered one follows it with no flip fallbacks; keyboard focus shows the focused one anchored with `anchor-scope`, and pointer movement over the grid hides it | Anchored or in-thumb label | Same | Same |
 | Info panel | A fixed element shown by `:root:has(input[name=info]:checked)`, `@starting-style` and `allow-discrete`, below the tooltips in one stacking context; drag in mg.js | Works, not remembered | Works | Works |
-| Strip step | A frame click records a forward or back step (`pageswap`): the photos crossfade, the strip is shown live (no crossfade) and glides from its stored position to the new center | Plain navigation | Works | Crossfade |
+| Strip step | A frame click is a step in the page: the photos crossfade and the strip, never rebuilt, glides to the new frame | Plain navigation | Works | Works |
 | Palette | `<dialog>` with `command`/`commandfor`, `closedby` | Works | Esc closes | Works |
 | Date rail marking | `scroll-target-group`, `:target-current` | Unmarked ticks | Unmarked | Unmarked |
 | Touch tap, swipe, double tap | Pointer events in mg.js | Tap follows the link | Works | Works |

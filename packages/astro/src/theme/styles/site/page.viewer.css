@@ -8,6 +8,8 @@
 .viewer {
   /* the top of the page is the first snap point */
   scroll-snap-align: start;
+  /* a step inside the page changes --photo: the photo backdrop follows */
+  transition: background-color var(--mg-duration-step) var(--mg-ease-fade);
 
   @container style(--mg-backdrop: photo) {
     --body-background-color: color-mix(

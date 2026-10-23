@@ -291,11 +291,100 @@ export function shortDate(p: Photo) {
   return `${m} ${+p.date.slice(8, 10)}, ${p.date.slice(0, 4)}`;
 }
 
-/** The viewer image as the context JSON carries it, for the neighbor preloads. */
-const heroOf = (p: Photo) => {
-  const { srcset, src } = srcsetOf(p);
-  return { src, srcset };
-};
+/**
+ * The viewer image as the context JSON carries it, for an in-page step and
+ * the neighbor preloads: srcset and src, the largest size, the zoom width.
+ */
+export function heroOf(p: Photo) {
+  const { srcset, src, largest } = srcsetOf(p);
+  return {
+    src,
+    srcset,
+    w: largest.width,
+    h: largest.height,
+    // 1:1 of the largest derivative; one under 1600px (small sources) is
+    // doubled so zoom still magnifies
+    zoom: largest.width < 1600 ? largest.width * 2 : largest.width,
+  };
+}
+
+const escHtml = (s: string) =>
+  s.replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`);
+const link = (text: string, href?: string) =>
+  href ? `<a href="${escHtml(href)}">${escHtml(text)}</a>` : escHtml(text);
+
+export interface InfoRow {
+  term: string;
+  /** The value's markup: links to its contexts, spans for the rest. */
+  html: string;
+  exposure?: boolean;
+}
+
+/**
+ * The info pane's rows for a photo, as markup. One source for the static
+ * pane and the context JSON, so a step inside the page shows exactly what
+ * the photo's own page shows.
+ */
+export function infoOf(p: Photo): InfoRow[] {
+  const href = (key: FacetKey) => {
+    const v = facetOf(p, key);
+    return v ? `${facetHref(key, v.slug)}#grid` : undefined;
+  };
+  const rows: InfoRow[] = [];
+  if (p.date) {
+    const time = p.date.slice(11, 16);
+    rows.push({
+      term: 'Date',
+      html:
+        `<span>${link(MONTHS[+p.date.slice(5, 7) - 1], href('month'))} ` +
+        `${link(String(+p.date.slice(8, 10)), href('day'))}, ` +
+        `${link(p.date.slice(0, 4), href('year'))}</span>` +
+        (time && time !== '00:00' ? `<span>${time}</span>` : ''),
+    });
+  }
+  if (p.place)
+    rows.push({
+      term: 'Place',
+      html:
+        (p.placeDetail ? `<span>${escHtml(p.placeDetail)},</span>` : '') +
+        link(p.place, href('place')),
+    });
+  if (p.camera)
+    rows.push({ term: 'Camera', html: link(p.camera, href('camera')) });
+  if (p.lens) rows.push({ term: 'Lens', html: link(p.lens, href('lens')) });
+  const exposure: Array<[FacetKey, string | null]> = [
+    ['shutter', p.shutter],
+    ['aperture', p.aperture],
+    ['focal', p.focal],
+    ['iso', p.iso && `ISO ${p.iso}`],
+  ];
+  if (exposure.some(([, v]) => v))
+    rows.push({
+      term: 'Exposure',
+      exposure: true,
+      html: exposure
+        .map(([key, text]) => (text ? link(text, href(key)) : ''))
+        .join(''),
+    });
+  if (p.keywords.length)
+    rows.push({
+      term: 'Keywords',
+      html: (p.facets.keyword ?? [])
+        .map((k) => link(k.label, `${facetHref('keyword', k.slug)}#grid`))
+        .join(''),
+    });
+  if (!p.camera && !p.date)
+    rows.push({
+      term: 'Capture',
+      html: '<span class="info_empty">No camera data in this file</span>',
+    });
+  rows.push({ term: 'Size', html: `<span>${p.width} × ${p.height} px</span>` });
+  rows.push({
+    term: 'File',
+    html: `<span class="info_path">${escHtml(p.source)}</span>`,
+  });
+  return rows;
+}
 
 /** The thumbnail tooltip's second line: date and place. */
 export const tipOf = (p: Photo) =>
@@ -350,7 +439,9 @@ export const SORT_COLUMNS: Array<[string, 'text' | 'num']> = [
 /**
  * The context JSON (`<context>.json`) the theme script reads for `?in=`:
  * the context title (null for the archive), its page, and per photo what
- * the strip, the grid, the list and the rail need.
+ * the strip, the grid, the list and the rail need, and everything the
+ * viewer shows, so a step happens inside the page: the hero image, its
+ * size, color and zoom width, the title, the caption and the info rows.
  */
 export function contextJson(ctx: Context) {
   return {
@@ -363,6 +454,8 @@ export function contextJson(ctx: Context) {
       preview: withBase(previewOf(p).url),
       ...heroOf(p),
       title: p.title,
+      info: infoOf(p),
+      caption: p.captionHtml,
       ar: ratioOf(p),
       color: p.color,
       year: yearOf(p),

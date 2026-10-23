@@ -10,9 +10,11 @@ A slide show in a dark room: the photo is the page, on a near-black neutral grou
 
 - **One template for every context.** A context is all photos (home), an album or a facet (year, month, place, camera, lens, focal range, aperture, shutter, ISO, keyword). Every page is the viewer (stage) on top and the panel (the context’s photos) below, exactly one window tall, with mandatory snapping between the two states.
 - **Initial position.** Home and photo pages open on the viewer. Album and facet pages open on the panel (`scroll-initial-target` on `.table-start`, plus `#grid` on every link to a context), with the viewer showing the context’s first photo.
-- **Context URLs.** Photo pages are `p/<slug>.html` and carry their album statically. Inside another context, links are `p/<slug>.html?in=<id>`, where the id is the context page’s path without `.html` (`grid` for all photos, `a/feelings`, `f/camera-nikon-d200`). `mg.js` applies `<id>.json` (cached in sessionStorage) to prev/next, rel links, prerender rules, breadcrumb, strip, grid, list and rail.
-- **Context JSON:** `{ title (null for all photos), href, photos: [{ slug, title, ar, color, year, tip, cells, sort }] }`. `cells` holds the list columns as `[text, href]` pairs; `sort` holds one real sort value per sortable column.
-- **No wrap.** The last photo has no next, the first no previous: no link, no rel, no prerender, and keys, click and swipe do nothing there.
+- **Context URLs.** Photo pages are `p/<slug>.html` and carry their album statically. Inside another context, links are `p/<slug>.html?in=<id>`, where the id is the context page’s path without `.html` (`grid` for all photos, `a/feelings`, `f/camera-nikon-d200`). `mg.js` applies `<id>.json` (cached in sessionStorage) to prev/next, rel links, image preloads, breadcrumb, strip, grid, list and rail.
+- **Context JSON:** `{ title (null for all photos), href, photos: [{ slug, href, title, ar, color, year, tip, cells, sort, thumb, preview, src, srcset, w, h, zoom, info, caption }] }`. `cells` holds the list columns as `[text, href]` pairs; `sort` holds one real sort value per sortable column. `src`, `srcset`, `w`, `h` and `zoom` are the viewer image; `info` is the info pane’s rows as `{ term, html, exposure? }` from `infoOf()`, the same function the static pane renders, and `caption` the caption’s markup. The JSON carries everything a photo page shows, so a step needs nothing else.
+- **Steps stay in the page.** With script, next and previous (arrow keys, the click zones, a swipe, a strip frame, and back and forward between two photos of the same context) are not navigations. `mg.js` resolves the photo from the context JSON (loaded after the page loads, cached in sessionStorage), adds a second image to the stage and crossfades it in with a CSS opacity transition, then updates the title, breadcrumb, info pane, prev/next links, neighbor preloads, the `--photo` backdrop, `aria-current` in the strip, grid and list, and glides the strip. The strip is never rebuilt and its frames never reload. `history.pushState` sets the photo’s URL (keeping `?in=`); `popstate` steps in place; any photo URL still loads as its static page. Everything else (grid to photo, crumbs, facets, home) is a page load, and without script every step is one.
+- **No wrap.** The last photo has no next, the first no previous: no link and no rel, and keys, click and swipe do nothing there.
+- **Prerendering.** Chrome prerenders a thumbnail’s page on hover (Speculation Rules, moderate). Neighbors are not prerendered: a step stays in the page, so a prerendered neighbor would be thrown away; their images are preloaded instead (`link rel=preload as=image` with the hero’s srcset, low priority).
 - **Prototype-only files.** `grid.html` redirects to `index.html#grid`. `list.html` is all photos in list view. `filter.html` shows the palette inline. In the real build these are not routes: the panel, the list toggle and the palette dialog cover them.
 
 ## 3. Blocks
@@ -70,27 +72,27 @@ The strip’s frames and, on pages that open on the viewer, the list rows are no
 
 | What | Duration | Easing |
 | --- | --- | --- |
-| Step (keys, click, swipe, strip frame): pure crossfade | 900 ms | `cubic-bezier(0.45, 0, 0.55, 1)` |
-| Strip glide to the new center (rAF tween, snap paused) | 550 ms | ease-out cubic |
+| Step (keys, click, swipe, strip frame, back and forward): a CSS opacity crossfade between two images in the stage, inside the page | 900 ms | `cubic-bezier(0.45, 0, 0.55, 1)` |
+| Strip glide to the new current frame (rAF tween, snap paused) | 550 ms | ease-out cubic |
+| Photo backdrop tint following the new photo’s color | 900 ms | same as the step |
 | Thumbnail to photo morph (`object-fit: cover` snapshots) | 440 ms | `cubic-bezier(0.16, 1, 0.3, 1)` |
 | Pane, palette, tooltip open/close | 140 ms | same |
 | HUD appears / fades after `--mg-hud-idle` | 140 / 600 ms | same |
 | Root crossfade | 360 ms | default |
 
-Durations scale with `--mg-motion`. Reduced motion keeps the crossfades, glides at once, and drops scroll-driven effects.
+Durations scale with `--mg-motion`. Reduced motion shortens the step’s crossfade to 140 ms, glides at once, and drops scroll-driven effects.
 
-**Naming rules:**
+**The step.** The new image comes in with `is-hidden` (opacity 0) in the same grid cell as the old one (`.stage_next` is a one-cell grid, each image carrying its own `--photo-ratio`), so the two share the stage box in fill and in fit mode with no layout jump. Its fade starts as soon as `img.decode()` resolves, or after 150 ms on the photo’s color if decoding is slower, so a step always answers at once; the old image fades out and is removed. It uses only a CSS transition, so it is the same in every engine and needs no view transition.
 
-The baseline depends on no event and no transition type, so it holds in every engine with cross-document view transitions; the events only add to it.
+**View transitions** are for page loads only, and are enhancements:
 
-- **Static names:** `hud`, `strip`, `info`, `keys`, with `view-transition-class: chrome` (no group motion). In viewer state `.stage_frame` is named `stage` in CSS (`:root:not([data-panel])`); while the panel is up neither the stage nor the strip is named, so neither is drawn over the photos.
+- **Static names:** `hud`, `strip`, `info`, `keys`, with `view-transition-class: chrome` (no group motion). While the panel is up the strip is not named, so it is not drawn over the photos.
 - **Hidden chrome:** an idle HUD gets `view-transition-name: none`, so no empty blurred group is left over the photo.
-- **Steps:** both pages name the stage, and the 900 ms crossfade on `::view-transition-old(stage)` and `::view-transition-new(stage)` is unconditional. The old strip snapshot is hidden and the new one is live, so there is no strip crossfade; only an old strip with no new one (`:only-child`) fades out. Only a bare `:only-child` may follow these pseudo-elements: Chrome drops `:not(:only-child)`.
-- **Enhancements where `pageswap` and `pagereveal` exist:** the leaving page records how it was left, and the arriving page adds the `forward` or `back` type and the morph names below.
-- **Thumbnail clicks:** the thumbnail’s image and the new `.stage_photo` are both named `photo` (the stage is unnamed for that transition).
+- **Strip between two viewer pages** (a page load such as the home link): the old strip snapshot is hidden and the new one is live; only an old strip with no new one (`:only-child`) fades out. Only a bare `:only-child` may follow these pseudo-elements: Chrome drops `:not(:only-child)`.
+- **Thumbnail clicks** (where `pageswap` and `pagereveal` exist): the thumbnail’s image and the new `.stage_photo` are both named `photo`.
 - **Arriving at a grid:** on a page that opens at the grid, the thumbnail of the photo you came from is named `photo`.
 
-**Performance baseline.** `examples/demo/bench/steps.mjs` is the regression check: with the built demo served (`astro preview --outDir <build> --port 4421 --ignore-lock`), run `node bench/steps.mjs --url http://localhost:4421 --latency 40 --dist <build>` from `examples/demo`. It steps five times by key and five by click in Chromium, WebKit and Firefox, cold and warm, on a 70-photo album, home and a `?in=grid` page, behind a proxy that adds 40 ms per response and applies the build’s `_headers`. Targets: hero visible under 300 ms median on warm steps in WebKit and Firefox, Chrome no worse, no console errors, the old strip snapshot hidden and the strip’s frames present on the first frame; a photo page under 60 KB of HTML for a 70-photo album and home under 150 KB. `bench/behaviours.mjs` checks the signed-off behaviours in the same three engines.
+**Performance baseline.** `examples/demo/bench/steps.mjs` is the regression check: with the built demo served (`astro preview --outDir <build> --port 4421 --ignore-lock`), run `node bench/steps.mjs --url http://localhost:4421 --latency 40 --dist <build>` from `examples/demo`. In Chromium, WebKit and Firefox, cold and warm, on a 70-photo album, home and a `?in=grid` page, it steps ten times by key and ten by click, then three times back and three forward, behind a proxy that adds 40 ms per response and applies the build’s `_headers`. Targets: on warm steps the crossfade starts under 50 ms after the key or click and the new photo is opaque at about 900 ms plus decode; the URL is the photo’s; the document stays the same; back and forward step in place; one request per step (the newly needed neighbor’s image); no strip frame is ever fetched again; no console errors. Pages: a photo page under 60 KB of HTML for a 70-photo album, home under 150 KB. `bench/behaviours.mjs` checks the signed-off behaviours (including steps, history and a touch swipe) in the same three engines.
 
 ## 7. Token contract (`theme.mg.tokens.css`)
 

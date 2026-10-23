@@ -4,9 +4,13 @@
  * next zone over it and a previous zone on the left third, a hidden zoom
  * checkbox, the strip, and a handle down to the photos. No wrapping: the
  * last photo's next zone and the first photo's previous zone have no href.
+ * The zones are links (the no-script path); with script a step stays in
+ * the page and a second image fades in over this one. Each image carries
+ * its own ratio, so two can share the stage in fit mode.
  */
 import {
   photoHref,
+  ratioOf,
   srcsetOf,
   type Context,
   type Photo,
@@ -40,6 +44,7 @@ const { srcset, src, largest } = srcsetOf(photo);
           width={largest.width}
           height={largest.height}
           alt={photo.title}
+          style={`--photo-ratio: ${ratioOf(photo)}`}
           fetchpriority={hero ? 'high' : undefined}
           decoding={hero ? undefined : 'async'}
         />

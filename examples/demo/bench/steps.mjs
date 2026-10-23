@@ -1,29 +1,27 @@
 #!/usr/bin/env node
-// Viewer step benchmark, the regression check for stepping between photos.
+// Viewer step benchmark, the regression check for next and previous.
 //
-// For each engine (Chromium, WebKit, Firefox) and each scenario (a photo in
-// the middle of a 70-photo album, home with all 241 photos, a photo page in
-// `?in=grid`), it opens the page, lets it settle, then steps with ArrowRight
-// five times and with a click on the photo five times. It runs that twice
-// in one browser context: a cold pass, then a warm pass over the same pages.
+// A step happens inside the page (no navigation): mg.js fades a second
+// image in over the old one. For each engine (Chromium, WebKit, Firefox)
+// and each scenario (a photo in the middle of a 70-photo album, home with
+// all 241 photos, a photo page in `?in=grid`) it opens the page, lets it
+// settle, steps ten times with ArrowRight and ten times with a click on the
+// photo, then goes back three times and forward three times. It runs that
+// twice in one browser context: a cold pass, then a warm pass over the same
+// photos.
 //
-// Per step, from the key or click (a capture-phase timestamp the old page
-// writes to sessionStorage) to, on the new page:
-//   dcl    its DOMContentLoaded
-//   hero   the hero <img> complete and decoded
-//   paint  its first paint (first-contentful-paint, else the first frame)
-//   shown  the hero on screen: the later of hero and paint
-// For a prerendered page every time is at least its activation.
-// Also: whether a view transition ran (pagereveal's viewTransition where the
-// event exists, else the ::view-transition animations on the first frame),
-// what the old strip snapshot did (fade = the flicker, hidden = none),
-// navigation.activation, console errors, and bytes on the wire per step
-// (Resource Timing transferSize on the new page, so cache hits count 0).
+// Per step, from the key or click (a capture-phase timestamp):
+//   start   the new image's opacity transition starts (transitionrun)
+//   opaque  the new image is fully opaque (its transitionend)
+// and the requests the step made (hero, neighbor preloads, strip frames,
+// anything else; a strip frame must never be fetched again), whether the
+// URL is the photo's, whether the document is the same one, console
+// errors. Back and forward must step in place the same way.
 //
 // Usage (against `astro preview` of the built demo, or any server):
 //   node bench/steps.mjs [--url http://localhost:4421] [--engines webkit]
-//     [--scenarios album,home,grid] [--strip on|off] [--out results.json]
-//     [--blur on|off] [--verbose]
+//     [--scenarios album,home,grid] [--strip on|off] [--blur on|off]
+//     [--out results.json] [--verbose]
 // With `--latency <ms> --dist <dir>` it puts a proxy in front of --url that
 // delays every response by that much and sets Cache-Control the way the
 // host does: the rules in <dir>/_headers, else max-age=0, must-revalidate.
@@ -39,7 +37,7 @@ const { values: opt } = parseArgs({
     scenarios: { type: 'string', default: 'album,home,grid' },
     strip: { type: 'string', default: 'on' },
     blur: { type: 'string', default: 'on' },
-    steps: { type: 'string', default: '5' },
+    steps: { type: 'string', default: '10' },
     out: { type: 'string' },
     verbose: { type: 'boolean', default: false },
     headed: { type: 'boolean', default: false },
@@ -59,10 +57,7 @@ const STEPS = +opt.steps;
 
 // Runs in every document before its own scripts.
 function probe([strip, blur]) {
-  const now = () => performance.timeOrigin + performance.now();
-  const B = (window.__bench = { at: now() });
-  const nav = performance.getEntriesByType('navigation')[0];
-  B.prerendered = !!(document.prerendering || nav?.activationStart > 0);
+  const B = (window.__bench = { doc: Math.random(), cur: null });
   if (strip) localStorage['mg-strip'] = strip;
   if (blur === 'off')
     document.addEventListener('DOMContentLoaded', () =>
@@ -72,141 +67,29 @@ function probe([strip, blur]) {
         })
       )
     );
-
-  const mark = (e) => (sessionStorage.benchT0 = now());
+  const mark = () => (B.cur = { t0: performance.now() });
   addEventListener(
     'keydown',
     (e) => /^Arrow(Left|Right)$/.test(e.key) && mark(),
     true
   );
   addEventListener('click', mark, true);
-
-  document.addEventListener('DOMContentLoaded', () => (B.dcl = now()));
-  try {
-    new PerformanceObserver((l) => {
-      for (const e of l.getEntries())
-        B[e.name] ??= performance.timeOrigin + e.startTime;
-    }).observe({ type: 'paint', buffered: true });
-  } catch {}
-
-  // the view transition, by the event where it exists and by its
-  // animations on the first frames everywhere
-  B.revealEvent = 'onpagereveal' in window;
-  const snap = () => {
-    const anims = document
-      .getAnimations()
-      .filter((a) => a.effect?.pseudoElement?.startsWith('::view-transition'));
-    if (!anims.length) return;
-    B.vtAnims ??= anims.map((a) => {
-      const t = a.effect.getComputedTiming();
-      return `${a.effect.pseudoElement} ${a.animationName || ''} ${Math.round(t.duration)}`;
-    });
-    const root = document.documentElement;
-    const cs = (p) => {
-      try {
-        const s = getComputedStyle(root, p);
-        return `${s.animationName}/${s.opacity}`;
-      } catch {
-        return '';
-      }
-    };
-    B.stripOldStyle ??= cs('::view-transition-old(strip)');
-  };
-  addEventListener('pagereveal', (e) => {
-    const t = e.viewTransition;
-    B.reveal = now();
-    B.vt = t ? 'yes' : 'no';
-    if (!t) return;
-    setTimeout(() => (B.types = [...(t.types ?? [])].join(' ')));
-    t.ready.then(
-      () => {
-        B.vtReady = now();
-        snap();
-      },
-      () => (B.vt = 'skipped')
-    );
-    t.finished.finally(() => (B.vtDone = now()));
-    // frame intervals while the transition runs: long ones are jank
-    const gaps = (B.gaps = []);
-    let last;
-    const tick = (ts) => {
-      if (last) gaps.push(ts - last);
-      last = ts;
-      if (!B.vtDone) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
-  let frames = 0;
-  const frame = () => {
-    if (!B.frame) {
-      B.frame = now();
-      // frames on screen at the first frame: 0 with the strip on is a flash
-      B.stripFrames = document.querySelectorAll('.strip_item').length;
-    }
-    snap();
-    if (++frames < 4) requestAnimationFrame(frame);
-  };
-  requestAnimationFrame(frame);
-
-  const hero = () => {
-    const img = document.querySelector('.stage_photo');
-    if (!img) return;
-    const done = () =>
-      img
-        .decode()
-        .catch(() => (B.heroError = true))
-        .finally(() => {
-          B.hero = now();
-          B.heroSrc = img.currentSrc.split('/').pop();
-        });
-    img.complete && img.naturalWidth
-      ? done()
-      : img.addEventListener('load', done, { once: true });
-  };
-  document.readyState === 'loading'
-    ? document.addEventListener('DOMContentLoaded', hero)
-    : hero();
-
-  addEventListener('load', () => (B.load = now()));
-}
-
-// What the new page measured, relative to the key or click.
-async function collect(page) {
-  return page.evaluate(() => {
-    const B = window.__bench;
-    const nav = performance.getEntriesByType('navigation')[0];
-    const act = performance.timeOrigin + (nav?.activationStart || 0);
-    const t0 = +sessionStorage.benchT0 || null;
-    const rel = (t) => (t && t0 ? Math.round(Math.max(t, act) - t0) : null);
-    const paint = B['first-contentful-paint'] ?? B['first-paint'] ?? B.frame;
-    const a = globalThis.navigation?.activation;
-    return {
-      dcl: rel(B.dcl),
-      hero: rel(B.hero),
-      paint: rel(paint),
-      shown: rel(Math.max(B.hero ?? 0, paint ?? 0)),
-      vtEnd: rel(B.vtDone),
-      vt: B.vt ?? (B.vtAnims ? 'yes' : B.revealEvent ? 'no' : 'none'),
-      types: B.types ?? '',
-      stripOld: !B.vtAnims
-        ? ''
-        : B.vtAnims.find((s) => s.startsWith('::view-transition-old(strip)'))
-          ? 'fade'
-          : B.vtAnims.some((s) => s.includes('(strip)'))
-            ? 'hidden'
-            : 'none',
-      stripOldStyle: B.stripOldStyle ?? '',
-      stripFrames: B.stripFrames,
-      longFrames: B.gaps ? B.gaps.filter((g) => g > 25).length : null,
-      worstFrame: B.gaps?.length ? Math.round(Math.max(...B.gaps)) : null,
-      anims: B.vtAnims ?? [],
-      activation: a ? `${a.navigationType}${a.from ? '' : ' (no from)'}` : '',
-      prerendered: B.prerendered,
-      heroSrc: B.heroSrc,
-      heroError: !!B.heroError,
-      url: location.pathname + location.search,
-    };
-  });
+  B.mark = mark;
+  // the entering image is the stage photo without is-hidden
+  const entering = (e) =>
+    e.propertyName === 'opacity' &&
+    e.target.matches?.('.stage_photo') &&
+    !e.target.classList.contains('is-hidden');
+  addEventListener(
+    'transitionrun',
+    (e) => entering(e) && B.cur && (B.cur.start ??= performance.now()),
+    true
+  );
+  addEventListener(
+    'transitionend',
+    (e) => entering(e) && B.cur && (B.cur.end ??= performance.now()),
+    true
+  );
 }
 
 const median = (xs) => {
@@ -220,25 +103,6 @@ const max = (xs) => {
   return v.length ? Math.max(...v) : null;
 };
 
-// What the current page moved over the network: its document and every
-// resource it loaded (cache hits are 0; a revalidation is its headers).
-const weigh = (page) =>
-  page.evaluate(() => {
-    const e = [
-      ...performance.getEntriesByType('navigation'),
-      ...performance.getEntriesByType('resource'),
-    ];
-    const net = e.filter((x) => x.transferSize > 0);
-    return {
-      bytes: net.reduce((a, x) => a + x.transferSize, 0),
-      requests: net.length,
-      revalidated: net.filter((x) => x.encodedBodySize === 0).length,
-      images: e.filter((x) => x.initiatorType === 'img').length,
-      html: e[0]?.transferSize ?? 0,
-      htmlSize: e[0]?.decodedBodySize ?? 0,
-    };
-  });
-
 async function runScenario(browser, engine, name, url) {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
@@ -250,14 +114,16 @@ async function runScenario(browser, engine, name, url) {
   ]);
   const page = await context.newPage();
 
-  // in-flight requests (to let a page settle) and errors per step
+  // requests and errors, attributed to the step that was running
   let current = null;
   let inflight = 0;
   let lastNet = Date.now();
+  const reqs = [];
   const errors = [];
-  context.on('request', () => {
+  context.on('request', (r) => {
     inflight++;
     lastNet = Date.now();
+    reqs.push({ step: current, url: r.url(), type: r.resourceType() });
   });
   const done = () => {
     inflight--;
@@ -271,68 +137,124 @@ async function runScenario(browser, engine, name, url) {
   page.on('pageerror', (e) =>
     errors.push({ step: current, text: String(e.message ?? e) })
   );
-
-  const quiet = async (ms = 400, cap = 6000) => {
+  const quiet = async (ms = 300, cap = 5000) => {
     const t = Date.now();
     while (Date.now() - t < cap) {
       if (inflight <= 0 && Date.now() - lastNet > ms) return;
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(50);
     }
   };
-  // the new page is done when the hero is decoded, it has painted and any
-  // view transition has finished
-  const arrived = async (target) => {
+  // the step is done when the new image is opaque (or 4s passed)
+  const settled = async () => {
     const t = Date.now();
-    while (Date.now() - t < 15000) {
-      try {
-        if (page.url() === target) {
-          const ok = await page.evaluate(() => {
-            const B = window.__bench;
-            return !!(
-              B?.hero &&
-              B.frame &&
-              B.dcl &&
-              (B.vtDone || B.vt !== 'yes')
-            );
-          });
-          if (ok) return true;
-        }
-      } catch {} // the context went away mid-navigation
+    while (Date.now() - t < 4000) {
+      const c = await page.evaluate(() => window.__bench.cur);
+      if (c?.end) return c;
       await page.waitForTimeout(25);
     }
-    return false;
+    return page.evaluate(() => window.__bench.cur);
   };
+  const state = () =>
+    page.evaluate(() => ({
+      doc: window.__bench.doc,
+      url: location.pathname + location.search,
+      hero: [...document.querySelectorAll('.stage_photo')].at(-1)?.alt,
+      // strip frames already loaded: fetching one again is a reload
+      strip: [...document.querySelectorAll('.strip_image')]
+        .filter((i) => i.complete && i.naturalWidth)
+        .map((i) => i.src),
+      near: [...document.querySelectorAll('link[data-near]')].map((l) =>
+        l.getAttribute('href')
+      ),
+    }));
 
   const rows = [];
   const opened = {};
-  const open = async (pass) => {
+  for (const pass of ['cold', 'warm']) {
     current = `${pass} open`;
     await page.goto(url + SCENARIOS[name], { waitUntil: 'load' });
-    await arrived(page.url());
-    await page.waitForTimeout(800);
+    await page.waitForTimeout(1200); // the context JSON loads after load
     await quiet();
-    opened[pass] = await weigh(page);
-  };
-  const step = async (pass, kind, i) => {
-    const target = await page.$eval('.stage_next', (a) => a.href);
-    if (!target) throw new Error(`no next on ${page.url()}`);
-    current = `${pass} ${kind} ${i}`;
-    await page.evaluate(() => delete sessionStorage.benchT0);
-    if (kind === 'key') await page.keyboard.press('ArrowRight');
-    else await page.mouse.click(1440 * 0.72, 900 * 0.5);
-    const ok = await arrived(target);
-    const r = ok ? await collect(page) : { timeout: true, url: target };
-    await page.waitForTimeout(300);
-    await quiet();
-    const w = ok ? await weigh(page) : {};
-    const errs = errors.filter((e) => e.step === current).length;
-    rows.push({ pass, kind, i, ...r, ...w, errors: errs });
-  };
-
-  for (const pass of ['cold', 'warm']) {
-    await open(pass);
+    opened[pass] = await page.evaluate(
+      () => performance.getEntriesByType('navigation')[0]?.decodedBodySize
+    );
+    const doc = (await state()).doc;
+    const visited = [];
+    const run = async (kind, i, act) => {
+      const before = await state();
+      const target = await page
+        .$eval('.stage_next', (a) => a.pathname + a.search)
+        .catch(() => null);
+      current = `${pass} ${kind} ${i}`;
+      const from = reqs.length;
+      await act();
+      const c = await settled();
+      await quiet();
+      const after = await state();
+      const mine = reqs.slice(from).filter((r) => r.step === current);
+      const strips = new Set(before.strip);
+      const kindOf = (u) =>
+        strips.has(u)
+          ? 'strip'
+          : after.near.some((n) => u.endsWith(n))
+            ? 'preload'
+            : /\/_mg\/.*(jpeg|w\d|h\d)/.test(u) && !/-grid\./.test(u)
+              ? 'hero'
+              : /-grid\./.test(u)
+                ? 'lazy'
+                : 'other';
+      const k = mine.map((r) => kindOf(r.url));
+      rows.push({
+        pass,
+        kind,
+        i,
+        start: c?.start ? Math.round(c.start - c.t0) : null,
+        opaque: c?.end ? Math.round(c.end - c.t0) : null,
+        requests: mine.length,
+        hero: k.filter((x) => x === 'hero').length,
+        preload: k.filter((x) => x === 'preload').length,
+        strip: k.filter((x) => x === 'strip').length,
+        lazy: k.filter((x) => x === 'lazy').length,
+        other: mine.filter((r, n) => k[n] === 'other').map((r) => r.url),
+        urlOk: kind === 'key' || kind === 'click' ? after.url === target : null,
+        url: after.url,
+        hero_alt: after.hero,
+        same: after.doc === doc,
+        errors: errors.filter((e) => e.step === current).length,
+      });
+      return after;
+    };
     for (const kind of ['key', 'click'])
-      for (let i = 1; i <= STEPS; i++) await step(pass, kind, i);
+      for (let i = 1; i <= STEPS; i++) {
+        visited.push((await state()).url);
+        await run(kind, i, () =>
+          kind === 'key'
+            ? page.keyboard.press('ArrowRight')
+            : page.mouse.click(1440 * 0.72, 900 * 0.5)
+        );
+      }
+    // back and forward: the same in-place step, to the URL before
+    const end = (await state()).url;
+    for (let i = 1; i <= 3; i++) {
+      const want = visited[visited.length - i];
+      const a = await run('back', i, () =>
+        page.evaluate(() => {
+          window.__bench.mark();
+          history.back();
+        })
+      );
+      rows.at(-1).urlOk = a.url === want;
+    }
+    for (let i = 1; i <= 3; i++) {
+      const want = i === 3 ? end : visited[visited.length - 3 + i];
+      const a = await run('forward', i, () =>
+        page.evaluate(() => {
+          window.__bench.mark();
+          history.forward();
+        })
+      );
+      rows.at(-1).urlOk = a.url === want;
+    }
   }
   await context.close();
   return { engine, name, rows, opened, errors };
@@ -412,14 +334,13 @@ for (const engine of opt.engines.split(',')) {
 server?.close();
 
 // TABLES: one per engine; medians (and max) per scenario and pass
-const kb = (b) => (b / 1024).toFixed(1);
 for (const engine of opt.engines.split(',')) {
   const rs = results.filter((r) => r.engine === engine);
   console.log(`\n## ${engine} ${rs[0]?.version ?? ''}\n`);
   console.log(
-    '| scenario | pass | dcl | hero | paint | shown (max) | vt ran | old strip | strip at 1st frame | long frames in vt (worst ms) | activation | errors | KB/step (requests, 304s) | images | open HTML KB |'
+    '| scenario | pass | start ms (max) | opaque ms (max) | requests/step | hero, preload, other | strip reloads (first loads) | URL ok | same document | back/forward in place | errors |'
   );
-  console.log('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
+  console.log('|---|---|---|---|---|---|---|---|---|---|---|');
   for (const r of rs) {
     if (r.failed) {
       console.log(`| ${r.name} | failed: ${r.failed} |`);
@@ -427,15 +348,13 @@ for (const engine of opt.engines.split(',')) {
     }
     for (const pass of ['cold', 'warm']) {
       const s = r.rows.filter((x) => x.pass === pass);
-      const ok = s.filter((x) => !x.timeout);
-      const col = (k) => ok.map((x) => x[k]);
-      const vt = ok.filter((x) => x.vt === 'yes').length;
-      const strips = [...new Set(ok.map((x) => x.stripOld).filter(Boolean))];
-      const acts = [...new Set(ok.map((x) => x.activation || 'none'))];
-      const errs = s.reduce((a, x) => a + (x.errors || 0), 0);
-      const timeouts = s.length - ok.length;
+      const st = s.filter((x) => x.kind === 'key' || x.kind === 'click');
+      const bf = s.filter((x) => x.kind === 'back' || x.kind === 'forward');
+      const col = (k, xs = st) => xs.map((x) => x[k]);
+      const sum = (k, xs = st) => xs.reduce((a, x) => a + x[k], 0);
+      const other = st.reduce((a, x) => a + x.other.length, 0);
       console.log(
-        `| ${r.name} | ${pass} | ${median(col('dcl'))} | ${median(col('hero'))} | ${median(col('paint'))} | ${median(col('shown'))} (${max(col('shown'))}) | ${vt}/${ok.length}${timeouts ? `, ${timeouts} timeouts` : ''} | ${strips.join(', ') || '-'} | ${opt.strip === 'on' ? `${ok.filter((x) => x.stripFrames > 0).length}/${ok.length}` : '-'} | ${median(col('longFrames')) ?? '-'} (${max(col('worstFrame')) ?? '-'}) | ${acts.join(', ')} | ${errs} | ${kb(median(col('bytes')))} (${median(col('requests'))}, ${median(col('revalidated'))}) | ${median(col('images'))} | ${kb(r.opened.cold?.htmlSize ?? 0)} |`
+        `| ${r.name} | ${pass} | ${median(col('start'))} (${max(col('start'))}) | ${median(col('opaque'))} (${max(col('opaque'))}) | ${median(col('requests'))} | ${sum('hero')}, ${sum('preload')}, ${other} | ${sum('strip', s)} (${sum('lazy', s)}) | ${st.filter((x) => x.urlOk).length}/${st.length} | ${s.every((x) => x.same) ? 'yes' : 'no'} | ${bf.filter((x) => x.urlOk && x.same && x.start != null).length}/${bf.length} | ${sum('errors', s)} |`
       );
     }
   }
@@ -451,20 +370,15 @@ if (opt.verbose)
           x.kind,
           x.i,
           x.url,
-          x.dcl,
-          x.hero,
-          x.paint,
-          x.shown,
-          x.vt,
-          x.types,
-          x.stripOld,
-          x.stripOldStyle,
-          x.prerendered ? 'pre' : '',
+          x.start,
+          x.opaque,
           x.requests,
-          x.revalidated,
-          x.bytes,
-          x.htmlSize,
-          x.errors,
+          x.hero,
+          x.preload,
+          x.strip,
+          x.other.join(' '),
+          x.urlOk,
+          x.same,
         ].join('\t')
       );
 for (const r of results)
