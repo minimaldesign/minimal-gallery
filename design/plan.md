@@ -209,6 +209,14 @@ A middle path: a tiny Tauri menubar launcher that only starts and stops the admi
 
 Decision: A ships in Phase 3. B is not implemented now; during Phase 1 setup the option B write-up above is filed as a GitHub issue (“Desktop app shell (Tauri)”, label `later`) so it is not lost, and nothing in A’s API is allowed to assume a browser host (the admin talks to a local HTTP API, never to Node directly).
 
+## Decisions added 2026-10-23 (after Phase 1)
+
+- minimalgallery.net is Yann’s own photo gallery, not a product pitch. The product site is docs.minimalgallery.net: its home page is the marketing one-pager (dark, minimal, the gallery’s own design language) and the docs sit behind it. There is no demo subdomain.
+- Every gallery carries a quiet “Powered by minimal gallery” credit linking to the docs home: one line at the end of the browsing panel after the last grid row or list row, and a smaller “minimal gallery <version>” line in the Keyboard Shortcuts pane footer. Config option `credit`, on by default.
+- Bucket mode (R2) is the default when the host is Cloudflare: the repo holds manifests and code, derivatives (and optionally originals) live in R2 behind a `media.` subdomain, and Publish uploads new derivatives before the commit and push. Repo mode stays the default for GitHub Pages, Netlify and local builds. The demo moves to bucket mode to dogfood it.
+- Docs: scaffold and navigation in Phase 2 (so the credit link has a target); final content and a design round at the end of Phase 4, after the admin and bucket mode are stress-tested. Starlight restyled with the gallery tokens.
+- Work runs two phases at a time at most (#2 and #3 first, on their own branches, each merged by PR), the docs scaffold and one-pager when one merges, the release last, #5 when the photos arrive.
+
 ## Hosting
 
 Publishing model (decided 2026-10-23): git is the source of truth. The admin’s Publish button commits and pushes; Cloudflare builds from the repository (Workers Builds connected to the repo, production branch `master` only), so nothing goes live without a commit. Direct upload (`publish --deploy`) stays as the escape hatch for people who refuse a GitHub account. For the demo: merge `v2` into `master` and connect the Worker to `master`.
