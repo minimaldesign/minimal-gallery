@@ -10,4 +10,7 @@
     "directory": "./dist",
     "not_found_handling": "404-page",
   },
+  // Cloudflare builds other branches than master with `wrangler preview`,
+  // which needs this block; it can stay empty.
+  "previews": {},
 }
