@@ -161,7 +161,12 @@ d.addEventListener('change', (e) => {
 // wanted or the page is idle. The JSON also carries everything the viewer
 // shows, so a step needs nothing else.
 const own = $('.strip').dataset;
-const ctx = new URLSearchParams(location.search).get('in');
+// a context id is slugs joined by `/` (`grid`, `colors`, `aperture/1.4`);
+// anything else is ignored, so `?in=//host/x` cannot fetch another site's
+// JSON (its info rows and captions are written into the page as markup)
+const ctx = new URLSearchParams(location.search)
+  .get('in')
+  ?.match(/^[\w.-]+(\/[\w.-]+)*$/)?.[0];
 const ctxId = ctx || own.context;
 const linkIn = ctx || own.in;
 const inCtx = (p) =>
@@ -247,7 +252,7 @@ function nav(c) {
 // the filmstrip's frames, when the strip is on (the builder is shared with
 // the inline call after the strip, in the head script)
 function strip(c) {
-  mgStrip($('.strip'), c.photos);
+  mgStrip($('.strip'), c.photos, linkIn || '');
   center();
 }
 // the grid and the rail of another context (`?in=`)
