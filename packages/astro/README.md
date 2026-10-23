@@ -113,7 +113,7 @@ From `@minimalgallery/astro/feeds` (inside Astro only too). Each takes the endpo
 | `sitemap({ site })` | The sitemap as a string: the home page, every album and facet page, every photo page with its image | `application/xml` |
 | `robotsTxt({ site })` | `robots.txt` allowing everything, with a `Sitemap:` line when the site is known | `text/plain` |
 
-Capture times have no zone; the feeds give them as UTC, so a reader shows the date and hour the photo was taken.
+Capture times have no zone, so the feeds give them as UTC; a feed reader that shows times in its own zone shifts them by its offset.
 
 ## Theme
 

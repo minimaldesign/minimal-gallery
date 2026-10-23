@@ -42,8 +42,8 @@ function requireSite(site?: URL | string) {
 }
 
 /**
- * Capture times are wall-clock, with no zone: they are given as UTC, which
- * keeps the date and the hour a reader shows.
+ * Capture times are wall-clock, with no zone, so they are given as UTC: a
+ * reader that shows times in its own zone shifts them by its offset.
  */
 const utc = (p: Photo) => (p.date ? new Date(`${p.date}Z`) : null);
 
