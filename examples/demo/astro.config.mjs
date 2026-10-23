@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import minimalgallery from '@minimalgallery/astro';
 
 export default defineConfig({
-  site: 'https://demo.minimalgallery.net',
+  site: 'https://minimalgallery.net',
   output: 'static',
   trailingSlash: 'always',
   integrations: [
