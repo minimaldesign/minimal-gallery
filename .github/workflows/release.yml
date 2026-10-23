@@ -2,14 +2,15 @@
 # either opens (or updates) a “Version packages” pull request that applies
 # the pending changesets (versions and CHANGELOG.md files), or, when that
 # pull request has just been merged and nothing is pending, publishes the
-# four packages to npm and creates their GitHub releases.
+# four packages to npm and creates their git tags and GitHub releases.
+# The repository uses Changesets CLI v3, which needs changesets/action v2.
 #
 # DISABLED until the first release. Only the manual trigger is on, and the
 # job stops unless RELEASES_ENABLED is set. To enable:
-#   1. npm: create an automation (granular, publish) token for the account
-#      that will own the four packages and store it as the NPM_TOKEN secret,
-#      or configure npm trusted publishing for this workflow on each package
-#      once it exists (then NPM_TOKEN can go).
+#   1. npm: create a granular access token with publish rights for the
+#      account that will own the four packages, and store it as the
+#      NPM_TOKEN repository secret. (Once the packages exist, npm trusted
+#      publishing for this workflow can replace the token.)
 #   2. Repository settings > Actions > General: allow GitHub Actions to
 #      create and approve pull requests.
 #   3. Repository settings > Secrets and variables > Actions > Variables:
@@ -50,17 +51,16 @@ jobs:
       - run: pnpm build
       - run: pnpm test
 
-      - uses: changesets/action@v1
+      - uses: changesets/action@v2
         with:
-          title: Version packages
-          commit: Version packages
+          pr-title: Version packages
+          commit-message: Version packages
           # applies the pending changesets: versions and CHANGELOG.md files
-          version: pnpm exec changeset version
+          version-script: pnpm exec changeset version
           # pnpm release is pnpm build && changeset publish
-          publish: pnpm release
-          createGithubReleases: true
+          publish-script: pnpm release
+          create-github-releases: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # read by the .npmrc that setup-node writes for registry-url
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
