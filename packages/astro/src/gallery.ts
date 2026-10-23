@@ -58,8 +58,14 @@ interface Index {
 }
 
 const BASE = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-/** A site path with the configured base. */
-export const withBase = (path: string) => BASE + path.replace(/^\//, '');
+/**
+ * A site path with the configured base. Absolute URLs, such as a bucket’s
+ * media in bucket mode, are returned as they are.
+ */
+export const withBase = (path: string) =>
+  /^([a-z][a-z0-9+.-]*:)?\/\//i.test(path)
+    ? path
+    : BASE + path.replace(/^\//, '');
 
 export const ARCHIVE_ID = 'grid';
 
