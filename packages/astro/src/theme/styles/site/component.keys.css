@@ -5,7 +5,9 @@
    Every row is laid out on one line height, the key cap's: caps have a
    fixed height and the description's first line is centered on them, so
    caps never stretch when a description wraps. The letter that is the
-   shortcut is bold in the description. */
+   shortcut is bold in the description. Rows are a bare dt (the keys) and
+   dd (what they do): the pane is on every page, so its markup is kept
+   small. The credit's version line closes it (keys_credit). */
 
 .keys_section {
   --keys-cap-height: calc(var(--mg-size-small) * 1.6);
@@ -30,7 +32,7 @@
   margin: 0;
 }
 
-.keys_combo {
+.keys_list dt {
   /* the row gap does the spacing (mCSS adds a top margin to dd + dt) */
   margin-block-start: 0;
   display: flex;
@@ -55,7 +57,7 @@
   line-height: var(--keys-cap-height);
 }
 
-.keys_action {
+.keys_list dd {
   margin: 0;
   color: var(--mg-ink-muted);
   line-height: var(--keys-cap-height);
@@ -64,4 +66,10 @@
     color: var(--mg-ink);
     font-weight: var(--bold);
   }
+}
+
+.keys_credit {
+  margin-block-start: var(--sm1);
+  padding-block-start: var(--xs3);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
 }

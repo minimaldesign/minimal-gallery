@@ -169,10 +169,10 @@ const ctx = new URLSearchParams(location.search)
   ?.match(/^[\w.-]+(\/[\w.-]+)*$/)?.[0];
 const ctxId = ctx || own.context;
 const linkIn = ctx || own.in;
-const inCtx = (p) =>
-  linkIn
-    ? `${p.href}?in=${encodeURIComponent(linkIn).replace(/%2F/g, '/')}`
-    : p.href;
+const query = linkIn
+  ? `?in=${encodeURIComponent(linkIn).replace(/%2F/g, '/')}`
+  : '';
+const inCtx = (p) => p.href + query;
 // the photo shown, matched by its page path (slugs repeat); a step moves it
 let here = own.photo;
 let context; // { photos, i, title, href } once loaded
@@ -418,6 +418,8 @@ function stepTo(i, push = true) {
       : a.removeAttribute('aria-current');
   center(true);
   if (push) history.pushState({ mg: p.href }, '', inCtx(p));
+  // a slideshow's clock starts again with every photo, whoever stepped
+  if (root.hasAttribute('data-play')) replay();
 }
 // every entry of this document is a photo of this context (or a hash link
 // on one): back and forward step in place
@@ -536,6 +538,7 @@ function syncPanel() {
   root.toggleAttribute('data-panel', up);
   if (up) {
     delete root.dataset.idle;
+    delete root.dataset.play;
     ss.mgIdle = '';
   }
   if (opened && !d.activeElement?.closest('.table_scroller')) select(pick());
@@ -589,6 +592,51 @@ function go(rel) {
   if (!a.href) return;
   hide('key');
   step(a.href);
+}
+// SLIDESHOW: Space starts and stops a timed step through the context. Its
+// clock is a CSS animation (stage_play, a hairline that fills over
+// --mg-slideshow): when it ends, the next photo comes in and it starts
+// again. CSS pauses it while the chrome is shown (pointer movement, a
+// tap), a dialog is open or the photo is zoomed, so it resumes when the
+// chrome hides again. It stops at the last photo (no wrap), on Space or
+// Escape, and when the panel opens.
+let bar;
+function play(on = !root.hasAttribute('data-play')) {
+  if (!on || !$('.stage_next').href) return delete root.dataset.play;
+  if (!bar) {
+    bar = d.createElement('span');
+    bar.className = 'stage_play';
+    bar.ariaHidden = 'true';
+    bar.addEventListener('animationend', () => {
+      const a = $('.stage_next');
+      a.href ? step(a.href) : play(false);
+    });
+    $('.stage').append(bar);
+  }
+  hide('key');
+  replay();
+}
+// the clock from zero: a bar taken out of the layout and put back starts
+// its animation again
+function replay() {
+  delete root.dataset.play;
+  bar.offsetWidth;
+  root.dataset.play = '';
+}
+// RANDOM: r steps to another photo of the context, inside the page; the
+// /random/ page does the same for links (and when the context's JSON
+// cannot be loaded)
+function random() {
+  withCtx(
+    (c) => {
+      const n = c.photos.length;
+      if (n < 2) return;
+      const i = Math.floor(Math.random() * (n - 1));
+      hide('key');
+      stepTo(i < c.i ? i : i + 1);
+    },
+    () => (location.href = `${base}random/${query}`)
+  );
 }
 const palette = () => {
   const p = $('dialog.palette');
@@ -668,11 +716,17 @@ const keys = {
   '?': () => $('input[name="keys"]').click(),
   g: toPanel,
 };
+// the viewer's own keys: in the panel, Space scrolls and r does nothing
+const viewing = {
+  ' ': () => play(),
+  r: random,
+};
 addEventListener('keydown', (e) => {
   const k = e.key;
   const field = e.target.closest('input[type="search"]');
   const mod = e.metaKey || e.ctrlKey || e.altKey;
   if (k === 'Escape') {
+    if (root.hasAttribute('data-play')) play(false);
     // in the filter field, the first Escape clears the search
     if (field?.value) {
       e.preventDefault();
@@ -699,6 +753,12 @@ addEventListener('keydown', (e) => {
   } else if (keys[k]) {
     e.preventDefault();
     keys[k]();
+  } else if (viewing[k] && !root.hasAttribute('data-panel') && !e.repeat) {
+    // a control reached by keyboard keeps Space (a checkbox toggles)
+    const control = e.target.closest('input, button, select, textarea');
+    if (k === ' ' && control?.matches(':focus-visible')) return;
+    e.preventDefault();
+    viewing[k]();
   }
 });
 

@@ -69,6 +69,13 @@
   initial-value: off;
 }
 
+/* label: Slideshow interval; group: Viewer; note: how long each photo stays in a slideshow (Space starts and stops it) */
+@property --mg-slideshow {
+  syntax: '<time>';
+  inherits: true;
+  initial-value: 5s;
+}
+
 /* label: Hide controls after; group: Overlays; note: idle time before the controls fade; only pointer movement brings them back */
 @property --mg-hud-idle {
   syntax: '<time>';

@@ -24,6 +24,7 @@ import {
   type Photo,
 } from '../../gallery.ts';
 import Hud from '../components/Hud.astro';
+import Credit from '../components/Credit.astro';
 import InfoPane from '../components/InfoPane.astro';
 import KeysPane from '../components/KeysPane.astro';
 import Ledger from '../components/Ledger.astro';
@@ -175,6 +176,7 @@ const og = url && {
         <div class="table_photos">
           <Thumbs context={context} current={photo} />
           <Ledger context={context} current={photo} rows={start === 'grid'} />
+          <Credit class="table_credit" />
         </div>
         <Rail context={context} />
       </div>

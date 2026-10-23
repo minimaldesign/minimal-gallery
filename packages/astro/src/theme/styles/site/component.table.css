@@ -182,3 +182,9 @@
     display: none;
   }
 }
+
+/* the credit, centered under the last row of the grid or the list */
+.table_credit {
+  margin-block-start: var(--md1);
+  text-align: center;
+}

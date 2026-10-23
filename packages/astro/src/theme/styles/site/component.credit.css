@@ -1,0 +1,27 @@
+/* CREDIT
+
+   The quiet “Powered by minimal gallery” line at the end of the photos,
+   and the smaller version line in the keyboard shortcuts pane
+   (credit-small). One line of faint ink, the product name a link. The
+   config's `credit: false` leaves both out. Where it sits is up to the
+   container (table_credit, keys_credit). */
+
+.credit {
+  --credit-font-size: var(--mg-size-hud);
+
+  margin-block-end: 0;
+  color: var(--mg-ink-faint);
+  font-size: var(--credit-font-size);
+
+  a {
+    color: var(--mg-ink-muted);
+
+    &:hover {
+      color: var(--link-color-hover);
+    }
+  }
+}
+
+.credit-small {
+  --credit-font-size: var(--mg-size-small);
+}

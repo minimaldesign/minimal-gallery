@@ -28,5 +28,6 @@
 @import url(./site/component.palette.css);
 @import url(./site/component.keys.css);
 @import url(./site/component.ledger.css);
+@import url(./site/component.credit.css);
 
 @import url(./site/page.viewer.css);
