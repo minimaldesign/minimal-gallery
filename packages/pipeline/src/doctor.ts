@@ -14,6 +14,8 @@ import {
   MANIFEST_DIR,
   PhotoManifest,
 } from './schema.ts';
+import { bucketCredentials } from './storage/env.ts';
+import { pendingUploads } from './storage/sync.ts';
 import { walkPhotos, type UnsupportedFile } from './walk.ts';
 
 export const PAGES_FILE_LIMIT = 20_000;
@@ -60,6 +62,12 @@ export interface DoctorReport {
   };
   /** Bytes of photos media committed to the repository. */
   repo: { bytes: number; limit: number };
+  /**
+   * Bucket mode only, read from the disk without the network: staged files
+   * the manifests reference (waiting for upload), and whether credentials
+   * are set. Null in repo mode.
+   */
+  bucket: { staged: number; stagedBytes: number; credentials: boolean } | null;
   /** How many more photos fit at the current average, before each limit. */
   headroom: {
     photosUntilFileLimit: number;
@@ -209,6 +217,21 @@ export async function doctor(
   const facetTotal = Object.values(facets).reduce((s, n) => s + n, 0);
   const contextTotal = 1 + visibleAlbums.length + facetTotal;
 
+  let bucket: DoctorReport['bucket'] = null;
+  if (config.storage.mode === 's3') {
+    const pending = await pendingUploads(dir, { config });
+    const credentials = bucketCredentials(dir) !== null;
+    bucket = {
+      staged: pending.files,
+      stagedBytes: pending.bytes,
+      credentials,
+    };
+    if (!credentials)
+      issues.push(
+        'no bucket credentials: add MG_S3_ACCESS_KEY_ID and MG_S3_SECRET_ACCESS_KEY to .env before publishing'
+      );
+  }
+
   const repoMedia = config.storage.mode === 'repo';
   const originalsInRepo = config.originals === 'repo';
   const mediaFiles =
@@ -279,6 +302,7 @@ export async function doctor(
       limit: PAGES_FILE_LIMIT,
     },
     repo: { bytes: repoBytes, limit: REPO_BYTE_LIMIT },
+    bucket,
     headroom: { photosUntilFileLimit, photosUntilByteLimit },
     recommendation,
     message,
@@ -313,6 +337,14 @@ export function formatDoctorReport(r: DoctorReport): string {
     rows.push([
       'originals',
       `${r.publishedOriginals.files} files, ${formatBytes(r.publishedOriginals.bytes)}`,
+    ]);
+  if (r.bucket)
+    rows.push([
+      'bucket',
+      (r.bucket.staged
+        ? `${r.bucket.staged} file(s), ${formatBytes(r.bucket.stagedBytes)}, staged and waiting for upload`
+        : 'nothing waiting for upload') +
+        (r.bucket.credentials ? '' : '; no credentials'),
     ]);
   rows.push(
     [
