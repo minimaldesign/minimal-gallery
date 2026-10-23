@@ -7,6 +7,8 @@ dist
 .env.*
 !.env.example
 
-# The pipeline’s scratch files. Manifests (.minimalgallery/manifest) and
-# resized photos (public/_mg) are committed: hosts build the site from them.
+# The pipeline’s scratch files, and in bucket mode the resized photos waiting
+# for upload (.minimalgallery/cache/media). The manifests (.minimalgallery/manifest)
+# are committed, and in repo mode the resized photos (public/_mg) too: hosts
+# build the site from them.
 .minimalgallery/cache
