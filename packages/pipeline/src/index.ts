@@ -73,6 +73,7 @@ export {
 } from './storage/from-config.ts';
 export type { Storage } from './storage/types.ts';
 export { walkPhotos } from './walk.ts';
+export { hashBytes } from './hash.ts';
 export type { UnsupportedFile } from './walk.ts';
 export { mergeLayers } from './merge.ts';
 export { xmpToLayer } from './xmp.ts';

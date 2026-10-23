@@ -79,6 +79,12 @@ export interface ProcessOptions {
   /** libvips threads inside each worker. Default: see `workerPlan`. */
   threadsPerWorker?: number;
   log?: (message: string) => void;
+  /** After the cheap first pass: how many photos there are and how many need work. */
+  onPlan?: (plan: { photos: number; pending: number }) => void;
+  /** After each photo that was encoded or had its manifest rebuilt. */
+  onPhoto?: (manifest: PhotoManifest, result: PhotoResult) => void;
+  /** After each photo that could not be processed. */
+  onError?: (error: PhotoError) => void;
 }
 
 export type PhotoStatus = 'encoded' | 'metadata' | 'skipped';
@@ -366,6 +372,10 @@ export async function processGallery(
         prev.sourceSize === st.size &&
         prev.sourceMtime === st.mtimeMs &&
         prev.inputsHash === inputsHash &&
+        // A changed storage address (a new publicUrl) rewrites the manifest.
+        prev.variants.every((v) => v.url === storage.url(v.key)) &&
+        (!prev.original.key ||
+          prev.original.url === originalsStorage?.url(prev.original.key)) &&
         (originalsStorage
           ? prev.original.key === originalKeyFor(photo, prev.sourceHash)
           : prev.original.key === undefined) &&
@@ -398,14 +408,17 @@ export async function processGallery(
         reusable: loose?.success ? loose.data : undefined,
       });
     } catch (e) {
-      errors.push({
+      const error: PhotoError = {
         path: photo.relativePath,
         kind: 'metadata',
         message: (e as Error).message,
-      });
+      };
+      errors.push(error);
+      options.onError?.(error);
     }
   });
 
+  options.onPlan?.({ photos: photos.length, pending: pending.length });
   const plan = workerPlan(availableParallelism(), pending.length, {
     concurrency: options.concurrency,
     threadsPerWorker: options.threadsPerWorker,
@@ -465,16 +478,19 @@ export async function processGallery(
       reusable.sourceHash === sourceHash &&
       (await present(reusable.variants.map((v) => [storage, v.key])))
     ) {
-      // Same pixels: keep the derivatives, rebuild the metadata.
-      const { width, height, color, thumbhash, placeholder, variants } =
-        reusable;
+      // Same pixels: keep the derivatives, rebuild the metadata. URLs are
+      // computed again, in case the storage address changed.
+      const { width, height, color, thumbhash, placeholder } = reusable;
       encoded = {
         width,
         height,
         color,
         thumbhash,
         placeholder,
-        variants,
+        variants: reusable.variants.map((v) => ({
+          ...v,
+          url: storage.url(v.key),
+        })),
         icc: reusable.original.icc,
       };
       status = 'metadata';
@@ -641,11 +657,12 @@ export async function processGallery(
         const r = await processOne(job);
         results.push(r);
         done++;
+        options.onPhoto?.(manifests.get(r.id)!, r);
         log(
           `[${done}/${pending.length}] ${r.status.padEnd(8)} ${job.photo.relativePath}`
         );
       } catch (e: any) {
-        errors.push({
+        const error: PhotoError = {
           path: job.photo.relativePath,
           kind:
             e instanceof UnsupportedInputError
@@ -654,7 +671,9 @@ export async function processGallery(
                 ? 'decode'
                 : 'metadata',
           message: e?.message ?? String(e),
-        });
+        };
+        errors.push(error);
+        options.onError?.(error);
       }
     });
   } finally {

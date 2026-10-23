@@ -3,6 +3,11 @@ import { z } from 'zod';
 /** Where manifests live, relative to the gallery directory. */
 export const MANIFEST_DIR = '.minimalgallery/manifest';
 export const ALBUMS_FILE = '_albums.json';
+/**
+ * Bucket mode keeps derivatives here, relative to the gallery directory,
+ * until they are uploaded. Ignored by git; the dev server serves it.
+ */
+export const STAGE_DIR = '.minimalgallery/cache/media';
 
 /**
  * A capture date as the camera’s clock showed it: local wall-clock time, no
