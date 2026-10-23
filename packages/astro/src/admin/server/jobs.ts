@@ -88,9 +88,11 @@ export function runJob(
   hooks: JobHooks,
   fallbackUrl: string | null
 ): void {
+  // The dev server runs with NODE_ENV=development; a build must not inherit it.
+  const { NODE_ENV: _devMode, ...env } = process.env;
   const child = spawn(command.command, command.args, {
     cwd,
-    env: { ...process.env, FORCE_COLOR: '0', NO_COLOR: '1' },
+    env: { ...env, FORCE_COLOR: '0', NO_COLOR: '1' },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
   const push = (line: string) => {

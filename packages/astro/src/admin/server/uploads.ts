@@ -137,6 +137,10 @@ export async function createUpload(
     if ((size as number) > MAX_SIZE)
       throw badRequest('This file is too large.');
   }
+  // Completed uploads are kept a while, for sidecars that follow their photo.
+  for (const [key, u] of ctx.entry.uploads)
+    if (u.result && Date.now() - u.createdAt > 60 * 60 * 1000)
+      ctx.entry.uploads.delete(key);
   const id = randomBytes(12).toString('base64url');
   const dir = join(ctx.galleryDir, UPLOAD_DIR);
   await mkdir(dir, { recursive: true });

@@ -51,7 +51,7 @@ A settings edit rewrites `minimalgallery.config.ts`, and Astro restarts the dev 
 
 ## HTTP API
 
-Base: `<base>_mg/admin/api` (with Astro’s default base, `/_mg/admin/api`). Request and response bodies are JSON unless noted. Errors are `{ "error": "<message>" }` with status `400` (bad input), `403` (refused), `404` (unknown id or route), `409` (conflict, state given in the body), `413` (body too large) or `500`.
+Base: `<base>_mg/admin/api` (with Astro’s default base, `/_mg/admin/api`). Request and response bodies are JSON unless noted. Errors are `{ "error": "<message>" }` with status `400` (bad input, including unknown keys), `403` (refused), `404` (unknown id or route), `405` (known route, other method), `409` (conflict, state given in the body), `413` (body too large) or `500`.
 
 An album id in a path is one URL segment: encode it with `encodeURIComponent` (`japan_2025/kyoto` becomes `japan_2025%2Fkyoto`).
 
@@ -181,7 +181,7 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 - `caption` is the markdown body of `<name>.md`. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `rating`: 0 to 5 (0 is “unrated”). `keywords`: an array of strings.
 - `<name>.md` holds only the overridden fields. Keys and comments the admin does not manage are kept. The file is deleted when nothing is left. The original photo is never touched.
 - A run is queued; the photo comes back through a `photo` event.
-- `409` when the photo has no manifest yet.
+- `404` when the photo has no manifest (an unknown id, or a photo the pipeline has not processed yet).
 
 ### Albums
 
@@ -265,6 +265,10 @@ The `gh` and `wrangler` checks spawn those tools, so this call can take a second
 `POST /publish` `{ method }` → `202 { job }` (the job id). Waits for the queue to be idle, pauses it, then runs the gallery’s own `minimalgallery publish --<method> --yes` (from `node_modules/.bin`), streams its output as `log` events and ends with a `job` event: `state: 'done'` with `url` (the last `https://` address it printed, else the config’s `site`), or `state: 'failed'` with the exit `code`. `409` while another job runs.
 
 `POST /connect/cloudflare` → `202 { job }`: runs `wrangler login`, which opens the browser, and streams it the same way. GitHub has no connect call: the UI shows `gh auth login` as guidance.
+
+## The preview while the admin works
+
+The content loader already reloads when a manifest changes, so the preview follows each run. In dev it skips a photo whose album `_albums.json` does not list yet (a new album during its first run) instead of failing the sync; the album and its photos appear when the run writes `_albums.json`. `astro build` still fails on such a photo.
 
 ## Media in bucket mode
 

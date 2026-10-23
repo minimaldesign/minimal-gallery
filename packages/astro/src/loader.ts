@@ -186,6 +186,9 @@ export function galleryLoader(
         };
         if (kind === 'photos') {
           for (const p of photos) {
+            // In dev, a run writes a new album’s photos before
+            // `_albums.json`; they show once it lands.
+            if (!albumIds.has(p.album) && ctx.watcher) continue;
             if (!albumIds.has(p.album))
               throw new Error(
                 `photo ${p.id} refers to unknown album ${p.album}`
