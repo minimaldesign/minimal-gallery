@@ -103,18 +103,25 @@ function localMedia(m: PhotoManifest, mediaBase: string): PhotoManifest {
   };
 }
 
-async function readManifests(dir: string, mediaBase?: string) {
+/**
+ * Every manifest of the gallery. A gallery with no manifests yet stops a
+ * build with a message; in dev (`dev`) it is an empty gallery, so a new
+ * gallery’s admin opens before any photo is added.
+ */
+async function readManifests(dir: string, mediaBase?: string, dev = false) {
   const manifestDir = join(dir, MANIFEST_DIR);
   let files: string[];
   try {
     files = await readdir(manifestDir);
   } catch {
+    if (dev) return { albums: [], photos: [] };
     throw new Error(
       `No manifests in ${manifestDir}. Run \`mg-pipeline ${dir}\` first.`
     );
   }
   const read = async (f: string) =>
     JSON.parse(await readFile(join(manifestDir, f), 'utf8'));
+  if (dev && !files.includes(ALBUMS_FILE)) return { albums: [], photos: [] };
   const albums = AlbumsFile.parse(await read(ALBUMS_FILE)).albums;
   const photos = await Promise.all(
     files
@@ -157,7 +164,11 @@ export function galleryLoader(
         ? `${ctx.config.base.replace(/\/?$/, '/')}_mg/`
         : undefined;
       const sync = async () => {
-        const { albums, photos } = await readManifests(dir, mediaBase);
+        const { albums, photos } = await readManifests(
+          dir,
+          mediaBase,
+          !!ctx.watcher
+        );
         const albumIds = new Set(albums.map((a) => a.id));
         const seen = new Set<string>();
         let changed = 0;

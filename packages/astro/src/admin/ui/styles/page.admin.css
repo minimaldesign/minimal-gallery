@@ -101,3 +101,10 @@
 .admin_sprite {
   display: none;
 }
+
+/* Vite shows the last error of any page of the site (a preview that failed,
+   say) as an overlay on every page it serves, this one included, where it
+   would cover the admin. The site’s own pages still show it. */
+vite-error-overlay {
+  display: none;
+}
