@@ -1,0 +1,36 @@
+---
+/**
+ * A shell command with a copy button. The button is hidden until the
+ * script runs; without it the command is plain selectable text.
+ */
+interface Props {
+  command: string;
+  class?: string;
+}
+const { command, class: className } = Astro.props;
+---
+
+<div class:list={['command', className]}>
+  <code class="command_text">{command}</code>
+  <button
+    class="command_copy"
+    type="button"
+    data-command={command}
+    aria-label={`Copy ${command}`}
+    hidden>
+    Copy
+  </button>
+</div>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>(
+    '.command_copy'
+  )) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(button.dataset.command ?? '');
+      button.textContent = 'Copied';
+      setTimeout(() => (button.textContent = 'Copy'), 1600);
+    });
+  }
+</script>

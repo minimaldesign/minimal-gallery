@@ -1,0 +1,166 @@
+---
+/**
+ * docs.minimalgallery.net: the one-pager. The gallery is the hero (a wall
+ * of the demo’s photos as its grid shows them, under the same translucent
+ * surfaces), then the promise, three pillars, three commands and the way
+ * to the demo and the docs. Draft copy, to be edited by Yann.
+ */
+import Home from '../layouts/Home.astro';
+import Command from '../components/home/Command.astro';
+import Mosaic from '../components/home/Mosaic.astro';
+
+const DEMO = 'https://minimalgallery.net/';
+const GITHUB = 'https://github.com/minimaldesign/minimal-gallery';
+
+const pillars = [
+  {
+    title: 'Organized by your metadata',
+    text: 'Dates, cameras, lenses and exposure come from EXIF; titles, captions, keywords and ratings from your Lightroom export. Every value is a page with its own address: click f/1.4 and see every photo taken at f/1.4.',
+  },
+  {
+    title: 'Photos first, in every browser',
+    text: 'Each photo fills the window on a near-black ground, and the controls fade when the pointer rests. Keys, clicks and swipes step between photos without a page load in Chrome, Safari and Firefox. Every photo has its own URL and works without JavaScript.',
+  },
+  {
+    title: 'Free hosting, nothing to run',
+    text: 'Photos are resized once, on your computer. The host only builds pages and serves files: Cloudflare’s free plan by default, or GitHub Pages or Netlify. The gallery is a folder in a git repository, and it stays yours.',
+  },
+];
+
+const steps = [
+  {
+    title: 'Create the gallery',
+    command: 'npm create minimalgallery@latest',
+    text: 'Asks for a name and where the gallery will live, then sets up the folder and installs what it needs.',
+  },
+  {
+    title: 'Add photos',
+    command: 'npx minimalgallery add ~/Pictures/Export/japan',
+    text: 'Copies a folder in as an album and makes the resized copies. Your originals are never changed.',
+  },
+  {
+    title: 'Publish',
+    command: 'npm run publish',
+    text: 'Builds the site and puts it online. On Cloudflare, the first publish asks you to log in once.',
+  },
+];
+---
+
+<Home
+  title="minimal gallery: a photo gallery from folders of photos"
+  description="minimal gallery is a static site generator for photographers: a fast gallery organized by the metadata in your photos, on free hosting.">
+  <header class="siteBar surface">
+    <a class="siteBar_home" href="/">
+      minimal gallery
+    </a>
+    <nav class="siteBar_nav" aria-label="Site">
+      <a class="siteBar_link" href="/getting-started/">
+        Docs
+      </a>
+      <a class="siteBar_link" href={DEMO}>
+        Demo
+      </a>
+      <a class="siteBar_link" href={GITHUB}>
+        GitHub
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="intro_panel surface">
+        <h1 class="intro_title" id="intro-title">
+          A fast photo gallery from folders of photos.
+        </h1>
+        <p class="intro_lede">
+          minimal gallery is a static site generator for photographers. It
+          builds a gallery from your folders, organized by the dates, cameras,
+          lenses, places and keywords already in your files, and publishes it to
+          free hosting. No server, no subscription.
+        </p>
+        <Command
+          class="intro_command"
+          command="npm create minimalgallery@latest"
+        />
+        <p class="intro_actions">
+          <a class="bt bt-primary" href="/getting-started/">
+            Get started
+          </a>
+          <a class="bt bt-outline" href={DEMO}>
+            See the demo gallery
+          </a>
+        </p>
+      </div>
+      <Mosaic class="intro_mosaic" />
+    </section>
+
+    <section class="pillars wrap" aria-label="What it does">
+      <div>
+        <ul class="pillars_list">
+          {pillars.map((pillar) => (
+            <li class="pillars_item">
+              <h2 class="pillars_title">{pillar.title}</h2>
+              <p class="pillars_text">{pillar.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="recipe wrap" aria-labelledby="recipe-title">
+      <div>
+        <h2 class="recipe_title" id="recipe-title">
+          Three commands
+        </h2>
+        <ol class="recipe_list">
+          {steps.map((step) => (
+            <li class="recipe_step">
+              <h3 class="recipe_stepTitle">{step.title}</h3>
+              <Command class="recipe_command" command={step.command} />
+              <p class="recipe_text">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+        <p class="recipe_more">
+          Node 22.18 or later is all you install.{' '}
+          <a href="/getting-started/">Getting started</a> walks through the
+          first gallery, step by step.
+        </p>
+      </div>
+    </section>
+
+    <section class="closing wrap" aria-labelledby="closing-title">
+      <div>
+        <h2 class="closing_title" id="closing-title">
+          See it with real photos
+        </h2>
+        <p class="closing_text">
+          minimalgallery.net is a gallery built with these tools, from the
+          photos above. Open a photo, press the arrow keys, scroll down to the
+          grid, or press <kbd>/</kbd> to filter by camera, year or place.
+        </p>
+        <p class="closing_actions">
+          <a class="bt bt-primary" href={DEMO}>
+            Open the demo gallery
+          </a>
+          <a class="bt bt-outline" href="/getting-started/">
+            Read the docs
+          </a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="siteFooter wrap">
+    <div class="siteFooter_inner">
+      <p class="siteFooter_name">minimal gallery</p>
+      <nav class="siteFooter_nav" aria-label="More">
+        <a href="/getting-started/">Docs</a>
+        <a href="/versions/">Version history</a>
+        <a href="/downloads/">Downloads</a>
+        <a href={GITHUB}>Source on GitHub</a>
+      </nav>
+      <p class="siteFooter_credit">Photos by Yann, from the demo gallery.</p>
+    </div>
+  </footer>
+</Home>

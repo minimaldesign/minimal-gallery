@@ -1,0 +1,70 @@
+/* RECIPE
+
+   The three commands from an empty folder to a website, numbered, each
+   with its command well and one line of explanation. */
+
+.recipe {
+  padding-block: var(--xl1);
+}
+
+.recipe_title {
+  margin: 0 0 var(--md2);
+  color: var(--docs-heading);
+  font-size: var(--docs-size-section);
+  font-weight: var(--mg-weight-medium);
+}
+
+.recipe_list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--md2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: recipe;
+
+  @media (--lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.recipe_step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--xs3);
+  counter-increment: recipe;
+}
+
+.recipe_stepTitle {
+  margin: 0;
+  color: var(--docs-heading);
+  font-size: var(--docs-size-step);
+  font-weight: var(--mg-weight-medium);
+
+  &::before {
+    content: counter(recipe) '  ';
+    color: var(--mg-ink-faint);
+    white-space: pre;
+  }
+}
+
+.recipe_text,
+.recipe_more {
+  margin: 0;
+  color: var(--docs-text);
+  line-height: var(--leading-lg);
+}
+
+.recipe_more {
+  margin-block-start: var(--md2);
+
+  a {
+    color: var(--mg-ink);
+    font-weight: var(--mg-weight-medium);
+
+    &:hover {
+      color: var(--mg-gray-700);
+    }
+  }
+}

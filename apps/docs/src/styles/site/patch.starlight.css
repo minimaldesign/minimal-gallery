@@ -1,0 +1,203 @@
+/* PATCH: STARLIGHT
+
+   Starlight restyled with the gallery’s tokens. Starlight’s own CSS lives
+   in the starlight.* layers, so these unlayered rules win without any
+   specificity games. First its tokens, mapped onto the gallery’s; then the
+   few places where a token does not reach: the header as a HUD surface,
+   the sidebar, headings at the gallery’s weight, links without underlines,
+   neutral asides. This is the one file allowed to select Starlight’s
+   classes. */
+
+/* TOKENS */
+
+:root,
+::backdrop {
+  --sl-font: var(--text);
+  --sl-font-mono: var(--mono);
+
+  /* The gray ramp, white to black, is the gallery’s neutral palette */
+  --sl-color-white: var(--mg-ink);
+  --sl-color-gray-1: var(--mg-gray-700);
+  --sl-color-gray-2: var(--mg-gray-600);
+  --sl-color-gray-3: var(--mg-gray-500);
+  --sl-color-gray-4: var(--mg-gray-400);
+  --sl-color-gray-5: var(--mg-gray-300);
+  --sl-color-gray-6: var(--mg-gray-200);
+  --sl-color-black: var(--mg-ground);
+
+  /* No accent hue: the highlight color is the gallery’s, near white */
+  --sl-color-accent-low: var(--mg-gray-200);
+  --sl-color-accent: var(--mg-gray-700);
+  --sl-color-accent-high: var(--mg-accent);
+
+  --sl-color-text: var(--docs-text);
+  --sl-color-text-accent: var(--mg-accent);
+  --sl-color-text-invert: var(--mg-ground);
+  --sl-color-bg: var(--mg-ground);
+  --sl-color-bg-nav: var(--mg-surface-fill);
+  --sl-color-bg-sidebar: var(--mg-ground);
+  --sl-color-bg-inline-code: var(--mg-white-a6);
+  --sl-color-bg-accent: var(--mg-accent);
+  --sl-color-hairline-light: var(--mg-hairline);
+  --sl-color-hairline: var(--mg-hairline);
+  --sl-color-hairline-shade: var(--mg-hairline);
+  --sl-color-backdrop-overlay: var(--mg-scrim);
+
+  /* Asides and badges come in hues; here they are all neutral, told
+     apart by their icon and title */
+  --sl-color-blue-low: var(--mg-white-a6);
+  --sl-color-blue: var(--mg-gray-400);
+  --sl-color-blue-high: var(--mg-ink);
+  --sl-color-purple-low: var(--mg-white-a6);
+  --sl-color-purple: var(--mg-gray-400);
+  --sl-color-purple-high: var(--mg-ink);
+  --sl-color-green-low: var(--mg-white-a6);
+  --sl-color-green: var(--mg-gray-400);
+  --sl-color-green-high: var(--mg-ink);
+  --sl-color-orange-low: var(--mg-white-a6);
+  --sl-color-orange: var(--mg-gray-600);
+  --sl-color-orange-high: var(--mg-ink);
+  --sl-color-red-low: var(--mg-white-a6);
+  --sl-color-red: var(--mg-gray-700);
+  --sl-color-red-high: var(--mg-ink);
+
+  --sl-shadow-sm: none;
+  --sl-shadow-md: var(--mg-surface-shadow);
+  --sl-shadow-lg: var(--mg-surface-shadow);
+
+  /* The header is the gallery’s HUD height; type sizes are the HUD’s
+     13px for chrome, a calmer heading scale for pages */
+  --sl-nav-height: var(--mg-hud-height);
+  --sl-nav-pad-y: var(--xs2);
+  --sl-text-h1: clamp(2rem, 1.6rem + 1.6vw, 2.5rem);
+  --sl-text-h2: 1.5rem;
+  --sl-text-h3: 1.1875rem;
+  --sl-text-h4: 1rem;
+  --sl-text-h5: 0.9375rem;
+  --sl-line-height: 1.7;
+  --sl-line-height-headings: 1.25;
+}
+
+/* HEADER: the HUD surface (the recipe of global.surface.css in the
+   gallery, which cannot be mixed onto Starlight’s markup) */
+
+.header {
+  border-block-end: var(--border-sm) solid var(--mg-hairline);
+  background-color: var(--mg-surface-fill);
+  backdrop-filter: blur(var(--mg-hud-blur)) saturate(1.15);
+
+  @supports not (backdrop-filter: blur(1px)) {
+    background-color: var(--mg-surface-fill-solid);
+  }
+
+  @media (--opacityNotOK) {
+    background-color: var(--mg-surface-fill-solid);
+    backdrop-filter: none;
+  }
+}
+
+.site-title {
+  color: var(--mg-ink);
+  font-size: 0.9375rem;
+  font-weight: var(--mg-weight-medium);
+}
+
+/* The divider before the theme picker, which this site does not have */
+.social-icons::after {
+  content: none;
+}
+
+/* SIDEBAR */
+
+.sidebar-content {
+  .large {
+    color: var(--mg-ink);
+    font-size: var(--mg-size-hud);
+    font-weight: var(--mg-weight-medium);
+  }
+
+  a {
+    border-radius: var(--radius-md);
+    color: var(--mg-ink-muted);
+    font-size: 0.875rem;
+    transition:
+      color var(--mg-duration-quick) var(--mg-ease-out),
+      background-color var(--mg-duration-quick) var(--mg-ease-out);
+
+    &:hover {
+      color: var(--mg-ink);
+    }
+
+    /* the current page is the gallery’s chosen option: a filled control */
+    &[aria-current='page'] {
+      background-color: var(--mg-control-active);
+      color: var(--mg-ink);
+      font-weight: var(--mg-weight-medium);
+    }
+  }
+}
+
+/* CONTENT */
+
+.sl-markdown-content {
+  :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
+    color: var(--docs-heading);
+    font-weight: var(--mg-weight-medium);
+    letter-spacing: var(--docs-tracking-display);
+  }
+
+  /* No underline, as in the gallery: full ink and a heavier weight set
+     links apart from the muted text around them */
+  a:not(:where(.not-content *)) {
+    color: var(--mg-accent);
+    font-weight: var(--mg-weight-medium);
+
+    &:hover {
+      color: var(--mg-gray-700);
+    }
+  }
+
+  code:not(:where(.not-content *, pre *)) {
+    border-radius: var(--radius-sm);
+    color: var(--mg-ink);
+  }
+
+  strong {
+    color: var(--mg-ink);
+    font-weight: var(--mg-weight-medium);
+  }
+}
+
+h1#_top {
+  color: var(--docs-heading);
+  font-weight: var(--mg-weight-medium);
+  letter-spacing: var(--docs-tracking-display);
+}
+
+.starlight-aside {
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-lg);
+  color: var(--docs-text);
+}
+
+.starlight-aside__title {
+  font-size: 0.9375rem;
+  font-weight: var(--mg-weight-medium);
+}
+
+/* PAGINATION AND TABLE OF CONTENTS */
+
+.pagination-links a {
+  border-color: var(--mg-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+
+  &:hover {
+    border-color: var(--mg-white-a14);
+  }
+}
+
+starlight-toc a[aria-current='true'] {
+  color: var(--mg-ink);
+  font-weight: var(--mg-weight-medium);
+}

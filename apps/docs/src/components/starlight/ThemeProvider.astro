@@ -1,0 +1,10 @@
+---
+/**
+ * Replaces Starlight’s theme provider. The product is dark only, like the
+ * gallery, so there is no stored choice to read: the page is always dark.
+ */
+---
+
+<script is:inline>
+  document.documentElement.dataset.theme = 'dark';
+</script>

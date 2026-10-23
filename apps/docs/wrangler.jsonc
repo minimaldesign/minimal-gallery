@@ -1,0 +1,13 @@
+// Cloudflare config for docs.minimalgallery.net: a Worker that serves the
+// built site as static assets, like the demo gallery. Workers Builds builds
+// it from master; nothing is deployed from a machine.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "minimalgallery-docs",
+  "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "docs.minimalgallery.net", "custom_domain": true }],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+}

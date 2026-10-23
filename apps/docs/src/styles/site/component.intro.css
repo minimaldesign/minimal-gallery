@@ -1,0 +1,70 @@
+/* INTRO
+
+   The first screen: the mosaic fills the window like the gallery’s
+   viewer, fading into the ground at the bottom, and the promise sits on
+   a surface over it, where the gallery puts its info pane. On a phone the
+   panel spans the width, 12px from the edges. */
+
+.intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 34rem);
+  align-items: end;
+  min-block-size: 100svh;
+  padding: calc(var(--mg-hud-height) + var(--sm3)) var(--xs3) var(--xs3);
+
+  @media (--md) {
+    padding: var(--xl3) var(--lg1) var(--lg1);
+  }
+}
+
+.intro_mosaic {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  mask-image: linear-gradient(to bottom, black 45%, transparent 98%);
+}
+
+.intro_panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sm1);
+  padding: var(--sm3);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+
+  @media (--md) {
+    padding: var(--md2);
+  }
+}
+
+.intro_title {
+  margin: 0;
+  color: var(--docs-heading);
+  font-size: var(--docs-size-display);
+  font-weight: var(--mg-weight-medium);
+  line-height: var(--docs-leading-display);
+  letter-spacing: var(--docs-tracking-display);
+  text-wrap: balance;
+}
+
+.intro_lede {
+  margin: 0;
+  color: var(--docs-text);
+  font-size: var(--docs-size-lede);
+  line-height: var(--leading-lg);
+  text-wrap: pretty;
+}
+
+.intro_command {
+  margin-block-start: var(--xs1);
+}
+
+.intro_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs2);
+  margin: 0;
+}

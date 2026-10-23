@@ -1,0 +1,44 @@
+/* SITE FOOTER
+
+   The name, the links that matter after reading, and the photo credit,
+   in the gallery’s small text above a hairline. */
+
+.siteFooter {
+  padding-block: var(--sm3) var(--lg1);
+  font-size: var(--mg-size-hud);
+}
+
+.siteFooter_inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--xs3) var(--md2);
+  padding-block-start: var(--sm3);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+}
+
+.siteFooter_name {
+  margin: 0;
+  color: var(--mg-ink);
+  font-weight: var(--mg-weight-medium);
+}
+
+.siteFooter_nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs3) var(--sm2);
+
+  a {
+    color: var(--mg-ink-muted);
+
+    &:hover {
+      color: var(--mg-ink);
+    }
+  }
+}
+
+.siteFooter_credit {
+  margin: 0;
+  margin-inline-start: auto;
+  color: var(--mg-ink-faint);
+}

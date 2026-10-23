@@ -1,0 +1,42 @@
+/* PILLARS
+
+   What the product does, in three columns on wide screens and one on a
+   phone: a short title in full ink, a paragraph in muted ink, separated
+   by the gallery’s hairline. */
+
+.pillars {
+  padding-block: var(--xl2) var(--xl1);
+}
+
+.pillars_list {
+  display: grid;
+  gap: var(--lg1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (--md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--md2);
+  }
+}
+
+.pillars_item {
+  padding-block-start: var(--sm2);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+}
+
+.pillars_title {
+  margin: 0 0 var(--xs3);
+  color: var(--docs-heading);
+  font-size: var(--docs-size-item);
+  font-weight: var(--mg-weight-medium);
+  line-height: var(--leading-md);
+}
+
+.pillars_text {
+  margin: 0;
+  color: var(--docs-text);
+  line-height: var(--leading-lg);
+  text-wrap: pretty;
+}

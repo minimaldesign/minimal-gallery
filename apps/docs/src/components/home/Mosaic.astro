@@ -1,0 +1,73 @@
+---
+/**
+ * The hero: a wall of square thumbnails from the demo gallery, as the
+ * gallery’s own grid shows them. The photos are read from
+ * examples/demo/photos, so the docs follow the demo; one that is no longer
+ * there is left out. Each links to its page on minimalgallery.net. The wall
+ * is decorative for assistive technology and the keyboard (the intro’s
+ * “See the demo” link is the way in), so its links are out of the tab order.
+ */
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+// The photos, chosen for a mix of color and black and white, subjects and
+// light. The glob names them one by one so that only these are bundled.
+const files = import.meta.glob<ImageMetadata>(
+  '../../../../../examples/demo/photos/{feelings/Ahead,colors/Brooklyn_sunset,colors/blue_door,people/Naima,colors/Not_a_photoshop_stunt,feelings/Montauk,colors/lazy-sunday-afternoons,light/Bamboo_forest,colors/Kaiona_Cafe,shapes/Coquillage,motion/Hanami_fire,colors/Puff_Ball,feelings/Get_me_out,people/Double_Player,colors/Tulipe,shapes/Halloween,feelings/Post_elections,feelings/Cold,feelings/Wanna_go_back,feelings/Introspection,colors/Fall_pastels,feelings/Waking_up_02,light/Kyoto_Night,shapes/Cidre,feelings/Subtlety,people/Maria,light/Sun_Fire,colors/Nice,feelings/Life_sucks,feelings/Perfection,shapes/Kyoto_monster,feelings/Down_the_drain,light/Loin_des_yeux_mais_pas_le_reste,feelings/Greenport,people/Apple_in_Paris,shapes/Cookie_Heaven,feelings/Tojimbo_no_koneko,people/Tourist_props,shapes/fresh,feelings/Kanazawa,light/First_rays_of_the_day,feelings/cow_abuse,light/Real_Life_Sandbox,shapes/strata}.jpg',
+  { import: 'default' }
+);
+
+// The demo’s URL for a photo: the album folder, then the file name in
+// lowercase with every run of other characters replaced by “_” (the
+// pipeline’s slug rule).
+const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+
+// The glob lists them by album; a fixed shuffle mixes the albums so the
+// wall does not read as one album after another.
+const shuffleKey = (path: string) =>
+  [...path].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 1000003, 7);
+
+const photos = await Promise.all(
+  Object.entries(files)
+    .sort(([a], [b]) => shuffleKey(a) - shuffleKey(b))
+    .map(async ([path, load]) => {
+      const [album, name] = path.split('/').slice(-2);
+      return {
+        image: await load(),
+        href: `https://minimalgallery.net/${album}/${slug(name.replace(/\.jpg$/, ''))}/`,
+      };
+    })
+);
+
+// Large screens hold more squares than there are photos: the wall repeats
+// from the start rather than leaving a gap.
+const wall = [...photos, ...photos.slice(0, 20)];
+---
+
+<ul class:list={['mosaic', className]} aria-hidden="true">
+  {wall.map((photo, i) => (
+    <li class="mosaic_item">
+      <a class="mosaic_link" href={photo.href} tabindex="-1">
+        <Image
+          class="mosaic_image"
+          src={photo.image}
+          alt=""
+          width={480}
+          height={480}
+          fit="cover"
+          widths={[240, 360, 480]}
+          sizes="(min-width: 1858px) 260px, (min-width: 858px) 14vw, 120px"
+          format="avif"
+          quality={55}
+          loading={i < 16 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      </a>
+    </li>
+  ))}
+</ul>

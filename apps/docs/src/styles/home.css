@@ -1,0 +1,27 @@
+/* The one-pager’s CSS entry.
+
+   An mCSS page wearing the gallery’s theme: the framework and its default
+   theme, then the gallery’s token contract and UI tokens (imported from
+   @minimalgallery/astro, so the two sites cannot drift apart), then the
+   product site’s additions. Then the blocks, unlayered, broad to specific:
+   the import list is the list of blocks. */
+
+@import '@minimalgallery/astro/theme/styles/framework/mcss.css';
+@import '@minimalgallery/astro/theme/styles/framework/theme.default.css';
+@import '@minimalgallery/astro/theme/styles/framework/component.button.css'
+  layer(components);
+
+@import '@minimalgallery/astro/theme/styles/site/theme.mg.tokens.css';
+@import '@minimalgallery/astro/theme/styles/site/theme.mg.ui.css';
+@import './site/theme.docs.css';
+
+@import '@minimalgallery/astro/theme/styles/site/global.surface.css';
+
+@import './site/component.siteBar.css';
+@import './site/component.command.css';
+@import './site/component.mosaic.css';
+@import './site/component.intro.css';
+@import './site/component.pillars.css';
+@import './site/component.recipe.css';
+@import './site/component.closing.css';
+@import './site/component.siteFooter.css';
