@@ -77,3 +77,14 @@ export { hashBytes } from './hash.ts';
 export type { UnsupportedFile } from './walk.ts';
 export { mergeLayers } from './merge.ts';
 export { xmpToLayer } from './xmp.ts';
+export {
+  inspectPhoto,
+  readPhotoOverrides,
+  PHOTO_EXTENSIONS,
+  parseUserDate,
+} from './inspect.ts';
+export type {
+  InspectedPhoto,
+  InspectedField,
+  ExtractedSource,
+} from './inspect.ts';
