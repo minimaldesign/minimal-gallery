@@ -14,7 +14,8 @@
     "demo:build": "pnpm --filter minimalgallery-demo build",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && changeset publish",
+    "demo:ci": "pnpm build && node packages/pipeline/dist/cli.js examples/demo && pnpm --filter minimalgallery-demo build"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
