@@ -1,0 +1,165 @@
+/* UPLOADS
+
+   The tray that follows an upload: a title with the overall count, one
+   progress bar for every byte, and the file list (a details element, so
+   it folds without script) with each file's own bar and its outcome.
+   Duplicates and skipped files are said plainly, in the attention color;
+   failures in the error color. Floats at the bottom of the photos, clear
+   of the sidebar and the inspector. Mix .surface on for the material. */
+
+.uploads {
+  position: fixed;
+  inset: auto auto var(--sm1) calc(var(--admin-sidebar-width) + var(--sm1));
+  z-index: var(--z-5);
+  display: flex;
+  flex-direction: column;
+  width: min(25rem, 100vw - 2 * var(--sm1));
+  max-height: min(60dvh, 32rem);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    translate var(--mg-duration-quick) var(--mg-ease-out),
+    display var(--mg-duration-quick) allow-discrete;
+
+  &[hidden] {
+    display: none;
+    opacity: 0;
+    translate: 0 var(--xs2);
+  }
+
+  @starting-style {
+    opacity: 0;
+    translate: 0 var(--xs2);
+  }
+
+  @media (--md-n-below) {
+    inset-inline-start: var(--sm1);
+  }
+}
+
+.uploads_head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--xs2) var(--xs3);
+  padding: var(--xs3) var(--xs3) var(--xs3) var(--sm1);
+
+  progress {
+    grid-column: 1 / -1;
+  }
+}
+
+.uploads_title {
+  font-weight: var(--mg-weight-medium);
+}
+
+.uploads_close {
+  display: grid;
+  place-items: center;
+  width: var(--md1);
+  height: var(--md1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--mg-accent);
+  }
+}
+
+.uploads_summary {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--mg-ink-muted);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.uploads_details {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+  border-radius: 0;
+  background: none;
+  cursor: auto;
+
+  > summary {
+    padding: var(--xs2) var(--sm1);
+    color: var(--mg-ink-muted);
+    font-weight: inherit;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--mg-ink);
+    }
+  }
+
+  &[open] > summary {
+    margin-block-end: 0;
+  }
+}
+
+.uploads_list {
+  display: grid;
+  gap: var(--xs2);
+  max-height: 18rem;
+  margin: 0;
+  padding: var(--xs1) var(--sm1) var(--sm1);
+  overflow-y: auto;
+  list-style: none;
+}
+
+.uploads_item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--xs1) var(--xs3);
+  font-size: var(--mg-size-small);
+
+  progress {
+    grid-column: 1 / -1;
+  }
+
+  &:not([data-state='uploading'], [data-state='queued']) progress {
+    display: none;
+  }
+}
+
+.uploads_name {
+  overflow: hidden;
+  color: var(--mg-ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uploads_state {
+  color: var(--mg-ink-faint);
+
+  .uploads_item:is([data-state='duplicate'], [data-state='skipped']) & {
+    color: var(--admin-attention);
+  }
+
+  .uploads_item[data-state='failed'] & {
+    color: var(--admin-error);
+  }
+}
+
+/* why a file was skipped or what it duplicates */
+.uploads_reason {
+  grid-column: 1 / -1;
+  color: var(--mg-ink-muted);
+
+  &:empty {
+    display: none;
+  }
+}

@@ -1,0 +1,152 @@
+/* ENTRY
+
+   One form field: a head (the label, where the value comes from, Edit and
+   Reset), the control, and a hint. In the photo inspector a field shows
+   the value read from the file as its placeholder, greyed; what you type
+   is yours and becomes an override. The state needs no script: while the
+   placeholder shows, the head says “From the file” and offers Edit (which
+   copies the file's value in to start from it); once the field holds a
+   value, the head says “Yours” and offers Reset (which empties it, so the
+   file's value applies again). A select works the same way with an empty
+   first option. entry-check is a checkbox with its label beside it;
+   entry-choice is a fieldset holding a .choice group. data-attention marks
+   a field a flag points at. */
+
+.entry {
+  display: grid;
+  gap: var(--xs1);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.entry_head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--xs2);
+  min-height: var(--sm2);
+}
+
+.entry_label {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--mg-ink-muted);
+  font-size: inherit;
+}
+
+.entry_from,
+.entry_yours {
+  display: none;
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+}
+
+.entry_action {
+  display: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+  font-size: var(--mg-size-small);
+
+  &:hover {
+    color: var(--mg-accent);
+  }
+}
+
+/* from the file: an input or textarea showing its placeholder (a lone
+   space when the file has no value), or a select on its empty first
+   option */
+.entry:has(
+  :is(input, textarea).entry_control:placeholder-shown:not([placeholder=' '])
+),
+.entry:has(select.entry_control option[value='']:checked) {
+  .entry_from {
+    display: inline;
+  }
+}
+
+.entry:has(
+    :is(input, textarea).entry_control:placeholder-shown:not([placeholder=' '])
+  )
+  .entry_action-edit {
+  display: inline;
+}
+
+/* yours: a typed value, or another option picked */
+.entry:has(:is(input, textarea).entry_control:not(:placeholder-shown)),
+.entry:has(select.entry_control option:checked:not([value=''])) {
+  .entry_yours,
+  .entry_action-reset {
+    display: inline;
+  }
+}
+
+.entry_control {
+  width: 100%;
+  transition: border-color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:where(textarea) {
+    min-height: 5lh;
+    line-height: var(--leading-md);
+    resize: vertical;
+  }
+
+  .entry[data-attention] & {
+    border-color: var(--admin-attention);
+  }
+}
+
+/* code: the custom.css editor */
+.entry_control-code {
+  min-height: 22lh;
+  font-family: var(--mono);
+  font-size: var(--mg-size-small);
+  tab-size: 2;
+  white-space: pre;
+}
+
+.entry_hint {
+  margin: 0;
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+  line-height: var(--leading-md);
+
+  .entry[data-attention] & {
+    color: var(--admin-attention);
+  }
+}
+
+.entry-check {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2);
+
+  input {
+    width: var(--sm1);
+    height: var(--sm1);
+    margin: 0;
+    accent-color: var(--mg-ink);
+  }
+
+  .entry_label {
+    flex: 0 1 auto;
+    color: var(--mg-ink);
+  }
+
+  .entry_hint {
+    flex-basis: 100%;
+  }
+}
+
+/* a fieldset: the framework hides its legend, the aria-hidden label shows */
+.entry-choice {
+  > .entry_label {
+    margin: 0;
+    font-size: inherit;
+  }
+}

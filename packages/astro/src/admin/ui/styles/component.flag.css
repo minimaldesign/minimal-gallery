@@ -1,0 +1,61 @@
+/* FLAG
+
+   A “needs attention” mark: the date came from the file’s modification
+   time, there is no camera data, or the photo duplicates another one. The
+   attention color is the only color in the chrome. On a thumbnail it is a
+   round icon button that opens the inspector on the right field; flag-
+   label is the same mark with its words, in the inspector. flag-quiet
+   marks a state that is not a problem (a hidden photo), without color. */
+
+.flag {
+  --flag-color: var(--mg-gray-50);
+  --flag-fill: var(--admin-attention);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xs1);
+  min-width: var(--sm2);
+  height: var(--sm2);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-round);
+  background-color: var(--flag-fill);
+  box-shadow: 0 1px 4px var(--mg-black-a50);
+  color: var(--flag-color);
+  cursor: pointer;
+  font-size: var(--mg-size-small);
+  font-weight: var(--mg-weight-medium);
+  line-height: 1;
+  transition: scale var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.flag_icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2;
+}
+
+.flag-label {
+  padding-inline: var(--xs2) var(--xs3);
+  box-shadow: none;
+
+  &:hover {
+    scale: 1;
+  }
+}
+
+.flag-quiet {
+  --flag-color: var(--mg-ink);
+  --flag-fill: var(--mg-surface-fill);
+
+  cursor: default;
+
+  &:hover {
+    scale: 1;
+  }
+}

@@ -1,0 +1,74 @@
+/* MENU
+
+   A list of links in the sidebar: the album tree (nested menus for nested
+   albums) and the links to Settings and Publish. The link for the view you
+   are on carries aria-current. A link accepting a dropped folder carries
+   data-over (the script sets it while a drag is over it); so does the
+   whole tree. */
+
+.menu {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & & {
+    margin-block-start: 1px;
+    padding-inline-start: var(--sm1);
+  }
+
+  &[data-over] {
+    border-radius: var(--radius-md);
+    outline: var(--border-sm) dashed var(--mg-ink-faint);
+    outline-offset: var(--xs1);
+  }
+}
+
+.menu_link {
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  min-height: var(--md2);
+  padding-inline: var(--xs2);
+  border-radius: var(--radius-md);
+  color: var(--mg-ink-muted);
+  transition:
+    background-color var(--mg-duration-quick) var(--mg-ease-out),
+    color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--mg-ink);
+  }
+
+  &[aria-current] {
+    background-color: var(--mg-control-active);
+    color: var(--mg-ink);
+  }
+
+  &[data-over] {
+    background-color: var(--mg-control-active);
+    color: var(--mg-accent);
+    outline: var(--border-sm) dashed var(--mg-ink-muted);
+    outline-offset: -1px;
+  }
+}
+
+.menu_label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu_count {
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+}
+
+/* a hidden album keeps its place, dimmed */
+.menu_item[data-hidden] > .menu_link .menu_label {
+  opacity: var(--o-3);
+}

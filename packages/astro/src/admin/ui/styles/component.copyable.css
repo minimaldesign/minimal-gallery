@@ -1,0 +1,40 @@
+/* COPYABLE
+
+   A value to take away (a command to run, the published URL) set in the
+   mono with a Copy button beside it. The button says “Copied” for a
+   moment after a click (data-copied, set by the script). */
+
+.copyable {
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  min-height: var(--md3);
+  padding: var(--xs1) var(--xs1) var(--xs1) var(--xs3);
+  border: var(--border-sm) solid var(--mg-white-a14);
+  border-radius: var(--radius-md);
+  background-color: var(--mg-gray-100);
+  color: var(--mg-ink);
+}
+
+.copyable_value {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: inherit;
+  font-family: var(--mono);
+  font-size: var(--mg-size-small);
+}
+
+.copyable_done {
+  display: none;
+}
+
+.copyable_button[data-copied] {
+  .copyable_label {
+    display: none;
+  }
+
+  .copyable_done {
+    display: inline;
+  }
+}

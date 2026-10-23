@@ -1,0 +1,62 @@
+/* NOTICE
+
+   A boxed message in the flow of a page: guidance (sign in to GitHub,
+   connect Cloudflare, add the bucket keys), a photo's attention note in
+   the inspector, the result of a publish. Quiet by default; the
+   attention and error modifiers color the title, nothing else. */
+
+.notice {
+  display: grid;
+  gap: var(--xs2);
+  padding: var(--xs3) var(--sm1);
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--mg-white-a6);
+  color: var(--mg-ink-muted);
+  line-height: var(--leading-lg);
+
+  > :is(p, ol, ul) {
+    margin: 0;
+  }
+
+  ol,
+  ul {
+    padding-inline-start: var(--sm1);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.notice-attention {
+  border-color: color-mix(in oklch, var(--admin-attention) 40%, transparent);
+}
+
+.notice-error {
+  border-color: color-mix(in oklch, var(--admin-error) 40%, transparent);
+}
+
+.notice_title {
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  margin: 0;
+  color: var(--mg-ink);
+  font-weight: var(--mg-weight-medium);
+
+  .notice-attention & {
+    color: var(--admin-attention);
+  }
+
+  .notice-error & {
+    color: var(--admin-error);
+  }
+}
+
+.notice_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2);
+}

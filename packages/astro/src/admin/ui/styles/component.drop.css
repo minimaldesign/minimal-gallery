@@ -1,0 +1,89 @@
+/* DROP
+
+   Where photos can be dropped. drop-empty is the first-run state of the
+   photos view: one large target with the choose buttons and a line about
+   a Lightroom export preset. drop-overlay covers the visible part of the
+   main view while files are dragged over it, and lets the drag events
+   through to the view underneath. data-over (set by the script) is the
+   drag being over the target. */
+
+.drop {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--sm1);
+  padding: var(--lg1) var(--sm3);
+  border: var(--border-sm) dashed var(--mg-white-a14);
+  border-radius: var(--radius-lg);
+  color: var(--mg-ink-muted);
+  text-align: center;
+  transition:
+    background-color var(--mg-duration-quick) var(--mg-ease-out),
+    border-color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &[data-over] {
+    border-color: var(--mg-ink-muted);
+    background-color: var(--admin-over);
+    color: var(--mg-ink);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+
+  p {
+    max-width: 52ch;
+    margin: 0;
+  }
+}
+
+.drop-empty {
+  min-height: min(62dvh, 36rem);
+  margin: var(--admin-gutter);
+}
+
+.drop-compact {
+  min-height: 0;
+  padding-block: var(--sm3);
+}
+
+.drop_icon {
+  width: var(--lg1);
+  height: var(--lg1);
+  color: var(--mg-ink-faint);
+  stroke-width: 1;
+}
+
+.drop_title {
+  color: var(--mg-ink);
+  font-size: var(--text-lg);
+  font-weight: var(--mg-weight-medium);
+}
+
+.drop_actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--xs2);
+}
+
+.drop_note {
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+  line-height: var(--leading-lg);
+}
+
+.drop-overlay {
+  position: absolute;
+  inset: calc(var(--admin-bar-height) + var(--xs3)) var(--xs3) var(--xs3);
+  z-index: var(--z-4);
+  display: none;
+  border-color: var(--mg-ink-muted);
+  background-color: color-mix(in oklch, var(--mg-ground) 72%, transparent);
+  color: var(--mg-ink);
+  pointer-events: none;
+
+  &[data-over] {
+    display: grid;
+  }
+}

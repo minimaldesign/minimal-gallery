@@ -1,0 +1,42 @@
+/* minimal gallery admin: CSS entry.
+
+   The gallery's own theme first: the mCSS framework, its default theme,
+   the framework's button (the admin's only borrowed component, themed by
+   tokens), the mg theme's semantic tokens, then the admin's additions to
+   that theme (theme.user). Then the blocks unlayered, broad to specific;
+   the import list is also the list of blocks. The token contract
+   (theme.mg.tokens.css) is imported on its own by the page, as the
+   gallery's layout does. Nothing under theme/ is edited. */
+
+@import url(../../../theme/styles/framework/mcss.css);
+@import url(../../../theme/styles/framework/theme.default.css);
+@import url(../../../theme/styles/framework/component.button.css)
+layer(components);
+
+@import url(../../../theme/styles/site/theme.mg.ui.css);
+@import url(./theme.mg.admin.css);
+
+@import url(../../../theme/styles/site/global.surface.css);
+@import url(./global.icon.css);
+
+@import url(./component.sidebar.css);
+@import url(./component.menu.css);
+@import url(./component.checklist.css);
+@import url(./component.queue.css);
+@import url(./component.bar.css);
+@import url(./component.drop.css);
+@import url(./component.photos.css);
+@import url(./component.flag.css);
+@import url(./component.uploads.css);
+@import url(./component.inspector.css);
+@import url(./component.entry.css);
+@import url(./component.choice.css);
+@import url(./component.notice.css);
+@import url(./component.copyable.css);
+@import url(./component.panel.css);
+@import url(./component.publish.css);
+@import url(./component.log.css);
+@import url(./component.sheet.css);
+@import url(./component.toasts.css);
+
+@import url(./page.admin.css);

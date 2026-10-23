@@ -1,0 +1,59 @@
+/* SHEET
+
+   A small form over the page: New album (a popover, opened by its button
+   with no script) and “Add these photos to which album?” (a dialog).
+   Centered, on the overlay surface; mix .surface on. */
+
+.sheet {
+  width: min(24rem, 100vw - 2 * var(--sm1));
+  margin: auto;
+  padding: var(--sm1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    translate var(--mg-duration-quick) var(--mg-ease-out),
+    overlay var(--mg-duration-quick) allow-discrete,
+    display var(--mg-duration-quick) allow-discrete;
+
+  &:not(:popover-open, [open]) {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--xs2));
+  }
+
+  @starting-style {
+    &:is(:popover-open, [open]) {
+      opacity: 0;
+      translate: 0 calc(-1 * var(--xs2));
+    }
+  }
+
+  &::backdrop {
+    background-color: var(--mg-scrim);
+  }
+}
+
+.sheet_form {
+  display: grid;
+  gap: var(--sm1);
+}
+
+.sheet_title {
+  color: var(--mg-ink);
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+}
+
+.sheet_text {
+  margin: 0;
+  color: var(--mg-ink-muted);
+  line-height: var(--leading-lg);
+}
+
+.sheet_actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--xs2);
+}
