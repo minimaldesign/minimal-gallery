@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { mkdir, readFile, rm, stat } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rm, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 import { processGallery } from '@minimalgallery/pipeline';
 import {
@@ -279,6 +279,20 @@ describe('albums', () => {
     expect((await server.call('POST', '/albums', { path: '///' })).status).toBe(
       400
     );
+
+    // A child of a folder made in Finder, whose name is not a slug, goes
+    // inside that folder rather than into a new japan_trip/ beside it.
+    await mkdir(join(dir, 'photos/Japan Trip'));
+    const child = await server.call('POST', '/albums', {
+      path: 'japan_trip/Kyoto',
+    });
+    expect(child.status).toBe(201);
+    expect(child.body.album).toMatchObject({
+      id: 'japan_trip/kyoto',
+      parent: 'japan_trip',
+    });
+    expect(await readdir(join(dir, 'photos/Japan Trip'))).toEqual(['kyoto']);
+    await expect(readdir(join(dir, 'photos/japan_trip'))).rejects.toThrow();
 
     const edited = await server.call('PUT', '/albums/colors', {
       title: 'Colours',

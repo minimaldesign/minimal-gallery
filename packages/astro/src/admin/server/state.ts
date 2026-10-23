@@ -12,7 +12,7 @@ import {
   writeFile,
 } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
-import { parseUserDate } from '@minimalgallery/pipeline';
+import { parseUserDate, pendingUploads } from '@minimalgallery/pipeline';
 import type { GalleryConfig } from '@minimalgallery/pipeline/config';
 import {
   ALBUMS_FILE,
@@ -365,31 +365,14 @@ export async function updateAdminFile(
   return next;
 }
 
-/** `{ pending }` in bucket mode: staged files that wait for an upload. */
+/**
+ * `{ pending }` in bucket mode: staged files the manifests reference, which
+ * wait for an upload (uploaded files leave the stage). Local only.
+ */
 export async function bucketState(
   galleryDir: string,
-  config: Pick<GalleryConfig, 'storage' | 'originals'>,
-  manifests: Iterable<PhotoManifest>
+  config: GalleryConfig
 ): Promise<{ pending: number } | null> {
   if (config.storage.mode !== 's3') return null;
-  // TODO(bucket mode): after the merge, use `planBucketSync(galleryDir,
-  // config)` from @minimalgallery/pipeline: `upload.length` is the exact
-  // count, since it also knows which staged keys the bucket already holds.
-  // Until then: every key a manifest references that is still in the stage.
-  const keys: string[] = [];
-  for (const m of manifests) {
-    for (const v of m.variants) keys.push(v.key);
-    if (config.originals === 'bucket' && m.original.key)
-      keys.push(m.original.key);
-  }
-  const stage = join(galleryDir, STAGE_DIR);
-  const staged = await Promise.all(
-    keys.map((k) =>
-      stat(join(stage, ...k.split('/'))).then(
-        () => true,
-        () => false
-      )
-    )
-  );
-  return { pending: staged.filter(Boolean).length };
+  return { pending: (await pendingUploads(galleryDir, { config })).files };
 }

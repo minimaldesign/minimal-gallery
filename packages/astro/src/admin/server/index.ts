@@ -10,6 +10,7 @@ import {
   inspectPhoto,
   processGallery,
   readPhotoOverrides,
+  bucketCredentials,
 } from '@minimalgallery/pipeline';
 import {
   loadConfig,
@@ -42,7 +43,7 @@ import {
   type PublishChecks,
   type PublishMethod,
 } from './jobs.ts';
-import { hasCredentials, serveMedia } from './media.ts';
+import { serveMedia } from './media.ts';
 import { validateOverrides, writeOverrides } from './overrides.ts';
 import { RunQueue, type ProcessFn, type QueueEvent } from './queue.ts';
 import { dropGalleryEntry, galleryEntry } from './registry.ts';
@@ -173,7 +174,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
   let config = loadConfig(galleryDir);
   config.catch(() => {});
   const gallery = async (): Promise<Gallery> =>
-    galleryInfo(await config, await hasCredentials(galleryDir));
+    galleryInfo(await config, bucketCredentials(galleryDir) !== null);
 
   // Manifests as last seen, for the duplicate badges of `photo` events.
   let known: Map<string, PhotoManifest> | undefined;
@@ -363,7 +364,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
           photos: ordered.map((m) => photoSummary(m, mediaBase, dupes)),
           firstRun: await firstRun(ordered.length),
           queue: queue.snapshot(),
-          bucket: await bucketState(galleryDir, c, ordered),
+          bucket: await bucketState(galleryDir, c),
         });
       },
     ],
@@ -565,17 +566,13 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
           entry.publishInfo = { at: now, value: await checks(galleryDir) };
         const c = await config;
         const admin = await readAdminFile(galleryDir);
-        const bucket = await bucketState(
-          galleryDir,
-          c,
-          (await knownManifests()).values()
-        );
+        const bucket = await bucketState(galleryDir, c);
         sendJson(res, 200, {
           ...(entry.publishInfo.value as PublishChecks),
           bucket: bucket
             ? {
                 mode: 's3',
-                credentials: await hasCredentials(galleryDir),
+                credentials: bucketCredentials(galleryDir) !== null,
                 pending: bucket.pending,
               }
             : null,
@@ -650,14 +647,20 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
     }
     if (path.startsWith(mediaPath)) {
       const c = await config.catch(() => null);
-      if (c?.storage.mode !== 's3') return false;
+      if (!c) return false;
       let key: string;
       try {
         key = decodeURIComponent(path.slice(mediaPath.length));
       } catch {
         return false;
       }
-      return serveMedia(req, res, galleryDir, key, c.storage.publicUrl);
+      return serveMedia(
+        req,
+        res,
+        galleryDir,
+        key,
+        c.storage.mode === 's3' ? c.storage.publicUrl : null
+      );
     }
     return false;
   }

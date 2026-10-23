@@ -48,9 +48,20 @@ export async function createAlbum(
   if (!id) throw badRequest('The album name has no letters or digits.');
   if (body.title !== undefined && typeof body.title !== 'string')
     throw badRequest('title must be a string.');
-  const existing = (await listAlbumDirs(galleryDir)).find((a) => a.id === id);
+  const albums = await listAlbumDirs(galleryDir);
+  const existing = albums.find((a) => a.id === id);
   if (existing) throw conflict(`The album ${id} exists.`, { id });
-  const abs = join(galleryDir, 'photos', ...id.split('/'));
+  // A child goes inside its parent’s folder, whose name on disk may not be
+  // a slug (a “Japan 2025” folder made in Finder has the id japan_2025).
+  const segments = id.split('/');
+  let abs = join(galleryDir, 'photos', ...segments);
+  for (let n = segments.length - 1; n > 0; n--) {
+    const parent = albums.find((a) => a.id === segments.slice(0, n).join('/'));
+    if (parent) {
+      abs = join(parent.abs, ...segments.slice(n));
+      break;
+    }
+  }
   await mkdir(abs, { recursive: true });
   const title = typeof body.title === 'string' ? body.title.trim() : '';
   if (title) {

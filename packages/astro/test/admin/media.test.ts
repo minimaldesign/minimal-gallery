@@ -84,9 +84,19 @@ describe('bucket mode in dev', () => {
     ).toBe(true);
   });
 
-  it('leaves /_mg to Vite in repo mode', async () => {
+  it('serves public/_mg itself in repo mode and leaves the rest to Vite', async () => {
     const dir = await tempGallery();
+    await writeJpeg(join(dir, 'photos/a/One.jpg'));
+    await processGallery(dir);
+    const one = JSON.parse(
+      await readFile(join(dir, '.minimalgallery/manifest/a__one.json'), 'utf8')
+    );
     server = await startServer({ galleryDir: dir });
+    // A derivative written a moment ago is served at once, before Vite’s
+    // list of public files knows about it.
+    const fresh = await server.raw('GET', `/_mg/${one.variants[0].key}`);
+    expect(fresh.status).toBe(200);
+    expect(fresh.headers['content-type']).toMatch(/^image\//);
     expect((await server.raw('GET', '/_mg/a__one/x-grid.avif')).text).toBe(
       'not admin'
     );
