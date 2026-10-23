@@ -110,7 +110,9 @@ describe('create-minimalgallery', () => {
       'admin',
       'publish',
       'doctor',
+      'deploy',
     ]);
+    expect(pkg.scripts.deploy).toBe('astro build && wrangler deploy');
     expect(Object.keys(pkg.dependencies)).toEqual([
       '@minimalgallery/astro',
       '@minimalgallery/pipeline',
@@ -118,9 +120,12 @@ describe('create-minimalgallery', () => {
       'minimalgallery',
     ]);
     expect(pkg.minimalgallery.publish).toBe('deploy');
-    expect(await readFile(join(dir, 'wrangler.jsonc'), 'utf8')).toContain(
-      '"name": "my-gallery"'
+    const wrangler = await readFile(join(dir, 'wrangler.jsonc'), 'utf8');
+    expect(wrangler).toContain('"name": "my-gallery"');
+    expect(wrangler).toContain(
+      '"assets": { "directory": "./dist", "not_found_handling": "404-page" }'
     );
+    expect(wrangler).not.toContain('pages_build_output_dir');
 
     const config = await parseConfig(dir);
     expect(config.name).toBe('Yann’s photos');
@@ -184,7 +189,7 @@ describe('create-minimalgallery', () => {
     ).toEqual([]);
   });
 
-  it('makes valid Cloudflare project names', () => {
+  it('makes valid Cloudflare Worker names', () => {
     expect(projectName('My Gallery')).toBe('my-gallery');
     expect(projectName('Café ’25')).toBe('cafe-25');
     expect(projectName('***')).toBe('my-gallery');

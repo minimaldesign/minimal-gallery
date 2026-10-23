@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler pages deploy dist --project-name minimalgallery-demo"
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "@minimalgallery/astro": "workspace:*",

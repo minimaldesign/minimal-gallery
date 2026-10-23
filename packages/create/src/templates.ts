@@ -22,7 +22,7 @@ export const WRANGLER_VERSION = '^4.152.0';
 const str = (s: string) =>
   `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n')}'`;
 
-/** Cloudflare Pages project names: lowercase letters, digits and dashes. */
+/** Cloudflare Worker names: lowercase letters, digits and dashes. */
 export function projectName(input: string): string {
   const slug = input
     .normalize('NFKD')
@@ -59,6 +59,9 @@ export function packageJson(
       admin: 'minimalgallery admin',
       publish: 'minimalgallery publish',
       doctor: 'minimalgallery doctor',
+      ...(answers.host === 'cloudflare'
+        ? { deploy: 'astro build && wrangler deploy' }
+        : {}),
     },
     minimalgallery: { publish: PUBLISH[answers.host] },
     engines: { node: '>=22.18' },
@@ -154,13 +157,14 @@ export function envExample(answers: Answers): string {
 }
 
 export function wranglerJsonc(project: string, date: string): string {
-  return `// Cloudflare Pages project for this gallery. npm run publish builds the site
-// and runs wrangler pages deploy with this name.
+  return `// Cloudflare Workers (static assets) for this gallery. npm run publish
+// processes new photos, runs astro build, then wrangler deploy, which uploads
+// ./dist under this name. public/_headers sets the cache headers.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "${project}",
-  "pages_build_output_dir": "./dist",
   "compatibility_date": "${date}",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
 }
 `;
 }

@@ -9,15 +9,15 @@ import { capture, localBin, runOrFail } from '../exec.ts';
 import { runPipeline } from '../pipeline.ts';
 import { requireGalleryRoot } from '../root.ts';
 
-export const PUBLISH_USAGE = `Usage: minimalgallery publish [--git | --deploy | --build] [--project-name <name>] [--yes]
+export const PUBLISH_USAGE = `Usage: minimalgallery publish [--git | --deploy | --build] [--yes]
 
 Processes new photos, then publishes the gallery one of three ways:
   --git      commit the gallery changes and push; your host builds the site
-  --deploy   build the site and upload it to Cloudflare Pages with wrangler
+  --deploy   build the site and upload it to Cloudflare Workers (static
+             assets) with wrangler deploy, as set in wrangler.jsonc
   --build    build the site into dist/ and stop
 Without a flag, the "minimalgallery.publish" field of package.json decides
 ("git", "deploy" or "build"), else --deploy when wrangler.jsonc exists.
-  --project-name   Cloudflare Pages project (default: "name" in wrangler.jsonc)
   --yes            do not ask before pushing or deploying`;
 
 export type PublishMethod = 'git' | 'deploy' | 'build';
@@ -61,7 +61,7 @@ export async function choosePublishMethod(
     );
   if (existsSync(join(root, 'wrangler.jsonc'))) return 'deploy';
   throw new CliError(
-    'Say how to publish: --deploy uploads to Cloudflare Pages, --git commits and pushes, --build only builds.\n' +
+    'Say how to publish: --deploy uploads to Cloudflare Workers (static assets), --git commits and pushes, --build only builds.\n' +
       'To set it once, add "minimalgallery": { "publish": "deploy" } to package.json.'
   );
 }
@@ -114,15 +114,13 @@ export async function publishCommand(args: string[], dir?: string) {
       git: { type: 'boolean' },
       deploy: { type: 'boolean' },
       build: { type: 'boolean' },
-      'project-name': { type: 'string' },
       yes: { type: 'boolean', short: 'y', default: false },
     },
     PUBLISH_USAGE
   );
   const root = await requireGalleryRoot(dir);
   const method = await choosePublishMethod(root, values);
-  if (method === 'deploy')
-    return deploy(root, values['project-name'], values.yes);
+  if (method === 'deploy') return deploy(root, values.yes);
   if (method === 'git') return gitPublish(root, values.yes);
 
   astroBin(root);
@@ -133,15 +131,18 @@ export async function publishCommand(args: string[], dir?: string) {
   return 0;
 }
 
-async function deploy(
-  root: string,
-  projectFlag: string | undefined,
-  yes: boolean
-) {
-  const project = projectFlag ?? (await wranglerProjectName(root));
+async function deploy(root: string, yes: boolean) {
+  if (
+    !existsSync(join(root, 'wrangler.jsonc')) &&
+    !existsSync(join(root, 'wrangler.json'))
+  )
+    throw new CliError(
+      'There is no wrangler.jsonc in this gallery. It names the Cloudflare Worker and points its assets at ./dist.'
+    );
+  const project = await wranglerProjectName(root);
   if (!project)
     throw new CliError(
-      'No Cloudflare Pages project name. Pass --project-name <name> or set "name" in wrangler.jsonc.'
+      'Set "name" in wrangler.jsonc: it names the Cloudflare Worker.'
     );
   astroBin(root);
   const local = localBin(root, 'wrangler');
@@ -163,16 +164,9 @@ async function deploy(
   const summary = await runPipeline(root);
   if (summary.errors.length)
     log.warn('Some photos failed and will be left out of the site.');
-  const deployArgs = [
-    ...prefix,
-    'pages',
-    'deploy',
-    'dist',
-    '--project-name',
-    project,
-  ];
+  const deployArgs = [...prefix, 'deploy'];
   await confirmPlan(
-    `Publishing to Cloudflare Pages project ${project}`,
+    `Publishing to Cloudflare Workers (static assets): ${project}`,
     [
       `astro build, in ${root}`,
       `wrangler ${deployArgs.slice(prefix.length).join(' ')}`,

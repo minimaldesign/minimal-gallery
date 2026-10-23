@@ -34,7 +34,11 @@ const USAGE = `Usage: npm create minimalgallery@latest [folder] [options]
   --no-install      do not install the packages`;
 
 const HOSTS: Array<{ value: Host; label: string; hint: string }> = [
-  { value: 'cloudflare', label: 'Cloudflare Pages', hint: 'recommended, free' },
+  {
+    value: 'cloudflare',
+    label: 'Cloudflare',
+    hint: 'recommended, free: Workers static assets',
+  },
   { value: 'github', label: 'GitHub Pages', hint: 'free, up to 1 GB' },
   {
     value: 'netlify',

@@ -1,8 +1,11 @@
-// Cloudflare Pages project for the demo gallery.
-// Deploy with `pnpm deploy` (runs `astro build`, then `wrangler pages deploy dist`).
+// Cloudflare config for the demo gallery: a Worker that serves static assets.
+// Cloudflare folded Pages into Workers in 2026; `wrangler deploy` uploads dist.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "minimalgallery-demo",
-  "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
 }

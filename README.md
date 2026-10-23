@@ -9,7 +9,7 @@ A static photo gallery toolkit for photographers: drop JPGs into folders, get a 
 | `@minimalgallery/pipeline` | `packages/pipeline` | Reads `photos/`, writes resized copies and one JSON manifest per photo. Pure Node. |
 | `@minimalgallery/astro` | `packages/astro` | Astro integration, content loader and the default theme. |
 | `minimalgallery` | `packages/cli` | The command line: `add`, `sync`, `doctor`, `publish`, `watch`, `admin`, `upgrade`. |
-| `create-minimalgallery` | `packages/create` | `npm create minimalgallery@latest`: scaffolds a gallery for Cloudflare Pages, GitHub Pages, Netlify or a local build. |
+| `create-minimalgallery` | `packages/create` | `npm create minimalgallery@latest`: scaffolds a gallery for Cloudflare Workers (static assets), GitHub Pages, Netlify or a local build. |
 
 Also here: `examples/demo/` (the demo gallery, whose photos are the test fixture), `apps/` (minimalgallery.net and docs.minimalgallery.net, to come) and `design/` (the brief and the clickable prototype).
 
@@ -32,4 +32,4 @@ Package versions and changelogs come from [changesets](https://changesets.dev). 
 
 ## Plan
 
-The design brief and prototype are in `design/`. The work is split into phases: design, then the core (pipeline, astro package, CLI and scaffold, with the demo live on Cloudflare Pages), then the rest of the viewer, then the browser admin for adding photos, then the other hosts, the docs site and the launch.
+The design brief and prototype are in `design/`. The work is split into phases: design, then the core (pipeline, astro package, CLI and scaffold, with the demo live on Cloudflare Workers static assets), then the rest of the viewer, then the browser admin for adding photos, then the other hosts, the docs site and the launch.
