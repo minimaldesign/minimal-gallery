@@ -1,0 +1,103 @@
+{
+  "id": "people__on_christmas",
+  "album": "people",
+  "file": "On_Christmas.jpg",
+  "source": "people/On_Christmas.jpg",
+  "slug": "on_christmas",
+  "title": "On Christmas",
+  "caption": "As some of you might have noticed, minimal Gallery's file chronology is all messed up right now. This is due to an incredible lack of professionalism from my hosting company. I also could not upload anything to my server for about a week! It seems to be resolved now, although I still have to hear even a simple apologies from them... I will be switching hosting company in the next few months as well as create a script to fix their errors. In the meantime, here's a photo I was supposed to upload on the 25th of December...",
+  "date": "2005-12-25T17:37:34",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 1.8,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "F Train"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EQgOBYBXaZefhoeGd3eFhra/C8hc",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQGB//EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAACcG5c0sI//xAAlEAACAQIDCQEAAAAAAAAAAAABAgMABAURMQYSExUhMkFDcXL/2gAIAQEAAT8At9ocKiScCF14nfF6WybMEeQRWKHmFnDbW6LKi2xzZP1v0pIB66UJ5hpK4+Gv/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQIg/9oACAECAQE/ACFx/8QAFREBAQAAAAAAAAAAAAAAAAAAESD/2gAIAQMBAT8AY//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13240,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__on_christmas/6ee895c5-grid.avif",
+      "key": "people__on_christmas/6ee895c5-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 30584,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__on_christmas/6ee895c5-jpeg1600.jpg",
+      "key": "people__on_christmas/6ee895c5-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 196846,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/On_Christmas.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "12",
+    "day": "12-25",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 1.8,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "1da539f0bb8c0197",
+  "sourceSize": 196846,
+  "sourceMtime": 1792783284847.0432,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "e865d6cb81eb8a3f"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "feelings__chain",
+  "album": "feelings",
+  "file": "Chain.jpg",
+  "source": "feelings/Chain.jpg",
+  "slug": "chain",
+  "title": "Chain",
+  "caption": "funny how a chain can inspire adventure and some sense of freedom when it's attached to a boat :)",
+  "date": "2005-01-30T11:08:06",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 4,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "3gcWFYSfhnead4iJd4d4d8C8B5t5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgf/xAAXAQEBAQEAAAAAAAAAAAAAAAAEAwEC/9oADAMBAAIQAxAAAABlvEgnd4soMqv/xAAgEAABBAEEAwAAAAAAAAAAAAADAAECEQUEExRBMlGh/9oACAEBAAE/AMvnjgG2zpYzh3PcRSQJryEenuVrMBHx5PX1DuJHp38279r/xAAbEQACAgMBAAAAAAAAAAAAAAABAgADEBExcf/aAAgBAgEBPwAVshBYb8j8OLOz/8QAGxEBAAICAwAAAAAAAAAAAAAAAQACAxFBYXH/2gAIAQMBAT8AbFxKunuY+PIEpP/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 19140,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__chain/d9f8e186-grid.avif",
+      "key": "feelings__chain/d9f8e186-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 38736,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__chain/d9f8e186-jpeg1600.jpg",
+      "key": "feelings__chain/d9f8e186-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 127143,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Chain.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "5a2a1b45feb2ceaa",
+  "sourceSize": 127143,
+  "sourceMtime": 1792783285016.0208,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "0513810f0ce5003f"
+}

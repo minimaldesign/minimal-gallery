@@ -1,0 +1,105 @@
+{
+  "id": "feelings__simple",
+  "album": "feelings",
+  "file": "simple.jpg",
+  "source": "feelings/simple.jpg",
+  "slug": "simple",
+  "title": "Simple",
+  "caption": null,
+  "date": "2005-01-18T10:03:45",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 4.5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Gdansk"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5727,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "5PcFBYD1jYekdYZ3eYmHhg9190F3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAABFWQ+XV0f/xAAgEAEAAQMEAwEAAAAAAAAAAAABAgADEQQhUWEFEzFB/9oACAEBAAE/ANWYmZ+oOOOqjak24euOZY3Of2vKqaoDgrSbSkmzGyyOmJka/8QAGREAAQUAAAAAAAAAAAAAAAAAAAECEDFB/9oACAECAQE/AFh1mH//xAAYEQACAwAAAAAAAAAAAAAAAAAAARAxQf/aAAgBAwEBPwCFRp//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 9813,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__simple/c89ec491-grid.avif",
+      "key": "feelings__simple/c89ec491-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 21947,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__simple/c89ec491-jpeg1600.jpg",
+      "key": "feelings__simple/c89ec491-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 136400,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/simple.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-18",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [
+      {
+        "slug": "gdansk",
+        "label": "Gdansk"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "21959a1b12c274c1",
+  "sourceSize": 136400,
+  "sourceMtime": 1792783284933.7454,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "dc8c90ab61b7ce60"
+}

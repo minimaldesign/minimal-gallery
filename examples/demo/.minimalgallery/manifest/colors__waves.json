@@ -1,0 +1,95 @@
+{
+  "id": "colors__waves",
+  "album": "colors",
+  "file": "Waves.jpg",
+  "source": "colors/Waves.jpg",
+  "slug": "waves",
+  "title": "Waves",
+  "caption": null,
+  "date": "2004-08-17T17:21:50",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5325,
+    "c": 0.0986,
+    "h": 131
+  },
+  "thumbhash": "GdkJFYIoN5hUqahwm5h3ied2j2Al",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEBf/EABcBAAMBAAAAAAAAAAAAAAAAAAIDBAH/2gAMAwEAAhADEAAAAI4kNEhl3OYv/8QAIBAAAQQCAQUAAAAAAAAAAAAAAQIDBBEAIQUjM1GRof/aAAgBAQABPwCBwLE+M7NU4gNnavNZLgmLx6Y5otqa6TZN0FavO3xKgnQKK+ZJJAVROmFV7z//xAAeEQEAAgIBBQAAAAAAAAAAAAABAAIDETESIUGBkf/aAAgBAgEBPwDHibG24G/ky1tSxt87PcF63vzDgn//xAAZEQADAQEBAAAAAAAAAAAAAAAAARECMTL/2gAIAQMBAT8Azmx02oheR8P/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 11149,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__waves/be187f79-grid.avif",
+      "key": "colors__waves/be187f79-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 30220,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__waves/be187f79-jpeg1600.jpg",
+      "key": "colors__waves/be187f79-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 67349,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Waves.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-17",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "57504450a6997f22",
+  "sourceSize": 67349,
+  "sourceMtime": 1792783284903.9233,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6786e49d5af0327b"
+}

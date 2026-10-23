@@ -1,0 +1,98 @@
+{
+  "id": "shapes__hands",
+  "album": "shapes",
+  "file": "hands.jpg",
+  "source": "shapes/hands.jpg",
+  "slug": "hands",
+  "title": "Hands",
+  "caption": null,
+  "date": "2005-01-19T12:00:31",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 400,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "hDgGDYJfeESYVmZ3hnmJdk+G90N6",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEB//EABgBAAIDAAAAAAAAAAAAAAAAAAMEAAEC/9oADAMBAAIQAxAAAADK1nozAbgw3P/EABwQAAEFAAMAAAAAAAAAAAAAAAEAAgMRIRMjQf/aAAgBAQABPwA9cUNtYSdII3VLTnONUb1SE8rlNtH0hf/EABoRAAMBAAMAAAAAAAAAAAAAAAABAhESISL/2gAIAQIBAT8A3lVY2T0kSvCIP//EAB0RAQACAgIDAAAAAAAAAAAAAAEAAhExA0EiMmH/2gAIAQMBAT8Ax41yEvUcunuW935OfQ9oz//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 6287,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__hands/d0cbfbf8-grid.avif",
+      "key": "shapes__hands/d0cbfbf8-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 15923,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__hands/d0cbfbf8-jpeg1600.jpg",
+      "key": "shapes__hands/d0cbfbf8-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 75482,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/hands.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-19",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": 400,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "5abf8e1891a74081",
+  "sourceSize": 75482,
+  "sourceMtime": 1792783285132.689,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "100ffa8b3122f31f"
+}

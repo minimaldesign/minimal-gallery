@@ -1,0 +1,106 @@
+{
+  "id": "people__saxophonist",
+  "album": "people",
+  "file": "Saxophonist.jpg",
+  "source": "people/Saxophonist.jpg",
+  "slug": "saxophonist",
+  "title": "Saxophonist",
+  "caption": null,
+  "date": "2005-09-07T15:35:32",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 2.8,
+    "focal": 170,
+    "focal35": 255,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Manhattan",
+    "state": "NY",
+    "country": "USA",
+    "location": "Central Park"
+  },
+  "placeLabel": "Manhattan, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "CSkGHYQuuTF5e1iPeCnWjj+K/HS3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwQG/8QAFgEBAQEAAAAAAAAAAAAAAAAABAUD/9oADAMBAAIQAxAAAAA9ntl3yQJdLLOD/8QAHxAAAgICAwADAAAAAAAAAAAAAgMBBAURABIxBhMh/9oACAEBAAE/AHXIenHg8wGEkRD7uBLZRvl+59OQY+kyR7r0Ux5O/eYzCYpthwMqAYivcdpmefNKNSjlCCskVjofwef/xAAfEQACAgIBBQAAAAAAAAAAAAABAgADBBESEzJBQoH/2gAIAQIBAT8ASni15T2AB+THRuiEs8Q5F2u+YFjvWeTb1P/EABwRAAICAwEBAAAAAAAAAAAAAAECAAMRIUEEEv/aAAgBAwEBPwBm1UW42ZcwFpde7j01BkHz0T1qoKkDBI3P/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 12890,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__saxophonist/353c97d0-grid.avif",
+      "key": "people__saxophonist/353c97d0-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 31341,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__saxophonist/353c97d0-jpeg1600.jpg",
+      "key": "people__saxophonist/353c97d0-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 170524,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Saxophonist.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "09",
+    "day": "09-07",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 170,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "manhattan-usa",
+      "label": "Manhattan, USA"
+    }
+  },
+  "sourceHash": "26f3152c9feb3c97",
+  "sourceSize": 170524,
+  "sourceMtime": 1792783284872.735,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "31addf3d9adad3c1"
+}

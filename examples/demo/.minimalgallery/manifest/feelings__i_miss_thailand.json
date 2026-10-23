@@ -1,0 +1,89 @@
+{
+  "id": "feelings__i_miss_thailand",
+  "album": "feelings",
+  "file": "I_Miss_Thailand.jpg",
+  "source": "feelings/I_Miss_Thailand.jpg",
+  "slug": "i_miss_thailand",
+  "title": "I Miss Thailand",
+  "caption": null,
+  "date": "2026-10-23T12:21:25",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "Yann Bettremieux",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 574,
+  "color": {
+    "l": 0.8543,
+    "c": 0.0405,
+    "h": 163.84
+  },
+  "thumbhash": "p9cJFISMdXh7lXeAeIh8kKMIeQ==",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAKABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAYAQADAQEAAAAAAAAAAAAAAAAAAgMBBP/aAAwDAQACEAMQAAAAsjmDohOUMY//xAAgEAEAAgEEAgMAAAAAAAAAAAACAQMABAURIRIxFCJB/9oACAEBAAE/APhV10p2fUEykp/IwnatxlnSaqq1nuSfeFKRMSpmO8VdYXkASufcRxOf/8QAGBEBAQADAAAAAAAAAAAAAAAAAQADEBP/2gAIAQIBAT8A6kZ9AX//xAAaEQEAAgMBAAAAAAAAAAAAAAABAAIDEyEx/9oACAEDAQE/AHHZmm1XpF7FV9n/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 408,
+      "bytes": 15767,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__i_miss_thailand/19883507-grid.avif",
+      "key": "feelings__i_miss_thailand/19883507-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 574,
+      "bytes": 51911,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__i_miss_thailand/19883507-jpeg1600.jpg",
+      "key": "feelings__i_miss_thailand/19883507-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 150509,
+    "width": 900,
+    "height": 574,
+    "relativePath": "photos/feelings/I_Miss_Thailand.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "ab4226c0129f9d54",
+  "sourceSize": 150509,
+  "sourceMtime": 1792783285068.3354,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d51a02aa34251cca"
+}

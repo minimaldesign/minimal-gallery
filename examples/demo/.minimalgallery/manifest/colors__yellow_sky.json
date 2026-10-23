@@ -1,0 +1,98 @@
+{
+  "id": "colors__yellow_sky",
+  "album": "colors",
+  "file": "yellow_sky.jpg",
+  "source": "colors/yellow_sky.jpg",
+  "slug": "yellow_sky",
+  "title": "Yellow sky",
+  "caption": null,
+  "date": "2005-01-31T11:56:15",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/1000",
+    "shutterSeconds": 0.001,
+    "aperture": 8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8584,
+    "c": 0.1124,
+    "h": 79.17
+  },
+  "thumbhash": "YEoWJYR4d4d/d4d3eGh4iHh/dfhX",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEGB//EABgBAAMBAQAAAAAAAAAAAAAAAAABBQQG/9oADAMBAAIQAxAAAACh5yoMyqlkSP/EAB8QAAICAAcBAAAAAAAAAAAAAAECAAUGEjNDUVJxov/aAAgBAQABPwBb2tA1/kw4lq03HPiQu/YzM3M//8QAGxEAAQQDAAAAAAAAAAAAAAAAAAEDEBMRQVL/2gAIAQIBAT8Aqd5KXV0hiP/EABkRAAEFAAAAAAAAAAAAAAAAAAMAEBITUf/aAAgBAwEBPwCY9Vg3/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 3556,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__yellow_sky/4597d373-grid.avif",
+      "key": "colors__yellow_sky/4597d373-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 6913,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__yellow_sky/4597d373-jpeg1600.jpg",
+      "key": "colors__yellow_sky/4597d373-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 111955,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/yellow_sky.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.001,
+      "label": "1/1000"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e6cfe68815a0613b",
+  "sourceSize": 111955,
+  "sourceMtime": 1792783284979.3352,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a0e73aa6cb6ef212"
+}

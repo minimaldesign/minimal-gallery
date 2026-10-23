@@ -1,0 +1,98 @@
+{
+  "id": "feelings__waking_up_02",
+  "album": "feelings",
+  "file": "Waking_up_02.jpg",
+  "source": "feelings/Waking_up_02.jpg",
+  "slug": "waking_up_02",
+  "title": "Waking up 02",
+  "caption": null,
+  "date": "2005-04-10T17:40:30",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3967,
+    "c": 0.0258,
+    "h": 107.52
+  },
+  "thumbhash": "lggGDYCFVJiwiXZGd6s4psWwXIgJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAE/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEDAv/aAAwDAQACEAMQAAAADjTOiScwf//EACEQAAIBAwMFAAAAAAAAAAAAAAECAwAEMRESIgUTISRR/9oACAEBAAE/ABaO8PrkSy6kKoIwPtR28iwpJNEH3g6hcAjIqBmic9s7eSHxXT5Ha52E8Q+K/8QAGxEBAAICAwAAAAAAAAAAAAAAAQARAiESMdH/2gAIAQIBAT8AwpLSLvXUfYBzn//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 28080,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__waking_up_02/67c7b72f-grid.avif",
+      "key": "feelings__waking_up_02/67c7b72f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 57689,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__waking_up_02/67c7b72f-jpeg1600.jpg",
+      "key": "feelings__waking_up_02/67c7b72f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 149664,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Waking_up_02.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-10",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "538787fe4ecbe036",
+  "sourceSize": 149664,
+  "sourceMtime": 1792783284872.637,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "af012d63628b703d"
+}

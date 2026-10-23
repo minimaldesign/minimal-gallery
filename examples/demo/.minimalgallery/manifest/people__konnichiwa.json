@@ -1,0 +1,98 @@
+{
+  "id": "people__konnichiwa",
+  "album": "people",
+  "file": "Konnichiwa.jpg",
+  "source": "people/Konnichiwa.jpg",
+  "slug": "konnichiwa",
+  "title": "Konnichiwa",
+  "caption": null,
+  "date": "2005-04-05T09:16:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3945,
+    "c": 0.0341,
+    "h": 248.7
+  },
+  "thumbhash": "F/gFFYJ6WkNvhGZ+dchYh4+e+NaI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQF/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgMAAQT/2gAMAwEAAhADEAAAAMtDB1oklgYf/8QAHxAAAgICAQUAAAAAAAAAAAAAAQIDBAAhBRESFDKx/9oACAEBAAE/AH5G/SqUfEYqBameQb2CAN5a5e1aUh4oFJGysYBOcgzd0A6n1P3Bn//EABoRAQADAAMAAAAAAAAAAAAAAAEAAkEQERL/2gAIAQIBAT8ApTtPRhCgazeP/8QAGREBAAIDAAAAAAAAAAAAAAAAAQACEBFR/9oACAEDAQE/ANgLGy8z/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 33754,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__konnichiwa/83deeee6-grid.avif",
+      "key": "people__konnichiwa/83deeee6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 63882,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__konnichiwa/83deeee6-jpeg1600.jpg",
+      "key": "people__konnichiwa/83deeee6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 152391,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Konnichiwa.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "3ed66c36819b321b",
+  "sourceSize": 152391,
+  "sourceMtime": 1792783285129.9897,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "f89efcc86496210a"
+}

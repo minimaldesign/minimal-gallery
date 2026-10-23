@@ -1,0 +1,98 @@
+{
+  "id": "light__maui",
+  "album": "light",
+  "file": "Maui.jpg",
+  "source": "light/Maui.jpg",
+  "slug": "maui",
+  "title": "Maui",
+  "caption": null,
+  "date": "2005-04-17T18:37:07",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 10,
+    "focal": 56,
+    "focal35": 84,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "2ygKJYQ+pIeneHhwidZnZzl0kFQI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAgMEAf/aAAwDAQACEAMQAAAAqw15BgBeoxZ//8QAHxAAAgICAgMBAAAAAAAAAAAAAQIDBAAFITIRQlFx/9oACAEBAAE/AKetewOFzY6S5WvxxNZdqokLsZGDdvXILNmPpYlX8cjLE8xbmVz5+sTn/8QAHREBAAEEAwEAAAAAAAAAAAAAAgABAwQRMTJBgf/aAAgBAgEBPwC5mE+y1klnfsYFeQa/IQddaT//xAAdEQACAQQDAAAAAAAAAAAAAAABAgADBBEhUVJh/9oACAEDAQE/AEt9ZOo9AqfIrN2MZm5M/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16116,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__maui/f7d6ecec-grid.avif",
+      "key": "light__maui/f7d6ecec-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 33655,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__maui/f7d6ecec-jpeg1600.jpg",
+      "key": "light__maui/f7d6ecec-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 158005,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Maui.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-17",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 10,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 56,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "601963d65c6f7dfd",
+  "sourceSize": 158005,
+  "sourceMtime": 1792783285028.8167,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "256d194fe692514b"
+}

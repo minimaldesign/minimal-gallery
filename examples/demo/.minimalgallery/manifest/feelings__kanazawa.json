@@ -1,0 +1,98 @@
+{
+  "id": "feelings__kanazawa",
+  "album": "feelings",
+  "file": "Kanazawa.jpg",
+  "source": "feelings/Kanazawa.jpg",
+  "slug": "kanazawa",
+  "title": "Kanazawa",
+  "caption": null,
+  "date": "2005-04-03T16:18:07",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 52,
+    "focal35": 78,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9791,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "YhgaBYBpeIiPd4d3d3h3iKM2MGoD",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABYBAQEBAAAAAAAAAAAAAAAAAAECAP/aAAwDAQACEAMQAAAArotUOR0C4//EACQQAAIBAgMJAAAAAAAAAAAAAAECAwARBQYhBBITIiMxQVFh/9oACAEBAAE/AI85YbwJlSfrRjlXd0asUzXE2yQGWR1acNoFDBLU7urCzHXv9qaeYAKJCFWxA8A+xX//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREQ/9oACAECAQE/AKOvf//EABcRAAMBAAAAAAAAAAAAAAAAAAABERD/2gAIAQMBAT8Agot//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 20672,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__kanazawa/070f20d7-grid.avif",
+      "key": "feelings__kanazawa/070f20d7-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 42760,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__kanazawa/070f20d7-jpeg1600.jpg",
+      "key": "feelings__kanazawa/070f20d7-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 150949,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Kanazawa.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 52,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "bd21adddf1890f76",
+  "sourceSize": 150949,
+  "sourceMtime": 1792783285077.1467,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b19e012a49f439a4"
+}

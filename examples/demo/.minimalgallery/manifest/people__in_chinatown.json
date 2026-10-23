@@ -1,0 +1,95 @@
+{
+  "id": "people__in_chinatown",
+  "album": "people",
+  "file": "In_Chinatown.jpg",
+  "source": "people/In_Chinatown.jpg",
+  "slug": "in_chinatown",
+  "title": "In Chinatown",
+  "caption": null,
+  "date": "2004-08-17T16:16:06",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "XTgKDYZvSoeJhnaGiHmodf+j5296",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwT/2gAMAwEAAhADEAAAAKI7w6ZEBUtH/8QAIBAAAgEDBQEBAAAAAAAAAAAAAQIDAAQREhMUIXEikv/aAAgBAQABPwC52uMN6JCjMHkBJVQPRV+kUtlHxoIo9M2Rt5AP67qZ3Ny6FjpCAgVN9m3BPTliwHWceV//xAAcEQACAgIDAAAAAAAAAAAAAAABAgARAxIhMWH/2gAIAQIBAT8Axar3C6lr8lDWKOTP/8QAHhEAAgIBBQEAAAAAAAAAAAAAAQIDEQAEEhMhMUH/2gAIAQMBAT8A1peRaX6cSKRY6Pu6+8ld+QjcarGJ4079u8//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 41752,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__in_chinatown/2aae3652-grid.avif",
+      "key": "people__in_chinatown/2aae3652-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 93090,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__in_chinatown/2aae3652-jpeg1600.jpg",
+      "key": "people__in_chinatown/2aae3652-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 166987,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/In_Chinatown.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-17",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "398bd662e49d1ffd",
+  "sourceSize": 166987,
+  "sourceMtime": 1792783285127.069,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c027bf6ee6c9d931"
+}

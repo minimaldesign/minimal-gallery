@@ -1,0 +1,98 @@
+{
+  "id": "feelings__introspection",
+  "album": "feelings",
+  "file": "Introspection.jpg",
+  "source": "feelings/Introspection.jpg",
+  "slug": "introspection",
+  "title": "Introspection",
+  "caption": null,
+  "date": "2004-11-11T18:12:21",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 3.2,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1602,
+    "c": 0.0289,
+    "h": 20.79
+  },
+  "thumbhash": "xjgGDYILlomKdpiFWVeZiQ+J5aBY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQH/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwIE/9oADAMBAAIQAxAAAADOMe+FiQ7BI//EACEQAQACAQIHAQAAAAAAAAAAAAIBAwAEMRESExQiM1Jh/9oACAEBAAE/ANBZ07fZyFBFL8mM1Y0oQ7exvifOV9ZXlxMW7bmJz//EABsRAAMAAgMAAAAAAAAAAAAAAAABAhESITJB/9oACAECAQE/AL58IdPOySGT1P/EABgRAQADAQAAAAAAAAAAAAAAAAEAAhEy/9oACAEDAQE/AKOMsVMxWEt0z//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 5072,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__introspection/e596f05c-grid.avif",
+      "key": "feelings__introspection/e596f05c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 12409,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__introspection/e596f05c-jpeg1600.jpg",
+      "key": "feelings__introspection/e596f05c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 59830,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Introspection.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-11",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 3.2,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "4ee35edd6f5abae9",
+  "sourceSize": 59830,
+  "sourceMtime": 1792783285069.9028,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "8d09ad2d3095e917"
+}

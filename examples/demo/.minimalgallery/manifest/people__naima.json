@@ -1,0 +1,98 @@
+{
+  "id": "people__naima",
+  "album": "people",
+  "file": "Naima.jpg",
+  "source": "people/Naima.jpg",
+  "slug": "naima",
+  "title": "Naima",
+  "caption": null,
+  "date": "2005-01-28T16:52:33",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": true
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HAgKBYCGNGewemealHeXmAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMFBv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAJQg24H/xAAiEAABAgUEAwAAAAAAAAAAAAABAgMABAUREgYUInITIVL/2gAIAQEAAT8AczepEu2tONkDjjfI2ik016oICXA44k/JOKO0aakJPYNP+BJdWnko+41G85JU53bENdABH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 36330,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__naima/d277153c-grid.avif",
+      "key": "people__naima/d277153c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 70483,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__naima/d277153c-jpeg1600.jpg",
+      "key": "people__naima/d277153c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 157913,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Naima.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "88781e5b3805d3cd",
+  "sourceSize": 157913,
+  "sourceMtime": 1792783285161.9287,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "604935584984e0fe"
+}

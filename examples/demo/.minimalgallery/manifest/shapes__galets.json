@@ -1,0 +1,105 @@
+{
+  "id": "shapes__galets",
+  "album": "shapes",
+  "file": "Galets.jpg",
+  "source": "shapes/Galets.jpg",
+  "slug": "galets",
+  "title": "Galets",
+  "caption": null,
+  "date": "2005-01-30T11:26:54",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/640",
+    "shutterSeconds": 0.0015625,
+    "aperture": 6.3,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EwgCBYBqemePO1ppmkhqlgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwIG/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAzAYBZ//EAB8QAAEEAgIDAAAAAAAAAAAAAAEAAgMREiEEIhMxQf/aAAgBAQABPwAuaazwRlZH3fpoFkgqZ7mY41uSjr5allk8HIffZpoa9Bf/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 32986,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__galets/437b5254-grid.avif",
+      "key": "shapes__galets/437b5254-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 64864,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__galets/437b5254-jpeg1600.jpg",
+      "key": "shapes__galets/437b5254-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 178319,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Galets.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.0015625,
+      "label": "1/640"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "4ba6faf77966e2a3",
+  "sourceSize": 178319,
+  "sourceMtime": 1792783285043.2644,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "57652aa2c817a557"
+}

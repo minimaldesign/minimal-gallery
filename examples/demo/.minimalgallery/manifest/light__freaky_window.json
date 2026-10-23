@@ -1,0 +1,95 @@
+{
+  "id": "light__freaky_window",
+  "album": "light",
+  "file": "Freaky_window.jpg",
+  "source": "light/Freaky_window.jpg",
+  "slug": "freaky_window",
+  "title": "Freaky window",
+  "caption": null,
+  "date": "2004-07-09T16:40:18",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 6.3,
+    "focal": 34,
+    "focal35": 51,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DggGDYIJpk2ldnl5ZziXZwJiC8CH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAAxQpTd9yI0//EACQQAAEEAQMDBQAAAAAAAAAAAAIBAwQRABMjMgUGEhQxYnGB/9oACAEBAAE/AIBx25G9HF5TJKTl7ckr6yXH8/UPgIg0p7YfC86Cw06WqYWaS6v8TAYYMe5FNoC0mlULTiqHWf/EABoRAQADAQEBAAAAAAAAAAAAAAEAAhFhIXH/2gAIAQIBAT8AU9dJnZao1dOSpi/Z/8QAGxEAAgIDAQAAAAAAAAAAAAAAAAECIRExQXH/2gAIAQMBAT8AhSQ3rKdnSTqPh//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 34016,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__freaky_window/350ffcce-grid.avif",
+      "key": "light__freaky_window/350ffcce-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 66754,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__freaky_window/350ffcce-jpeg1600.jpg",
+      "key": "light__freaky_window/350ffcce-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 127892,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Freaky_window.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "07",
+    "day": "07-09",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": null,
+    "focal": 34,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0d453b77ff22332c",
+  "sourceSize": 127892,
+  "sourceMtime": 1792783285001.7412,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a11313c75f4f28dd"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "feelings__open_gates",
+  "album": "feelings",
+  "file": "Open_Gates.jpg",
+  "source": "feelings/Open_Gates.jpg",
+  "slug": "open_gates",
+  "title": "Open Gates",
+  "caption": null,
+  "date": "2005-11-14T16:01:32",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 14,
+    "focal": 34,
+    "focal35": 51,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Red Hook"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EAgKBYBBmIZud4iAiHd4hwAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgMH/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAADiUy4sf/xAAfEAEAAgICAgMAAAAAAAAAAAABAgMAEQQSBSMhM2H/2gAIAQEAAT8A8VRxiz2WR321o+d6cnHxldtX2nurF6nXUpA4LFEUTJcnkWIzusk/snP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 20670,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__open_gates/d27b52f2-grid.avif",
+      "key": "feelings__open_gates/d27b52f2-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 44168,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__open_gates/d27b52f2-jpeg1600.jpg",
+      "key": "feelings__open_gates/d27b52f2-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 140700,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Open_Gates.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 14,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 34,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "e02dcf0080f75be0",
+  "sourceSize": 140700,
+  "sourceMtime": 1792783285117.7249,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "97bc6d8728edc385"
+}

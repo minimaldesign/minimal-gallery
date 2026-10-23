@@ -1,0 +1,98 @@
+{
+  "id": "feelings__the_other_way",
+  "album": "feelings",
+  "file": "The_other_way.jpg",
+  "source": "feelings/The_other_way.jpg",
+  "slug": "the_other_way",
+  "title": "The other way",
+  "caption": null,
+  "date": "2005-02-23T14:41:03",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4022,
+    "c": 0.0898,
+    "h": 258.32
+  },
+  "thumbhash": "XPcFHYQBq2lIiGeVaIhoZnaAOArI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQH/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAgP/2gAMAwEAAhADEAAAABlHVqzxIk6f/8QAHxAAAgEEAgMAAAAAAAAAAAAAAQIDAAQSIREUQVJx/9oACAEBAAE/ALOA9mPBWILAbFXAjgQZMFxJUj248VbTSiUOHIbAb+VduyMxU7M53X//xAAcEQACAwADAQAAAAAAAAAAAAABAgAREgMhInL/2gAIAQIBAT8AbnYqBmaQejVmjqN3X1FUOU0Ln//EABwRAAICAgMAAAAAAAAAAAAAAAECABIRIgMTcv/aAAgBAwEBPwDrAsbQMxK4bULisVRv5iMU4tZ//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 24124,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__the_other_way/14a43021-grid.avif",
+      "key": "feelings__the_other_way/14a43021-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 55380,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__the_other_way/14a43021-jpeg1600.jpg",
+      "key": "feelings__the_other_way/14a43021-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 135128,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/The_other_way.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-23",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "72bbc315aa1f02d9",
+  "sourceSize": 135128,
+  "sourceMtime": 1792783285151.2058,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b40a54bb3e848eeb"
+}

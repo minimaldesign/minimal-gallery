@@ -1,0 +1,123 @@
+{
+  "id": "shapes__the_gates",
+  "album": "shapes",
+  "file": "The_Gates.jpg",
+  "source": "shapes/The_Gates.jpg",
+  "slug": "the_gates",
+  "title": "The Gates",
+  "caption": "Yes, I think it's funny...",
+  "date": "2005-02-23T16:38:46",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 5.6,
+    "focal": 145,
+    "focal35": 217,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "New York",
+    "state": "NY",
+    "country": "USA",
+    "location": "Central Park"
+  },
+  "placeLabel": "New York, USA",
+  "keywords": [
+    "orange",
+    "Central Park",
+    "Funny"
+  ],
+  "rating": null,
+  "copyright": "© minimal design 2005",
+  "author": "Mr. X",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "VjkGDYL1QWpop2V2l7lVePwz4C8T",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQMEBf/EABYBAQEBAAAAAAAAAAAAAAAAAAMFAf/aAAwDAQACEAMQAAAAxZtEoKcSJQ//xAAhEAACAQIGAwAAAAAAAAAAAAACAwEAEQUSEyEiQRQxof/aAAgBAQABPwDSg0lpHKpPiPd97eprDyc1ShkrghhrO/HJbuaNh5kjfaC2+zWGub5+JrzXAjiZia//xAAdEQEAAQQDAQAAAAAAAAAAAAABAgADERMhMUEy/9oACAECAQE/AG9zJY5YVeTUzO0E97ohEZOPo5q4GkMeV//EAB0RAQACAgIDAAAAAAAAAAAAAAECAwAREkEEITL/2gAIAQMBAT8AKdcAmhYZRFjfw62kuvRjOSRN/K6ytXyBXtz/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 20740,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__the_gates/10bf2c16-grid.avif",
+      "key": "shapes__the_gates/10bf2c16-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 49818,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__the_gates/10bf2c16-jpeg1600.jpg",
+      "key": "shapes__the_gates/10bf2c16-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 157285,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/The_Gates.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-23",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 145,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "orange",
+        "label": "orange"
+      },
+      {
+        "slug": "central-park",
+        "label": "Central Park"
+      },
+      {
+        "slug": "funny",
+        "label": "Funny"
+      }
+    ],
+    "place": {
+      "slug": "new-york-usa",
+      "label": "New York, USA"
+    }
+  },
+  "sourceHash": "ea815097c494397f",
+  "sourceSize": 157285,
+  "sourceMtime": 1792783285116.1343,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "440e56af09536447"
+}

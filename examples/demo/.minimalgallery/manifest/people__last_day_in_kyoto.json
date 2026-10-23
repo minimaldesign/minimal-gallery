@@ -1,0 +1,106 @@
+{
+  "id": "people__last_day_in_kyoto",
+  "album": "people",
+  "file": "Last_day_in_Kyoto.jpg",
+  "source": "people/Last_day_in_Kyoto.jpg",
+  "slug": "last_day_in_kyoto",
+  "title": "Last day in Kyoto",
+  "caption": null,
+  "date": "2007-11-26T10:28:02",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 11,
+    "focal": 32,
+    "focal35": 48,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": "Kyoto Station"
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [],
+  "rating": 3,
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "jAgKDYA2U7SnZYd/VoZ5iDShXwTJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQGB//EABcBAQEBAQAAAAAAAAAAAAAAAAIDAAH/2gAMAwEAAhADEAAAAM/kh5nAqGS//8QAIRAAAgEDAwUAAAAAAAAAAAAAAgQDAAERBRJxISI0Q7H/2gAIAQEAAT8AUfeV0xpeLxWyEJuRtm1OTSSsRnswPft4Is1p4DdS3T2UjBCc8GQt8r//xAAaEQACAwEBAAAAAAAAAAAAAAAAAQIRMmGB/9oACAECAQE/AHV9I5onrwk3TP/EABYRAQEBAAAAAAAAAAAAAAAAABABMf/aAAgBAwEBPwAmH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 17368,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__last_day_in_kyoto/252dfcbc-grid.avif",
+      "key": "people__last_day_in_kyoto/252dfcbc-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 57460,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__last_day_in_kyoto/252dfcbc-jpeg1600.jpg",
+      "key": "people__last_day_in_kyoto/252dfcbc-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 136383,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/people/Last_day_in_Kyoto.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-26",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 11,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 32,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "f8c430fd43f89281",
+  "sourceSize": 136383,
+  "sourceMtime": 1792783285143.2622,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "542bb8e368104b51"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "light__hanamikoji",
+  "album": "light",
+  "file": "Hanamikoji.jpg",
+  "source": "light/Hanamikoji.jpg",
+  "slug": "hanamikoji",
+  "title": "Hanamikoji",
+  "caption": null,
+  "date": "2005-04-05T17:44:50",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 13,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "yxgGFYIUarVveIeTW3doeQFfEdAF",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgUGB//EABcBAAMBAAAAAAAAAAAAAAAAAAADBAX/2gAMAwEAAhADEAAAAM9na7ifHakhB//EACEQAAICAQIHAAAAAAAAAAAAAAECAAMEISIFERMUMUNx/9oACAEBAAE/AMS5WoylJ9RK/ROJdrgpQnVVy1aHbr5EG1dISSBzJM//xAAeEQEAAQIHAAAAAAAAAAAAAAABAwACEBETISIyYv/aAAgBAgEBPwCU5RPvJqHUlkkA63O+ABX/xAAZEQEBAQEBAQAAAAAAAAAAAAABAgAxQWH/2gAIAQMBAT8AjlnzWREwvpnuVd//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14419,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__hanamikoji/29e2c576-grid.avif",
+      "key": "light__hanamikoji/29e2c576-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 31701,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__hanamikoji/29e2c576-jpeg1600.jpg",
+      "key": "light__hanamikoji/29e2c576-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 175967,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Hanamikoji.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 13,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "6a6881735d243d62",
+  "sourceSize": 175967,
+  "sourceMtime": 1792783285001.9507,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "0831d05992280462"
+}

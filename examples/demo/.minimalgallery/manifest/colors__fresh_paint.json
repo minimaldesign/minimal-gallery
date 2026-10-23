@@ -1,0 +1,113 @@
+{
+  "id": "colors__fresh_paint",
+  "album": "colors",
+  "file": "Fresh_Paint.jpg",
+  "source": "colors/Fresh_Paint.jpg",
+  "slug": "fresh_paint",
+  "title": "Fresh Paint",
+  "caption": "That's how it felt at the time...  Montmartre, Paris.",
+  "date": "2005-01-14T09:38:33",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 4.5,
+    "focal": 120,
+    "focal35": 180,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [
+    "Paris"
+  ],
+  "rating": null,
+  "copyright": "© 2004 minimal Design All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "2PcFDYCN0IlttpeFuqWod/eEfE+4",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAC0SCIYFf//EACAQAAICAgICAwAAAAAAAAAAAAECAwQREgATISMxUcH/2gAIAQEAAT8ArCa1Z7LRkrqxcH3a4AGwy3I7PdfenFNNiW3qknYX9bHGCv7wTytLajZsoNcA+fvlCWWOfsRyrq51YfIxz//EABsRAQABBQEAAAAAAAAAAAAAAAECABARITFB/9oACAECAQE/AIAy3ynHhf8A/8QAFhEAAwAAAAAAAAAAAAAAAAAAASAx/9oACAEDAQE/ADE//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 21473,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__fresh_paint/134e82a6-grid.avif",
+      "key": "colors__fresh_paint/134e82a6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 47996,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__fresh_paint/134e82a6-jpeg1600.jpg",
+      "key": "colors__fresh_paint/134e82a6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 150402,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Fresh_Paint.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 120,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "paris",
+        "label": "Paris"
+      }
+    ],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "dd455691e2b4a8d6",
+  "sourceSize": 150402,
+  "sourceMtime": 1792783285000.426,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2bd1deca919941fc"
+}

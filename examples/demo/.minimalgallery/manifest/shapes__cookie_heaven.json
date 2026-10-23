@@ -1,0 +1,98 @@
+{
+  "id": "shapes__cookie_heaven",
+  "album": "shapes",
+  "file": "Cookie_Heaven.jpg",
+  "source": "shapes/Cookie_Heaven.jpg",
+  "slug": "cookie_heaven",
+  "title": "Cookie Heaven",
+  "caption": null,
+  "date": "2005-04-10T20:18:04",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 250,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8029,
+    "c": 0.163,
+    "h": 89.53
+  },
+  "thumbhash": "XFwOJYJnZ4h2eIePeLh4iWdxfwcH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIG/8QAGAEAAgMAAAAAAAAAAAAAAAAAAQUAAgb/2gAMAwEAAhADEAAAAJyDgDrU9xn/xAAiEAABAwIGAwAAAAAAAAAAAAACAQMSABEEBQYhInEjYXL/2gAIAQEAAT8Aw2Z6hJohkchb5/NO5nqAGGkkXIPD1asOAFK4puEV6p0AFRFBSwNxH0lf/8QAHBEBAAICAwEAAAAAAAAAAAAAAQIRAAMEIWFx/9oACAECAQE/AJnFhLrYkZNFOEeLOaOxqDUu8tK+rirfrbn/xAAYEQEBAQEBAAAAAAAAAAAAAAABAgARMf/aAAgBAwEBPwAhZnsncw8pJOvmXG//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 17064,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__cookie_heaven/a147abc4-grid.avif",
+      "key": "shapes__cookie_heaven/a147abc4-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 40069,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__cookie_heaven/a147abc4-jpeg1600.jpg",
+      "key": "shapes__cookie_heaven/a147abc4-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 150845,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Cookie_Heaven.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-10",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 250,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "de606a91cd0f2cdd",
+  "sourceSize": 150845,
+  "sourceMtime": 1792783285013.8733,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "9518e42dfe948e4e"
+}

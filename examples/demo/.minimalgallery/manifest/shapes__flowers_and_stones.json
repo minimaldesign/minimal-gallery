@@ -1,0 +1,98 @@
+{
+  "id": "shapes__flowers_and_stones",
+  "album": "shapes",
+  "file": "Flowers_and_Stones.jpg",
+  "source": "shapes/Flowers_and_Stones.jpg",
+  "slug": "flowers_and_stones",
+  "title": "Flowers and Stones",
+  "caption": null,
+  "date": "2005-01-31T10:38:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 7.1,
+    "focal": 25,
+    "focal35": 37,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9791,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "JQgSBYDQeJtnh4iadoiHdxKHPzv2",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQf/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAAFKcDSqn/xAAiEAACAQMEAgMAAAAAAAAAAAACAwEABBEFEhMhBkEUIjH/2gAIAQEAAT8AfdMRf6lPxrd4tcalNcBFsmDnuvE2vvNH5zMB3vb9AVAiNXMcbcBMxC3E0Iz+HPuK0lYptW8eRyySnv3OK//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 32299,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__flowers_and_stones/30822257-grid.avif",
+      "key": "shapes__flowers_and_stones/30822257-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 60816,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__flowers_and_stones/30822257-jpeg1600.jpg",
+      "key": "shapes__flowers_and_stones/30822257-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 143865,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Flowers_and_Stones.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 25,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8919d2e3a8d0f26b",
+  "sourceSize": 143865,
+  "sourceMtime": 1792783285034.239,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "54155b36ce7eb670"
+}

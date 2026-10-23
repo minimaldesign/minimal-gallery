@@ -1,0 +1,106 @@
+{
+  "id": "light__reflection",
+  "album": "light",
+  "file": "Reflection.jpg",
+  "source": "light/Reflection.jpg",
+  "slug": "reflection",
+  "title": "Reflection",
+  "caption": "\"man may have been a mere accident, a by-product evolved in the process. It is as if the scum upon the surface of the ocean imagined that the ocean was created in order to produce and sustain it\" &mdash; Conan Doyle",
+  "date": "2005-11-03T16:50:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Coney Island"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5242,
+    "c": 0.0508,
+    "h": 84.2
+  },
+  "thumbhash": "GUoGFYIDd2gtd4iAeIhmcVYMc8Uw",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAXAQADAQAAAAAAAAAAAAAAAAADBAUC/9oADAMBAAIQAxAAAAAyRRUFuZYEU2D/xAAhEAABBAEDBQAAAAAAAAAAAAADAQIEEQAFExQxQ1Fiof/aAAgBAQABPwDTo4GUowkJ7P6fcIQAGqrm2vi0a285clO87JE2VRF3Vu8//8QAHxEAAgICAQUAAAAAAAAAAAAAAQIAAyEiERIxQVFh/9oACAECAQE/ALbOcPYo+L3nRZYddR78yutAMKBFRdcT/8QAHBEAAgICAwAAAAAAAAAAAAAAAQIAMQMiElFh/9oACAEDAQE/AMaNaox9apyxoNtj0KjsxtiYTc//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23834,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__reflection/2b59d81b-grid.avif",
+      "key": "light__reflection/2b59d81b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 56739,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__reflection/2b59d81b-jpeg1600.jpg",
+      "key": "light__reflection/2b59d81b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 147020,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Reflection.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "f04d1ebe9df90c41",
+  "sourceSize": 147020,
+  "sourceMtime": 1792783285052.277,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "655f86fdd6298fce"
+}

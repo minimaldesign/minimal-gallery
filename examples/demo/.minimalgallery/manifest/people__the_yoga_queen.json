@@ -1,0 +1,95 @@
+{
+  "id": "people__the_yoga_queen",
+  "album": "people",
+  "file": "The_yoga_queen.jpg",
+  "source": "people/The_yoga_queen.jpg",
+  "slug": "the_yoga_queen",
+  "title": "The yoga queen",
+  "caption": null,
+  "date": "2004-09-12T13:39:22",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3879,
+    "c": 0.0203,
+    "h": 196.34
+  },
+  "thumbhash": "4QcODYKGdneAh3iHh3eIeGkNGAh4",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAIG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/9oADAMBAAIQAxAAAAAaXnbwpq//xAAgEAACAQMEAwAAAAAAAAAAAAACAwEAERMEBSFSEiIx/9oACAEBAAE/AA2g+YJQDMdqTtGc2CRDitfMuPW/21aNCiRKSDyX1nmKXpkJIIWoRi1f/8QAGxEAAgMBAQEAAAAAAAAAAAAAAREAAgMSMaH/2gAIAQIBAT8A6gy0OlbBojx/Z0algwaXRRTn/8QAGxEAAgIDAQAAAAAAAAAAAAAAAQIAEQMSMVH/2gAIAQMBAT8A1inEylLG9+QEjk3auz//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 36380,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__the_yoga_queen/82b2f9ea-grid.avif",
+      "key": "people__the_yoga_queen/82b2f9ea-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 69819,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__the_yoga_queen/82b2f9ea-jpeg1600.jpg",
+      "key": "people__the_yoga_queen/82b2f9ea-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 129923,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/The_yoga_queen.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "09",
+    "day": "09-12",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "292969a140a1f827",
+  "sourceSize": 129923,
+  "sourceMtime": 1792783284897.0784,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d370fae694120c82"
+}

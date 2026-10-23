@@ -1,0 +1,106 @@
+{
+  "id": "light__this_morning",
+  "album": "light",
+  "file": "This_Morning.jpg",
+  "source": "light/This_Morning.jpg",
+  "slug": "this_morning",
+  "title": "This Morning's Clouds...",
+  "caption": null,
+  "date": "2006-08-22T05:47:26",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "50.0 mm f/1.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Carrol Gardens"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8328,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "6ecFFYIQZXcBiXeSiWinh1NAJQRE",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgID/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwL/2gAMAwEAAhADEAAAANWBSSWdnKj/xAAgEAAABgICAwAAAAAAAAAAAAAAAQIDBBEFEiFRMnHB/9oACAEBAAE/AMRgmFII5JotKfHoJYix003oXz0QhKMoSXCrbuhkpL2rq9+SuuCH/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECAxIxQf/aAAgBAgEBPwCdj4ZNj2I//8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECAxIxQf/aAAgBAwEBPwCNa6YpC0M//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 15411,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__this_morning/56eee2a4-grid.avif",
+      "key": "light__this_morning/56eee2a4-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 33534,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__this_morning/56eee2a4-jpeg1600.jpg",
+      "key": "light__this_morning/56eee2a4-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 137834,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/This_Morning.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2006",
+    "month": "08",
+    "day": "08-22",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "50-0-mm-f-1-8",
+      "label": "50.0 mm f/1.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "3e7b30a9be7b04f5",
+  "sourceSize": 137834,
+  "sourceMtime": 1792783285060.9067,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b6c240f5636de6bb"
+}

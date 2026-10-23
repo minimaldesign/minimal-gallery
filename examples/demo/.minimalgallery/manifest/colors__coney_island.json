@@ -1,0 +1,98 @@
+{
+  "id": "colors__coney_island",
+  "album": "colors",
+  "file": "Coney_Island.jpg",
+  "source": "colors/Coney_Island.jpg",
+  "slug": "coney_island",
+  "title": "Coney Island",
+  "caption": null,
+  "date": "2004-11-01T17:20:36",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 5,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3967,
+    "c": 0.0258,
+    "h": 107.52
+  },
+  "thumbhash": "G0oGFYLc/owat6t8homJh98F11xg",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMFBv/EABcBAQEBAQAAAAAAAAAAAAAAAAUEAAL/2gAMAwEAAhADEAAAAEDIl1rEVOMVP//EACUQAAECBAQHAAAAAAAAAAAAAAIAAQMEBTIGEUGBEhMVISIjUv/aAAgBAQABPwCqQ5iXxBEqJW8pgEtLeHZdVyfyYxz+SVTf2OppmhRhEOwnc2j7L//EAB0RAAICAwADAAAAAAAAAAAAAAEDAAIRISISMUH/2gAIAQIBAT8AS4NSKZ7zueDPlsxIEX3Qm2yPRn//xAAdEQACAgIDAQAAAAAAAAAAAAABAwACEiIREzFB/9oACAEDAQE/AGL62ZcazKn2sYYzW4A8M//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23781,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__coney_island/4b64ff8a-grid.avif",
+      "key": "colors__coney_island/4b64ff8a-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 46388,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__coney_island/4b64ff8a-jpeg1600.jpg",
+      "key": "colors__coney_island/4b64ff8a-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 151576,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Coney_Island.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8d3d00ec0fce3494",
+  "sourceSize": 151576,
+  "sourceMtime": 1792783284981.2703,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "41a1e775a415f41c"
+}

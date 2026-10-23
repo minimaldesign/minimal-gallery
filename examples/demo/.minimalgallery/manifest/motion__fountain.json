@@ -1,0 +1,95 @@
+{
+  "id": "motion__fountain",
+  "album": "motion",
+  "file": "Fountain.jpg",
+  "source": "motion/Fountain.jpg",
+  "slug": "fountain",
+  "title": "Fountain",
+  "caption": null,
+  "date": "2004-10-01T15:33:53",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/2000",
+    "shutterSeconds": 0.0005,
+    "aperture": 4.5,
+    "focal": 48,
+    "focal35": 72,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DvgJDYAGjKRGZpmHh3iYiMcMzI/U",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMFB//EABYBAQEBAAAAAAAAAAAAAAAAAAACAf/aAAwDAQACEAMQAAAAzwpyDdRU/wD/xAAjEAACAQIEBwAAAAAAAAAAAAABAgQAAwUREiEGFDEyQXFy/9oACAEBAAE/AIUcxWW85zUj2tYjdt2+Wa2WMd1BUAAacuoqQcpGkdqkADwAK4jJSRHtLsix0IX63Nf/xAAYEQADAQEAAAAAAAAAAAAAAAAAAQIxEP/aAAgBAgEBPwDRwqJxc//EABkRAAIDAQAAAAAAAAAAAAAAAAABAhAxMv/aAAgBAwEBPwDBMl06/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 56258,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/motion__fountain/f4de589a-grid.avif",
+      "key": "motion__fountain/f4de589a-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 103582,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/motion__fountain/f4de589a-jpeg1600.jpg",
+      "key": "motion__fountain/f4de589a-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 178994,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/motion/Fountain.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0005,
+      "label": "1/2000"
+    },
+    "iso": null,
+    "focal": 48,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8cfb6780a3969746",
+  "sourceSize": 178994,
+  "sourceMtime": 1792783285074.5208,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "282489f7838ac4f6"
+}

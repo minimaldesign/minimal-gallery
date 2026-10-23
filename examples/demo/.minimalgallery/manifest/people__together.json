@@ -1,0 +1,110 @@
+{
+  "id": "people__together",
+  "album": "people",
+  "file": "Together.jpg",
+  "source": "people/Together.jpg",
+  "slug": "together",
+  "title": "Together",
+  "caption": null,
+  "date": "2005-01-30T11:28:04",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 4,
+    "focal": 145,
+    "focal35": 217,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche",
+    "People"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "2PcJFYLc5mTAhnRYV0h2hdmPyPtp",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAAOVhVnq2TP//EACIQAAIBAwQCAwAAAAAAAAAAAAECAwAEBRESEyEGMSIjQf/aAAgBAQABPwDIJjo3sYI4uR95dowdNwA7JoWLm7gQxv8Aa3xVDr7PVW6rNkzyKrEWx/K8cdjmAx9hHAr/xAAaEQEBAAMBAQAAAAAAAAAAAAABAgADESEi/9oACAECAQE/ACLq35e5Wu4fYc6zxF6OblQ9c//EABoRAQADAQEBAAAAAAAAAAAAAAEAAhEhAzL/2gAIAQMBAT8AbUKV6ZuwvR+bEwRM5PMNeE//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 29296,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__together/755bc852-grid.avif",
+      "key": "people__together/755bc852-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 61452,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__together/755bc852-jpeg1600.jpg",
+      "key": "people__together/755bc852-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 152668,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Together.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 145,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      },
+      {
+        "slug": "people",
+        "label": "People"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "14c719c99363f1c4",
+  "sourceSize": 152668,
+  "sourceMtime": 1792783284902.0027,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d12babbb6a568958"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "shapes__wood_and_sand",
+  "album": "shapes",
+  "file": "Wood_and_Sand.jpg",
+  "source": "shapes/Wood_and_Sand.jpg",
+  "slug": "wood_and_sand",
+  "title": "Wood and Sand",
+  "caption": null,
+  "date": "2004-11-01T16:53:35",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/400",
+    "shutterSeconds": 0.0025,
+    "aperture": 8,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Spot",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.6771,
+    "c": 0.1225,
+    "h": 68.76
+  },
+  "thumbhash": "lTkONYZ3iYiQeHiKd5d3dneAdweI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgID/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIEBf/aAAwDAQACEAMQAAAAKQ1WrMMy7YN//8QAIhAAAQIFBAMAAAAAAAAAAAAAAgEDAAQREhMFITKhQUJj/9oACAEBAAE/ADlXs2JqVcK0lQraF2tIPSJ/FlIbQT1uGsNcyX6H1A7tMovkI//EAB0RAAEDBQEAAAAAAAAAAAAAAAEAAhIDBBExcUL/2gAIAQIBAT8AFcRk5zRnWULynKIGTxO0OBen9X//xAAeEQACAQMFAAAAAAAAAAAAAAAAAQIEEjEREyJCcf/aAAgBAwEBPwDa5WqMh007dcIWX6zrE//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 38489,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__wood_and_sand/ef1d60b6-grid.avif",
+      "key": "shapes__wood_and_sand/ef1d60b6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 74163,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__wood_and_sand/ef1d60b6-jpeg1600.jpg",
+      "key": "shapes__wood_and_sand/ef1d60b6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 141566,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Wood_and_Sand.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.0025,
+      "label": "1/400"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e10b54f49ff187e4",
+  "sourceSize": 141566,
+  "sourceMtime": 1792783285125.7786,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "9f080d28a09af3ff"
+}

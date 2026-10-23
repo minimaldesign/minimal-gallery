@@ -1,0 +1,98 @@
+{
+  "id": "shapes__straight_lines",
+  "album": "shapes",
+  "file": "Straight_lines.jpg",
+  "source": "shapes/Straight_lines.jpg",
+  "slug": "straight_lines",
+  "title": "Straight lines",
+  "caption": null,
+  "date": "2004-11-01T16:50:38",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/400",
+    "shutterSeconds": 0.0025,
+    "aperture": 8,
+    "focal": 29,
+    "focal35": 43,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5829,
+    "c": 0.0309,
+    "h": 67.16
+  },
+  "thumbhash": "XecJJYZnl5Z/d3h4d4iIendwcwc3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwAG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIEA//aAAwDAQACEAMQAAAAqcGVs5NQLD//xAAlEAACAQICCwAAAAAAAAAAAAACAwEABEFhBRITIjEzQkORk9H/2gAIAQEAAT8ATdMHrL1B9qdIHF1altGbot7K8YjOgSrV5YeKclUNTMLHgeGVf//EAB0RAAIBBAMAAAAAAAAAAAAAAAECAAQREiEUUVL/2gAIAQIBAT8A5rQ1TNvqZN6MDNY7M//EABsRAQABBQEAAAAAAAAAAAAAAAEAAhEUIVES/9oACAEDAQE/AMQmMGuzzTwiFzRP/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 22318,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__straight_lines/6cbb2ae5-grid.avif",
+      "key": "shapes__straight_lines/6cbb2ae5-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 50725,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__straight_lines/6cbb2ae5-jpeg1600.jpg",
+      "key": "shapes__straight_lines/6cbb2ae5-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 142868,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Straight_lines.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.0025,
+      "label": "1/400"
+    },
+    "iso": 200,
+    "focal": 29,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "d4b9ea9f324f526b",
+  "sourceSize": 142868,
+  "sourceMtime": 1792783285111.2463,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ec6b901da7a3481e"
+}

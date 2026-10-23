@@ -1,0 +1,89 @@
+{
+  "id": "colors__noguchi",
+  "album": "colors",
+  "file": "noguchi.jpg",
+  "source": "colors/noguchi.jpg",
+  "slug": "noguchi",
+  "title": "Noguchi",
+  "caption": null,
+  "date": "2026-10-23T12:21:24",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 602,
+  "height": 899,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "0/gNFQKQiIZ4aIiGaIZ3l7C1DGyZ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAYABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgf/xAAWAQEBAQAAAAAAAAAAAAAAAAADBAL/2gAMAwEAAhADEAAAAJxPheSHKDakgjZPYqv/xAAlEAACAgECBgIDAAAAAAAAAAABAgMRBAAFEhMiQUJSIWGBwtH/2gAIAQEAAT8AjsZES1dLbfQGtqgyJ845aSApicscZS05j6xrPPm6bKnhv1j/AKdQYm7bPhRskIVI0DzK9Hjdz+ulFrGD8PAequ/qR+dbTuGXuhTBLq8bU83izBfC/vvr/8QAIBEAAQQBBAMAAAAAAAAAAAAAAQACAyERBBIxYRNxwf/aAAgBAgEBPwAtaQF4gWv759LAtSO2VYJF9p3FLVTPibJIRnOAD9X/xAAcEQEAAwACAwAAAAAAAAAAAAABAAIhMUEDEWH/2gAIAQMBAT8AOGF0a2jgHayhZ0BqcQxX5k8AWKV6Paz/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 429,
+      "height": 640,
+      "bytes": 13007,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__noguchi/bed6f1ca-grid.avif",
+      "key": "colors__noguchi/bed6f1ca-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 602,
+      "height": 899,
+      "bytes": 44478,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__noguchi/bed6f1ca-jpeg1600.jpg",
+      "key": "colors__noguchi/bed6f1ca-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 192925,
+    "width": 602,
+    "height": 899,
+    "relativePath": "photos/colors/noguchi.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "4985c31291b8f8d4",
+  "sourceSize": 192925,
+  "sourceMtime": 1792783284947.647,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "f43fb623f5abcd72"
+}

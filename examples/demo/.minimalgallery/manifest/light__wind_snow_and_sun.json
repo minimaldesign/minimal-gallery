@@ -1,0 +1,105 @@
+{
+  "id": "light__wind_snow_and_sun",
+  "album": "light",
+  "file": "Wind_Snow_and_Sun.jpg",
+  "source": "light/Wind_Snow_and_Sun.jpg",
+  "slug": "wind_snow_and_sun",
+  "title": "Wind Snow and Sun",
+  "caption": null,
+  "date": "2005-01-25T10:50:41",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 5.6,
+    "focal": 125,
+    "focal35": 187,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Thorenc"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4102,
+    "c": 0.0522,
+    "h": 83.62
+  },
+  "thumbhash": "FhkODYJ6mWavl3h2eIiHh6e3YIkL",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABgBAAIDAAAAAAAAAAAAAAAAAAIDAAEE/9oADAMBAAIQAxAAAAAcL5NzFOWwBf/EACAQAAEEAgIDAQAAAAAAAAAAAAMBAgQRACESMQUiM0H/2gAIAQEAAT8Al+YESRBMMyN+nJ1dqutouTivkqMoROHwTdP9bRdVeOe7n3+5FkHV77Iq3n//xAAcEQACAgIDAAAAAAAAAAAAAAABAgARA1EQITH/2gAIAQIBAT8AVmF2PIcnY3wyjU//xAAXEQEBAQEAAAAAAAAAAAAAAAABABES/9oACAEDAQE/AEHLmIb/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 50796,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__wind_snow_and_sun/5049c8f0-grid.avif",
+      "key": "light__wind_snow_and_sun/5049c8f0-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 95756,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__wind_snow_and_sun/5049c8f0-jpeg1600.jpg",
+      "key": "light__wind_snow_and_sun/5049c8f0-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 181514,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Wind_Snow_and_Sun.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-25",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 125,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "thorenc",
+        "label": "Thorenc"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "17bd334df26b8bf3",
+  "sourceSize": 181514,
+  "sourceMtime": 1792783285069.6042,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1ef2cf24a33696e3"
+}

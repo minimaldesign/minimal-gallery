@@ -1,0 +1,98 @@
+{
+  "id": "shapes__cidre",
+  "album": "shapes",
+  "file": "Cidre.jpg",
+  "source": "shapes/Cidre.jpg",
+  "slug": "cidre",
+  "title": "Cidre",
+  "caption": null,
+  "date": "2005-01-31T09:20:23",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 11,
+    "focal": 34,
+    "focal35": 51,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HggSBYC0R4e/h3iUaUp6qAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAYH/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAQOMULk//xAAjEAABAgUDBQAAAAAAAAAAAAADAgQAAQUGEhEiUhMhMTNy/9oACAEBAAE/AHt0yf0pblVS0TMXoGtKJ5cIZAsldKBUVgC7ckEnLXevPjBhD6OeO7XzFgz7n+0x/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13604,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__cidre/760565eb-grid.avif",
+      "key": "shapes__cidre/760565eb-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 31209,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__cidre/760565eb-jpeg1600.jpg",
+      "key": "shapes__cidre/760565eb-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 134138,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Cidre.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 11,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 34,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "07da34dbef7d2492",
+  "sourceSize": 134138,
+  "sourceMtime": 1792783284992.0105,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b51d177e37b419fa"
+}

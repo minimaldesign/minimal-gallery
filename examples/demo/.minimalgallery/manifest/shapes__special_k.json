@@ -1,0 +1,106 @@
+{
+  "id": "shapes__special_k",
+  "album": "shapes",
+  "file": "Special_K.jpg",
+  "source": "shapes/Special_K.jpg",
+  "slug": "special_k",
+  "title": "Special K",
+  "caption": null,
+  "date": "2006-03-05T13:16:21",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "100.0 mm f/3.5",
+  "exposure": {
+    "shutter": "1/640",
+    "shutterSeconds": 0.0015625,
+    "aperture": 6.3,
+    "focal": 100,
+    "focal35": 150,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "My Kitchen"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2301,
+    "c": 0.026,
+    "h": 19.24
+  },
+  "thumbhash": "migKBYKFuMNQmox1mIWphYlAlQhU",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAEF/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQADBP/aAAwDAQACEAMQAAAAwceltIGp/8QAIBAAAQMFAQADAAAAAAAAAAAAAwECEgAEBREiIRMUUv/aAAgBAQABPwB+Gee+Dc3IpgYJjy9p3zQbUIsji4gH9QhT/HJPWS9bqhmK3F7lvd0oFl1sc4x9rPOWzscWUHDw3cRr+UXyv//EABoRAAICAwAAAAAAAAAAAAAAAAABAkEREiH/2gAIAQIBAT8A2wimWR6f/8QAHREAAgIBBQAAAAAAAAAAAAAAAAERIQISMUFRcf/aAAgBAwEBPwDTLTZENUcL0zrbs//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 29337,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__special_k/7a310e1d-grid.avif",
+      "key": "shapes__special_k/7a310e1d-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 59309,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__special_k/7a310e1d-jpeg1600.jpg",
+      "key": "shapes__special_k/7a310e1d-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 140329,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Special_K.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2006",
+    "month": "03",
+    "day": "03-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "100-0-mm-f-3-5",
+      "label": "100.0 mm f/3.5"
+    },
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.0015625,
+      "label": "1/640"
+    },
+    "iso": 200,
+    "focal": 100,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "c1c8bebea2f88fb4",
+  "sourceSize": 140329,
+  "sourceMtime": 1792783285101.8606,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2dede2b0ba51893f"
+}

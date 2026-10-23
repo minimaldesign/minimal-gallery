@@ -1,0 +1,98 @@
+{
+  "id": "colors__tulipe",
+  "album": "colors",
+  "file": "Tulipe.jpg",
+  "source": "colors/Tulipe.jpg",
+  "slug": "tulipe",
+  "title": "Tulipe",
+  "caption": null,
+  "date": "2005-02-19T15:32:47",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 52,
+    "focal35": 78,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.931,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "L/gJDYC6e4W/ZIhKl2a3iA9WAtl7",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUH/8QAFwEBAQEBAAAAAAAAAAAAAAAAAwABAv/aAAwDAQACEAMQAAAA0IqWmHo13a//xAAiEAACAgIABgMAAAAAAAAAAAABAgMEABEFEhUhMUFCUVL/2gAIAQEAAT8AuX4q0b88qx6Qts+tZJxM3XjjohJ4wqmSfxH3/P2ctk3ehR2CXSyY0mB+Y37yxqOMIgCoo0FA0AM//8QAGxEAAgMAAwAAAAAAAAAAAAAAAQIAERIDIsH/2gAIAQIBAT8AbkUOE12IuosobuhePYon/8QAGhEBAQACAwAAAAAAAAAAAAAAAREAIQIQcf/aAAgBAwEBPwAGLNGDfMreBdPX/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 7895,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__tulipe/c0640dc9-grid.avif",
+      "key": "colors__tulipe/c0640dc9-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 19604,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__tulipe/c0640dc9-jpeg1600.jpg",
+      "key": "colors__tulipe/c0640dc9-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 134264,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Tulipe.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-19",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 52,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "dfb7963d39ff0f78",
+  "sourceSize": 134264,
+  "sourceMtime": 1792783284871.903,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ce864bf9544d6439"
+}

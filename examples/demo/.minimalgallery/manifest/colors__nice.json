@@ -1,0 +1,106 @@
+{
+  "id": "colors__nice",
+  "album": "colors",
+  "file": "Nice.jpg",
+  "source": "colors/Nice.jpg",
+  "slug": "nice",
+  "title": "Nice",
+  "caption": "Shot in Nice, South of France, in February.  The weather was strange that day.  My eyes got caught by the contrast between the vibrant blue of the Mediterranean and the melancholic pastels of the cloudy Winter sky...  and that weird looking plant too I guess...",
+  "date": "2005-01-28T11:57:20",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 52,
+    "focal35": 78,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nice",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Nice, France",
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9791,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "LrcFHYphgllslmd/h6d2aICfWPdp",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EABcBAQEBAQAAAAAAAAAAAAAAAAQFAwb/2gAMAwEAAhADEAAAANIwdY269LmAVL//xAAfEAABBAICAwAAAAAAAAAAAAABAAIDBAUiESExMoH/2gAIAQEAAT8Ao2pWgcRqDJXJHTAeoI418Kq1oA6WPY0OuajWbr6F/8QAGhEAAgMBAQAAAAAAAAAAAAAAAAECAxEhcv/aAAgBAgEBPwB1slDdGJds9H//xAAbEQACAgMBAAAAAAAAAAAAAAABAgADERQhMf/aAAgBAwEBPwDYSC1RjoisSZYzYp76k//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16879,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__nice/fa113af2-grid.avif",
+      "key": "colors__nice/fa113af2-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 36158,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__nice/fa113af2-jpeg1600.jpg",
+      "key": "colors__nice/fa113af2-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 128593,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Nice.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 52,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "nice-france",
+      "label": "Nice, France"
+    }
+  },
+  "sourceHash": "e4e1173d0f3b4e36",
+  "sourceSize": 128593,
+  "sourceMtime": 1792783285017.2827,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "898c5461f86c1006"
+}

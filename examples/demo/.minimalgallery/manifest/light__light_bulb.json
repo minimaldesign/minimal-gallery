@@ -1,0 +1,113 @@
+{
+  "id": "light__light_bulb",
+  "album": "light",
+  "file": "Light_bulb.jpg",
+  "source": "light/Light_bulb.jpg",
+  "slug": "light_bulb",
+  "title": "Light bulb",
+  "caption": "I found this feather filled light bulb in a store window somewhere in Paris.  It was shot at dusk and the light environment was pretty funky.  Came out kind of interesting.",
+  "date": "2005-01-12T12:06:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 4.5,
+    "focal": 46,
+    "focal35": 69,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [
+    "Paris"
+  ],
+  "rating": null,
+  "copyright": "© 2004 minimal Design All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1451,
+    "c": 0.0344,
+    "h": 281.23
+  },
+  "thumbhash": "CCgKPYzfm2d4d4hVdneIh+909H13",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAVAQEBAAAAAAAAAAAAAAAAAAAFBP/aAAwDAQACEAMQAAAAiJkpRgpMpYpEr//EAB4QAAIBAwUAAAAAAAAAAAAAAAEDAgAEBQYQERJB/9oACAEBAAE/ANVY9GPu0BTBMTX5RkKyzGMfHvIniO3/xAAcEQACAwEAAwAAAAAAAAAAAAABAgADEQUEMkL/2gAIAQIBAT8A4vQt8tb2tUaGX1GR7lHzOciLUcXNMYCf/8QAHREAAQQCAwAAAAAAAAAAAAAAAgABAxEFEBMhYf/aAAgBAwEBPwDKQhHwuIEFsXReJmWVMimC3uh1/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 7768,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__light_bulb/22848482-grid.avif",
+      "key": "light__light_bulb/22848482-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 17608,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__light_bulb/22848482-jpeg1600.jpg",
+      "key": "light__light_bulb/22848482-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 151288,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Light_bulb.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-12",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": 200,
+    "focal": 46,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "paris",
+        "label": "Paris"
+      }
+    ],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "c805426a85f0b8d6",
+  "sourceSize": 151288,
+  "sourceMtime": 1792783285015.992,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "bc52eb16e863ab21"
+}

@@ -1,0 +1,95 @@
+{
+  "id": "people__yogi_protester",
+  "album": "people",
+  "file": "Yogi_protester.jpg",
+  "source": "people/Yogi_protester.jpg",
+  "slug": "yogi_protester",
+  "title": "Yogi protester",
+  "caption": null,
+  "date": "2004-08-31T16:05:17",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5471,
+    "c": 0.0722,
+    "h": 123.78
+  },
+  "thumbhash": "legFFYILanpIpodPpsh2knqQi/hG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQME/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgMAAQT/2gAMAwEAAhADEAAAAAEDNkUwBhKv/8QAHhAAAgEFAQEBAAAAAAAAAAAAAQIEAAMREiExQVH/2gAIAQEAAT8AtpfQs4sdDZZS4OfwCpUia9t1MRADkcbYnP3tBF91Gfakgamv/8QAHBEAAgICAwAAAAAAAAAAAAAAAAEDEQISIUFx/9oACAECAQE/ANou2xSx+mzqr4MT/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERMRD/2gAIAQMBAT8Ac1WFq18Z/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 44610,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__yogi_protester/44f8b33b-grid.avif",
+      "key": "people__yogi_protester/44f8b33b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 87776,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__yogi_protester/44f8b33b-jpeg1600.jpg",
+      "key": "people__yogi_protester/44f8b33b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 164293,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Yogi_protester.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "220f6fb17a189b6a",
+  "sourceSize": 164293,
+  "sourceMtime": 1792783284944.6921,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "bf8aa9d611ffff2c"
+}

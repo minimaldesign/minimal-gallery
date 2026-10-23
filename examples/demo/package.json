@@ -5,6 +5,8 @@
   "scripts": {
     "photos": "mg-pipeline .",
     "dev": "astro dev",
+    "admin": "minimalgallery admin",
+    "sync": "minimalgallery sync",
     "build": "astro build",
     "preview": "astro preview",
     "deploy": "astro build && wrangler deploy"
@@ -15,7 +17,11 @@
     "astro": "^7.4.2"
   },
   "devDependencies": {
+    "minimalgallery": "workspace:*",
     "playwright": "1.64.1",
     "wrangler": "^4.152.0"
+  },
+  "minimalgallery": {
+    "publish": "git"
   }
 }

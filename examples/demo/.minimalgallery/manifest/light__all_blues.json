@@ -1,0 +1,95 @@
+{
+  "id": "light__all_blues",
+  "album": "light",
+  "file": "All_Blues.jpg",
+  "source": "light/All_Blues.jpg",
+  "slug": "all_blues",
+  "title": "All Blues",
+  "caption": null,
+  "date": "2008-05-09T11:21:50",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/4",
+    "shutterSeconds": 0.25,
+    "aperture": 1.8,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1602,
+    "c": 0.0289,
+    "h": 20.79
+  },
+  "thumbhash": "jVkONYiviYh3d3dld4d4d6+H9ndo",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAVAQEBAAAAAAAAAAAAAAAAAAAFBP/aAAwDAQACEAMQAAAADCeh1ynokJ+07//EABwQAAICAwEBAAAAAAAAAAAAAAECAAMEBRExYf/aAAgBAQABPwDfYVVNronPkvQDs2t9z5DBnJlxJPs//8QAGREAAwEBAQAAAAAAAAAAAAAAAAECBDED/9oACAECAQE/AMvpT6QzNEqOEo//xAAaEQACAwEBAAAAAAAAAAAAAAABAgADESEE/9oACAEDAQE/AHAevc7ksUCehmDAbyOSTP/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 6751,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__all_blues/f0d2f013-grid.avif",
+      "key": "light__all_blues/f0d2f013-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 22890,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__all_blues/f0d2f013-jpeg1600.jpg",
+      "key": "light__all_blues/f0d2f013-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 91836,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/light/All_Blues.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2008",
+    "month": "05",
+    "day": "05-09",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": 1.8,
+    "shutter": {
+      "seconds": 0.25,
+      "label": "1/4"
+    },
+    "iso": 100,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "7f6493694b6097e9",
+  "sourceSize": 91836,
+  "sourceMtime": 1792783284938.0894,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b7a09a7a84bfd7ef"
+}

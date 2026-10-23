@@ -1,0 +1,106 @@
+{
+  "id": "feelings__memories",
+  "album": "feelings",
+  "file": "memories.jpg",
+  "source": "feelings/memories.jpg",
+  "slug": "memories",
+  "title": "Memories",
+  "caption": null,
+  "date": "2005-04-01T11:20:04",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 46,
+    "focal35": 69,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Tsuruga",
+    "state": "Fukui",
+    "country": "Japan",
+    "location": null
+  },
+  "placeLabel": "Tsuruga, Japan",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "0fcFBYCEU3WdmYlwe3lmg59s/Ki3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgID/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQD/2gAMAwEAAhADEAAAACSUx8t2/8QAIxAAAwABAwIHAAAAAAAAAAAAAQIDEQAEEgUxISJBQnGi0f/aAAgBAQABPwBEhuYTokUdy2QrbdAwT09wGNLGUGYiSAKcrkSmcfZtLRxsdwwxyagycDPYfuuk2rateb9o8Rjy+A+Nf//EABgRAAIDAAAAAAAAAAAAAAAAAAACEDFB/9oACAECAQE/AIwWz//EABYRAAMAAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPwCs/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 37594,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__memories/891f3044-grid.avif",
+      "key": "feelings__memories/891f3044-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 75459,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__memories/891f3044-jpeg1600.jpg",
+      "key": "feelings__memories/891f3044-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 161164,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/memories.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 46,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "tsuruga-japan",
+      "label": "Tsuruga, Japan"
+    }
+  },
+  "sourceHash": "f3ea0f095822f072",
+  "sourceSize": 161164,
+  "sourceMtime": 1792783284901.9172,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2786122c1e1d944f"
+}

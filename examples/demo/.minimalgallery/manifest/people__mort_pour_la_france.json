@@ -1,0 +1,98 @@
+{
+  "id": "people__mort_pour_la_france",
+  "album": "people",
+  "file": "Mort_pour_la_France.jpg",
+  "source": "people/Mort_pour_la_France.jpg",
+  "slug": "mort_pour_la_france",
+  "title": "Mort pour la France",
+  "caption": "I told myself I would not post huge images that don't even fit on most monitors like today's, but somehow I like the mood in this one and there was just no other way to make it work. Sorry... :)",
+  "date": "2005-01-27T08:34:15",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 11,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 980,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "VAgODQK3eICHR1eXqHxId4dwfAjH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAWABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQHA//EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/2gAMAwEAAhADEAAAAJZFGFLHmhbLRpP/xAAjEAABBAICAQUBAAAAAAAAAAABAgMEEgAFBhETISIxMlKD/9oACAEBAAE/AKqCfaPXCHWyQoCw+c5NoONQ4tGZYjS0f0vb9ZoIPHNrBjxJlxsXVLtRBFCTiNZr5rnnd8xW45ZRJ77UcESBAkCS2ZHlLlvsAO8//8QAGBEAAwEBAAAAAAAAAAAAAAAAAAEREhD/2gAIAQIBAT8A5So00aZ//8QAGBEBAAMBAAAAAAAAAAAAAAAAAAEREhD/2gAIAQMBAT8A5SpZhl//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 457,
+      "height": 640,
+      "bytes": 45589,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__mort_pour_la_france/ffd90ce2-grid.avif",
+      "key": "people__mort_pour_la_france/ffd90ce2-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 980,
+      "bytes": 161001,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__mort_pour_la_france/ffd90ce2-jpeg1600.jpg",
+      "key": "people__mort_pour_la_france/ffd90ce2-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 291321,
+    "width": 700,
+    "height": 980,
+    "relativePath": "photos/people/Mort_pour_la_France.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-27",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 11,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0a3147fb71f7ebd0",
+  "sourceSize": 291321,
+  "sourceMtime": 1792783285157.5027,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "08d37cc51bb26295"
+}

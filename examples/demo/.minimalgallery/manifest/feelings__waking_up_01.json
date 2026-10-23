@@ -1,0 +1,89 @@
+{
+  "id": "feelings__waking_up_01",
+  "album": "feelings",
+  "file": "Waking_up_01.jpg",
+  "source": "feelings/Waking_up_01.jpg",
+  "slug": "waking_up_01",
+  "title": "Waking up 01",
+  "caption": null,
+  "date": "2005-04-11T22:10:27",
+  "dateSource": "xmp",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4761,
+    "c": 0.021,
+    "h": 17.91
+  },
+  "thumbhash": "mxgKDYCGdkqfd5i3d0eXZYhg2egH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABYBAQEBAAAAAAAAAAAAAAAAAAADAv/aAAwDAQACEAMQAAAAnlQM3BJ//8QAIRAAAQMEAQUAAAAAAAAAAAAAAQIDEgAEESEFEzFBUmH/2gAIAQEAAT8AZ5O2C2i5Zt9JSIqTHE0q9jTBsVsXMYoIEmxAb+SJ1RJ0PFEkJBHcZAr/xAAaEQACAgMAAAAAAAAAAAAAAAAAAREhYYGx/9oACAECAQE/AFONF3wYrP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 35393,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__waking_up_01/d1abc2b9-grid.avif",
+      "key": "feelings__waking_up_01/d1abc2b9-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 72189,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__waking_up_01/d1abc2b9-jpeg1600.jpg",
+      "key": "feelings__waking_up_01/d1abc2b9-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 171212,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Waking_up_01.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-11",
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "949b55949ebb719f",
+  "sourceSize": 171212,
+  "sourceMtime": 1792783284855.7437,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2c8d39cf1fc797a6"
+}

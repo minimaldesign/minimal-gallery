@@ -1,0 +1,95 @@
+{
+  "id": "feelings__the_firm",
+  "album": "feelings",
+  "file": "The_Firm.jpg",
+  "source": "feelings/The_Firm.jpg",
+  "slug": "the_firm",
+  "title": "The Firm",
+  "caption": null,
+  "date": "2005-12-21T15:41:47",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 1.8,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2768,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "jfcFBYA1iHh/dneWd2Z3hsqAqQyY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAAAwjDG5HKCv//EABwQAAICAwEBAAAAAAAAAAAAAAECAxEABDEhYf/aAAgBAQABPwDU2Yg6oVBHWPyuDJpY2C2q0FHB7eKAB5kpNdz/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAwEBPwBj/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 9785,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__the_firm/9fd2fe93-grid.avif",
+      "key": "feelings__the_firm/9fd2fe93-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 23230,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__the_firm/9fd2fe93-jpeg1600.jpg",
+      "key": "feelings__the_firm/9fd2fe93-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 176177,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/The_Firm.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "12",
+    "day": "12-21",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 1.8,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "27bfe1b06cf68bfb",
+  "sourceSize": 176177,
+  "sourceMtime": 1792783285143.4915,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ddd1b5e518eb9203"
+}

@@ -1,0 +1,113 @@
+{
+  "id": "feelings__forgotten",
+  "album": "feelings",
+  "file": "Forgotten.jpg",
+  "source": "feelings/Forgotten.jpg",
+  "slug": "forgotten",
+  "title": "Forgotten",
+  "caption": "8-bit RGB flat JPEG file, 700x465 pixels (9.72x6.46 inches) @ 72.00 pixels/inch, written by Adobe Photoshop CS",
+  "date": "2005-01-16T07:53:25",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 4,
+    "focal": 112,
+    "focal35": 168,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Warsaw",
+    "state": null,
+    "country": "Poland",
+    "location": null
+  },
+  "placeLabel": "Warsaw, Poland",
+  "keywords": [
+    "Warsaw"
+  ],
+  "rating": null,
+  "copyright": "© 2004 minimal Design&#xD;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8822,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "LQgKBYCwiIeXaXeNZXeFhgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgQF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAA0xMQiM//xAAfEAACAQQCAwAAAAAAAAAAAAABAgMABAUREiETMVH/2gAIAQEAAT8AusxHakQRieWXQ6TZbusa+Q5B3hYIy+pG2y1ZRom2VQD9qJj4gK//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 21515,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__forgotten/6f7f125e-grid.avif",
+      "key": "feelings__forgotten/6f7f125e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 44338,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__forgotten/6f7f125e-jpeg1600.jpg",
+      "key": "feelings__forgotten/6f7f125e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 139518,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Forgotten.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 112,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "warsaw",
+        "label": "Warsaw"
+      }
+    ],
+    "place": {
+      "slug": "warsaw-poland",
+      "label": "Warsaw, Poland"
+    }
+  },
+  "sourceHash": "3fa164c4548ed41d",
+  "sourceSize": 139518,
+  "sourceMtime": 1792783285049.5225,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c1c0d12ffb3ee8ca"
+}

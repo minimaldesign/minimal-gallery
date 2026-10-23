@@ -1,0 +1,105 @@
+{
+  "id": "colors__valentines",
+  "album": "colors",
+  "file": "Valentines.jpg",
+  "source": "colors/Valentines.jpg",
+  "slug": "valentines",
+  "title": "Valentines",
+  "caption": null,
+  "date": "2005-01-25T08:35:58",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 4,
+    "focal": 105,
+    "focal35": 157,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Gourdon"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "mbYJFYQ3CHhyeIiEe1eJawyNtbBH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAgX/xAAXAQADAQAAAAAAAAAAAAAAAAACAwQB/9oADAMBAAIQAxAAAACHVE2LoFjMP//EACIQAAIBAwIHAAAAAAAAAAAAAAECBAADERMUBRUhIzFisv/aAAgBAQABPwCDFS9Gc3bioiRwRkkEkrUqHHiQQEkI76HcAPUMUzVlFfh1osMkRx81to/LnbSTO2J8etf/xAAgEQABAwIHAAAAAAAAAAAAAAABAAMRIcECEzEzQlKC/9oACAECAQE/AHBDeCNSE3VtyeshHa82QJyTXhZf/8QAHxEAAgICAQUAAAAAAAAAAAAAAREAAwISIRMjMTKC/9oACAEDAQE/AKUbLNvAMuGOFlSXJR5ZcXc+prj1Wh7T/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 17807,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__valentines/0f48f5a2-grid.avif",
+      "key": "colors__valentines/0f48f5a2-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 40190,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__valentines/0f48f5a2-jpeg1600.jpg",
+      "key": "colors__valentines/0f48f5a2-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 137903,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Valentines.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-25",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 105,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "gourdon",
+        "label": "Gourdon"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "7010159a45a7a849",
+  "sourceSize": 137903,
+  "sourceMtime": 1792783284903.6362,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a0fa1cad834d128d"
+}

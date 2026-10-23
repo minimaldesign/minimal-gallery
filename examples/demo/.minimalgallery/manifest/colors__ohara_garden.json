@@ -1,0 +1,98 @@
+{
+  "id": "colors__ohara_garden",
+  "album": "colors",
+  "file": "Ohara_Garden.jpg",
+  "source": "colors/Ohara_Garden.jpg",
+  "slug": "ohara_garden",
+  "title": "Ohara Garden",
+  "caption": null,
+  "date": "2005-04-07T15:11:15",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 6.3,
+    "focal": 46,
+    "focal35": 69,
+    "iso": 640,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2719,
+    "c": 0.0276,
+    "h": 108.1
+  },
+  "thumbhash": "VPgFFYBoaHmviHh6h7dphnSQoQCE",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQP/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAAKFOGbQhif/8QAIBAAAgIBAwUAAAAAAAAAAAAAARECAwAEElEhMTNhcf/aAAgBAQABPwA3W2HYFEGCiCGSeSu2StlZBmBO3jcB8OUeJss2o9fawtasMkQhKUWWiM//xAAcEQACAgIDAAAAAAAAAAAAAAABEQACAyExQXH/2gAIAQIBAT8AOZPRhzkWRfktyoN1o+zuf//EABoRAAMAAwEAAAAAAAAAAAAAAAABAhExQlH/2gAIAQMBAT8AU1nY1Xomds//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 52286,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__ohara_garden/523bbdcd-grid.avif",
+      "key": "colors__ohara_garden/523bbdcd-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 103796,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__ohara_garden/523bbdcd-jpeg1600.jpg",
+      "key": "colors__ohara_garden/523bbdcd-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 205448,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Ohara_Garden.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-07",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 640,
+    "focal": 46,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "dee697767386060c",
+  "sourceSize": 205448,
+  "sourceMtime": 1792783285020.5645,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "0986b34cceef4c68"
+}

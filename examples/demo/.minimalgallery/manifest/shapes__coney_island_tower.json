@@ -1,0 +1,106 @@
+{
+  "id": "shapes__coney_island_tower",
+  "album": "shapes",
+  "file": "Coney_Island_Tower.jpg",
+  "source": "shapes/Coney_Island_Tower.jpg",
+  "slug": "coney_island_tower",
+  "title": "Coney Island Tower",
+  "caption": null,
+  "date": "2005-11-03T16:15:18",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 22,
+    "focal35": 33,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Coney Island"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.6797,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HQgOBYB2h4evd3iTiFiFegAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIEB//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAHKTPwP/xAAiEAACAQMCBwAAAAAAAAAAAAABAgMABCEFcRESExQxUZH/2gAIAQEAAT8Aj1vQLo8vc9FvUyFKNpbTtG8N3BIpDYjdW+0EU+QDvmuATKKq7ACv/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14224,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__coney_island_tower/607c6e83-grid.avif",
+      "key": "shapes__coney_island_tower/607c6e83-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 31980,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__coney_island_tower/607c6e83-jpeg1600.jpg",
+      "key": "shapes__coney_island_tower/607c6e83-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 152045,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Coney_Island_Tower.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 22,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "da182f3e76bb585c",
+  "sourceSize": 152045,
+  "sourceMtime": 1792783285002.0825,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "0838bd9b95762cec"
+}

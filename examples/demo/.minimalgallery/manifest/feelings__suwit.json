@@ -1,0 +1,89 @@
+{
+  "id": "feelings__suwit",
+  "album": "feelings",
+  "file": "Suwit.jpg",
+  "source": "feelings/Suwit.jpg",
+  "slug": "suwit",
+  "title": "Suwit",
+  "caption": null,
+  "date": "2026-10-23T12:21:25",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 596,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "mwcGFYSx5y8YCLaSllWZhPp9pb9Y",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABf/EABgBAAMBAQAAAAAAAAAAAAAAAAECAwAE/9oADAMBAAIQAxAAAAAYutSZvShw3//EACMQAAICAgECBwAAAAAAAAAAAAECAwQABTERIRMjMkFCUWL/2gAIAQEAAT8ArVa9DYTVrYaCNYlnjDdienIcjgjNMtOnLvktVVXy0sVjIv67qCfjhUbGazLbHitDK6RA+lF+lXgZetWJoy0krMySmJSfZAoPTP/EAB4RAAICAgIDAAAAAAAAAAAAAAECABEDBBIhMVFh/9oACAECAQE/AB0VNWL8TIp5WVCg+pp4kdbZbM2+nr5P/8QAHBEBAQABBQEAAAAAAAAAAAAAAQIAAwQRITES/9oACAEDAQE/AK7KkeFOnNJmj5m2+PVzWqpOnNvJIoern//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 424,
+      "bytes": 25253,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__suwit/822ab626-grid.avif",
+      "key": "feelings__suwit/822ab626-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 596,
+      "bytes": 84222,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__suwit/822ab626-jpeg1600.jpg",
+      "key": "feelings__suwit/822ab626-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 234031,
+    "width": 900,
+    "height": 596,
+    "relativePath": "photos/feelings/Suwit.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "7afd97887438b272",
+  "sourceSize": 234031,
+  "sourceMtime": 1792783285138.6997,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b1c12d1621b5458e"
+}

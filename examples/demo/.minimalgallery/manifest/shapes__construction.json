@@ -1,0 +1,95 @@
+{
+  "id": "shapes__construction",
+  "album": "shapes",
+  "file": "Construction.jpg",
+  "source": "shapes/Construction.jpg",
+  "slug": "construction",
+  "title": "Construction",
+  "caption": null,
+  "date": "2004-08-08T17:57:13",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8822,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "KAgOBYCcaIdfh4h5d4h3mAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAALEXhBmZ/8QAJhAAAQMCAgsAAAAAAAAAAAAAAgEDBAAFESEGEhMUIzEyQWGhwf/aAAgBAQABPwCbcTiMkq7vrkioCC9n7Si0heabQnIjPIemQner9b4cWCexZQMAL5UvgGwjeSGmBecRSv/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13849,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__construction/646c587b-grid.avif",
+      "key": "shapes__construction/646c587b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 36000,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__construction/646c587b-jpeg1600.jpg",
+      "key": "shapes__construction/646c587b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 132990,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Construction.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-08",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e9791c0f3dcc7393",
+  "sourceSize": 132990,
+  "sourceMtime": 1792783285009.471,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "34877b9b49883994"
+}

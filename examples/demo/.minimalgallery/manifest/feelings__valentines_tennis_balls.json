@@ -1,0 +1,89 @@
+{
+  "id": "feelings__valentines_tennis_balls",
+  "album": "feelings",
+  "file": "Valentines_Tennis_Balls.jpg",
+  "source": "feelings/Valentines_Tennis_Balls.jpg",
+  "slug": "valentines_tennis_balls",
+  "title": "Valentines Tennis Balls",
+  "caption": null,
+  "date": "2026-10-23T12:21:24",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GQgODYKIeohwmHd7eIeIhwqKsaII",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgED/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAD/9oADAMBAAIQAxAAAAAuNKijRzr/xAAjEAABAwMDBQEAAAAAAAAAAAACAQMRAAQSBRPSITJCU2GT/9oACAEBAAE/ALyzujdwwVwgYXe2wz6Gfzxq4YcBgAFMmxgAUQQZQUhYjuSaa1e+VszU2slH0t8aTVLwihdn8G+Nf//EABkRAQEBAAMAAAAAAAAAAAAAAAECABAhMf/aAAgBAgEBPwCmhSdCNvb5wb//xAAbEQACAgMBAAAAAAAAAAAAAAABAgARECExQf/aAAgBAwEBPwBQpS2YAjgrscUvh3gz/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 26387,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__valentines_tennis_balls/f2ffd320-grid.avif",
+      "key": "feelings__valentines_tennis_balls/f2ffd320-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 57783,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__valentines_tennis_balls/f2ffd320-jpeg1600.jpg",
+      "key": "feelings__valentines_tennis_balls/f2ffd320-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 146742,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Valentines_Tennis_Balls.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0635e000d908d998",
+  "sourceSize": 146742,
+  "sourceMtime": 1792783284847.6606,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "7df1858d5c1bdcb6"
+}

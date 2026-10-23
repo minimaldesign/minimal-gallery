@@ -1,0 +1,89 @@
+{
+  "id": "people__cool",
+  "album": "people",
+  "file": "cool.jpg",
+  "source": "people/cool.jpg",
+  "slug": "cool",
+  "title": "Cool",
+  "caption": null,
+  "date": "2026-10-23T12:21:24",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EggGDYSdRclFamafcic3fpZqYFgH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABcBAAMBAAAAAAAAAAAAAAAAAAABAwL/2gAMAwEAAhADEAAAAMmMVqvSSbP/xAAfEAACAgICAwEAAAAAAAAAAAABAgMRABIEMRMiMkH/2gAIAQEAAT8AaVUWSNJZvKuq/K6g3RN5HI2qHkOT79pRWgesRQUr8NXnI48NE6C8/8QAFxEBAQEBAAAAAAAAAAAAAAAAEQEAUf/aAAgBAgEBPwCVOXVbwxMb/8QAGxEAAgIDAQAAAAAAAAAAAAAAAAEREgIDYYH/2gAIAQMBAT8AetRlwprpjDd7eEsln//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 32511,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__cool/69cd98d6-grid.avif",
+      "key": "people__cool/69cd98d6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 67480,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__cool/69cd98d6-jpeg1600.jpg",
+      "key": "people__cool/69cd98d6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 177907,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/cool.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "9288a28cb334e5d8",
+  "sourceSize": 177907,
+  "sourceMtime": 1792783284947.7847,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "35dc1be899106963"
+}

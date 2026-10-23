@@ -1,0 +1,95 @@
+{
+  "id": "people__happy_wheelchair",
+  "album": "people",
+  "file": "Happy_wheelchair.jpg",
+  "source": "people/Happy_wheelchair.jpg",
+  "slug": "happy_wheelchair",
+  "title": "Happy wheelchair",
+  "caption": null,
+  "date": "2004-07-14T15:57:55",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 56,
+    "focal35": 84,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9791,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HhgWDYJweIiLdniIiKiHhwyM9ZNY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwYI/8QAGAEAAgMAAAAAAAAAAAAAAAAAAQIAAwT/2gAMAwEAAhADEAAAAJhNC41GeSUuL//EACIQAAEEAQIHAAAAAAAAAAAAAAEAAgMEBQYyEhQhMUJSYv/aAAgBAQABPwDTuXdFb4pj0ZsDfdVJcvfrRyclFNE8bXEKqSLDFhLFgYuACZ/d/l9L/8QAGxEBAQABBQAAAAAAAAAAAAAAAgERABAhMUH/2gAIAQIBAT8AcSUhpKvq61M453//xAAdEQEAAgICAwAAAAAAAAAAAAABAhEAAxAxEiJB/9oACAEDAQE/AIl6tk0ZEWJ4nft9xq2usJSiINWU8f/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 17615,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__happy_wheelchair/47bd3328-grid.avif",
+      "key": "people__happy_wheelchair/47bd3328-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 38692,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__happy_wheelchair/47bd3328-jpeg1600.jpg",
+      "key": "people__happy_wheelchair/47bd3328-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 80451,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Happy_wheelchair.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "07",
+    "day": "07-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": null,
+    "focal": 56,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "89003cfdd2fdd739",
+  "sourceSize": 80451,
+  "sourceMtime": 1792783285119.8215,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "039f671d48414ccf"
+}

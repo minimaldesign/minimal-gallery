@@ -1,0 +1,89 @@
+{
+  "id": "feelings__prayer",
+  "album": "feelings",
+  "file": "prayer.jpg",
+  "source": "feelings/prayer.jpg",
+  "slug": "prayer",
+  "title": "Prayer",
+  "caption": null,
+  "date": "2026-10-23T12:21:24",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "CwgGBYA8p3g0aZmljvd3iIsgxQhS",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGB//EABYBAQEBAAAAAAAAAAAAAAAAAAECAP/aAAwDAQACEAMQAAAAz4TZhLH3P//EAB0QAAMBAQEBAAMAAAAAAAAAAAECAwQRAAVEcYL/2gAIAQEAAT8Ay5NeqlH1XqiyhofoAckR4SPac2z5ei5ABQzixLAfkT6p99e1YjKJuVDYKd/scPq3tdg1aM5CKgLHvFUcA/Q9/8QAFxEBAAMAAAAAAAAAAAAAAAAAEAERwf/aAAgBAgEBPwCyNP/EABYRAQEBAAAAAAAAAAAAAAAAABABEf/aAAgBAwEBPwDCn//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 28790,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__prayer/c70a2924-grid.avif",
+      "key": "feelings__prayer/c70a2924-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 51714,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__prayer/c70a2924-jpeg1600.jpg",
+      "key": "feelings__prayer/c70a2924-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 114665,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/prayer.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8027fc360889c143",
+  "sourceSize": 114665,
+  "sourceMtime": 1792783284910.7312,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6ce5ada6a895b154"
+}

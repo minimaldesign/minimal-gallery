@@ -1,0 +1,106 @@
+{
+  "id": "people__news_in_nice",
+  "album": "people",
+  "file": "News_in_Nice.jpg",
+  "source": "people/News_in_Nice.jpg",
+  "slug": "news_in_nice",
+  "title": "News in Nice",
+  "caption": "I took that one from the window of a car, while driving by.  Although I had about 0.5 second to shoot, I still managed to get the horizon straight and the guy where I wanted him to be.  Not bad :)",
+  "date": "2005-01-28T11:15:38",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 44,
+    "focal35": 66,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nice",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Nice, France",
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5829,
+    "c": 0.0309,
+    "h": 67.16
+  },
+  "thumbhash": "mxgGFYQziXqPeXeHd0aHeGZmf3f2",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAXAQADAQAAAAAAAAAAAAAAAAABAgMA/9oADAMBAAIQAxAAAAAUXWpizvTG/8QAIRAAAgEEAAcAAAAAAAAAAAAAAQIDAAQREhMhIjFCkZL/2gAIAQEAAT8AgurdpTCOEZAm5HV2pp4dThYfs1ZuxliUnlgVcRo0bZXxY+q//8QAGhEBAQACAwAAAAAAAAAAAAAAAQARQxORof/aAAgBAgEBPwBB2vVx53+TF//EAB0RAAECBwAAAAAAAAAAAAAAAAEAAhASE0NEgZH/2gAIAQMBAT8ADnCxqZVSMZ3Y/wD/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13359,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__news_in_nice/9c80c56c-grid.avif",
+      "key": "people__news_in_nice/9c80c56c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 35748,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__news_in_nice/9c80c56c-jpeg1600.jpg",
+      "key": "people__news_in_nice/9c80c56c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 122873,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/News_in_Nice.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 44,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "nice-france",
+      "label": "Nice, France"
+    }
+  },
+  "sourceHash": "97fc6377bb1aed20",
+  "sourceSize": 122873,
+  "sourceMtime": 1792783285162.641,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d6579620f08b8446"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "shapes__conversation",
+  "album": "shapes",
+  "file": "Conversation.jpg",
+  "source": "shapes/Conversation.jpg",
+  "slug": "conversation",
+  "title": "Conversation",
+  "caption": null,
+  "date": "2005-01-13T13:04:34",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/50",
+    "shutterSeconds": 0.02,
+    "aperture": 2.8,
+    "focal": 125,
+    "focal35": 187,
+    "iso": 250,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2004 minimal Design&#xA;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8847,
+    "c": 0.1592,
+    "h": 96.25
+  },
+  "thumbhash": "nisOLYJ/Z8STV6iEd2h4iI+k9VhK",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwUG/8QAGAEAAgMAAAAAAAAAAAAAAAAABAUCAwb/2gAMAwEAAhADEAAAANTh2Zy7GQ0xEu6P/8QAIRAAAQMEAgMBAAAAAAAAAAAAAgEDBAAFERIhUQYTQaH/2gAIAQEAAT8AlCxbYEqXjb1NKSJ2XxKk+LQI79kbkPPLKlHtLHPA8bVcQFyA6BplF0/CRau+TdtxERZGTlOe0r//xAAfEQACAgIBBQAAAAAAAAAAAAACAwABERIEBSExUWH/2gAIAQIBAT8AXs5oL8bFiB1BphyrARpaxwuKuxaN19iOwur2E//EABwRAAICAgMAAAAAAAAAAAAAAAECABEDMRIycf/aAAgBAwEBPwBjxUmHEoZLuzuN1jbX2f/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 10953,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__conversation/02bfd0a0-grid.avif",
+      "key": "shapes__conversation/02bfd0a0-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 24329,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__conversation/02bfd0a0-jpeg1600.jpg",
+      "key": "shapes__conversation/02bfd0a0-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 117412,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Conversation.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-13",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.02,
+      "label": "1/50"
+    },
+    "iso": 250,
+    "focal": 125,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "ccb0cb029cfff70b",
+  "sourceSize": 117412,
+  "sourceMtime": 1792783285009.8977,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "586cbd7018a7ac17"
+}

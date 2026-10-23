@@ -1,0 +1,98 @@
+{
+  "id": "light__the_coming",
+  "album": "light",
+  "file": "The_coming.jpg",
+  "source": "light/The_coming.jpg",
+  "slug": "the_coming",
+  "title": "The coming",
+  "caption": null,
+  "date": "2005-05-21T13:34:48",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 22,
+    "focal35": 33,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4822,
+    "c": 0.0886,
+    "h": 80.45
+  },
+  "thumbhash": "EDoGFYIYi2fDSYZAp/iKlSfJgIEM",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAWAQEBAQAAAAAAAAAAAAAAAAADBQT/2gAMAwEAAhADEAAAAAYNE5jm6Oakxv8A/8QAIBAAAgEEAQUAAAAAAAAAAAAAAQIDAAQRQTEFEiEiYf/aAAgBAQABPwCOwuCvt2Lgcg6q5s2GRgkaJoTzQypNHK6yL5DA1f8AUrx1JMg40ijXwV//xAAcEQACAgIDAAAAAAAAAAAAAAABAgADERIhMqH/2gAIAQIBAT8AaxM8ZMSyaqwKlQREoqB6+mf/xAAaEQADAQADAAAAAAAAAAAAAAAAAQIRAyEx/9oACAEDAQE/AFNFSa09T7K5La9P/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 9853,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__the_coming/27d666be-grid.avif",
+      "key": "light__the_coming/27d666be-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 22675,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__the_coming/27d666be-jpeg1600.jpg",
+      "key": "light__the_coming/27d666be-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 165543,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/The_coming.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "05",
+    "day": "05-21",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 200,
+    "focal": 22,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "b2a48a2219a24f8e",
+  "sourceSize": 165543,
+  "sourceMtime": 1792783285059.5488,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "845cf900ef812c6f"
+}

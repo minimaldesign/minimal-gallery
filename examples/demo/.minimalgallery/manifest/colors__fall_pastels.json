@@ -1,0 +1,95 @@
+{
+  "id": "colors__fall_pastels",
+  "album": "colors",
+  "file": "Fall_pastels.jpg",
+  "source": "colors/Fall_pastels.jpg",
+  "slug": "fall_pastels",
+  "title": "Fall pastels",
+  "caption": null,
+  "date": "2004-10-11T13:36:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.7271,
+    "c": 0.0225,
+    "h": 106.95
+  },
+  "thumbhash": "3igKDYZ5d3iQiId4d9d3hiS/fPeI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQMEBf/EABgBAAIDAAAAAAAAAAAAAAAAAAIEAAED/9oADAMBAAIQAxAAAAAKvQQNq1W5F//EAB0QAAICAwADAAAAAAAAAAAAAAECAyEABREEEhP/2gAIAQEAAT8APgbB1HzRRXLYZJqdlxwyqarIJpRQc8yWWThHuc//xAAZEQEAAwEBAAAAAAAAAAAAAAABAAIhEBH/2gAIAQIBAT8Aa6yp4mR5/8QAGxEAAgEFAAAAAAAAAAAAAAAAAQIAAwQQEUH/2gAIAQMBAT8AS4VQVgqqN9wJ/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 61459,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__fall_pastels/5b84caa7-grid.avif",
+      "key": "colors__fall_pastels/5b84caa7-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 122895,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__fall_pastels/5b84caa7-jpeg1600.jpg",
+      "key": "colors__fall_pastels/5b84caa7-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 220598,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Fall_pastels.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-11",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "06b6ac48bd7be5b6",
+  "sourceSize": 220598,
+  "sourceMtime": 1792783284995.6414,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "259f5ce9f7698c2f"
+}

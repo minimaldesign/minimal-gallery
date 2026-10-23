@@ -1,0 +1,106 @@
+{
+  "id": "people__get_your_strap_on",
+  "album": "people",
+  "file": "Get your strap on.jpg",
+  "source": "people/Get your strap on.jpg",
+  "slug": "get_your_strap_on",
+  "title": "Get your strap on",
+  "caption": null,
+  "date": "2007-11-13T11:47:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 8,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 400,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": "Sanju-Sangendo"
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [],
+  "rating": 4,
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "D/gJBYB3n1p/16mPiDlmiHVWb/hn",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/2gAMAwEAAhADEAAAAITMqK2Alv/EACIQAAEDBAAHAAAAAAAAAAAAAAIBAwUABBEiBhIUQUJTYf/aAAgBAQABPwCSnmr+dYlBYMBbVnRS9dS/EnWxt6wTR8tw4BtZ8O9PwkUI4GzBNvtWsdZuS5WxsorOD0yuNETFf//EABgRAAMBAQAAAAAAAAAAAAAAAAABERJR/9oACAECAQE/ABWlfSvJ/8QAFhEAAwAAAAAAAAAAAAAAAAAAABBB/9oACAEDAQE/ACP/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 19692,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__get_your_strap_on/7d9bac63-grid.avif",
+      "key": "people__get_your_strap_on/7d9bac63-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 61433,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__get_your_strap_on/7d9bac63-jpeg1600.jpg",
+      "key": "people__get_your_strap_on/7d9bac63-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 151268,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/people/Get your strap on.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-13",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 400,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "7f1ed255f41f56bf",
+  "sourceSize": 151268,
+  "sourceMtime": 1792783285113.2004,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6dae82df4294db5f"
+}

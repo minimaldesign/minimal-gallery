@@ -1,0 +1,89 @@
+{
+  "id": "feelings__long_island",
+  "album": "feelings",
+  "file": "Long_Island.jpg",
+  "source": "feelings/Long_Island.jpg",
+  "slug": "long_island",
+  "title": "Long Island",
+  "caption": null,
+  "date": "2026-10-23T12:21:25",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9748,
+    "c": 0.021,
+    "h": 106.78
+  },
+  "thumbhash": "I/gVDYJ6iIePd4d7h3iGd29c5faF",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwH/2gAMAwEAAhADEAAAAKySEYnTptJf/8QAIBAAAgEDBAMAAAAAAAAAAAAAAQIDAAQSBQYhYRRDY//aAAgBAQABPwCTetinpkNXm+LlnXxo4ok+qktV0iLKxCgHFjx0K1FQ9zZZc5quXdf/xAAdEQADAAAHAAAAAAAAAAAAAAAAAQIiMTJBUmGR/9oACAECAQE/AMfFeil7k5IjTfTP/8QAGhEAAwADAQAAAAAAAAAAAAAAAAECMTJBYf/aAAgBAwEBPwBuV0drhWS949P/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 21464,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__long_island/3d087f18-grid.avif",
+      "key": "feelings__long_island/3d087f18-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 42453,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__long_island/3d087f18-jpeg1600.jpg",
+      "key": "feelings__long_island/3d087f18-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 115774,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Long_Island.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "c1a44e9596c07f91",
+  "sourceSize": 115774,
+  "sourceMtime": 1792783285095.0984,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6d7b5a1b830ecdca"
+}

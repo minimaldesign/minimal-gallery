@@ -1,0 +1,113 @@
+{
+  "id": "colors__white_roses",
+  "album": "colors",
+  "file": "white_roses.jpg",
+  "source": "colors/white_roses.jpg",
+  "slug": "white_roses",
+  "title": "White roses",
+  "caption": null,
+  "date": "2005-01-16T08:04:33",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 4,
+    "focal": 86,
+    "focal35": 129,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Warsaw",
+    "state": null,
+    "country": "Poland",
+    "location": null
+  },
+  "placeLabel": "Warsaw, Poland",
+  "keywords": [
+    "Warsaw"
+  ],
+  "rating": null,
+  "copyright": "© 2004 minimal Design&#xD;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9791,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "5fcNBYCUmlZfh3iId5h5d0AsaPhF",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQGB//EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAABlq0sqQW//xAAlEAACAQIEBgMAAAAAAAAAAAABAgMABAUREiITFiEyQUJRYbL/2gAIAQEAAT8AusQxKCewmUIEHE9m3BDkSw+vFcw2aSya37pFIC/BWp5pWuIiZG6RfonOklkUO4bdqFf/xAAWEQEBAQAAAAAAAAAAAAAAAAAQASH/2gAIAQIBAT8Awp//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16819,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__white_roses/b61a2685-grid.avif",
+      "key": "colors__white_roses/b61a2685-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 35972,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__white_roses/b61a2685-jpeg1600.jpg",
+      "key": "colors__white_roses/b61a2685-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 123357,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/white_roses.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 86,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "warsaw",
+        "label": "Warsaw"
+      }
+    ],
+    "place": {
+      "slug": "warsaw-poland",
+      "label": "Warsaw, Poland"
+    }
+  },
+  "sourceHash": "2857bda1abb2894a",
+  "sourceSize": 123357,
+  "sourceMtime": 1792783284971.6787,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6da3a174d9827242"
+}

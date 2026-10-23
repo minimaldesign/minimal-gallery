@@ -1,0 +1,98 @@
+{
+  "id": "light__first_rays_of_the_day",
+  "album": "light",
+  "file": "First_rays_of_the_day.jpg",
+  "source": "light/First_rays_of_the_day.jpg",
+  "slug": "first_rays_of_the_day",
+  "title": "First rays of the day",
+  "caption": null,
+  "date": "2005-04-16T06:16:53",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "0PcNNYh1iHhMdYd/h5hXiZyAyQh5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAGAEAAgMAAAAAAAAAAAAAAAAABAYBAgP/2gAMAwEAAhADEAAAAMBNWTA01FkjMw//xAAkEAABAwMCBwEAAAAAAAAAAAABAgMEAAUSIYEGERQWIjI0Uv/aAAgBAQABPwCDdrjbufSS3m9fUHw3BrvG5q+hIc3Ka4oiRwILwaSFuO4rI0yFMwYirjdI5ZSWmUOYJ/OJr//EACERAAIBBAAHAAAAAAAAAAAAAAECAwAEERIFFCFBQ1GB/9oACAECAQE/AFcqRUd1p4k+dK4RNK3MIXJVEyoPapLiYWdpIHO76bH3kV//xAAfEQACAgEEAwAAAAAAAAAAAAABAgADBBESEyEiQ4H/2gAIAQMBAT8AZVYdiWYfJ77Pvcz60HGwUAltDEprORehXxXdoJ//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16312,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__first_rays_of_the_day/7281eab4-grid.avif",
+      "key": "light__first_rays_of_the_day/7281eab4-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 31450,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__first_rays_of_the_day/7281eab4-jpeg1600.jpg",
+      "key": "light__first_rays_of_the_day/7281eab4-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 170507,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/First_rays_of_the_day.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8f07d2df621cf06b",
+  "sourceSize": 170507,
+  "sourceMtime": 1792783284998.337,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "77eafdcd899ac220"
+}

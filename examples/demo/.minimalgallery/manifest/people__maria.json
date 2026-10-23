@@ -1,0 +1,98 @@
+{
+  "id": "people__maria",
+  "album": "people",
+  "file": "Maria.jpg",
+  "source": "people/Maria.jpg",
+  "slug": "maria",
+  "title": "Maria",
+  "caption": null,
+  "date": "2005-07-20T17:05:47",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 60,
+    "focal35": 90,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2627,
+    "c": 0.0215,
+    "h": 195.92
+  },
+  "thumbhash": "XhgKFYRTr8rhhEdWiaiFhQuIt3CI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUH/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwL/2gAMAwEAAhADEAAAAACy7OJC6vZ//8QAIhAAAQQBBAIDAAAAAAAAAAAAAQIDBAUABhITISIjMVGi/9oACAEBAAE/AHIcVdjLDkf3MuJ3/e0jNQUNzZMQnIkLlbYbcR4EbvnHutS2igewR+splrNYgk98i8//xAAZEQADAAMAAAAAAAAAAAAAAAAAAzECMnH/2gAIAQIBAT8Ay6Lg2i9T/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAMBMgIxcf/aAAgBAwEBPwDDg3YqsjLH/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 9275,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__maria/57bc3431-grid.avif",
+      "key": "people__maria/57bc3431-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 21930,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__maria/57bc3431-jpeg1600.jpg",
+      "key": "people__maria/57bc3431-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 145732,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Maria.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-20",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 60,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "c61818a2c5270361",
+  "sourceSize": 145732,
+  "sourceMtime": 1792783285147.9236,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2da79a77758d7657"
+}

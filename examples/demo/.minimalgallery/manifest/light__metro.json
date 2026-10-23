@@ -1,0 +1,113 @@
+{
+  "id": "light__metro",
+  "album": "light",
+  "file": "Metro.jpg",
+  "source": "light/Metro.jpg",
+  "slug": "metro",
+  "title": "Metro",
+  "caption": null,
+  "date": "2005-01-14T06:00:13",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/50",
+    "shutterSeconds": 0.02,
+    "aperture": 4.5,
+    "focal": 34,
+    "focal35": 51,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [
+    "Paris"
+  ],
+  "rating": null,
+  "copyright": "© 2004 minimal Design All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FwgSBYBoh3d/iHd6iJd4hVdVQHYG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEB//EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAARmzGf0H/xAAiEAABBAECBwAAAAAAAAAAAAACAAEDBBEFUwYSISJDUZH/2gAIAQEAAT8Ai1ybPfVi6E7tgFY4nmhPkemDsI7XtDcst5jT3LW+f1f/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23717,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__metro/c8794356-grid.avif",
+      "key": "light__metro/c8794356-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 55737,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__metro/c8794356-jpeg1600.jpg",
+      "key": "light__metro/c8794356-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 158954,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Metro.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.02,
+      "label": "1/50"
+    },
+    "iso": 200,
+    "focal": 34,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "paris",
+        "label": "Paris"
+      }
+    ],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "202390bed4bd9bad",
+  "sourceSize": 158954,
+  "sourceMtime": 1792783285031.5195,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "e12002d4718b9b1a"
+}

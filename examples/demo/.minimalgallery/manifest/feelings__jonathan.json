@@ -1,0 +1,106 @@
+{
+  "id": "feelings__jonathan",
+  "album": "feelings",
+  "file": "Jonathan.jpg",
+  "source": "feelings/Jonathan.jpg",
+  "slug": "jonathan",
+  "title": "Jonathan",
+  "caption": null,
+  "date": "2005-11-03T16:50:56",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Coney Island"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3357,
+    "c": 0.0266,
+    "h": 107.75
+  },
+  "thumbhash": "m0kOJYhpeHiPh4d1eFiIiXmOgMgI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAUBAv/aAAwDAQACEAMQAAAAfFWm7mISOHZ//8QAHRAAAgIDAAMAAAAAAAAAAAAAAQIABQMEESIxcv/aAAgBAQABPwBbSp55buObdrUKpI3A3wpMV257mRjyf//EABwRAQABBAMAAAAAAAAAAAAAAAEEAAIDEEFDkf/aAAgBAgEBPwAJfGFoJb0+3b//xAAdEQABAgcAAAAAAAAAAAAAAAABAAQDEBESIVOB/9oACAEDAQE/ACGu4K1mMmOOCs//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 4649,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__jonathan/15bfc571-grid.avif",
+      "key": "feelings__jonathan/15bfc571-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 12321,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__jonathan/15bfc571-jpeg1600.jpg",
+      "key": "feelings__jonathan/15bfc571-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 135189,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Jonathan.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "180e3b12fa924a69",
+  "sourceSize": 135189,
+  "sourceMtime": 1792783285074.1382,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "e059f90039c51942"
+}

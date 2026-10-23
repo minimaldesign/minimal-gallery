@@ -1,0 +1,106 @@
+{
+  "id": "feelings__lonely_in_paris",
+  "album": "feelings",
+  "file": "Lonely_in_Paris.jpg",
+  "source": "feelings/Lonely_in_Paris.jpg",
+  "slug": "lonely_in_paris",
+  "title": "Lonely in Paris",
+  "caption": null,
+  "date": "2005-01-13T12:04:16",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2004 minimal Design&#xA;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.256,
+    "c": 0.051,
+    "h": 21.27
+  },
+  "thumbhash": "kigKDYJneXWHiGd/aYd3fC+uq3Ao",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABgBAAMBAQAAAAAAAAAAAAAAAAACAwEE/9oADAMBAAIQAxAAAADFw6WWLbTA3//EACMQAAICAQMDBQAAAAAAAAAAAAIDAQQABRESEyIjMjNxgZH/2gAIAQEAAT8AnU7UpQkbljpLEPFuXGJDLd7UappBdi1VeFYAd0z25z6u7b5xddER7QfmLrIFQxChjuGfuM//xAAcEQADAAEFAAAAAAAAAAAAAAAAAQIREiFBUYH/2gAIAQIBAT8AxOPSUpdbJmldHLP/xAAaEQADAQEBAQAAAAAAAAAAAAABAhEAElFh/9oACAEDAQE/AI3V+Z64SGQbpvcTv//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16930,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__lonely_in_paris/927c73ea-grid.avif",
+      "key": "feelings__lonely_in_paris/927c73ea-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 43235,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__lonely_in_paris/927c73ea-jpeg1600.jpg",
+      "key": "feelings__lonely_in_paris/927c73ea-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 138453,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Lonely_in_Paris.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-13",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "42790d8ce0a07000",
+  "sourceSize": 138453,
+  "sourceMtime": 1792783285094.895,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "8e4f2bc32941cc84"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "people__28_reed_dog",
+  "album": "people",
+  "file": "28_REED_dog.jpg",
+  "source": "people/28_REED_dog.jpg",
+  "slug": "28_reed_dog",
+  "title": "28 REED dog",
+  "caption": null,
+  "date": "2005-11-14T16:07:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Red Hook"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5727,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "IggKBYCIaHd/hniId6iXewAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAIF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAaUYAc//EAB0QAAEFAAMBAAAAAAAAAAAAAAEAAgMEIRITMaH/2gAIAQEAAT8AN3pYHOtwhjdO+YhefNGJIrtfifCVNYmEeP8AgQkeRricX//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 27712,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__28_reed_dog/262bd20e-grid.avif",
+      "key": "people__28_reed_dog/262bd20e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 72867,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__28_reed_dog/262bd20e-jpeg1600.jpg",
+      "key": "people__28_reed_dog/262bd20e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 171206,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/28_REED_dog.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "8fc681c460f07376",
+  "sourceSize": 171206,
+  "sourceMtime": 1792783285088.3198,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6bf9fabcfa3a7c14"
+}

@@ -1,0 +1,92 @@
+{
+  "id": "light__on_the_way_back",
+  "album": "light",
+  "file": "On_the_way_back.jpg",
+  "source": "light/On_the_way_back.jpg",
+  "slug": "on_the_way_back",
+  "title": "On the way back",
+  "caption": null,
+  "date": "2008-10-17T12:58:52",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": 38,
+    "focal35": null,
+    "iso": 100,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FegRHYJZeIiPh4d5eWeWd0mGkCYH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDAP/aAAwDAQACEAMQAAAAPNJtBj8xQP/EACIQAAIBAgUFAAAAAAAAAAAAAAIDAQAFBAYREiEiM3Kisv/aAAgBAQABPwDDZhsju7Dk+Q7vmrxmhMIFdqFq2buprBH1oDIVaxPOtNYclpJcV//EAB4RAAIBAwUAAAAAAAAAAAAAAAECAAMEMhARYYGx/9oACAECAQE/AHq3a4hW729iPcDNlHAhA0//xAAcEQABAwUAAAAAAAAAAAAAAAABAAIRAxASMUH/2gAIAQMBAT8AFNh26Fgyem//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 16709,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__on_the_way_back/ed4bd5a6-grid.avif",
+      "key": "light__on_the_way_back/ed4bd5a6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 46742,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__on_the_way_back/ed4bd5a6-jpeg1600.jpg",
+      "key": "light__on_the_way_back/ed4bd5a6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 164047,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/light/On_the_way_back.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2008",
+    "month": "10",
+    "day": "10-17",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": 100,
+    "focal": 38,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "7fe8e7084b8c15bb",
+  "sourceSize": 164047,
+  "sourceMtime": 1792783285040.1968,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "50d0880073c2f952"
+}

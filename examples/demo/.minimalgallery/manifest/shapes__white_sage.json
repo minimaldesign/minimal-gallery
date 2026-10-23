@@ -1,0 +1,106 @@
+{
+  "id": "shapes__white_sage",
+  "album": "shapes",
+  "file": "White_Sage.jpg",
+  "source": "shapes/White_Sage.jpg",
+  "slug": "white_sage",
+  "title": "White Sage",
+  "caption": null,
+  "date": "2006-03-03T20:53:58",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "50.0 mm f/1.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 1.8,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Carrol Gardens"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "AQgCBYA/YSe5i0RSy0l1iy+44VIP",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAQMH/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAMdlnYgf/8QAGRABAAMBAQAAAAAAAAAAAAAAAQACETEQ/9oACAEBAAE/AArYDcTyvSPWf//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 2128,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__white_sage/aff2911f-grid.avif",
+      "key": "shapes__white_sage/aff2911f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 5766,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__white_sage/aff2911f-jpeg1600.jpg",
+      "key": "shapes__white_sage/aff2911f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 79401,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/White_Sage.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2006",
+    "month": "03",
+    "day": "03-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "50-0-mm-f-1-8",
+      "label": "50.0 mm f/1.8"
+    },
+    "aperture": 1.8,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "64fa65c8f4047b5a",
+  "sourceSize": 79401,
+  "sourceMtime": 1792783285124.469,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "4d6472151e559d7a"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "colors__au_port",
+  "album": "colors",
+  "file": "Au_Port.jpg",
+  "source": "colors/Au_Port.jpg",
+  "slug": "au_port",
+  "title": "Au Port",
+  "caption": null,
+  "date": "2005-01-30T11:09:22",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5985,
+    "c": 0.0573,
+    "h": 220.99
+  },
+  "thumbhash": "ILcFDYKFdHSPeoVx1nOWaPAaAayQ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgMF/8QAGQEAAgMBAAAAAAAAAAAAAAAAAQMAAgQF/9oADAMBAAIQAxAAAAB6+cg3Huugn//EACAQAAIBBAEFAAAAAAAAAAAAAAECAwAEESFREiIxQsH/2gAIAQEAAT8AAt3iCsTrwah75DAWYR9OlY4MnIz8pXYKjA7LDdXLsIGk90kUqeCWxX//xAAaEQEAAwADAAAAAAAAAAAAAAABAAIRITGx/9oACAECAQE/ANRltu48V9gGS3RP/8QAGxEBAAICAwAAAAAAAAAAAAAAAQACIVEDEBL/2gAIAQMBAT8A8rKXOPJm+9RVev/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 19486,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__au_port/ca8e7a17-grid.avif",
+      "key": "colors__au_port/ca8e7a17-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 39424,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__au_port/ca8e7a17-jpeg1600.jpg",
+      "key": "colors__au_port/ca8e7a17-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 146454,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Au_Port.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "0d4ef589b58a6237",
+  "sourceSize": 146454,
+  "sourceMtime": 1792783284952.3809,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "00cf67b2586eed4f"
+}

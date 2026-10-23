@@ -1,0 +1,98 @@
+{
+  "id": "shapes__halloween",
+  "album": "shapes",
+  "file": "Halloween.jpg",
+  "source": "shapes/Halloween.jpg",
+  "slug": "halloween",
+  "title": "Halloween",
+  "caption": null,
+  "date": "2004-10-28T21:10:35",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/20",
+    "shutterSeconds": 0.05,
+    "aperture": 4,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "xPcJDYAItmh4h3hyjHWIifeHnoz3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQMEB//EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAADK6URwD//EAB4QAAIDAAEFAAAAAAAAAAAAAAECAAMEBREhIkJR/9oACAEBAAE/AOLy06tAS1wi/TORrz067UzWCypT4uPaKzKeqkiEk9zP/8QAGREAAQUAAAAAAAAAAAAAAAAAAQACEBEx/9oACAECAQE/AGiyjs//xAAVEQEBAAAAAAAAAAAAAAAAAAAgQf/aAAgBAwEBPwCD/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 5485,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__halloween/5ed2c5a3-grid.avif",
+      "key": "shapes__halloween/5ed2c5a3-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 12142,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__halloween/5ed2c5a3-jpeg1600.jpg",
+      "key": "shapes__halloween/5ed2c5a3-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 125740,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Halloween.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.05,
+      "label": "1/20"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "56ad1b93999ece20",
+  "sourceSize": 125740,
+  "sourceMtime": 1792783285056.7869,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d9bca4f93224d006"
+}

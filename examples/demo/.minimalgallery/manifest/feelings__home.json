@@ -1,0 +1,95 @@
+{
+  "id": "feelings__home",
+  "album": "feelings",
+  "file": "Home.jpg",
+  "source": "feelings/Home.jpg",
+  "slug": "home",
+  "title": "Home",
+  "caption": null,
+  "date": "2004-10-11T14:52:36",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 50,
+    "focal35": 75,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FRkKFYJFdWeAZoiKiWiWhEBjPve1",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAb/xAAXAQEAAwAAAAAAAAAAAAAAAAADAAEE/9oADAMBAAIQAxAAAACPBGZFp6JBT//EACMQAQACAgAEBwAAAAAAAAAAAAECAwAEBRETIRIiIzEyUbH/2gAIAQEAAT8A4LVrQr157NF9lRM6sBkPhXuGOjfzm06VsvRStEgivb3ymc+pPzPxj+5Jftz/xAAbEQACAwADAAAAAAAAAAAAAAABAgARIRIzcv/aAAgBAgEBPwBghtjR2IFs8zha4ek+xFn/xAAaEQACAwEBAAAAAAAAAAAAAAABEQACQRAT/9oACAEDAQE/AAUkcnpaqNTi45//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 31633,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__home/95a85159-grid.avif",
+      "key": "feelings__home/95a85159-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 66017,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__home/95a85159-jpeg1600.jpg",
+      "key": "feelings__home/95a85159-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 116592,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Home.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-11",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": null,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "23fe1d45a5876ad7",
+  "sourceSize": 116592,
+  "sourceMtime": 1792783285065.3584,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3c37aa9a10eb9b81"
+}

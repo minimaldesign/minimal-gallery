@@ -1,0 +1,105 @@
+{
+  "id": "colors__blue_door",
+  "album": "colors",
+  "file": "blue_door.jpg",
+  "source": "colors/blue_door.jpg",
+  "slug": "blue_door",
+  "title": "Blue door",
+  "caption": null,
+  "date": "2005-01-30T11:29:49",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5125,
+    "c": 0.0244,
+    "h": 107.23
+  },
+  "thumbhash": "YfgJRYz/Kad2eHl3lZeId/qImJ+I",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAXAQADAQAAAAAAAAAAAAAAAAABAgME/9oADAMBAAIQAxAAAABfM8/ea8ic6f/EACEQAQACAgEDBQAAAAAAAAAAAAECAwAEBQYSExEhInHB/9oACAEBAAE/AOpKLNXQsuqUCcPkPomaPft6mr5O6UpWSBfdT7znL7Xj0ZqNsM2Ah01rziBLz/rn/8QAHxEAAgEEAgMAAAAAAAAAAAAAAQIEAAMFIRFSEiKx/9oACAECAQE/AMaqXJKq6hh4to1LVLUi6EUKoA1WN9ZakdWqQSchd56j5X//xAAfEQACAgIBBQAAAAAAAAAAAAABAgAEAwUSISJScbH/2gAIAQMBAT8A2DvjrsyMVPISqz5a+IuSWJPWbPupuD5LKYA1+L2fs//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14713,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__blue_door/00f6607e-grid.avif",
+      "key": "colors__blue_door/00f6607e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 37741,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__blue_door/00f6607e-jpeg1600.jpg",
+      "key": "colors__blue_door/00f6607e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 168941,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/blue_door.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "c2af6891c8e18a1e",
+  "sourceSize": 168941,
+  "sourceMtime": 1792783284913.9448,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "74c98789c359e1ec"
+}

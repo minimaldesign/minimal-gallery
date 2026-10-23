@@ -1,0 +1,106 @@
+{
+  "id": "colors__mom_wave",
+  "album": "colors",
+  "file": "mom_wave.jpg",
+  "source": "colors/mom_wave.jpg",
+  "slug": "mom_wave",
+  "title": "Mom wave",
+  "caption": null,
+  "date": "2005-01-28T11:07:39",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 6.3,
+    "focal": 31,
+    "focal35": 46,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nice",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Nice, France",
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5173,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "H/gFBYKDeHegh4h9dxeIegi3W7X5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAA8Kp1WdIT/AP/EACAQAAEEAgEFAAAAAAAAAAAAAAEAAgMEESEFE0FRYZL/2gAIAQEAAT8AD2ZDS078LoxY02YH3hV+PpmIkwNJA75KgqVQNQR/K//EABwRAAIABwAAAAAAAAAAAAAAAAECABARE0FCof/aAAgBAgEBPwCjDYQLuWTs/wD/xAAcEQABAwUAAAAAAAAAAAAAAAACAAEDEBFBQqH/2gAIAQMBAT8AaQH0JOUWAl4rU//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18394,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__mom_wave/fef2d767-grid.avif",
+      "key": "colors__mom_wave/fef2d767-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 40858,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__mom_wave/fef2d767-jpeg1600.jpg",
+      "key": "colors__mom_wave/fef2d767-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 130082,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/mom_wave.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 31,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "nice-france",
+      "label": "Nice, France"
+    }
+  },
+  "sourceHash": "3f1b543deb0bcd08",
+  "sourceSize": 130082,
+  "sourceMtime": 1792783284944.1023,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "9c6aa73265cfee5c"
+}

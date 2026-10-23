@@ -1,0 +1,98 @@
+{
+  "id": "feelings__lost_in_translation",
+  "album": "feelings",
+  "file": "Lost_in_translation.jpg",
+  "source": "feelings/Lost_in_translation.jpg",
+  "slug": "lost_in_translation",
+  "title": "Lost in translation",
+  "caption": null,
+  "date": "2005-04-05T17:10:50",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.2,
+    "focal": 35,
+    "focal35": 52,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GBgOBYL3h4mLZXqMdpdnZwwV8qg3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMF/8QAFwEBAQEBAAAAAAAAAAAAAAAAAwQBAv/aAAwDAQACEAMQAAAAxearaRDZbT//xAAiEAACAgICAAcAAAAAAAAAAAABAgMEAAUGERITIzFicXL/2gAIAQEAAT8Av7V6M8nlUKjO0jMZpe3AJ+OafZ37tx7NqVXaaIhSvQ6EfsCFzk8skclmFW9Nlftfy+cSRJNRaLKCUl8S/ZU5/8QAHxEAAgEEAgMAAAAAAAAAAAAAAQIhAAMRMRMiQnGB/9oACAECAQE/AHYXOO4U7lMH2sVhhlX2CIoy4z46+1ckW2O5mv/EAB0RAAICAwEBAQAAAAAAAAAAAAECAxEAEiFBBIH/2gAIAQMBAT8AIMO8CTsYg2wF+OL7jalFZPL7joqfLE6imd2DfgGITrKL5zmf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 33241,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__lost_in_translation/958cba94-grid.avif",
+      "key": "feelings__lost_in_translation/958cba94-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 74980,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__lost_in_translation/958cba94-jpeg1600.jpg",
+      "key": "feelings__lost_in_translation/958cba94-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 149468,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Lost_in_translation.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.2,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 35,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "60888fc6ad2a1946",
+  "sourceSize": 149468,
+  "sourceMtime": 1792783285096.5522,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2f7bf69eac869261"
+}

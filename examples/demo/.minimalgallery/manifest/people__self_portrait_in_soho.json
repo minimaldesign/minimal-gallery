@@ -1,0 +1,95 @@
+{
+  "id": "people__self_portrait_in_soho",
+  "album": "people",
+  "file": "Self_portrait_in_SOHO.jpg",
+  "source": "people/Self_portrait_in_SOHO.jpg",
+  "slug": "self_portrait_in_soho",
+  "title": "Self portrait in SOHO",
+  "caption": null,
+  "date": "2004-07-20T17:05:27",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.2,
+    "focal": 34,
+    "focal35": 51,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "1PcVDYCgeHmGiHiIh3iHiLCjCRyK",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABwb/xAAXAQEAAwAAAAAAAAAAAAAAAAACAAED/9oADAMBAAIQAxAAAAAwRSypKUnDT//EACAQAAMAAgEEAwAAAAAAAAAAAAECAwAEEQUGEjEhQWH/2gAIAQEAAT8AnTzqPJyqfZzt2KbepWiw4il+JFvbBRnTtaFd0I8lZSCSD+AZqwlrLRYoEVvnges//8QAGBEAAgMAAAAAAAAAAAAAAAAAAAEQESH/2gAIAQIBAT8AG6xT/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAEQETH/2gAIAQMBAT8AEr2f/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 21461,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__self_portrait_in_soho/05779138-grid.avif",
+      "key": "people__self_portrait_in_soho/05779138-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 47038,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__self_portrait_in_soho/05779138-jpeg1600.jpg",
+      "key": "people__self_portrait_in_soho/05779138-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 94480,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Self_portrait_in_SOHO.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "07",
+    "day": "07-20",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 4.2,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": null,
+    "focal": 34,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "f0175d0ef7adaede",
+  "sourceSize": 94480,
+  "sourceMtime": 1792783284884.7053,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "046079228a749ae3"
+}

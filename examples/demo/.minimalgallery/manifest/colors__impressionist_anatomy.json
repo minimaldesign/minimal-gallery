@@ -1,0 +1,98 @@
+{
+  "id": "colors__impressionist_anatomy",
+  "album": "colors",
+  "file": "Impressionist_anatomy.jpg",
+  "source": "colors/Impressionist_anatomy.jpg",
+  "slug": "impressionist_anatomy",
+  "title": "Impressionist anatomy",
+  "caption": null,
+  "date": "2004-11-11T17:33:09",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "3",
+    "shutterSeconds": 3,
+    "aperture": 16,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5179,
+    "c": 0.0972,
+    "h": 97.23
+  },
+  "thumbhash": "2zoGFYJvh4qJeHeYV4dnhY+c+HVJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAGAEAAgMAAAAAAAAAAAAAAAAAAwQCBQb/2gAMAwEAAhADEAAAAKcrZlMBTiXOtr//xAAfEAACAQQCAwAAAAAAAAAAAAABAgMABBESEyEiUaH/2gAIAQEAAT8Aa4cPIkKsq6gEsuamXTPizdZ21IqzZrh2WUkhR0B0Plc8+0i8r6+s1//EAB4RAQACAgEFAAAAAAAAAAAAAAECEQADEiExQWFx/9oACAECAQE/AOJUWQKy8OVB7ypOlObagKBb6zbCARSMb+Z//8QAGxEAAwEAAwEAAAAAAAAAAAAAAQIRACEiMVH/2gAIAQMBAT8A+qq+iZlKUEG5O1uBMbk7/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 47060,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__impressionist_anatomy/594503c7-grid.avif",
+      "key": "colors__impressionist_anatomy/594503c7-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 89537,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__impressionist_anatomy/594503c7-jpeg1600.jpg",
+      "key": "colors__impressionist_anatomy/594503c7-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 183450,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Impressionist_anatomy.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-11",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 16,
+    "shutter": {
+      "seconds": 3,
+      "label": "3"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e7bf54836b7d3516",
+  "sourceSize": 183450,
+  "sourceMtime": 1792783285001.2202,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d96babd18d43abbf"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "feelings__mushroom",
+  "album": "feelings",
+  "file": "Mushroom.jpg",
+  "source": "feelings/Mushroom.jpg",
+  "slug": "mushroom",
+  "title": "Mushroom",
+  "caption": null,
+  "date": "2007-11-26T12:40:35",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 8,
+    "focal": 29,
+    "focal35": 43,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": null
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [],
+  "rating": 4,
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GfgFBYBAGDyqdoWraGaFuA/PBw+D",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQME/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAAFSpmP/EACQQAAICAQIFBQAAAAAAAAAAAAIDAREABAUSExQhIzJBUWHB/9oACAEBAAE/ANBunh6eCKjckZr8xgQe168FLnu6Qm4so9yr6xe16BKJYtHCY1UwRZzmoUS1MIQMikoifVfzn//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 32034,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__mushroom/5aefaa22-grid.avif",
+      "key": "feelings__mushroom/5aefaa22-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 101694,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__mushroom/5aefaa22-jpeg1600.jpg",
+      "key": "feelings__mushroom/5aefaa22-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 167252,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/feelings/Mushroom.jpg",
+    "icc": "ProPhoto RGB"
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-26",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 100,
+    "focal": 29,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "d0b40928673fba47",
+  "sourceSize": 167252,
+  "sourceMtime": 1792783285106.9727,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "046ad38eca45a2a5"
+}

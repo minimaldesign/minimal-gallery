@@ -1,0 +1,98 @@
+{
+  "id": "feelings__together",
+  "album": "feelings",
+  "file": "Together.jpg",
+  "source": "feelings/Together.jpg",
+  "slug": "together",
+  "title": "Together",
+  "caption": null,
+  "date": "2005-04-08T11:18:05",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 5.6,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 250,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3427,
+    "c": 0.0603,
+    "h": 263.32
+  },
+  "thumbhash": "T+cBHYKaF6s1iYU0DQuIdWN/N/lW",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwAG/8QAFwEBAQEBAAAAAAAAAAAAAAAABAMCBf/aAAwDAQACEAMQAAAAxCToShdc1Hf/xAAdEAACAgMAAwAAAAAAAAAAAAABAgMRACFBEmGh/9oACAEBAAE/APGMCqa/mF1giUrtyejWuZGSyvfrIVUbA3Wf/8QAGhEAAgMBAQAAAAAAAAAAAAAAAQIAAxEiUf/aAAgBAgEBPwB6i2kwU9tyQcwN5GAGR5//xAAaEQACAwEBAAAAAAAAAAAAAAAAAQIRElEh/9oACAEDAQE/ANJdNYjd+8ItuxH/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 24900,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__together/086b3570-grid.avif",
+      "key": "feelings__together/086b3570-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 45981,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__together/086b3570-jpeg1600.jpg",
+      "key": "feelings__together/086b3570-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 128171,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Together.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-08",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 250,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "2c5b94467f4b0c38",
+  "sourceSize": 128171,
+  "sourceMtime": 1792783285155.145,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "cb0860fac8ac48b0"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "people__kyoto_bikers",
+  "album": "people",
+  "file": "Kyoto_Bikers.jpg",
+  "source": "people/Kyoto_Bikers.jpg",
+  "slug": "kyoto_bikers",
+  "title": "Kyoto Bikers",
+  "caption": null,
+  "date": "2005-04-04T14:34:23",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 55,
+    "focal35": 82,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EggGDYLEH1jQRYt+xnjaZgCsCIB3",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgIE/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgMA/9oADAMBAAIQAxAAAAAhtIpntJuH/8QAIRAAAgICAQQDAAAAAAAAAAAAAgMBBAAREgUTIiMhQVH/2gAIAQEAAT8AY1vqa+HAso9Z68ij91gCdqoDV9w5U3Rx9cSyy5thiwcwjEO5x5TvXznXNdPGtRqACq7qwG0BGPMo1OynP//EABsRAAIDAAMAAAAAAAAAAAAAAAECABEhAxIT/9oACAECAQE/AOii6GxTbsmXUXTs4gPQ5P/EABsRAQACAgMAAAAAAAAAAAAAAAEAAhEhAxJB/9oACAEDAQE/ABcmXUsYpW3kdE5F6k//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 29382,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__kyoto_bikers/741271b7-grid.avif",
+      "key": "people__kyoto_bikers/741271b7-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 63451,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__kyoto_bikers/741271b7-jpeg1600.jpg",
+      "key": "people__kyoto_bikers/741271b7-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 155968,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Kyoto_Bikers.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-04",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 55,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0232a26037301124",
+  "sourceSize": 155968,
+  "sourceMtime": 1792783285131.5842,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "126059d27404637d"
+}

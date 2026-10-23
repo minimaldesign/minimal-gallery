@@ -1,0 +1,98 @@
+{
+  "id": "colors__untitled",
+  "album": "colors",
+  "file": "untitled.jpg",
+  "source": "colors/untitled.jpg",
+  "slug": "untitled",
+  "title": "Untitled",
+  "caption": null,
+  "date": "2005-03-25T16:57:55",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "kigGDYIOUYqOVZhOhTm4gx+m9VJ/",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAWAQEBAQAAAAAAAAAAAAAAAAADBAL/2gAMAwEAAhADEAAAAA5KhGFOfUT6/8QAHxAAAQQCAgMAAAAAAAAAAAAAAQIDBBEAEgUhE1Fh/9oACAEBAAE/AIUuNCjPOSGFSFBQUlIOp76u8f5AueS2FNJW5dX37vISUlgrIBOoOPKOl0LPwZ//xAAbEQEAAgMBAQAAAAAAAAAAAAABAhEAAyETQf/aAAgBAgEBPwBlOO2iVCJkLPt8zZJ9Jl8MAeOf/8QAGhEAAgMBAQAAAAAAAAAAAAAAAREAAiEDcf/aAAgBAwEBPwBVtyaZctqxTmc9gJRn/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 37605,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__untitled/6cf5d691-grid.avif",
+      "key": "colors__untitled/6cf5d691-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 78881,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__untitled/6cf5d691-jpeg1600.jpg",
+      "key": "colors__untitled/6cf5d691-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 157448,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/untitled.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "03",
+    "day": "03-25",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "07c9e94e5497e7d5",
+  "sourceSize": 157448,
+  "sourceMtime": 1792783284955.8613,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "4a152b4070ba7647"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "feelings__tojimbo_no_koneko",
+  "album": "feelings",
+  "file": "Tojimbo_no_koneko.jpg",
+  "source": "feelings/Tojimbo_no_koneko.jpg",
+  "slug": "tojimbo_no_koneko",
+  "title": "Tojimbo no koneko",
+  "caption": null,
+  "date": "2005-06-01T11:13:17",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": true
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "©2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.6853,
+    "c": 0.0485,
+    "h": 84.46
+  },
+  "thumbhash": "oEkKDYLmjomId3a/ZWeYeJ6C/yan",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAFwEBAAMAAAAAAAAAAAAAAAAABAECBf/aAAwDAQACEAMQAAAAmz3pTTThaakv/8QAIBAAAQQCAQUAAAAAAAAAAAAABAECAxEABSEGEiIzUv/aAAgBAQABPwDqHenDHyArG0aJqey7c/5wItuxAiI7HNerfNFSucOBDJIjmnHZJJGymK5Lq1wvhKTP/8QAGxEBAAICAwAAAAAAAAAAAAAAAQACAxESIVH/2gAIAQIBAT8Aw0qm1V8g8bJuXtYagoL3Mc//xAAaEQADAAMBAAAAAAAAAAAAAAAAAQIDEiEx/9oACAEDAQE/AMu0tazxlyT4zIf/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 20903,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__tojimbo_no_koneko/e56010d8-grid.avif",
+      "key": "feelings__tojimbo_no_koneko/e56010d8-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 38140,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__tojimbo_no_koneko/e56010d8-jpeg1600.jpg",
+      "key": "feelings__tojimbo_no_koneko/e56010d8-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 163019,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Tojimbo_no_koneko.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "06",
+    "day": "06-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "61eee1170db6ae65",
+  "sourceSize": 163019,
+  "sourceMtime": 1792783284843.9172,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "7ca5510409fb4d2d"
+}

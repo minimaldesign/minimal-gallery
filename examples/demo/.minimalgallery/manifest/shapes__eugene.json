@@ -1,0 +1,89 @@
+{
+  "id": "shapes__eugene",
+  "album": "shapes",
+  "file": "Eugene.jpg",
+  "source": "shapes/Eugene.jpg",
+  "slug": "eugene",
+  "title": "Eugene",
+  "caption": null,
+  "date": "2026-10-23T12:21:25",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 589,
+  "color": {
+    "l": 0.8822,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "7/cNFYJQqYqIiIdlhnh3d0CYCISZ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAKABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgf/xAAVAQEBAAAAAAAAAAAAAAAAAAADAv/aAAwDAQACEAMQAAAAQIasVmbRSwT/xAAfEAABAwMFAAAAAAAAAAAAAAABAgMSAAQFBhATIVH/2gAIAQEAAT8AsLayayc2JTPKOySKSCUCQAV4K0266vOuBTiiIvbf/8QAGREBAAIDAAAAAAAAAAAAAAAAAQIQAxEh/9oACAECAQE/AMgAOqm8r//EABcRAAMBAAAAAAAAAAAAAAAAAAECERD/2gAIAQMBAT8AQ0y4oGf/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 419,
+      "bytes": 7170,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__eugene/5cb8431e-grid.avif",
+      "key": "shapes__eugene/5cb8431e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 589,
+      "bytes": 26737,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__eugene/5cb8431e-jpeg1600.jpg",
+      "key": "shapes__eugene/5cb8431e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 87376,
+    "width": 900,
+    "height": 589,
+    "relativePath": "photos/shapes/Eugene.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "54b39b13104a1ebb",
+  "sourceSize": 87376,
+  "sourceMtime": 1792783285027.0576,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "303bcdb682379159"
+}

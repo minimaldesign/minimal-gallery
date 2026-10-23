@@ -1,0 +1,106 @@
+{
+  "id": "people__arashiyama_smile",
+  "album": "people",
+  "file": "Arashiyama Smile.jpg",
+  "source": "people/Arashiyama Smile.jpg",
+  "slug": "arashiyama_smile",
+  "title": "Arashiyama Smile",
+  "caption": null,
+  "date": "2007-11-25T13:17:16",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 5.6,
+    "focal": 105,
+    "focal35": 157,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": "Arashiyama"
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [],
+  "rating": 4,
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1602,
+    "c": 0.0289,
+    "h": 20.79
+  },
+  "thumbhash": "mUkOHYLPWVW3iYhleYh4iL+Y5GkI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQH/8QAGAEAAwEBAAAAAAAAAAAAAAAAAQMFAgT/2gAMAwEAAhADEAAAAEI1LPuvFgCbF//EACQQAAICAQMCBwAAAAAAAAAAAAECAwQSAAURBjMTISIxQWJz/9oACAEBAAE/AOr447tCvIZEEeWYPPc+qasbc9KF7LqJIJGUeQJ9DA63CxMRtUJc+GlRSq/pxlrZ0WSxJC3bNYPh7DIfOv/EAB0RAAICAwADAAAAAAAAAAAAAAECABEDEiEEMUH/2gAIAQIBAT8A8XmQ2puouXdwvoiIoCu30mYgNS1d2Iuf/8QAHhEAAQQCAwEAAAAAAAAAAAAAAQACAxESMRMhM0H/2gAIAQMBAT8AlAwrIJ0XGwu20qT0Y35QUrjlV9Vpf//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 22038,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/people__arashiyama_smile/2b0b7f22-grid.avif",
+      "key": "people__arashiyama_smile/2b0b7f22-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 72655,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/people__arashiyama_smile/2b0b7f22-jpeg1600.jpg",
+      "key": "people__arashiyama_smile/2b0b7f22-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 137809,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/people/Arashiyama Smile.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-25",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 100,
+    "focal": 105,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "21a983894307732e",
+  "sourceSize": 137809,
+  "sourceMtime": 1792783285098.9602,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "faada7d2ed7b9015"
+}

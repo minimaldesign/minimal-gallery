@@ -1,0 +1,98 @@
+{
+  "id": "feelings__oppressive_cuteness",
+  "album": "feelings",
+  "file": "Oppressive_Cuteness.jpg",
+  "source": "feelings/Oppressive_Cuteness.jpg",
+  "slug": "oppressive_cuteness",
+  "title": "Oppressive Cuteness",
+  "caption": null,
+  "date": "2005-04-05T12:08:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/400",
+    "shutterSeconds": 0.0025,
+    "aperture": 10,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.7243,
+    "c": 0.0294,
+    "h": 248.23
+  },
+  "thumbhash": "o+cJDYJfxZOld2lbmJaGeKB3BXpX",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQEG/8QAFwEBAAMAAAAAAAAAAAAAAAAAAwABBP/aAAwDAQACEAMQAAAAXfPniR5TtT//xAAgEAABAwIHAAAAAAAAAAAAAAABAAIDBBMREhUhIzJh/9oACAEBAAE/AAqx9frEDIbtjjL8OnqCytJ3aF//xAAXEQEBAQEAAAAAAAAAAAAAAAABAgAQ/9oACAECAQE/ANVBQL3/xAAYEQEBAAMAAAAAAAAAAAAAAAABAgAQEf/aAAgBAwEBPwDJlZXm/wD/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 33500,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__oppressive_cuteness/941cf38f-grid.avif",
+      "key": "feelings__oppressive_cuteness/941cf38f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 71986,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__oppressive_cuteness/941cf38f-jpeg1600.jpg",
+      "key": "feelings__oppressive_cuteness/941cf38f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 143797,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Oppressive_Cuteness.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 10,
+    "shutter": {
+      "seconds": 0.0025,
+      "label": "1/400"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "d221106041c76248",
+  "sourceSize": 143797,
+  "sourceMtime": 1792783285119.5618,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1109444b72e89bf2"
+}

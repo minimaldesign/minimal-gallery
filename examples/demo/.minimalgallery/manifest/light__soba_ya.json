@@ -1,0 +1,95 @@
+{
+  "id": "light__soba_ya",
+  "album": "light",
+  "file": "Soba_ya.jpg",
+  "source": "light/Soba_ya.jpg",
+  "slug": "soba_ya",
+  "title": "Soba ya",
+  "caption": null,
+  "date": "2004-06-16T18:47:31",
+  "dateSource": "xmp",
+  "camera": "Canon PowerShot S230",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/50",
+    "shutterSeconds": 0.02,
+    "aperture": 2.8,
+    "focal": 5.40625,
+    "focal35": null,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EnoKHYQEHktdp2eXiHd4dghbl6CG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwEF/9oADAMBAAIQAxAAAADIZG08VAWROH//xAAgEAEAAQMFAAMAAAAAAAAAAAABAwACBAUSEyExUpHh/9oACAEBAAE/AMS/nI3ZtitRHxu/K1fMx59DyiS0WEt4U+S1Dc8b35bWepp8gPTIL91//8QAIBEAAQMCBwAAAAAAAAAAAAAAAQACAyFxBBIiMTNhsf/aAAgBAgEBPwCQZCa6vFh2OE8fZrZO3UHMLL//xAAgEQACAQIHAQAAAAAAAAAAAAABAgADEQQSIjEzQXKx/9oACAEDAQE/AKWsbWX7Kz5Edh0IhNpiOA+p/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 38444,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__soba_ya/feef0273-grid.avif",
+      "key": "light__soba_ya/feef0273-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 85028,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__soba_ya/feef0273-jpeg1600.jpg",
+      "key": "light__soba_ya/feef0273-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 159780,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Soba_ya.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "06",
+    "day": "06-16",
+    "camera": {
+      "slug": "canon-powershot-s230",
+      "label": "Canon PowerShot S230"
+    },
+    "lens": null,
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.02,
+      "label": "1/50"
+    },
+    "iso": null,
+    "focal": 5.4,
+    "focalBucket": "wide",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "470bfad13c967b14",
+  "sourceSize": 159780,
+  "sourceMtime": 1792783285053.8914,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d8ddab7edbbfe4f4"
+}

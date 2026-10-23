@@ -1,0 +1,98 @@
+{
+  "id": "motion__taking_off",
+  "album": "motion",
+  "file": "Taking_off.jpg",
+  "source": "motion/Taking_off.jpg",
+  "slug": "taking_off",
+  "title": "Taking off",
+  "caption": null,
+  "date": "2005-04-05T10:21:11",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/400",
+    "shutterSeconds": 0.0025,
+    "aperture": 5,
+    "focal": 105,
+    "focal35": 157,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2841,
+    "c": 0.0292,
+    "h": 284.39
+  },
+  "thumbhash": "jgcGBYD8u7+0iYgGZWZkgwRetx+K",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAIG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAED/9oADAMBAAIQAxAAAADE7CxQmv/EAB4QAAMAAgIDAQAAAAAAAAAAAAECEQADEkETITNy/9oACAEBAAE/AN6aU3t4LCpgvR6JxA6rxXUyiQ02nAx5bTfZua/mf1n/xAAVEQEBAAAAAAAAAAAAAAAAAAAQUf/aAAgBAgEBPwAp/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16441,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/motion__taking_off/807cc22d-grid.avif",
+      "key": "motion__taking_off/807cc22d-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 36218,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/motion__taking_off/807cc22d-jpeg1600.jpg",
+      "key": "motion__taking_off/807cc22d-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 131953,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/motion/Taking_off.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.0025,
+      "label": "1/400"
+    },
+    "iso": 200,
+    "focal": 105,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "5acb19d4baaae965",
+  "sourceSize": 131953,
+  "sourceMtime": 1792783285077.2866,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "11268fad33bc6144"
+}

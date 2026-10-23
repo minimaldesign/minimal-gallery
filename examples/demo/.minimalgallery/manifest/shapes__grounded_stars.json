@@ -1,0 +1,98 @@
+{
+  "id": "shapes__grounded_stars",
+  "album": "shapes",
+  "file": "Grounded_Stars.jpg",
+  "source": "shapes/Grounded_Stars.jpg",
+  "slug": "grounded_stars",
+  "title": "Grounded Stars",
+  "caption": null,
+  "date": "2005-04-09T12:41:19",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 60,
+    "focal35": 90,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2719,
+    "c": 0.0276,
+    "h": 108.1
+  },
+  "thumbhash": "zggGDYABf5RdtXaEaWeXhyBdVOAm",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgIH/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIEAP/aAAwDAQACEAMQAAAAz6cpJXN1pGH/xAAeEAABBAIDAQAAAAAAAAAAAAABAAIDERIhBAVBMf/aAAgBAQABPwCFrA5md1pdtJx5IYIoACK0Uz6B5YWRsb8X/8QAGhEBAAEFAAAAAAAAAAAAAAAAAgABAxARMf/aAAgBAgEBPwBbloopJSncf//EABcRAAMBAAAAAAAAAAAAAAAAAAACEEH/2gAIAQMBAT8AGy//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 44044,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__grounded_stars/bca478e8-grid.avif",
+      "key": "shapes__grounded_stars/bca478e8-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 80230,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__grounded_stars/bca478e8-jpeg1600.jpg",
+      "key": "shapes__grounded_stars/bca478e8-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 158779,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Grounded_Stars.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-09",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 200,
+    "focal": 60,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "a713289918a2b3f0",
+  "sourceSize": 158779,
+  "sourceMtime": 1792783285052.4885,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "69148247507ca736"
+}

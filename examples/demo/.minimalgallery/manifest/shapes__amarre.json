@@ -1,0 +1,105 @@
+{
+  "id": "shapes__amarre",
+  "album": "shapes",
+  "file": "amarre.jpg",
+  "source": "shapes/amarre.jpg",
+  "slug": "amarre",
+  "title": "Amarre",
+  "caption": "I'm leaving today for 3 weeks.  I was going to write a script to automatically upload a picture to my server everyday, but I didn't have time so I took a much simpler approach: I uploaded 21 photos at once :)  Feel free to look at all of them right away, but then don't complain if you have nothing new to check out until I get back...",
+  "date": "2005-01-30T11:05:35",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 4,
+    "focal": 185,
+    "focal35": 277,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4604,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FwgGBYCqqmhPZZeWeQZrtAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQMFBv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAJABhlD/xAAhEAACAQMEAwEAAAAAAAAAAAABAgMABBEFEhNBITGRgf/aAAgBAQABPwBp4LeZROFXPgqVUrkdr2M019olvI8V3aK78e5OKZvhzWrwxu43L6DEHupbu4iaVUfH4Cfpr//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23736,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__amarre/37f9c2a5-grid.avif",
+      "key": "shapes__amarre/37f9c2a5-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 47627,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__amarre/37f9c2a5-jpeg1600.jpg",
+      "key": "shapes__amarre/37f9c2a5-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 148017,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/amarre.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 185,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "40ec90e47db352b4",
+  "sourceSize": 148017,
+  "sourceMtime": 1792783285129.686,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "eabf6a29e30c2d6a"
+}

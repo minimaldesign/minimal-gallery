@@ -1,0 +1,98 @@
+{
+  "id": "colors__sakura_impression",
+  "album": "colors",
+  "file": "Sakura_Impression.jpg",
+  "source": "colors/Sakura_Impression.jpg",
+  "slug": "sakura_impression",
+  "title": "Sakura Impression",
+  "caption": null,
+  "date": "2005-04-09T13:01:43",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2042,
+    "c": 0.0286,
+    "h": 108.69
+  },
+  "thumbhash": "FAgGDYBginh3aXg/iGebY3mKAJac",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQYH/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAID/9oADAMBAAIQAxAAAACLm0wnSNBaf//EACAQAAICAgICAwAAAAAAAAAAAAECAwQAERITBTEhQoH/2gAIAQEAAT8AQTKw5VpShP1Q5F5ZK/xXrFdNtOx/z0ut4Jpq8gaKV0IZQNNixRWa0fdGr8uZOx7I3n//xAAbEQABBAMAAAAAAAAAAAAAAAARAAECQQMQIf/aAAgBAgEBPwAikRSyxaMnHNf/xAAWEQEBAQAAAAAAAAAAAAAAAAABEAL/2gAIAQMBAT8AmFSf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 42058,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__sakura_impression/858af31a-grid.avif",
+      "key": "colors__sakura_impression/858af31a-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 82147,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__sakura_impression/858af31a-jpeg1600.jpg",
+      "key": "colors__sakura_impression/858af31a-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 164084,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Sakura_Impression.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-09",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "9d382b67cbfb5337",
+  "sourceSize": 164084,
+  "sourceMtime": 1792783285028.5933,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2d8381f986aff189"
+}

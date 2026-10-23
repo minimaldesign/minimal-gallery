@@ -1,0 +1,95 @@
+{
+  "id": "feelings__greenport",
+  "album": "feelings",
+  "file": "Greenport.jpg",
+  "source": "feelings/Greenport.jpg",
+  "slug": "greenport",
+  "title": "Greenport",
+  "caption": null,
+  "date": "2013-08-02T15:42:17",
+  "dateSource": "xmp",
+  "camera": "Canon PowerShot S95",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/640",
+    "shutterSeconds": 0.0015625,
+    "aperture": 4,
+    "focal": 6,
+    "focal35": null,
+    "iso": 80,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 675,
+  "color": {
+    "l": 0.6751,
+    "c": 0.0229,
+    "h": 107
+  },
+  "thumbhash": "3AcGJYYPiUc+ioendbh4UnZSQBgG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAMABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgMG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQQD/9oADAMBAAIQAxAAAACFGQmpQZjZ/8QAHxAAAgICAwADAAAAAAAAAAAAAQIDEQAEBRJBEyEy/9oACAEBAAE/AFPXqX43W6WAWSRiQD7WbDoBP3+COFGBjEdvI1H6seXmtK7yKhr9VfuctvbM2xKrSEBHZFA8Gf/EAB0RAQACAgIDAAAAAAAAAAAAAAEAEQIDBBQiMkH/2gAIAQIBAT8AebuB81Z29+6ilv2soIzHExxK+z//xAAeEQABAwQDAAAAAAAAAAAAAAABAgMEABAREhMhQf/aAAgBAwEBPwARUqOORQoRGWjtsc+d3//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 480,
+      "bytes": 35652,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__greenport/c492737e-grid.avif",
+      "key": "feelings__greenport/c492737e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 675,
+      "bytes": 128212,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__greenport/c492737e-jpeg1600.jpg",
+      "key": "feelings__greenport/c492737e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 331411,
+    "width": 900,
+    "height": 675,
+    "relativePath": "photos/feelings/Greenport.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2013",
+    "month": "08",
+    "day": "08-02",
+    "camera": {
+      "slug": "canon-powershot-s95",
+      "label": "Canon PowerShot S95"
+    },
+    "lens": null,
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.0015625,
+      "label": "1/640"
+    },
+    "iso": 80,
+    "focal": 6,
+    "focalBucket": "wide",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "40ea98a0776c7622",
+  "sourceSize": 331411,
+  "sourceMtime": 1792783285063.7021,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "bf143eee227445ae"
+}

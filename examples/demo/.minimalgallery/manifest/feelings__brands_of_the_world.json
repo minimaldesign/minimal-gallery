@@ -1,0 +1,89 @@
+{
+  "id": "feelings__brands_of_the_world",
+  "album": "feelings",
+  "file": "Brands_of_the_World.jpg",
+  "source": "feelings/Brands_of_the_World.jpg",
+  "slug": "brands_of_the_world",
+  "title": "Brands of the World",
+  "caption": null,
+  "date": "2026-10-23T12:21:25",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2841,
+    "c": 0.0292,
+    "h": 284.39
+  },
+  "thumbhash": "1AcGDYAOmopq1miDeTe5dQyRs0IJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQME/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/9oADAMBAAIQAxAAAAAQcdlZwtb/xAAiEAACAQMDBQEAAAAAAAAAAAABAgMABBEFEiETFCJRUmH/2gAIAQEAAT8AigSe5XepWHpl3y5JZl9fprUnsbiOLt4Sj7irbgQ/H1mtPdpEUuc5gyal8CwXgYzX/8QAGxEAAwACAwAAAAAAAAAAAAAAAAECESFBUXH/2gAIAQIBAT8AqlKzkmpa0zr05P/EABwRAAEDBQAAAAAAAAAAAAAAABEAASECEDFRcf/aAAgBAwEBPwBmOU9IEmFvlv/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 35719,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__brands_of_the_world/8c582624-grid.avif",
+      "key": "feelings__brands_of_the_world/8c582624-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 67342,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__brands_of_the_world/8c582624-jpeg1600.jpg",
+      "key": "feelings__brands_of_the_world/8c582624-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 181760,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Brands_of_the_World.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "d56b4c6de80535a4",
+  "sourceSize": 181760,
+  "sourceMtime": 1792783285009.3538,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "82ea55e34b31e493"
+}

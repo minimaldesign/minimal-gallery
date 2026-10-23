@@ -1,0 +1,106 @@
+{
+  "id": "shapes__step",
+  "album": "shapes",
+  "file": "Step.jpg",
+  "source": "shapes/Step.jpg",
+  "slug": "step",
+  "title": "Step",
+  "caption": null,
+  "date": "2005-08-29T17:01:06",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Red Hook"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "nPgFBYAwKrhwlmilhyeXdCJgB4B5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQME/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAIBA//aAAwDAQACEAMQAAAAA5HJaZXb/8QAIxAAAQIFAwUAAAAAAAAAAAAAAQIEAAMFERIhIiMxQVFxkv/aAAgBAQABPwBk3aYczZYwG42v19Qun052wY4SkK5HCCccTcWOsNdyBfxE7RnIA7uJt/mP/8QAGhEBAAEFAAAAAAAAAAAAAAAAAQACEBEhUv/aAAgBAgEBPwBz1FqAsOif/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8AIT//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 51427,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__step/2e86f022-grid.avif",
+      "key": "shapes__step/2e86f022-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 97799,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__step/2e86f022-jpeg1600.jpg",
+      "key": "shapes__step/2e86f022-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 191569,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Step.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "08",
+    "day": "08-29",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "ec292e6ccb5e9384",
+  "sourceSize": 191569,
+  "sourceMtime": 1792783285106.0984,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "448ba75e04539180"
+}

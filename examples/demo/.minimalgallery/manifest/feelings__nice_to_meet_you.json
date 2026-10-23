@@ -1,0 +1,98 @@
+{
+  "id": "feelings__nice_to_meet_you",
+  "album": "feelings",
+  "file": "Nice_to_meet_you.jpg",
+  "source": "feelings/Nice_to_meet_you.jpg",
+  "slug": "nice_to_meet_you",
+  "title": "Nice to meet you",
+  "caption": null,
+  "date": "2005-02-23T17:02:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8377,
+    "c": 0.0221,
+    "h": 285.91
+  },
+  "thumbhash": "rQcGBYBUQ5aChYgQl2isj3hQhwiH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAEAA//aAAwDAQACEAMQAAAA1W4CWm03/8QAHxAAAgICAgMBAAAAAAAAAAAAAQIDEQASBCEiMWGh/9oACAEBAAE/AIeBpDsZFo9+7Gar4gNdmhXY/MjRXXkKygqrbKp7Cn4MSGJF2SNFLVtQq6z/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 46721,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__nice_to_meet_you/0a79d393-grid.avif",
+      "key": "feelings__nice_to_meet_you/0a79d393-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 84235,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__nice_to_meet_you/0a79d393-jpeg1600.jpg",
+      "key": "feelings__nice_to_meet_you/0a79d393-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 163700,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Nice_to_meet_you.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-23",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e937918977aa7e86",
+  "sourceSize": 163700,
+  "sourceMtime": 1792783285111.3027,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b55567e999a956a1"
+}

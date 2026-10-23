@@ -1,0 +1,98 @@
+{
+  "id": "light__carroll_street",
+  "album": "light",
+  "file": "Carroll_Street.jpg",
+  "source": "light/Carroll_Street.jpg",
+  "slug": "carroll_street",
+  "title": "Carroll Street",
+  "caption": null,
+  "date": "2005-07-26T12:12:35",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 40,
+    "focal35": 60,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "AQgCBYAjb3WKh3iWaVmZlAKKNKBJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQIDB//EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAADGqcZoR//EABsQAQACAgMAAAAAAAAAAAAAAAEAEQIQITGh/9oACAEBAAE/AL6mZjRwj5pbJ//EABcRAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8AFt//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 5588,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__carroll_street/b2d7ac84-grid.avif",
+      "key": "light__carroll_street/b2d7ac84-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 10922,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__carroll_street/b2d7ac84-jpeg1600.jpg",
+      "key": "light__carroll_street/b2d7ac84-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 97527,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Carroll_Street.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-26",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 40,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0de6f380a0dc8286",
+  "sourceSize": 97527,
+  "sourceMtime": 1792783284971.6487,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "88cb5d0f2abe496e"
+}

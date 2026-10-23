@@ -1,0 +1,92 @@
+{
+  "id": "colors__lazy_sunday_afternoons",
+  "album": "colors",
+  "file": "lazy-sunday-afternoons.jpg",
+  "source": "colors/lazy-sunday-afternoons.jpg",
+  "slug": "lazy_sunday_afternoons",
+  "title": "Lazy sunday afternoons",
+  "caption": null,
+  "date": "2009-05-10T14:22:09",
+  "dateSource": "xmp",
+  "camera": null,
+  "lens": "24.0-70.0 mm f/2.8",
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 600,
+  "color": {
+    "l": 0.3357,
+    "c": 0.0266,
+    "h": 107.75
+  },
+  "thumbhash": "nygOLYx2aYewd3d2eIeXeK+K9sg5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgME/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQUGA//aAAwDAQACEAMQAAAAzq6CLeZTT+rNmP/EACEQAAMAAQMEAwAAAAAAAAAAAAECAwQAERIFBhNhMTJB/9oACAEBAAE/AKdN3HhfFtQ8AZcFVG2H2DMCV1l9r38U3wrChUE0Vvz0DrC6dh0hhu8izMVBJZvg6TGhCPCc1VdyNvWv/8QAHhEAAgEEAwEAAAAAAAAAAAAAAQIEAAMRIRIiMRP/2gAIAQIBAT8AV5ZbaEjPmdUtl2tIcqrNjqTUObJE8W/p0z5xFSbrtxJO81//xAAgEQADAAIBBAMAAAAAAAAAAAABAgMAERIFISIxQVGB/9oACAEDAQE/AHh0p5ACizZR3Yb2fw5W852oi8mVSfIL8ZdA825FvX2Rhkkl0i6Bz//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 427,
+      "bytes": 16670,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/colors__lazy_sunday_afternoons/98cfb00b-grid.avif",
+      "key": "colors__lazy_sunday_afternoons/98cfb00b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 600,
+      "bytes": 53138,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/colors__lazy_sunday_afternoons/98cfb00b-jpeg1600.jpg",
+      "key": "colors__lazy_sunday_afternoons/98cfb00b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 232863,
+    "width": 900,
+    "height": 600,
+    "relativePath": "photos/colors/lazy-sunday-afternoons.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2009",
+    "month": "05",
+    "day": "05-10",
+    "camera": null,
+    "lens": {
+      "slug": "24-0-70-0-mm-f-2-8",
+      "label": "24.0-70.0 mm f/2.8"
+    },
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "01879adebcced07f",
+  "sourceSize": 232863,
+  "sourceMtime": 1792783284936.624,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a2a26b07af0d6c93"
+}

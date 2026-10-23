@@ -1,0 +1,106 @@
+{
+  "id": "shapes__balcony",
+  "album": "shapes",
+  "file": "Balcony.jpg",
+  "source": "shapes/Balcony.jpg",
+  "slug": "balcony",
+  "title": "Balcony",
+  "caption": null,
+  "date": "2005-01-28T11:55:23",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nice",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Nice, France",
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5525,
+    "c": 0.0996,
+    "h": 243.74
+  },
+  "thumbhash": "pucNFYRYeHd/d3eIeDeHdV9g/SbG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQEE/8QAGAEAAwEBAAAAAAAAAAAAAAAAAgQFAQP/2gAMAwEAAhADEAAAAHz5xpUePVxFn//EAB4QAAICAgIDAAAAAAAAAAAAAAECAwQABRIhMlGC/9oACAEBAAE/AKu7oFFU6678ouW9zqgCpjnU+igyGKMjwGXgEV+PXWf/xAAcEQEBAAICAwAAAAAAAAAAAAABAgADEDETM3H/2gAIAQIBAT8A8iPu1n1yde6goqEekeJu56pM/8QAHBEBAQEAAQUAAAAAAAAAAAAAAQIAAxIxM2GB/9oACAEDAQE/AOiU8V/DVy8EqM2J6xqia7yO/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 12843,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/shapes__balcony/7e52f981-grid.avif",
+      "key": "shapes__balcony/7e52f981-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 32885,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/shapes__balcony/7e52f981-jpeg1600.jpg",
+      "key": "shapes__balcony/7e52f981-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 121628,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Balcony.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "nice-france",
+      "label": "Nice, France"
+    }
+  },
+  "sourceHash": "5bc66f49edf2c798",
+  "sourceSize": 121628,
+  "sourceMtime": 1792783284981.6365,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "0d461074d1a60d0a"
+}

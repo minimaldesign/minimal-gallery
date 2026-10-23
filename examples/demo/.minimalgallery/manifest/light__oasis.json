@@ -1,0 +1,92 @@
+{
+  "id": "light__oasis",
+  "album": "light",
+  "file": "Oasis.jpg",
+  "source": "light/Oasis.jpg",
+  "slug": "oasis",
+  "title": "Oasis",
+  "caption": null,
+  "date": "2007-11-14T16:21:40",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": 20,
+    "focal35": null,
+    "iso": 100,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.6268,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "WfgNDYJ3eIh/iIiHeFh6iEV6gPQV",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQG/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQMCBP/aAAwDAQACEAMQAAAAmmvLneiRD//EACQQAAIABAQHAAAAAAAAAAAAAAECAAMREgQFIjETISMyQUJx/9oACAEBAAE/AExgLs5u4VulQm9Pohs2ygop697AaVl+T6wstVpQvyq/cdzDSZTBiVqRH//EABoRAAMBAQEBAAAAAAAAAAAAAAECEQASMVH/2gAIAQIBAT8AJZrwbPcrP9G4WETcKLBv/8QAHBEAAgAHAAAAAAAAAAAAAAAAAAECEhMiMTJh/9oACAEDAQE/ALIdlkdPpM0xn//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 43920,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/light__oasis/8a3046ee-grid.avif",
+      "key": "light__oasis/8a3046ee-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 132513,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/light__oasis/8a3046ee-jpeg1600.jpg",
+      "key": "light__oasis/8a3046ee-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 238505,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/light/Oasis.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": 100,
+    "focal": 20,
+    "focalBucket": "wide",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "f49865dad8b3ed48",
+  "sourceSize": 238505,
+  "sourceMtime": 1792783285032.8613,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c1c9b672b024ba57"
+}

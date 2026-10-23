@@ -1,0 +1,98 @@
+{
+  "id": "feelings__noir",
+  "album": "feelings",
+  "file": "Noir.jpg",
+  "source": "feelings/Noir.jpg",
+  "slug": "noir",
+  "title": "Noir",
+  "caption": null,
+  "date": "2004-10-28T20:52:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "2",
+    "shutterSeconds": 2,
+    "aperture": 4,
+    "focal": 29,
+    "focal35": 43,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "rating": null,
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "CggGBYBCh5aPhYeliHeLmgPvVvFt",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAADORYVKoeP/xAAeEAEBAAICAgMAAAAAAAAAAAABAgMEABEhIzFCUf/aAAgBAQABPwDT29limsuBmWT3J9uZL0Ni4gqcnci1iUB/Evp5jBfJzBSXj6evjn//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16395,
+      "format": "avif",
+      "url": "https://media.minimalgallery.net/feelings__noir/a12b7ff3-grid.avif",
+      "key": "feelings__noir/a12b7ff3-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 33697,
+      "format": "jpeg",
+      "url": "https://media.minimalgallery.net/feelings__noir/a12b7ff3-jpeg1600.jpg",
+      "key": "feelings__noir/a12b7ff3-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 151475,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Noir.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 2,
+      "label": "2"
+    },
+    "iso": 200,
+    "focal": 29,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "91c8e11cd18309e8",
+  "sourceSize": 151475,
+  "sourceMtime": 1792783285114.063,
+  "inputsHash": "8fc1c0f473b0b01c",
+  "pipelineVersion": "0.2.1",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "5d88a1afdddec10d"
+}
