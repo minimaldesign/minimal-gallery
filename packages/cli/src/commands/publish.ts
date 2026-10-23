@@ -2,23 +2,32 @@ import { cancel, confirm, isCancel, log, note } from '@clack/prompts';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { CONFIG_FILES } from '@minimalgallery/pipeline/config';
+import {
+  CONFIG_FILES,
+  loadConfig,
+  type GalleryConfig,
+} from '@minimalgallery/pipeline/config';
+import { formatBytes } from '@minimalgallery/pipeline/doctor';
+import { pendingUploads } from '@minimalgallery/pipeline';
 import { parse } from '../args.ts';
+import { uploadStaged } from '../bucket.ts';
 import { CliError } from '../errors.ts';
-import { capture, localBin, runOrFail } from '../exec.ts';
+import { capture, localBin, runOrFail, runTee } from '../exec.ts';
 import { runPipeline } from '../pipeline.ts';
 import { requireGalleryRoot } from '../root.ts';
 
 export const PUBLISH_USAGE = `Usage: minimalgallery publish [--git | --deploy | --build] [--yes]
 
-Processes new photos, then publishes the gallery one of three ways:
+Processes new photos, uploads them to the bucket in bucket mode, then
+publishes the gallery one of three ways:
   --git      commit the gallery changes and push; your host builds the site
   --deploy   build the site and upload it to Cloudflare Workers (static
              assets) with wrangler deploy, as set in wrangler.jsonc
   --build    build the site into dist/ and stop
 Without a flag, the "minimalgallery.publish" field of package.json decides
 ("git", "deploy" or "build"), else --deploy when wrangler.jsonc exists.
-  --yes            do not ask before pushing or deploying`;
+  --yes            do not ask before pushing or deploying
+The last line gives the site’s address when it is known.`;
 
 export type PublishMethod = 'git' | 'deploy' | 'build';
 
@@ -28,8 +37,56 @@ const GALLERY_PATHS = [
   '.minimalgallery',
   'public',
   'custom.css',
+  'about.md',
   ...CONFIG_FILES,
 ];
+
+const ASTRO_CONFIGS = [
+  'astro.config.mjs',
+  'astro.config.ts',
+  'astro.config.mts',
+  'astro.config.js',
+];
+
+/**
+ * The site’s public address: `site` in minimalgallery.config.ts, else an
+ * uncommented `site: '…'` line in the Astro config. Null when neither says.
+ */
+export async function siteUrl(
+  root: string,
+  config: Pick<GalleryConfig, 'site'>
+): Promise<string | null> {
+  if (config.site) return config.site;
+  for (const file of ASTRO_CONFIGS) {
+    let text: string;
+    try {
+      text = await readFile(join(root, file), 'utf8');
+    } catch {
+      continue;
+    }
+    const match = /^\s*site\s*:\s*['"`](https?:\/\/[^'"`]+)['"`]/m.exec(text);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+/** The last `https://` address in some output (wrangler prints the deployed URLs last). */
+export function lastUrl(output: string): string | null {
+  const urls = output.match(/https:\/\/[^\s"'<>()]+/g);
+  return urls ? urls[urls.length - 1].replace(/[.,;:]+$/, '') : null;
+}
+
+/** The plan line for the bucket upload, or null when nothing waits. */
+async function uploadStep(
+  root: string,
+  config: GalleryConfig
+): Promise<string | null> {
+  if (config.storage.mode !== 's3') return null;
+  const pending = await pendingUploads(root, { config });
+  return pending.files
+    ? `upload ${pending.files} new file(s), ${formatBytes(pending.bytes)}, to the ${config.storage.bucket} bucket`
+    : null;
+}
 
 async function readPackageJson(
   root: string
@@ -120,18 +177,21 @@ export async function publishCommand(args: string[], dir?: string) {
   );
   const root = await requireGalleryRoot(dir);
   const method = await choosePublishMethod(root, values);
-  if (method === 'deploy') return deploy(root, values.yes);
-  if (method === 'git') return gitPublish(root, values.yes);
+  const config = await loadConfig(root);
+  if (method === 'deploy') return deploy(root, config, values.yes);
+  if (method === 'git') return gitPublish(root, config, values.yes);
 
   astroBin(root);
-  const summary = await runPipeline(root);
+  const summary = await runPipeline(root, { config });
   if (summary.errors.length) log.warn('Some photos failed and are left out.');
+  // The built pages point at the bucket, so its files must be there.
+  await uploadStaged(root, config, { required: true });
   await build(root);
   log.success('The site is in dist/, ready to upload to any static host.');
   return 0;
 }
 
-async function deploy(root: string, yes: boolean) {
+async function deploy(root: string, config: GalleryConfig, yes: boolean) {
   if (
     !existsSync(join(root, 'wrangler.jsonc')) &&
     !existsSync(join(root, 'wrangler.json'))
@@ -161,21 +221,30 @@ async function deploy(root: string, yes: boolean) {
     return 1;
   }
 
-  const summary = await runPipeline(root);
+  const summary = await runPipeline(root, { config });
   if (summary.errors.length)
     log.warn('Some photos failed and will be left out of the site.');
   const deployArgs = [...prefix, 'deploy'];
+  const upload = await uploadStep(root, config);
   await confirmPlan(
     `Publishing to Cloudflare Workers (static assets): ${project}`,
     [
+      ...(upload ? [upload] : []),
       `astro build, in ${root}`,
       `wrangler ${deployArgs.slice(prefix.length).join(' ')}`,
     ],
     yes
   );
+  await uploadStaged(root, config, { required: true });
   await build(root);
-  await runOrFail(wrangler, deployArgs, root);
-  log.success('Published.');
+  const out = await runTee(wrangler, deployArgs, root);
+  if (out.code !== 0)
+    throw new CliError(
+      `wrangler ${deployArgs.slice(prefix.length).join(' ')} failed with exit code ${out.code}.`,
+      out.code
+    );
+  const url = (await siteUrl(root, config)) ?? lastUrl(out.stdout + out.stderr);
+  log.success(url ? `Published. Live at ${url}` : 'Published.');
   return 0;
 }
 
@@ -205,7 +274,7 @@ function today(): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-async function gitPublish(root: string, yes: boolean) {
+async function gitPublish(root: string, config: GalleryConfig, yes: boolean) {
   const inside = await git(root, ['rev-parse', '--is-inside-work-tree']);
   if (inside.code === 127) throw new CliError('git is not installed.');
   if (inside.code !== 0)
@@ -213,9 +282,10 @@ async function gitPublish(root: string, yes: boolean) {
       'This gallery is not a git repository. Run git init, add a remote and push once, or publish with --deploy.'
     );
 
-  const summary = await runPipeline(root);
+  const summary = await runPipeline(root, { config });
   if (summary.errors.length)
     log.warn('Some photos failed and will be left out of the site.');
+  const upload = await uploadStep(root, config);
 
   const paths = GALLERY_PATHS.filter((p) => existsSync(join(root, p)));
   const status = await git(root, [
@@ -262,13 +332,13 @@ async function gitPublish(root: string, yes: boolean) {
     unpushed = 1;
   }
 
-  if (!changed.length && !unpushed) {
+  if (!changed.length && !unpushed && !upload) {
     log.info('Nothing to publish: the gallery has no new changes.');
     return 0;
   }
 
   const message = `Update gallery, ${today()}`;
-  const steps: string[] = [];
+  const steps: string[] = upload ? [upload] : [];
   if (changed.length)
     steps.push(
       `git commit ${changed.length} changed file(s) in ${changedPaths.join(', ')}: “${message}”`
@@ -276,6 +346,12 @@ async function gitPublish(root: string, yes: boolean) {
   steps.push(`git ${pushArgs.join(' ')}, to ${target}`);
   await confirmPlan('Publishing with git', steps, yes);
 
+  // Upload first: the commit names the new files, and the host builds from it.
+  await uploadStaged(root, config, { required: true });
+  if (!changed.length && !unpushed) {
+    log.success('Uploaded. The site had no other changes to push.');
+    return 0;
+  }
   if (changed.length) {
     await runOrFail('git', ['add', '-A', '--', ...changedPaths], root);
     await runOrFail(
@@ -285,6 +361,11 @@ async function gitPublish(root: string, yes: boolean) {
     );
   }
   await runOrFail('git', pushArgs, root);
-  log.success('Pushed. Your host builds and publishes the site from here.');
+  const url = await siteUrl(root, config);
+  log.success(
+    url
+      ? `Pushed. Your host builds and publishes the site from here, usually within a few minutes. Live at ${url}`
+      : 'Pushed. Your host builds and publishes the site from here, usually within a few minutes.'
+  );
   return 0;
 }

@@ -24,7 +24,7 @@ const COMMANDS: Record<string, [Command, string, string]> = {
   admin: [
     adminCommand,
     ADMIN_USAGE,
-    'start the local preview (the admin comes later)',
+    'open the browser admin and the live preview',
   ],
   upgrade: [
     upgradeCommand,
