@@ -11,7 +11,11 @@ A static photo gallery toolkit for photographers: drop JPGs into folders, get a 
 | `minimalgallery` | `packages/cli` | The command line: `add`, `sync`, `doctor`, `publish`, `watch`, `admin`, `upgrade`. |
 | `create-minimalgallery` | `packages/create` | `npm create minimalgallery@latest`: scaffolds a gallery for Cloudflare Workers (static assets), GitHub Pages, Netlify or a local build. |
 
-Also here: `examples/demo/` (the demo gallery, whose photos are the test fixture), `apps/` (minimalgallery.net and docs.minimalgallery.net, to come) and `design/` (the brief and the clickable prototype).
+Also here: `examples/demo/` (the demo gallery at [minimalgallery.net](https://minimalgallery.net), whose photos are the test fixture), `apps/docs/` (the product site and the docs) and `design/` (the brief and the clickable prototype).
+
+## Docs
+
+The documentation lives at [docs.minimalgallery.net](https://docs.minimalgallery.net): getting started, hosting, the theme and its tokens, and the reference for the configuration, sidecars and command line. Its source is `apps/docs`, a Starlight site in the gallery’s own theme; run it with `pnpm --filter minimalgallery-docs dev` and build it with `pnpm --filter minimalgallery-docs build`.
 
 ## Running the demo
 

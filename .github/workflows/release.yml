@@ -1,0 +1,66 @@
+# Releases with changesets. On every push to master, changesets/action
+# either opens (or updates) a “Version packages” pull request that applies
+# the pending changesets (versions and CHANGELOG.md files), or, when that
+# pull request has just been merged and nothing is pending, publishes the
+# four packages to npm and creates their GitHub releases.
+#
+# DISABLED until the first release. Only the manual trigger is on, and the
+# job stops unless RELEASES_ENABLED is set. To enable:
+#   1. npm: create an automation (granular, publish) token for the account
+#      that will own the four packages and store it as the NPM_TOKEN secret,
+#      or configure npm trusted publishing for this workflow on each package
+#      once it exists (then NPM_TOKEN can go).
+#   2. Repository settings > Actions > General: allow GitHub Actions to
+#      create and approve pull requests.
+#   3. Repository settings > Secrets and variables > Actions > Variables:
+#      set RELEASES_ENABLED to true.
+#   4. Uncomment the push trigger below.
+
+name: Release
+
+on:
+  # push:
+  #   branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  # npm provenance and trusted publishing
+  id-token: write
+
+jobs:
+  release:
+    if: vars.RELEASES_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      # The pnpm version comes from packageManager in package.json.
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+
+      - uses: changesets/action@v1
+        with:
+          title: Version packages
+          commit: Version packages
+          # applies the pending changesets: versions and CHANGELOG.md files
+          version: pnpm exec changeset version
+          # pnpm release is pnpm build && changeset publish
+          publish: pnpm release
+          createGithubReleases: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
