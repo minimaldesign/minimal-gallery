@@ -508,7 +508,12 @@ export async function processGallery(
         );
       }
       encodeSeconds = r.seconds;
-      const hash8 = sourceHash.slice(0, 8);
+      // The key changes with the pixels and with the ladder (sizes, formats,
+      // quality, color, encoder), so a cached derivative is never stale.
+      const hash8 = (await hashString(`${sourceHash}\n${ladderHash}`)).slice(
+        0,
+        8
+      );
       const variants: PhotoManifest['variants'] = [];
       for (const v of r.variants) {
         const key = `${photo.id}/${hash8}-${v.name}.${EXTENSIONS[v.format]}`;

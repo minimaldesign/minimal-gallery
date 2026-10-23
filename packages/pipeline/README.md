@@ -91,7 +91,7 @@ The pipeline reads `storage`, `ladder`, `originals` and `color`; the rest is for
 
   `region` defaults to `auto`, which R2 expects and MinIO accepts. Requests are path-style, `${endpoint}/${bucket}/${key}`.
 
-Keys are content-addressed (`hash8` comes from the source file’s hash), so a URL never changes for a given file and can be cached forever.
+Keys are content-addressed: `hash8` comes from the source file’s hash and the ladder (sizes, formats, quality, color, encoder version), so a URL never changes for a given file and settings, a new ladder gives new URLs, and every derivative can be cached forever.
 
 ## Bucket mode
 

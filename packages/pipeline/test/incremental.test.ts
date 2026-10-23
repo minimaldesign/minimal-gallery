@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readdir, readFile, rm, utimes } from 'node:fs/promises';
 import { join } from 'node:path';
+import { resolveConfig } from '../src/config.ts';
 import { processGallery } from '../src/process.ts';
 import { tempGallery, write, writeJpeg } from './helpers.ts';
 
@@ -63,5 +64,30 @@ describe('incremental processing', () => {
       files: 2,
     });
     await expect(readdir(join(dir, 'public/_mg/album__two'))).rejects.toThrow();
+  });
+
+  it('gives new keys when the ladder changes, so cached copies are never stale', async () => {
+    const dir = await tempGallery();
+    await writeJpeg(join(dir, 'photos/album/one.jpg'));
+    const keys = async () =>
+      JSON.parse(
+        await readFile(
+          join(dir, '.minimalgallery/manifest/album__one.json'),
+          'utf8'
+        )
+      ).variants.map((v: { key: string }) => v.key);
+
+    await processGallery(dir);
+    const before = await keys();
+    const p3 = await processGallery(dir, {
+      config: resolveConfig({ color: 'p3' }),
+    });
+    expect(p3.encoded).toBe(1);
+    const after = await keys();
+    expect(after).toHaveLength(before.length);
+    for (const key of after) expect(before).not.toContain(key);
+    expect(await readdir(join(dir, 'public/_mg/album__one'))).toHaveLength(
+      after.length
+    );
   });
 });
