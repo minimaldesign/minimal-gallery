@@ -18,6 +18,23 @@
       "port": 4321
     },
     {
+      "name": "demo-bench",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "minimalgallery-demo",
+        "exec",
+        "astro",
+        "preview",
+        "--port",
+        "4421",
+        "--host",
+        "127.0.0.1",
+        "--ignore-lock"
+      ],
+      "port": 4421
+    },
+    {
       "name": "prototype",
       "runtimeExecutable": "python3",
       "runtimeArgs": [

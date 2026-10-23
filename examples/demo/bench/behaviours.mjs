@@ -3,8 +3,9 @@
 // signed-off behaviours that the performance work must not break (`?in=`
 // context, no wrap, panel keys, toggles, panes, palette, sort, settings
 // before first paint, the strip and list built on demand, and the
-// no-script fallbacks). Prints one line per check and exits non-zero on a
-// failure.
+// no-script fallbacks), and the Phase 2 additions (slideshow, random,
+// feeds, sitemap, link previews, the credit). Prints one line per check
+// and exits non-zero on a failure.
 //
 //   node bench/behaviours.mjs [--url http://localhost:4421] [--engines webkit]
 
@@ -310,6 +311,192 @@ async function run(engine) {
   ok(
     'home: next in grid',
     (await $eval('.stage_next', (a) => a.search)) === '?in=grid'
+  );
+
+  // HEAD: feeds and the link preview
+  await go(ALBUM);
+  const head = await page.evaluate(() => {
+    const at = (s, a = 'content') => document.querySelector(s)?.[a];
+    return {
+      rss: at('link[type="application/rss+xml"]', 'href'),
+      json: at('link[type="application/feed+json"]', 'href'),
+      image: at('meta[property="og:image"]'),
+      url: at('meta[property="og:url"]'),
+      title: at('meta[property="og:title"]'),
+      card: at('meta[name="twitter:card"]'),
+    };
+  });
+  ok(
+    'head: feed links',
+    /\/feed\.xml$/.test(head.rss) && /\/feed\.json$/.test(head.json)
+  );
+  ok(
+    'head: og:url is the page',
+    head.url && new URL(head.url).pathname === ALBUM
+  );
+  ok('head: og:title is the photo', head.title === album.photos[ai].title);
+  ok('head: large card', head.card === 'summary_large_image');
+  const img =
+    head.image && (await fetch(opt.url + new URL(head.image).pathname));
+  ok(
+    'head: og:image is an absolute JPEG',
+    /^https?:/.test(head.image ?? '') &&
+      img?.ok &&
+      img.headers.get('content-type') === 'image/jpeg'
+  );
+  const feeds = await page.evaluate(async () => {
+    const xml = async (u) =>
+      new DOMParser().parseFromString(
+        await (await fetch(u)).text(),
+        'application/xml'
+      );
+    const rss = await xml('/feed.xml');
+    const map = await xml('/sitemap.xml');
+    const json = await (await fetch('/feed.json')).json();
+    return {
+      rss:
+        !rss.querySelector('parsererror') &&
+        rss.querySelectorAll('item').length,
+      enclosure: rss.querySelector('item enclosure')?.getAttribute('length'),
+      json:
+        json.version === 'https://jsonfeed.org/version/1.1' &&
+        json.items.length,
+      map:
+        !map.querySelector('parsererror') &&
+        map.getElementsByTagName('url').length,
+    };
+  });
+  ok('feed.xml: 50 items', feeds.rss === 50);
+  ok('feed.xml: enclosure length', +feeds.enclosure > 0);
+  ok('feed.json: 50 items', feeds.json === 50);
+  ok(
+    'sitemap: every photo and context',
+    feeds.map > 241 + 6,
+    String(feeds.map)
+  );
+
+  // CREDIT and the new key rows
+  ok(
+    'credit: after the photos',
+    await page.evaluate(
+      () =>
+        document
+          .querySelector('.table_photos > :last-child')
+          ?.matches('.credit') &&
+        document.querySelector('.table_credit a').href ===
+          'https://docs.minimalgallery.net/'
+    )
+  );
+  ok(
+    'credit: version in the keys pane',
+    /^minimal gallery \d+\.\d+\.\d+/.test(
+      await $eval('.keys_credit', (p) => p.textContent.trim())
+    )
+  );
+  const caps = await page.$$eval('#keys dt kbd', (k) =>
+    k.map((x) => x.textContent)
+  );
+  ok('keys: Space and r rows', caps.includes('Space') && caps.includes('r'));
+
+  // SLIDESHOW: Space starts a timed step in place, pointer movement pauses
+  // it, Space stops it; a short interval for the test
+  const short = () =>
+    page.addStyleTag({ content: ':root { --mg-slideshow: 700ms; }' });
+  const index = async () =>
+    album.photos.findIndex((p) => p.href === new URL(page.url()).pathname);
+  await short();
+  await page.evaluate(() => (window.__same = true));
+  await page.keyboard.press(' ');
+  ok('Space: slideshow on', (await html()).play === '');
+  await page.waitForTimeout(1600);
+  const played = await index();
+  ok(
+    'slideshow: steps in place',
+    played > ai && (await page.evaluate(() => window.__same)),
+    `${played - ai} steps`
+  );
+  await page.mouse.move(600, 400);
+  await page.mouse.move(640, 430, { steps: 4 });
+  // Playwright's WebKit sends pointer moves with no movementX/Y, which the
+  // theme ignores (a load's synthetic move has none either): show the
+  // chrome the way a real move does
+  const synthetic = (await html()).idle !== undefined;
+  if (synthetic)
+    await page.evaluate(() => delete document.documentElement.dataset.idle);
+  await page.waitForTimeout(100);
+  const paused = await $eval(
+    '.stage_play',
+    (b) => getComputedStyle(b).animationPlayState
+  );
+  const held = await index();
+  await page.waitForTimeout(1200);
+  ok(
+    'slideshow: pointer movement pauses',
+    paused === 'paused' && (await index()) === held,
+    synthetic ? `${paused}, chrome shown by script` : paused
+  );
+  await page.keyboard.press(' ');
+  ok('Space again: slideshow off', (await html()).play === undefined);
+  await page.waitForTimeout(3500); // past the chrome's idle time
+  ok('slideshow off: no more steps', (await index()) === held);
+  await go(album.photos.at(-2).href);
+  await short();
+  await page.keyboard.press(' ');
+  await page.waitForTimeout(2600);
+  ok(
+    'slideshow: stops at the last photo',
+    (await index()) === album.photos.length - 1 &&
+      (await html()).play === undefined
+  );
+  await page.keyboard.press('ArrowUp');
+  await page.waitForTimeout(900);
+  await page.keyboard.press(' ');
+  ok('Space in the panel: no slideshow', (await html()).play === undefined);
+
+  // RANDOM: r steps in place inside the context; /random/ redirects
+  await go(GRID);
+  await page.evaluate(() => (window.__same = true));
+  await page.keyboard.press('r');
+  await page.waitForTimeout(1200);
+  const r = new URL(page.url());
+  ok(
+    'r: random photo in place, in the context',
+    r.search === '?in=grid' &&
+      r.pathname !== GRID.split('?')[0] &&
+      all.photos.some((p) => p.href === r.pathname) &&
+      (await page.evaluate(() => window.__same))
+  );
+  const landed = async (path) => {
+    await page.goto(opt.url + path);
+    await page
+      .waitForURL((u) => u.pathname !== '/random/', { timeout: 5000 })
+      .catch(() => {});
+    return new URL(page.url());
+  };
+  const r1 = await landed('/random/');
+  ok(
+    '/random/: a photo page',
+    all.photos.some((p) => p.href === r1.pathname) && !r1.search
+  );
+  const r2 = await landed('/random/?in=feelings');
+  ok(
+    '/random/?in=: keeps the context',
+    album.photos.some((p) => p.href === r2.pathname) &&
+      r2.search === '?in=feelings'
+  );
+
+  // ?in= takes context ids only: no other host's JSON
+  const foreign = [];
+  const spy = (q) =>
+    new URL(q.url()).hostname === 'example.com' && foreign.push(q.url());
+  page.on('request', spy);
+  await go(`${ALBUM}?in=//example.com/x`);
+  page.off('request', spy);
+  ok(
+    '?in=//host: ignored',
+    !foreign.length &&
+      (await $eval('.stage_next', (a) => a.pathname + a.search)) ===
+        album.photos[ai + 1].href
   );
   ok('no console errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   await context.close();
