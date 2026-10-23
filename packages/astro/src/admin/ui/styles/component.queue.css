@@ -1,0 +1,62 @@
+/* QUEUE
+
+   The pipeline's state at the foot of the sidebar: “Up to date”, or what
+   it is processing with a progress bar. A role=status region, so a
+   screen reader hears it change. */
+
+.queue {
+  display: grid;
+  gap: var(--xs2);
+  padding: var(--xs1) var(--xs2);
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+}
+
+.queue_text {
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  min-width: 0;
+}
+
+.queue_dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-round);
+  background-color: var(--mg-ink-faint);
+
+  .queue[data-state='running'] & {
+    background-color: var(--mg-ink);
+
+    @media (--motionOK) {
+      animation: queue-pulse calc(1200ms * var(--mg-motion)) ease-in-out
+        infinite alternate;
+    }
+  }
+}
+
+@keyframes queue-pulse {
+  to {
+    opacity: var(--o-2);
+  }
+}
+
+.queue_label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .queue[data-state='running'] & {
+    color: var(--mg-ink-muted);
+  }
+}
+
+.queue_progress {
+  display: none;
+
+  .queue[data-state='running'] & {
+    display: block;
+  }
+}

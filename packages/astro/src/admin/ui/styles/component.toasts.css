@@ -1,0 +1,69 @@
+/* TOASTS
+
+   Errors the pipeline or the API reports while you work (a file it could
+   not read, a save that failed), stacked at the top right until closed.
+   Each one is a surface; mix .surface on each item. */
+
+.toasts {
+  position: fixed;
+  inset: var(--sm1) var(--sm1) auto auto;
+  z-index: var(--z-top);
+  display: grid;
+  gap: var(--xs2);
+  width: min(24rem, 100vw - 2 * var(--sm1));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.toasts_item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--xs1) var(--xs3);
+  padding: var(--xs3) var(--xs3) var(--xs3) var(--sm1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  pointer-events: auto;
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    translate var(--mg-duration-quick) var(--mg-ease-out);
+
+  @starting-style {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--xs2));
+  }
+}
+
+.toasts_title {
+  color: var(--admin-error);
+  font-weight: var(--mg-weight-medium);
+}
+
+.toasts_text {
+  grid-column: 1;
+  margin: 0;
+  color: var(--mg-ink-muted);
+  overflow-wrap: anywhere;
+}
+
+.toasts_close {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  display: grid;
+  place-items: center;
+  width: var(--md1);
+  height: var(--md1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--mg-accent);
+  }
+}

@@ -1,0 +1,77 @@
+/* BAR
+
+   The top of the main view: the breadcrumb and title of what you are
+   looking at, its count, and its actions (add photos, preview). Stuck to
+   the top while the photos scroll under it. */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2) var(--sm1);
+  min-height: var(--admin-bar-height);
+  padding: var(--xs2) var(--admin-gutter);
+  border-block-end: var(--border-sm) solid var(--mg-hairline);
+  background-color: var(--mg-ground);
+}
+
+.bar_title {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: var(--xs2);
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.bar_crumbs {
+  display: flex;
+  gap: var(--xs2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--mg-ink-muted);
+  font-size: var(--text-md);
+
+  &:empty {
+    display: none;
+  }
+
+  li::after {
+    content: '/' / '';
+    margin-inline-start: var(--xs2);
+    color: var(--mg-ink-faint);
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--link-color-hover);
+    }
+  }
+}
+
+.bar_heading {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--mg-ink);
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+  text-overflow: ellipsis;
+}
+
+.bar_count {
+  color: var(--mg-ink-muted);
+}
+
+.bar_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2);
+}

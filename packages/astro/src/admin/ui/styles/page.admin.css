@@ -1,0 +1,103 @@
+/* PAGE: ADMIN
+
+   The admin's one page (body.admin). Its shell holds the sidebar (albums, settings,
+   publish, the first-run checklist and the queue), the main view, and the
+   inspector on the right. Each column scrolls on its own. The route
+   (data-route on <html>, from the hash) picks the view; the inspector
+   shows on the photos view once it has something to show (data-inspector
+   on it, set by the script). Below lg the inspector floats over the
+   photos; below md the columns stack and the page scrolls. The overlays
+   (uploads, toasts, dialogs) and anything a dev tool adds to the body
+   stay outside the shell's grid. */
+
+.admin_shell {
+  display: grid;
+  grid-template-columns:
+    var(--admin-sidebar-width) minmax(0, 1fr)
+    auto;
+  grid-template-areas: 'sidebar main inspector';
+  height: 100dvh;
+  overflow: hidden;
+
+  @media (--md-n-below) {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.admin_sidebar {
+  grid-area: sidebar;
+  min-height: 0;
+  overflow-y: auto;
+  border-inline-end: var(--border-sm) solid var(--mg-hairline);
+
+  @media (--md-n-below) {
+    border-inline-end: 0;
+    border-block-end: var(--border-sm) solid var(--mg-hairline);
+  }
+}
+
+/* the views scroll; the drop overlay stays over the visible area */
+.admin_main {
+  position: relative;
+  grid-area: main;
+  display: grid;
+  min-height: 0;
+  overflow: hidden;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (--md-n-below) {
+    overflow: visible;
+  }
+}
+
+.admin_view {
+  display: none;
+  min-height: 0;
+  overflow-y: auto;
+
+  :root[data-route='photos'] &.admin_view-photos,
+  :root[data-route='settings'] &.admin_view-settings,
+  :root[data-route='publish'] &.admin_view-publish {
+    display: block;
+  }
+
+  @media (--md-n-below) {
+    overflow: visible;
+  }
+}
+
+.admin_inspector {
+  grid-area: inspector;
+  width: var(--admin-inspector-width);
+  min-height: 0;
+  overflow-y: auto;
+  border-inline-start: var(--border-sm) solid var(--mg-hairline);
+
+  &:not([data-inspector]),
+  :root:not([data-route='photos']) & {
+    display: none;
+  }
+
+  @media (--lg-n-below) {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: var(--z-4);
+    width: min(var(--admin-inspector-width), 100vw);
+    box-shadow: var(--mg-surface-shadow);
+
+    /* over the photos: only for a photo you opened */
+    &[data-inspector='album'] {
+      display: none;
+    }
+  }
+}
+
+/* the icon symbols the page draws with <use> */
+.admin_sprite {
+  display: none;
+}

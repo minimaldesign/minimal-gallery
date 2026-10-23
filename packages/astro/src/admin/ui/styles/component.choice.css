@@ -1,0 +1,89 @@
+/* CHOICE
+
+   A group of radio buttons that reads as one control: a segmented row
+   (the viewer defaults, the album sort) with a hairline frame and a
+   filled selected option, or, with choice-stacked, a column of options
+   that each carry a line of explanation (the publish method). The radio
+   stays in the option, invisible but focusable, so arrow keys work. */
+
+.choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 2px;
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-md);
+}
+
+.choice_option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--md1);
+  margin: 0;
+  padding-inline: var(--xs3);
+  border-radius: var(--radius-sm);
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--mg-duration-quick) var(--mg-ease-out),
+    color var(--mg-duration-quick) var(--mg-ease-out);
+
+  input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--mg-ink);
+  }
+
+  &:has(:checked) {
+    background-color: var(--mg-control-active);
+    color: var(--mg-ink);
+  }
+
+  &:has(:focus-visible) {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
+.choice-stacked {
+  display: grid;
+  gap: var(--xs2);
+  width: 100%;
+  padding: 0;
+  border: 0;
+
+  .choice_option {
+    display: grid;
+    gap: 2px;
+    padding: var(--xs3) var(--sm1);
+    border: var(--border-sm) solid var(--mg-hairline);
+    border-radius: var(--radius-md);
+
+    &:has(:checked) {
+      border-color: var(--mg-ink-faint);
+    }
+  }
+}
+
+.choice_label {
+  color: var(--mg-ink);
+  font-weight: var(--mg-weight-medium);
+}
+
+.choice_note {
+  color: var(--mg-ink-muted);
+  line-height: var(--leading-md);
+}

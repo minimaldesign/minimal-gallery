@@ -80,7 +80,30 @@ function galleryDirOf(ctx: LoaderContext, options: GalleryLoaderOptions) {
   );
 }
 
-async function readManifests(dir: string) {
+/**
+ * In dev, bucket-mode media URLs point at the bucket, where nothing may be
+ * uploaded yet: they become `<base>_mg/<key>`, which the dev server serves
+ * from the stage. The digest gets a `.dev` suffix so that a later
+ * `astro build` never reuses these entries from the data store.
+ */
+function localMedia(m: PhotoManifest, mediaBase: string): PhotoManifest {
+  const remote = (url?: string) => !!url && /^https?:\/\//.test(url);
+  if (!m.variants.some((v) => remote(v.url)) && !remote(m.original.url))
+    return m;
+  const local = (url: string, key: string) =>
+    remote(url) ? `${mediaBase}${key}` : url;
+  return {
+    ...m,
+    variants: m.variants.map((v) => ({ ...v, url: local(v.url, v.key) })),
+    original:
+      m.original.url && m.original.key
+        ? { ...m.original, url: local(m.original.url, m.original.key) }
+        : m.original,
+    digest: `${m.digest}.dev`,
+  };
+}
+
+async function readManifests(dir: string, mediaBase?: string) {
   const manifestDir = join(dir, MANIFEST_DIR);
   let files: string[];
   try {
@@ -102,7 +125,9 @@ async function readManifests(dir: string) {
           throw new Error(
             `${join(manifestDir, f)} does not match this pipeline version; run \`mg-pipeline\` again.\n${parsed.error.message}`
           );
-        return adaptPhoto(parsed.data);
+        return adaptPhoto(
+          mediaBase ? localMedia(parsed.data, mediaBase) : parsed.data
+        );
       })
   );
   return { albums, photos };
@@ -127,8 +152,12 @@ export function galleryLoader(
     schema: kind === 'photos' ? PhotoEntry : AlbumEntry,
     async load(ctx) {
       const dir = galleryDirOf(ctx, options);
+      // Only the dev server has a watcher, and serves the bucket stage.
+      const mediaBase = ctx.watcher
+        ? `${ctx.config.base.replace(/\/?$/, '/')}_mg/`
+        : undefined;
       const sync = async () => {
-        const { albums, photos } = await readManifests(dir);
+        const { albums, photos } = await readManifests(dir, mediaBase);
         const albumIds = new Set(albums.map((a) => a.id));
         const seen = new Set<string>();
         let changed = 0;
@@ -157,6 +186,9 @@ export function galleryLoader(
         };
         if (kind === 'photos') {
           for (const p of photos) {
+            // In dev, a run writes a new album’s photos before
+            // `_albums.json`; they show once it lands.
+            if (!albumIds.has(p.album) && ctx.watcher) continue;
             if (!albumIds.has(p.album))
               throw new Error(
                 `photo ${p.id} refers to unknown album ${p.album}`
