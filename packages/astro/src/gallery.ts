@@ -58,8 +58,20 @@ interface Index {
 }
 
 const BASE = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-/** A site path with the configured base. */
-export const withBase = (path: string) => BASE + path.replace(/^\//, '');
+/** A site path with the configured base; a full URL (a bucket's) as it is. */
+export const withBase = (path: string) =>
+  /^[a-z][a-z\d+.-]*:/i.test(path) ? path : BASE + path.replace(/^\//, '');
+
+/**
+ * The site's public URL: Astro's `site`, else the config file's. Feeds,
+ * the sitemap and social previews need it; pages only use it when set.
+ */
+export const siteOf = (site?: URL | string) =>
+  site ? new URL(site) : config.site ? new URL(config.site) : undefined;
+
+/** A site path (or a full URL) as an absolute URL. */
+export const absolute = (path: string, site: URL) =>
+  new URL(withBase(path), site).href;
 
 export const ARCHIVE_ID = 'grid';
 
@@ -280,6 +292,22 @@ export function srcsetOf(
   };
 }
 
+/**
+ * The photo as a social preview and in feeds: the `jpeg1600` variant, else
+ * the largest JPEG (link previews and feed readers rarely show AVIF), else
+ * the largest image.
+ */
+export function shareImageOf(p: Photo) {
+  const jpegs = p.variants
+    .filter((v) => v.format === 'jpeg')
+    .sort((a, b) => b.width - a.width);
+  return (
+    p.variants.find((v) => v.name === 'jpeg1600') ??
+    jpegs[0] ??
+    [...p.variants].sort((a, b) => b.width - a.width)[0]
+  );
+}
+
 // TEXT shared by the static markup and the context JSON
 
 export const ratioOf = (p: Photo) => +(p.width / p.height).toFixed(4);
@@ -385,6 +413,36 @@ export function infoOf(p: Photo): InfoRow[] {
   });
   return rows;
 }
+
+/**
+ * The caption as one line of plain text (markup and entities out), cut at
+ * a word near `max` characters; null without a caption.
+ */
+export function captionText(p: Photo, max = 200) {
+  const text = (p.captionHtml ?? '')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(
+      /&(?:#(\d+)|#x([\da-f]+)|([a-z]+));/gi,
+      (m, dec?: string, hex?: string, name?: string) =>
+        dec || hex
+          ? String.fromCodePoint(dec ? +dec : parseInt(hex!, 16))
+          : (ENTITIES[name!.toLowerCase()] ?? m)
+    )
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (text.length <= max) return text || null;
+  const cut = text.slice(0, max);
+  const space = cut.lastIndexOf(' ');
+  return `${space > max / 2 ? cut.slice(0, space) : cut}…`;
+}
+const ENTITIES: Record<string, string> = {
+  amp: '&',
+  lt: '<',
+  gt: '>',
+  quot: '"',
+  apos: "'",
+  nbsp: ' ',
+};
 
 /** The thumbnail tooltip's second line: date and place. */
 export const tipOf = (p: Photo) =>

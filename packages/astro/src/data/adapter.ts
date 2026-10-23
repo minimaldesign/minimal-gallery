@@ -23,7 +23,7 @@ import {
 } from './facets.ts';
 
 /** Bump when the derivation below changes, so cached entries are rebuilt. */
-export const ADAPTER_VERSION = '2';
+export const ADAPTER_VERSION = '3';
 
 export interface Variant {
   name: string;
@@ -31,6 +31,8 @@ export interface Variant {
   height: number;
   format: string;
   url: string;
+  /** File size, for feed enclosures. */
+  bytes: number;
 }
 
 export interface PhotoRecord {
@@ -147,12 +149,13 @@ export function adaptPhoto(m: PhotoManifest): PhotoRecord {
     height: m.height,
     color: colorOf(m.color),
     placeholder: m.placeholder || null,
-    variants: m.variants.map(({ name, width, height, format, url }) => ({
+    variants: m.variants.map(({ name, width, height, format, url, bytes }) => ({
       name,
       width,
       height,
       format,
       url,
+      bytes,
     })),
     source: m.source,
     hidden: m.hidden,

@@ -1,0 +1,78 @@
+---
+/**
+ * The random page (`/random/`): sends the visitor to a random photo and
+ * replaces itself in the history, so Back skips it. Without `?in=` it picks
+ * from every photo (the list is in the page); with `?in=<context>` it picks
+ * from that context's JSON (the theme script's sessionStorage copy, else a
+ * fetch) and the photo page keeps `?in=`. The photo the visitor came from
+ * is skipped when there is another. Without script the page refreshes to
+ * one photo chosen from the list at build time (the same one for the same
+ * photos, so builds stay reproducible). The `r` key steps to a random
+ * photo inside the viewer instead; this page is for links.
+ */
+import config from 'virtual:minimalgallery/config';
+import { getPhotos, hash, withBase } from '../../gallery.ts';
+
+const paths = (await getPhotos()).map((p) => withBase(p.url));
+const pick = paths[parseInt(hash(...paths).slice(0, 6), 36) % paths.length];
+const base = withBase('/');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Random photo · {config.title}</title>
+    <style>
+      html {
+        background-color: oklch(0.14 0 0);
+        color-scheme: dark;
+      }
+    </style>
+    <noscript>
+      <meta http-equiv="refresh" content={`0; url=${pick}`} />
+    </noscript>
+    <script is:inline define:vars={{ paths, base }}>
+      const id = new URLSearchParams(location.search)
+        .get('in')
+        ?.match(/^[\w.-]+(\/[\w.-]+)*$/)?.[0];
+      let from;
+      try {
+        from = new URL(document.referrer).pathname;
+      } catch {}
+      const go = (list, k = '') => {
+        const others = list.filter((p) => p !== from);
+        const pool = others.length ? others : list;
+        location.replace(pool[Math.floor(Math.random() * pool.length)] + k);
+      };
+      const inContext = (t) =>
+        go(
+          JSON.parse(t).photos.map((p) => p.href),
+          `?in=${encodeURIComponent(id).replace(/%2F/g, '/')}`
+        );
+      let cached;
+      try {
+        cached = id && sessionStorage[`mgCtx-${id}`];
+      } catch {}
+      if (!id) go(paths);
+      else if (cached) inContext(cached);
+      else
+        fetch(`${base}${id}.json`)
+          .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+          .then((t) => {
+            try {
+              sessionStorage[`mgCtx-${id}`] = t;
+            } catch {}
+            inContext(t);
+          })
+          .catch(() => go(paths));
+    </script>
+  </head>
+  <body>
+    <p>
+      <a href={pick}>A random photo</a>
+    </p>
+  </body>
+</html>
