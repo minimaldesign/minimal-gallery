@@ -30,7 +30,9 @@ A slide show in a dark room: the photo is the page, on a near-black neutral grou
 | Thumbs | `component.thumbs.css` | `ol.thumbs` > `li.thumbs_item[style=--ar,--photo]` (first of each year carries `id=y-YYYY`) > `a.thumbs_link` > `img.thumbs_image` + `span.thumbs_tip.surface` |
 | Ledger | `component.ledger.css` | `.ledger table`: `th[data-type] > button.ledger_sort` (`aria-sort` when active); rows `tr[data-i]`, cells `td[data-sort]`; `a.ledger_thumb` holds `.ledger_preview.surface[style=--preview:url()]` |
 | Rail | `component.rail.css` | `nav.rail` > `ol.rail_list` (`scroll-target-group`) > `a.rail_link[href=#y-YYYY]` |
-| Panes | `component.pane.css`, `component.info.css`, `component.keys.css` | `aside.pane.pane-info.info.surface#info`, `aside.pane.pane-keys.surface#keys`: `.pane_head` (drag handle), `.pane_title`, `label.pane_close[for]`; contents `.info_list` and `.keys_section` |
+| Panes | `component.pane.css`, `component.info.css`, `component.keys.css` | `aside.pane.pane-info.info.surface#info`, `aside.pane.pane-keys.surface#keys`: `.pane_head` (drag handle), `.pane_title`, `label.pane_close[for]`; contents `.info_list` and `.keys_section` > `dl.keys_list` > bare `dt` (keys) and `dd` (action); the keys pane ends with `p.credit.credit-small.keys_credit` |
+| Credit | `component.credit.css` | `p.credit` (“Powered by `a` minimal gallery”) as `.table_credit` at the end of `.table_photos`; `credit-small` with the version in the keys pane; absent when the config’s `credit` is false |
+| Slideshow | in `component.stage.css` | `span.stage_play` (added to `.stage` by `mg.js` on the first Space): a hairline whose animation over `--mg-slideshow` is the slideshow’s clock |
 | Palette | `component.palette.css`, `component.chip.css` | `dialog.palette.surface#palette[closedby=any]`, `.palette_search`, `.palette_group` > `a.chip[aria-current]` |
 | Tooltips | in thumbs and toggle | One visible at a time. With a pointer they follow it; with keyboard focus they are anchored (`anchor-scope`), and in-thumb without it |
 
@@ -53,6 +55,7 @@ The strip’s frames and, on pages that open on the viewer, the list rows are no
 | Keys pane (`keys`) | localStorage `mg-keys`, `data-keys` | off | none | `restore.js`, `restore()`, `placePane()` |
 | Pane positions | localStorage `mgPane-info`, `mgPane-keys` | top right / top left | none | `placePane()` |
 | Hidden chrome | sessionStorage `mgIdle`, `data-idle` | shown | `--mg-hud-idle` | `restore.js`, `restore()` |
+| Slideshow | `data-play` (not stored) | off | `--mg-slideshow` | `play()`, `replay()` |
 | Panel state | `data-panel` from scroll position | none | none | `restore.js` (pages that open on the panel), `syncPanel()` |
 | Strip scroll on a step | sessionStorage `mgStripX` | none | none | `glide()` |
 | How the last page was left | sessionStorage `mgVia` | none | none | `pagereveal` |
@@ -60,7 +63,7 @@ The strip’s frames and, on pages that open on the viewer, the list rows are no
 
 ## 5. Keyboard and touch
 
-**Viewing mode:** `←` `→` previous/next (nothing past the ends, chrome stays hidden) · `↑` open browsing mode · `z` zoom 1:1 · `i` info · `f` fill window / fit photo · `s` filmstrip · `/` or `⌘K` filter · `?` shortcuts.
+**Viewing mode:** `←` `→` previous/next (nothing past the ends, chrome stays hidden) · `Space` slideshow (starts and stops; pointer movement, an open dialog or zoom pauses it; it stops at the last photo, on `Esc` and when the panel opens) · `r` a random photo of the context, in the page · `↑` open browsing mode · `z` zoom 1:1 · `i` info · `f` fill window / fit photo · `s` filmstrip · `/` or `⌘K` filter · `?` shortcuts.
 
 **Browsing mode:** arrows move the selection (up/down to the nearest photo in the row above or below, or one list row), Enter opens · `Home` `End` · `Esc` back to viewing · `1` `2` `3` size · `t` crop or original · `v` grid or list · `/` filter. The current photo is selected when the panel opens.
 
@@ -105,6 +108,7 @@ Durations scale with `--mg-motion`. Reduced motion shortens the step’s crossfa
 | `--mg-backdrop-tint` | Backdrop tint | Viewer | `<percentage>` | 10% |
 | `--mg-view-inset` | Space around the photo | Viewer | `<length>` | 16px (0 on a phone) |
 | `--mg-strip` | Filmstrip | Viewer | `on \| off` | off |
+| `--mg-slideshow` | Slideshow interval | Viewer | `<time>` | 5s |
 | `--mg-hud-idle` | Hide controls after | Overlays | `<time>` | 2s |
 | `--mg-hud-density` | Control density | Overlays | `<number>` | 1 |
 | `--mg-hud-blur` | Overlay blur | Overlays | `<length>` | 20px |
@@ -124,4 +128,5 @@ Durations scale with `--mg-motion`. Reduced motion shortens the step’s crossfa
 - **Carousel and scroll-spy:** `::scroll-button`, `scroll-initial-target` and `:target-current` are Chrome only; `mg.js` centers the strip elsewhere, and rail ticks stay unmarked.
 - **Cursors:** 128px is the hard browser limit; Chrome shows the `pointer` fallback where the cursor crosses the window edge.
 - **Unverified headless:** real view transitions, hover, smooth-scroll and rAF timing, cursor rendering, touch gestures. Check them in Chrome, Safari 26 and Firefox on desktop and a phone.
-- **Not yet carried by the prototype:** 700px demo images (zoom doubles them), no slideshow, maps or day-across-years facet; vendored mCSS needs a `.prettierignore` entry; 262 publish files exceed one publish.
+- **Safe areas:** `viewport-fit=cover` lets the photo run under a phone’s notch, island and home indicator; the HUD, panel header and grid, panes, strip, handle and slideshow bar keep clear of them through `--mg-safe-right`, `--mg-safe-bottom` and `--mg-safe-left` (`env(safe-area-inset-*)`). Emulation reports 0 for all of them, so this is unverified until a phone in landscape and with Safari’s toolbar collapsed has been checked.
+- **Not yet carried by the prototype:** 700px demo images (zoom doubles them), no slideshow (the theme has one since Phase 2), maps or day-across-years facet; vendored mCSS needs a `.prettierignore` entry; 262 publish files exceed one publish.
