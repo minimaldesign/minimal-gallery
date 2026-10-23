@@ -66,17 +66,21 @@
   gap: var(--xs2) var(--sm1);
   min-height: var(--mg-panel-head-height);
   margin-block-end: var(--xs2);
-  padding-inline: var(--sm1);
+  padding-inline: calc(var(--sm1) + var(--mg-safe-left))
+    calc(var(--sm1) + var(--mg-safe-right));
   border-width: 0 0 var(--border-sm);
   font-size: var(--mg-size-hud);
 
   @media (--md-n-below) {
-    padding: var(--xs2) var(--xs3);
+    padding-block: var(--xs2);
+    padding-inline: calc(var(--xs3) + var(--mg-safe-left))
+      calc(var(--xs3) + var(--mg-safe-right));
   }
 }
 
 /* BREADCRUMB: home / context, then the count; home stays one click away
-   while the HUD is gone */
+   while the HUD is gone. On a phone it has the first row to itself, the
+   tools wrap below (on one row the tools left it no width at all). */
 .table_crumbs {
   display: flex;
   flex: 1;
@@ -84,6 +88,10 @@
   gap: var(--xs2);
   min-width: 0;
   white-space: nowrap;
+
+  @media (--md-n-below) {
+    flex-basis: 100%;
+  }
 
   ol {
     display: flex;
@@ -112,7 +120,9 @@
   }
 
   a {
+    overflow: hidden;
     color: inherit;
+    text-overflow: ellipsis;
 
     &:hover {
       color: var(--link-color-hover);
@@ -154,8 +164,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--xs2);
-  padding-block-end: var(--xl3);
-  padding-inline: var(--mg-gutter) 0;
+  padding-block-end: calc(var(--xl3) + var(--mg-safe-bottom));
+  padding-inline: calc(var(--mg-gutter) + var(--mg-safe-left))
+    var(--mg-safe-right);
 
   @media (--md-n-below) {
     grid-template-columns: minmax(0, 1fr);

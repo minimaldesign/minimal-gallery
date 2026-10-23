@@ -21,7 +21,8 @@
   align-items: center;
   gap: calc(var(--xs3) * var(--mg-hud-density));
   min-height: var(--mg-hud-height);
-  padding-inline: var(--hud-padding-inline);
+  padding-inline: calc(var(--hud-padding-inline) + var(--mg-safe-left))
+    calc(var(--hud-padding-inline) + var(--mg-safe-right));
   border-width: 0 0 var(--border-sm);
   font-size: var(--mg-size-hud);
   transition: opacity var(--mg-duration-quick) var(--mg-ease-out);
@@ -32,6 +33,9 @@
     )
     & {
     margin: var(--xs3);
+    margin-inline: calc(var(--xs3) + var(--mg-safe-left))
+      calc(var(--xs3) + var(--mg-safe-right));
+    padding-inline: var(--hud-padding-inline);
     border-width: var(--border-sm);
     border-radius: var(--radius-lg);
   }

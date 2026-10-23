@@ -150,7 +150,7 @@
    script and from the keyboard. Gone while the strip is on. */
 .stage_hint {
   position: absolute;
-  inset-block-end: 0;
+  inset-block-end: var(--mg-safe-bottom);
   inset-inline-start: 50%;
   z-index: var(--z-2);
   translate: -50% 0;
@@ -200,7 +200,7 @@
    starts. */
 .stage_play {
   position: absolute;
-  inset: auto 0 0;
+  inset: auto 0 var(--mg-safe-bottom);
   z-index: var(--z-3);
   display: none;
   height: 2px;
