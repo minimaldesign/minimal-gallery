@@ -240,3 +240,34 @@ export function status(form: Element, text: string) {
   const el = $('[data-status]', form);
   if (el) el.textContent = text;
 }
+
+/**
+ * Show an image from a URL the dev server may not serve yet (a `photo`
+ * event can come a moment before its files): on an error, try again a few
+ * times, further apart each time.
+ */
+export function showImage(image: HTMLImageElement, url: string) {
+  if (image.dataset.src === url) return;
+  image.dataset.src = url;
+  image.dataset.tries = '0';
+  image.src = url;
+}
+
+document.addEventListener(
+  'error',
+  (event) => {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement) || !image.dataset.src) return;
+    const tries = Number(image.dataset.tries ?? 0);
+    if (tries >= 6 || image.dataset.src.startsWith('blob:')) return;
+    image.dataset.tries = String(tries + 1);
+    const url = image.dataset.src;
+    setTimeout(
+      () => {
+        if (image.dataset.src === url) image.src = `${url}?try=${tries + 1}`;
+      },
+      300 * 2 ** tries
+    );
+  },
+  true
+);

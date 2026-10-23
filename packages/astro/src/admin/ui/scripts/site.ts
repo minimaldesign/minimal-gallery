@@ -3,17 +3,7 @@
  * gallery's name and look, the about text, custom.css) and Publish (the
  * method, first-run guidance, the streamed log and the final URL).
  */
-import {
-  $,
-  $$,
-  api,
-  ApiError,
-  app,
-  bound,
-  count,
-  emit,
-  status,
-} from './core.ts';
+import { $, $$, api, ApiError, bound, count, emit, status } from './core.ts';
 
 /* ------------------------------------------------------------------ */
 /* SETTINGS                                                            */
@@ -180,6 +170,7 @@ const jobSection = $('[data-job]');
 const log = $('[data-log]');
 let info: PublishInfo | null = null;
 let currentJob: string | null = null;
+let currentKind: 'publish' | 'connect' | null = null;
 
 const guide = (name: string) => $(`[data-guide="${name}"]`, publishForm);
 
@@ -233,6 +224,7 @@ export async function loadPublish() {
   }
   if (info.job && (!currentJob || currentJob === info.job.id)) {
     currentJob = info.job.id;
+    currentKind = info.job.job;
     showJob(info.job.job, info.job.state);
     log.textContent = info.job.lines.join('\n');
     if (info.job.state !== 'running') ended(info.job);
@@ -249,32 +241,45 @@ function showJob(kind: 'publish' | 'connect', state: string) {
       : state === 'running'
         ? 'Publishing'
         : 'Publish';
-  const busy = state === 'running';
+  setBusy(state === 'running');
+}
+
+function setBusy(busy: boolean) {
   for (const b of $$<HTMLButtonElement>('button', publishForm))
     b.disabled = busy;
-  $('[type="submit"]', publishForm).toggleAttribute('aria-busy', busy);
+  const submit = $('[type="submit"]', publishForm);
+  if (busy) submit.setAttribute('aria-busy', 'true');
+  else submit.removeAttribute('aria-busy');
 }
 
 async function start(path: string, body: unknown, kind: 'publish' | 'connect') {
+  // the log can start before the answer does: clear it first
+  currentJob = null;
+  currentKind = kind;
+  log.textContent = '';
+  $('[data-result]').hidden = true;
+  $('[data-failed]').hidden = true;
+  showJob(kind, 'running');
+  status(
+    publishForm,
+    kind === 'publish'
+      ? 'Publishing…'
+      : 'Waiting for Cloudflare in your browser…'
+  );
   try {
     const { job } = await api<{ job: string }>('POST', path, body);
-    currentJob = job;
-    log.textContent = '';
-    $('[data-result]').hidden = true;
-    $('[data-failed]').hidden = true;
-    showJob(kind, 'running');
-    status(
-      publishForm,
-      kind === 'publish'
-        ? 'Publishing…'
-        : 'Waiting for Cloudflare in your browser…'
-    );
+    currentJob ??= job;
     jobSection.scrollIntoView({ block: 'nearest' });
   } catch (error) {
+    setBusy(false);
+    currentKind = null;
+    jobSection.hidden = !log.textContent;
+    // a 409 says why in words meant for the reader (another job runs, the
+    // tool is missing); anything else is unexpected
     status(
       publishForm,
       error instanceof ApiError && error.status === 409
-        ? 'Another publish is running. Wait for it to end.'
+        ? error.message
         : `Could not start: ${(error as Error).message}`
     );
   }
@@ -298,7 +303,8 @@ publishForm.addEventListener('click', (event) => {
 
 /** A `log` event. Keeps the log scrolled to the end unless you scrolled up. */
 export function logLine(data: { job: string; line: string }) {
-  if (currentJob && data.job !== currentJob) return;
+  // log events name the kind of job; one job runs at a time
+  if (data.job !== currentKind) return;
   const atEnd = log.scrollHeight - log.scrollTop - log.clientHeight < 24;
   log.textContent += (log.textContent ? '\n' : '') + data.line;
   if (atEnd) log.scrollTop = log.scrollHeight;
@@ -314,6 +320,7 @@ export function jobEvent(data: {
 }) {
   if (currentJob && data.id !== currentJob) return;
   currentJob = data.id;
+  currentKind = data.job;
   showJob(data.job, data.state);
   if (data.state !== 'running') ended(data);
 }
@@ -324,9 +331,7 @@ function ended(data: {
   url?: string;
   code?: number;
 }) {
-  for (const b of $$<HTMLButtonElement>('button', publishForm))
-    b.disabled = false;
-  $('[type="submit"]', publishForm).removeAttribute('aria-busy');
+  setBusy(false);
   if (data.job === 'connect') {
     status(
       publishForm,
@@ -363,14 +368,21 @@ function ended(data: {
 /* copy buttons */
 document.addEventListener('click', async (event) => {
   const button = (event.target as Element).closest<HTMLElement>('[data-copy]');
-  if (!button?.dataset.copy) return;
+  const text = button?.dataset.copy;
+  if (!button || !text) return;
   try {
-    await navigator.clipboard.writeText(button.dataset.copy);
-    button.dataset.copied = '';
-    setTimeout(() => delete button.dataset.copied, 1600);
+    await navigator.clipboard.writeText(text);
   } catch {
-    /* clipboard refused: the value is on screen to select */
+    // no clipboard access (an older engine, or a denied permission)
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.className = 'a11y-srOnly';
+    document.body.append(area);
+    area.select();
+    const copied = document.execCommand('copy');
+    area.remove();
+    if (!copied) return;
   }
+  button.dataset.copied = '';
+  setTimeout(() => delete button.dataset.copied, 1600);
 });
-
-export const publishRoute = () => app.route === 'publish';

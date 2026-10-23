@@ -19,6 +19,7 @@ import {
   fromTemplate,
   photoById,
   showDate,
+  showImage,
   slugify,
   status,
   toast,
@@ -101,7 +102,10 @@ export function renderTree() {
     const depth = album.id.split('/').length - 1;
     names.append(new Option(album.title));
     parents.append(
-      new Option(`${'   '.repeat(depth)}${album.title}`, album.id)
+      new Option(
+        `${'\u00a0\u00a0\u00a0'.repeat(depth)}${album.title}`,
+        album.id
+      )
     );
   }
   parents.value = keep;
@@ -186,18 +190,6 @@ function makeTile(id: string) {
   item.dataset.id = id;
   const image = $<HTMLImageElement>('.photos_image', item);
   image.loading = 'lazy';
-  // a thumbnail can be announced a moment before the dev server serves it
-  image.addEventListener('error', () => {
-    const tries = Number(image.dataset.tries ?? 0);
-    if (tries >= 6 || !image.dataset.src) return;
-    image.dataset.tries = String(tries + 1);
-    setTimeout(
-      () => {
-        image.src = `${image.dataset.src}?try=${tries + 1}`;
-      },
-      300 * 2 ** tries
-    );
-  });
   tiles.set(id, item);
   return item;
 }
@@ -206,15 +198,16 @@ function updateTile(item: HTMLLIElement, tile: Tile) {
   const open = $('.photos_open', item);
   const image = $<HTMLImageElement>('.photos_image', item);
   if (image.dataset.src !== tile.thumb) {
-    image.dataset.src = tile.thumb;
-    image.dataset.tries = '0';
     if (fresh.has(tile.id)) {
       // keep the local file (or the old thumbnail) until the new one is served
       fresh.delete(tile.id);
+      image.dataset.src = tile.thumb;
       void whenServed(tile.thumb).then(() => {
-        if (image.dataset.src === tile.thumb) image.src = tile.thumb;
+        if (image.dataset.src !== tile.thumb) return;
+        delete image.dataset.src;
+        showImage(image, tile.thumb);
       });
-    } else image.src = tile.thumb;
+    } else showImage(image, tile.thumb);
   }
   image.alt = tile.title;
   $('.photos_title', item).textContent = tile.title;
@@ -226,14 +219,19 @@ function updateTile(item: HTMLLIElement, tile: Tile) {
   if (tile.id === app.selected) open.setAttribute('aria-current', 'true');
   else open.removeAttribute('aria-current');
 
+  // the flags are for the pointer; the tile itself tells a screen reader
   const flagsKey = `${tile.attention.join()}|${tile.hidden}`;
   const flags = $('.photos_flags', item);
   if (flags.dataset.key !== flagsKey) {
     flags.dataset.key = flagsKey;
-    flags.replaceChildren(
+    const marks = [
       ...tile.attention.map((a) => fromTemplate(`flag-${a}`)),
-      ...(tile.hidden ? [fromTemplate('flag-hidden')] : [])
-    );
+      ...(tile.hidden ? [fromTemplate('flag-hidden')] : []),
+    ];
+    flags.replaceChildren(...marks);
+    $('.photos_note', item).textContent = marks
+      .map((m) => m.getAttribute('aria-label') ?? m.textContent?.trim())
+      .join(', ');
   }
 }
 
@@ -579,7 +577,7 @@ function fillPhoto() {
   );
 
   const preview = bound<HTMLImageElement>('photo-preview');
-  preview.src = d.preview || d.thumb;
+  showImage(preview, d.preview || d.thumb);
   preview.style.setProperty('--inspector-ratio', `${d.width} / ${d.height}`);
   bound('photo-title').textContent = d.title;
   bound('photo-file').textContent = `photos/${d.source}`;
@@ -782,12 +780,15 @@ function fillAlbum() {
   const cover = photoById(album.cover) ?? photos[0];
   const preview = bound<HTMLImageElement>('album-preview');
   if (cover) {
-    preview.src = cover.thumb;
+    showImage(preview, cover.thumb);
     preview.style.setProperty(
       '--inspector-ratio',
       `${cover.width} / ${cover.height}`
     );
-  } else preview.removeAttribute('src');
+  } else {
+    delete preview.dataset.src;
+    preview.removeAttribute('src');
+  }
   bound('album-title').textContent = album.title;
   bound('album-path').textContent = `photos/${album.path}/`;
   const title = control<HTMLInputElement>(albumForm, 'title');

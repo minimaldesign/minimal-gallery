@@ -1368,6 +1368,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           tabindex="-1"
           aria-describedby="photos-keys">
           <img class="photos_image" alt="" decoding="async" />
+          <span class="a11y-srOnly photos_note"></span>
           <span class="photos_state"></span>
         </button>
         <span class="photos_title" aria-hidden="true"></span>
@@ -1379,6 +1380,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <button
         type="button"
         class="flag"
+        tabindex="-1"
         data-attention="date-from-mtime"
         aria-label="No capture date: set the date"
         title="No capture date: the date is the file’s">
@@ -1391,6 +1393,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <button
         type="button"
         class="flag"
+        tabindex="-1"
         data-attention="no-exif"
         aria-label="No camera data"
         title="No camera data">
@@ -1403,6 +1406,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <button
         type="button"
         class="flag"
+        tabindex="-1"
         data-attention="duplicate"
         aria-label="Same photo as another one"
         title="Same photo as another one">

@@ -89,6 +89,11 @@
     z-index: var(--z-4);
     width: min(var(--admin-inspector-width), 100vw);
     box-shadow: var(--mg-surface-shadow);
+
+    /* over the photos: only for a photo you opened */
+    &[data-inspector='album'] {
+      display: none;
+    }
   }
 }
 

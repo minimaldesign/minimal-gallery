@@ -102,7 +102,13 @@ async function readDrop(data: DataTransfer): Promise<Picked[]> {
   if (!entries.length || entries.some((e) => !e))
     return files.map((file) => ({ file, dir: [] }));
   const out: Picked[] = [];
-  for (const entry of entries) await walk(entry!, [], out);
+  try {
+    for (const entry of entries) await walk(entry!, [], out);
+  } catch {
+    // an entry the engine cannot read back (a drop made by a script, in
+    // Safari): the plain file list still holds the loose files
+    return files.map((file) => ({ file, dir: [] }));
+  }
   return out;
 }
 

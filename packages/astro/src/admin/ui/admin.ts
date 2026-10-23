@@ -5,11 +5,10 @@
  * the queue line, the Preview links). The views live in ./scripts.
  *
  * The event stream reconnects by itself after a dev-server restart (a
- * settings edit causes one); every `open` reloads the state.
+ * settings edit causes one); each reconnection reloads the state.
  */
 import {
   $,
-  $$,
   API,
   TOKEN,
   api,

@@ -112,6 +112,11 @@
     opacity: 0;
   }
 
+  /* waiting for its file: no broken-image mark, no alt text */
+  &:not([src]) {
+    visibility: hidden;
+  }
+
   .photos_item[aria-busy='true'] & {
     opacity: var(--o-2);
   }
