@@ -1,0 +1,102 @@
+---
+/**
+ * HUD: fixed at the top over the viewer, not displayed while the panel is
+ * up. Left, the breadcrumb (gallery / context / photo title as the h1);
+ * right, icon toggles in this order: Filter, Info, Filmstrip, Fit photo or
+ * Fill window, Keyboard shortcuts. Every tooltip carries its key.
+ */
+import config from 'virtual:minimalgallery/config';
+import {
+  contextHref,
+  withBase,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+import FilterButton from './FilterButton.astro';
+import Icon from './Icon.astro';
+import Tip from './Tip.astro';
+import ToggleOption from './ToggleOption.astro';
+
+interface Props {
+  photo: Photo;
+  context: Context;
+}
+const { photo, context } = Astro.props;
+const { defaults } = config;
+---
+
+<header class="hud surface table_hud">
+  <nav class="hud_crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li>
+        <a href={withBase('/')}>{config.title}</a>
+      </li>
+      {context.title && (
+        <li>
+          <a class="hud_context" href={contextHref(context)}>
+            {context.title}
+          </a>
+        </li>
+      )}
+      <li>
+        <h1 class="hud_title">{photo.title}</h1>
+      </li>
+    </ol>
+  </nav>
+  <div class="hud_actions">
+    <FilterButton />
+    <div class="toggle toggle-plain">
+      <ToggleOption
+        type="checkbox"
+        name="info"
+        id="info-toggle"
+        label="<b>I</b>nfo"
+        icon="info"
+        shortcut="i"
+      />
+    </div>
+    <div class="toggle toggle-plain">
+      <ToggleOption
+        type="checkbox"
+        name="strip"
+        label="Film<b>s</b>trip"
+        icon="strip"
+        shortcut="s"
+        checked={defaults.strip === 'on'}
+      />
+    </div>
+    <div class="toggle toggle-plain">
+      <label class="toggle_option">
+        <input
+          class="a11y-srOnly"
+          type="checkbox"
+          name="fit"
+          value="contain"
+          data-off="cover"
+          aria-label="Fit photo"
+          checked={defaults.fit === 'contain'}
+        />
+        <span class="toggle_off">
+          <Icon name="contain" />
+        </span>
+        <span class="toggle_on">
+          <Icon name="cover" />
+        </span>
+        <Tip label="<b>F</b>it photo" shortcut="f" class="toggle_off" />
+        <Tip label="<b>F</b>ill window" shortcut="f" class="toggle_on" />
+      </label>
+    </div>
+    <div class="toggle toggle-plain hud_help">
+      <ToggleOption
+        type="checkbox"
+        name="keys"
+        id="keys-toggle"
+        label="Keyboard shortcuts"
+        shortcut="?">
+        <span class="toggle_glyph" aria-hidden="true">
+          ?
+        </span>
+      </ToggleOption>
+    </div>
+  </div>
+</header>

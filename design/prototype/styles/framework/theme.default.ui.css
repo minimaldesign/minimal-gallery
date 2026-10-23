@@ -1,0 +1,554 @@
+/* DEFAULT THEME: UI */
+
+/*
+  Tokens here are one abstraction level above raw tokens
+  They define styling for elements, components, or a shared style.
+
+  Values, in order of preference:
+  1. Another ui token, when the meaning is shared
+     `--input-border-color: var(--ui-border-color)`
+  2. A raw token: `--fieldset-padding: var(--sm3)`
+  3. A raw value, only when it's not supposed to match a raw token
+     or when it's relative to the the element's own value (em heading spacing).
+
+  Part of the default theme (see theme.default.css); don't edit it,
+  override from your own theme (see theme.starter.css).
+*/
+
+:root {
+  /* Color scheme (light/dark), toggled by the .theme-light / .theme-dark
+     classes below. */
+  color-scheme: light dark;
+
+  --ui-border-color: light-dark(var(--base-200), var(--base-500));
+  /* Also used by the --shadow-*  in theme.default.tokens.css, The one reference
+     between the files that runs upward, so shadows can switch with the color
+     scheme. Raw alpha colors: the palettes have no alpha steps. */
+  --ui-shadow-color: light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.6));
+
+  /* Keyboard focus ring (used by :focus-visible in global.a11y.css).
+     Raw 2px on purpose: an accessibility shouldn't change with the theme. */
+  --focus-ring-color: light-dark(var(--primary-500), var(--primary-400));
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+:root.theme-light {
+  color-scheme: light;
+}
+
+:root.theme-dark {
+  color-scheme: dark;
+}
+
+/* HTML ELEMENTS */
+
+:root {
+  accent-color: var(--primary-500);
+
+  --body-background-color: light-dark(var(--base-0), var(--base-950));
+  --body-line-height: var(--leading-lg);
+
+  --input-height: var(--md3);
+  --input-padding: var(--xs3);
+  --input-border-width: var(--border-sm);
+  --input-border-color: var(--ui-border-color);
+  --input-border-radius: var(--radius-md);
+  --input-border-color-invalid: light-dark(var(--no-500), var(--no-400));
+
+  /* Gap under a label that precedes its control */
+  --label-spacing: var(--xs1);
+
+  --fieldset-padding: var(--sm3);
+  --fieldset-border-width: var(--border-sm);
+  --fieldset-border-color: var(--ui-border-color);
+  --fieldset-border-radius: var(--radius-lg);
+
+  /* meter: low/medium/high map to the even-less-good, suboptimum, and
+     optimum pseudo-elements */
+  --meter-height: var(--sm1);
+  --meter-border-radius: var(--radius-md);
+  --meter-track-color: var(--primary-100);
+  --meter-low-color: var(--no-400);
+  --meter-medium-color: var(--maybe-400);
+  --meter-high-color: var(--yes-400);
+
+  --progress-height: var(--sm1);
+  --progress-color: var(--primary-500);
+  --progress-track-color: var(--primary-100);
+  --progress-border-radius: var(--radius-md);
+
+  /* select's chevron, applied as a mask using  text color;
+     any url() works here, data URL or file */
+  --select-icon-size: var(--sm3);
+  --select-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20id='chevron-down'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
+
+  --dialog-min-width: var(--tera1);
+  --dialog-max-width: var(--tera3);
+  --dialog-padding: var(--lg1) var(--md1);
+  --dialog-border-width: var(--border-sm);
+  --dialog-border-color: light-dark(var(--base-200), var(--base-800));
+  --dialog-background-color: light-dark(var(--base-50), var(--base-900));
+  --dialog-border-radius: var(--radius-lg);
+  --dialog-backdrop-color: var(--base-950);
+  --dialog-backdrop-opacity: var(--o-4);
+
+  /* details: same as dialog by default, on purpose, to be  independently
+     overridable. Spacing is the gap between an open summary and its content. */
+  --details-padding: var(--sm1);
+  --details-spacing: var(--xs3);
+  --details-border-width: var(--border-sm);
+  --details-border-color: light-dark(var(--base-200), var(--base-800));
+  --details-background-color: light-dark(var(--base-50), var(--base-900));
+  --details-border-radius: var(--radius-lg);
+  --details-icon-size: var(--sm3);
+  /* Marker icon, applied as a mask painted with the text color; any
+     url() works here, data URL or file */
+  --details-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20id='chevron-down'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
+
+  --table-padding: var(--xs2) var(--sm1);
+  --table-border-width: var(--border-sm);
+  --table-border-color: light-dark(var(--base-100), var(--base-700));
+  --table-border-radius: var(--radius-md);
+  --table-background-color: none;
+  /* Gap between the table and its caption */
+  --table-caption-spacing: var(--xs3);
+  /* Gap between a figure's content and caption on either side */
+  --figcaption-spacing: var(--xs2);
+
+  /* Text */
+
+  --heading-font: var(--display);
+  --heading-weight: var(--black);
+  --heading-letter-spacing: normal; /* (e.g. -0.02em or var(--tracking-sm)) */
+
+  --heading-font-size-h1: clamp(
+    var(--display-md),
+    1.269rem + 2.682vw,
+    var(--display-xl)
+  ); /* 2.074rem → 2.986rem */
+  --heading-font-size-h2: clamp(
+    var(--display-sm),
+    1.057rem + 2.235vw,
+    var(--display-lg)
+  ); /* 1.728rem → 2.488rem */
+  --heading-font-size-h3: clamp(
+    var(--text-xl),
+    0.881rem + 1.865vw,
+    var(--display-md)
+  ); /* 1.44rem → 2.074rem */
+  --heading-font-size-h4: clamp(
+    var(--text-lg),
+    0.734rem + 1.553vw,
+    var(--display-sm)
+  ); /* 1.2rem → 1.728rem */
+  --heading-font-size-h5: clamp(
+    var(--text-lg),
+    0.988rem + 0.706vw,
+    var(--text-xl)
+  ); /* 1.2rem → 1.44rem */
+  --heading-font-size-h6: clamp(
+    var(--text-md),
+    0.824rem + 0.588vw,
+    var(--text-lg)
+  ); /* 1rem → 1.2rem */
+
+  --heading-line-height: var(--leading-sm);
+  --heading-line-height-h1: var(--heading-line-height);
+  --heading-line-height-h2: var(--heading-line-height);
+  --heading-line-height-h3: var(--heading-line-height);
+  --heading-line-height-h4: var(--leading-md);
+  --heading-line-height-h5: var(--leading-md);
+  --heading-line-height-h6: var(--leading-md);
+
+  /* Headings bottom margin  */
+  --heading-spacing-h1: 0.4em;
+  --heading-spacing-h2: 0.4em;
+  --heading-spacing-h3: 0.4em;
+  --heading-spacing-h4: 0.4em;
+  --heading-spacing-h5: 0.4em;
+  --heading-spacing-h6: 0.4em;
+  /* Any h1 before h2, h2 before h3, h3 before h4.  */
+  --heading-spacing-consecutive: 0.3em;
+
+  --text-color: light-dark(var(--base-950), var(--base-200));
+  --link-font-weight: var(--semi-bold);
+  --link-color: light-dark(var(--primary-600), var(--primary-400));
+  --link-color-hover: var(--primary-500);
+
+  --text-code-color: light-dark(var(--primary-600), var(--primary-400));
+  --text-code-background-color: light-dark(
+    var(--primary-100),
+    var(--primary-900)
+  );
+  /* when code inline styling doesn't apply (inside headings and pre) */
+  --text-code-muted-color: light-dark(var(--base-500), var(--base-300));
+
+  --pre-border-radius: var(--radius-md);
+  /* matching the 0.9em of inline code */
+  --pre-font-size: 0.9rem;
+
+  --blockquote-padding-block: var(--sm1);
+  --blockquote-padding-inline: var(--md1) var(--sm3);
+  --blockquote-background-color: light-dark(
+    var(--primary-50),
+    var(--primary-900)
+  );
+  --blockquote-border-radius: var(--radius-md);
+  --blockquote-accent-width: var(--xs2);
+  --blockquote-accent-color: linear-gradient(
+    var(--primary-800),
+    var(--primary-500)
+  );
+
+  /* .prose related stuff in GLOBAL */
+
+  /* Optional centered label on <hr>, e.g. "***" or a dingbat */
+  --hr-content: "";
+
+  /* ins: background stays light in both light/dark modes */
+  --ins-color: var(--base-950);
+  --ins-background-color: var(--yes-200);
+
+  --marker-color: var(--highlight-500);
+
+  --selection-color: light-dark(var(--base-950), var(--base-0));
+  --selection-background-color: light-dark(
+    var(--primary-200),
+    var(--primary-700)
+  );
+}
+
+/* GLOBAL */
+
+:root {
+  /* Mobile-first: tighter gutters on small screens, 24px from --md up */
+  --grid-column-gap: var(--sm1);
+  --grid-row-gap: var(--sm1);
+  @media (--md) {
+    --grid-column-gap: var(--sm3);
+    --grid-row-gap: var(--sm3);
+  }
+
+  --wrap-spacing: var(--sm1);
+  --wrap-md-spacing: var(--sm3);
+  --wrap-lg-spacing: 0;
+  /* Widths are measures: ch tracks the text size, so raw on purpose. */
+  --wrap-width-sm: minmax(0, 55ch);
+  --wrap-width-md: minmax(0, 70ch);
+  --wrap-width-lg: minmax(0, 900px);
+  --wrap-width: var(--wrap-width-md);
+
+  --layout-content-width: 70ch;
+  --layout-aside-width: 245px;
+  --layout-toc-width: 1fr;
+
+  --prose-spacing: var(--sm1);
+}
+
+/* COMPONENTS */
+
+/* Badge */
+
+:root {
+  --badge-font-size: var(--text-sm);
+  --badge-border-radius: var(--radius-md);
+  --badge-color: var(--base-0);
+  --badge-background-color: light-dark(var(--base-700), var(--base-600));
+
+  --badge-primary-color: var(--base-0);
+  --badge-primary-background-color: light-dark(
+    var(--primary-600),
+    var(--primary-500)
+  );
+  --badge-success-color: light-dark(var(--yes-500), var(--base-0));
+  --badge-success-background-color: light-dark(var(--yes-100), var(--yes-500));
+  --badge-danger-color: light-dark(var(--no-500), var(--base-0));
+  --badge-danger-background-color: light-dark(var(--no-100), var(--no-500));
+  --badge-warning-color: light-dark(var(--maybe-500), var(--base-950));
+  --badge-warning-background-color: light-dark(
+    var(--maybe-100),
+    var(--maybe-500)
+  );
+}
+
+/* Button */
+/* (Button defaults and primary button colors) */
+
+:root {
+  /* Optical minimums, deliberately off the spacing scale */
+  --bt-min-width: 101px;
+  --bt-min-width-md: 123px;
+  --bt-min-width-lg: 133px;
+
+  --bt-font-size: var(--text-sm);
+  --bt-font-size-lg: var(--text-md);
+  --bt-font-weight: var(--semi-bold);
+
+  --bt-color: var(--text-color);
+  --bt-color-hover: light-dark(var(--text-color), var(--base-0));
+
+  --bt-background-color: light-dark(var(--base-0), var(--base-800));
+  --bt-background-color-hover: light-dark(var(--base-50), var(--base-900));
+
+  --bt-border-color: var(--ui-border-color);
+  --bt-border-width: var(--border-sm);
+  --bt-border-radius: var(--radius-lg);
+  --bt-border-radius-lg: var(--radius-xl);
+
+  --bt-outline-color-hover: light-dark(var(--base-950), var(--base-0));
+  --bt-outline-background-color-hover: light-dark(
+    rgb(0 0 0 / 0.1),
+    rgb(255 255 255 / 0.1)
+  );
+  --bt-outline-border-color: light-dark(var(--base-950), var(--base-0));
+  --bt-outline-border-color-hover: light-dark(var(--base-950), var(--base-0));
+
+  --bt-primary-color: var(--base-0);
+  --bt-primary-color-hover: var(--base-0);
+  --bt-primary-background-color: var(--primary-600);
+  --bt-primary-background-color-hover: var(--primary-500);
+  --bt-primary-border-color: var(--primary-600);
+  --bt-primary-border-color-hover: var(--primary-600);
+}
+
+/* Avatar */
+
+:root {
+  --avatar-color: var(--base-0);
+  --avatar-background-color: var(--base-400);
+  --avatar-border-color: light-dark(var(--base-0), var(--base-500));
+  --avatar-border-width: var(--border-sm);
+  --avatar-radius: var(--radius-round);
+  --avatar-status-dot-color-offline: var(--base-300);
+  --avatar-status-dot-color-online: var(--yes-400);
+}
+
+/* Banner */
+
+:root {
+  --banner-color: var(--base-0);
+  --banner-background-color: light-dark(var(--primary-600), var(--primary-800));
+}
+
+/* Breadcrumbs */
+
+:root {
+  --breadcrumbs-separator: "/";
+  --breadcrumbs-separator-color: light-dark(var(--base-300), var(--base-600));
+  --breadcrumbs-color: light-dark(var(--base-500), var(--base-400));
+  --breadcrumbs-color-current: var(--text-color);
+}
+
+/* Card */
+
+:root {
+  --card-spacing: var(--sm3);
+  --card-color: var(--text-color);
+  --card-secondary-text-color: light-dark(var(--base-400), var(--base-500));
+  --card-bg-color: light-dark(var(--base-100), var(--base-900));
+  --card-border-radius: var(--radius-lg);
+  --card-border-color: var(--ui-border-color);
+  --card-border-width: var(--border-sm);
+  --card-shadow: var(--shadow-md);
+  --card-shadow-hover: var(--shadow-xl);
+  --card-loading-bg: light-dark(var(--base-200), var(--base-900));
+  /* Default media aspect ratio; the Card component pins it inline only
+     when its aspectRatio prop is passed */
+  --card-aspect-ratio: var(--ar-golden);
+}
+
+/* Toggle */
+
+:root {
+  /* Drawn-control geometry, deliberately off the scales */
+  --toggle-width: 50px;
+  --toggle-height: 28px;
+  --toggle-border-width: 2px;
+  --toggle-track-color: light-dark(var(--base-300), var(--base-700));
+  --toggle-track-color-checked: var(--yes-400);
+  --toggle-thumb-color: var(--body-background-color);
+}
+
+/* FAQ */
+
+:root {
+  --faq-spacing: var(--xs3);
+}
+
+/* Field */
+
+:root {
+  --field-spacing: var(--xs1);
+  --field-hint-color: light-dark(var(--base-400), var(--base-500));
+  --field-error-color: light-dark(var(--no-500), var(--no-300));
+  /*Field's hint/error position. Use `static` to reflow under, use `absolute`
+  (and leave enough space below) if you don't want any shift on errors */
+  --field-message-position: static;
+}
+
+/* FeatureItem */
+
+:root {
+  --featureItem-icon-box-size: var(--lg3);
+  --featureItem-icon-size: var(--sm3);
+  --featureItem-icon-color: light-dark(var(--primary-600), var(--primary-300));
+  --featureItem-icon-background-color: light-dark(
+    var(--primary-100),
+    var(--primary-900)
+  );
+  --featureItem-icon-border-radius: var(--radius-lg);
+}
+
+/* Footer */
+
+:root {
+  --footer-background-color: light-dark(var(--primary-950), var(--base-950));
+  --footer-text-color: light-dark(var(--base-0), var(--base-200));
+  --footer-border-width: var(--border-md);
+  --footer-border-color: light-dark(transparent, var(--base-700));
+  --footer-link-color: light-dark(var(--base-0), var(--base-200));
+  --footer-link-color-hover: light-dark(var(--primary-200), var(--base-0));
+}
+
+/* Header */
+
+:root {
+  --header-height: var(--xl1);
+  --header-padding: var(--sm1);
+  @media (--md) {
+    --header-height: var(--xl2);
+    --header-padding: var(--sm3);
+  }
+  --header-background-color: light-dark(var(--base-0), var(--base-950));
+
+  /* The mobile menu is an always-dark  by design */
+  --header-menu-background-color: var(--base-950);
+  --header-menu-color: var(--base-0);
+  --header-menu-color-current: var(--primary-400);
+  --header-menu-secondary-color: var(--base-300);
+  --header-menu-border-color: var(--base-500);
+}
+
+/* Hero */
+
+:root {
+  --hero-radius: var(--radius-xl);
+  --hero-content-padding: var(--md3);
+  --hero-actions-spacing: var(--lg3);
+  --hero-pagination-dot: var(--sm1);
+  --hero-pagination-dot-color: var(--base-0);
+  --hero-pagination-dot-active-color: var(--primary-600);
+  --hero-pagination-opacity: var(--o-4);
+}
+
+/* Pagination */
+
+:root {
+  --pagination-size: var(--md3);
+  --pagination-border-radius: var(--radius-md);
+  --pagination-color: var(--text-color);
+  --pagination-color-current: var(--base-0);
+  --pagination-background-color-current: light-dark(
+    var(--primary-600),
+    var(--primary-500)
+  );
+  --pagination-background-color-hover: light-dark(
+    var(--base-100),
+    var(--base-800)
+  );
+}
+
+/* PrevNext */
+
+:root {
+  --prevNext-border-color: var(--ui-border-color);
+  --prevNext-border-radius: var(--radius-lg);
+  --prevNext-border-color-hover: var(--link-color);
+  --prevNext-label-color: light-dark(var(--base-400), var(--base-500));
+}
+
+/* Notice */
+
+:root {
+  --notice-spacing: var(--sm1);
+  --notice-text-color: light-dark(var(--base-950), var(--base-0));
+  --notice-background-color: light-dark(var(--base-50), var(--base-800));
+  --notice-border-color: light-dark(var(--base-200), var(--base-500));
+  --notice-border-width: var(--border-sm);
+  --notice-border-radius: var(--radius-lg);
+}
+
+/* Pricing */
+
+:root {
+  --pricingCard-highlight-border-color: light-dark(
+    var(--primary-600),
+    var(--primary-400)
+  );
+  --pricingCard-check-color: light-dark(var(--yes-500), var(--yes-400));
+}
+
+/* Read Progress Bar */
+
+:root {
+  --readProgressBar-height: var(--xs1);
+  --readProgressBar-color: linear-gradient(
+    90deg,
+    var(--primary-600) 0%,
+    var(--primary-400) 100%
+  );
+}
+
+/* Section */
+
+:root {
+  --section-spacing: var(--xl3);
+  --section-header-spacing: var(--lg3);
+  --section-eyebrow-color: light-dark(var(--primary-600), var(--primary-400));
+  --section-lede-color: light-dark(var(--base-500), var(--base-400));
+  --section-filled-background-color: light-dark(
+    var(--base-50),
+    var(--base-900)
+  );
+  --section-primary-background-color: light-dark(
+    var(--primary-600),
+    var(--primary-900)
+  );
+  --section-primary-text-color: var(--base-0);
+  --section-primary-link-color: var(--primary-100);
+  --section-primary-link-color-hover: var(--base-0);
+  --section-primary-eyebrow-color: var(--primary-200);
+  --section-primary-lede-color: var(--primary-100);
+}
+
+/* Testimonial */
+
+:root {
+  --testimonial-role-color: light-dark(var(--base-400), var(--base-500));
+}
+
+/* Tags */
+
+:root {
+  --tags-padding: var(--xs2);
+  --tags-font-size: var(--text-sm);
+  --tags-color: light-dark(var(--base-500), var(--base-400));
+  --tags-background-color: light-dark(var(--base-100), var(--base-800));
+  --tags-background-color-hover: light-dark(var(--base-200), var(--base-950));
+  --tags-radius: var(--radius-md);
+}
+
+/* Tiles has no tokens here: its column count is set by container queries in
+   component.tiles.css since custom properties don't work inside @container.
+*/
+
+/* TOC */
+
+:root {
+  --toc-color: var(--link-color);
+  --toc-color-hover: var(--link-color-hover);
+  --toc-spacing: var(--xs1);
+  --toc-indentation: var(--xs3);
+  --toc-icon-size: var(--sm1);
+}

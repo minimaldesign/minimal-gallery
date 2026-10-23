@@ -1,0 +1,196 @@
+/* STAGE
+
+   The viewer: one photo filling the window (object-fit: cover) by
+   default, or whole and as large as the window allows (contain), on the
+   near-black ground, as if projected in a dark room. The fit is a radio
+   pair in the HUD (input name fit, owner default --mg-fit). It sits on top of
+   every page; the context's photos (the table) lie below it and rise over
+   it as the page scrolls. The HUD (placed by table_hud) floats over it;
+   the strip is pinned to the bottom of the stage. With a mouse: click the photo for
+   the next one, the left third for the previous one. On a touch screen
+   mg.js turns a tap into a chrome toggle, a swipe into next or previous
+   and a double tap into zoom; pinch stays with the browser. */
+
+.stage {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-0);
+  display: grid;
+  height: 100dvh;
+
+  :root[data-idle] & {
+    cursor: none;
+  }
+}
+
+.stage_frame {
+  grid-area: 1 / 1;
+  position: relative;
+  container-type: size;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  :root:has(input[name='fit'][value='contain']:checked) & {
+    padding: var(--mg-view-inset);
+  }
+  /* horizontal swipes reach the script; vertical scroll and pinch stay */
+  touch-action: pan-y pinch-zoom;
+
+  @supports (animation-timeline: scroll()) {
+    @media (--motionOK) {
+      animation: stage-recede linear both;
+      animation-timeline: scroll(root);
+      animation-range: 12dvh 80dvh;
+    }
+  }
+}
+
+.stage_scroller {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.stage_next {
+  display: block;
+  cursor: var(--mg-cursor-next), pointer;
+
+  /* the last photo: nothing to go to */
+  &:not([href]) {
+    cursor: default;
+  }
+
+  :root[data-idle] & {
+    cursor: none;
+  }
+
+  @media (--touch) {
+    cursor: auto;
+  }
+}
+
+/* Cover: the photo element is the whole window, cropped by object-fit.
+   Contain: sized from the photo's ratio and the frame's container units,
+   so the element is exactly the visible photo. The thumbnail morph uses
+   object-fit: cover on both snapshots, so it works in either mode. */
+.stage_photo {
+  width: 100cqw;
+  max-width: none;
+  height: 100cqh;
+  object-fit: cover;
+  background-color: var(--photo);
+
+  :root:has(input[name='fit'][value='contain']:checked) & {
+    width: min(100cqw, 100cqh * var(--photo-ratio));
+    height: auto;
+    aspect-ratio: var(--photo-ratio);
+  }
+}
+
+.stage_prev {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 30%;
+  cursor: var(--mg-cursor-prev), pointer;
+
+  /* the first photo: the zone is not a link and lets clicks through */
+  &:not([href]) {
+    display: none;
+  }
+
+  :root[data-idle] & {
+    cursor: none;
+  }
+
+  @media (--touch) {
+    cursor: auto;
+  }
+}
+
+/* the strip sits on the bottom edge of the viewer */
+.stage_strip {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: var(--z-2);
+}
+
+/* A quiet handle: the photos are below. A link, so it works without
+   script and from the keyboard. Gone while the strip is on. */
+.stage_hint {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 50%;
+  z-index: var(--z-2);
+  translate: -50% 0;
+  width: var(--xl3);
+  height: var(--md1);
+  transition: opacity var(--mg-duration-quick) var(--mg-ease-out);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: var(--sm1);
+    inset-block-end: var(--xs3);
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--mg-ink-faint);
+    opacity: 0.6;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  :root[data-idle] & {
+    opacity: 0;
+    transition-duration: var(--mg-duration-rest);
+  }
+
+  :root[data-idle='key'] & {
+    transition-duration: 0s;
+  }
+
+  :root:has(input[name='strip']:checked) & {
+    display: none;
+  }
+}
+
+/* ZOOMED: the photo at 1:1 of its largest derivative, panned by drag
+   (mg.js) or by scrolling. The demo files are 700px wide, so the prototype
+   doubles them to stand in for the w3200 derivative. */
+.stage:has(.stage_zoom:checked) {
+  .stage_scroller {
+    place-items: safe center;
+    overflow: auto;
+    overscroll-behavior: contain;
+    cursor: grab;
+    scrollbar-width: none;
+  }
+
+  .stage_photo {
+    width: calc(var(--photo-zoom-width) * 1px);
+    height: auto;
+    aspect-ratio: var(--photo-ratio);
+    object-fit: contain;
+  }
+
+  .stage_next {
+    pointer-events: none;
+  }
+
+  .stage_prev,
+  .stage_hint {
+    display: none;
+  }
+}
+
+@keyframes stage-recede {
+  to {
+    opacity: 0.3;
+    scale: 0.96;
+  }
+}

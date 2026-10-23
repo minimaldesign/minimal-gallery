@@ -1,0 +1,35 @@
+/* Unified keyboard focus ring (themable via the --focus-ring-* tokens).
+   Applies everywhere so keyboard users get one consistent treatment. */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Skip-to-content link. Place it as the first element in <body>, pointing
+   at the id of your main content; it stays off-screen until focused. */
+.a11y-skipLink {
+  position: fixed;
+  z-index: var(--z-top);
+  inset-block-start: -100vb;
+  inset-inline-start: 0;
+  padding: 0.75em 1.25em;
+  background-color: var(--body-background-color);
+  color: var(--text-color);
+}
+
+.a11y-skipLink:focus {
+  inset-block-start: 0;
+}
+
+/* hide in browser but accessible in screen readers */
+.a11y-srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

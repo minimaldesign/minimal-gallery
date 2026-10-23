@@ -1,0 +1,71 @@
+/* RAIL
+
+   A thin date scrubber hugging the right edge of the grid: one short tick
+   per year, the year in view brighter (CSS scroll-spy: scroll-target-group
+   and :target-current). The years only show while the pointer is on the
+   rail. Dragging along it scrubs (mg.js). Placed and sized by table_rail,
+   which sticks below the panel header. */
+
+.rail {
+  width: var(--sm3);
+  height: 100%;
+  user-select: none;
+}
+
+.rail_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  scroll-target-group: auto;
+  touch-action: none;
+}
+
+.rail_link {
+  position: relative;
+  display: block;
+  height: var(--sm1);
+  cursor: ns-resize;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: var(--xs1);
+    width: var(--sm1);
+    height: 1px;
+    background-color: var(--mg-ink-faint);
+    transform-origin: right;
+    scale: 0.5 1;
+    transition: scale var(--mg-duration-quick) var(--mg-ease-out);
+  }
+
+  &:target-current::before {
+    background-color: var(--mg-ink);
+    scale: 1 1;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  }
+}
+
+.rail_year {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--md1);
+  translate: 0 -50%;
+  padding: 1px var(--xs2);
+  border-radius: var(--radius-sm);
+  font-size: var(--mg-size-small);
+  opacity: 0;
+  transition: opacity var(--mg-duration-quick) var(--mg-ease-out);
+
+  .rail:hover &,
+  .rail_link:focus-visible & {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,3 @@
+# mCSS support floor: Baseline 2024. preset-env has nothing to polyfill
+# inside it; the one transform left is resolving @custom-media.
+baseline 2024

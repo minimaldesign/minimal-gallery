@@ -1,0 +1,132 @@
+/* STRIP
+
+   The filmstrip: the context's frames in a row along the bottom of the
+   viewer, like slides in a tray, kept light. A setting, not a gesture: the
+   HUD toggle or F turns it on (input name strip, owner default --mg-strip).
+   When on it stays visible (it does not fade with the HUD); when off it is
+   not shown. A CSS carousel: scroll snapping everywhere, ::scroll-button
+   where supported. The current frame is at full opacity
+   with a 1px underline; the others sit at 55%. */
+
+.strip {
+  view-transition-name: strip;
+  view-transition-class: chrome;
+  border-width: var(--border-sm) 0 0;
+  :root:not(:has(input[name='strip']:checked)) & {
+    display: none;
+  }
+}
+
+.strip_list {
+  --strip-image-height: var(--lg3);
+
+  position: relative;
+  display: flex;
+  gap: var(--xs1);
+  justify-content: safe center;
+  margin: 0;
+  padding: var(--xs3) var(--lg1);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--lg1);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+
+  &::scroll-button(*) {
+    position: absolute;
+    inset-block-start: calc(50% - var(--xs1));
+    translate: 0 -50%;
+    width: var(--md2);
+    height: var(--md2);
+    border: 0;
+    background-color: var(--mg-ink-muted);
+    cursor: pointer;
+    transition: background-color var(--mg-duration-quick) var(--mg-ease-out);
+  }
+
+  &::scroll-button(*):hover {
+    background-color: var(--mg-ink);
+  }
+
+  &::scroll-button(*):disabled {
+    opacity: 0;
+  }
+
+  &::scroll-button(inline-start) {
+    content: '' / 'Earlier frames';
+    inset-inline-start: var(--xs1);
+    mask: var(--mg-icon-earlier) center / 20px no-repeat;
+  }
+
+  &::scroll-button(inline-end) {
+    content: '' / 'Later frames';
+    inset-inline-end: var(--xs1);
+    mask: var(--mg-icon-later) center / 20px no-repeat;
+  }
+
+  @media (--md-n-below) {
+    --strip-image-height: var(--lg1);
+
+    padding-inline: var(--xs3);
+    scroll-padding-inline: var(--xs3);
+  }
+}
+
+.strip_item {
+  flex: none;
+  scroll-snap-align: center;
+}
+
+.strip_link {
+  position: relative;
+  display: block;
+  opacity: 0.55;
+  transition: opacity var(--mg-duration-slide) var(--mg-ease-out);
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:focus-visible {
+    opacity: 1;
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* the current frame: centered (scroll-initial-target with the item's
+     center snap; the scroller's own clamping keeps the ends at the edges),
+     brought up to full opacity and underlined with a short transition */
+  &[aria-current='page'] {
+    opacity: 1;
+    scroll-initial-target: nearest;
+
+    @starting-style {
+      opacity: 0.55;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      inset-block-end: calc(-1 * var(--xs1) - 1px);
+      height: 1px;
+      background-color: var(--mg-accent);
+      transform-origin: center;
+      scale: 1 1;
+      transition: scale var(--mg-duration-slide) var(--mg-ease-out);
+
+      @starting-style {
+        scale: 0 1;
+      }
+    }
+  }
+}
+
+.strip_image {
+  width: auto;
+  max-width: none;
+  height: var(--strip-image-height);
+  aspect-ratio: var(--ar);
+  background-color: var(--photo);
+}

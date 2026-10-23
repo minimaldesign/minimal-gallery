@@ -1,0 +1,65 @@
+{
+  "name": "@minimalgallery/pipeline",
+  "version": "0.0.0",
+  "description": "Local photo processing for minimalgallery: metadata, derivatives, manifests.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./dist/schema.js"
+    },
+    "./slug": {
+      "types": "./dist/slug.d.ts",
+      "default": "./dist/slug.js"
+    },
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "default": "./dist/config.js"
+    },
+    "./facets": {
+      "types": "./dist/facets.d.ts",
+      "default": "./dist/facets.js"
+    },
+    "./doctor": {
+      "types": "./dist/doctor.d.ts",
+      "default": "./dist/doctor.js"
+    }
+  },
+  "bin": {
+    "mg-pipeline": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "culori": "^4.0.2",
+    "exifr": "^7.1.3",
+    "fast-xml-parser": "^5.11.2",
+    "gray-matter": "^4.0.3",
+    "hash-wasm": "^4.12.0",
+    "jiti": "^2.7.0",
+    "piscina": "^5.3.2",
+    "sharp": "^0.35.5",
+    "thumbhash": "^0.1.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/culori": "^4.0.1",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

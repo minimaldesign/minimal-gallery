@@ -1,0 +1,33 @@
+.tags {
+  li {
+    margin-bottom: var(--xs2);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    padding: var(--xs1) var(--tags-padding);
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: var(--tags-font-size);
+    font-style: normal;
+    color: var(--tags-color);
+    border-radius: var(--tags-radius);
+    background-color: var(--tags-background-color);
+    transition: background-color var(--transition);
+    &:hover {
+      background-color: var(--tags-background-color-hover);
+    }
+  }
+}
+
+.tags-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs2);
+
+  li {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "title": "Canon PowerShot S230",
+  "href": "f/camera-canon-powershot-s230.html",
+  "photos": [
+    {
+      "slug": "soba-ya",
+      "title": "Soba ya",
+      "ar": 1.5054,
+      "color": "oklch(0.553 0.122 53.7)",
+      "year": 2004,
+      "tip": "16 Jun 2004",
+      "cells": [
+        [
+          ["16 June", "f/month-06.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Canon PowerShot S230", "f/camera-canon-powershot-s230.html"]],
+        [],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["5.4 mm", "f/focal-wide.html"]],
+        []
+      ],
+      "sort": [
+        "soba ya",
+        "2004-06-16T18:47:31",
+        "",
+        "canon powershot s230",
+        "",
+        0.02,
+        2.8,
+        5.4,
+        ""
+      ]
+    }
+  ]
+}

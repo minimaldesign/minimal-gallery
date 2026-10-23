@@ -1,0 +1,43 @@
+---
+/**
+ * One icon option: a label around a visually hidden checkbox or radio, an
+ * icon (or the default slot, for a glyph) and a tooltip with the label and
+ * the key. A checkbox's value is what the theme script stores when it is
+ * checked; `off` is what it stores otherwise.
+ */
+import Icon from './Icon.astro';
+import type { IconName } from './icons.ts';
+import Tip from './Tip.astro';
+
+interface Props {
+  type: 'checkbox' | 'radio';
+  name: string;
+  value?: string;
+  /** Tooltip text; may hold `<b>` around the shortcut letter. */
+  label: string;
+  icon?: IconName;
+  checked?: boolean;
+  shortcut?: string;
+  off?: string;
+  id?: string;
+  /** Accessible name when it differs from the label. */
+  aria?: string;
+}
+const { type, name, value, label, icon, checked, shortcut, off, id, aria } =
+  Astro.props;
+---
+
+<label class="toggle_option">
+  <input
+    class="a11y-srOnly"
+    type={type}
+    name={name}
+    id={id}
+    value={value}
+    data-off={off}
+    aria-label={aria ?? label.replace(/<[^>]+>/g, '')}
+    checked={checked}
+  />
+  {icon ? <Icon name={icon} /> : <slot />}
+  <Tip label={label} shortcut={shortcut} />
+</label>

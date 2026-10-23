@@ -1,0 +1,27 @@
+---
+// Every album and facet page (/colors/, /camera/nikon-d70/, /on/02-27/),
+// opened on its photos, with the viewer above on the context’s first photo.
+import type { GetStaticPaths } from 'astro';
+import ViewerPage from '@minimalgallery/astro/theme/ViewerPage.astro';
+import {
+  ARCHIVE_ID,
+  getContexts,
+  pageCacheKey,
+  type Context,
+} from '@minimalgallery/astro/gallery';
+
+export const getStaticPaths = (async () => {
+  const contexts = (await getContexts()).filter((c) => c.id !== ARCHIVE_ID);
+  return Promise.all(
+    contexts.map(async (context) => ({
+      params: { context: context.id },
+      props: { context },
+      cacheKey: await pageCacheKey(context.photos[0], context),
+    }))
+  );
+}) satisfies GetStaticPaths;
+
+const { context } = Astro.props as { context: Context };
+---
+
+<ViewerPage photo={context.photos[0]} context={context} start="grid" />

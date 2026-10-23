@@ -1,0 +1,63 @@
+.toc {
+  /* we hide the TOC if there is less than 2 item */
+  &:not(:has(li:nth-of-type(2))) {
+    display: none;
+  }
+
+  p {
+    margin-bottom: var(--xs2);
+  }
+
+  ul {
+    font-size: var(--text-sm);
+    ul {
+      margin-inline-start: var(--toc-indentation);
+    }
+  }
+
+  & > ul > li:first-child > a:first-child {
+    padding-top: 0;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--toc-spacing) / 2);
+    padding-bottom: calc(var(--toc-spacing) / 2);
+    text-decoration: none;
+    color: var(--toc-color);
+    transition: color var(--transition);
+    &:hover {
+      color: var(--toc-color-hover);
+    }
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.is-active {
+      color: var(--toc-color-hover);
+      svg {
+        transform: translateX(calc(var(--xs1) * -1));
+        opacity: var(--o-5);
+      }
+    }
+  }
+}
+
+.toc-icon {
+  a {
+    margin-inline-start: calc(var(--toc-icon-size) * -1);
+  }
+
+  svg {
+    width: var(--toc-icon-size);
+    height: var(--toc-icon-size);
+    flex-shrink: 0;
+    opacity: var(--o-0);
+    transform: translateX(calc(var(--toc-icon-size) * -1));
+    transition: opacity var(--transition), transform var(--transition);
+  }
+}

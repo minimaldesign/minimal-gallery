@@ -1,0 +1,24 @@
+/* GLOBAL: SURFACE
+
+   The overlay material shared by the HUD bar, the info panel, the keys
+   panel, the palette, the tooltip and the strip: a dark translucent fill,
+   the photo behind it blurred, a 1px hairline. Mixed onto elements the
+   blocks already have; each block sets its own radius, padding and
+   placement. Solid where blur is unsupported or reduced transparency is
+   asked for. */
+
+.surface {
+  border: var(--border-sm) solid var(--mg-hairline);
+  background-color: var(--mg-surface-fill);
+  color: var(--mg-ink);
+  backdrop-filter: blur(var(--mg-hud-blur)) saturate(1.15);
+
+  @supports not (backdrop-filter: blur(1px)) {
+    background-color: var(--mg-surface-fill-solid);
+  }
+
+  @media (--opacityNotOK) {
+    background-color: var(--mg-surface-fill-solid);
+    backdrop-filter: none;
+  }
+}

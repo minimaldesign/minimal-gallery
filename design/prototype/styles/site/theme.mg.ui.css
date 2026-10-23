@@ -1,0 +1,115 @@
+/* MINIMAL GALLERY THEME: UI
+
+   Semantic tokens (what a value is for) built on the raw tokens and the
+   contract in theme.mg.tokens.css, plus the element rules a theme owns:
+   html, body, selection, kbd. The whole product is dark. */
+
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@layer theme.user {
+  :root {
+    color-scheme: dark;
+
+    /* INK */
+    --mg-ink: var(--mg-gray-800);
+    --mg-ink-muted: var(--mg-gray-600);
+    --mg-ink-faint: var(--mg-gray-500);
+    --mg-hairline: var(--mg-white-a10);
+
+    /* SURFACES: the translucent overlays (global.surface.css) */
+    --mg-surface-fill: color-mix(
+      in oklch,
+      var(--mg-gray-100) var(--mg-hud-opacity),
+      transparent
+    );
+    --mg-surface-fill-solid: var(--mg-gray-200);
+    --mg-surface-shadow: 0 16px 40px -12px var(--mg-black-a50);
+    --mg-control-hover: var(--mg-white-a6);
+    --mg-control-active: var(--mg-white-a14);
+    --mg-scrim: oklch(0 0 0 / 0.35);
+
+    /* LAYOUT */
+    --mg-info-inset: var(--lg1);
+    --mg-panel-head-height: var(--lg3);
+    --mg-preview-size: var(--giga3);
+    --mg-hud-height: calc(var(--lg3) * var(--mg-hud-density));
+    --mg-edge-height: var(--xl3);
+    --mg-gutter: var(--sm1);
+
+    @media (--md-n-below) {
+      --mg-edge-height: var(--xl2);
+      --mg-gutter: 0px;
+    }
+
+    /* MOTION. One easing for things that arrive, one for things that
+       leave; durations scale with the --mg-motion contract token. */
+    --mg-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --mg-ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+    --mg-duration-quick: calc(140ms * var(--mg-motion));
+    --mg-duration-slide: calc(360ms * var(--mg-motion));
+    --mg-duration-morph: calc(440ms * var(--mg-motion));
+    --mg-duration-rest: calc(600ms * var(--mg-motion));
+    /* the photo-to-photo step: a slow crossfade on a symmetric curve */
+    --mg-duration-step: calc(900ms * var(--mg-motion));
+    --mg-ease-fade: cubic-bezier(0.45, 0, 0.55, 1);
+
+    /* mCSS UI tokens this theme answers */
+    --body-background-color: var(--mg-ground);
+    --body-line-height: var(--leading-md);
+    --text-color: var(--mg-ink);
+    --heading-font: var(--display);
+    --heading-weight: var(--mg-weight-medium);
+    --link-font-weight: inherit;
+    /* links: no underline anywhere; light gray, white on hover */
+    --link-color: var(--mg-gray-700);
+    --link-color-hover: var(--mg-accent);
+    --focus-ring-color: var(--mg-accent);
+    --focus-ring-offset: 1px;
+    --selection-color: var(--mg-ink);
+    --selection-background-color: var(--mg-gray-400);
+    --dialog-min-width: 0;
+    --dialog-max-width: none;
+    --dialog-padding: 0;
+    --dialog-border-width: 0;
+    --dialog-backdrop-color: var(--mg-scrim);
+    --dialog-backdrop-opacity: 1;
+  }
+
+  html {
+    /* Two states only: the viewer (body) and the panel (.table, one
+       window tall, with its own inner scroller); the page never rests in
+       between. No page scrollbar (wheel, keys and touch are unchanged). */
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  body {
+    font-feature-settings: 'tnum';
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    text-decoration: none;
+    transition: color var(--mg-duration-quick) var(--mg-ease-out);
+  }
+
+  kbd {
+    display: inline-block;
+    min-width: 1.7em;
+    padding: 0.05em 0.35em;
+    border: var(--border-sm) solid var(--mg-hairline);
+    border-radius: var(--radius-sm);
+    background-color: var(--mg-white-a6);
+    color: var(--mg-ink-muted);
+    font-family: var(--text);
+    font-size: var(--mg-size-small);
+    font-weight: var(--mg-weight-medium);
+    line-height: 1.3;
+    text-align: center;
+  }
+}

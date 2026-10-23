@@ -1,0 +1,149 @@
+/* PANE
+
+   The floating panels: info on the right (pane-info) and the keyboard
+   shortcuts on the left (pane-keys). Mix .surface on for the material.
+   Each is a normal fixed element, not a popover, open while its checkbox
+   is checked (input name info or keys: the HUD's Info and help icons, or
+   i and ?), which mg.js remembers across photos and visits; only its
+   Close label or its key closes it. Placed 12px below the nav (which
+   floats 12px down in cover mode, or is a bar at 0 in contain mode) and
+   12px from the window edge. With a fine pointer on a wide window a pane
+   can be dragged by its header; mg.js sets --pane-x and --pane-y plus
+   data-moved and remembers the spot per pane. Chrome in a view
+   transition: it stays still while the photo slides. A bottom sheet on a
+   phone. Stacking inside the panel section: panes 4, HUD 5, tooltips on
+   top. */
+
+.pane {
+  --pane-shift: calc(-1 * var(--xs2));
+  --pane-top: calc(var(--mg-hud-height) + 2 * var(--xs3));
+
+  view-transition-class: chrome;
+  position: fixed;
+  inset: var(--pane-top) var(--xs3) auto auto;
+  z-index: var(--z-4);
+  display: none;
+  width: min(21rem, 100vw - 2 * var(--xs3));
+  max-height: calc(100dvh - var(--pane-top) - var(--xs3));
+  margin: 0;
+  padding: var(--sm1);
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  font-size: var(--mg-size-hud);
+  opacity: 0;
+  translate: 0 var(--pane-shift);
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    translate var(--mg-duration-quick) var(--mg-ease-out),
+    display var(--mg-duration-quick) allow-discrete;
+
+  :root:has(input[name='fit']:checked) & {
+    --pane-top: calc(var(--mg-hud-height) + var(--xs3));
+  }
+
+  &[data-moved] {
+    inset: calc(var(--pane-y) * 1px) auto auto calc(var(--pane-x) * 1px);
+  }
+
+  &.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+    transition: none;
+  }
+
+  @media (--md-n-below) {
+    --pane-shift: var(--sm3);
+
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: 60dvh;
+    margin: 0;
+    border-width: var(--border-sm) 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+}
+
+.pane-info {
+  view-transition-name: info;
+}
+
+.pane-keys {
+  view-transition-name: keys;
+  inset: var(--pane-top) auto auto var(--xs3);
+  width: min(23rem, 100vw - 2 * var(--xs3));
+}
+
+/* open: each pane follows its own checkbox */
+:root:has(input[name='info']:checked) .pane-info,
+:root:has(input[name='keys']:checked) .pane-keys {
+  display: block;
+  opacity: 1;
+  translate: 0 0;
+
+  @starting-style {
+    opacity: 0;
+    translate: 0 var(--pane-shift);
+  }
+}
+
+/* the drag handle: the header row, with a short grip line above the title */
+.pane_head {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sm1);
+  margin-block-end: var(--sm1);
+  padding-block-start: var(--xs3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: calc(50% - var(--sm1));
+    width: var(--md2);
+    height: 3px;
+    border-radius: 2px;
+    background-color: var(--mg-ink-faint);
+    opacity: 0.5;
+  }
+
+  @media (--mouse) {
+    cursor: grab;
+
+    .pane.is-dragging & {
+      cursor: grabbing;
+    }
+  }
+
+  @media (--md-n-below) {
+    cursor: auto;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.pane_title {
+  margin-block-end: 0;
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+  line-height: var(--leading-sm);
+}
+
+.pane_close {
+  padding: var(--xs1) var(--xs2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+  font: inherit;
+
+  &:hover {
+    color: var(--mg-ink);
+    background-color: var(--mg-control-hover);
+  }
+}

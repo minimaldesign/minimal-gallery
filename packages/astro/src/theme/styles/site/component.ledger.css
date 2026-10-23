@@ -1,0 +1,165 @@
+/* LEDGER
+
+   The list view, kept for the spreadsheet-minded: one row per photo, every
+   cell a link to that value's facet page (the v0.8 “click any cell to
+   filter”, generalized). Flat: no frame and no column rules (the mCSS
+   table knob --table-border-width is set to 0), only a faint line under
+   each row. Hovering a thumbnail shows a larger print of the photo,
+   anchored to it. Headers sort the rows. Scrolls sideways on a phone. */
+
+.ledger {
+  --table-border-width: 0;
+
+  display: none;
+
+  :root:has(input[name='view'][value='list']:checked) & {
+    display: block;
+  }
+
+  margin-inline: var(--sm1);
+  overflow-x: auto;
+  font-size: var(--mg-size-hud);
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: var(--xs2) var(--xs3);
+    border-block-end: var(--border-sm) solid var(--mg-hairline);
+    color: var(--mg-ink-muted);
+    font-weight: inherit;
+    text-align: start;
+    white-space: nowrap;
+  }
+
+  /* the keyboard selection in list view: the whole row */
+  tr:has(a:focus-visible) {
+    background-color: var(--mg-control-active);
+  }
+
+  td {
+    padding: var(--xs2) var(--xs3);
+    border-block-end: var(--border-sm) solid var(--mg-white-a6);
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  @media (--md-n-below) {
+    margin-inline: 0;
+  }
+}
+
+/* SORTING: every header but the thumbnail's is a button (mg.js reorders
+   the rows); the active one carries aria-sort and a drawn chevron */
+.ledger_sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--xs1);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  transition: color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+
+  th[aria-sort] & {
+    color: var(--mg-ink);
+  }
+}
+
+.ledger_dir {
+  width: 10px;
+  height: 10px;
+  background-color: currentColor;
+  mask: var(--mg-icon-sort) center / contain no-repeat;
+  opacity: 0;
+
+  th[aria-sort] & {
+    opacity: 1;
+  }
+
+  th[aria-sort='descending'] & {
+    rotate: 180deg;
+  }
+}
+
+.ledger_thumb {
+  anchor-name: --ledger-thumb;
+  anchor-scope: --ledger-thumb;
+  position: relative;
+  display: block;
+}
+
+/* The larger print: 320px on the long edge, on the overlay surface. The
+   full image is a background (--preview, passed in per row) on an element
+   that is display: none until hover, so it is only fetched on hover. A
+   lazy <img> would not do: Chrome fetches those even when not displayed.
+   Fallback without anchor-scope: beside the thumbnail, inside the table. */
+.ledger_preview {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 100%;
+  z-index: var(--z-top);
+  display: none;
+  margin-inline-start: var(--xs3);
+  padding: var(--xs1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--mg-surface-shadow);
+  opacity: 1;
+  pointer-events: none;
+  translate: 0 -50%;
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    display var(--mg-duration-quick) allow-discrete;
+
+  .ledger_thumb:hover & {
+    display: block;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  @supports (anchor-scope: --ledger-thumb) {
+    position: fixed;
+    inset: auto;
+    translate: none;
+    margin: var(--xs3);
+    position-anchor: --ledger-thumb;
+    position-area: center inline-end;
+    position-try-fallbacks:
+      flip-inline,
+      block-end span-inline-end,
+      block-start span-inline-end;
+  }
+
+  @media (--touch) {
+    .ledger_thumb:hover & {
+      display: none;
+    }
+  }
+}
+
+.ledger_previewImage {
+  display: block;
+  width: min(var(--mg-preview-size), var(--mg-preview-size) * var(--ar));
+  aspect-ratio: var(--ar);
+  border-radius: var(--radius-sm);
+  background: var(--preview) center / cover no-repeat var(--photo);
+}
+
+.ledger_image {
+  width: auto;
+  max-width: none;
+  height: var(--md2);
+  aspect-ratio: var(--ar);
+  background-color: var(--photo);
+}

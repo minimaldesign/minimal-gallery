@@ -1,0 +1,102 @@
+{
+  "title": "August",
+  "href": "f/month-08.html",
+  "photos": [
+    {
+      "slug": "greenport",
+      "title": "Greenport",
+      "ar": 1.3333,
+      "color": "oklch(0.479 0.047 289.3)",
+      "year": 2013,
+      "tip": "2 Aug 2013",
+      "cells": [
+        [
+          ["2 August", "f/month-08.html"],
+          ["2013", "f/year-2013.html"]
+        ],
+        [],
+        [["Canon PowerShot S95", "f/camera-canon-powershot-s95.html"]],
+        [],
+        [["1/640 s", "f/shutter-1-640-s.html"]],
+        [["f/4", "f/aperture-f-4.html"]],
+        [["6 mm", "f/focal-wide.html"]],
+        [["80", "f/iso-80.html"]]
+      ],
+      "sort": [
+        "greenport",
+        "2013-08-02T15:42:17",
+        "",
+        "canon powershot s95",
+        "",
+        0.0015625,
+        4,
+        6,
+        80
+      ]
+    },
+    {
+      "slug": "double-player",
+      "title": "Double Player",
+      "ar": 1.5054,
+      "color": "oklch(0.313 0.026 98.5)",
+      "year": 2005,
+      "tip": "18 Aug 2005",
+      "cells": [
+        [
+          ["18 August", "f/month-08.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/320 s", "f/shutter-1-320-s.html"]],
+        [["f/9", "f/aperture-f-9.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "double player",
+        "2005-08-18T14:30:24",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.003125,
+        9,
+        70,
+        200
+      ]
+    },
+    {
+      "slug": "books-and-streetlight",
+      "title": "Books and streetlight",
+      "ar": 1.5054,
+      "color": "oklch(0.278 0.050 29.9)",
+      "year": 2005,
+      "tip": "1 Aug 2005",
+      "cells": [
+        [
+          ["1 August", "f/month-08.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["2.5 s", "f/shutter-2-5-s.html"]],
+        [["f/3.5", "f/aperture-f-3-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "books and streetlight",
+        "2005-08-01T21:38:53",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        2.5,
+        3.5,
+        18,
+        200
+      ]
+    }
+  ]
+}

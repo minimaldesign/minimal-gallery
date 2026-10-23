@@ -1,0 +1,61 @@
+/* INFO
+
+   The photo's record, shown in the right-hand pane (pane-info, see
+   component.pane.css for the panel itself: position, drag, opening). Every
+   value links to its facet page; the file row shows the photo's path in
+   the gallery. */
+
+.info_list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--xs2) var(--sm1);
+  margin: 0;
+}
+
+.info_row {
+  display: contents;
+}
+
+.info_term {
+  color: var(--mg-ink-muted);
+  font-weight: inherit;
+}
+
+.info_value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--xs3);
+  margin: 0;
+}
+
+/* exposure values set in the mono, like an instrument readout */
+.info_value-exposure {
+  font-family: var(--mono);
+  font-size: var(--mg-size-small);
+  line-height: var(--leading-lg);
+}
+
+.info_empty {
+  color: var(--mg-ink-muted);
+}
+
+/* the photo's path inside the gallery, as a file path */
+.info_path {
+  font-family: var(--mono);
+  font-size: var(--mg-size-small);
+  overflow-wrap: anywhere;
+}
+
+/* the photo's caption (markdown from its sidecar), above the record */
+.info_caption {
+  margin-block-end: var(--sm1);
+  color: var(--mg-ink-muted);
+
+  > * + * {
+    margin-block-start: var(--xs2);
+  }
+
+  > :last-child {
+    margin-block-end: 0;
+  }
+}

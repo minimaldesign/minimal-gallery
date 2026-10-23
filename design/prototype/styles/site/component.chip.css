@@ -1,0 +1,40 @@
+/* CHIP
+
+   One facet value as a link, with its photo count. Flat: a faint fill and
+   a hairline. The chip for the page you are on is brighter. */
+
+.chip {
+  --chip-fill: var(--mg-white-a6);
+
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--xs2);
+  padding: var(--xs1) var(--xs3);
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--chip-fill);
+  color: var(--link-color);
+  font-size: var(--mg-size-hud);
+  line-height: var(--leading-md);
+  transition:
+    background-color var(--mg-duration-quick) var(--mg-ease-out),
+    color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:hover {
+    --chip-fill: var(--mg-control-active);
+
+    color: var(--link-color-hover);
+  }
+
+  &[aria-current='page'] {
+    --chip-fill: var(--mg-control-active);
+
+    border-color: var(--mg-ink-faint);
+    color: var(--link-color-hover);
+  }
+}
+
+.chip_count {
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+}

@@ -1,0 +1,42 @@
+/*
+  mCSS component library entry point.
+
+  Optional companion to mcss.css: every component.*.css file, imported into
+  the `components` cascade layer. mcss.css only declares that layer slot and
+  never fills it, so skip this file if you build your own components.
+
+  Layer priority comes from the layer statement in mcss.css (or any order
+  you declare yourself), so it doesn't matter whether this file loads before
+  or after mcss.css.
+*/
+
+/* Build-time only (@custom-media + mixin definitions, no runtime output) */
+@import url(./settings.media-queries.css);
+@import url(./settings.mixins.css);
+
+/* Component library styles */
+@import url(./component.avatar.css) layer(components);
+@import url(./component.badge.css) layer(components);
+@import url(./component.banner.css) layer(components);
+@import url(./component.breadcrumbs.css) layer(components);
+@import url(./component.button.css) layer(components);
+@import url(./component.card.css) layer(components);
+@import url(./component.faq.css) layer(components);
+@import url(./component.featureItem.css) layer(components);
+@import url(./component.field.css) layer(components);
+@import url(./component.fieldRow.css) layer(components);
+@import url(./component.footer.css) layer(components);
+@import url(./component.header.css) layer(components);
+@import url(./component.section.css) layer(components);
+@import url(./component.hero.css) layer(components);
+@import url(./component.pagination.css) layer(components);
+@import url(./component.prevNext.css) layer(components);
+@import url(./component.pricing.css) layer(components);
+@import url(./component.testimonial.css) layer(components);
+@import url(./component.readProgressBar.css) layer(components);
+@import url(./component.notice.css) layer(components);
+@import url(./component.socialMedia.css) layer(components);
+@import url(./component.tags.css) layer(components);
+@import url(./component.tiles.css) layer(components);
+@import url(./component.toc.css) layer(components);
+@import url(./component.toggle.css) layer(components);

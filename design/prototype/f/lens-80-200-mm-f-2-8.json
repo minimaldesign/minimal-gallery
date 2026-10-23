@@ -1,0 +1,262 @@
+{
+  "title": "80–200 mm f/2.8",
+  "href": "f/lens-80-200-mm-f-2-8.html",
+  "photos": [
+    {
+      "slug": "saxophonist",
+      "title": "Saxophonist",
+      "ar": 1.5054,
+      "color": "oklch(0.476 0.098 62.3)",
+      "year": 2005,
+      "tip": "7 Sep 2005 · Central Park, Manhattan, USA",
+      "cells": [
+        [
+          ["7 September", "f/month-09.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [["Manhattan, USA", "f/place-manhattan-usa.html"]],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/200 s", "f/shutter-1-200-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["170 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "saxophonist",
+        "2005-09-07T15:35:32",
+        "manhattan, usa",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.005,
+        2.8,
+        170,
+        200
+      ]
+    },
+    {
+      "slug": "haleakala",
+      "title": "Haleakala",
+      "ar": 1.5054,
+      "color": "oklch(0.447 0.067 252.8)",
+      "year": 2005,
+      "tip": "16 Apr 2005",
+      "cells": [
+        [
+          ["16 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/80 s", "f/shutter-1-80-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["80 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "haleakala",
+        "2005-04-16T05:57:15",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.0125,
+        4.5,
+        80,
+        200
+      ]
+    },
+    {
+      "slug": "sakura-impression",
+      "title": "Sakura Impression",
+      "ar": 1.5054,
+      "color": "oklch(0.336 0.015 56.5)",
+      "year": 2005,
+      "tip": "9 Apr 2005",
+      "cells": [
+        [
+          ["9 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/320 s", "f/shutter-1-320-s.html"]],
+        [["f/9", "f/aperture-f-9.html"]],
+        [["80 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "sakura impression",
+        "2005-04-09T13:01:43",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.003125,
+        9,
+        80,
+        200
+      ]
+    },
+    {
+      "slug": "mister-clean",
+      "title": "Mister Clean",
+      "ar": 1.5054,
+      "color": "oklch(0.733 0.135 53.4)",
+      "year": 2005,
+      "tip": "30 Jan 2005",
+      "cells": [
+        [
+          ["30 January", "f/month-01.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/250 s", "f/shutter-1-250-s.html"]],
+        [["f/4", "f/aperture-f-4.html"]],
+        [["135 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "mister clean",
+        "2005-01-30T11:40:16",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.004,
+        4,
+        135,
+        200
+      ]
+    },
+    {
+      "slug": "blue-door",
+      "title": "Blue door",
+      "ar": 1.5054,
+      "color": "oklch(0.426 0.105 247.1)",
+      "year": 2005,
+      "tip": "30 Jan 2005",
+      "cells": [
+        [
+          ["30 January", "f/month-01.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/250 s", "f/shutter-1-250-s.html"]],
+        [["f/8", "f/aperture-f-8.html"]],
+        [["80 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "blue door",
+        "2005-01-30T11:29:49",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.004,
+        8,
+        80,
+        200
+      ]
+    },
+    {
+      "slug": "au-port",
+      "title": "Au Port",
+      "ar": 1.5054,
+      "color": "oklch(0.597 0.050 229.3)",
+      "year": 2005,
+      "tip": "30 Jan 2005",
+      "cells": [
+        [
+          ["30 January", "f/month-01.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/60 s", "f/shutter-1-60-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["80 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "au port",
+        "2005-01-30T11:09:22",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.0166667,
+        4.5,
+        80,
+        200
+      ]
+    },
+    {
+      "slug": "wave",
+      "title": "Wave",
+      "ar": 1.5054,
+      "color": "oklch(0.284 0.014 87.1)",
+      "year": 2005,
+      "tip": "27 Jan 2005",
+      "cells": [
+        [
+          ["27 January", "f/month-01.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/2500 s", "f/shutter-1-2500-s.html"]],
+        [["f/5", "f/aperture-f-5.html"]],
+        [["200 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "wave",
+        "2005-01-27T10:17:41",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.0004,
+        5,
+        200,
+        200
+      ]
+    },
+    {
+      "slug": "itchy",
+      "title": "Itchy",
+      "ar": 1.5054,
+      "color": "oklch(0.477 0.022 118.4)",
+      "year": 2004,
+      "tip": "1 Nov 2004",
+      "cells": [
+        [
+          ["1 November", "f/month-11.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/1000 s", "f/shutter-1-1000-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["200 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "itchy",
+        "2004-11-01T17:23:24",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.001,
+        2.8,
+        200,
+        200
+      ]
+    }
+  ]
+}

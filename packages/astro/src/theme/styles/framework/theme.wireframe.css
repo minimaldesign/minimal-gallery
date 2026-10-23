@@ -1,0 +1,332 @@
+/* WIREFRAME THEME */
+
+/*
+  A hand-drawn wireframe theme: grayscale palette, rounded type, wobbly
+  borders, paper-cutout shadows, and a traced-twice pencil stroke on
+  cards and buttons. Mostly token overrides; the style rules at the
+  bottom cover what tokens can't express.
+
+  A full theme is an entry that composes the default theme and overrides
+  on top. This file contains ONLY this theme's deviations; everything it
+  doesn't mention comes from theme.default.css, which the @import below
+  makes the browser load alongside this file. The rules here land in
+  `theme.user`, which wins over the default theme's `theme.default`
+  layer. Activate exactly one theme entry from your own entry point
+  (see theme.default.css).
+*/
+
+/* Pin the layer order before anything else in this file: priority is
+   set by first declaration, so this theme slots correctly even if it
+   loads before mcss.css. */
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@import url(./theme.default.css);
+
+/* Registered so it computes on the element that declares it and then
+   inherits as a plain integer: a card and its media resolve the SAME
+   seed and can derive matching corners. Property registrations are
+   global, not layer-scoped, so this sits outside the theme layer. */
+@property --sketch-seed {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@layer theme.user {
+  :root {
+    /* COLORS: everything goes grayscale, including the primary scale */
+
+    --base-50: #fafafa;
+    --base-100: #f5f5f5;
+    --base-200: #e5e5e5;
+    --base-300: #d4d4d4;
+    --base-400: #a3a3a3;
+    --base-500: #737373;
+    --base-600: #525252;
+    --base-700: #404040;
+    --base-800: #262626;
+    --base-900: #171717;
+    --base-950: #0a0a0a;
+
+    --primary-50: #fafafa;
+    --primary-100: #f5f5f5;
+    --primary-200: #e5e5e5;
+    --primary-300: #d4d4d4;
+    --primary-400: #a3a3a3;
+    --primary-500: #737373;
+    --primary-600: #525252;
+    --primary-700: #404040;
+    --primary-800: #262626;
+    --primary-900: #171717;
+    --primary-950: #0a0a0a;
+
+    /* Feedback scales go grayscale too: in a wireframe, success and
+       danger are annotations, not colors. 400/500 sit at the ink end so
+       checkmarks and status dots still read against light surfaces. */
+
+    --yes-100: #f5f5f5;
+    --yes-200: #e5e5e5;
+    --yes-300: #a3a3a3;
+    --yes-400: #737373;
+    --yes-500: #262626;
+
+    --no-100: #f5f5f5;
+    --no-200: #e5e5e5;
+    --no-300: #a3a3a3;
+    --no-400: #737373;
+    --no-500: #262626;
+
+    --maybe-100: #f5f5f5;
+    --maybe-200: #e5e5e5;
+    --maybe-300: #a3a3a3;
+    --maybe-400: #737373;
+    --maybe-500: #262626;
+
+    /* TYPOGRAPHY: marker-style handwriting stacks, Balsamiq-adjacent.
+       Comic Sans ships on macOS and Windows, Chalkboard SE on iOS,
+       casual is the Android generic. */
+
+    --text:
+      "Comic Sans MS", "Chalkboard SE", Chalkboard, "Comic Neue", "Segoe Print",
+      "Bradley Hand", casual, cursive;
+    --display: var(--text);
+    --heading-font: var(--text);
+    --heading-weight: var(--bold);
+
+    /* STROKES: pen weight instead of hairlines */
+
+    --border-sm: 2px;
+    --ui-border-color: light-dark(var(--base-800), var(--base-200));
+
+    /* WOBBLY BORDERS: asymmetric ellipse radii, shallow on purpose
+       (7-10px of sag over 90-125px spans reads as a shaky pen line;
+       deeper values read as decorative waves). They self-clamp on
+       small boxes, so the same token works on a badge and a hero.
+       Three variants, remapped per component so nothing wobbles in
+       unison. The raw --radius-* scale is left alone on purpose:
+       uniform wobble reads as a rendering bug, not a hand.
+       --radius-round consumers (avatar, toggle, pagination dots) stay
+       round, also on purpose. */
+
+    --wobble-1: 115px 8px 95px 9px / 7px 110px 8px 125px;
+    --wobble-2: 9px 105px 7px 120px / 115px 8px 100px 9px;
+    --wobble-3: 100px 9px 120px 7px / 8px 90px 10px 110px;
+
+    --bt-border-radius: var(--wobble-1);
+    --bt-border-radius-lg: var(--wobble-1);
+    --card-border-radius: var(--wobble-2);
+    --input-border-radius: var(--wobble-3);
+    --notice-border-radius: var(--wobble-1);
+    --badge-border-radius: var(--wobble-3);
+    --table-border-radius: var(--wobble-2);
+    --hero-radius: var(--wobble-2);
+    --featureItem-icon-border-radius: var(--wobble-1);
+    --pre-border-radius: var(--wobble-2);
+    --tags-radius: var(--wobble-3);
+    --pagination-border-radius: var(--wobble-1);
+    --prevNext-border-radius: var(--wobble-2);
+
+    /* FOOTER: paper with a dashed pen rule instead of a solid ink slab */
+
+    --footer-background-color: light-dark(var(--base-100), var(--base-900));
+    --footer-text-color: light-dark(var(--base-950), var(--base-200));
+    --footer-border-color: var(--ui-border-color);
+    --footer-link-color: light-dark(var(--base-950), var(--base-200));
+    --footer-link-color-hover: var(--base-500);
+
+    /* SHADOWS: hard-offset paper cutouts instead of soft blur */
+
+    --ui-shadow-color: light-dark(rgb(0 0 0 / 0.85), rgb(255 255 255 / 0.55));
+    --shadow-sm: 2px 2px 0 var(--ui-shadow-color);
+    --shadow-md: 4px 4px 0 var(--ui-shadow-color);
+    --shadow-lg: 6px 6px 0 var(--ui-shadow-color);
+    --shadow-xl: 8px 8px 0 var(--ui-shadow-color);
+    --shadow-xxl: 10px 10px 0 var(--ui-shadow-color);
+
+    /* ON/OFF STATES: with the green gone, checked and online need ink
+       against paper, not one gray against another. */
+
+    --toggle-track-color-checked: light-dark(var(--base-800), var(--base-200));
+    --avatar-status-dot-color-online: light-dark(
+      var(--base-800),
+      var(--base-200)
+    );
+
+    /* WAYFINDING STAYS CRISP: the focus ring is not part of the sketch,
+       and --marker-color is already highlighter yellow. */
+
+    --focus-ring-color: light-dark(var(--base-950), var(--base-0));
+  }
+
+  /*
+    STYLE RULES: the hand-drawn tells tokens can't express. Theme files
+    are the one place allowed to select component classes from outside.
+  */
+
+  /* Wavy underlines. Only the style longhand is set, so links whose
+     styles remove the underline (text-decoration: none) keep no
+     underline: a "none" line has no style to render. */
+  a {
+    text-decoration-style: wavy;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  /* Filled and primary sections become drawn panels instead of flat
+     full-bleed bands. */
+  .section-filled,
+  .section-primary {
+    border: var(--border-sm) solid var(--ui-border-color);
+    border-radius: var(--wobble-1);
+  }
+
+  /* Tiny alternating tilts. The independent rotate property composes
+     with the transforms components animate (.card hover translate,
+     .bt active scale) instead of fighting them. :where() zeroes the
+     specificity so the random() enhancement below can override with a
+     bare class selector. */
+  :where(.card:nth-child(odd), .featureItem:nth-child(even)) {
+    rotate: -0.4deg;
+  }
+
+  :where(.card:nth-child(even), .featureItem:nth-child(odd)) {
+    rotate: 0.3deg;
+  }
+
+  /* A card wrapped in a .grid_item is always the first (odd) child of
+     its wrapper, so alternate on the wrapper's position instead. */
+  :where(.grid_item:nth-child(even) > .card) {
+    rotate: 0.3deg;
+  }
+
+  /* Traced-twice pencil stroke: a second border in the same color with
+     a different wobble and a hair of offset, so edges look drawn twice.
+     .card is already position: relative; .bt gets it here. Inputs skip
+     the overdraw: a doubled border muddies focus states. */
+  .bt {
+    position: relative;
+  }
+
+  .card::after,
+  .bt::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: var(--border-sm) solid var(--ui-border-color);
+    rotate: 0.5deg;
+    translate: 1px -1px;
+    pointer-events: none;
+  }
+
+  .bt::after {
+    border-radius: var(--wobble-3);
+  }
+
+  .card::after {
+    border-radius: var(--wobble-1);
+
+    /* Progressive enhancement: genuinely rough edges via an inline SVG
+       displacement filter, applied only to this pseudo-element so card
+       content stays crisp. Browsers that ignore it (Safari is
+       unreliable here) just show the clean traced stroke. Kept to
+       cards: displacement filters get paint-heavy in large numbers. */
+    filter: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><filter id='rough'><feTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='2' result='noise'/><feDisplacementMap in='SourceGraphic' in2='noise' scale='3'/></filter></svg>#rough");
+  }
+
+  /*
+    PROGRESSIVE ENHANCEMENT, two tiers, so same-size boxes stop
+    rendering identically. Browsers with neither keep the fixed sketch.
+
+    Tier 1: sibling-index() (Chrome 138+, Safari 26.2+, Firefox 154+)
+    derives a stable per-element seed, pushed through sin() with
+    arbitrary multipliers as a cheap hash. Deterministic, but neighbors
+    never match. Cards wrapped in a .grid_item inherit the wrapper's
+    seed (their own index is always 1); the registered --sketch-seed
+    means .card_media resolves the same values as its card, so their
+    corners keep matching.
+  */
+  @supports (rotate: calc(sibling-index() * 1deg)) {
+    .grid_item,
+    .tiles > li,
+    .bt,
+    .featureItem,
+    .card:not(.grid_item .card, .tiles .card) {
+      --sketch-seed: sibling-index();
+    }
+
+    /* Multipliers are arbitrary but chosen so their phase step mod 2pi
+       is far from 0: consecutive seeds then alternate pseudo-randomly
+       instead of drifting together. */
+    .card,
+    .featureItem {
+      rotate: calc(sin(var(--sketch-seed) * 21.3) * 0.4deg);
+    }
+
+    /* Same seed, same formulas: media corners keep matching the card.
+       Corner pattern mirrors --wobble-2 (short/long alternation). */
+    .card,
+    .card_media {
+      border-radius: calc(9px + sin(var(--sketch-seed) * 9.1) * 2px)
+        calc(105px + sin(var(--sketch-seed) * 4.7) * 18px)
+        calc(7px + sin(var(--sketch-seed) * 3.1) * 2px)
+        calc(120px + sin(var(--sketch-seed) * 5.5) * 18px) /
+        calc(115px + sin(var(--sketch-seed) * 5.9) * 18px)
+        calc(8px + sin(var(--sketch-seed) * 7.7) * 2px)
+        calc(100px + sin(var(--sketch-seed) * 2.7) * 18px)
+        calc(9px + sin(var(--sketch-seed) * 8.3) * 2px);
+    }
+
+    /* Flush media bleeds to the card's top edge only */
+    .card_media-flush {
+      border-radius: calc(9px + sin(var(--sketch-seed) * 9.1) * 2px)
+        calc(105px + sin(var(--sketch-seed) * 4.7) * 18px) 0 0 /
+        calc(115px + sin(var(--sketch-seed) * 5.9) * 18px)
+        calc(8px + sin(var(--sketch-seed) * 7.7) * 2px) 0 0;
+    }
+
+    .card::after,
+    .bt::after {
+      rotate: calc(sin(var(--sketch-seed) * 7.3) * 0.6deg);
+      translate: calc(sin(var(--sketch-seed) * 3.7) * 1.5px)
+        calc(cos(var(--sketch-seed) * 5.3) * 1.5px);
+      border-radius: calc(100px + sin(var(--sketch-seed) * 5.1) * 20px)
+        calc(8px + sin(var(--sketch-seed) * 2.3) * 3px)
+        calc(110px + sin(var(--sketch-seed) * 4.9) * 20px)
+        calc(9px + sin(var(--sketch-seed) * 4.3) * 3px) /
+        calc(8px + sin(var(--sketch-seed) * 3.9) * 3px)
+        calc(95px + sin(var(--sketch-seed) * 7.9) * 20px)
+        calc(7px + sin(var(--sketch-seed) * 5.7) * 3px)
+        calc(115px + sin(var(--sketch-seed) * 8.9) * 20px);
+    }
+  }
+
+  /*
+    Tier 2: CSS random() (Values 5; Safari 26.5+ shipped the keyword as
+    element-scoped, per-element is the final spec name, so every
+    declaration appears in both spellings and each browser drops the
+    one it can't parse; no custom properties, which accept anything at
+    parse time and would break that fallback). True randomness for
+    tilts and stroke offsets, declared after tier 1 so it wins where
+    supported. It never touches border radii: per-element values can't
+    be shared between parent and child, and the card_media corners must
+    keep matching the card's, so radii stay on the tier 1 seed.
+  */
+  @supports (rotate: random(element-scoped, -1deg, 1deg)) or
+    (rotate: random(per-element, -1deg, 1deg)) {
+    .card,
+    .featureItem {
+      rotate: random(element-scoped, -0.4deg, 0.4deg);
+      rotate: random(per-element, -0.4deg, 0.4deg);
+    }
+
+    .card::after,
+    .bt::after {
+      rotate: random(element-scoped, -0.6deg, 0.6deg);
+      rotate: random(per-element, -0.6deg, 0.6deg);
+      translate: random(element-scoped, -1.5px, 1.5px)
+        random(element-scoped, -1.5px, 1.5px);
+      translate: random(per-element, -1.5px, 1.5px)
+        random(per-element, -1.5px, 1.5px);
+    }
+  }
+}

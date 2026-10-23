@@ -1,0 +1,38 @@
+{
+  "title": "2008",
+  "href": "f/year-2008.html",
+  "photos": [
+    {
+      "slug": "montauk",
+      "title": "Montauk",
+      "ar": 1,
+      "color": "oklch(0.428 0.000 118.7)",
+      "year": 2008,
+      "tip": "2 Jul 2008",
+      "cells": [
+        [
+          ["2 July", "f/month-07.html"],
+          ["2008", "f/year-2008.html"]
+        ],
+        [],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [],
+        [["1/320 s", "f/shutter-1-320-s.html"]],
+        [["f/8", "f/aperture-f-8.html"]],
+        [["50 mm", "f/focal-normal.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "montauk",
+        "2008-07-02T15:03:23",
+        "",
+        "nikon d200",
+        "",
+        0.003125,
+        8,
+        50,
+        100
+      ]
+    }
+  ]
+}

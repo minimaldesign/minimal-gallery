@@ -1,0 +1,14 @@
+singleQuote: true
+trailingComma: es5
+proseWrap: never
+bracketSameLine: true
+vueIndentScriptAndStyle: true
+plugins:
+  - prettier-plugin-astro
+overrides:
+  - files: '*.md'
+    options:
+      embeddedLanguageFormatting: 'off'
+  - files: '*.astro'
+    options:
+      parser: astro

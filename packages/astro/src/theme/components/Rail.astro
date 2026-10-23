@@ -1,0 +1,29 @@
+---
+/**
+ * The date rail: one tick per year, hidden when the context spans fewer
+ * than two. Dragging along it scrubs (theme script).
+ */
+import { yearOf, type Context } from '../../gallery.ts';
+
+interface Props {
+  context: Context;
+}
+const { context } = Astro.props;
+const years = [...new Set(context.photos.map(yearOf))];
+---
+
+<div class="table_rail" hidden={years.length < 2}>
+  <nav class="rail" aria-label="Years">
+    <ol class="rail_list">
+      {years.map((y) => (
+        <li>
+          <a class="rail_link" href={`#y-${y}`}>
+            <span class="rail_year surface">
+              {y === 'undated' ? 'Undated' : y}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+</div>

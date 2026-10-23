@@ -1,0 +1,16 @@
+---
+/**
+ * Honors v0.8 links (`/?id=colors__red_door`) on the home page: reads the
+ * generated id map and replaces the location with the photo's page.
+ */
+import { withBase } from '../../gallery.ts';
+const map = withBase('/legacy-ids.json');
+---
+
+<script is:inline define:vars={{ map }}>
+  const id = new URLSearchParams(location.search).get('id');
+  if (id)
+    fetch(map)
+      .then((r) => r.json())
+      .then((ids) => ids[id] && location.replace(ids[id]));
+</script>

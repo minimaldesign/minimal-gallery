@@ -1,0 +1,326 @@
+{
+  "title": "April",
+  "href": "f/month-04.html",
+  "photos": [
+    {
+      "slug": "kaiona-cafe",
+      "title": "Kaiona Cafe",
+      "ar": 1.5054,
+      "color": "oklch(0.654 0.019 242.6)",
+      "year": 2005,
+      "tip": "18 Apr 2005",
+      "cells": [
+        [
+          ["18 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/100 s", "f/shutter-1-100-s.html"]],
+        [["f/5", "f/aperture-f-5.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "kaiona cafe",
+        "2005-04-18T11:57:55",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.01,
+        5,
+        70,
+        200
+      ]
+    },
+    {
+      "slug": "haleakala",
+      "title": "Haleakala",
+      "ar": 1.5054,
+      "color": "oklch(0.447 0.067 252.8)",
+      "year": 2005,
+      "tip": "16 Apr 2005",
+      "cells": [
+        [
+          ["16 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/80 s", "f/shutter-1-80-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["80 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "haleakala",
+        "2005-04-16T05:57:15",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.0125,
+        4.5,
+        80,
+        200
+      ]
+    },
+    {
+      "slug": "chocolate-dna",
+      "title": "Chocolate DNA",
+      "ar": 1.5054,
+      "color": "oklch(0.633 0.112 74.0)",
+      "year": 2005,
+      "tip": "10 Apr 2005",
+      "cells": [
+        [
+          ["10 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/3.5", "f/aperture-f-3-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["250", "f/iso-250.html"]]
+      ],
+      "sort": [
+        "chocolate dna",
+        "2005-04-10T20:19:21",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        3.5,
+        18,
+        250
+      ]
+    },
+    {
+      "slug": "sakura-impression",
+      "title": "Sakura Impression",
+      "ar": 1.5054,
+      "color": "oklch(0.336 0.015 56.5)",
+      "year": 2005,
+      "tip": "9 Apr 2005",
+      "cells": [
+        [
+          ["9 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/320 s", "f/shutter-1-320-s.html"]],
+        [["f/9", "f/aperture-f-9.html"]],
+        [["80 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "sakura impression",
+        "2005-04-09T13:01:43",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.003125,
+        9,
+        80,
+        200
+      ]
+    },
+    {
+      "slug": "bamboo-forest",
+      "title": "Bamboo forest",
+      "ar": 1.5054,
+      "color": "oklch(0.460 0.052 116.6)",
+      "year": 2005,
+      "tip": "8 Apr 2005",
+      "cells": [
+        [
+          ["8 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "bamboo forest",
+        "2005-04-08T10:35:43",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.02,
+        4.5,
+        18,
+        200
+      ]
+    },
+    {
+      "slug": "hanami-fire",
+      "title": "Hanami fire",
+      "ar": 1.5054,
+      "color": "oklch(0.742 0.171 58.3)",
+      "year": 2005,
+      "tip": "5 Apr 2005",
+      "cells": [
+        [
+          ["5 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/16", "f/aperture-f-16.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["640", "f/iso-640.html"]]
+      ],
+      "sort": [
+        "hanami fire",
+        "2005-04-05T18:58:39",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        16,
+        70,
+        640
+      ]
+    },
+    {
+      "slug": "gion-crowd",
+      "title": "Gion crowd",
+      "ar": 1.5054,
+      "color": "oklch(0.385 0.030 35.3)",
+      "year": 2005,
+      "tip": "5 Apr 2005",
+      "cells": [
+        [
+          ["5 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/60 s", "f/shutter-1-60-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["62 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "gion crowd",
+        "2005-04-05T17:56:33",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0166667,
+        4.5,
+        62,
+        200
+      ]
+    },
+    {
+      "slug": "tea-in-kyoto",
+      "title": "Tea in Kyoto",
+      "ar": 1.5054,
+      "color": "oklch(0.686 0.042 83.3)",
+      "year": 2005,
+      "tip": "5 Apr 2005",
+      "cells": [
+        [
+          ["5 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["40 mm", "f/focal-normal.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "tea in kyoto",
+        "2005-04-05T14:33:02",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        4.5,
+        40,
+        200
+      ]
+    },
+    {
+      "slug": "kyoto-night",
+      "title": "Kyoto Night",
+      "ar": 1.5054,
+      "color": "oklch(0.698 0.141 67.1)",
+      "year": 2005,
+      "tip": "4 Apr 2005",
+      "cells": [
+        [
+          ["4 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["500", "f/iso-500.html"]]
+      ],
+      "sort": [
+        "kyoto night",
+        "2005-04-04T18:55:34",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        4.5,
+        70,
+        500
+      ]
+    },
+    {
+      "slug": "kyoto-bikers",
+      "title": "Kyoto Bikers",
+      "ar": 1.5054,
+      "color": "oklch(0.296 0.007 312.2)",
+      "year": 2005,
+      "tip": "4 Apr 2005",
+      "cells": [
+        [
+          ["4 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/200 s", "f/shutter-1-200-s.html"]],
+        [["f/7.1", "f/aperture-f-7-1.html"]],
+        [["55 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "kyoto bikers",
+        "2005-04-04T14:34:23",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.005,
+        7.1,
+        55,
+        200
+      ]
+    }
+  ]
+}

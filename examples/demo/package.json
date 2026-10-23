@@ -1,0 +1,20 @@
+{
+  "name": "minimalgallery-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "photos": "mg-pipeline .",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && wrangler pages deploy dist --project-name minimalgallery-demo"
+  },
+  "dependencies": {
+    "@minimalgallery/astro": "workspace:*",
+    "@minimalgallery/pipeline": "workspace:*",
+    "astro": "^7.4.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.152.0"
+  }
+}

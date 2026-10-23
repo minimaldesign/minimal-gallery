@@ -1,0 +1,52 @@
+/* ELEMENTS TABLE */
+
+caption {
+  caption-side: bottom;
+  margin-top: var(--table-caption-spacing);
+  font-size: var(--text-sm);
+}
+
+colgroup {
+}
+
+table {
+  border-spacing: 0;
+  border: var(--table-border-width) solid var(--table-border-color);
+  border-radius: var(--table-border-radius);
+  background-color: var(--table-background-color);
+}
+
+th,
+td {
+  text-align: start;
+  padding: var(--table-padding);
+  border-bottom: var(--table-border-width) solid var(--table-border-color);
+  border-inline-start: var(--table-border-width) solid var(--table-border-color);
+}
+
+tr {
+  th:first-child,
+  td:first-child {
+    border-inline-start-width: 0;
+  }
+}
+
+thead {
+}
+
+tbody {
+  tr:last-child {
+    th,
+    td {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+tfoot {
+  th,
+  td {
+    border-top: var(--table-border-width) solid var(--table-border-color);
+    border-bottom-width: 0;
+  }
+}

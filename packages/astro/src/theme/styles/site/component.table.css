@@ -1,0 +1,168 @@
+/* TABLE (the panel)
+
+   The context's photos, below the viewer on every page. The page snaps
+   between exactly two states (y mandatory, theme): the viewer and this
+   panel, which is exactly one window tall. Inside it an inner scroller
+   whose first child is the panel header (breadcrumb, count, toggles,
+   Filter), stuck at its top, then the photos (grid or ledger) with the
+   date rail. The HUD lives here too: fixed at the top of the window over
+   the viewer, not displayed at all once the page is snapped to the panel,
+   so the panel header is the top of the window and nothing scrolls above
+   it. Context pages open here (table-start, plus #grid on every link). */
+
+.table {
+  position: relative;
+  z-index: var(--z-1);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background-color: var(--mg-ground);
+  color: var(--mg-ink);
+  container-type: scroll-state;
+  scroll-snap-align: start;
+}
+
+.table-start {
+  scroll-initial-target: nearest;
+}
+
+/* The HUD: fixed over the viewer, gone once snapped to the panel.
+   data-panel (mg.js, from the scroll position) is the main path; the
+   snapped query is an extra. */
+.table_hud {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-5);
+
+  :root[data-panel] & {
+    display: none;
+  }
+
+  @container scroll-state(snapped: block) {
+    display: none;
+  }
+}
+
+.table_scroller {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  container-type: size;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.table_head {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2) var(--sm1);
+  min-height: var(--mg-panel-head-height);
+  margin-block-end: var(--xs2);
+  padding-inline: var(--sm1);
+  border-width: 0 0 var(--border-sm);
+  font-size: var(--mg-size-hud);
+
+  @media (--md-n-below) {
+    padding: var(--xs2) var(--xs3);
+  }
+}
+
+/* BREADCRUMB: home / context, then the count; home stays one click away
+   while the HUD is gone */
+.table_crumbs {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: var(--xs2);
+  min-width: 0;
+  white-space: nowrap;
+
+  ol {
+    display: flex;
+    gap: var(--xs2);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: var(--xs2);
+    min-width: 0;
+    color: var(--mg-ink-muted);
+
+    & + li::before {
+      content: '/' / '';
+      color: var(--mg-ink-faint);
+    }
+
+    &:last-child {
+      color: var(--mg-ink);
+      font-weight: var(--mg-weight-medium);
+    }
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--link-color-hover);
+    }
+  }
+}
+
+.table_count {
+  color: var(--mg-ink-muted);
+}
+
+/* crop and size only apply to the grid */
+.table_gridOnly {
+  :root:has(input[name='view'][value='list']:checked) & {
+    display: none;
+  }
+}
+
+.table_tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2);
+}
+
+.table_body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--xs2);
+  padding-block-end: var(--xl3);
+  padding-inline: var(--mg-gutter) 0;
+
+  @media (--md-n-below) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* the rail: a sticky column on the right, exactly as tall as the
+   scroller's view below the header (100cqh: the scroller is a container) */
+.table_rail {
+  position: sticky;
+  top: calc(var(--mg-panel-head-height) + var(--xs2));
+  align-self: start;
+  height: calc(100cqh - var(--mg-panel-head-height) - var(--sm3));
+
+  :root:has(input[name='view'][value='list']:checked) & {
+    display: none;
+  }
+
+  @media (--md-n-below) {
+    display: none;
+  }
+}

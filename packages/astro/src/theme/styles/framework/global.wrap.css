@@ -1,0 +1,48 @@
+/* LAYOUT WRAP */
+
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr var(--wrap-width) 1fr;
+
+  > *,
+  > astro-island > *,
+  > astro-slot > *,
+  > astro-static-slot > * {
+    grid-column: 2;
+    padding-inline: var(--wrap-spacing);
+    @media (--md) {
+      padding-inline: var(--wrap-md-spacing);
+    }
+    @media (--lg) {
+      padding-inline: var(--wrap-lg-spacing);
+    }
+  }
+}
+
+/* Width presets: a bare .wrap uses --wrap-width, which defaults to the md
+   size; the modifiers pin a specific size regardless of inherited values. */
+.wrap-sm {
+  --wrap-width: var(--wrap-width-sm);
+}
+
+.wrap-md {
+  --wrap-width: var(--wrap-width-md);
+}
+
+.wrap-lg {
+  --wrap-width: var(--wrap-width-lg);
+}
+
+.wrap-flush {
+  --wrap-width: 100%;
+}
+
+.wrap_content {
+  /* default doesn't need styling */
+}
+
+.wrap_content-flush {
+  grid-column: 1 / -1;
+  width: 100%;
+  object-fit: cover;
+}

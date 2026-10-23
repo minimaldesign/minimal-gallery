@@ -1,0 +1,66 @@
+---
+/**
+ * The keyboard shortcuts pane, top left, in two sections. In a
+ * combination, a string with spaces around it is a word (“or”), everything
+ * else is a key cap. The shortcut letter is bold in its description.
+ */
+const KEYS: Array<[string, Array<[string[], string]>]> = [
+  [
+    'Viewing mode',
+    [
+      [['←', '→'], 'Previous / next photo'],
+      [['↑'], 'Open browsing mode'],
+      [['z'], '<b>Z</b>oom to 1:1 and back'],
+      [['i'], 'Photo <b>i</b>nformation'],
+      [['f'], '<b>F</b>ill window / <b>f</b>it photo'],
+      [['s'], 'Film<b>s</b>trip'],
+      [['/', ' or ', '⌘K'], 'Filter'],
+      [['?'], 'Keyboard shortcuts'],
+    ],
+  ],
+  [
+    'Browsing mode',
+    [
+      [['←', '→', '↑', '↓'], 'Select photo; enter to open it'],
+      [['Home', 'End'], 'Select first / last photo'],
+      [['Esc'], 'Back to viewing mode'],
+      [['1', '2', '3'], 'Thumbnail size'],
+      [['t'], 'Crop or original <b>t</b>humbnail'],
+      [['v'], 'Grid or list <b>v</b>iew'],
+      [['/'], 'Filter'],
+    ],
+  ],
+];
+---
+
+<aside class="pane pane-keys surface" id="keys" aria-labelledby="keys-title">
+  <div class="pane_head">
+    <h2 class="pane_title" id="keys-title">
+      Keyboard Shortcuts
+    </h2>
+    <label class="pane_close" for="keys-toggle">
+      Close
+    </label>
+  </div>
+  {KEYS.map(([title, rows]) => (
+    <section class="keys_section">
+      <h3 class="keys_heading">{title}</h3>
+      <dl class="keys_list">
+        {rows.map(([combo, action]) => (
+          <>
+            <dt class="keys_combo">
+              {combo.map((k) =>
+                k.startsWith(' ') ? (
+                  <span class="keys_or">{k.trim()}</span>
+                ) : (
+                  <kbd>{k}</kbd>
+                )
+              )}
+            </dt>
+            <dd class="keys_action" set:html={action} />
+          </>
+        ))}
+      </dl>
+    </section>
+  ))}
+</aside>

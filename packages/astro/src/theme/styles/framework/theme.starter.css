@@ -1,0 +1,45 @@
+/* STARTER USER THEME */
+
+/*
+  A theme is a file of token overrides, plus optional style rules for what
+  tokens can't express. This file is where your theme starts: import it
+  from your own entry point after the default theme:
+
+    @import url(./framework/mcss.css);
+    @import url(./framework/theme.default.css);
+    @import url(./theme.starter.css);
+
+  MAKE SURE you put all your overrides inside `@layer theme.user`
+
+  Guidelines:
+
+  - Override values in `theme.default.tokens.css` for low level stuff
+    like colors, sizes, fonts, etc.
+  - For UI related stuff like button radius or component specific styles,
+    override values in `theme.default.ui.css`
+  - Add your own rules if a token can't do what you need (pseudo-elements,
+  nth-child,, text-decoration, etc.)
+  - Don't use !important. If you need to, you're doing something wrong.
+    Email me and I'll help you out.
+  - For a full swappable theme, look at `theme.wireframe.css` to see
+    how it's done.
+*/
+
+/* Pin the layer order before declaring into it: priority is set by
+   first declaration, so this file slots correctly even if it loads
+   before mcss.css. */
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@layer theme.user {
+  :root {
+    /* A new palette usually gets you 80% of the way:              */
+    /* --base-0: #fff;                                             */
+    /* --primary-500: rebeccapurple;                               */
+    /* Then reach for ui and component tokens as needed:           */
+    /* --heading-font: Georgia, serif;                             */
+    /* --card-border-radius: 0;                                    */
+    /* A theme may also add tokens the framework doesn't ship,     */
+    /* e.g. a second accent, and use them in its own style rules:  */
+    /* --secondary-500: teal;                                      */
+  }
+}

@@ -1,0 +1,82 @@
+.notice {
+  --bg-color: var(--notice-background-color);
+  --bd-color: var(--notice-border-color);
+  --svg-color: inherit;
+  --code-color: inherit;
+  --code-bg-color: inherit;
+
+  padding: var(--notice-spacing);
+  border: var(--notice-border-width) solid var(--bd-color);
+  border-radius: var(--notice-border-radius);
+  color: var(--notice-text-color);
+  background-color: var(--bg-color);
+
+  code {
+    background-color: var(--code-bg-color);
+    color: var(--code-color);
+  }
+
+  p:last-of-type {
+    /* in case it's inside a .prose context */
+    margin-bottom: 0;
+  }
+}
+
+.notice_title {
+  display: flex;
+
+  svg {
+    margin-bottom: var(--xs3);
+    margin-inline-end: 0.5em;
+    color: var(--svg-color);
+  }
+
+  strong {
+    display: block;
+    margin-bottom: var(--xs1);
+  }
+}
+
+.notice-info {
+  color: var(--base-950);
+  --bg-color: var(--primary-100);
+  --bd-color: var(--primary-300);
+  --svg-color: var(--primary-400);
+  --code-color: var(--primary-600);
+  --code-bg-color: var(--primary-200);
+}
+
+.notice-danger {
+  color: var(--base-950);
+  --bg-color: var(--no-200);
+  --bd-color: var(--no-500);
+  --svg-color: var(--no-500);
+  --code-color: var(--no-500);
+  --code-bg-color: var(--no-100);
+}
+
+.notice-warning {
+  color: var(--base-950);
+  --bg-color: var(--maybe-200);
+  --bd-color: var(--maybe-500);
+  --svg-color: var(--maybe-400);
+  --code-color: var(--maybe-500);
+  --code-bg-color: var(--maybe-100);
+}
+
+.notice-confirm {
+  color: var(--base-950);
+  --bg-color: var(--yes-100);
+  --bd-color: var(--yes-500);
+  --svg-color: var(--yes-400);
+  --code-color: var(--yes-500);
+  --code-bg-color: var(--yes-200);
+}
+
+/* Heading-adjacent margin mirrors the prose rhythm in global.prose.css
+   (prose can't reach into component classes, so the notice owns this rule) */
+@scope (.prose) to (.not-prose) {
+  .notice:has(+ :is(h1, h2, h3, h4)) {
+    margin-bottom: calc(var(--prose-spacing) * 2);
+  }
+}

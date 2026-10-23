@@ -1,0 +1,20 @@
+---
+/**
+ * The Filter icon button: opens the palette dialog through the command
+ * invoker, so it needs no script. Shared by the HUD and the panel header.
+ */
+import Icon from './Icon.astro';
+import Tip from './Tip.astro';
+---
+
+<div class="toggle toggle-plain">
+  <button
+    class="toggle_option"
+    type="button"
+    command="show-modal"
+    commandfor="palette"
+    aria-label="Filter">
+    <Icon name="filter" />
+    <Tip label="Filter" shortcut="/" />
+  </button>
+</div>

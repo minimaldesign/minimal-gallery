@@ -1,0 +1,61 @@
+/* SECTION */
+
+.section {
+  padding-block: var(--section-spacing);
+}
+
+/* Variants only swap the local custom properties */
+
+.section-filled {
+  background-color: var(--section-filled-background-color);
+}
+
+.section-primary {
+  background-color: var(--section-primary-background-color);
+  color: var(--section-primary-text-color);
+  /* Children (links, buttons, eyebrow…) follow the inverted surface */
+  --text-color: var(--section-primary-text-color);
+  --link-color: var(--section-primary-link-color);
+  --link-color-hover: var(--section-primary-link-color-hover);
+  --section-eyebrow-color: var(--section-primary-eyebrow-color);
+  --section-lede-color: var(--section-primary-lede-color);
+}
+
+/* The header and content each compose .wrap with their own width preset
+   (header defaults to .wrap-md, content to .wrap-lg), so a section can pair
+   a narrow reading-width header with a wider content column. */
+.section_content {
+  /* default doesn't need styling */
+}
+
+.section_header {
+  margin-bottom: var(--section-header-spacing);
+  text-align: center;
+}
+
+.section_eyebrow {
+  margin-bottom: var(--xs2);
+  font-size: var(--text-sm);
+  font-weight: var(--semi-bold);
+  letter-spacing: var(--tracking-lg);
+  text-transform: uppercase;
+  color: var(--section-eyebrow-color);
+}
+
+.section_title {
+  margin-bottom: var(--xs3);
+  font-size: var(--display-md);
+}
+
+.section_lede {
+  font-size: var(--text-lg);
+  color: var(--section-lede-color);
+}
+
+/* Centered button row: the "closing CTA" is a Section with one of these */
+.section_actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--xs3);
+}

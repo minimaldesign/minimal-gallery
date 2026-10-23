@@ -1,0 +1,123 @@
+---
+/**
+ * The one template for every page: the viewer (stage) on top and, below
+ * it, the panel with the context's photos as a grid and as a list. Home
+ * and photo pages open on the viewer; album and facet pages open on the
+ * panel (`start="grid"`). A photo page carries its album; `?in=` makes the
+ * theme script swap in another context from its JSON.
+ */
+import config from 'virtual:minimalgallery/config';
+import {
+  neighbors,
+  photoHref,
+  ratioOf,
+  srcsetOf,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+import Hud from '../components/Hud.astro';
+import InfoPane from '../components/InfoPane.astro';
+import KeysPane from '../components/KeysPane.astro';
+import Ledger from '../components/Ledger.astro';
+import Palette from '../components/Palette.astro';
+import PanelHead from '../components/PanelHead.astro';
+import Rail from '../components/Rail.astro';
+import Stage from '../components/Stage.astro';
+import Thumbs from '../components/Thumbs.astro';
+import GalleryLayout from './GalleryLayout.astro';
+
+interface Props {
+  photo: Photo;
+  context: Context;
+  /** Where the page opens: the viewer, or the panel (context pages). */
+  start?: 'view' | 'grid';
+}
+const { photo, context, start = 'view' } = Astro.props;
+const site = config.title;
+const { prev, next } = await neighbors(context.id, photo.id);
+const n = context.photos.length;
+const plural = `${n} photo${n === 1 ? '' : 's'}`;
+
+// no wrapping: the last photo has no next, the first no previous, so no
+// rel link and no prerender for the missing side
+const near = [next, prev]
+  .filter((x): x is Photo => !!x)
+  .map((x) => photoHref(x, context));
+const rules = JSON.stringify({
+  prerender: [
+    ...(near.length ? [{ urls: near, eagerness: 'immediate' }] : []),
+    {
+      where: { selector_matches: '.thumbs_link, .strip_link' },
+      eagerness: 'moderate',
+    },
+  ],
+});
+
+const title =
+  start === 'grid'
+    ? `${context.label} · ${site}`
+    : `${photo.title} · ${context.label} · ${site}`;
+const description =
+  start === 'grid'
+    ? `${context.label}: ${plural} in ${site}.`
+    : `${photo.title}, a photograph in ${context.label}.`;
+
+// 1:1 of the largest derivative; one under 1600px (small sources) is
+// doubled so zoom still magnifies
+const largest = srcsetOf(photo).largest.width;
+const zoomWidth = largest < 1600 ? largest * 2 : largest;
+const style = [
+  `--photo: ${photo.color}`,
+  `--photo-ratio: ${ratioOf(photo)}`,
+  `--photo-zoom-width: ${zoomWidth}`,
+  photo.placeholder && `--photo-placeholder: url(${photo.placeholder})`,
+]
+  .filter(Boolean)
+  .join('; ');
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : undefined;
+---
+
+<GalleryLayout
+  title={title}
+  description={description}
+  class="viewer"
+  style={style}>
+  <Fragment slot="head">
+    {canonical && <link rel="canonical" href={canonical} />}
+    {next && <link rel="next" href={photoHref(next, context)} />}
+    {prev && <link rel="prev" href={photoHref(prev, context)} />}
+    <script is:inline type="speculationrules" set:html={rules} />
+    <slot name="head" />
+  </Fragment>
+  <a class="a11y-skipLink" href="#grid">
+    Skip to the photos
+  </a>
+  <Stage
+    photo={photo}
+    context={context}
+    prev={prev}
+    next={next}
+    hero={start === 'view'}
+  />
+  <section
+    class:list={['table', { 'table-start': start === 'grid' }]}
+    id="grid"
+    aria-label={context.label}>
+    <Hud photo={photo} context={context} />
+    <div class="table_scroller">
+      <PanelHead context={context} />
+      <div class="table_body">
+        <div class="table_photos">
+          <Thumbs context={context} current={photo} />
+          <Ledger context={context} current={photo} />
+        </div>
+        <Rail context={context} />
+      </div>
+    </div>
+    <InfoPane photo={photo} />
+    <KeysPane />
+  </section>
+  <Palette context={context} />
+</GalleryLayout>

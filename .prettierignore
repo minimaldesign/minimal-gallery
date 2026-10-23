@@ -1,0 +1,11 @@
+dist
+node_modules
+pnpm-lock.yaml
+legacy
+examples/demo/photos
+.minimalgallery
+public/_mg
+.astro
+design/prototype/styles/framework
+packages/astro/src/theme/styles/framework
+design/prototype/img

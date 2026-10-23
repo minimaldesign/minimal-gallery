@@ -1,0 +1,34 @@
+/* BADGE */
+
+.badge {
+  display: inline-block;
+  padding: var(--xs1) var(--xs2);
+  font-size: var(--badge-font-size);
+  font-weight: var(--semi-bold);
+  line-height: var(--leading-sm);
+  color: var(--badge-color);
+  background: var(--badge-background-color);
+  border-radius: var(--badge-border-radius);
+
+  /* Variants only swap the local custom properties */
+
+  &.badge-primary {
+    --badge-color: var(--badge-primary-color);
+    --badge-background-color: var(--badge-primary-background-color);
+  }
+
+  &.badge-success {
+    --badge-color: var(--badge-success-color);
+    --badge-background-color: var(--badge-success-background-color);
+  }
+
+  &.badge-danger {
+    --badge-color: var(--badge-danger-color);
+    --badge-background-color: var(--badge-danger-background-color);
+  }
+
+  &.badge-warning {
+    --badge-color: var(--badge-warning-color);
+    --badge-background-color: var(--badge-warning-background-color);
+  }
+}

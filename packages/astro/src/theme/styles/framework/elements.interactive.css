@@ -1,0 +1,76 @@
+/* ELEMENTS INTERACTIVE */
+
+dialog {
+  /* body scrolling is stopped by adding .body-is-locked on <dialog> */
+  /* But it can be added to any element. See elements.sectioning.css > body { … }  */
+  min-width: var(--dialog-min-width);
+  max-width: var(--dialog-max-width);
+  padding: var(--dialog-padding);
+  border: var(--dialog-border-width) solid var(--dialog-border-color);
+  background-color: var(--dialog-background-color);
+  border-radius: var(--dialog-border-radius);
+
+  &::backdrop {
+    background: var(--dialog-backdrop-color);
+    opacity: var(--dialog-backdrop-opacity);
+  }
+
+  [aria-label="close pop-up"] {
+    position: absolute;
+    top: var(--xs3);
+    right: var(
+      --xs3
+    ); /* deliberately physical: close button pinned to a visual corner */
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  p:last-of-type {
+    /* in case it's inside a .prose context */
+    margin-bottom: 0;
+  }
+}
+
+details {
+  padding: var(--details-padding);
+  border: var(--details-border-width) solid var(--details-border-color);
+  background-color: var(--details-background-color);
+  border-radius: var(--details-border-radius);
+  cursor: pointer;
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    font-weight: var(--bold);
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &::after {
+      content: "";
+      width: var(--details-icon-size);
+      height: var(--details-icon-size);
+      /* icon as a mask painted with the text color, so it follows the
+         color scheme (an SVG in background-image can't see currentColor
+         and always renders black) */
+      background-color: currentColor;
+      mask-image: var(--details-icon);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      transition: transform var(--transition);
+    }
+  }
+
+  &[open] > summary {
+    margin-bottom: var(--details-spacing);
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  p:last-of-type {
+    /* in case it's inside a .prose context */
+    margin-bottom: 0;
+  }
+}

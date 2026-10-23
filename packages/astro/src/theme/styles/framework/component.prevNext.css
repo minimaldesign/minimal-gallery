@@ -1,0 +1,41 @@
+/* PREV / NEXT */
+
+.prevNext {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sm1);
+}
+
+.prevNext_link {
+  display: grid;
+  align-content: start;
+  gap: var(--xs1);
+  padding: var(--sm1);
+  text-decoration: none;
+  color: var(--text-color);
+  border: var(--border-sm) solid var(--prevNext-border-color);
+  border-radius: var(--prevNext-border-radius);
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--prevNext-border-color-hover);
+  }
+
+  small {
+    color: var(--prevNext-label-color);
+  }
+
+  span {
+    font-weight: var(--semi-bold);
+  }
+}
+
+.prevNext_link-prev {
+  grid-column: 1;
+}
+
+/* a lone "next" stays in the right column */
+.prevNext_link-next {
+  grid-column: 2;
+  text-align: end;
+}

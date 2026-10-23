@@ -1,0 +1,38 @@
+{
+  "title": "1/40 s",
+  "href": "f/shutter-1-40-s.html",
+  "photos": [
+    {
+      "slug": "prayers",
+      "title": "Prayers",
+      "ar": 1.495,
+      "color": "oklch(0.336 0.051 68.5)",
+      "year": 2007,
+      "tip": "12 Nov 2007 · To-Dai ji, Nara, Japan",
+      "cells": [
+        [
+          ["12 November", "f/month-11.html"],
+          ["2007", "f/year-2007.html"]
+        ],
+        [["Nara, Japan", "f/place-nara-japan.html"]],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [["18–200 mm f/3.5–5.6", "f/lens-18-200-mm-f-3-5-5-6.html"]],
+        [["1/40 s", "f/shutter-1-40-s.html"]],
+        [["f/5", "f/aperture-f-5.html"]],
+        [["65 mm", "f/focal-short-tele.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "prayers",
+        "2007-11-12T15:29:49",
+        "nara, japan",
+        "nikon d200",
+        "18–200 mm f/3.5–5.6",
+        0.025,
+        5,
+        65,
+        100
+      ]
+    }
+  ]
+}

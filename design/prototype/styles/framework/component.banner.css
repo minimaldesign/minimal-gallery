@@ -1,0 +1,42 @@
+/* BANNER */
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--xs3);
+  padding: var(--xs2) var(--sm1);
+  font-size: var(--text-sm);
+  text-align: center;
+  color: var(--banner-color);
+  background: var(--banner-background-color);
+
+  a {
+    color: inherit;
+    font-weight: var(--semi-bold);
+  }
+}
+
+.banner_content {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.banner_close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--sm3);
+  min-height: var(--sm3);
+  padding: var(--xs1);
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    width: var(--sm1);
+    height: var(--sm1);
+  }
+}

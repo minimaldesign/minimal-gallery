@@ -1,0 +1,35 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "demo-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "minimalgallery-demo",
+        "exec",
+        "astro",
+        "preview",
+        "--port",
+        "4321",
+        "--host",
+        "127.0.0.1"
+      ],
+      "port": 4321
+    },
+    {
+      "name": "prototype",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4400",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "design/prototype"
+      ],
+      "port": 4400
+    }
+  ]
+}

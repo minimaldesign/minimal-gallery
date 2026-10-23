@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Kyoto, Japan · minimal gallery</title>
+    <meta
+      name="description"
+      content="Kyoto, Japan: 1 photo in the minimal gallery demo." />
+    <meta name="theme-color" content="#0f0f0f" />
+    <meta name="mg-root" content="../" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..500&amp;family=Geist:wght@300..700&amp;display=swap" />
+    <link rel="stylesheet" href="../mg.css" />
+    <script src="../mg.js" defer blocking="render"></script>
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": { "selector_matches": ".thumbs_link, .strip_link" },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body
+    class="viewer"
+    style="
+      --photo: oklch(0.876 0.102 77);
+      --photo-ratio: 1.495;
+      --photo-zoom-width: 1800;
+    ">
+    <a class="a11y-skipLink" href="#grid">Skip to the photos</a>
+    <div class="stage">
+      <main class="stage_frame" id="main" tabindex="-1">
+        <div class="stage_scroller">
+          <a class="stage_next"
+            ><img
+              class="stage_photo"
+              src="../img/arashiyama-smile.jpg"
+              width="900"
+              height="602"
+              alt="Arashiyama Smile"
+          /></a>
+        </div>
+        <a class="stage_prev"></a>
+        <input
+          class="stage_zoom a11y-srOnly"
+          type="checkbox"
+          tabindex="-1"
+          aria-label="Zoom to full size" />
+      </main>
+      <nav class="strip surface stage_strip" aria-label="Kyoto, Japan, 1 photo">
+        <ol class="strip_list">
+          <li
+            class="strip_item"
+            style="--ar: 1.495; --photo: oklch(0.876 0.102 77)">
+            <a
+              class="strip_link"
+              href="../p/arashiyama-smile.html?in=f/place-kyoto-japan"
+              aria-current="page"
+              ><img
+                class="strip_image"
+                src="../img/t/arashiyama-smile.jpg"
+                width="359"
+                height="240"
+                alt="Arashiyama Smile"
+                decoding="async"
+            /></a>
+          </li>
+        </ol>
+      </nav>
+      <a class="stage_hint" href="#grid"
+        ><span class="a11y-srOnly">Show the photos</span></a
+      >
+    </div>
+    <section class="table table-start" id="grid" aria-label="Kyoto, Japan">
+      <header class="hud surface table_hud">
+        <nav class="hud_crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../index.html">minimal gallery</a></li>
+            <li>
+              <a class="hud_context" href="../f/place-kyoto-japan.html#grid"
+                >Kyoto, Japan</a
+              >
+            </li>
+            <li><h1 class="hud_title">Arashiyama Smile</h1></li>
+          </ol>
+        </nav>
+        <div class="hud_actions">
+          <div class="toggle toggle-plain">
+            <button
+              class="toggle_option"
+              type="button"
+              command="show-modal"
+              commandfor="palette"
+              aria-label="Filter">
+              <svg class="toggle_svg" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2.25 3.25h11.5l-4.5 5.25v4.25l-2.5 1v-5.25z" /></svg
+              ><span class="toggle_tip surface" aria-hidden="true"
+                >Filter <kbd>/</kbd></span
+              >
+            </button>
+          </div>
+          <div class="toggle toggle-plain">
+            <label class="toggle_option"
+              ><input
+                class="a11y-srOnly"
+                type="checkbox"
+                name="info"
+                id="info-toggle"
+                aria-label="Info" /><svg
+                class="toggle_svg"
+                viewBox="0 0 16 16"
+                aria-hidden="true">
+                <circle cx="8" cy="8" r="6.25" />
+                <path d="M8 7.25v4M8 4.75v.25" /></svg
+              ><span class="toggle_tip surface" aria-hidden="true"
+                ><b>I</b>nfo <kbd>i</kbd></span
+              ></label
+            >
+          </div>
+          <div class="toggle toggle-plain">
+            <label class="toggle_option"
+              ><input
+                class="a11y-srOnly"
+                type="checkbox"
+                name="strip"
+                aria-label="Filmstrip" /><svg
+                class="toggle_svg"
+                viewBox="0 0 16 16"
+                aria-hidden="true">
+                <rect x="1.75" y="3.75" width="12.5" height="8.5" rx="1" />
+                <path d="M1.75 6h12.5M1.75 10h12.5M6 6v4M10 6v4" /></svg
+              ><span class="toggle_tip surface" aria-hidden="true"
+                >Film<b>s</b>trip <kbd>s</kbd></span
+              ></label
+            >
+          </div>
+          <div class="toggle toggle-plain">
+            <label class="toggle_option"
+              ><input
+                class="a11y-srOnly"
+                type="checkbox"
+                name="fit"
+                value="contain"
+                data-off="cover"
+                aria-label="Fit photo" /><span class="toggle_off"
+                ><svg class="toggle_svg" viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="1.75" y="3.25" width="12.5" height="9.5" rx="1" />
+                  <rect
+                    x="5.25"
+                    y="5.75"
+                    width="5.5"
+                    height="4.5"
+                    rx=".5" /></svg></span
+              ><span class="toggle_on"
+                ><svg class="toggle_svg" viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="1.75" y="3.25" width="12.5" height="9.5" rx="1" />
+                  <path
+                    d="M4.5 6.5V5.5h1.5M11.5 6.5V5.5H10M4.5 9.5v1h1.5M11.5 9.5v1H10" /></svg></span
+              ><span class="toggle_tip surface toggle_off" aria-hidden="true"
+                ><b>F</b>it photo <kbd>f</kbd></span
+              ><span class="toggle_tip surface toggle_on" aria-hidden="true"
+                ><b>F</b>ill window <kbd>f</kbd></span
+              ></label
+            >
+          </div>
+          <div class="toggle toggle-plain hud_help">
+            <label class="toggle_option"
+              ><input
+                class="a11y-srOnly"
+                type="checkbox"
+                name="keys"
+                id="keys-toggle"
+                aria-label="Keyboard shortcuts" /><span
+                class="toggle_glyph"
+                aria-hidden="true"
+                >?</span
+              ><span class="toggle_tip surface" aria-hidden="true"
+                >Keyboard shortcuts <kbd>?</kbd></span
+              ></label
+            >
+          </div>
+        </div>
+      </header>
+      <div class="table_scroller">
+        <header class="table_head surface">
+          <nav class="table_crumbs" aria-label="Context">
+            <ol>
+              <li><a href="../index.html">minimal gallery</a></li>
+              <li>
+                <a class="table_context" href="../f/place-kyoto-japan.html#grid"
+                  >Kyoto, Japan</a
+                >
+              </li>
+            </ol>
+            <span class="table_count">1 photo</span>
+          </nav>
+          <div class="table_tools">
+            <fieldset class="toggle table_gridOnly">
+              <legend class="a11y-srOnly">Thumbnail shape</legend>
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="crop"
+                  value="square"
+                  aria-label="Cropped thumbnails"
+                  checked /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <rect
+                    x="2.75"
+                    y="2.75"
+                    width="10.5"
+                    height="10.5"
+                    rx="1" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Crop or original <b>t</b>humbnail <kbd>t</kbd></span
+                ></label
+              >
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="crop"
+                  value="original"
+                  aria-label="Original thumbnails" /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <rect x="1.75" y="4" width="12.5" height="8" rx="1" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Crop or original <b>t</b>humbnail <kbd>t</kbd></span
+                ></label
+              >
+            </fieldset>
+            <fieldset class="toggle table_gridOnly">
+              <legend class="a11y-srOnly">Thumbnail size</legend>
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="size"
+                  value="s"
+                  aria-label="Small thumbnails" /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <rect
+                    x="5.25"
+                    y="5.25"
+                    width="5.5"
+                    height="5.5"
+                    rx=".75" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Small thumbnails <kbd>1</kbd></span
+                ></label
+              >
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="size"
+                  value="m"
+                  aria-label="Medium thumbnails"
+                  checked /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <rect
+                    x="3.75"
+                    y="3.75"
+                    width="8.5"
+                    height="8.5"
+                    rx="1" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Medium thumbnails <kbd>2</kbd></span
+                ></label
+              >
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="size"
+                  value="l"
+                  aria-label="Large thumbnails" /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <rect
+                    x="2.25"
+                    y="2.25"
+                    width="11.5"
+                    height="11.5"
+                    rx="1" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Large thumbnails <kbd>3</kbd></span
+                ></label
+              >
+            </fieldset>
+            <fieldset class="toggle">
+              <legend class="a11y-srOnly">View</legend>
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="view"
+                  value="grid"
+                  aria-label="Grid view"
+                  checked /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <rect x="2.25" y="2.25" width="4.75" height="4.75" rx=".75" />
+                  <rect x="9" y="2.25" width="4.75" height="4.75" rx=".75" />
+                  <rect x="2.25" y="9" width="4.75" height="4.75" rx=".75" />
+                  <rect x="9" y="9" width="4.75" height="4.75" rx=".75" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Grid or list <b>v</b>iew <kbd>v</kbd></span
+                ></label
+              >
+              <label class="toggle_option"
+                ><input
+                  class="a11y-srOnly"
+                  type="radio"
+                  name="view"
+                  value="list"
+                  aria-label="List view" /><svg
+                  class="toggle_svg"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <path
+                    d="M6 4h7.5M6 8h7.5M6 12h7.5M2.5 4h.5M2.5 8h.5M2.5 12h.5" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Grid or list <b>v</b>iew <kbd>v</kbd></span
+                ></label
+              >
+            </fieldset>
+            <div class="toggle toggle-plain">
+              <button
+                class="toggle_option"
+                type="button"
+                command="show-modal"
+                commandfor="palette"
+                aria-label="Filter">
+                <svg class="toggle_svg" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M2.25 3.25h11.5l-4.5 5.25v4.25l-2.5 1v-5.25z" /></svg
+                ><span class="toggle_tip surface" aria-hidden="true"
+                  >Filter <kbd>/</kbd></span
+                >
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div class="table_body">
+          <div class="table_photos">
+            <ol class="thumbs">
+              <li
+                class="thumbs_item"
+                id="y-2007"
+                style="--ar: 1.495; --photo: oklch(0.876 0.102 77)">
+                <a
+                  class="thumbs_link"
+                  href="../p/arashiyama-smile.html?in=f/place-kyoto-japan"
+                  aria-current="page"
+                  ><img
+                    class="thumbs_image"
+                    src="../img/t/arashiyama-smile.jpg"
+                    srcset="
+                      ../img/t/arashiyama-smile.jpg 359w,
+                      ../img/arashiyama-smile.jpg   900w
+                    "
+                    sizes="(width < 768px) 34vw, 20vw"
+                    width="359"
+                    height="240"
+                    alt="Arashiyama Smile"
+                    loading="lazy"
+                    decoding="async" /><span
+                    class="thumbs_tip surface"
+                    aria-hidden="true"
+                    ><span class="thumbs_tipTitle">Arashiyama Smile</span
+                    ><span class="thumbs_tipMeta"
+                      >25 Nov 2007 · Arashiyama, Kyoto, Japan</span
+                    ></span
+                  ></a
+                >
+              </li>
+            </ol>
+            <div class="ledger">
+              <table>
+                <thead>
+                  <tr>
+                    <th><span class="a11y-srOnly">Thumbnail</span></th>
+                    <th data-type="text">
+                      <button class="ledger_sort" type="button">
+                        Title<span class="ledger_dir" aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="text">
+                      <button class="ledger_sort" type="button">
+                        Date<span class="ledger_dir" aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="text">
+                      <button class="ledger_sort" type="button">
+                        Place<span class="ledger_dir" aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="text">
+                      <button class="ledger_sort" type="button">
+                        Camera<span
+                          class="ledger_dir"
+                          aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="text">
+                      <button class="ledger_sort" type="button">
+                        Lens<span class="ledger_dir" aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="num">
+                      <button class="ledger_sort" type="button">
+                        Shutter<span
+                          class="ledger_dir"
+                          aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="num">
+                      <button class="ledger_sort" type="button">
+                        Aperture<span
+                          class="ledger_dir"
+                          aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="num">
+                      <button class="ledger_sort" type="button">
+                        Focal<span class="ledger_dir" aria-hidden="true"></span>
+                      </button>
+                    </th>
+                    <th data-type="num">
+                      <button class="ledger_sort" type="button">
+                        ISO<span class="ledger_dir" aria-hidden="true"></span>
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-i="0">
+                    <td>
+                      <a
+                        class="ledger_thumb"
+                        href="../p/arashiyama-smile.html?in=f/place-kyoto-japan"
+                        tabindex="-1"
+                        style="--ar: 1.495; --photo: oklch(0.876 0.102 77)"
+                        ><img
+                          class="ledger_image"
+                          src="../img/t/arashiyama-smile.jpg"
+                          width="359"
+                          height="240"
+                          alt=""
+                          loading="lazy" /><span
+                          class="ledger_preview surface"
+                          aria-hidden="true"
+                          style="--preview: url('../img/arashiyama-smile.jpg')"
+                          ><span class="ledger_previewImage"></span></span
+                      ></a>
+                    </td>
+                    <td data-sort="arashiyama smile">
+                      <a
+                        href="../p/arashiyama-smile.html?in=f/place-kyoto-japan"
+                        aria-current="page"
+                        >Arashiyama Smile</a
+                      >
+                    </td>
+                    <td data-sort="2007-11-25T13:17:16">
+                      <a href="../f/month-11.html#grid">25 November</a>
+                      <a href="../f/year-2007.html#grid">2007</a>
+                    </td>
+                    <td data-sort="kyoto, japan">
+                      <a href="../f/place-kyoto-japan.html#grid"
+                        >Kyoto, Japan</a
+                      >
+                    </td>
+                    <td data-sort="nikon d200">
+                      <a href="../f/camera-nikon-d200.html#grid">Nikon D200</a>
+                    </td>
+                    <td data-sort="18–200 mm f/3.5–5.6">
+                      <a href="../f/lens-18-200-mm-f-3-5-5-6.html#grid"
+                        >18–200 mm f/3.5–5.6</a
+                      >
+                    </td>
+                    <td data-sort="0.00625">
+                      <a href="../f/shutter-1-160-s.html#grid">1/160 s</a>
+                    </td>
+                    <td data-sort="5.6">
+                      <a href="../f/aperture-f-5-6.html#grid">f/5.6</a>
+                    </td>
+                    <td data-sort="105">
+                      <a href="../f/focal-short-tele.html#grid">105 mm</a>
+                    </td>
+                    <td data-sort="100">
+                      <a href="../f/iso-100.html#grid">100</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table_rail" hidden>
+            <nav class="rail" aria-label="Years">
+              <ol class="rail_list">
+                <li>
+                  <a class="rail_link" href="#y-2007"
+                    ><span class="rail_year surface">2007</span></a
+                  >
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <aside
+        class="pane pane-info info surface"
+        id="info"
+        aria-labelledby="info-title">
+        <div class="pane_head">
+          <h2 class="pane_title" id="info-title">Arashiyama Smile</h2>
+          <label class="pane_close" for="info-toggle">Close</label>
+        </div>
+        <dl class="info_list">
+          <div class="info_row">
+            <dt class="info_term">Date</dt>
+            <dd class="info_value">
+              <span
+                >25 <a href="../f/month-11.html#grid">November</a>
+                <a href="../f/year-2007.html#grid">2007</a></span
+              ><span>13:17</span>
+            </dd>
+          </div>
+          <div class="info_row">
+            <dt class="info_term">Place</dt>
+            <dd class="info_value">
+              <span>Arashiyama,</span>
+              <a href="../f/place-kyoto-japan.html#grid">Kyoto, Japan</a>
+            </dd>
+          </div>
+          <div class="info_row">
+            <dt class="info_term">Camera</dt>
+            <dd class="info_value">
+              <a href="../f/camera-nikon-d200.html#grid">Nikon D200</a>
+            </dd>
+          </div>
+          <div class="info_row">
+            <dt class="info_term">Lens</dt>
+            <dd class="info_value">
+              <a href="../f/lens-18-200-mm-f-3-5-5-6.html#grid"
+                >18–200 mm f/3.5–5.6</a
+              >
+            </dd>
+          </div>
+          <div class="info_row">
+            <dt class="info_term">Exposure</dt>
+            <dd class="info_value info_value-exposure">
+              <a href="../f/shutter-1-160-s.html#grid">1/160 s</a>
+              <a href="../f/aperture-f-5-6.html#grid">f/5.6</a>
+              <a href="../f/focal-short-tele.html#grid">105 mm</a>
+              <a href="../f/iso-100.html#grid">ISO 100</a>
+            </dd>
+          </div>
+          <div class="info_row">
+            <dt class="info_term">Size</dt>
+            <dd class="info_value"><span>900 × 602 px</span></dd>
+          </div>
+          <div class="info_row">
+            <dt class="info_term">File</dt>
+            <dd class="info_value">
+              <span class="info_path">people/Arashiyama Smile.jpg</span>
+            </dd>
+          </div>
+        </dl>
+      </aside>
+      <aside
+        class="pane pane-keys surface"
+        id="keys"
+        aria-labelledby="keys-title">
+        <div class="pane_head">
+          <h2 class="pane_title" id="keys-title">Keyboard Shortcuts</h2>
+          <label class="pane_close" for="keys-toggle">Close</label>
+        </div>
+        <section class="keys_section">
+          <h3 class="keys_heading">Viewing mode</h3>
+          <dl class="keys_list">
+            <dt class="keys_combo"><kbd>←</kbd><kbd>→</kbd></dt>
+            <dd class="keys_action">Previous / next photo</dd>
+            <dt class="keys_combo"><kbd>↑</kbd></dt>
+            <dd class="keys_action">Open browsing mode</dd>
+            <dt class="keys_combo"><kbd>z</kbd></dt>
+            <dd class="keys_action"><b>Z</b>oom to 1:1 and back</dd>
+            <dt class="keys_combo"><kbd>i</kbd></dt>
+            <dd class="keys_action">Photo <b>i</b>nformation</dd>
+            <dt class="keys_combo"><kbd>f</kbd></dt>
+            <dd class="keys_action"><b>F</b>ill window / <b>f</b>it photo</dd>
+            <dt class="keys_combo"><kbd>s</kbd></dt>
+            <dd class="keys_action">Film<b>s</b>trip</dd>
+            <dt class="keys_combo">
+              <kbd>/</kbd><span class="keys_or">or</span><kbd>⌘K</kbd>
+            </dt>
+            <dd class="keys_action">Filter</dd>
+            <dt class="keys_combo"><kbd>?</kbd></dt>
+            <dd class="keys_action">Keyboard shortcuts</dd>
+          </dl>
+        </section>
+        <section class="keys_section">
+          <h3 class="keys_heading">Browsing mode</h3>
+          <dl class="keys_list">
+            <dt class="keys_combo">
+              <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd>
+            </dt>
+            <dd class="keys_action">Select photo; enter to open it</dd>
+            <dt class="keys_combo"><kbd>Home</kbd><kbd>End</kbd></dt>
+            <dd class="keys_action">Select first / last photo</dd>
+            <dt class="keys_combo"><kbd>Esc</kbd></dt>
+            <dd class="keys_action">Back to viewing mode</dd>
+            <dt class="keys_combo"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></dt>
+            <dd class="keys_action">Thumbnail size</dd>
+            <dt class="keys_combo"><kbd>t</kbd></dt>
+            <dd class="keys_action">Crop or original <b>t</b>humbnail</dd>
+            <dt class="keys_combo"><kbd>v</kbd></dt>
+            <dd class="keys_action">Grid or list <b>v</b>iew</dd>
+            <dt class="keys_combo"><kbd>/</kbd></dt>
+            <dd class="keys_action">Filter</dd>
+          </dl>
+        </section>
+      </aside>
+    </section>
+    <dialog
+      class="palette surface"
+      id="palette"
+      aria-label="Filter photos"
+      closedby="any">
+      <form class="palette_bar" method="dialog">
+        <input
+          class="palette_search"
+          type="search"
+          name="q"
+          placeholder="Filter by place, camera, lens, year, f-number…"
+          aria-label="Filter photos"
+          autocomplete="off"
+          autofocus />
+        <button
+          class="palette_close"
+          type="submit"
+          formnovalidate
+          value="close"
+          aria-label="Close"
+          tabindex="-1">
+          <kbd>Esc</kbd>
+        </button>
+      </form>
+      <div class="palette_groups">
+        <section class="palette_group">
+          <h2 class="palette_heading">Albums</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../a/colors.html#grid"
+                >Colors <span class="chip_count">8</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../a/light.html#grid"
+                >Light <span class="chip_count">7</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../a/people.html#grid"
+                >People <span class="chip_count">7</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../a/feelings.html#grid"
+                >Feelings <span class="chip_count">5</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../a/shapes.html#grid"
+                >Shapes <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../a/motion.html#grid"
+                >Motion <span class="chip_count">2</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Years</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/year-2013.html#grid"
+                >2013 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/year-2009.html#grid"
+                >2009 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/year-2008.html#grid"
+                >2008 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/year-2007.html#grid"
+                >2007 <span class="chip_count">4</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/year-2006.html#grid"
+                >2006 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/year-2005.html#grid"
+                >2005 <span class="chip_count">21</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/year-2004.html#grid"
+                >2004 <span class="chip_count">2</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Months, any year</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/month-01.html#grid"
+                >January <span class="chip_count">7</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-04.html#grid"
+                >April <span class="chip_count">10</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-05.html#grid"
+                >May <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-06.html#grid"
+                >June <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-07.html#grid"
+                >July <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-08.html#grid"
+                >August <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-09.html#grid"
+                >September <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/month-11.html#grid"
+                >November <span class="chip_count">7</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Places</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/place-brooklyn-usa.html#grid"
+                >Brooklyn, USA <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a
+                class="chip"
+                href="../f/place-kyoto-japan.html#grid"
+                aria-current="page"
+                >Kyoto, Japan <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/place-manhattan-usa.html#grid"
+                >Manhattan, USA <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/place-nara-japan.html#grid"
+                >Nara, Japan <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/place-nice-france.html#grid"
+                >Nice, France <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/place-shirakawa-go-japan.html#grid"
+                >Shirakawa Go, Japan <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/place-takayama-japan.html#grid"
+                >Takayama, Japan <span class="chip_count">1</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Cameras</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/camera-canon-powershot-s230.html#grid"
+                >Canon PowerShot S230 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/camera-canon-powershot-s95.html#grid"
+                >Canon PowerShot S95 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/camera-nikon-d200.html#grid"
+                >Nikon D200 <span class="chip_count">6</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/camera-nikon-d70.html#grid"
+                >Nikon D70 <span class="chip_count">23</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Lenses</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/lens-18-200-mm-f-3-5-5-6.html#grid"
+                >18–200 mm f/3.5–5.6 <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/lens-18-70-mm-f-3-5-4-5.html#grid"
+                >18–70 mm f/3.5–4.5 <span class="chip_count">14</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/lens-24-70-mm-f-2-8.html#grid"
+                >24–70 mm f/2.8 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/lens-80-200-mm-f-2-8.html#grid"
+                >80–200 mm f/2.8 <span class="chip_count">8</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Focal length</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/focal-wide.html#grid"
+                >Wide, up to 24 mm <span class="chip_count">8</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/focal-normal.html#grid"
+                >Normal, 25 to 50 mm <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/focal-short-tele.html#grid"
+                >Short tele, 51 to 105 mm <span class="chip_count">16</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/focal-tele.html#grid"
+                >Tele, over 105 mm <span class="chip_count">4</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Aperture</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/aperture-f-2-8.html#grid"
+                >f/2.8 <span class="chip_count">4</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-3-5.html#grid"
+                >f/3.5 <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-4.html#grid"
+                >f/4 <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-4-5.html#grid"
+                >f/4.5 <span class="chip_count">7</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-5.html#grid"
+                >f/5 <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-5-6.html#grid"
+                >f/5.6 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-7-1.html#grid"
+                >f/7.1 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-8.html#grid"
+                >f/8 <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-9.html#grid"
+                >f/9 <span class="chip_count">4</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-11.html#grid"
+                >f/11 <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-16.html#grid"
+                >f/16 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/aperture-f-22.html#grid"
+                >f/22 <span class="chip_count">1</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Shutter speed</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/shutter-1-2500-s.html#grid"
+                >1/2500 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-1500-s.html#grid"
+                >1/1500 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-1000-s.html#grid"
+                >1/1000 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-640-s.html#grid"
+                >1/640 s <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-500-s.html#grid"
+                >1/500 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-400-s.html#grid"
+                >1/400 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-320-s.html#grid"
+                >1/320 s <span class="chip_count">4</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-250-s.html#grid"
+                >1/250 s <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-200-s.html#grid"
+                >1/200 s <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-160-s.html#grid"
+                >1/160 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-100-s.html#grid"
+                >1/100 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-80-s.html#grid"
+                >1/80 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-60-s.html#grid"
+                >1/60 s <span class="chip_count">3</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-50-s.html#grid"
+                >1/50 s <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-40-s.html#grid"
+                >1/40 s <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-1-30-s.html#grid"
+                >1/30 s <span class="chip_count">5</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/shutter-2-5-s.html#grid"
+                >2.5 s <span class="chip_count">1</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">ISO</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/iso-80.html#grid"
+                >ISO 80 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-100.html#grid"
+                >ISO 100 <span class="chip_count">4</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-200.html#grid"
+                >ISO 200 <span class="chip_count">19</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-250.html#grid"
+                >ISO 250 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-320.html#grid"
+                >ISO 320 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-400.html#grid"
+                >ISO 400 <span class="chip_count">2</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-500.html#grid"
+                >ISO 500 <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/iso-640.html#grid"
+                >ISO 640 <span class="chip_count">1</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="palette_group">
+          <h2 class="palette_heading">Keywords</h2>
+          <ul class="palette_chips">
+            <li>
+              <a class="chip" href="../f/keyword-cap-taillat.html#grid"
+                >Cap Taillat <span class="chip_count">1</span></a
+              >
+            </li>
+            <li>
+              <a class="chip" href="../f/keyword-villefranche.html#grid"
+                >Villefranche <span class="chip_count">3</span></a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
+    </dialog>
+  </body>
+</html>

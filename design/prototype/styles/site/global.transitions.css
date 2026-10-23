@@ -1,0 +1,106 @@
+/* GLOBAL: VIEW TRANSITIONS
+
+   Bounded exception: every ::view-transition rule in the project lives
+   here, because moving between pages is one motion decision. Blocks name
+   their own elements (view-transition-name) in their own files; mg.js adds
+   the names that depend on where you came from (stage, photo). This file
+   only says how named things move.
+
+   What changes: the photo (a slow crossfade between neighbors, a morph
+   between a thumbnail and the view). What crossfades: the page ground (root). What
+   never moves: the HUD, the strip and the info panel (class chrome).
+   After an arrow key the HUD is already hidden on both pages, so the
+   transition shows the photo alone. */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(*) {
+  animation-duration: var(--mg-duration-morph);
+  animation-timing-function: var(--mg-ease-out);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--mg-duration-slide);
+}
+
+/* A thumbnail is a square crop and the photo is not: both snapshots fill
+   the moving box with object-fit: cover, so the crop opens up into the
+   whole photo instead of a square stretching into a rectangle. */
+::view-transition-old(photo),
+::view-transition-new(photo) {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Chrome (HUD, strip, info panel) stays put; only its text crossfades. */
+::view-transition-group(.chrome) {
+  animation-duration: 0s;
+}
+
+::view-transition-old(.chrome),
+::view-transition-new(.chrome) {
+  animation-duration: var(--mg-duration-quick);
+}
+
+/* The strip crossfades out and in over the slide's duration, so its
+   selection change reads as a transition (name plus class, to outrank the
+   chrome rule above). */
+::view-transition-old(strip.chrome),
+::view-transition-new(strip.chrome) {
+  animation-duration: var(--mg-duration-slide);
+}
+
+/* A step (forward or back) changes only the current frame of the strip:
+   no crossfade between two differently scrolled strips (that read as the
+   strip vanishing mid-step). The old snapshot is hidden and the new strip
+   is shown live; mg.js starts it where the old page left it and glides it
+   to the new center. */
+html:active-view-transition-type(forward, back) {
+  &::view-transition-old(strip) {
+    animation: none;
+    opacity: 0;
+  }
+
+  &::view-transition-new(strip) {
+    animation: none;
+  }
+}
+
+/* Next and previous: a slow, pure crossfade between the two photos, the
+   same both ways, on a symmetric curve so there is no visible start or
+   end. Only opacity changes, so it stays under reduced motion too. */
+::view-transition-group(stage) {
+  animation-duration: var(--mg-duration-step);
+}
+
+html:active-view-transition-type(forward, back) {
+  &::view-transition-old(stage) {
+    animation: var(--mg-duration-step) var(--mg-ease-fade) both mg-fade-out;
+  }
+  &::view-transition-new(stage) {
+    animation: var(--mg-duration-step) var(--mg-ease-fade) both mg-fade-in;
+  }
+}
+
+/* Reduced motion: nothing travels or scales. Named elements jump to their
+   end position and crossfade in place; the root still crossfades. */
+@media (--motionNotOK) {
+  ::view-transition-group(*) {
+    animation-duration: 0s;
+  }
+}
+
+@keyframes mg-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mg-fade-in {
+  from {
+    opacity: 0;
+  }
+}

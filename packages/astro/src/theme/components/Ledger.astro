@@ -1,0 +1,91 @@
+---
+/**
+ * The list: one row per photo, every cell a link to that value's context.
+ * Headers sort the rows on real values (`data-sort`); hovering a thumbnail
+ * shows a 320px print, fetched only on hover (a background on an element
+ * that is not displayed until then).
+ */
+import {
+  cellsOf,
+  photoHref,
+  previewOf,
+  ratioOf,
+  SORT_COLUMNS,
+  thumbOf,
+  withBase,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+
+interface Props {
+  context: Context;
+  current: Photo;
+}
+const { context, current } = Astro.props;
+---
+
+<div class="ledger">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <span class="a11y-srOnly">Thumbnail</span>
+        </th>
+        {SORT_COLUMNS.map(([label, type]) => (
+          <th data-type={type}>
+            <button class="ledger_sort" type="button">
+              {label}
+              <span class="ledger_dir" aria-hidden="true" />
+            </button>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {context.photos.map((p, i) => {
+        const href = photoHref(p, context);
+        const t = thumbOf(p);
+        const style = `--ar: ${ratioOf(p)}; --photo: ${p.color}`;
+        return (
+          <tr data-i={i}>
+            <td>
+              <a class="ledger_thumb" href={href} tabindex="-1" style={style}>
+                <img
+                  class="ledger_image"
+                  src={withBase(t.url)}
+                  width={t.width}
+                  height={t.height}
+                  alt=""
+                  loading="lazy"
+                />
+                <span
+                  class="ledger_preview surface"
+                  aria-hidden="true"
+                  style={`--preview: url('${withBase(previewOf(p).url)}')`}>
+                  <span class="ledger_previewImage" />
+                </span>
+              </a>
+            </td>
+            <td data-sort={p.sortKeys[0]}>
+              <a
+                href={href}
+                aria-current={p.id === current.id ? 'page' : undefined}>
+                {p.title}
+              </a>
+            </td>
+            {cellsOf(p).map((cell, n) => (
+              <td data-sort={p.sortKeys[n + 1]}>
+                {cell.map(([text, h], k) => (
+                  <>
+                    {k > 0 && ' '}
+                    {h ? <a href={`${h}#grid`}>{text}</a> : text}
+                  </>
+                ))}
+              </td>
+            ))}
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

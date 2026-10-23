@@ -1,0 +1,50 @@
+/* SECTIONING ROOT */
+
+body {
+  /* https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/ */
+  text-size-adjust: none;
+  background-color: var(--body-background-color);
+  color: var(--text-color);
+  font-family: var(--text);
+  line-height: var(--body-line-height);
+
+  /* for elements like dialog etc. that require scrolling turned off */
+  &:has(.body-is-locked) {
+    overflow: hidden;
+  }
+}
+
+/* CONTENT SECTIONING ELEMENTS */
+
+address {
+  /* moved to elements.text.css where most people would assume it is */
+}
+
+article {
+}
+
+aside {
+}
+
+footer {
+}
+
+header {
+}
+
+/* Technically headings (h1, h2, h3, etc.) should be here, but I think it makes more sense to keep them in the elements.text file */
+
+hgroup {
+}
+
+main {
+}
+
+nav {
+}
+
+section {
+}
+
+search {
+}

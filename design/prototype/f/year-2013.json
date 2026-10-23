@@ -1,0 +1,38 @@
+{
+  "title": "2013",
+  "href": "f/year-2013.html",
+  "photos": [
+    {
+      "slug": "greenport",
+      "title": "Greenport",
+      "ar": 1.3333,
+      "color": "oklch(0.479 0.047 289.3)",
+      "year": 2013,
+      "tip": "2 Aug 2013",
+      "cells": [
+        [
+          ["2 August", "f/month-08.html"],
+          ["2013", "f/year-2013.html"]
+        ],
+        [],
+        [["Canon PowerShot S95", "f/camera-canon-powershot-s95.html"]],
+        [],
+        [["1/640 s", "f/shutter-1-640-s.html"]],
+        [["f/4", "f/aperture-f-4.html"]],
+        [["6 mm", "f/focal-wide.html"]],
+        [["80", "f/iso-80.html"]]
+      ],
+      "sort": [
+        "greenport",
+        "2013-08-02T15:42:17",
+        "",
+        "canon powershot s95",
+        "",
+        0.0015625,
+        4,
+        6,
+        80
+      ]
+    }
+  ]
+}

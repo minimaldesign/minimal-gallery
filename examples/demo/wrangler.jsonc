@@ -1,0 +1,8 @@
+// Cloudflare Pages project for the demo gallery.
+// Deploy with `pnpm deploy` (runs `astro build`, then `wrangler pages deploy dist`).
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "minimalgallery-demo",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-01",
+}

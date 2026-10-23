@@ -1,0 +1,23 @@
+/* PAGE: VIEWER (body.viewer, every photo page and the home page)
+
+   The backdrop is the near-black ground by default. Photo mode mixes a
+   hint of the photo's dominant color (measured at ingest, passed in as
+   --photo) into it; the mix is in oklab so a neutral ground cannot pull
+   the hue anywhere. Light mode is a pale gray; the overlays stay dark. */
+
+.viewer {
+  /* the top of the page is the first snap point */
+  scroll-snap-align: start;
+
+  @container style(--mg-backdrop: photo) {
+    --body-background-color: color-mix(
+      in oklab,
+      var(--photo) var(--mg-backdrop-tint),
+      var(--mg-ground)
+    );
+  }
+
+  @container style(--mg-backdrop: light) {
+    --body-background-color: var(--mg-gray-700);
+  }
+}

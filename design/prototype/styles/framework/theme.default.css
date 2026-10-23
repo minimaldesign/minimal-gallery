@@ -1,0 +1,25 @@
+/* DEFAULT THEME */
+
+/*
+  Basic design tokens and UI abstractions
+  Import it next to mcss.css
+
+    @import url(./framework/mcss.css);
+    @import url(./framework/theme.default.css);
+
+  mcss.css imports no theme itself; without this file every token is unset
+  and the page will look broken..
+
+  Don't edit the  default theme.
+
+  To make your own theme,  either duplicate/rename the 2 files below and
+  import theme instead of the default, or just override the bits you want
+  to change and imported that AFTER the defaults. There is `theme.starter.css`
+  to get you started if you want to go that road (recommended)).
+*/
+
+/* Defensive redundancy - Same layers as in mcss.css */
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@import url(./theme.default.tokens.css) layer(theme.default);
+@import url(./theme.default.ui.css) layer(theme.default);

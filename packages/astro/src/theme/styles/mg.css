@@ -1,0 +1,32 @@
+/* minimal gallery theme: CSS entry.
+
+   Framework first, then the default theme, then this theme (theme.user),
+   then the blocks unlayered, broad to specific. The import list is also
+   the list of blocks. The token contract (site/theme.mg.tokens.css) is
+   imported on its own, before this file, by the layout: the integration
+   writes the gallery's viewer defaults into it. The owner's custom.css is
+   linked after this file. */
+
+@import url(./framework/mcss.css);
+@import url(./framework/theme.default.css);
+
+@import url(./site/theme.mg.ui.css);
+
+@import url(./site/global.surface.css);
+@import url(./site/global.transitions.css);
+
+@import url(./site/component.toggle.css);
+@import url(./site/component.hud.css);
+@import url(./site/component.stage.css);
+@import url(./site/component.table.css);
+@import url(./site/component.strip.css);
+@import url(./site/component.thumbs.css);
+@import url(./site/component.rail.css);
+@import url(./site/component.chip.css);
+@import url(./site/component.pane.css);
+@import url(./site/component.info.css);
+@import url(./site/component.palette.css);
+@import url(./site/component.keys.css);
+@import url(./site/component.ledger.css);
+
+@import url(./site/page.viewer.css);

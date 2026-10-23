@@ -1,0 +1,38 @@
+{
+  "title": "Kyoto, Japan",
+  "href": "f/place-kyoto-japan.html",
+  "photos": [
+    {
+      "slug": "arashiyama-smile",
+      "title": "Arashiyama Smile",
+      "ar": 1.495,
+      "color": "oklch(0.876 0.102 77.0)",
+      "year": 2007,
+      "tip": "25 Nov 2007 · Arashiyama, Kyoto, Japan",
+      "cells": [
+        [
+          ["25 November", "f/month-11.html"],
+          ["2007", "f/year-2007.html"]
+        ],
+        [["Kyoto, Japan", "f/place-kyoto-japan.html"]],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [["18–200 mm f/3.5–5.6", "f/lens-18-200-mm-f-3-5-5-6.html"]],
+        [["1/160 s", "f/shutter-1-160-s.html"]],
+        [["f/5.6", "f/aperture-f-5-6.html"]],
+        [["105 mm", "f/focal-short-tele.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "arashiyama smile",
+        "2007-11-25T13:17:16",
+        "kyoto, japan",
+        "nikon d200",
+        "18–200 mm f/3.5–5.6",
+        0.00625,
+        5.6,
+        105,
+        100
+      ]
+    }
+  ]
+}

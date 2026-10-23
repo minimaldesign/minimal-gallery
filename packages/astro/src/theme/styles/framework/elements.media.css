@@ -1,0 +1,70 @@
+/* ELEMENTS MEDIA/EMBEDDED */
+
+/* better media defaults */
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+picture,
+svg,
+video {
+  display: block;
+  vertical-align: middle; /* removes strange space-below if display changes */
+  max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+  height: auto; /* maintain intrinsic aspect ratios when `max-width` is applied. */
+}
+
+audio {
+  width: 100%; /* remove default 300px */
+  max-width: var(--tera1);
+}
+
+audio:not([controls]) {
+  display: none;
+}
+
+canvas {
+}
+
+figcaption {
+  font-style: italic;
+  font-size: var(--text-sm);
+}
+
+figure {
+  /* caption at bottom or top */
+  &:has(* + figcaption) {
+    figcaption {
+      margin-top: var(--figcaption-spacing);
+    }
+  }
+  &:has(figcaption + *) {
+    figcaption {
+      margin-bottom: var(--figcaption-spacing);
+    }
+  }
+}
+
+iframe {
+  border: var(--border-sm) solid var(--ui-border-color);
+}
+
+img {
+}
+
+picture {
+}
+
+svg {
+}
+
+video {
+}

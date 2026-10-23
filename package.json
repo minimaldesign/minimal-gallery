@@ -1,0 +1,24 @@
+{
+  "name": "minimalgallery-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build": "pnpm --filter \"./packages/*\" build",
+    "test": "pnpm --filter \"./packages/*\" test",
+    "demo:photos": "pnpm --filter minimalgallery-demo photos",
+    "demo:build": "pnpm --filter minimalgallery-demo build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1"
+  }
+}

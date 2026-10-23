@@ -1,0 +1,29 @@
+---
+// One page per photo, /<album>/<slug>/, in its album's context. `?in=`
+// switches the context in the browser.
+import type { GetStaticPaths } from 'astro';
+import ViewerPage from '@minimalgallery/astro/theme/ViewerPage.astro';
+import {
+  albumContextOf,
+  getPhotos,
+  pageCacheKey,
+  type Context,
+  type Photo,
+} from '@minimalgallery/astro/gallery';
+
+export const getStaticPaths = (async () =>
+  Promise.all(
+    (await getPhotos()).map(async (photo) => {
+      const context = await albumContextOf(photo);
+      return {
+        params: { album: photo.album, photo: photo.slug },
+        props: { photo, context },
+        cacheKey: await pageCacheKey(photo, context),
+      };
+    })
+  )) satisfies GetStaticPaths;
+
+const { photo, context } = Astro.props as { photo: Photo; context: Context };
+---
+
+<ViewerPage photo={photo} context={context} />

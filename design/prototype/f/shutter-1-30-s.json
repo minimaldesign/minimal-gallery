@@ -1,0 +1,166 @@
+{
+  "title": "1/30 s",
+  "href": "f/shutter-1-30-s.html",
+  "photos": [
+    {
+      "slug": "shirakawa-go",
+      "title": "Shirakawa Go",
+      "ar": 1.495,
+      "color": "oklch(0.553 0.000 118.7)",
+      "year": 2007,
+      "tip": "15 Nov 2007 · Shirakawa Go, Japan",
+      "cells": [
+        [
+          ["15 November", "f/month-11.html"],
+          ["2007", "f/year-2007.html"]
+        ],
+        [["Shirakawa Go, Japan", "f/place-shirakawa-go-japan.html"]],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/22", "f/aperture-f-22.html"]],
+        [["22 mm", "f/focal-wide.html"]],
+        [["400", "f/iso-400.html"]]
+      ],
+      "sort": [
+        "shirakawa go",
+        "2007-11-15T05:09:57",
+        "shirakawa go, japan",
+        "nikon d200",
+        "",
+        0.0333333,
+        22,
+        22,
+        400
+      ]
+    },
+    {
+      "slug": "chocolate-dna",
+      "title": "Chocolate DNA",
+      "ar": 1.5054,
+      "color": "oklch(0.633 0.112 74.0)",
+      "year": 2005,
+      "tip": "10 Apr 2005",
+      "cells": [
+        [
+          ["10 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/3.5", "f/aperture-f-3-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["250", "f/iso-250.html"]]
+      ],
+      "sort": [
+        "chocolate dna",
+        "2005-04-10T20:19:21",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        3.5,
+        18,
+        250
+      ]
+    },
+    {
+      "slug": "hanami-fire",
+      "title": "Hanami fire",
+      "ar": 1.5054,
+      "color": "oklch(0.742 0.171 58.3)",
+      "year": 2005,
+      "tip": "5 Apr 2005",
+      "cells": [
+        [
+          ["5 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/16", "f/aperture-f-16.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["640", "f/iso-640.html"]]
+      ],
+      "sort": [
+        "hanami fire",
+        "2005-04-05T18:58:39",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        16,
+        70,
+        640
+      ]
+    },
+    {
+      "slug": "tea-in-kyoto",
+      "title": "Tea in Kyoto",
+      "ar": 1.5054,
+      "color": "oklch(0.686 0.042 83.3)",
+      "year": 2005,
+      "tip": "5 Apr 2005",
+      "cells": [
+        [
+          ["5 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["40 mm", "f/focal-normal.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "tea in kyoto",
+        "2005-04-05T14:33:02",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        4.5,
+        40,
+        200
+      ]
+    },
+    {
+      "slug": "kyoto-night",
+      "title": "Kyoto Night",
+      "ar": 1.5054,
+      "color": "oklch(0.698 0.141 67.1)",
+      "year": 2005,
+      "tip": "4 Apr 2005",
+      "cells": [
+        [
+          ["4 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["500", "f/iso-500.html"]]
+      ],
+      "sort": [
+        "kyoto night",
+        "2005-04-04T18:55:34",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        4.5,
+        70,
+        500
+      ]
+    }
+  ]
+}

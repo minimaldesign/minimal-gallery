@@ -1,0 +1,20 @@
+/* FIELD ROW */
+
+/* Inline composition: fields and buttons on one wrapping row
+   (newsletter signup, search bar…). Mix .fieldRow_field onto each field:
+   fieldRow never reaches into the field block itself, it only sets the
+   --field-message-position ui token so hints and errors overlay
+   below the row instead of pushing bottom-aligned buttons out of line.
+   Leave a little vertical room under the row for them. */
+.fieldRow {
+  --field-message-position: absolute;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--xs3);
+}
+
+.fieldRow_field {
+  flex: 1 1 200px;
+}

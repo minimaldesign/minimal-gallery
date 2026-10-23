@@ -1,0 +1,63 @@
+---
+/**
+ * The viewer: one photo filling the window (or whole, with Fit photo), a
+ * next zone over it and a previous zone on the left third, a hidden zoom
+ * checkbox, the strip, and a handle down to the photos. No wrapping: the
+ * last photo's next zone and the first photo's previous zone have no href.
+ */
+import {
+  photoHref,
+  srcsetOf,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+import Strip from './Strip.astro';
+
+interface Props {
+  photo: Photo;
+  context: Context;
+  prev: Photo | null;
+  next: Photo | null;
+  /** The page opens on the viewer: the photo is the page's main image. */
+  hero: boolean;
+}
+const { photo, context, prev, next, hero } = Astro.props;
+const { srcset, src, largest } = srcsetOf(photo);
+---
+
+<div class="stage">
+  <main class="stage_frame" id="main" tabindex="-1">
+    <div class="stage_scroller">
+      <a
+        class="stage_next"
+        href={next ? photoHref(next, context) : undefined}
+        aria-label={next ? `Next photo: ${next.title}` : undefined}>
+        <img
+          class="stage_photo"
+          src={src}
+          srcset={srcset || undefined}
+          sizes={srcset ? '100vw' : undefined}
+          width={largest.width}
+          height={largest.height}
+          alt={photo.title}
+          fetchpriority={hero ? 'high' : undefined}
+          decoding={hero ? undefined : 'async'}
+        />
+      </a>
+    </div>
+    <a
+      class="stage_prev"
+      href={prev ? photoHref(prev, context) : undefined}
+      aria-label={prev ? `Previous photo: ${prev.title}` : undefined}></a>
+    <input
+      class="stage_zoom a11y-srOnly"
+      type="checkbox"
+      tabindex="-1"
+      aria-label="Zoom to full size"
+    />
+  </main>
+  <Strip context={context} current={photo} />
+  <a class="stage_hint" href="#grid">
+    <span class="a11y-srOnly">Show the photos</span>
+  </a>
+</div>

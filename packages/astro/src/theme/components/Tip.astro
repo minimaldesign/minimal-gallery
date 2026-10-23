@@ -1,0 +1,22 @@
+---
+/**
+ * A toggle's tooltip: the label (its shortcut letter bold) and the key.
+ * `class` adds toggle_on or toggle_off for state-swapping tooltips.
+ */
+interface Props {
+  label: string;
+  shortcut?: string;
+  class?: string;
+}
+const { label, shortcut, class: extra } = Astro.props;
+---
+
+<span class:list={['toggle_tip surface', extra]} aria-hidden="true">
+  <Fragment set:html={label} />
+  {shortcut && (
+    <>
+      {' '}
+      <kbd>{shortcut}</kbd>
+    </>
+  )}
+</span>

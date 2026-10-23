@@ -1,0 +1,47 @@
+---
+/**
+ * The document shell: head (fonts, the theme CSS, the owner's custom.css
+ * last, the render-blocking theme script) and the body. Pages add head
+ * content through the `head` slot.
+ */
+import '../styles/site/theme.mg.tokens.css';
+import '../styles/mg.css';
+import 'virtual:minimalgallery/custom.css';
+import { withBase } from '../../gallery.ts';
+import themeScript from '../scripts/mg.js?url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Data the theme's CSS reads from the body (custom properties). */
+  style?: string;
+  class?: string;
+}
+const { title, description, style, class: className } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f0f0f" />
+    <meta name="mg-root" content={withBase('/')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..500&family=Geist:wght@300..700&display=swap"
+    />
+    <script is:inline src={themeScript} defer blocking="render"></script>
+    <slot name="head" />
+  </head>
+  <body class={className} style={style}>
+    <slot />
+  </body>
+</html>

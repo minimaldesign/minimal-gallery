@@ -1,0 +1,178 @@
+/*
+  Page-level layout scaffolds. Every variant extends the .layout base:
+
+    <body class="layout layout-sidebar">
+      <header>…</header>
+      <div class="layout_content">
+        <aside class="layout_content_aside">…</aside>
+        <main class="layout_content_main">…</main>
+      </div>
+      <footer>…</footer>
+    </body>
+
+  Widths come from the layout tokens in theme.default.ui.css:
+  --layout-content-width, --layout-aside-width, --layout-toc-width.
+*/
+
+/* App shell: header / content / footer, with a sticky footer. Base for
+   every variant below, also usable on its own. */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .layout_content {
+    flex: 1;
+  }
+}
+
+/* The main column is a size container: container-responsive components
+   (Tiles) pick their column count from it instead of the viewport.
+   Named, so custom rules can target it with @container main. */
+.layout_content_main {
+  container: main / inline-size;
+}
+
+/* Single centered reading column: articles, blog posts, legal pages. */
+.layout-centered {
+  .layout_content {
+    display: grid;
+    gap: var(--sm3);
+    grid-template-columns: 1fr minmax(0, var(--layout-content-width)) 1fr;
+    margin-top: var(--lg1);
+    margin-bottom: var(--sm1);
+    @media (--md) {
+      margin-top: var(--xl3);
+      margin-bottom: var(--md3);
+      gap: var(--md3);
+    }
+  }
+
+  .layout_content_main {
+    grid-column: 2;
+  }
+}
+
+/* Aside + main: settings pages, simple docs, blogs with a nav column.
+   Single column below --md, aside following source order. */
+.layout-sidebar {
+  .layout_content {
+    @media (--md) {
+      display: grid;
+      grid-template-columns: var(--layout-aside-width) minmax(0, 1fr);
+    }
+  }
+
+  .layout_content_main {
+    padding: var(--sm2);
+    @media (--md) {
+      grid-row: 1;
+      grid-column: 2;
+      padding: var(--lg1) var(--md2);
+    }
+  }
+
+  .layout_content_aside {
+    @media (--md) {
+      grid-row: 1;
+      grid-column: 1;
+      padding: var(--lg1) var(--md3);
+    }
+  }
+}
+
+/* Moves the aside to the reading end ("end", not "right": columns follow
+   the writing direction). Compose with .layout-sidebar. */
+.layout-sidebar-end {
+  .layout_content {
+    @media (--md) {
+      grid-template-columns: minmax(0, 1fr) var(--layout-aside-width);
+    }
+  }
+
+  .layout_content_main {
+    @media (--md) {
+      grid-column: 1;
+    }
+  }
+
+  .layout_content_aside {
+    @media (--md) {
+      grid-column: 2;
+    }
+  }
+}
+
+/* Documentation shell: nav aside + main + table of contents. One column
+   below --md with both asides hidden (put that navigation in your header
+   menu), nav + main from --md, TOC joins from --lg. */
+.layout-docs {
+  .layout_content {
+    @media (--md) {
+      display: grid;
+      grid-template-columns: var(--layout-aside-width) minmax(0, 1fr);
+    }
+    @media (--lg) {
+      grid-template-columns:
+        var(--layout-aside-width)
+        minmax(0, var(--layout-content-width))
+        var(--layout-toc-width);
+    }
+  }
+
+  .layout_content_main {
+    padding: var(--sm2);
+    @media (--md) {
+      grid-row: 1;
+      grid-column: 2;
+      padding: var(--lg1) var(--md2);
+    }
+  }
+
+  .layout_content_aside {
+    display: none;
+    @media (--md) {
+      display: block;
+      grid-row: 1;
+      grid-column: 1;
+      padding: var(--lg1) var(--md3);
+    }
+  }
+
+  /* Compose on the second aside: class="layout_content_aside
+     layout_content_aside-toc". Same specificity as the base element rule,
+     so these declarations must stay after it. */
+  .layout_content_aside-toc {
+    @media (--md) {
+      display: none;
+    }
+    @media (--lg) {
+      display: block;
+      grid-row: 1;
+      grid-column: 3;
+      padding: var(--lg1) var(--md3);
+    }
+  }
+}
+
+/* Two equal panes, stacked below --md: auth screens, "image + content"
+   landings. Panes are the direct children of .layout_content. */
+.layout-split {
+  .layout_content {
+    display: grid;
+    @media (--md) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+/* Full-viewport cover with centered content: landing, 404, coming soon.
+   dvh so mobile browser chrome never hides the content. */
+.layout-cover {
+  min-height: 100dvh;
+
+  .layout_content {
+    display: grid;
+    place-items: center;
+  }
+}

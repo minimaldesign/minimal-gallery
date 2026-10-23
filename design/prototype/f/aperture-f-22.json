@@ -1,0 +1,38 @@
+{
+  "title": "f/22",
+  "href": "f/aperture-f-22.html",
+  "photos": [
+    {
+      "slug": "shirakawa-go",
+      "title": "Shirakawa Go",
+      "ar": 1.495,
+      "color": "oklch(0.553 0.000 118.7)",
+      "year": 2007,
+      "tip": "15 Nov 2007 · Shirakawa Go, Japan",
+      "cells": [
+        [
+          ["15 November", "f/month-11.html"],
+          ["2007", "f/year-2007.html"]
+        ],
+        [["Shirakawa Go, Japan", "f/place-shirakawa-go-japan.html"]],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/22", "f/aperture-f-22.html"]],
+        [["22 mm", "f/focal-wide.html"]],
+        [["400", "f/iso-400.html"]]
+      ],
+      "sort": [
+        "shirakawa go",
+        "2007-11-15T05:09:57",
+        "shirakawa go, japan",
+        "nikon d200",
+        "",
+        0.0333333,
+        22,
+        22,
+        400
+      ]
+    }
+  ]
+}

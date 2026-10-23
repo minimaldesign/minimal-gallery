@@ -1,0 +1,60 @@
+---
+/**
+ * The filter palette: a dialog of chips, one per album and facet value,
+ * each a static context page with its own URL. Opened by Filter (command
+ * invoker), `/` or ⌘K; typing narrows the chips, Enter opens the first.
+ */
+import { contextHref, getPalette, type Context } from '../../gallery.ts';
+
+interface Props {
+  context: Context;
+}
+const { context } = Astro.props;
+const groups = await getPalette();
+---
+
+<dialog
+  class="palette surface"
+  id="palette"
+  aria-label="Filter photos"
+  closedby="any">
+  <form class="palette_bar" method="dialog">
+    <input
+      class="palette_search"
+      type="search"
+      name="q"
+      placeholder="Filter by place, camera, lens, year, f-number…"
+      aria-label="Filter photos"
+      autocomplete="off"
+      autofocus
+    />
+    <button
+      class="palette_close"
+      type="submit"
+      formnovalidate
+      value="close"
+      aria-label="Close"
+      tabindex="-1">
+      <kbd>Esc</kbd>
+    </button>
+  </form>
+  <div class="palette_groups">
+    {groups.map((g) => (
+      <section class="palette_group">
+        <h2 class="palette_heading">{g.heading}</h2>
+        <ul class="palette_chips">
+          {g.contexts.map((c) => (
+            <li>
+              <a
+                class="chip"
+                href={contextHref(c)}
+                aria-current={c.id === context.id ? 'page' : undefined}>
+                {c.title} <span class="chip_count">{c.photos.length}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</dialog>

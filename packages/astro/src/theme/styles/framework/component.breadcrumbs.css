@@ -1,0 +1,43 @@
+/* BREADCRUMBS */
+
+.breadcrumbs {
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--xs2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-sm);
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--xs2);
+  }
+
+  /* separator between crumbs; the / "" alt text keeps it out of the
+     accessibility tree in browsers that support the syntax */
+  li + li::before {
+    content: var(--breadcrumbs-separator);
+    content: var(--breadcrumbs-separator) / "";
+    color: var(--breadcrumbs-separator-color);
+  }
+
+  a {
+    color: var(--breadcrumbs-color);
+    text-decoration: none;
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+
+  [aria-current="page"] {
+    color: var(--breadcrumbs-color-current);
+    font-weight: var(--semi-bold);
+  }
+}

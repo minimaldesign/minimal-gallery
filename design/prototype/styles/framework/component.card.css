@@ -1,0 +1,192 @@
+.card {
+  --loading-animation: 2s infinite ease-in-out;
+
+  position: relative;
+  /* flex column so .card_byline can pin itself to the bottom */
+  display: flex;
+  flex-direction: column;
+  padding: var(--card-spacing);
+  color: var(--card-color);
+  border-radius: var(--card-border-radius);
+  border: var(--card-border-width) solid var(--card-border-color);
+  transition: box-shadow var(--transition);
+
+  &.is-disabled {
+    opacity: var(--o-2);
+    pointer-events: none;
+  }
+}
+
+.card-filled {
+  background: var(--card-bg-color);
+  border: none;
+}
+
+.card-raised {
+  border: var(--card-border-width) solid var(--card-border-color);
+  box-shadow: var(--card-shadow);
+}
+
+.card-raised:hover:not(.is-disabled) {
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* The card's single link, stretched over the whole card. Put .card_link on a
+   real anchor (usually the title link) so its text names the link. Positioned
+   parts later in the DOM (.card_actions) paint above the ::after and stay
+   clickable; parts before it need a z-index bump (.card_tags). */
+.card_link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card_header {
+  display: grid;
+  grid-template-columns: 1fr minmax(min-content, max-content);
+  align-items: start;
+  gap: var(--xs2);
+  margin-bottom: var(--xs3);
+  /* we need extra spacing when there is an image after the header */
+  &:has(+ .card_media) {
+    margin-bottom: var(--card-spacing);
+  }
+}
+
+.card_title {
+  margin-bottom: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--semi-bold);
+
+  a {
+    color: var(--card-color);
+    text-decoration: none;
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+}
+
+.card_header_text {
+  p {
+    font-size: var(--text-lg);
+    color: var(--card-secondary-text-color);
+  }
+}
+
+.card_badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs2);
+  justify-content: flex-end;
+  transform: translate(var(--xs2), calc(var(--xs2) * -1));
+}
+
+/* Badge visuals come from the badge component (component.badge.css); the
+   Card component renders class="badge card_badge" on each badge. */
+
+.card_tags {
+  /* keep the tags clickable above the stretched .card_link */
+  position: relative;
+  z-index: var(--z-1);
+  margin-bottom: var(--sm2);
+}
+
+.card_media {
+  margin-bottom: var(--card-spacing);
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+}
+
+.card_media-flush {
+  /* edge-to-edge image on top of the card */
+  margin: calc(var(--card-spacing) * -1);
+  margin-bottom: var(--card-spacing);
+  border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+}
+
+.card_image {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: var(--card-aspect-ratio);
+}
+
+.card_content {
+  /* in case it's inside a .prose context */
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* guaranteed gap before the byline even when nothing pins it down */
+  &:has(+ .card_byline) {
+    margin-bottom: var(--sm1);
+  }
+}
+
+.card_byline {
+  /* margin-top: auto pins bylines to the bottom, so a row of cards lines up */
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  margin-top: auto;
+  font-size: var(--text-sm);
+
+  time {
+    color: var(--card-secondary-text-color);
+  }
+}
+
+.card_author {
+  display: block;
+  font-weight: var(--semi-bold);
+}
+
+.card_actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--xs3);
+  /* positioned and after .card_link in the DOM, so actions paint above the
+     stretched link and stay clickable */
+  position: relative;
+  margin-top: var(--card-spacing);
+}
+
+/* Loading state */
+
+.card_placeholder {
+  width: 100%;
+  aspect-ratio: var(--card-aspect-ratio);
+  background: var(--card-loading-bg);
+  animation: pulse var(--loading-animation);
+}
+
+.card_loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs2);
+}
+
+.card_loadingLine {
+  height: var(--sm1);
+  background: var(--card-loading-bg);
+  border-radius: var(--radius-sm);
+  animation: pulse var(--loading-animation);
+}
+
+.card_loadingLine-short {
+  width: 75%;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

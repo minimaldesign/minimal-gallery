@@ -1,0 +1,163 @@
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--sm3);
+  height: var(--header-height);
+  padding-inline: var(--header-padding);
+  background-color: var(--header-background-color);
+}
+
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-5);
+  box-shadow: var(--shadow-sm);
+
+  &.is-top {
+    box-shadow: none;
+  }
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sm2);
+  font-size: var(--text-md);
+  font-weight: var(--semi-bold);
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.header_nav {
+  display: none;
+  margin-inline-start: auto;
+  @media (--md) {
+    display: block;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--md3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      height: var(--header-height);
+      font-size: var(--text-sm);
+      font-weight: var(--bold);
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color var(--transition);
+      &:hover,
+      &[aria-current] {
+        color: var(--link-color);
+      }
+    }
+  }
+}
+
+.header_actions {
+  display: none;
+  @media (--md) {
+    display: flex;
+    align-items: center;
+    gap: var(--sm3);
+  }
+}
+
+.header_navMobile {
+  margin-inline-start: auto;
+  @media (--md) {
+    display: none;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--sm3);
+    min-height: var(--sm3);
+    padding: var(--xs2);
+    color: var(--text-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  > div {
+    /* The full-screen menu is an always-dark surface by design; it does not
+       follow the light theme. Retheme it via the --header-menu-* tokens. */
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0; /* deliberately physical: full-viewport overlay pinned to the screen edge */
+    width: 100%;
+    height: 100svh;
+    overflow-y: auto;
+    padding: var(--lg3);
+    background-color: var(--header-menu-background-color);
+    z-index: var(--z-5);
+    &.is-open {
+      display: block;
+    }
+
+    button {
+      position: fixed;
+      top: 0;
+      right: 0; /* deliberately physical: close button pinned to a visual corner */
+      padding: var(--sm1) var(--sm3);
+      color: var(--header-menu-color);
+    }
+
+    a {
+      color: var(--header-menu-color);
+      text-decoration: none;
+      &[aria-current] {
+        color: var(--header-menu-color-current);
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 0;
+      }
+    }
+
+    > ul {
+      font-size: var(--text-lg);
+
+      li {
+        margin-top: var(--sm1);
+      }
+
+      ul {
+        padding-inline-start: var(--sm1);
+        border-inline-start: 1px solid var(--header-menu-border-color);
+        a {
+          color: var(--header-menu-secondary-color);
+          &[aria-current] {
+            color: var(--header-menu-color-current);
+          }
+        }
+      }
+    }
+  }
+}
+
+.header_menuExtra {
+  display: flex;
+  margin-bottom: var(--sm3);
+}

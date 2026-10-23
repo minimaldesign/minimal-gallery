@@ -1,0 +1,190 @@
+.button,
+.bt {
+  display: inline flex;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--bt-min-width);
+  min-height: var(--md3);
+  padding-inline: var(--xs3);
+  font-weight: var(--bt-font-weight);
+  font-size: var(--bt-font-size);
+  text-decoration: none;
+  color: var(--bt-color);
+  background-color: var(--bt-background-color);
+  border: var(--bt-border-width) solid var(--bt-border-color);
+  border-radius: var(--bt-border-radius);
+  cursor: pointer;
+  /* hover swaps the colors, :active scales; "all" would also animate
+     late-arriving layout changes (dev-server style injection, HMR) */
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:where(:not(:disabled):hover) {
+    color: var(--bt-color-hover);
+    background-color: var(--bt-background-color-hover);
+    border-color: var(--bt-border-color-hover, var(--bt-border-color));
+  }
+
+  &:where(:not(:disabled):active) {
+    transform: scale(0.97);
+  }
+
+  &[aria-disabled="true"],
+  &:disabled {
+    opacity: var(--o-2);
+    pointer-events: none;
+  }
+
+  svg {
+    width: var(--sm1);
+    height: var(--sm1);
+    margin-inline-start: 0;
+    margin-inline-end: 0.5em;
+  }
+
+  /* icon options */
+
+  &.bt-tightIcon {
+    /* also tweaked under .bt-lg under "sizes" section */
+    svg {
+      margin-inline-end: 0.25em;
+      margin-inline-start: calc(var(--xs2) * -1);
+    }
+  }
+
+  /* Colors */
+  /* Variants only swap the local custom properties */
+
+  &.bt-outline {
+    --bt-background-color: transparent;
+    --bt-border-color: var(--bt-outline-border-color);
+    --bt-color-hover: var(--bt-outline-color-hover);
+    --bt-background-color-hover: var(--bt-outline-background-color-hover);
+    --bt-border-color-hover: var(--bt-outline-border-color-hover);
+  }
+
+  &.bt-text {
+    --bt-border-color: transparent;
+    --bt-background-color: transparent;
+    --bt-color-hover: var(--link-color);
+    --bt-background-color-hover: transparent;
+    --bt-border-color-hover: transparent;
+  }
+
+  &.bt-outline-white {
+    --bt-color: var(--base-0);
+    --bt-color-hover: var(--base-0);
+    --bt-background-color: transparent;
+    --bt-background-color-hover: rgb(255 255 255 / 0.1);
+    --bt-border-color: var(--base-0);
+    --bt-border-color-hover: var(--base-0);
+  }
+
+  /* Solid inverse for colored/gradient surfaces (pairs with bt-outline-white) */
+  &.bt-white {
+    --bt-color: var(--primary-700);
+    --bt-color-hover: var(--primary-600);
+    --bt-background-color: var(--base-0);
+    --bt-background-color-hover: var(--primary-50);
+    --bt-border-color: var(--base-0);
+    --bt-border-color-hover: var(--base-0);
+  }
+
+  &.bt-primary {
+    --bt-color: var(--bt-primary-color);
+    --bt-color-hover: var(--bt-primary-color-hover);
+    --bt-background-color: var(--bt-primary-background-color);
+    --bt-background-color-hover: var(--bt-primary-background-color-hover);
+    --bt-border-color: var(--bt-primary-border-color);
+    --bt-border-color-hover: var(--bt-primary-background-color-hover);
+
+    &.bt-outline {
+      --bt-color: var(--bt-primary-background-color);
+      --bt-color-hover: var(--bt-primary-color);
+      --bt-background-color: transparent;
+      --bt-background-color-hover: var(--bt-primary-background-color);
+      --bt-border-color-hover: var(--bt-primary-border-color-hover);
+    }
+  }
+
+  &.bt-yes {
+    --bt-color: var(--base-0);
+    --bt-color-hover: var(--yes-500);
+    --bt-background-color: var(--yes-500);
+    --bt-background-color-hover: var(--yes-100);
+    --bt-border-color: var(--yes-500);
+    --bt-border-color-hover: var(--yes-100);
+
+    &.bt-outline {
+      --bt-color: var(--yes-500);
+      --bt-color-hover: var(--base-0);
+      --bt-background-color: transparent;
+      --bt-background-color-hover: var(--yes-500);
+      --bt-border-color-hover: var(--yes-500);
+    }
+  }
+
+  &.bt-no {
+    --bt-color: var(--base-0);
+    --bt-color-hover: var(--no-500);
+    --bt-background-color: var(--no-500);
+    --bt-background-color-hover: var(--no-100);
+    --bt-border-color: var(--no-500);
+    --bt-border-color-hover: var(--no-100);
+
+    &.bt-outline {
+      --bt-color: var(--no-500);
+      --bt-color-hover: var(--base-0);
+      --bt-background-color: transparent;
+      --bt-background-color-hover: var(--no-500);
+      --bt-border-color-hover: var(--no-500);
+    }
+  }
+
+  &.bt-maybe {
+    --bt-color: var(--base-0);
+    --bt-color-hover: var(--maybe-500);
+    --bt-background-color: var(--maybe-500);
+    --bt-background-color-hover: var(--maybe-100);
+    --bt-border-color: var(--maybe-500);
+    --bt-border-color-hover: var(--maybe-100);
+
+    &.bt-outline {
+      --bt-color: var(--maybe-500);
+      --bt-color-hover: var(--base-0);
+      --bt-background-color: transparent;
+      --bt-background-color-hover: var(--maybe-500);
+      --bt-border-color-hover: var(--maybe-500);
+    }
+  }
+}
+
+/* Sizes */
+
+.bt-md {
+  min-width: var(--bt-min-width-md);
+  min-height: var(--lg2);
+  padding-inline: var(--xs3);
+}
+
+.bt-lg {
+  min-width: var(--bt-min-width-lg);
+  min-height: var(--xl1);
+  padding-inline: var(--sm2);
+  font-size: var(--bt-font-size-lg);
+  border-radius: var(--bt-border-radius-lg);
+
+  svg {
+    width: var(--sm3);
+    height: var(--sm3);
+  }
+
+  &.bt-tightIcon {
+    svg {
+      margin-inline-start: calc(var(--xs3) * -1);
+    }
+  }
+}

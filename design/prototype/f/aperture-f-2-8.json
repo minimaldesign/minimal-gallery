@@ -1,0 +1,134 @@
+{
+  "title": "f/2.8",
+  "href": "f/aperture-f-2-8.html",
+  "photos": [
+    {
+      "slug": "lazy-sunday-afternoons",
+      "title": "Lazy sunday afternoons",
+      "ar": 1.5,
+      "color": "oklch(0.595 0.184 35.6)",
+      "year": 2009,
+      "tip": "10 May 2009",
+      "cells": [
+        [
+          ["10 May", "f/month-05.html"],
+          ["2009", "f/year-2009.html"]
+        ],
+        [],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [["24–70 mm f/2.8", "f/lens-24-70-mm-f-2-8.html"]],
+        [["1/1500 s", "f/shutter-1-1500-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["62 mm", "f/focal-short-tele.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "lazy sunday afternoons",
+        "2009-05-10T14:22:09",
+        "",
+        "nikon d200",
+        "24–70 mm f/2.8",
+        0.000666667,
+        2.8,
+        62,
+        100
+      ]
+    },
+    {
+      "slug": "saxophonist",
+      "title": "Saxophonist",
+      "ar": 1.5054,
+      "color": "oklch(0.476 0.098 62.3)",
+      "year": 2005,
+      "tip": "7 Sep 2005 · Central Park, Manhattan, USA",
+      "cells": [
+        [
+          ["7 September", "f/month-09.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [["Manhattan, USA", "f/place-manhattan-usa.html"]],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/200 s", "f/shutter-1-200-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["170 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "saxophonist",
+        "2005-09-07T15:35:32",
+        "manhattan, usa",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.005,
+        2.8,
+        170,
+        200
+      ]
+    },
+    {
+      "slug": "itchy",
+      "title": "Itchy",
+      "ar": 1.5054,
+      "color": "oklch(0.477 0.022 118.4)",
+      "year": 2004,
+      "tip": "1 Nov 2004",
+      "cells": [
+        [
+          ["1 November", "f/month-11.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/1000 s", "f/shutter-1-1000-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["200 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "itchy",
+        "2004-11-01T17:23:24",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.001,
+        2.8,
+        200,
+        200
+      ]
+    },
+    {
+      "slug": "soba-ya",
+      "title": "Soba ya",
+      "ar": 1.5054,
+      "color": "oklch(0.553 0.122 53.7)",
+      "year": 2004,
+      "tip": "16 Jun 2004",
+      "cells": [
+        [
+          ["16 June", "f/month-06.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Canon PowerShot S230", "f/camera-canon-powershot-s230.html"]],
+        [],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["5.4 mm", "f/focal-wide.html"]],
+        []
+      ],
+      "sort": [
+        "soba ya",
+        "2004-06-16T18:47:31",
+        "",
+        "canon powershot s230",
+        "",
+        0.02,
+        2.8,
+        5.4,
+        ""
+      ]
+    }
+  ]
+}

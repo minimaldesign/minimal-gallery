@@ -1,0 +1,129 @@
+/* HUD
+
+   The thin control bar, fixed at the top over the viewer.
+   Mix .surface on for the translucent material. Left: the breadcrumb
+   (gallery / context / photo). Right, as icon toggles with tooltips:
+   Filter, Info, Filmstrip, Whole photo (contain), help. Over the viewer it
+   fades when the pointer rests and only pointer movement brings it back;
+   an arrow key or a swipe hides it at once (data-idle="key"). In cover
+   mode (the photo fills the window) it floats as a detached bar with a
+   margin and rounded corners; in contain mode it is the full-width bar.
+   While the
+   panel is up it is not displayed at all (table_hud); the panel header
+   carries the breadcrumb and Filter there. */
+
+.hud {
+  --hud-padding-inline: calc(var(--sm1) * var(--mg-hud-density));
+
+  view-transition-name: hud;
+  view-transition-class: chrome;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--xs3) * var(--mg-hud-density));
+  min-height: var(--mg-hud-height);
+  padding-inline: var(--hud-padding-inline);
+  border-width: 0 0 var(--border-sm);
+  font-size: var(--mg-size-hud);
+  transition: opacity var(--mg-duration-quick) var(--mg-ease-out);
+
+  :root:not(:has(input[name='fit']:checked)) & {
+    margin: var(--xs3);
+    border-width: var(--border-sm);
+    border-radius: var(--radius-lg);
+  }
+
+  /* a hidden HUD is not named: otherwise its group, which keeps the
+     backdrop-filter, floats as an empty blurred bar during the transition.
+     The pointer on the nav keeps it shown, whatever the idle timer says. */
+  :root[data-idle] &:not(:hover) {
+    view-transition-name: none;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: var(--mg-duration-rest);
+  }
+
+  :root[data-idle='key'] & {
+    transition-duration: 0s;
+  }
+
+  @media (--md-n-below) {
+    --hud-padding-inline: var(--xs3);
+
+    flex-wrap: wrap;
+    gap: 0 var(--xs2);
+    padding-block: var(--xs1);
+  }
+}
+
+/* BREADCRUMB: gallery / context / photo title (the h1) */
+.hud_crumbs {
+  flex: 1;
+  min-width: 0;
+
+  ol {
+    display: flex;
+    align-items: baseline;
+    gap: var(--xs2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  li {
+    display: flex;
+    gap: var(--xs2);
+    min-width: 0;
+    color: var(--mg-ink-muted);
+
+    & + li::before {
+      content: '/' / '';
+      color: var(--mg-ink-faint);
+    }
+
+    &:last-child {
+      flex-shrink: 1;
+      overflow: hidden;
+    }
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--link-color-hover);
+    }
+  }
+
+  @media (--md-n-below) {
+    flex-basis: 100%;
+    min-height: var(--lg1);
+    display: flex;
+    align-items: center;
+  }
+}
+
+.hud_title {
+  margin-block-end: 0;
+  overflow: hidden;
+  color: var(--mg-ink);
+  font-size: inherit;
+  font-weight: var(--mg-weight-medium);
+  line-height: var(--leading-sm);
+  text-overflow: ellipsis;
+}
+
+.hud_actions {
+  display: flex;
+  align-items: center;
+  gap: var(--xs1);
+  margin-inline-start: auto;
+}
+
+/* The help button is hidden on touch screens. */
+
+.hud_help {
+  @media (--touch) {
+    display: none;
+  }
+}

@@ -1,0 +1,57 @@
+/* PROSE - Default style for text content */
+
+@scope (.prose) to (.not-prose) {
+  /* Component blocks mirror this heading-adjacent margin themselves in their
+     own files (.notice in component.notice.css; site-only .expressive-code,
+     .canIUse in their unlayered site CSS files): prose never reaches into
+     another component's classes. */
+  :is(p, ul, ol, blockquote, table):has(+ :is(h1, h2, h3, h4)) {
+    margin-bottom: calc(var(--prose-spacing) * 2);
+  }
+
+  p,
+  ul,
+  ol,
+  dl {
+    margin-bottom: var(--prose-spacing);
+    p,
+    ul,
+    ol,
+    dl {
+      margin-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    ul,
+    ol {
+      margin-inline-start: 0;
+      padding-inline-start: var(--sm2);
+    }
+    li {
+      margin-bottom: 0.5em;
+      &::marker {
+        color: light-dark(var(--base-300), var(--base-600));
+      }
+    }
+  }
+
+  ul {
+    margin-inline-start: var(--sm2);
+    list-style-type: "→ ";
+  }
+
+  ol {
+    margin-inline-start: var(--md2);
+    list-style-type: decimal-leading-zero;
+    li::marker {
+      font-size: var(--text-sm);
+    }
+  }
+
+  table {
+    margin-top: var(--md1);
+    margin-bottom: var(--md1);
+  }
+}

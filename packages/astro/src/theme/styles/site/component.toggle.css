@@ -1,0 +1,145 @@
+/* TOGGLE
+
+   Icon controls: a group (a fieldset of radios reads as a segmented pair,
+   with a hairline frame and a filled selected option) or, with
+   toggle-plain, a single icon button or checkbox without the frame. Each
+   option holds a 16px SVG icon with 1.5px strokes, or a glyph, and a hover
+   tooltip on the overlay surface. Used in the HUD (help, filmstrip) and
+   in the panel header (crop, grid or list). */
+
+.toggle {
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  padding: 2px;
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-md);
+}
+
+.toggle-plain {
+  padding: 0;
+  border: 0;
+}
+
+.toggle_option {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--md1) * var(--mg-hud-density));
+  height: calc(var(--md1) * var(--mg-hud-density));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+  font: inherit;
+  transition:
+    background-color var(--mg-duration-quick) var(--mg-ease-out),
+    color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--link-color-hover);
+  }
+
+  &:has(:checked),
+  &[aria-expanded='true'] {
+    background-color: var(--mg-control-active);
+    color: var(--mg-ink);
+  }
+
+  &:has(:focus-visible),
+  &:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .toggle-plain & {
+    width: calc(var(--md2) * var(--mg-hud-density));
+    height: calc(var(--md2) * var(--mg-hud-density));
+    border-radius: var(--radius-md);
+  }
+
+  @media (--md-n-below) {
+    width: var(--md2);
+    height: var(--md2);
+  }
+}
+
+.toggle_svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.toggle_glyph {
+  font-size: var(--text-sm);
+  font-weight: var(--mg-weight-medium);
+  line-height: 1;
+}
+
+/* the label under an icon, on hover or keyboard focus, with its key */
+.toggle_tip {
+  position: absolute;
+  inset-block-start: calc(100% + var(--xs2));
+  inset-inline-start: 50%;
+  z-index: var(--z-top);
+  display: none;
+  padding: var(--xs1) var(--xs2);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--mg-surface-shadow);
+  color: var(--mg-ink);
+  font-size: var(--mg-size-small);
+  opacity: 1;
+  pointer-events: none;
+  translate: -50% 0;
+  white-space: nowrap;
+
+  kbd {
+    margin-inline-start: var(--xs1);
+  }
+
+  /* the shortcut letter inside the label */
+  b {
+    font-weight: var(--bold);
+  }
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    display var(--mg-duration-quick) allow-discrete;
+
+  .toggle_option:hover &,
+  .toggle_option:has(:focus-visible) &,
+  .toggle_option:focus-visible & {
+    display: block;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  @media (--touch) {
+    .toggle_option:hover & {
+      display: none;
+    }
+  }
+}
+
+/* A checkbox that names its next state (Whole photo / Fill window): the
+   option holds both icons and both tooltips, and shows the pair for the
+   current state. */
+.toggle_option:has(:checked) .toggle_off,
+.toggle_option:not(:has(:checked)) .toggle_on {
+  display: none;
+}
+
+.toggle_on,
+.toggle_off {
+  &:not(.toggle_tip) {
+    display: contents;
+  }
+}

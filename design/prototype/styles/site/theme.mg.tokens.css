@@ -1,0 +1,184 @@
+/* MINIMAL GALLERY THEME: TOKEN CONTRACT
+
+   The tokens a gallery owner may change. Each one is registered with
+   @property, so its type (syntax) and default (initial-value) can be read
+   from this file, and an invalid override falls back to the default
+   instead of breaking the page.
+
+   The comment above each @property is the settings UI's source:
+     label: what the control is called
+     group: which panel it sits in
+     note: one line of help text
+
+   An owner's custom.css overrides these inside `@layer theme.user` or
+   unlayered. Nothing else in the theme needs to change. */
+
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+/* label: Background; group: Color; note: the near-black behind every page */
+@property --mg-ground {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: oklch(0.14 0 0);
+}
+
+/* label: Highlight color; group: Color; note: marks the current frame and the chosen options, and draws focus rings */
+@property --mg-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: oklch(0.97 0 0);
+}
+
+/* label: Photo fit; group: Viewer; note: cover fills the window and crops the edges, contain shows the whole photo; visitors can switch, this is the default */
+@property --mg-fit {
+  syntax: 'cover | contain';
+  inherits: true;
+  initial-value: cover;
+}
+
+/* label: Backdrop; group: Viewer; note: neutral is the background color, photo adds a hint of each photo’s own color, light is a pale gray */
+@property --mg-backdrop {
+  syntax: 'neutral | photo | light';
+  inherits: true;
+  initial-value: neutral;
+}
+
+/* label: Backdrop tint; group: Viewer; note: how much of the photo’s color reaches the backdrop in photo mode */
+@property --mg-backdrop-tint {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 10%;
+}
+
+/* label: Space around the photo; group: Viewer; note: 0 lets the photo meet the edge of the window */
+@property --mg-view-inset {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 16px;
+}
+
+/* label: Filmstrip; group: Viewer; note: the row of frames along the bottom of the viewer; off by default, visitors can turn it on, this is the default */
+@property --mg-strip {
+  syntax: 'on | off';
+  inherits: true;
+  initial-value: off;
+}
+
+/* label: Hide controls after; group: Overlays; note: idle time before the controls fade; only pointer movement brings them back */
+@property --mg-hud-idle {
+  syntax: '<time>';
+  inherits: true;
+  initial-value: 2s;
+}
+
+/* label: Control density; group: Overlays; note: 0.85 is compact, 1 is regular, 1.2 is roomy */
+@property --mg-hud-density {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+
+/* label: Overlay blur; group: Overlays; note: how much the photo behind a panel is blurred, 0 for none */
+@property --mg-hud-blur {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 20px;
+}
+
+/* label: Overlay fill; group: Overlays; note: below about 80% white text can lose contrast over bright photos */
+@property --mg-hud-opacity {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 82%;
+}
+
+/* label: Grid thumbnails; group: Grid; note: square crops or each photo’s own shape; visitors can switch, this is the default */
+@property --mg-grid-crop {
+  syntax: 'square | original';
+  inherits: true;
+  initial-value: square;
+}
+
+/* label: Photos view; group: Grid; note: a grid of thumbnails or a list with every value; visitors can switch, this is the default */
+@property --mg-grid-view {
+  syntax: 'grid | list';
+  inherits: true;
+  initial-value: grid;
+}
+
+/* label: Thumbnail size; group: Grid; note: the medium step, as a square’s side or a row’s height */
+@property --mg-row-height {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 180px;
+}
+
+/* label: Grid gap; group: Grid; note: space between thumbnails */
+@property --mg-grid-gap {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 3px;
+}
+
+/* label: Motion; group: Motion; note: scales every duration; 0 turns movement off */
+@property --mg-motion {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+
+@layer theme.user {
+  :root {
+    /* The contract's values where the screen size changes them */
+    @media (--md-n-below) {
+      --mg-row-height: 112px;
+      --mg-view-inset: 0px;
+    }
+
+    /* RAW PALETTE: neutral grays, oklch with no chroma. Chrome never
+       carries color, so it cannot bias how a photo's color is judged. */
+    --mg-gray-50: oklch(0.08 0 0);
+    --mg-gray-100: oklch(0.11 0 0);
+    --mg-gray-200: oklch(0.18 0 0);
+    --mg-gray-300: oklch(0.24 0 0);
+    --mg-gray-400: oklch(0.34 0 0);
+    --mg-gray-500: oklch(0.55 0 0);
+    --mg-gray-600: oklch(0.72 0 0);
+    --mg-gray-700: oklch(0.86 0 0);
+    --mg-gray-800: oklch(0.97 0 0);
+    --mg-white-a10: oklch(1 0 0 / 0.1);
+    --mg-white-a6: oklch(1 0 0 / 0.06);
+    --mg-white-a14: oklch(1 0 0 / 0.14);
+    --mg-black-a50: oklch(0 0 0 / 0.5);
+
+    /* TYPE: Geist for everything, Geist Mono for exposure values.
+       No uppercase anywhere; hierarchy comes from size, weight and ink. */
+    --text: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --display: var(--text);
+    --mono: 'Geist Mono', ui-monospace, monospace;
+    --mg-size-small: 0.75rem;
+    --mg-size-hud: 0.8125rem;
+    --mg-weight-medium: 540;
+
+    /* SPACING keeps mCSS's 4px scale (--xs1 … --tera3).
+       RADIUS: controls 6px, panels 10px, thumbnails square. */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+
+    /* ASSETS: authored SVG, used as masks or cursors */
+    --mg-icon-earlier: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15 5l-7 7 7 7' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --mg-icon-sort: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 6.5 5 3.5l3 3' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --mg-icon-later: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 5l7 7-7 7' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    /* chevrons (Lucide's chevron-right and chevron-left) drawn at 128px,
+       the largest cursor Chrome and Firefox accept (larger ones are
+       dropped): an 11.2px stroke, black at 70%, over a white outline 1px
+       wide on each side so they read on light and dark photos; hotspot at
+       the center. Chrome shows the pointer fallback where the cursor would
+       cross the window's edge. */
+    --mg-cursor-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23fff' stroke-width='13.2'/%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
+      64 64;
+    --mg-cursor-prev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23fff' stroke-width='13.2'/%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
+      64 64;
+  }
+}

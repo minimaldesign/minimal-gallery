@@ -1,0 +1,133 @@
+/* PALETTE
+
+   The filter palette (/ or Cmd-K, or the Filter button through the
+   command/commandfor invoker, no script needed). It only navigates: every
+   chip is a static facet page with its own URL, so arriving by URL needs
+   no script either. Typing narrows the chips (mg.js); Enter opens the
+   first one. palette-inline is the same palette set into a page. Mix
+   .surface on for the translucent material. */
+
+.palette {
+  width: min(44rem, 100vw - 2 * var(--sm1));
+  max-height: min(78dvh, 42rem);
+  margin-block-start: 12dvh;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    translate var(--mg-duration-quick) var(--mg-ease-out),
+    overlay var(--mg-duration-quick) allow-discrete,
+    display var(--mg-duration-quick) allow-discrete;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &:is(dialog):not([open]) {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--xs2));
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+      translate: 0 calc(-1 * var(--xs2));
+    }
+  }
+
+  &::backdrop {
+    opacity: 1;
+    transition:
+      opacity var(--mg-duration-quick) var(--mg-ease-out),
+      overlay var(--mg-duration-quick) allow-discrete,
+      display var(--mg-duration-quick) allow-discrete;
+  }
+
+  @starting-style {
+    &[open]::backdrop {
+      opacity: 0;
+    }
+  }
+
+  @media (--md-n-below) {
+    margin-block-start: var(--sm1);
+    max-height: calc(100dvh - 2 * var(--sm1));
+  }
+}
+
+.palette-inline {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-height: none;
+  margin: var(--sm1) var(--sm1) var(--sm3);
+  box-shadow: none;
+
+  @media (--md-n-below) {
+    margin-inline: var(--xs3);
+  }
+}
+
+.palette_bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sm1);
+  margin: 0;
+  padding: var(--xs3) var(--sm3);
+  border-block-end: var(--border-sm) solid var(--mg-hairline);
+
+  &:has(.palette_search:focus-visible) {
+    border-block-end-color: var(--mg-ink-faint);
+  }
+}
+
+.palette_search {
+  flex: 1;
+  min-width: 0;
+  height: var(--lg2);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: var(--text-lg);
+  outline: none;
+
+  &::placeholder {
+    color: var(--mg-ink-faint);
+  }
+}
+
+.palette_close {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+}
+
+.palette_groups {
+  display: grid;
+  gap: var(--sm3);
+  padding: var(--sm3);
+  overflow: auto;
+}
+
+.palette_heading {
+  margin-block-end: var(--xs2);
+  color: var(--mg-ink-muted);
+  font-size: var(--mg-size-hud);
+  font-weight: inherit;
+}
+
+.palette_chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

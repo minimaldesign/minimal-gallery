@@ -1,0 +1,70 @@
+{
+  "title": "1/50 s",
+  "href": "f/shutter-1-50-s.html",
+  "photos": [
+    {
+      "slug": "bamboo-forest",
+      "title": "Bamboo forest",
+      "ar": 1.5054,
+      "color": "oklch(0.460 0.052 116.6)",
+      "year": 2005,
+      "tip": "8 Apr 2005",
+      "cells": [
+        [
+          ["8 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "bamboo forest",
+        "2005-04-08T10:35:43",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.02,
+        4.5,
+        18,
+        200
+      ]
+    },
+    {
+      "slug": "soba-ya",
+      "title": "Soba ya",
+      "ar": 1.5054,
+      "color": "oklch(0.553 0.122 53.7)",
+      "year": 2004,
+      "tip": "16 Jun 2004",
+      "cells": [
+        [
+          ["16 June", "f/month-06.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Canon PowerShot S230", "f/camera-canon-powershot-s230.html"]],
+        [],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["5.4 mm", "f/focal-wide.html"]],
+        []
+      ],
+      "sort": [
+        "soba ya",
+        "2004-06-16T18:47:31",
+        "",
+        "canon powershot s230",
+        "",
+        0.02,
+        2.8,
+        5.4,
+        ""
+      ]
+    }
+  ]
+}

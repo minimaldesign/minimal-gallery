@@ -1,0 +1,36 @@
+.socialMedia {
+  --icon-size: var(--sm3);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sm1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  a {
+    display: block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    /* in case SVG has dimensions specified in its code */
+    svg {
+      width: var(--icon-size);
+      height: var(--icon-size);
+    }
+  }
+}
+
+.socialMedia-md {
+  --icon-size: var(--md2);
+}
+
+.socialMedia-lg {
+  --icon-size: var(--lg2);
+  gap: var(--sm2);
+}
+
+.socialMedia-xl {
+  --icon-size: var(--xl2);
+  gap: var(--md2);
+}

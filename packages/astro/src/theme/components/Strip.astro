@@ -1,0 +1,52 @@
+---
+/**
+ * The filmstrip: the context's frames along the bottom of the viewer. Off
+ * by default (the HUD toggle or `s`); frames load lazily, so a hidden strip
+ * fetches nothing.
+ */
+import {
+  photoHref,
+  ratioOf,
+  thumbOf,
+  withBase,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+
+interface Props {
+  context: Context;
+  current: Photo;
+}
+const { context, current } = Astro.props;
+const n = context.photos.length;
+---
+
+<nav
+  class="strip surface stage_strip"
+  aria-label={`${context.label}, ${n} photo${n === 1 ? '' : 's'}`}>
+  <ol class="strip_list">
+    {context.photos.map((p) => {
+      const t = thumbOf(p);
+      return (
+        <li
+          class="strip_item"
+          style={`--ar: ${ratioOf(p)}; --photo: ${p.color}`}>
+          <a
+            class="strip_link"
+            href={photoHref(p, context)}
+            aria-current={p.id === current.id ? 'page' : undefined}>
+            <img
+              class="strip_image"
+              src={withBase(t.url)}
+              width={t.width}
+              height={t.height}
+              alt={p.title}
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </li>
+      );
+    })}
+  </ol>
+</nav>

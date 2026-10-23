@@ -1,0 +1,55 @@
+/* FIELD */
+
+.field {
+  /* containing block for overlaid messages (see below) */
+  position: relative;
+  display: grid;
+  gap: var(--field-spacing);
+
+  label {
+    /* the grid gap handles spacing (overrides the elements-layer margin) */
+    margin-bottom: 0;
+  }
+}
+
+/* Messages sit in flow under the control. --field-message-position is the
+   interface for row compositions: with `absolute` (set by .fieldRow) they
+   overlay below the field instead of adding to its height, so the control
+   stays the field's bottom edge and a revealed error can't push a
+   bottom-aligned neighbor (button…) out of line. top/inset only apply then. */
+.field_hint,
+.field_error {
+  position: var(--field-message-position);
+  top: calc(100% + var(--field-spacing));
+  inset-inline: 0;
+  font-size: var(--text-sm);
+}
+
+.field_hint {
+  color: var(--field-hint-color);
+}
+
+.field_error {
+  display: none;
+  color: var(--field-error-color);
+}
+
+/* Native validation: reveal the error message once the control has been
+   interacted with and is invalid (:user-invalid, not :invalid, so pristine
+   forms don't light up red). The border color comes from elements.form.css.
+   .is-invalid forces the same presentation from markup, for server-side
+   validation results, tests, and demos. */
+.field:has(:user-invalid),
+.field.is-invalid {
+  .field_error {
+    display: block;
+  }
+
+  &:has(.field_error) .field_hint {
+    display: none;
+  }
+}
+
+.field.is-invalid :is(input, select, textarea) {
+  border-color: var(--input-border-color-invalid);
+}

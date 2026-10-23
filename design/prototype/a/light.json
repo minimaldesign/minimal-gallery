@@ -1,0 +1,230 @@
+{
+  "title": "Light",
+  "href": "a/light.html",
+  "photos": [
+    {
+      "slug": "soba-ya",
+      "title": "Soba ya",
+      "ar": 1.5054,
+      "color": "oklch(0.553 0.122 53.7)",
+      "year": 2004,
+      "tip": "16 Jun 2004",
+      "cells": [
+        [
+          ["16 June", "f/month-06.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Canon PowerShot S230", "f/camera-canon-powershot-s230.html"]],
+        [],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["5.4 mm", "f/focal-wide.html"]],
+        []
+      ],
+      "sort": [
+        "soba ya",
+        "2004-06-16T18:47:31",
+        "",
+        "canon powershot s230",
+        "",
+        0.02,
+        2.8,
+        5.4,
+        ""
+      ]
+    },
+    {
+      "slug": "kyoto-night",
+      "title": "Kyoto Night",
+      "ar": 1.5054,
+      "color": "oklch(0.698 0.141 67.1)",
+      "year": 2005,
+      "tip": "4 Apr 2005",
+      "cells": [
+        [
+          ["4 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["500", "f/iso-500.html"]]
+      ],
+      "sort": [
+        "kyoto night",
+        "2005-04-04T18:55:34",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        4.5,
+        70,
+        500
+      ]
+    },
+    {
+      "slug": "bamboo-forest",
+      "title": "Bamboo forest",
+      "ar": 1.5054,
+      "color": "oklch(0.460 0.052 116.6)",
+      "year": 2005,
+      "tip": "8 Apr 2005",
+      "cells": [
+        [
+          ["8 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/50 s", "f/shutter-1-50-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "bamboo forest",
+        "2005-04-08T10:35:43",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.02,
+        4.5,
+        18,
+        200
+      ]
+    },
+    {
+      "slug": "books-and-streetlight",
+      "title": "Books and streetlight",
+      "ar": 1.5054,
+      "color": "oklch(0.278 0.050 29.9)",
+      "year": 2005,
+      "tip": "1 Aug 2005",
+      "cells": [
+        [
+          ["1 August", "f/month-08.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["2.5 s", "f/shutter-2-5-s.html"]],
+        [["f/3.5", "f/aperture-f-3-5.html"]],
+        [["18 mm", "f/focal-wide.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "books and streetlight",
+        "2005-08-01T21:38:53",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        2.5,
+        3.5,
+        18,
+        200
+      ]
+    },
+    {
+      "slug": "towards-the-sun",
+      "title": "Towards the sun",
+      "ar": 1.5054,
+      "color": "oklch(0.341 0.045 73.7)",
+      "year": 2005,
+      "tip": "3 Nov 2005 · Coney Island, Brooklyn, USA",
+      "cells": [
+        [
+          ["3 November", "f/month-11.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [["Brooklyn, USA", "f/place-brooklyn-usa.html"]],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/320 s", "f/shutter-1-320-s.html"]],
+        [["f/9", "f/aperture-f-9.html"]],
+        [["60 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "towards the sun",
+        "2005-11-03T16:02:40",
+        "brooklyn, usa",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.003125,
+        9,
+        60,
+        200
+      ]
+    },
+    {
+      "slug": "real-life-sandbox",
+      "title": "Real Life Sandbox",
+      "ar": 1.5054,
+      "color": "oklch(0.422 0.057 59.3)",
+      "year": 2006,
+      "tip": "28 Jan 2006 · Coney Island, Brooklyn, USA",
+      "cells": [
+        [
+          ["28 January", "f/month-01.html"],
+          ["2006", "f/year-2006.html"]
+        ],
+        [["Brooklyn, USA", "f/place-brooklyn-usa.html"]],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [],
+        [["1/640 s", "f/shutter-1-640-s.html"]],
+        [["f/9", "f/aperture-f-9.html"]],
+        [["50 mm", "f/focal-normal.html"]],
+        [["320", "f/iso-320.html"]]
+      ],
+      "sort": [
+        "real life sandbox",
+        "2006-01-28T16:32:55",
+        "brooklyn, usa",
+        "nikon d70",
+        "",
+        0.0015625,
+        9,
+        50,
+        320
+      ]
+    },
+    {
+      "slug": "prayers",
+      "title": "Prayers",
+      "ar": 1.495,
+      "color": "oklch(0.336 0.051 68.5)",
+      "year": 2007,
+      "tip": "12 Nov 2007 · To-Dai ji, Nara, Japan",
+      "cells": [
+        [
+          ["12 November", "f/month-11.html"],
+          ["2007", "f/year-2007.html"]
+        ],
+        [["Nara, Japan", "f/place-nara-japan.html"]],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [["18–200 mm f/3.5–5.6", "f/lens-18-200-mm-f-3-5-5-6.html"]],
+        [["1/40 s", "f/shutter-1-40-s.html"]],
+        [["f/5", "f/aperture-f-5.html"]],
+        [["65 mm", "f/focal-short-tele.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "prayers",
+        "2007-11-12T15:29:49",
+        "nara, japan",
+        "nikon d200",
+        "18–200 mm f/3.5–5.6",
+        0.025,
+        5,
+        65,
+        100
+      ]
+    }
+  ]
+}

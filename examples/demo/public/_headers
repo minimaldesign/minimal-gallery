@@ -1,0 +1,3 @@
+# Derivatives are content-addressed (<hash8>-<variant>), so they never change.
+/_mg/*
+  Cache-Control: public, max-age=31536000, immutable

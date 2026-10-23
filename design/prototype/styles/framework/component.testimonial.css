@@ -1,0 +1,29 @@
+/* TESTIMONIAL */
+
+.testimonial {
+  display: grid;
+  align-content: start;
+  gap: var(--sm1);
+}
+
+.testimonial_quote {
+  /* the visual style comes from the blockquote element styling */
+  margin-bottom: 0;
+}
+
+.testimonial_byline {
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  font-size: var(--text-sm);
+}
+
+.testimonial_name {
+  display: block;
+  font-weight: var(--semi-bold);
+}
+
+.testimonial_role {
+  display: block;
+  color: var(--testimonial-role-color);
+}

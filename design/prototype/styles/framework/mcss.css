@@ -1,0 +1,72 @@
+/*
+  mCSS framework entry point.
+
+  mCSS recreates the ITCSS specificity strategy using modern CSS layers.
+  Anything outside these layers has higher specificity, except helpers which use
+  `!important` to override everything, by design.
+*/
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@import url(./settings.media-queries.css);
+@import url(./settings.mixins.css);
+
+/*
+  Your theme is not imported here, but at the same level as mCSS:
+
+    @import url(./framework/mcss.css);
+    @import url(./framework/theme.default.css);
+
+  See the default theme for how to create your own.
+*/
+
+/* Reset & Normalize */
+@import url(./base.reset.css) layer(base);
+
+/* Global styles for HTML elements and their abstractions */
+/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element */
+@import url(./elements.sectioning.css) layer(elements);
+@import url(./elements.text.css) layer(elements);
+@import url(./elements.text.quotes.css) layer(elements);
+@import url(./elements.media.css) layer(elements);
+@import url(./elements.table.css) layer(elements);
+@import url(./elements.form.css) layer(elements);
+@import url(./elements.interactive.css) layer(elements);
+
+/* Global styles */
+@import url(./global.a11y.css) layer(global);
+@import url(./global.animation.css) layer(global);
+@import url(./global.grid.css) layer(global);
+@import url(./global.layout.css) layer(global);
+@import url(./global.prose.css) layer(global);
+@import url(./global.wrap.css) layer(global);
+
+/*
+  Components are optional and not imported here
+  You import them at the same level as mCSS:
+
+    @import url(./framework/mcss.css);
+    @import url(./framework/mcss.components.css);
+
+  See the default theme for how to create your own.
+*/
+
+/*
+  `external` is an empty slot for third-party CSS (npm packages, plugins).
+  Import vendor stylesheets into it from your own global import:
+
+    @import url(../node_modules/some-package/widget.css) layer(external);
+
+  Vendor CSS in the layer loses to all your unlayered CSS, so it stays
+  easy to override. Write those overrides in a patch.* file (e.g.
+  patch.datepicker.css) in your own CSS folder.
+*/
+
+/* Helpers for local overrides. Every declaration is !important */
+/* (Use VERY sparingly, or you might as well use Tailwind…) */
+@import url(./help.colors.css) layer(helpers);
+@import url(./help.devtools.css) layer(helpers);
+@import url(./help.layout.css) layer(helpers);
+@import url(./help.opacity.css) layer(helpers);
+@import url(./help.ratios.css) layer(helpers);
+@import url(./help.spacing.css) layer(helpers);
+@import url(./help.typography.css) layer(helpers);

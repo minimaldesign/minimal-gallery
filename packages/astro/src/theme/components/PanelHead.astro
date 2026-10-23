@@ -1,0 +1,118 @@
+---
+/**
+ * The panel header, the top of the window while the panel is up: the
+ * breadcrumb (home / context) and the count; the crop pair and the size
+ * triple (grid view only); then the grid/list pair and Filter at the right
+ * end, so nothing moves between views. Radios, so they work without script.
+ */
+import config from 'virtual:minimalgallery/config';
+import { contextHref, withBase, type Context } from '../../gallery.ts';
+import FilterButton from './FilterButton.astro';
+import ToggleOption from './ToggleOption.astro';
+
+interface Props {
+  context: Context;
+}
+const { context } = Astro.props;
+const { defaults } = config;
+const n = context.photos.length;
+---
+
+<header class="table_head surface">
+  <nav class="table_crumbs" aria-label="Context">
+    <ol>
+      <li>
+        <a href={withBase('/')}>{config.title}</a>
+      </li>
+      {context.title && (
+        <li>
+          <a class="table_context" href={contextHref(context)}>
+            {context.title}
+          </a>
+        </li>
+      )}
+    </ol>
+    <span class="table_count">
+      {n} photo{n === 1 ? '' : 's'}
+    </span>
+  </nav>
+  <div class="table_tools">
+    <fieldset class="toggle table_gridOnly">
+      <legend class="a11y-srOnly">Thumbnail shape</legend>
+      <ToggleOption
+        type="radio"
+        name="crop"
+        value="square"
+        label="Crop or original <b>t</b>humbnail"
+        icon="square"
+        shortcut="t"
+        aria="Cropped thumbnails"
+        checked={defaults.crop === 'square'}
+      />
+      <ToggleOption
+        type="radio"
+        name="crop"
+        value="original"
+        label="Crop or original <b>t</b>humbnail"
+        icon="original"
+        shortcut="t"
+        aria="Original thumbnails"
+        checked={defaults.crop === 'original'}
+      />
+    </fieldset>
+    <fieldset class="toggle table_gridOnly">
+      <legend class="a11y-srOnly">Thumbnail size</legend>
+      <ToggleOption
+        type="radio"
+        name="size"
+        value="small"
+        label="Small thumbnails"
+        icon="small"
+        shortcut="1"
+        checked={defaults.size === 'small'}
+      />
+      <ToggleOption
+        type="radio"
+        name="size"
+        value="medium"
+        label="Medium thumbnails"
+        icon="medium"
+        shortcut="2"
+        checked={defaults.size === 'medium'}
+      />
+      <ToggleOption
+        type="radio"
+        name="size"
+        value="large"
+        label="Large thumbnails"
+        icon="large"
+        shortcut="3"
+        checked={defaults.size === 'large'}
+      />
+    </fieldset>
+    <fieldset class="toggle">
+      <legend class="a11y-srOnly">View</legend>
+      <ToggleOption
+        type="radio"
+        name="view"
+        value="grid"
+        label="Grid or list <b>v</b>iew"
+        icon="grid"
+        shortcut="v"
+        aria="Grid view"
+        checked={defaults.view === 'grid'}
+      />
+      <ToggleOption
+        type="radio"
+        name="view"
+        value="list"
+        label="Grid or list <b>v</b>iew"
+        icon="list"
+        shortcut="v"
+        aria="List view"
+        checked={defaults.view === 'list'}
+      />
+    </fieldset>
+    <FilterButton />
+  </div>
+</header>

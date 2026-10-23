@@ -1,0 +1,32 @@
+{
+  "name": "create-minimalgallery",
+  "version": "0.0.0",
+  "description": "Create a minimalgallery site: npm create minimalgallery@latest.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "bin": {
+    "create-minimalgallery": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.8.1"
+  },
+  "devDependencies": {
+    "@minimalgallery/pipeline": "workspace:*",
+    "@types/node": "^26.6.5",
+    "jiti": "^2.7.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

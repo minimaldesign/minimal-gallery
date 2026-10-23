@@ -1,0 +1,65 @@
+---
+/**
+ * The grid: square crops by default, justified rows in original mode, no
+ * headings or groups. The first thumbnail of each year carries `y-<year>`
+ * for the date rail. Each thumbnail has a tooltip (title, date and place).
+ */
+import {
+  photoHref,
+  ratioOf,
+  srcsetOf,
+  thumbOf,
+  tipOf,
+  withBase,
+  yearOf,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+
+interface Props {
+  context: Context;
+  current: Photo;
+}
+const { context, current } = Astro.props;
+const seen = new Set<string>();
+const firstOfYear = (p: Photo) => {
+  const y = yearOf(p);
+  if (seen.has(y)) return undefined;
+  seen.add(y);
+  return `y-${y}`;
+};
+---
+
+<ol class="thumbs">
+  {context.photos.map((p) => {
+    const { srcset } = srcsetOf(p, 1280);
+    const t = thumbOf(p);
+    return (
+      <li
+        class="thumbs_item"
+        id={firstOfYear(p)}
+        style={`--ar: ${ratioOf(p)}; --photo: ${p.color}`}>
+        <a
+          class="thumbs_link"
+          href={photoHref(p, context)}
+          aria-current={p.id === current.id ? 'page' : undefined}>
+          <img
+            class="thumbs_image"
+            src={withBase(t.url)}
+            srcset={srcset || undefined}
+            sizes="(width < 768px) 34vw, 20vw"
+            width={t.width}
+            height={t.height}
+            alt={p.title}
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="thumbs_tip surface" aria-hidden="true">
+            <span class="thumbs_tipTitle">{p.title}</span>
+            <span class="thumbs_tipMeta">{tipOf(p)}</span>
+          </span>
+        </a>
+      </li>
+    );
+  })}
+</ol>

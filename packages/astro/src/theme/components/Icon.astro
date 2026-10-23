@@ -1,0 +1,16 @@
+---
+/** One theme icon; `toggle_svg` sizes and strokes it (component.toggle.css). */
+import { ICONS, type IconName } from './icons.ts';
+
+interface Props {
+  name: IconName;
+}
+const { name } = Astro.props;
+---
+
+<svg
+  class="toggle_svg"
+  viewBox="0 0 16 16"
+  aria-hidden="true"
+  set:html={ICONS[name]}
+/>

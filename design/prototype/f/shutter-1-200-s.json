@@ -1,0 +1,70 @@
+{
+  "title": "1/200 s",
+  "href": "f/shutter-1-200-s.html",
+  "photos": [
+    {
+      "slug": "saxophonist",
+      "title": "Saxophonist",
+      "ar": 1.5054,
+      "color": "oklch(0.476 0.098 62.3)",
+      "year": 2005,
+      "tip": "7 Sep 2005 · Central Park, Manhattan, USA",
+      "cells": [
+        [
+          ["7 September", "f/month-09.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [["Manhattan, USA", "f/place-manhattan-usa.html"]],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/200 s", "f/shutter-1-200-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["170 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "saxophonist",
+        "2005-09-07T15:35:32",
+        "manhattan, usa",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.005,
+        2.8,
+        170,
+        200
+      ]
+    },
+    {
+      "slug": "kyoto-bikers",
+      "title": "Kyoto Bikers",
+      "ar": 1.5054,
+      "color": "oklch(0.296 0.007 312.2)",
+      "year": 2005,
+      "tip": "4 Apr 2005",
+      "cells": [
+        [
+          ["4 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/200 s", "f/shutter-1-200-s.html"]],
+        [["f/7.1", "f/aperture-f-7-1.html"]],
+        [["55 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "kyoto bikers",
+        "2005-04-04T14:34:23",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.005,
+        7.1,
+        55,
+        200
+      ]
+    }
+  ]
+}

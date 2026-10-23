@@ -1,0 +1,67 @@
+/* KEYS
+
+   The keyboard shortcuts, shown in the left-hand pane (pane-keys, see
+   component.pane.css), in two sections: viewing mode and browsing mode.
+   Every row is laid out on one line height, the key cap's: caps have a
+   fixed height and the description's first line is centered on them, so
+   caps never stretch when a description wraps. The letter that is the
+   shortcut is bold in the description. */
+
+.keys_section {
+  --keys-cap-height: calc(var(--mg-size-small) * 1.6);
+
+  & + & {
+    margin-block-start: var(--sm1);
+  }
+}
+
+.keys_heading {
+  margin-block-end: var(--xs3);
+  color: var(--mg-ink);
+  font-size: var(--mg-size-small);
+  font-weight: var(--mg-weight-medium);
+}
+
+.keys_list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--xs2) var(--sm1);
+  align-items: start;
+  margin: 0;
+}
+
+.keys_combo {
+  /* the row gap does the spacing (mCSS adds a top margin to dd + dt) */
+  margin-block-start: 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: var(--xs1);
+  min-height: var(--keys-cap-height);
+  font-weight: inherit;
+
+  kbd {
+    display: inline-grid;
+    place-items: center;
+    height: var(--keys-cap-height);
+    padding-block: 0;
+    line-height: 1;
+  }
+}
+
+.keys_or {
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+  line-height: var(--keys-cap-height);
+}
+
+.keys_action {
+  margin: 0;
+  color: var(--mg-ink-muted);
+  line-height: var(--keys-cap-height);
+
+  b {
+    color: var(--mg-ink);
+    font-weight: var(--bold);
+  }
+}

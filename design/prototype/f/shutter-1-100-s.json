@@ -1,0 +1,38 @@
+{
+  "title": "1/100 s",
+  "href": "f/shutter-1-100-s.html",
+  "photos": [
+    {
+      "slug": "kaiona-cafe",
+      "title": "Kaiona Cafe",
+      "ar": 1.5054,
+      "color": "oklch(0.654 0.019 242.6)",
+      "year": 2005,
+      "tip": "18 Apr 2005",
+      "cells": [
+        [
+          ["18 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/100 s", "f/shutter-1-100-s.html"]],
+        [["f/5", "f/aperture-f-5.html"]],
+        [["70 mm", "f/focal-short-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "kaiona cafe",
+        "2005-04-18T11:57:55",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.01,
+        5,
+        70,
+        200
+      ]
+    }
+  ]
+}

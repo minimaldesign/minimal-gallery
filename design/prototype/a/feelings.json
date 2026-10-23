@@ -1,0 +1,166 @@
+{
+  "title": "Feelings",
+  "href": "a/feelings.html",
+  "photos": [
+    {
+      "slug": "itchy",
+      "title": "Itchy",
+      "ar": 1.5054,
+      "color": "oklch(0.477 0.022 118.4)",
+      "year": 2004,
+      "tip": "1 Nov 2004",
+      "cells": [
+        [
+          ["1 November", "f/month-11.html"],
+          ["2004", "f/year-2004.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["80–200 mm f/2.8", "f/lens-80-200-mm-f-2-8.html"]],
+        [["1/1000 s", "f/shutter-1-1000-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["200 mm", "f/focal-tele.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "itchy",
+        "2004-11-01T17:23:24",
+        "",
+        "nikon d70",
+        "80–200 mm f/2.8",
+        0.001,
+        2.8,
+        200,
+        200
+      ]
+    },
+    {
+      "slug": "tea-in-kyoto",
+      "title": "Tea in Kyoto",
+      "ar": 1.5054,
+      "color": "oklch(0.686 0.042 83.3)",
+      "year": 2005,
+      "tip": "5 Apr 2005",
+      "cells": [
+        [
+          ["5 April", "f/month-04.html"],
+          ["2005", "f/year-2005.html"]
+        ],
+        [],
+        [["Nikon D70", "f/camera-nikon-d70.html"]],
+        [["18–70 mm f/3.5–4.5", "f/lens-18-70-mm-f-3-5-4-5.html"]],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/4.5", "f/aperture-f-4-5.html"]],
+        [["40 mm", "f/focal-normal.html"]],
+        [["200", "f/iso-200.html"]]
+      ],
+      "sort": [
+        "tea in kyoto",
+        "2005-04-05T14:33:02",
+        "",
+        "nikon d70",
+        "18–70 mm f/3.5–4.5",
+        0.0333333,
+        4.5,
+        40,
+        200
+      ]
+    },
+    {
+      "slug": "shirakawa-go",
+      "title": "Shirakawa Go",
+      "ar": 1.495,
+      "color": "oklch(0.553 0.000 118.7)",
+      "year": 2007,
+      "tip": "15 Nov 2007 · Shirakawa Go, Japan",
+      "cells": [
+        [
+          ["15 November", "f/month-11.html"],
+          ["2007", "f/year-2007.html"]
+        ],
+        [["Shirakawa Go, Japan", "f/place-shirakawa-go-japan.html"]],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [],
+        [["1/30 s", "f/shutter-1-30-s.html"]],
+        [["f/22", "f/aperture-f-22.html"]],
+        [["22 mm", "f/focal-wide.html"]],
+        [["400", "f/iso-400.html"]]
+      ],
+      "sort": [
+        "shirakawa go",
+        "2007-11-15T05:09:57",
+        "shirakawa go, japan",
+        "nikon d200",
+        "",
+        0.0333333,
+        22,
+        22,
+        400
+      ]
+    },
+    {
+      "slug": "montauk",
+      "title": "Montauk",
+      "ar": 1,
+      "color": "oklch(0.428 0.000 118.7)",
+      "year": 2008,
+      "tip": "2 Jul 2008",
+      "cells": [
+        [
+          ["2 July", "f/month-07.html"],
+          ["2008", "f/year-2008.html"]
+        ],
+        [],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [],
+        [["1/320 s", "f/shutter-1-320-s.html"]],
+        [["f/8", "f/aperture-f-8.html"]],
+        [["50 mm", "f/focal-normal.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "montauk",
+        "2008-07-02T15:03:23",
+        "",
+        "nikon d200",
+        "",
+        0.003125,
+        8,
+        50,
+        100
+      ]
+    },
+    {
+      "slug": "greenport",
+      "title": "Greenport",
+      "ar": 1.3333,
+      "color": "oklch(0.479 0.047 289.3)",
+      "year": 2013,
+      "tip": "2 Aug 2013",
+      "cells": [
+        [
+          ["2 August", "f/month-08.html"],
+          ["2013", "f/year-2013.html"]
+        ],
+        [],
+        [["Canon PowerShot S95", "f/camera-canon-powershot-s95.html"]],
+        [],
+        [["1/640 s", "f/shutter-1-640-s.html"]],
+        [["f/4", "f/aperture-f-4.html"]],
+        [["6 mm", "f/focal-wide.html"]],
+        [["80", "f/iso-80.html"]]
+      ],
+      "sort": [
+        "greenport",
+        "2013-08-02T15:42:17",
+        "",
+        "canon powershot s95",
+        "",
+        0.0015625,
+        4,
+        6,
+        80
+      ]
+    }
+  ]
+}

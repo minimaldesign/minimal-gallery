@@ -1,0 +1,41 @@
+{
+  "name": "@minimalgallery/astro",
+  "version": "0.0.0",
+  "description": "Astro integration, content loader, contexts and the default theme for minimalgallery.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./loader": "./src/loader.ts",
+    "./gallery": "./src/gallery.ts",
+    "./config": "./src/config.ts",
+    "./facets": "./src/data/facets.ts",
+    "./theme/ViewerPage.astro": "./src/theme/layouts/ViewerPage.astro",
+    "./theme/GalleryLayout.astro": "./src/theme/layouts/GalleryLayout.astro",
+    "./theme/LegacyRedirect.astro": "./src/theme/components/LegacyRedirect.astro",
+    "./theme/components/*": "./src/theme/components/*",
+    "./theme/styles/*": "./src/theme/styles/*"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "astro": "^7.4.0"
+  },
+  "dependencies": {
+    "@csstools/postcss-global-data": "^4.0.0",
+    "@minimalgallery/pipeline": "workspace:*",
+    "postcss": "^8.5.31",
+    "postcss-mixins": "^12.1.2",
+    "postcss-preset-env": "^10.6.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "astro": "^7.4.2",
+    "typescript": "^7.0.2"
+  }
+}

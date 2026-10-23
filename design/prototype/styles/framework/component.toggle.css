@@ -1,0 +1,52 @@
+.toggle {
+  /* Themable via the --toggle-* tokens in theme.default.ui.css */
+  --toggle-w: var(--toggle-width);
+  --toggle-h: var(--toggle-height);
+  --toggle-bd: var(--toggle-border-width);
+  position: relative;
+  appearance: none;
+  border: none;
+  /* The generic input padding (elements.form.css) survives appearance: none;
+     with border-box sizing it floors the track at 24px, so any toggle themed
+     below that squashes and loses its pill ends */
+  padding: 0;
+  display: block;
+  width: var(--toggle-w);
+  height: var(--toggle-h);
+  border-radius: calc(var(--toggle-h) / 2);
+  cursor: pointer;
+  background-color: var(--toggle-track-color);
+
+  &::before {
+    --diameter: calc(var(--toggle-h) - var(--toggle-bd) * 2);
+    position: absolute;
+    top: var(--toggle-bd);
+    /* deliberately physical: the thumb travel (left + translateX) is a visual
+       mechanic; keeping it physical keeps the animation math in one axis system */
+    left: var(--toggle-bd);
+    content: "";
+    display: block;
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: var(--diameter);
+    background-color: var(--toggle-thumb-color);
+    transition:
+      left var(--transition),
+      transform var(--transition),
+      width var(--transition);
+    transform: translateX(0);
+  }
+
+  &:checked {
+    background-color: var(--toggle-track-color-checked);
+
+    &::before {
+      left: calc(100% - var(--toggle-bd));
+      transform: translateX(-100%);
+    }
+  }
+
+  &:active::before {
+    width: calc(var(--diameter) * 1.3);
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "title": "May",
+  "href": "f/month-05.html",
+  "photos": [
+    {
+      "slug": "lazy-sunday-afternoons",
+      "title": "Lazy sunday afternoons",
+      "ar": 1.5,
+      "color": "oklch(0.595 0.184 35.6)",
+      "year": 2009,
+      "tip": "10 May 2009",
+      "cells": [
+        [
+          ["10 May", "f/month-05.html"],
+          ["2009", "f/year-2009.html"]
+        ],
+        [],
+        [["Nikon D200", "f/camera-nikon-d200.html"]],
+        [["24–70 mm f/2.8", "f/lens-24-70-mm-f-2-8.html"]],
+        [["1/1500 s", "f/shutter-1-1500-s.html"]],
+        [["f/2.8", "f/aperture-f-2-8.html"]],
+        [["62 mm", "f/focal-short-tele.html"]],
+        [["100", "f/iso-100.html"]]
+      ],
+      "sort": [
+        "lazy sunday afternoons",
+        "2009-05-10T14:22:09",
+        "",
+        "nikon d200",
+        "24–70 mm f/2.8",
+        0.000666667,
+        2.8,
+        62,
+        100
+      ]
+    }
+  ]
+}

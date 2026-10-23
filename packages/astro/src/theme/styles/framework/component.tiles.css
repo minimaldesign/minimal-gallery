@@ -1,0 +1,107 @@
+/* TILES */
+
+/*
+  Equal tiles in container-responsive columns: cards, feature items,
+  pricing tiers, anything repeated at one size. The column count answers
+  "how wide is the column I live in", not "how wide is the viewport": the
+  .layout scaffolds declare their main column as a size container; outside
+  a scaffold, wrap the list in a .tiles_container (or any inline-size
+  container). The wrapper is required there: with no container ancestor
+  the queries never match and the list stays single-column.
+
+  Sizes name the tile: each one is a set of container thresholds tuned to
+  how much room that tile needs, and columns keep coming as the container
+  crosses them (no count cap; the column's width is the cap). A bare
+  .tiles uses the md thresholds (card-sized tiles); .tiles-sm fits small
+  icon + blurb tiles, so its columns appear sooner. The thresholds are
+  deliberately not the global viewport breakpoints: those can't see how
+  wide the column is. To pin a count yourself, set --tiles-columns on a
+  hook class of your own (unlayered CSS beats the rules below), or write
+  your own @container rules.
+*/
+
+.tiles {
+  --tiles-columns: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--tiles-columns), 1fr);
+  grid-column-gap: var(--grid-column-gap);
+  grid-row-gap: var(--grid-row-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    /* grid items stretch, so tiles in a row share the same height */
+    display: grid;
+  }
+}
+
+/* md, the default (.tiles-md exists as the explicit spelling): a tile
+   keeps roughly 17rem of room */
+@container (width >= 36rem) {
+  .tiles {
+    --tiles-columns: 2;
+  }
+}
+
+@container (width >= 56rem) {
+  .tiles {
+    --tiles-columns: 3;
+  }
+}
+
+@container (width >= 76rem) {
+  .tiles {
+    --tiles-columns: 4;
+  }
+}
+
+@container (width >= 96rem) {
+  .tiles {
+    --tiles-columns: 5;
+  }
+}
+
+@container (width >= 116rem) {
+  .tiles {
+    --tiles-columns: 6;
+  }
+}
+
+/* sm: a tile keeps roughly 13rem of room. Same specificity as the base
+   rules, so these must stay after them (a smaller tile never means fewer
+   columns at the same width). */
+@container (width >= 28rem) {
+  .tiles-sm {
+    --tiles-columns: 2;
+  }
+}
+
+@container (width >= 44rem) {
+  .tiles-sm {
+    --tiles-columns: 3;
+  }
+}
+
+@container (width >= 60rem) {
+  .tiles-sm {
+    --tiles-columns: 4;
+  }
+}
+
+@container (width >= 76rem) {
+  .tiles-sm {
+    --tiles-columns: 5;
+  }
+}
+
+@container (width >= 92rem) {
+  .tiles-sm {
+    --tiles-columns: 6;
+  }
+}
+
+/* Fallback container for tiles used outside the .layout scaffolds */
+.tiles_container {
+  container-type: inline-size;
+}

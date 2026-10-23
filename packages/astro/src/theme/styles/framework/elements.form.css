@@ -1,0 +1,222 @@
+/* ELEMENTS FORM */
+
+::placeholder {
+  opacity: var(--o-4);
+}
+
+/* Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: var(--text-color);
+}
+
+button {
+  color: var(--text-color);
+}
+
+datalist {
+}
+
+fieldset {
+  border: var(--fieldset-border-width) solid var(--fieldset-border-color);
+  border-radius: var(--fieldset-border-radius);
+  padding: var(--fieldset-padding);
+
+  ul:has([type="checkbox"], [type="radio"]) {
+    padding-inline-start: 0;
+  }
+
+  > [aria-hidden] {
+    /* legend replacement  */
+    margin-bottom: var(--sm3);
+    font-size: var(--text-lg);
+    grid-column: 1 / -1;
+  }
+}
+
+/* Only flag fields the user has actually interacted with */
+:is(input, select, textarea):user-invalid {
+  border-color: var(--input-border-color-invalid);
+}
+
+input {
+  &:where(:not([type="checkbox"], [type="radio"])) {
+    height: var(--input-height);
+  }
+  &:where(
+    :not([type="color"], [type="file"], [type="reset"], [type="submit"])
+  ) {
+    padding: var(--input-padding);
+  }
+  &:where(:not([type="color"])) {
+    border-radius: var(--input-border-radius);
+  }
+  &:where(:not([type="file"])) {
+    border: var(--input-border-width) solid var(--input-border-color);
+  }
+  &[type="file"] {
+    width: 100%;
+    accent-color: var(--text-color);
+  }
+  &[type="number"] {
+    padding-inline-end: var(--xs1);
+  }
+}
+
+label {
+  display: block;
+  &:has(+ :is(input, select, textarea)) {
+    margin-bottom: var(--label-spacing);
+  }
+}
+
+legend {
+  /*  Visually hidden  */
+  /* replaced by fieldset > [aria-hidden] above */
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+meter {
+  width: 100%;
+  background: var(--meter-track-color);
+  border-radius: var(--meter-border-radius);
+  height: var(--meter-height);
+  /* webkit */
+  &::-webkit-meter-bar {
+    background: var(--meter-track-color);
+  }
+  &::-webkit-meter-bar,
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    height: var(--meter-height);
+    border: none;
+    border-radius: var(--meter-border-radius);
+  }
+  &::-webkit-meter-even-less-good-value {
+    background: var(--meter-low-color);
+  }
+  &::-webkit-meter-suboptimum-value {
+    background: var(--meter-medium-color);
+  }
+  &::-webkit-meter-optimum-value {
+    background: var(--meter-high-color);
+  }
+  /* mozilla */
+  &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: var(--meter-low-color);
+  }
+  &:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: var(--meter-medium-color);
+  }
+  &:-moz-meter-optimum::-moz-meter-bar {
+    background: var(--meter-high-color);
+  }
+}
+
+optgroup {
+}
+
+option {
+}
+
+output {
+}
+
+progress {
+  appearance: none;
+  width: 100%;
+  /* mozilla */
+  height: var(--progress-height);
+  background: var(--progress-track-color);
+  border-radius: var(--progress-border-radius);
+  border: none;
+  &::-moz-progress-bar {
+    background: var(--progress-color);
+    border-radius: var(--progress-border-radius);
+  }
+  /* webkit */
+  &::-webkit-progress-bar {
+    width: 100%;
+    background: var(--progress-track-color);
+    border-radius: var(--progress-border-radius);
+    height: var(--progress-height);
+  }
+  &::-webkit-progress-value {
+    background: var(--progress-color);
+    border-radius: var(--progress-border-radius);
+  }
+}
+
+select {
+  /* derived, stays local */
+  --split: calc(100% - var(--select-icon-size));
+  display: flex;
+  appearance: none;
+  height: var(--input-height);
+  padding: var(--xs1) calc(var(--input-padding) + var(--md1)) var(--xs1)
+    var(--input-padding);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  background: linear-gradient(
+    to right,
+    var(--body-background-color) 0 var(--split),
+    var(--text-color) var(--split) 100%
+  );
+  mask-image:
+    var(--select-icon),
+    linear-gradient(to right, transparent calc(var(--split) - 1px), red 0),
+    linear-gradient(red 0 0);
+  mask-size: var(--select-icon-size), auto, auto;
+  mask-position:
+    calc(100% - var(--xs1)) center,
+    0 0,
+    0 0;
+  mask-repeat: no-repeat;
+  mask-clip: padding-box, padding-box, border-box;
+  mask-origin: padding-box, padding-box, border-box;
+  mask-composite: add, exclude;
+
+  /* focus ring comes from the global :focus-visible rule (global.a11y.css) */
+
+  &:disabled {
+    --disabled-color: light-dark(
+      hsl(from var(--text-color) h s 70%),
+      hsl(from var(--text-color) h s 40%)
+    );
+    cursor: not-allowed;
+    color: var(--disabled-color);
+    background: linear-gradient(
+      to right,
+      var(--body-background-color) 0 var(--split),
+      var(--disabled-color) var(--split) 100%
+    );
+  }
+
+  &[multiple] {
+    height: auto;
+    padding: var(--input-padding);
+    background: var(--body-background-color);
+    mask-image: none;
+  }
+}
+
+textarea {
+  width: 100%;
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+  border: var(--input-border-width) solid var(--input-border-color);
+  resize: block;
+  &:not([rows]) {
+    min-height: 6em;
+  }
+}

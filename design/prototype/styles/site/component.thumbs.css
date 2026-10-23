@@ -1,0 +1,192 @@
+/* THUMBS
+
+   The grid. Square crops by default: a plain CSS grid, every cell 1:1,
+   object-fit: cover, no headings, no groups, no frames, no shadows. With
+   the crop option set to original, the same list becomes justified rows
+   that keep each photo's shape. The options are page-wide radio groups
+   named crop and size (in the HUD); the list reads their state from
+   the page through those names, so it works without script.
+
+   Hovering shows a tooltip (name, date, place). With script it follows
+   the pointer (mg.js sets --x and --y on the list); without script it is
+   anchored to the thumbnail. */
+
+.thumbs {
+  --thumbs-size: var(--mg-row-height);
+
+  :root:has(input[name='view'][value='list']:checked) & {
+    display: none;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--thumbs-size), 30%), 1fr)
+  );
+  gap: var(--mg-grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  :root:has(input[name='size'][value='s']:checked) & {
+    --thumbs-size: calc(var(--mg-row-height) * 0.6);
+  }
+
+  :root:has(input[name='size'][value='l']:checked) & {
+    --thumbs-size: calc(var(--mg-row-height) * 1.5);
+  }
+
+  /* original shape: justified rows; the filler takes the last row's slack */
+  :root:has(input[name='crop'][value='original']:checked) & {
+    display: flex;
+    flex-wrap: wrap;
+
+    &::after {
+      content: '';
+      flex-grow: 1e4;
+    }
+  }
+}
+
+.thumbs_item {
+  min-width: 0;
+
+  :root:has(input[name='crop'][value='original']:checked) & {
+    flex: var(--ar) 1 calc(var(--ar) * var(--thumbs-size));
+  }
+}
+
+.thumbs_link {
+  anchor-name: --thumb;
+  anchor-scope: --thumb;
+  position: relative;
+  display: block;
+
+  scroll-margin-block: calc(var(--mg-panel-head-height) + var(--xs3)) var(--xs3);
+
+  /* the keyboard selection in the panel (mg.js moves focus with arrows) */
+  &:focus-visible {
+    outline: 2px solid var(--mg-accent);
+    outline-offset: 1px;
+  }
+
+  /* the photo you are viewing, outlined by a 1px inner line */
+  &[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px var(--mg-accent);
+    pointer-events: none;
+  }
+}
+
+.thumbs_image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background-color: var(--photo);
+  transition: filter var(--mg-duration-quick) var(--mg-ease-out);
+
+  .thumbs_link:hover & {
+    filter: brightness(1.12);
+  }
+
+  :root:has(input[name='crop'][value='original']:checked) & {
+    aspect-ratio: var(--ar);
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (--motionOK) {
+      animation: thumbs-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+  }
+}
+
+/* TOOLTIP: only one is ever visible. With a pointer (data-pointer, set by
+   mg.js while the pointer moves over the grid) the hovered thumbnail's
+   tooltip follows the pointer, with no fallbacks to flip it. A focused
+   thumbnail shows its tooltip only for keyboard focus and only while the
+   pointer is not in use (mg.js clears data-pointer on panel keys); it is
+   anchored to the thumbnail, as is a hovered one without script. Without
+   anchor-scope the anchored tooltip sits inside the foot of the thumb. */
+.thumbs_tip {
+  position: absolute;
+  inset-inline: var(--xs2);
+  inset-block-end: var(--xs2);
+  z-index: var(--z-top);
+  display: none;
+  padding: var(--xs2) var(--xs3);
+  border-radius: var(--radius-md);
+  box-shadow: var(--mg-surface-shadow);
+  font-size: var(--mg-size-hud);
+  line-height: var(--leading-sm);
+  opacity: 1;
+  pointer-events: none;
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    display var(--mg-duration-quick) allow-discrete;
+
+  .thumbs_link:hover &,
+  :root:not([data-pointer]) .thumbs_link:focus-visible & {
+    display: block;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  @supports (anchor-scope: --thumb) {
+    :root:not([data-pointer]) & {
+      position: fixed;
+      inset: auto;
+      width: max-content;
+      max-width: 32ch;
+      margin: var(--xs2);
+      position-anchor: --thumb;
+      position-area: block-end span-inline-end;
+      position-try-fallbacks: flip-block, flip-inline;
+    }
+  }
+
+  :root[data-pointer] & {
+    position: fixed;
+    position-area: none;
+    position-try-fallbacks: none;
+    inset: auto;
+    left: clamp(
+      var(--xs2),
+      var(--x) * 1px + var(--sm1),
+      100vw - 32ch - var(--sm3)
+    );
+    top: min(var(--y) * 1px + var(--sm3), 100dvh - var(--xl1));
+    width: max-content;
+    max-width: 32ch;
+    margin: 0;
+  }
+
+  @media (--touch) {
+    .thumbs_link:hover & {
+      display: none;
+    }
+  }
+}
+
+.thumbs_tipTitle {
+  display: block;
+  font-weight: var(--mg-weight-medium);
+}
+
+.thumbs_tipMeta {
+  display: block;
+  margin-block-start: 2px;
+  color: var(--mg-ink-muted);
+}
+
+@keyframes thumbs-arrive {
+  from {
+    opacity: 0.4;
+  }
+}

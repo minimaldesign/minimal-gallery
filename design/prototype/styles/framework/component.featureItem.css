@@ -1,0 +1,37 @@
+/* FEATURE ITEM */
+
+.featureItem {
+  /* As a .tiles item the li is display:grid (equal-height rows); keep
+     the icon/title/text packed at the top instead of stretching apart */
+  align-content: start;
+}
+
+.featureItem_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--featureItem-icon-box-size);
+  height: var(--featureItem-icon-box-size);
+  margin-bottom: var(--sm1);
+  color: var(--featureItem-icon-color);
+  background-color: var(--featureItem-icon-background-color);
+  border-radius: var(--featureItem-icon-border-radius);
+
+  svg {
+    width: var(--featureItem-icon-size);
+    height: var(--featureItem-icon-size);
+  }
+}
+
+.featureItem_title {
+  margin-bottom: var(--xs2);
+  font-size: var(--text-lg);
+  font-weight: var(--semi-bold);
+}
+
+.featureItem_text {
+  p:last-of-type {
+    /* in case it's inside a .prose context */
+    margin-bottom: 0;
+  }
+}

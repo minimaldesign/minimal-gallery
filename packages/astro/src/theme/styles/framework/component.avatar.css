@@ -1,0 +1,72 @@
+.avatar {
+  --avatar-size: var(--xl1);
+  --avatar-font-size: var(--text-md);
+  /* Status dot defaults live on the block (not on .is-online/.is-offline,
+     which would out-specify them) so the size modifiers below can override. */
+  --status-dot-size: var(--xs3);
+  --status-dot-position: 4%;
+  --status-dot-border-width: 2px;
+  --status-dot-border-color: var(--body-background-color);
+  position: relative;
+  display: inline-block;
+  width: var(--avatar-size);
+
+  > div {
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 1;
+    align-items: center;
+    border-radius: var(--avatar-radius);
+    font-size: var(--avatar-font-size);
+    line-height: 1;
+    background-color: var(--avatar-background-color);
+    border: var(--avatar-border-width) solid var(--avatar-border-color);
+    color: var(--avatar-color);
+    overflow: hidden;
+  }
+
+  &.is-online,
+  &.is-offline {
+    &:after {
+      content: "";
+      display: block;
+      width: var(--status-dot-size);
+      aspect-ratio: 1;
+      position: absolute;
+      top: var(--status-dot-position);
+      right: var(--status-dot-position); /* deliberately physical: dot pinned to a visual corner */
+      border: var(--status-dot-border-width) solid var(--status-dot-border-color);
+      border-radius: var(--radius-round);
+      background-color: var(--avatar-status-dot-color-offline);
+    }
+  }
+  &.is-online:after {
+    background-color: var(--avatar-status-dot-color-online);
+  }
+}
+
+.avatar-sm {
+  --avatar-size: var(--sm3);
+  --avatar-font-size: var(--text-xs);
+  --status-dot-size: var(--xs2);
+  --status-dot-position: 0;
+  --status-dot-border-width: 1px;
+}
+.avatar-md {
+  --avatar-size: var(--md3);
+  --avatar-font-size: var(--text-sm);
+  --status-dot-size: var(--xs2);
+  --status-dot-border-width: 1px;
+}
+.avatar-lg {
+  --avatar-size: var(--xl3);
+  --avatar-font-size: var(--text-xl);
+  --status-dot-size: var(--xs3);
+  --status-dot-position: 7%;
+}
+.avatar-xl {
+  --avatar-size: var(--xxl3);
+  --avatar-font-size: var(--display-lg);
+  --status-dot-size: var(--sm2);
+  --status-dot-position: 7%;
+}

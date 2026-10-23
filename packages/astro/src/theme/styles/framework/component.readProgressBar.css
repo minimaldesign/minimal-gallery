@@ -1,0 +1,27 @@
+.readProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0; /* deliberately physical: full-width bar pinned to the viewport edge */
+  width: 100%;
+  height: var(--readProgressBar-height);
+  z-index: var(--z-5);
+
+  > div {
+    width: 100%;
+    height: 100%;
+    background: var(--readProgressBar-color);
+    animation: bar linear;
+    /* root, not nearest: the bar tracks the page, so the timeline must not
+       depend on where in the DOM the component happens to be rendered */
+    animation-timeline: scroll(root y);
+  }
+}
+
+@keyframes bar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
