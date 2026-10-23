@@ -5,7 +5,11 @@ description: The minimal gallery packages on npm, and what each one is for.
 
 minimal gallery is four npm packages. You install none of them by hand: `npm create minimalgallery@latest` sets up a gallery with the right ones, and `npx minimalgallery upgrade` keeps them current.
 
-:::note[Not published yet] The first release is in preparation. Until it is out, the packages are only in the [repository](https://github.com/minimaldesign/minimal-gallery), and the links below lead to empty npm pages. :::
+:::note[Not published yet]
+
+The first release is in preparation. Until it is out, the packages are only in the [repository](https://github.com/minimaldesign/minimal-gallery), and the links below lead to empty npm pages.
+
+:::
 
 | Package | What it is | Installed by |
 | --- | --- | --- |
