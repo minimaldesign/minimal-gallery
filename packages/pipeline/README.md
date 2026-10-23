@@ -30,7 +30,8 @@ mg-pipeline doctor <galleryDir> [--json report.json]
 - the projected Cloudflare Pages deploy: one HTML page per visible photo, one HTML page and one `<context>.json` per context (the archive, each album, each facet value), the derivatives in repo mode, and about 20 other files;
 - that count against Pages’ 20,000 file limit, and the media bytes in the repository against 1 GB, with the number of photos left before each;
 - a recommendation: repo mode is fine; plan bucket mode (past 500 photos or 500 MB); or move to bucket mode (over a limit);
-- issues: photos with no manifest, orphaned manifests, HEIC or RAW files without a JPEG.
+- in bucket mode, the staged files waiting for upload and whether credentials are set, read from the disk without the network;
+- issues: photos with no manifest, orphaned manifests, HEIC or RAW files without a JPEG, missing bucket credentials.
 
 ## Configuration
 
@@ -76,7 +77,7 @@ The pipeline reads `storage`, `ladder`, `originals` and `color`; the rest is for
 ## Storage modes
 
 - **repo** (default): derivatives are written to `public/_mg/<photoId>/<hash8>-<variant>.<ext>` and served from `/_mg/...`. They are committed and deployed with the site. Fine up to a few hundred photos; `doctor` says when to move.
-- **s3**: an S3-compatible bucket (Cloudflare R2, Backblaze B2, AWS S3), served from `publicUrl`.
+- **s3** (bucket mode): an S3-compatible bucket (Cloudflare R2, Backblaze B2, MinIO, AWS S3), served from `publicUrl`. See Bucket mode.
 
   ```ts
   storage: {
@@ -88,9 +89,59 @@ The pipeline reads `storage`, `ladder`, `originals` and `color`; the rest is for
   }
   ```
 
-  Credentials never go in the config: they come from `MG_S3_ACCESS_KEY_ID` and `MG_S3_SECRET_ACCESS_KEY`. The s3 adapter is not implemented yet (it rejects writes); URLs are already computed from `publicUrl`.
+  `region` defaults to `auto`, which R2 expects and MinIO accepts. Requests are path-style, `${endpoint}/${bucket}/${key}`.
 
 Keys are content-addressed (`hash8` comes from the source file’s hash), so a URL never changes for a given file and can be cached forever.
+
+## Bucket mode
+
+The pipeline never writes to the network. In bucket mode it writes derivatives (and originals, with `originals: 'bucket'`) to a local stage, `.minimalgallery/cache/media/<key>`, and the manifests point at `${publicUrl}/<key>` from the start. Encoding works offline, and nothing is public before a publish. `sync` and `publish` then call `uploadToBucket`, which moves each staged file to the bucket, so the stage holds only the files waiting for upload. With `originals: 'repo'`, originals still go to `public/_mg`.
+
+### Credentials
+
+`MG_S3_ACCESS_KEY_ID` and `MG_S3_SECRET_ACCESS_KEY`, from the environment or from the gallery’s `.env` file (git ignores it). The environment wins, variable by variable. They never go in the config. For R2, create an API token with Object Read & Write on the bucket.
+
+```sh
+# .env, next to minimalgallery.config.ts
+MG_S3_ACCESS_KEY_ID=...
+MG_S3_SECRET_ACCESS_KEY=...
+```
+
+Without credentials the pipeline works on the stage alone, and the remote operations throw a `BucketError` whose message is `MISSING_CREDENTIALS`, written to be printed as is.
+
+### What the pipeline asks the bucket
+
+`has(key)`, which decides whether a photo is skipped, answers from the stage, then from a local record of the bucket’s keys, `.minimalgallery/cache/bucket.json`, rewritten by every upload, prune and full listing. Only when there is no record (a fresh clone) and credentials exist does it list the bucket, once per run, and save the listing as the record. If the bucket cannot be reached then, it counts as empty: the photos are encoded again into the stage instead of failing, and the next upload finds identical copies in the bucket and skips them. Wrong credentials fail every photo that needed the listing, with the S3 error.
+
+`list`, `remove` and `sweep` act on the stage only, so `--prune` never deletes from the bucket: it removes the manifests and staged files of deleted photos. Their uploaded files become orphans, which `pruneBucket` deletes.
+
+### Remote operations
+
+Each takes the gallery directory and `{ config?, env?, fetch? }`: `config` defaults to `loadConfig(galleryDir)`, `env` (where credentials are read first) to `process.env`, `fetch` to the global one. They throw a `BucketError` when they cannot start (`code`: `not-bucket-mode`, `missing-credentials`, `no-manifests`, `unreadable-manifests`, `upload-failed`) and an `S3Error` when the bucket refuses or cannot be reached (`status`, 0 for a network error; `code`, such as `AccessDenied` or `NoSuchBucket`; `operation`; `credentials`, true for 401 and 403). Every message says what to check: a credential error names both variables, `NoSuchBucket` names `storage.bucket` and `storage.endpoint`, a wrong region names `storage.region`.
+
+- `pendingUploads(galleryDir, { config? })` returns `{ files, bytes, keys }`: the staged files the manifests reference. Reads the disk only, never the network, so `doctor`, `watch` and the admin can call it at any time.
+- `planBucketSync(galleryDir, options?)` lists the bucket once, saves the listing as the record, and compares it with the manifests and the stage. It returns `staged`, `inBucket`, `upload` and `uploadBytes`, `alreadyUploaded` (staged files identical to the bucket’s copy), `missing` (neither staged nor in the bucket; the next pipeline run encodes them again), `orphans` and `orphanBytes`, `unreadable` manifests, and the `manifests` and `referenced` counts.
+- `uploadToBucket(galleryDir, { ...options, concurrency = 8, onProgress? })` returns `{ uploaded, bytes, alreadyUploaded, missing, seconds }`. It uploads every staged file the bucket lacks or holds a different version of (compared by size, then by MD5 against the ETag), with `Content-Type` from the extension and `Cache-Control: public, max-age=31536000, immutable`. `onProgress({ done, total, key, bytes, doneBytes, totalBytes })` runs after each file. Uploaded files are added to the record, then removed from the stage, in batches. It never deletes from the bucket. On the first failed upload it starts no new one, lets those in flight finish and records them, then throws `BucketError` `upload-failed` with the `S3Error` as `cause`; running it again continues where it stopped.
+- `pruneBucket(galleryDir, { ...options, dryRun?, concurrency = 8 })` returns `{ removed, bytes, dryRun }`. It deletes the bucket keys no manifest references. Only keys of the pipeline’s shape (`<photo id>/<hash8>-<name>.<ext>`) and leftover check probes qualify, so other files in a shared bucket stay. It refuses when a manifest cannot be read or there are none, since every key would then look unreferenced. A live site may still use old keys until its next build, so only `sync --prune` calls it.
+- `checkBucket(galleryDir, options?)` returns a `BucketCheck` (`ok`, `steps`, `public`, `probe`), and `formatBucketCheck(check)` prints it. It writes a probe under `_minimalgallery-check/`, finds it in a listing, HEADs it, fetches it through `publicUrl` (reporting the status and `Cache-Control`), and deletes it. Each step reports `ok`, `ms` and a message; a failed step never throws. Used by `doctor --bucket`.
+
+Lower level:
+
+- `s3Storage(options)`: a `Storage` on a bucket. Signs with SigV4 through `aws4fetch`, encodes keys per path segment, retries network errors, 429 and 5xx with exponential backoff (4 retries from 250 ms, honoring `Retry-After`), and answers `has` and `list` from one listing of the bucket, loaded on first use and kept current by `put` and `remove`. Adds `index()`, `refresh()`, `listObjects(prefix)` and `head(key)`. Accepts `fetch`, `retries`, `retryDelay` and `pageSize` for tests.
+- `bucketStorage(options)`: the staged storage. `storageFromConfig(config, galleryDir, env?)` returns it in s3 mode.
+- `bucketFromConfig(config, galleryDir, { env?, fetch? })`: the `s3Storage` of the config’s bucket, with credentials.
+- `bucketCredentials(galleryDir, env?)`: the credentials, or null.
+
+### Testing against a real server
+
+The default test run uses an in-process mock S3 server that verifies every SigV4 signature. To run the same tests against MinIO as well (the tests create and delete their own public buckets):
+
+```sh
+docker run -d --name mg-minio -p 4430:9000 -e MINIO_ROOT_USER=mgtest -e MINIO_ROOT_PASSWORD=mgtest-secret-123 cgr.dev/chainguard/minio server /data
+MG_TEST_S3_ENDPOINT=http://localhost:4430 MG_TEST_S3_ACCESS_KEY_ID=mgtest MG_TEST_S3_SECRET_ACCESS_KEY=mgtest-secret-123 pnpm --filter @minimalgallery/pipeline test
+```
+
+The `minio/minio` image is no longer published on Docker Hub; the Chainguard build above is the same server.
 
 ## Folders
 
