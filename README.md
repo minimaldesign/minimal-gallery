@@ -15,7 +15,7 @@ Also here: `examples/demo/` (the demo gallery at [minimalgallery.net](https://mi
 
 ## Docs
 
-The documentation lives at [docs.minimalgallery.net](https://docs.minimalgallery.net): getting started, hosting, the theme and its tokens, and the reference for the configuration, sidecars and command line. Its source is `apps/docs`, a Starlight site in the gallery’s own theme; run it with `pnpm --filter minimalgallery-docs dev` and build it with `pnpm --filter minimalgallery-docs build`.
+The documentation lives at [docs.minimalgallery.net](https://docs.minimalgallery.net): getting started, hosting, the theme and its tokens, and the reference for the configuration, sidecars and command line. Its source is `apps/docs`, a Starlight site in the gallery’s own theme. Run `pnpm install` once at the repo root, since the site is a workspace package and `astro` is not on the path until then. After that `pnpm --filter minimalgallery-docs dev` serves it on port 4421 and `pnpm --filter minimalgallery-docs build` builds it.
 
 ## Running the demo
 
