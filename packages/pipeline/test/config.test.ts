@@ -121,6 +121,11 @@ export default {
     ).toThrow(/unique/);
   });
 
+  it('keeps the credit on unless the config turns it off', () => {
+    expect(resolveConfig({}).credit).toBe(true);
+    expect(resolveConfig({ credit: false }).credit).toBe(false);
+  });
+
   it('defineConfig returns its input', () => {
     const c = { name: 'x' };
     expect(defineConfig(c)).toBe(c);

@@ -58,6 +58,7 @@ export default defineConfig({
 | `author` | none | Site author. |
 | `description` | none | Site description. |
 | `site` | none | Public URL, for canonical links, the feed and `og:image`. |
+| `credit` | `true` | The “Powered by minimal gallery” line; `false` removes it. |
 | `storage` | `{ mode: 'repo' }` | Where derivatives go; see below. |
 | `ladder` | the five variants below | Array of `{ name, longEdge, format: 'avif' \| 'jpeg' \| 'webp', quality, chroma?: '4:2:0' \| '4:4:4', always?: boolean }`. `always` writes the variant even when the source is smaller, at source size. |
 | `originals` | `'none'` | `'repo'` copies originals to `public/_mg`; `'bucket'` uploads them to the s3 storage (needs `storage.mode: 's3'`). |
@@ -163,6 +164,7 @@ Supported inputs: JPEG, PNG, WebP, AVIF, TIFF. HEIC and RAW files (`.heic`, `.ne
 The shape is defined, with comments on each field, by the Zod schemas in [`src/schema.ts`](src/schema.ts): `PhotoManifest`, `AlbumManifest`, `AlbumsFile`. The fields most pages need:
 
 - `id`, `album`, `slug`, `file`, and `source`: the path relative to `photos/` (`feelings/Greenport.jpg`), shown as “File” in the viewer.
+- `added`: when the photo first entered the gallery, in UTC (`2026-10-23T19:30:00Z`), for feeds of what is new. Set by the first run that writes the photo’s manifest and kept after that, through re-encodes, sidecar edits and a rename or move of the same file. Manifests written before this field existed get the file’s modification time once.
 - `title`, `caption` (raw markdown), `keywords`, `rating` (1 to 5, or null when unrated), `copyright`, `author`, `hidden`.
 - `date`, `tz`, `dateSource`: see Dates.
 - `camera`, `lens`, `exposure` (`shutter` as a display string and `shutterSeconds`, `aperture`, `focal`, `focal35`, `iso`, `ev`, `metering`, `flash`), `gps`.

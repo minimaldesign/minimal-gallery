@@ -83,6 +83,8 @@ export const GalleryConfigSchema = z
     description: z.string().optional(),
     /** Public URL of the site, used for canonical links, the feed and og:image. */
     site: z.url().optional(),
+    /** The “Powered by minimal gallery” line and the version in the keys pane. */
+    credit: z.boolean().default(true),
     storage: StorageConfig.default({ mode: 'repo' }),
     ladder: z
       .array(LadderVariantConfig)

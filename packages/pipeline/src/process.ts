@@ -59,7 +59,7 @@ import { walkPhotos, type WalkedAlbum, type WalkedPhoto } from './walk.ts';
  * rebuilt from the metadata; derivatives are kept. Derivative changes bump
  * ENCODER_VERSION in `ladder.ts` instead.
  */
-export const PIPELINE_VERSION = '0.2.1';
+export const PIPELINE_VERSION = '0.3.0';
 
 export { MANIFEST_DIR, ALBUMS_FILE } from './schema.ts';
 
@@ -197,6 +197,9 @@ async function writeIfChanged(path: string, text: string): Promise<boolean> {
   await rename(tmp, path);
   return true;
 }
+
+/** A date as ISO 8601 UTC to the second: `2026-10-23T19:30:00Z`. */
+const utcSeconds = (d: Date) => d.toISOString().replace(/\.\d{3}Z$/, 'Z');
 
 function percentile(sorted: number[], p: number): number {
   if (!sorted.length) return NaN;
@@ -346,9 +349,37 @@ export async function processGallery(
     sidecars: Awaited<ReturnType<typeof readPhotoSidecars>>;
     inputsHash: string;
     reusable: ReusableManifest | undefined;
+    /** The `added` of this photo’s earlier manifest. */
+    added: string | undefined;
+    /** Whether this photo had a manifest before this run. */
+    known: boolean;
   }
   const pending: Pending[] = [];
   const results: PhotoResult[] = [];
+
+  // When each file first entered the gallery, by content, from the earlier
+  // manifests: a photo renamed or moved since keeps its date, though its id
+  // and manifest are new. The manifests of current photos are read in pass
+  // 1; the others (renamed, moved or deleted photos) here.
+  const addedByHash = new Map<string, string>();
+  const rememberAdded = (raw: unknown) => {
+    const { sourceHash, added } = (raw ?? {}) as Record<string, unknown>;
+    if (typeof sourceHash !== 'string' || typeof added !== 'string') return;
+    const earlier = addedByHash.get(sourceHash);
+    if (!earlier || added < earlier) addedByHash.set(sourceHash, added);
+  };
+  const currentIds = new Set(photos.map((p) => p.id));
+  await mapLimit(
+    (await readdir(manifestDir)).filter(
+      (f) =>
+        f.endsWith('.json') &&
+        f !== ALBUMS_FILE &&
+        !currentIds.has(f.slice(0, -5))
+    ),
+    16,
+    async (f) => rememberAdded(await readJson(join(manifestDir, f)))
+  );
+
   await mapLimit(photos, 16, async (photo) => {
     const t0 = performance.now();
     try {
@@ -365,9 +396,11 @@ export async function processGallery(
       const full = prevRaw ? PhotoManifest.safeParse(prevRaw) : undefined;
       const loose = prevRaw ? ReusableManifest.safeParse(prevRaw) : undefined;
       const prev = full?.success ? full.data : undefined;
+      rememberAdded(prevRaw);
       if (
         !options.force &&
         prev &&
+        prev.added !== undefined &&
         prev.ladderHash === ladderHash &&
         prev.sourceSize === st.size &&
         prev.sourceMtime === st.mtimeMs &&
@@ -406,6 +439,12 @@ export async function processGallery(
         sidecars,
         inputsHash,
         reusable: loose?.success ? loose.data : undefined,
+        added:
+          typeof (prevRaw as { added?: unknown } | undefined)?.added ===
+          'string'
+            ? (prevRaw as { added: string }).added
+            : undefined,
+        known: prevRaw !== undefined,
       });
     } catch (e) {
       const error: PhotoError = {
@@ -609,6 +648,13 @@ export async function processGallery(
       file: photo.file,
       source: photo.source,
       slug: photo.slug,
+      // Kept from the earlier manifest, or from another file with the same
+      // content; a photo from before `added` existed gets its file’s time;
+      // a new photo, now.
+      added:
+        job.added ??
+        addedByHash.get(sourceHash) ??
+        utcSeconds(job.known ? job.mtime : new Date()),
       ...meta,
       width: encoded.width,
       height: encoded.height,

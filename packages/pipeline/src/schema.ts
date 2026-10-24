@@ -117,6 +117,16 @@ export const PhotoManifest = z.object({
   source: z.string(),
   /** Last segment of the photo URL inside its album. */
   slug: z.string(),
+  /**
+   * When the photo first entered the gallery, in UTC (`2026-10-23T19:30:00Z`):
+   * the first run that wrote its manifest. Kept when the photo is encoded
+   * again, its sidecar changes, or the same file comes back under another
+   * name. Optional only so manifests from older pipelines still load.
+   */
+  added: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/)
+    .optional(),
   title: z.string(),
   /** Raw markdown. */
   caption: z.string().nullable(),
