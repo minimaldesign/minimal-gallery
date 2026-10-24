@@ -77,7 +77,7 @@ Then set the gallery to publish with git, so `npm run publish` commits and pushe
 npm pkg set minimalgallery.publish=git
 ```
 
-From then on, `npm run publish` processes new photos, commits the photos, manifests and resized copies, and pushes. Cloudflare builds and deploys from there.
+From then on, `npm run publish` processes new photos, commits the manifests, resized copies and sidecars, and pushes. Cloudflare builds and deploys from there. The originals stay out of the repository; see [Originals and git](/hosting/#originals-and-git).
 
 :::tip[Keep the build cache]
 

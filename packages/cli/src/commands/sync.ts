@@ -13,10 +13,11 @@ export const SYNC_USAGE = `Usage: minimalgallery sync [--prune] [--force] [--no-
 
 Processes every photo in photos/ that is new or changed. In bucket mode it
 then uploads the new resized photos to the bucket.
-  --prune      remove the derivatives and manifests of deleted photos; in
-               bucket mode, also delete the bucket files no photo uses
-               (after the site is rebuilt, since the live site may still
-               show them until then)
+  --prune      remove the derivatives and manifests of photos deleted on
+               this computer (never those of photos whose originals were
+               never here); in bucket mode, also delete the bucket files
+               no photo uses (after the site is rebuilt, since the live
+               site may still show them until then)
   --force      encode every photo again
   --no-upload  in bucket mode, keep new files staged; publish uploads them
   --yes        do not ask before deleting files from the bucket`;

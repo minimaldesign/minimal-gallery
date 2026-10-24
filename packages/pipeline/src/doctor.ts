@@ -8,6 +8,12 @@
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import {
+  albumPathOf,
+  missingPhotos,
+  readSeen,
+  withAbsentAlbums,
+} from './absent.ts';
 import { loadConfig, type GalleryConfig } from './config.ts';
 import { configPlaceholders } from './placeholders.ts';
 import {
@@ -48,13 +54,24 @@ export interface DoctorReport {
    * The repository size only matters for `git`.
    */
   publish: 'git' | 'deploy' | 'build' | null;
+  /**
+   * `minimalgallery.commitOriginals` in package.json: git publishing commits
+   * the originals too, so they count towards the repository size.
+   */
+  commitOriginals: boolean;
   originals: GalleryConfig['originals'];
   photos: number;
   albums: number;
   /** Photos with no manifest yet: run the pipeline. */
   missingManifests: string[];
-  /** Manifests with no photo: run with --prune. */
+  /** Manifests of photos deleted from this folder: run with --prune. */
   orphans: string[];
+  /**
+   * Manifests of photos whose originals are not on this computer and never
+   * were (a clone, or photos added on another computer). They stay in the
+   * gallery and are never pruned here.
+   */
+  absent: string[];
   /** Photos dated from the file’s mtime. */
   undated: number;
   unsupported: UnsupportedFile[];
@@ -74,8 +91,12 @@ export interface DoctorReport {
     total: number;
     limit: number;
   };
-  /** Bytes of photos media committed to the repository. */
-  repo: { bytes: number; limit: number };
+  /**
+   * Bytes of photos media committed to the repository: the derivatives in
+   * repo mode, published originals, and with `commitOriginals` the
+   * originals themselves (`originals` of the total).
+   */
+  repo: { bytes: number; originals: number; limit: number };
   /**
    * Bucket mode only, read from the disk without the network: staged files
    * the manifests reference (waiting for upload), and whether credentials
@@ -135,17 +156,27 @@ async function readManifests(dir: string): Promise<{
  * How the gallery publishes, as the CLI decides it: `minimalgallery.publish`
  * in package.json, else `deploy` when a wrangler config exists, else null.
  */
-async function publishMethod(dir: string): Promise<DoctorReport['publish']> {
+async function publishSettings(dir: string): Promise<{
+  publish: DoctorReport['publish'];
+  commitOriginals: boolean;
+}> {
+  let settings: { publish?: unknown; commitOriginals?: unknown } = {};
   try {
     const pkg = JSON.parse(await readFile(join(dir, 'package.json'), 'utf8'));
-    const setting = pkg?.minimalgallery?.publish;
-    if (setting === 'git' || setting === 'deploy' || setting === 'build')
-      return setting;
+    settings = pkg?.minimalgallery ?? {};
   } catch {}
-  return existsSync(join(dir, 'wrangler.jsonc')) ||
-    existsSync(join(dir, 'wrangler.json'))
-    ? 'deploy'
-    : null;
+  const commitOriginals = settings.commitOriginals === true;
+  const setting = settings.publish;
+  if (setting === 'git' || setting === 'deploy' || setting === 'build')
+    return { publish: setting, commitOriginals };
+  return {
+    publish:
+      existsSync(join(dir, 'wrangler.jsonc')) ||
+      existsSync(join(dir, 'wrangler.json'))
+        ? 'deploy'
+        : null,
+    commitOriginals,
+  };
 }
 
 export async function doctor(
@@ -171,12 +202,15 @@ export async function doctor(
   const missingManifests = (walked?.photos ?? [])
     .filter((p) => !byId.has(p.id))
     .map((p) => p.relativePath);
-  const orphans = walked
-    ? manifests
-        .filter((m) => !walkedIds.has(m.id))
-        .map((m) => m.id)
-        .sort()
-    : [];
+  // The same split as the pipeline’s: only photos this folder had before
+  // count as deleted.
+  const { deleted: orphans, absent } = walked
+    ? missingPhotos(
+        manifests.map((m) => m.id),
+        walkedIds,
+        await readSeen(dir)
+      )
+    : { deleted: [], absent: [] };
   const unsupported = walked?.unsupported ?? [];
   const errorsUnsupported = unsupported.filter((u) => !u.hasSibling);
   if (errorsUnsupported.length)
@@ -198,7 +232,10 @@ export async function doctor(
   );
   const inHidden = (albumId: string) =>
     [...hiddenAlbums].some((h) => albumId === h || albumId.startsWith(`${h}/`));
-  const current = manifests.filter((m) => !walked || walkedIds.has(m.id));
+  const absentIds = new Set(absent);
+  const current = manifests.filter(
+    (m) => !walked || walkedIds.has(m.id) || absentIds.has(m.id)
+  );
   const visible = current.filter((m) => !m.hidden && !inHidden(m.album));
 
   let derivFiles = 0;
@@ -265,12 +302,21 @@ export async function doctor(
       );
   }
 
+  const { publish, commitOriginals } = await publishSettings(dir);
+  // The repository only grows with the photos when the site is built from it.
+  const repoMatters = publish === 'git' || publish === null;
   const repoMedia = config.storage.mode === 'repo';
   const originalsInRepo = config.originals === 'repo';
   const mediaFiles =
     (repoMedia ? derivFiles : 0) + (originalsInRepo ? origFiles : 0);
+  const committedOriginals =
+    commitOriginals && repoMatters
+      ? current.reduce((s, m) => s + m.original.bytes, 0)
+      : 0;
   const repoBytes =
-    (repoMedia ? derivBytes : 0) + (originalsInRepo ? origBytes : 0);
+    (repoMedia ? derivBytes : 0) +
+    (originalsInRepo ? origBytes : 0) +
+    committedOriginals;
   const photoPages = visible.length;
   const contextFiles = contextTotal * 2;
   const total = photoPages + contextFiles + FIXED_SITE_FILES + mediaFiles;
@@ -292,10 +338,14 @@ export async function doctor(
       ? Math.max(0, Math.floor((REPO_BYTE_LIMIT - repoBytes) / bytesPerPhoto))
       : null;
 
-  const publish = await publishMethod(dir);
-  // The repository only grows with the photos when the site is built from it.
-  const repoMatters = publish === 'git' || publish === null;
-  const overRepo = repoMatters && repoBytes > REPO_BYTE_LIMIT;
+  // Bucket mode moves the derivatives out of the repository, not the
+  // committed originals, so the advice is about the media without them.
+  const mediaBytes = repoBytes - committedOriginals;
+  const overRepo = repoMatters && mediaBytes > REPO_BYTE_LIMIT;
+  if (committedOriginals && repoBytes > REPO_BYTE_ADVICE)
+    issues.push(
+      `the committed originals bring the repository to ${formatBytes(repoBytes)} (GitHub recommends under 1 GB): remove "commitOriginals" from the "minimalgallery" field of package.json to keep them out of git`
+    );
   let recommendation: Recommendation;
   let message: string;
   if (total > PAGES_FILE_LIMIT || overRepo) {
@@ -306,7 +356,7 @@ export async function doctor(
         : 'Even with derivatives in the bucket, the HTML pages alone are over 20,000 files. Hide albums, drop facets, or host on a service without a file limit.';
   } else if (
     repoMedia &&
-    (total > FILE_ADVICE || (repoMatters && repoBytes > REPO_BYTE_ADVICE))
+    (total > FILE_ADVICE || (repoMatters && mediaBytes > REPO_BYTE_ADVICE))
   ) {
     recommendation = 'consider-bucket';
     message = `Repo mode works today, but the gallery is getting close to ${total > FILE_ADVICE ? 'Cloudflare’s 20,000-file limit' : '1 GB of photos in the repository'}. Plan the move to bucket mode before then. ${BUCKET_COST}`;
@@ -321,11 +371,21 @@ export async function doctor(
     galleryDir: dir,
     storage: config.storage.mode,
     publish,
+    commitOriginals,
     originals: config.originals,
-    photos: walked?.photos.length ?? manifests.length,
-    albums: walked?.albums.length ?? albums?.albums.length ?? 0,
+    photos: walked ? walked.photos.length + absent.length : manifests.length,
+    albums: walked
+      ? withAbsentAlbums(
+          walked.albums,
+          current
+            .filter((m) => absentIds.has(m.id))
+            .map((m) => albumPathOf(m.source)),
+          join(dir, 'photos')
+        ).length
+      : (albums?.albums.length ?? 0),
     missingManifests,
     orphans,
+    absent,
     undated: current.filter((m) => m.dateSource === 'mtime').length,
     unsupported,
     derivatives: { files: derivFiles, bytes: derivBytes },
@@ -339,7 +399,11 @@ export async function doctor(
       total,
       limit: PAGES_FILE_LIMIT,
     },
-    repo: { bytes: repoBytes, limit: REPO_BYTE_LIMIT },
+    repo: {
+      bytes: repoBytes,
+      originals: committedOriginals,
+      limit: REPO_BYTE_LIMIT,
+    },
     bucket,
     headroom: { photosUntilFileLimit, photosUntilByteLimit },
     recommendation,
@@ -365,7 +429,13 @@ export function formatDoctorReport(r: DoctorReport): string {
     .join(', ');
   const rows: Array<[string, string]> = [
     ['storage', `${r.storage}, originals ${r.originals}`],
-    ['photos', `${r.photos} in ${r.albums} album(s), ${r.undated} undated`],
+    [
+      'photos',
+      `${r.photos} in ${r.albums} album(s), ${r.undated} undated` +
+        (r.absent.length
+          ? `, ${r.absent.length} with no original on this computer`
+          : ''),
+    ],
     [
       'derivatives',
       `${r.derivatives.files} files, ${formatBytes(r.derivatives.bytes)}`,
@@ -396,7 +466,10 @@ export function formatDoctorReport(r: DoctorReport): string {
     [
       'repo media',
       r.publish === 'git' || r.publish === null
-        ? `${formatBytes(r.repo.bytes)} of ${formatBytes(r.repo.limit)} (${pct(r.repo.bytes, r.repo.limit)})`
+        ? `${formatBytes(r.repo.bytes)} of ${formatBytes(r.repo.limit)} (${pct(r.repo.bytes, r.repo.limit)})` +
+          (r.repo.originals
+            ? `, ${formatBytes(r.repo.originals)} of it originals`
+            : '')
         : `${formatBytes(r.repo.bytes)}, uploaded with the site (no repository limit when publishing from this computer)`,
     ],
     [
@@ -412,6 +485,10 @@ export function formatDoctorReport(r: DoctorReport): string {
   const w = Math.max(...rows.map(([k]) => k.length));
   const lines = rows.map(([k, v]) => `${k.padEnd(w)}  ${v}`);
   lines.push('', r.message);
+  if (r.absent.length)
+    lines.push(
+      `The originals of ${r.absent.length} photo(s) are not on this computer, as in a clone of the repository. They stay in the gallery as their manifests describe them and are never pruned here; edit or delete them on the computer that has their originals.`
+    );
   for (const i of r.issues) lines.push(`issue: ${i}`);
   return lines.join('\n');
 }

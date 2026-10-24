@@ -332,6 +332,16 @@ describe('create-minimalgallery', () => {
     expect(gitignore).toMatch(/^\.minimalgallery\/cache$/m);
     expect(gitignore).toMatch(/^\.env$/m);
     expect(gitignore).not.toMatch(/^\.minimalgallery\/?$/m);
+    // Originals stay out of git; sidecars and _album.md do not.
+    expect(gitignore.split('\n')).toEqual(
+      expect.arrayContaining([
+        'photos/**',
+        '!photos/**/',
+        '!photos/**/*.md',
+        '!photos/**/*.json',
+        '!photos/**/*.xmp',
+      ])
+    );
     const headers = await read(dir, 'public/_headers');
     expect(headers).toContain('/_astro/*');
     expect(headers).not.toContain('/_mg/*');

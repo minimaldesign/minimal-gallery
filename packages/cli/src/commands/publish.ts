@@ -27,9 +27,16 @@ publishes the gallery one of three ways:
 Without a flag, the "minimalgallery.publish" field of package.json decides
 ("git", "deploy" or "build"), else --deploy when wrangler.jsonc exists.
   --yes            do not ask before pushing or deploying
+With --git, the original photos stay out of the repository: from photos/,
+only the sidecars (.md, .json, .xmp) and files git already tracks are
+committed, unless package.json sets "minimalgallery": { "commitOriginals": true }.
 The last line gives the site’s address when it is known.`;
 
 export type PublishMethod = 'git' | 'deploy' | 'build';
+
+/** Where the docs explain originals and git, for the warnings below. */
+const ORIGINALS_DOCS =
+  'https://docs.minimalgallery.net/hosting/#originals-and-git';
 
 /** The paths a gallery commit includes, when they exist. */
 const GALLERY_PATHS = [
@@ -95,6 +102,20 @@ async function readPackageJson(
   } catch {
     return null;
   }
+}
+
+/**
+ * `minimalgallery.commitOriginals` in package.json: whether git publishing
+ * commits the original photos too. Off unless set to true.
+ */
+export async function commitOriginalsSetting(root: string): Promise<boolean> {
+  const pkg = await readPackageJson(root);
+  const setting = (pkg?.minimalgallery as { commitOriginals?: unknown })
+    ?.commitOriginals;
+  if (setting === undefined || typeof setting === 'boolean') return !!setting;
+  throw new CliError(
+    `package.json has "minimalgallery": { "commitOriginals": ${JSON.stringify(setting)} }; use true or false.`
+  );
 }
 
 /** The publish method: flags first, then package.json, then the files present. */
@@ -249,24 +270,162 @@ async function deploy(root: string, config: GalleryConfig, yes: boolean) {
   return 0;
 }
 
+export interface GitChange {
+  path: string;
+  /** The two status letters (`XY`), `??` for an untracked file. */
+  status: string;
+  /** The old path of a staged rename. */
+  from?: string;
+}
+
 /**
- * File paths from `git status --porcelain -z`, relative to the repository
- * root. A rename entry is followed by its old path, which is skipped.
+ * The entries of `git status --porcelain -z`, with paths relative to the
+ * repository root. A rename or copy entry is followed by its old path.
  */
-export function changedFiles(porcelainZ: string): string[] {
-  const out: string[] = [];
+export function gitChanges(porcelainZ: string): GitChange[] {
+  const out: GitChange[] = [];
   const entries = porcelainZ.split('\0');
   for (let i = 0; i < entries.length; i++) {
     const entry = entries[i];
     if (entry.length < 4) continue;
-    out.push(entry.slice(3));
-    if (entry[0] === 'R' || entry[0] === 'C') i++;
+    const change: GitChange = {
+      path: entry.slice(3),
+      status: entry.slice(0, 2),
+    };
+    if (entry[0] === 'R' || entry[0] === 'C') {
+      i++;
+      if (entry[0] === 'R') change.from = entries[i];
+    }
+    out.push(change);
   }
   return out;
 }
 
+/** The sidecars under `photos/` that git publishing commits: `.md` (and `_album.md`), `.json`, `.xmp`. */
+export const isSidecar = (path: string) => /\.(md|json|xmp)$/i.test(path);
+
+const inPhotos = (path: string) => path.startsWith('photos/');
+
+/**
+ * The changes a gallery commit takes, with paths relative to the gallery.
+ * Under `photos/`: the sidecars, files git already tracks (edits and
+ * deletions of originals committed before), and new originals only with
+ * `commitOriginals`. Never the pipeline’s cache. `stage` lists the paths
+ * to `git add` (those not fully staged yet), `commit` the paths of the
+ * commit (with the old path of a rename), `leftOut` the new originals not
+ * taken.
+ */
+export function selectChanges(
+  changes: GitChange[],
+  commitOriginals: boolean
+): {
+  taken: GitChange[];
+  stage: string[];
+  commit: string[];
+  leftOut: string[];
+} {
+  const taken: GitChange[] = [];
+  const leftOut: string[] = [];
+  for (const c of changes) {
+    if (c.path.startsWith('.minimalgallery/cache/')) continue;
+    if (
+      inPhotos(c.path) &&
+      c.status === '??' &&
+      !commitOriginals &&
+      !isSidecar(c.path)
+    )
+      leftOut.push(c.path);
+    else taken.push(c);
+  }
+  return {
+    taken,
+    stage: taken.filter((c) => c.status[1] !== ' ').map((c) => c.path),
+    commit: taken.flatMap((c) => (c.from ? [c.path, c.from] : [c.path])),
+    leftOut,
+  };
+}
+
+/** Files under `photos/` that are not sidecars or dotfiles, from `git ls-files -z`. */
+const originalsIn = (lsFilesZ: string) =>
+  lsFilesZ
+    .split('\0')
+    .filter((f) => f && !isSidecar(f) && !f.split('/').pop()!.startsWith('.'));
+
+/**
+ * Warn when the repository and the setting disagree: originals tracked
+ * from before or listed as new files while they stay out, or kept out by
+ * `.gitignore` while `commitOriginals` is on.
+ */
+async function warnAboutOriginals(
+  root: string,
+  commitOriginals: boolean,
+  leftOut: string[]
+) {
+  if (!existsSync(join(root, 'photos'))) return;
+  if (commitOriginals) {
+    const ignored = originalsIn(
+      (
+        await git(root, [
+          'ls-files',
+          '-z',
+          '--others',
+          '--ignored',
+          '--exclude-standard',
+          '--',
+          'photos',
+        ])
+      ).stdout
+    );
+    if (ignored.length)
+      log.warn(
+        `"commitOriginals" is on, but .gitignore keeps ${ignored.length} original(s) under photos/ out of git. Delete the photos lines from .gitignore to commit them.`
+      );
+    return;
+  }
+  const tracked = originalsIn(
+    (await git(root, ['ls-files', '-z', '--', 'photos'])).stdout
+  );
+  if (tracked.length)
+    log.warn(
+      `${tracked.length} original(s) under photos/ are in git from before. Git publishing now leaves originals out of the repository: publish commits their edits and deletions, and adds no new ones. To stop tracking them (the files stay on this computer, and earlier commits keep them), add the photos lines from ${ORIGINALS_DOCS} to .gitignore, then run:\n\n` +
+        '  git rm -r --cached --quiet photos && git add photos && git commit -m "Stop tracking original photos"\n\n' +
+        'To keep committing originals instead, set "commitOriginals": true in the "minimalgallery" field of package.json.'
+    );
+  else if (leftOut.length)
+    log.warn(
+      `${leftOut.length} new original(s) under photos/ are left out of the commit: git publishing keeps originals out of the repository. Add the photos lines from ${ORIGINALS_DOCS} to .gitignore so git stops listing them, or set "commitOriginals": true in the "minimalgallery" field of package.json to commit them.`
+    );
+}
+
 async function git(root: string, args: string[]) {
   return capture('git', args, root);
+}
+
+/**
+ * Stage `stage` and commit exactly `commit`, leaving anything else that is
+ * staged out of the commit. The paths go through stdin, taken literally, so
+ * neither their number nor the characters in them matter.
+ */
+export async function commitFiles(
+  root: string,
+  stage: string[],
+  commit: string[],
+  message: string
+) {
+  const fromStdin = ['--pathspec-from-file=-', '--pathspec-file-nul'];
+  if (stage.length)
+    await runOrFail(
+      'git',
+      ['--literal-pathspecs', 'add', '-A', ...fromStdin],
+      root,
+      stage.join('\0')
+    );
+  await runOrFail(
+    'git',
+    ['--literal-pathspecs', 'commit', '-m', message, ...fromStdin],
+    root,
+    commit.join('\0')
+  );
 }
 
 function today(): string {
@@ -283,6 +442,7 @@ async function gitPublish(root: string, config: GalleryConfig, yes: boolean) {
       'This gallery is not a git repository. Run git init, add a remote and push once, or publish with --deploy.'
     );
 
+  const commitOriginals = await commitOriginalsSetting(root);
   const summary = await runPipeline(root, { config });
   if (summary.errors.length)
     log.warn('Some photos failed and will be left out of the site.');
@@ -301,11 +461,19 @@ async function gitPublish(root: string, config: GalleryConfig, yes: boolean) {
   const prefix = (
     await git(root, ['rev-parse', '--show-prefix'])
   ).stdout.trim();
-  const changed = changedFiles(status.stdout).map((f) =>
-    f.startsWith(prefix) ? f.slice(prefix.length) : f
+  const relative = (f: string) =>
+    f.startsWith(prefix) ? f.slice(prefix.length) : f;
+  const { taken, stage, commit, leftOut } = selectChanges(
+    gitChanges(status.stdout).map((c) => ({
+      ...c,
+      path: relative(c.path),
+      ...(c.from ? { from: relative(c.from) } : {}),
+    })),
+    commitOriginals
   );
+  await warnAboutOriginals(root, commitOriginals, leftOut);
   const changedPaths = paths.filter((p) =>
-    changed.some((f) => f === p || f.startsWith(p + '/'))
+    taken.some((c) => c.path === p || c.path.startsWith(p + '/'))
   );
 
   const upstream = await git(root, [
@@ -333,34 +501,27 @@ async function gitPublish(root: string, config: GalleryConfig, yes: boolean) {
     unpushed = 1;
   }
 
-  if (!changed.length && !unpushed && !upload) {
+  if (!taken.length && !unpushed && !upload) {
     log.info('Nothing to publish: the gallery has no new changes.');
     return 0;
   }
 
   const message = `Update gallery, ${today()}`;
   const steps: string[] = upload ? [upload] : [];
-  if (changed.length)
+  if (taken.length)
     steps.push(
-      `git commit ${changed.length} changed file(s) in ${changedPaths.join(', ')}: “${message}”`
+      `git commit ${taken.length} changed file(s) in ${changedPaths.join(', ')}: “${message}”`
     );
   steps.push(`git ${pushArgs.join(' ')}, to ${target}`);
   await confirmPlan('Publishing with git', steps, yes);
 
   // Upload first: the commit names the new files, and the host builds from it.
   await uploadStaged(root, config, { required: true });
-  if (!changed.length && !unpushed) {
+  if (!taken.length && !unpushed) {
     log.success('Uploaded. The site had no other changes to push.');
     return 0;
   }
-  if (changed.length) {
-    await runOrFail('git', ['add', '-A', '--', ...changedPaths], root);
-    await runOrFail(
-      'git',
-      ['commit', '-m', message, '--', ...changedPaths],
-      root
-    );
-  }
+  if (taken.length) await commitFiles(root, stage, commit, message);
   await runOrFail('git', pushArgs, root);
   const url = await siteUrl(root, config);
   log.success(
