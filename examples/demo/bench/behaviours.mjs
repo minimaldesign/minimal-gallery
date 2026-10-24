@@ -310,18 +310,42 @@ async function run(engine) {
   );
   await fp.$eval('.table_scroller', (s) => (s.scrollTop = s.scrollHeight));
   await fp.waitForTimeout(300);
+  // the credit's text: its space above is the credit's own padding
   const gaps = await fp.evaluate(() => {
-    const c = document.querySelector('.table_credit').getBoundingClientRect();
+    const p = document.querySelector('.table_credit');
+    const c = p.getBoundingClientRect();
+    const top = c.top + parseFloat(getComputedStyle(p).paddingBlockStart);
     const last = [...document.querySelectorAll('.thumbs > li')]
       .at(-1)
       .getBoundingClientRect();
-    return [c.top - last.bottom, innerHeight - c.bottom].map(Math.round);
+    return [top - last.bottom, innerHeight - c.bottom].map(Math.round);
   });
   ok(
     'credit: the same space above and below',
     Math.abs(gaps[0] - gaps[1]) <= 2,
     `${gaps[0]} and ${gaps[1]} px`
   );
+  // a context with few photos: the credit still at the bottom, centered
+  await fp.goto(opt.url + '/motion/', { waitUntil: 'load' });
+  await fp.waitForTimeout(600);
+  const low = await fp.evaluate(() => {
+    const c = document.querySelector('.table_credit').getBoundingClientRect();
+    const col = document.querySelector('.table_photos').getBoundingClientRect();
+    return [
+      innerHeight - c.bottom,
+      (c.left + c.right) / 2 - (col.left + col.right) / 2,
+    ].map(Math.round);
+  });
+  ok(
+    'credit: at the bottom of a short panel, centered',
+    Math.abs(low[0] - gaps[1]) <= 2 && Math.abs(low[1]) <= 1,
+    `${low[0]} px from the bottom`
+  );
+  const keysLine = await fp.$eval(
+    '.keys_credit',
+    (p) => getComputedStyle(p).textAlign
+  );
+  ok('credit: the keys pane line at the right', keysLine === 'end');
   await fresh.close();
 
   // CONTEXT PAGE opens on the panel, list rows in its HTML

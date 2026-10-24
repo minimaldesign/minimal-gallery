@@ -72,4 +72,5 @@
   margin-block-start: var(--sm1);
   padding-block-start: var(--xs3);
   border-block-start: var(--border-sm) solid var(--mg-hairline);
+  text-align: end;
 }

@@ -45,7 +45,11 @@
 
 .table_scroller {
   position: relative;
+  /* a column, so the photos can fill what the header leaves (and a short
+     context still ends with the credit at the bottom) */
+  display: flex;
   flex: 1;
+  flex-direction: column;
   min-height: 0;
   overflow-y: auto;
   container-type: size;
@@ -167,6 +171,7 @@
 
 .table_body {
   display: grid;
+  flex: 1 0 auto;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--xs2);
   /* the same space under the credit as above it */
@@ -179,13 +184,17 @@
   }
 }
 
-/* the rail: a sticky column on the right, exactly as tall as the
-   scroller's view below the header (100cqh: the scroller is a container) */
+/* the rail: a sticky column on the right, as tall as the scroller's view
+   between the header and the panel's bottom space (100cqh: the scroller
+   is a container), so a short context never scrolls for it */
 .table_rail {
   position: sticky;
   top: calc(var(--mg-panel-head-height) + var(--xs2));
   align-self: start;
-  height: calc(100cqh - var(--mg-panel-head-height) - var(--sm3));
+  height: calc(
+    100cqh - var(--mg-panel-head-height) - var(--xs2) - var(--md1) -
+      var(--mg-safe-bottom)
+  );
 
   :root:is(
       [data-view='list'],
@@ -200,9 +209,18 @@
   }
 }
 
-/* the credit, at the right under the last row of the grid or the list */
+/* the grid or the list, then the credit, which the column's spare
+   height pushes to the bottom of the panel when the photos are few */
+.table_photos {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* the credit, centered under the last row of the grid or the list, or at
+   the bottom of the panel */
 .table_credit {
-  margin-block-start: var(--md1);
-  padding-inline-end: var(--mg-gutter);
-  text-align: end;
+  margin-block-start: auto;
+  padding-block-start: var(--md1);
+  text-align: center;
 }
