@@ -194,12 +194,12 @@
     /* chevrons (Lucide's chevron-right and chevron-left) drawn on a 128
        grid and shown at 96px (128px is the largest cursor Chrome and
        Firefox accept): an 8.4px stroke, black at 70%, over a white outline
-       1px wide on each side so they read on light and dark photos; hotspot
-       at the center. Chrome shows the pointer fallback where the cursor would
+       half a pixel wide on each side so they read on light and dark
+       photos; hotspot at the center. Chrome shows the pointer fallback where the cursor would
        cross the window's edge. */
-    --mg-cursor-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23fff' stroke-width='13.9'/%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
+    --mg-cursor-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23fff' stroke-width='12.5'/%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
       48 48;
-    --mg-cursor-prev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23fff' stroke-width='13.9'/%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
+    --mg-cursor-prev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23fff' stroke-width='12.5'/%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
       48 48;
     /* the slideshow's start and stop answer (stage_flash), filled */
     --mg-icon-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z'/%3E%3C/svg%3E");
