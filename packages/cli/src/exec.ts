@@ -9,14 +9,22 @@ export interface Captured {
   stderr: string;
 }
 
-/** Run a command with the terminal attached. Resolves with its exit code. */
+/**
+ * Run a command with the terminal attached. Resolves with its exit code.
+ * `input`, when given, is written to its stdin instead.
+ */
 export function run(
   command: string,
   args: string[],
-  cwd: string
+  cwd: string,
+  input?: string
 ): Promise<number> {
   return new Promise((done, fail) => {
-    const child = spawn(command, args, { cwd, stdio: 'inherit' });
+    const child = spawn(command, args, {
+      cwd,
+      stdio: [input === undefined ? 'inherit' : 'pipe', 'inherit', 'inherit'],
+    });
+    child.stdin?.end(input);
     child.on('error', (e) =>
       fail(
         (e as NodeJS.ErrnoException).code === 'ENOENT'
@@ -87,9 +95,10 @@ export function runTee(
 export async function runOrFail(
   command: string,
   args: string[],
-  cwd: string
+  cwd: string,
+  input?: string
 ): Promise<void> {
-  const code = await run(command, args, cwd);
+  const code = await run(command, args, cwd, input);
   if (code !== 0)
     throw new CliError(
       `${[command, ...args].join(' ')} failed with exit code ${code}.`,

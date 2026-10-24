@@ -73,6 +73,9 @@ try {
     ['  metadata only', String(s.metadataOnly)],
     ['  skipped', String(s.skipped)],
     ['  failed', String(s.errors.length)],
+    ...(s.absent.length
+      ? [['  original not here', String(s.absent.length)] as [string, string]]
+      : []),
     ['workers', `${s.workers} × ${s.threadsPerWorker} thread(s)`],
     ['manifests written', String(s.manifestsWritten)],
     ['files written', String(s.filesWritten)],

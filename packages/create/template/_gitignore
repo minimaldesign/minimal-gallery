@@ -7,8 +7,23 @@ dist
 .env.*
 !.env.example
 
-# The pipeline’s scratch files, and in bucket mode the resized photos waiting
-# for upload (.minimalgallery/cache/media). The manifests (.minimalgallery/manifest)
+# The pipeline’s scratch files, its record of the photos this folder has had
+# (seen.json: a clone without them must not take them for deleted), and in
+# bucket mode the resized photos waiting for upload
+# (.minimalgallery/cache/media). The manifests (.minimalgallery/manifest)
 # are committed, and in repo mode the resized photos (public/_mg) too: hosts
 # build the site from them.
 .minimalgallery/cache
+
+# The original photos stay out of git: hosts build the site from the
+# manifests and resized photos, never from the files in photos/, and a
+# repository of originals outgrows GitHub’s limits (on GitHub Pages it is
+# also public). The sidecars (.md, .json, .xmp) and each album’s _album.md
+# are committed. To commit the originals too, delete these lines and set
+# "minimalgallery": { "commitOriginals": true } in package.json.
+photos/**
+!photos/**/
+!photos/**/*.md
+!photos/**/*.json
+!photos/**/*.xmp
+!photos/**/*.XMP

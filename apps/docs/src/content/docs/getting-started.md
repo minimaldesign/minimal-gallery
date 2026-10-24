@@ -109,7 +109,7 @@ Titles, captions, keywords, ratings, capture dates and places come from the phot
 | Image Sizing | Resize to Fit: Long Edge, 3200 pixels, or leave it off for full size. The largest copy the site makes is 3200 pixels on the long edge. |
 | Metadata | Include: All Metadata. Leave Remove Location Info unchecked to keep places and GPS positions. |
 
-Save these settings as a preset (Add, at the bottom left of the dialog) and change only the subfolder name for each new album. With the preview or `npx minimalgallery watch` running, each export appears in the gallery a few seconds after Lightroom finishes it. On GitHub Pages and Netlify the `photos` folder is committed with the site, so smaller exports keep the repository small.
+Save these settings as a preset (Add, at the bottom left of the dialog) and change only the subfolder name for each new album. With the preview or `npx minimalgallery watch` running, each export appears in the gallery a few seconds after Lightroom finishes it. Export size does not affect the repository on GitHub Pages and Netlify: the exports stay on your computer, and only their resized copies are committed.
 
 The fields map like this:
 
@@ -215,7 +215,7 @@ Every later publish is the same command, without the login, and sends only what 
 
 ### GitHub Pages or Netlify
 
-`npm run publish` commits what changed in the gallery (photos, manifests, resized copies, the config file and `custom.css`) and pushes it; your host then builds and publishes the site. Before the first publish, the gallery folder has to be a git repository connected to the host. [GitHub Pages](/hosting/github-pages/) and [Netlify](/hosting/netlify/) walk through it.
+`npm run publish` commits what changed in the gallery (manifests, resized copies, the photos’ sidecars, the config file and `custom.css`) and pushes it; your host then builds and publishes the site. The original photos stay on your computer, out of the repository, so keep the gallery folder in your backups; see [Originals and git](/hosting/#originals-and-git). Before the first publish, the gallery folder has to be a git repository connected to the host. [GitHub Pages](/hosting/github-pages/) and [Netlify](/hosting/netlify/) walk through it.
 
 ### Built locally
 

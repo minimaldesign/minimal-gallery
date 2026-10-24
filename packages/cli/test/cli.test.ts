@@ -14,7 +14,7 @@ import sharp from 'sharp';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { addPhotos } from '../src/add.ts';
 import { albumSlug } from '../src/album.ts';
-import { changedFiles, choosePublishMethod } from '../src/commands/publish.ts';
+import { choosePublishMethod, gitChanges } from '../src/commands/publish.ts';
 import { upgradeCommands } from '../src/commands/upgrade.ts';
 import { detectPackageManager } from '../src/exec.ts';
 import { findGalleryRoot } from '../src/root.ts';
@@ -154,12 +154,16 @@ describe('publish and upgrade helpers', () => {
     ).rejects.toThrow();
   });
 
-  it('parses git status -z, skipping the old path of a rename', () => {
+  it('parses git status -z, with the old path of a rename', () => {
     expect(
-      changedFiles(
+      gitChanges(
         '?? photos/a.jpg\0R  photos/b.jpg\0photos/old.jpg\0 M custom.css\0'
       )
-    ).toEqual(['photos/a.jpg', 'photos/b.jpg', 'custom.css']);
+    ).toEqual([
+      { path: 'photos/a.jpg', status: '??' },
+      { path: 'photos/b.jpg', status: 'R ', from: 'photos/old.jpg' },
+      { path: 'custom.css', status: ' M' },
+    ]);
   });
 
   it('detects the package manager and builds upgrade commands', async () => {

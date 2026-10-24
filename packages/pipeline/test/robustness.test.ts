@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mkdir, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { doctor, formatDoctorReport } from '../src/doctor.ts';
 import { isHeic } from '../src/formats.ts';
@@ -71,15 +71,18 @@ describe('prune', () => {
   it('removes orphaned folders, empty folders and interrupted writes', async () => {
     const dir = await tempGallery();
     await writeJpeg(join(dir, 'photos/a/one.jpg'));
+    await writeJpeg(join(dir, 'photos/a/gone.jpg'), { color: '#3c3' });
     await processGallery(dir, { concurrency: 1 });
     const mg = join(dir, 'public/_mg');
-    await write(join(mg, 'a__gone/1234abcd-grid.avif'), 'x');
+    const goneFiles = (await readdir(join(mg, 'a__gone'))).length;
+    await rm(join(dir, 'photos/a/gone.jpg'));
+    // Derivatives that no manifest names go too.
+    await write(join(mg, 'a__stray/1234abcd-grid.avif'), 'x');
     await mkdir(join(mg, 'empty_folder'), { recursive: true });
     await write(join(mg, 'a__one/partial.avif.123.tmp'), 'x');
-    await write(join(dir, '.minimalgallery/manifest/a__gone.json'), '{}');
     const s = await processGallery(dir, { concurrency: 1, prune: true });
-    expect(s.pruned.ids).toEqual(['a__gone']);
-    expect(s.pruned).toMatchObject({ manifests: 1, files: 1 });
+    expect(s.pruned.ids).toEqual(['a__gone', 'a__stray']);
+    expect(s.pruned).toMatchObject({ manifests: 1, files: goneFiles + 1 });
     expect(s.pruned.swept.sort()).toEqual([
       'a__one/partial.avif.123.tmp',
       'empty_folder/',

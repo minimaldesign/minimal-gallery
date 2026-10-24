@@ -15,6 +15,10 @@ export interface RunOptions {
   config?: GalleryConfig;
 }
 
+/** Said when a run keeps photos whose originals are not on this computer. */
+export const absentNote = (n: number) =>
+  `The originals of ${n} photo(s) are not on this computer, as in a clone of the repository. They stay in the gallery as their manifests describe them and are never pruned here; edit or delete them on the computer that has their originals.`;
+
 /**
  * Run the pipeline over the gallery. In bucket mode the derivatives are
  * staged locally; uploading them is a separate step (`uploadStaged`).
@@ -48,5 +52,7 @@ export async function runPipeline(
 
   for (const w of summary.warnings) log.warn(w);
   for (const e of summary.errors) log.error(`${e.path}: ${e.message}`);
+  if (summary.absent.length && output !== 'silent')
+    log.info(absentNote(summary.absent.length));
   return summary;
 }

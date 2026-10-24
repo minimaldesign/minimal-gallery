@@ -335,8 +335,8 @@ export const runCommand = (pm: PackageManager, script: string) =>
   `${RUN[pm]} ${script}`;
 
 export function netlifyToml(pm: PackageManager): string {
-  return `# Netlify builds the site from the committed photos, manifests and resized
-# copies. Photos are processed on your computer, never here.
+  return `# Netlify builds the site from the committed manifests and resized copies.
+# Photos are processed on your computer, never here.
 [build]
   command = "${runCommand(pm, 'build')}"
   publish = "dist"
