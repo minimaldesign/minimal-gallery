@@ -393,9 +393,9 @@ const BUILD_WITH_ARGS: Record<PackageManager, string> = {
 };
 
 export function githubPagesWorkflow(pm: PackageManager): string {
-  return `# Builds the site from the committed photos, manifests and resized copies,
-# and publishes it to GitHub Pages. In the repository settings, under Pages,
-# set the source to GitHub Actions.
+  return `# Builds the site from the committed manifests and resized copies, and
+# publishes it to GitHub Pages. In the repository settings, under Pages, set
+# the source to GitHub Actions.
 #
 # configure-pages reads the address GitHub serves the site at, which the
 # build gets as --site and --base, so a project site

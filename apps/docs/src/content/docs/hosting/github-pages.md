@@ -51,9 +51,9 @@ From then on, `npm run publish` processes new photos, commits the manifests, res
 The scaffold writes `.github/workflows/deploy.yml`. With npm it reads:
 
 ```yaml title=".github/workflows/deploy.yml"
-# Builds the site from the committed photos, manifests and resized copies,
-# and publishes it to GitHub Pages. In the repository settings, under Pages,
-# set the source to GitHub Actions.
+# Builds the site from the committed manifests and resized copies, and
+# publishes it to GitHub Pages. In the repository settings, under Pages, set
+# the source to GitHub Actions.
 #
 # configure-pages reads the address GitHub serves the site at, which the
 # build gets as --site and --base, so a project site
