@@ -129,6 +129,9 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
               <svg class="icon" aria-hidden="true">
                 <use href="#i-plus"></use>
               </svg>
+              <span class="tip surface" aria-hidden="true">
+                New album
+              </span>
             </button>
           </div>
           <ul class="menu" data-tree>
@@ -871,6 +874,9 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
               <svg class="icon" aria-hidden="true">
                 <use href="#i-close"></use>
               </svg>
+              <span class="tip surface" aria-hidden="true">
+                Close the photo <kbd>Esc</kbd>
+              </span>
             </button>
           </header>
           <div class="inspector_notices" data-notices></div>
@@ -1192,10 +1198,13 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           type="button"
           class="uploads_close"
           data-action="close-uploads"
-          aria-label="Close">
+          aria-label="Close the list">
           <svg class="icon" aria-hidden="true">
             <use href="#i-close"></use>
           </svg>
+          <span class="tip tip-start surface" aria-hidden="true">
+            Close the list
+          </span>
         </button>
         <progress
           max="1"
@@ -1438,6 +1447,9 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <svg class="icon" aria-hidden="true">
             <use href="#i-close"></use>
           </svg>
+          <span class="tip surface" aria-hidden="true">
+            Dismiss
+          </span>
         </button>
       </li>
     </template>

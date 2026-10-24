@@ -38,5 +38,6 @@ layer(components);
 @import url(./component.log.css);
 @import url(./component.sheet.css);
 @import url(./component.toasts.css);
+@import url(./component.tip.css);
 
 @import url(./page.admin.css);

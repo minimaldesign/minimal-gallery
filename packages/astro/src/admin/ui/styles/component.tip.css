@@ -1,0 +1,55 @@
+/* TIP
+
+   The words of an icon-only button (close, new album, dismiss), as the
+   gallery shows its own: a small HUD surface under the button, with the
+   key when there is one. It shows on hover and on keyboard focus, and is
+   aria-hidden, since the button keeps its aria-label. Placed against the
+   button, which sets position: relative in its own block; right-aligned,
+   because these buttons sit at the right end of a column. tip-start puts
+   it to the left of the button instead, for a panel that clips what
+   overflows it. */
+
+.tip {
+  position: absolute;
+  inset-block-start: calc(100% + var(--xs1));
+  inset-inline-end: 0;
+  z-index: var(--z-top);
+  display: none;
+  padding: var(--xs1) var(--xs2);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--mg-surface-shadow);
+  font-size: var(--mg-size-small);
+  font-weight: normal;
+  line-height: var(--leading-md);
+  opacity: 1;
+  pointer-events: none;
+  white-space: nowrap;
+  transition:
+    opacity var(--mg-duration-quick) var(--mg-ease-out),
+    display var(--mg-duration-quick) allow-discrete;
+
+  kbd {
+    margin-inline-start: var(--xs1);
+  }
+
+  :hover > &,
+  :focus-visible > & {
+    display: block;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  @media (--touch) {
+    :hover > & {
+      display: none;
+    }
+  }
+}
+
+.tip-start {
+  inset-block-start: 50%;
+  inset-inline-end: calc(100% + var(--xs1));
+  translate: 0 -50%;
+}

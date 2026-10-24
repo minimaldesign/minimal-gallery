@@ -49,6 +49,8 @@
 
 /* the icon button beside a heading (New album) */
 .sidebar_add {
+  /* its tip is placed against it */
+  position: relative;
   display: grid;
   place-items: center;
   width: var(--md1);

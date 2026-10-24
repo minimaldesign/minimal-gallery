@@ -56,6 +56,8 @@
 }
 
 .uploads_close {
+  /* its tip is placed against it */
+  position: relative;
   display: grid;
   place-items: center;
   width: var(--md1);
