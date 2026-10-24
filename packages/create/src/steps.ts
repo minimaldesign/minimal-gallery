@@ -37,6 +37,13 @@ const HOST_BUILDS = {
   local: '',
 };
 
+const LOCKFILE = {
+  npm: 'package-lock.json',
+  pnpm: 'pnpm-lock.yaml',
+  yarn: 'yarn.lock',
+  bun: 'bun.lock',
+};
+
 /** Each step is a first line and optional indented lines below it. */
 type Step = string[];
 
@@ -111,6 +118,14 @@ function gitSteps(answers: Answers, outcome: Outcome): Step[] {
     steps.push([
       `Make the first commit (git said: ${git.message}):`,
       `git add -A && git commit -m "${FIRST_COMMIT}"`,
+    ]);
+  // The first commit was made before an install: publish commits the
+  // gallery’s own files only, so the lockfile the host installs from has
+  // to be committed by hand once.
+  else if (git.status === 'committed' && !outcome.installed)
+    steps.push([
+      `After ${pm} install, commit the lockfile: the host installs from it.`,
+      `git add ${LOCKFILE[pm]} && git commit -m "Add the lockfile"`,
     ]);
 
   let rootDir = '';

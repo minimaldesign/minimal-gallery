@@ -1,9 +1,9 @@
 ---
 title: GitHub Pages
-description: Host a small minimal gallery on GitHub Pages with the generated GitHub Actions workflow, the right site and base settings, and a custom domain.
+description: Host a small minimal gallery on GitHub Pages with the generated GitHub Actions workflow, which sets the site’s address for you, and a custom domain.
 ---
 
-This page sets up a gallery on GitHub Pages: what to check first, the `site` and `base` settings, the repository settings, the workflow the scaffold writes, a custom domain and the limits. GitHub Pages suits small galleries; for anything near 1 GB, use [Cloudflare](/hosting/cloudflare/).
+This page sets up a gallery on GitHub Pages: what to check first, the site’s address, the repository settings, the workflow the scaffold writes, a custom domain and the limits. GitHub Pages suits small galleries; for anything near 1 GB, use [Cloudflare](/hosting/cloudflare/).
 
 ## Before you start
 
@@ -12,28 +12,19 @@ This page sets up a gallery on GitHub Pages: what to check first, the `site` and
 - **No cache headers.** GitHub Pages does not let a site set its own headers. See [Cache headers](#cache-headers).
 - **Not for a business.** GitHub does not allow Pages to be used as free hosting for an online business, or for a site mainly meant for commercial transactions.
 
-## Set the site address
+## The site address
 
-GitHub Pages serves a project site from a subfolder, `https://<user>.github.io/<repo>/`, so Astro has to know that folder before it builds. Set `site` and `base` in `astro.config.mjs`. The scaffold writes both lines commented out:
+GitHub Pages serves a project site from a subfolder, `https://<user>.github.io/<repo>/`, so Astro has to know that folder when it builds. The workflow takes care of it: it reads the address from the repository’s Pages settings and passes it to `astro build` as `--site` and `--base`.
 
-```js title="astro.config.mjs"
-export default defineConfig({
-  // GitHub Pages serves a project at https://<user>.github.io/<repo>/:
-  site: 'https://<user>.github.io',
-  base: '/<repo>',
-  output: 'static',
-  trailingSlash: 'always',
-  // …
-});
-```
-
-| Address | `site` | `base` |
+| Address | `--site` | `--base` |
 | --- | --- | --- |
-| `https://<user>.github.io/<repo>/`, a project site | `'https://<user>.github.io'` | `'/<repo>'` |
-| `https://<user>.github.io/`, from a repository named `<user>.github.io` | `'https://<user>.github.io'` | none |
-| A custom domain, such as `https://photos.example.com/` | `'https://photos.example.com'` | none |
+| `https://<user>.github.io/<repo>/`, a project site | `https://<user>.github.io` | `/<repo>` |
+| `https://<user>.github.io/`, from a repository named `<user>.github.io` | `https://<user>.github.io` | `/` |
+| A custom domain, such as `https://photos.example.com/` | `https://photos.example.com` | `/` |
 
-With `base` set, every link, photo URL, stylesheet and script starts with `/<repo>/`. Without it, a project site’s pages ask the domain root for their styles, scripts and photos, and show none of them.
+With a base, every link, photo URL, stylesheet and script starts with `/<repo>/`. Without one, a project site’s pages would ask the domain root for their styles, scripts and photos, and show none of them.
+
+`astro.config.mjs` keeps `site` and `base` commented out. Builds on your computer (`npm run build`, `npm run preview`) stay at the root, and renaming the repository or adding a custom domain needs no change to the gallery. Set them in `astro.config.mjs` only to build for GitHub Pages somewhere else; the workflow’s values win over them.
 
 ## Push the repository and turn on Pages
 
@@ -48,7 +39,7 @@ With `base` set, every link, photo URL, stylesheet and script starts with `/<rep
    git push -u origin main
    ```
 
-   `-b main` names the branch `main`, which is the branch the workflow listens to. Without it, `git init` still names the first branch `master` on many computers.
+   The scaffold has usually done the first three commands already. `-b main` names the branch `main`; the workflow listens to `main` and to `master`, which `git init` without `-b` still names the first branch on many computers.
 
 3. In the repository, open **Settings** > **Pages**. Under **Build and deployment**, set **Source** to **GitHub Actions**.
 4. Open the **Actions** tab, select **Deploy to GitHub Pages**, and select **Run workflow**. If the run started by the first push failed because Pages was not on yet, this one publishes the site. The run’s summary shows the address.
@@ -63,11 +54,21 @@ The scaffold writes `.github/workflows/deploy.yml`. With npm it reads:
 # Builds the site from the committed photos, manifests and resized copies,
 # and publishes it to GitHub Pages. In the repository settings, under Pages,
 # set the source to GitHub Actions.
+#
+# configure-pages reads the address GitHub serves the site at, which the
+# build gets as --site and --base, so a project site
+# (https://<user>.github.io/<repo>/), a user site and a custom domain all
+# work without editing astro.config.mjs. withastro/action installs with the
+# package manager of the committed lockfile, at the version package.json’s
+# packageManager names, on Node 24, and keeps Astro’s build cache between
+# runs.
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # The scaffold creates the repository on main; master is for one made
+    # with a plain git init.
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -83,16 +84,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v7
+      - id: pages
+        uses: actions/configure-pages@v6
+      - uses: withastro/action@v6
         with:
-          node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: dist
+          build-cmd: npm run build -- --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path || '/' }}"
 
   deploy:
     needs: build
@@ -102,15 +99,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 ```
 
-- It runs on every push to `main`, and from the **Actions** tab (`workflow_dispatch`). If your branch is `master`, change `branches: [main]` to `branches: [master]`.
-- `npm ci` installs exactly what `package-lock.json` lists, so commit that file. With pnpm, Yarn or Bun, the scaffold writes that package manager’s install step instead, and its lockfile must be committed too.
-- `npm run build` runs `astro build`, which reads the committed manifests and resized copies. No photo is processed on GitHub.
-- The last two steps upload `dist/` and publish it to the `github-pages` environment.
+- It runs on every push to `main` or `master`, and from the **Actions** tab (`workflow_dispatch`).
+- `actions/configure-pages` reads the site’s address from the Pages settings; see [The site address](#the-site-address).
+- `withastro/action` picks the package manager from the lockfile, so commit `package-lock.json` (or `pnpm-lock.yaml`, `yarn.lock`, `bun.lock`): without one the run stops. For pnpm and Yarn it installs the version in the `packageManager` field of `package.json`, which the scaffold writes. It sets up Node 24 and keeps Astro’s build cache between runs, so pages whose photos have not changed are not rendered again.
+- The build runs `astro build`, which reads the committed manifests and resized copies. No photo is processed on GitHub. With pnpm, Yarn or Bun, the scaffold writes that package manager’s `run build` instead of `npm run build --`.
+- The deploy job publishes `dist/` to the `github-pages` environment.
 
-With pnpm, the `pnpm/action-setup` step reads the pnpm version from the `packageManager` field of `package.json`. If the field is missing, the step fails; add it with:
+A gallery made before the scaffold wrote `packageManager` installs the latest pnpm, with a warning in the run. To pin it:
 
 ```sh
 npm pkg set packageManager=pnpm@$(pnpm --version)
@@ -121,7 +119,7 @@ npm pkg set packageManager=pnpm@$(pnpm --version)
 1. In **Settings** > **Pages**, enter the domain under **Custom domain** and save.
 2. At your DNS provider, point the domain at GitHub. For a subdomain such as `photos.example.com`, add a CNAME record to `<user>.github.io`. For an apex domain such as `example.com`, add A records to `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`.
 3. Once GitHub has found the DNS records, select **Enforce HTTPS**. The option can take up to a day to appear.
-4. In `astro.config.mjs`, set `site` to the domain and remove `base`, then commit and push.
+4. Run the workflow again (**Actions** > **Deploy to GitHub Pages** > **Run workflow**), or publish: the build reads the new address from the Pages settings, so the feeds, the sitemap and the link previews use the domain. Nothing in the gallery changes.
 
 A site published by a workflow needs no `CNAME` file; GitHub ignores it. See GitHub’s [Managing a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) for the details, including the `www` subdomain and domain verification.
 

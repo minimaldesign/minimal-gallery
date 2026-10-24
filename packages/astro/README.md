@@ -58,7 +58,7 @@ Options passed to `minimalgallery({ ... })` override the same keys of that file.
 | `credit` | `true` | The credit lines; an integration option only, for now |
 | `galleryDir` | the Astro root | Where `photos/`, `.minimalgallery/manifest/`, the config file and `custom.css` live; an integration option only |
 
-**`site`.** Astro’s `site`, else `site` in the config file, makes URLs absolute. The feeds, the sitemap, the canonical link and the Open Graph tags need it. Without it, pages leave out the canonical link and the `og:*` and `twitter:card` tags, `robots.txt` has no `Sitemap:` line, and the feed and sitemap routes fail the build with a message saying where to set it.
+**`site`.** Astro’s `site`, else `site` in the config file, makes URLs absolute. The feeds, the sitemap, the canonical link and the Open Graph tags need it. Without it, pages leave out the canonical link, the feed links and the `og:*` and `twitter:card` tags, and `robots.txt` has no `Sitemap:` line. The feed and sitemap functions throw without it, with a message saying where to set it; the routes `create-minimalgallery` writes check `siteOf(site)` first and write no file instead, so a new gallery builds before it has an address.
 
 **`credit`.** On by default: “Powered by minimal gallery” centered after the last row of the grid or the list (at the bottom of the panel when the photos are few), and, at the right, “minimal gallery” with the version of `@minimalgallery/astro` (a 2.0.0 beta until launch, see `.changeset/README.md`) as the footer of the keyboard shortcuts pane, both linking to https://docs.minimalgallery.net/. `minimalgallery({ credit: false })` turns both off. `minimalgallery.config.ts` does not take the key yet: the pipeline’s config schema drops it until it adds `credit` (a follow-up).
 
@@ -66,7 +66,7 @@ The integration registers Geist and Geist Mono with Astro’s Fonts API (self-ho
 
 ## Routes
 
-The theme is a set of components; the site owns its routes, so each can be replaced. The demo in `examples/demo/src/pages` is the reference, and every file is a few lines:
+The theme is a set of components; the site owns its routes, so each can be replaced. The demo in `examples/demo/src/pages` is the reference, and every file is a few lines. `create-minimalgallery` writes the same routes, without the v0.8 ones (`legacy-ids.json.ts`, `<LegacyRedirect>`), and with feed and sitemap routes that write no file while the site has no address:
 
 | File | URLs | Renders |
 | --- | --- | --- |
@@ -79,13 +79,14 @@ The theme is a set of components; the site owns its routes, so each can be repla
 | `feed.json.ts` | `/feed.json` | JSON Feed 1.1, the same photos (`jsonFeed`) |
 | `sitemap.xml.ts` | `/sitemap.xml` | Every context page, every photo page with its image (`sitemap`) |
 | `robots.txt.ts` | `/robots.txt` | Crawling allowed, and the sitemap’s address (`robotsTxt`) |
+| `404.astro` | `/404.html` | `<NotFoundPage />`, which Cloudflare (`not_found_handling: "404-page"`), GitHub Pages and Netlify serve for an unknown address |
 | `legacy-ids.json.ts` | `/legacy-ids.json` | v0.8 photo id to page URL |
 
 Facet slugs and labels come from each manifest’s `facets` (the pipeline’s `photoFacets()`). An album whose first folder segment is a facet route (`year`, `camera`, …), `grid`, `legacy-ids`, `feed`, `random`, `_astro` or `_mg` fails the build with a message naming it (`RESERVED_SEGMENTS` in `@minimalgallery/astro/facets`).
 
 A thumbnail inside a context links to the photo page with `?in=<context id>`; albums need none, they are the default. The photo page ships its album statically; the theme script fetches `<context id>.json` (cached in `sessionStorage`) and keeps previous and next, the strip, the grid, the list, the breadcrumb and the prerender list inside that context. Navigation stops at both ends of a context. `?in=` takes a context id only (slugs joined by `/`); any other value is ignored. Without script the page stays in its album.
 
-The head of every page rendered with `ViewerPage` links both feeds (`<link rel="alternate">`, RSS and JSON Feed). When `site` is known it also carries `<link rel="canonical">` and the link preview tags: `og:type` (`website`), `og:site_name`, `og:title` (the gallery name on the home page, the context’s label on a context page, the photo’s title on a photo page), `og:description`, `og:url`, `og:image` with `og:image:width`, `og:image:height` and `og:image:alt`, and `twitter:card` (`summary_large_image`). The image is `shareImageOf()` of the page’s photo: the newest on the home page, the first on a context page.
+When `site` is known, the head of every page rendered with `ViewerPage` links both feeds (`<link rel="alternate">`, RSS and JSON Feed) and carries `<link rel="canonical">` and the link preview tags: `og:type` (`website`), `og:site_name`, `og:title` (the gallery name on the home page, the context’s label on a context page, the photo’s title on a photo page), `og:description`, `og:url`, `og:image` with `og:image:width`, `og:image:height` and `og:image:alt`, and `twitter:card` (`summary_large_image`). The image is `shareImageOf()` of the page’s photo: the newest on the home page, the first on a context page.
 
 ## Helpers
 
@@ -129,8 +130,9 @@ Imported from `@minimalgallery/astro/theme/<name>`. `Photo` and `Context` are th
 
 | Layout | Props | Slots | Renders |
 | --- | --- | --- | --- |
-| `ViewerPage.astro` | `photo: Photo`, `context: Context`, `start?: 'view' \| 'grid'` (default `view`) | `head` | A whole page: the viewer, the panel (grid, list, info pane, keyboard shortcuts pane, credit) and the filter palette, with the head tags under [Routes](#routes) |
-| `GalleryLayout.astro` | `title: string`, `description: string`, `style?: string` (custom properties on `<body>`), `class?: string` (on `<body>`), `start?: 'view' \| 'grid'` (`grid` sets `data-start` on `<html>`) | `head`, default (the body) | The document shell: `restore.js` inline, the fonts, the token contract, `mg.css`, `custom.css`, the theme script |
+| `ViewerPage.astro` | `photo?: Photo`, `context: Context`, `start?: 'view' \| 'grid'` (default `view`) | `head` | A whole page: the viewer, the panel (grid, list, info pane, keyboard shortcuts pane, credit) and the filter palette, with the head tags under [Routes](#routes). Without a photo (the home page of a gallery with no photos yet), the empty page: “No photos yet”, and under `astro dev` a link to the admin |
+| `GalleryLayout.astro` | `title: string`, `description: string`, `style?: string` (custom properties on `<body>`), `class?: string` (on `<body>`), `start?: 'view' \| 'grid'` (`grid` sets `data-start` on `<html>`), `script?: boolean` (default `true`) | `head`, default (the body) | The document shell: `restore.js` inline, the fonts, the token contract, `mg.css`, `custom.css`, the theme script (unless `script` is false) |
+| `NotFoundPage.astro` | none | none | The 404 page: the gallery’s name linking home, “Page not found” and a link to the photos, marked `noindex`, with no theme script |
 | `RandomPage.astro` | none | none | A whole document for `/random/`: it picks a random photo (of the `?in=` context when given, leaving out the photos already shown in this visit until all have been, and the photo the visitor came from) and replaces itself in the history; without script, a meta refresh to one photo chosen at build time |
 | `LegacyRedirect.astro` | none | none | An inline script for the home page’s `head` slot: it sends v0.8 `/?id=` links to the photo’s page through `/legacy-ids.json` |
 
@@ -294,7 +296,7 @@ Then, only for what no token covers, write unlayered rules for the theme’s cla
 
 A second theme replaces the templates and the CSS. What it has to provide so the routes, `custom.css` and a future settings UI keep working:
 
-- **The templates.** A `ViewerPage` with the props `photo`, `context` and `start` (`view` or `grid`) and a `head` slot (the home route puts `<LegacyRedirect>` there), and a `RandomPage` with no props for `/random/`. A site then changes themes by changing its imports. The data comes from `@minimalgallery/astro/gallery` and from `virtual:minimalgallery/config`: `title`, `description`, `author`, `site`, `credit`, `version`, and `defaults` as token values (`fit`, `strip`, `crop`, `view`, `size`, `backdrop`).
+- **The templates.** A `ViewerPage` with the props `photo` (missing for an empty gallery), `context` and `start` (`view` or `grid`) and a `head` slot (the home route puts `<LegacyRedirect>` there), a `RandomPage` with no props for `/random/`, and a `NotFoundPage` with no props for `404.astro`. A site then changes themes by changing its imports. The data comes from `@minimalgallery/astro/gallery` and from `virtual:minimalgallery/config`: `title`, `description`, `author`, `site`, `credit`, `version`, and `defaults` as token values (`fit`, `strip`, `crop`, `view`, `size`, `backdrop`).
 - **The token contract.** The same `@property` names and syntaxes, with the label, group and note comments, so an owner’s `custom.css` carries over. The integration writes the six viewer defaults only into a file whose path ends in `/theme/styles/site/theme.mg.tokens.css`, and fails the build when one of their `@property` rules is missing from it.
 - **The context JSON**, `/<context id>.json` from `contextJson()`, read by any script that steps inside the page or applies `?in=`. A context id is slugs joined by `/` (`grid`, `colors`, `aperture/1.4`); the theme script and the random page ignore any other `?in=` value.
 

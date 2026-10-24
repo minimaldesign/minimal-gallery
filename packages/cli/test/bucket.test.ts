@@ -4,9 +4,14 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import {
+  ACCOUNT_ID_PLACEHOLDER,
+  PUBLIC_URL_PLACEHOLDER,
+} from '@minimalgallery/pipeline/config';
 import { STAGE_DIR } from '@minimalgallery/pipeline/schema';
 import { startMockS3, type MockS3 } from '../../pipeline/test/mock-s3.ts';
 import { adminDevArgs } from '../src/commands/admin.ts';
+import { doctorCommand } from '../src/commands/doctor.ts';
 import { lastUrl, publishCommand, siteUrl } from '../src/commands/publish.ts';
 import { syncCommand } from '../src/commands/sync.ts';
 
@@ -42,7 +47,7 @@ const jpeg = (r: number, g: number, b: number) =>
     .jpeg()
     .toBuffer();
 
-async function bucketGallery(credentials = true) {
+async function bucketGallery(credentials = true, storage: object = {}) {
   const root = join(dir, 'gallery');
   await mkdir(join(root, 'photos', 'trip'), { recursive: true });
   await writeFile(join(root, 'photos', 'trip', 'a.jpg'), await jpeg(200, 0, 0));
@@ -58,6 +63,7 @@ async function bucketGallery(credentials = true) {
         endpoint: s3.endpoint,
         region: s3.region,
         publicUrl: s3.publicUrl,
+        ...storage,
       },
     })};\n`
   );
@@ -165,6 +171,51 @@ describe('publish in bucket mode', () => {
     );
     expect(git(remote, 'rev-list', '--count', 'main')).toBe('1');
     expect(git(root, 'status', '--porcelain')).not.toBe('');
+  });
+});
+
+describe('scaffold stand-ins in the config', () => {
+  const standInEndpoint = {
+    endpoint: `https://${ACCOUNT_ID_PLACEHOLDER}.r2.cloudflarestorage.com`,
+  };
+  const standInPublicUrl = { publicUrl: PUBLIC_URL_PLACEHOLDER };
+
+  it('stop publish before the pipeline, the upload, the commit and the deploy', async () => {
+    const root = await bucketGallery(true, standInPublicUrl);
+    const remote = await withRemote(root);
+    await expect(publishCommand(['--git', '--yes'], root)).rejects.toThrow(
+      /storage\.publicUrl: replace https:\/\/media\.example\.com .*Custom Domains.*\nNothing was published\.$/s
+    );
+    await expect(publishCommand(['--deploy', '--yes'], root)).rejects.toThrow(
+      /Nothing was published/
+    );
+    expect(s3.requests).toEqual([]);
+    expect(await stageFiles(root)).toEqual([]);
+    expect(git(remote, 'rev-list', '--count', 'main')).toBe('1');
+
+    await bucketGallery(true, standInEndpoint);
+    await expect(publishCommand(['--build', '--yes'], root)).rejects.toThrow(
+      /storage\.endpoint: replace your-account-id .*npx wrangler whoami/
+    );
+  });
+
+  it('let sync encode but not upload, and fail', async () => {
+    const root = await bucketGallery(true, standInPublicUrl);
+    expect(await syncCommand(['--no-upload'], root)).toBe(0);
+    expect(await syncCommand([], root)).toBe(1);
+    await expect(syncCommand(['--prune', '--yes'], root)).rejects.toThrow(
+      /storage\.publicUrl.*\nNothing was deleted from the bucket\.$/s
+    );
+    expect(s3.requests).toEqual([]);
+    expect(await stageFiles(root)).toHaveLength(4);
+  });
+
+  it('stop doctor --bucket before the probe', async () => {
+    const root = await bucketGallery(true, standInEndpoint);
+    await expect(doctorCommand(['--bucket'], root)).rejects.toThrow(
+      /storage\.endpoint.*\nThe bucket was not checked\.$/s
+    );
+    expect(s3.requests).toEqual([]);
   });
 });
 

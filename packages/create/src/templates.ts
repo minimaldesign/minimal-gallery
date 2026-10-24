@@ -40,9 +40,15 @@ export interface Answers {
 export const ASTRO_VERSION = '^7.4.2';
 export const WRANGLER_VERSION = '^4.152.0';
 
-/** Written to the config while the account id is not known. */
+/*
+ * Stand-ins written to the config while the account id is not known and
+ * while the bucket has no custom domain. @minimalgallery/pipeline exports the
+ * same two strings, and its checks stop publish, sync and doctor --bucket
+ * while the config holds one. They are copied rather than imported so that
+ * npm create does not install the pipeline (sharp, libvips) before the first
+ * question; a test fails if the copies differ.
+ */
 export const ACCOUNT_ID_PLACEHOLDER = 'your-account-id';
-/** Written to the config while the bucket has no custom domain. */
 export const PUBLIC_URL_PLACEHOLDER = 'https://media.example.com';
 
 /** A single-quoted JavaScript string literal. */
@@ -94,10 +100,20 @@ export function r2Endpoint(accountId: string): string {
   return `https://${accountId || ACCOUNT_ID_PLACEHOLDER}.r2.cloudflarestorage.com`;
 }
 
+/**
+ * The package managers whose version package.json pins (`packageManager`:
+ * `pnpm@10.20.0`, `yarn@4.5.0`), so GitHub’s pnpm/action-setup, Netlify,
+ * Cloudflare and Corepack install with the same one as this computer. npm
+ * and Bun need none.
+ */
+export const PINNED_MANAGERS: readonly PackageManager[] = ['pnpm', 'yarn'];
+
 export function packageJson(
   answers: Answers,
   name: string,
-  version: string
+  version: string,
+  /** `pnpm@10.20.0`; left out when unknown. */
+  packageManager?: string
 ): string {
   const ours = `^${version}`;
   const pkg = {
@@ -117,6 +133,7 @@ export function packageJson(
     },
     minimalgallery: { publish: answers.publish },
     engines: { node: '>=22.18' },
+    ...(packageManager ? { packageManager } : {}),
     dependencies: {
       '@minimalgallery/astro': ours,
       '@minimalgallery/pipeline': ours,
@@ -183,7 +200,10 @@ export function galleryConfig(answers: Answers): string {
   ];
   if (answers.author) lines.push(...prop(2, 'author', answers.author));
   lines.push(
-    '  // The public address, for canonical links, the feed and share images.',
+    '  // The public address, for canonical links, the feeds and share images.',
+    ...(answers.host === 'github'
+      ? ['  // On GitHub Pages the workflow passes it to the build.']
+      : []),
     "  // site: 'https://photos.example.com',",
     ...storageLines(answers),
     '});',
@@ -196,7 +216,14 @@ export function astroConfig(answers: Answers): string {
   const site =
     answers.host === 'github'
       ? [
-          '  // GitHub Pages serves a project at https://<user>.github.io/<repo>/:',
+          '  // GitHub Pages: the workflow (.github/workflows/deploy.yml) passes',
+          '  // site and base to astro build from the repository’s Pages settings.',
+          '  // A project site (https://<user>.github.io/<repo>/), a user site and a',
+          '  // custom domain then build without editing this file, and a renamed',
+          '  // repository needs no change; builds on this computer stay at the',
+          '  // root. Set them here only to build for Pages somewhere else: written',
+          '  // here they have to follow every rename, and the workflow’s values',
+          '  // win over them.',
           "  // site: 'https://<user>.github.io',",
           "  // base: '/<repo>',",
         ]
@@ -357,35 +384,33 @@ export function netlifyToml(pm: PackageManager): string {
 `;
 }
 
+/** `npm run build --`: a script command that takes more arguments after it. */
+const BUILD_WITH_ARGS: Record<PackageManager, string> = {
+  npm: 'npm run build --',
+  pnpm: 'pnpm run build',
+  yarn: 'yarn run build',
+  bun: 'bun run build',
+};
+
 export function githubPagesWorkflow(pm: PackageManager): string {
-  const setup: Record<PackageManager, string> = {
-    npm: `      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: npm
-      - run: npm ci`,
-    pnpm: `      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile`,
-    yarn: `      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: yarn
-      - run: yarn install --immutable`,
-    bun: `      - uses: oven-sh/setup-bun@v2
-      - run: bun install --frozen-lockfile`,
-  };
   return `# Builds the site from the committed photos, manifests and resized copies,
 # and publishes it to GitHub Pages. In the repository settings, under Pages,
 # set the source to GitHub Actions.
+#
+# configure-pages reads the address GitHub serves the site at, which the
+# build gets as --site and --base, so a project site
+# (https://<user>.github.io/<repo>/), a user site and a custom domain all
+# work without editing astro.config.mjs. withastro/action installs with the
+# package manager of the committed lockfile, at the version package.json’s
+# packageManager names, on Node 24, and keeps Astro’s build cache between
+# runs.
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # The scaffold creates the repository on main; master is for one made
+    # with a plain git init.
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -401,12 +426,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-${setup[pm]}
-      - run: ${runCommand(pm, 'build')}
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/checkout@v7
+      - id: pages
+        uses: actions/configure-pages@v6
+      - uses: withastro/action@v6
         with:
-          path: dist
+          build-cmd: ${BUILD_WITH_ARGS[pm]} --site "\${{ steps.pages.outputs.origin }}" --base "\${{ steps.pages.outputs.base_path || '/' }}"
 
   deploy:
     needs: build
@@ -416,7 +441,7 @@ ${setup[pm]}
       url: \${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 `;
 }
 

@@ -2,6 +2,7 @@ import { checkBucket, formatBucketCheck } from '@minimalgallery/pipeline';
 import { doctor, formatDoctorReport } from '@minimalgallery/pipeline/doctor';
 import { loadConfig } from '@minimalgallery/pipeline/config';
 import { parse } from '../args.ts';
+import { stopOnPlaceholders } from '../bucket.ts';
 import { CliError } from '../errors.ts';
 import { requireGalleryRoot } from '../root.ts';
 
@@ -27,6 +28,7 @@ export async function doctorCommand(args: string[], dir?: string) {
     throw new CliError(
       'The gallery is in repo mode, so there is no bucket to check.'
     );
+  stopOnPlaceholders(config, 'The bucket was not checked.');
   let check;
   try {
     check = await checkBucket(root, { config });

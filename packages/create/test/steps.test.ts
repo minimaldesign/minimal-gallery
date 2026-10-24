@@ -109,4 +109,20 @@ describe('next steps', () => {
     );
     expect(steps).toContain('git add -A && git commit -m "Create the gallery"');
   });
+
+  it('asks for the lockfile to be committed after a first commit made before the install', () => {
+    const repo = { ...answers, storage: 'repo' as const, bucket: undefined };
+    const before = nextSteps(repo, { ...outcome, installed: false });
+    expect(before).toContain('npm install');
+    expect(before).toContain(
+      'git add package-lock.json && git commit -m "Add the lockfile"'
+    );
+    const pnpm = nextSteps(
+      { ...repo, host: 'github', packageManager: 'pnpm' },
+      { ...outcome, installed: false }
+    );
+    expect(pnpm).toContain('git add pnpm-lock.yaml');
+    // installed first: the lockfile is in the first commit
+    expect(nextSteps(repo, outcome)).not.toContain('lockfile');
+  });
 });
