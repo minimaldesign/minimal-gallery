@@ -31,7 +31,6 @@
   },
   "placeLabel": "Manhattan, USA",
   "keywords": [],
-  "rating": null,
   "copyright": "© minimal design",
   "author": null,
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "26f3152c9feb3c97",
   "sourceSize": 170524,
-  "sourceMtime": 1792783284872.735,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "eca1ef89a9326f89"
+  "digest": "06b97816828b83ef"
 }

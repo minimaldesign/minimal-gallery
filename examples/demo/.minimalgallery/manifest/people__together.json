@@ -29,7 +29,6 @@
     "Villefranche",
     "People"
   ],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -103,9 +102,9 @@
   },
   "sourceHash": "14c719c99363f1c4",
   "sourceSize": 152668,
-  "sourceMtime": 1792783284902.0027,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "5ba8e9baaa5d6afc"
+  "digest": "a96ec1c5874ffafe"
 }

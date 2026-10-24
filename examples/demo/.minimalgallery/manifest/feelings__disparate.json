@@ -26,7 +26,6 @@
   "place": null,
   "placeLabel": null,
   "keywords": [],
-  "rating": null,
   "copyright": "© 2005 minimal design",
   "author": null,
   "hidden": false,
@@ -91,9 +90,9 @@
   },
   "sourceHash": "c3134ff5c67b2d8f",
   "sourceSize": 132561,
-  "sourceMtime": 1792783285019.554,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fc7b28006d21fe19"
+  "digest": "8e8b779abf2f9310"
 }

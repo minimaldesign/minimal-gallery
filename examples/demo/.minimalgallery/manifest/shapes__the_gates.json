@@ -35,7 +35,6 @@
     "Central Park",
     "Funny"
   ],
-  "rating": null,
   "copyright": "© minimal design 2005",
   "author": "Mr. X",
   "hidden": false,
@@ -116,9 +115,9 @@
   },
   "sourceHash": "ea815097c494397f",
   "sourceSize": 157285,
-  "sourceMtime": 1792783285116.1343,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b079f537140390b7"
+  "digest": "1dee300673f202dd"
 }

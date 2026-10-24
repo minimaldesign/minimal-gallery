@@ -31,7 +31,6 @@
   },
   "placeLabel": "New York, USA",
   "keywords": [],
-  "rating": null,
   "copyright": "© 2005 minimal design",
   "author": null,
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "17cfca498d87eeb1",
   "sourceSize": 170474,
-  "sourceMtime": 1792783285000.3542,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "59542fe94655c660"
+  "digest": "1c78de14582df8d1"
 }

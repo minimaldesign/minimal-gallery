@@ -26,7 +26,6 @@
   "place": null,
   "placeLabel": null,
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -91,9 +90,9 @@
   },
   "sourceHash": "8919d2e3a8d0f26b",
   "sourceSize": 143865,
-  "sourceMtime": 1792783285034.239,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "62579f780c56ede5"
+  "digest": "411c06726b8f0973"
 }

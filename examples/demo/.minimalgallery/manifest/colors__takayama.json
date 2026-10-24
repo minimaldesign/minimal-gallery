@@ -31,7 +31,6 @@
   },
   "placeLabel": "Takayama, Japan",
   "keywords": [],
-  "rating": null,
   "copyright": "minimal design LLC",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "0fa71339ca14e308",
   "sourceSize": 198514,
-  "sourceMtime": 1792783284856.5732,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "96693097d6b25729"
+  "digest": "46cfcc49b08f024a"
 }

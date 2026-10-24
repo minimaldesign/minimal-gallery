@@ -31,7 +31,6 @@
   },
   "placeLabel": "Brooklyn, USA",
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "42744e17b36d61b7",
   "sourceSize": 150110,
-  "sourceMtime": 1792783285038.8818,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "28d503672f564000"
+  "digest": "051d2363c51db8d6"
 }

@@ -31,7 +31,6 @@
   },
   "placeLabel": "Columbia, US",
   "keywords": [],
-  "rating": null,
   "copyright": "© minimal design",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "a8c2081bc156d875",
   "sourceSize": 137383,
-  "sourceMtime": 1792783285077.5725,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a6ce69ca9db21ce1"
+  "digest": "4cb8918a48c0627f"
 }

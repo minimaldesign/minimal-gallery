@@ -31,7 +31,6 @@
   },
   "placeLabel": "Gdansk, Poland",
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "c84ec899b9fd847b",
   "sourceSize": 132833,
-  "sourceMtime": 1792783284980.6394,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "69905586b2e02cb6"
+  "digest": "63b0b80d00a0bef1"
 }

@@ -33,7 +33,6 @@
   "keywords": [
     "HDR"
   ],
-  "rating": null,
   "copyright": "minimal design LLC",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -106,9 +105,9 @@
   },
   "sourceHash": "56e47987e9c33d21",
   "sourceSize": 223248,
-  "sourceMtime": 1792783284982.8755,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "779b0f1915db9c78"
+  "digest": "7009269145f554d1"
 }

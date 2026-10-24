@@ -1,5 +1,5 @@
 {
-  "pipelineVersion": "0.3.0",
+  "pipelineVersion": "0.4.0",
   "albums": [
     {
       "id": "colors",
@@ -7,7 +7,6 @@
       "parent": null,
       "title": "Colors",
       "description": null,
-      "cover": "colors__lazy_sunday_afternoons",
       "sort": "date",
       "order": [],
       "hidden": false,
@@ -58,7 +57,7 @@
         "colors__noguchi"
       ],
       "children": [],
-      "digest": "628fcdd0fe46eda5"
+      "digest": "4ed0ff006f22857c"
     },
     {
       "id": "feelings",
@@ -66,7 +65,6 @@
       "parent": null,
       "title": "Feelings",
       "description": null,
-      "cover": "feelings__greenport",
       "sort": "date",
       "order": [],
       "hidden": false,
@@ -148,7 +146,7 @@
         "feelings__valentines_tennis_balls"
       ],
       "children": [],
-      "digest": "7e4a0dc2068ca8ae"
+      "digest": "4e15d806b733243d"
     },
     {
       "id": "light",
@@ -156,7 +154,6 @@
       "parent": null,
       "title": "Light",
       "description": null,
-      "cover": "light__on_the_way_back",
       "sort": "date",
       "order": [],
       "hidden": false,
@@ -201,7 +198,7 @@
         "light__heavy_clouds_but_no_rain"
       ],
       "children": [],
-      "digest": "8e40eba57a7e1200"
+      "digest": "7d22cfe572647e76"
     },
     {
       "id": "motion",
@@ -209,7 +206,6 @@
       "parent": null,
       "title": "Motion",
       "description": null,
-      "cover": "motion__hanami_fire",
       "sort": "date",
       "order": [],
       "hidden": false,
@@ -226,7 +222,7 @@
         "motion__fountain"
       ],
       "children": [],
-      "digest": "c46a017d312bfc73"
+      "digest": "d58190779cd2d4b5"
     },
     {
       "id": "people",
@@ -234,7 +230,6 @@
       "parent": null,
       "title": "People",
       "description": null,
-      "cover": "people__last_day_in_kyoto",
       "sort": "date",
       "order": [],
       "hidden": false,
@@ -290,7 +285,7 @@
         "people__we_will_miss_you"
       ],
       "children": [],
-      "digest": "52bcca9eafbeaff5"
+      "digest": "65bd9a996fa6ea08"
     },
     {
       "id": "shapes",
@@ -298,7 +293,6 @@
       "parent": null,
       "title": "Shapes",
       "description": null,
-      "cover": "shapes__on_5th_avenue",
       "sort": "date",
       "order": [],
       "hidden": false,
@@ -360,7 +354,7 @@
         "shapes__my_ceiling"
       ],
       "children": [],
-      "digest": "7bb92b74fdd0681b"
+      "digest": "57c9b03d55901ab7"
     }
   ]
 }

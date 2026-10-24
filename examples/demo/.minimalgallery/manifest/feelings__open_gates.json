@@ -31,7 +31,6 @@
   },
   "placeLabel": "Brooklyn, USA",
   "keywords": [],
-  "rating": null,
   "copyright": "© 2005 minimal design",
   "author": "minimal design",
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "e02dcf0080f75be0",
   "sourceSize": 140700,
-  "sourceMtime": 1792783285117.7249,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3d8d3cab6b314074"
+  "digest": "43ba50d0914b4bc6"
 }

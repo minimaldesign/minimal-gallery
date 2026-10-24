@@ -33,7 +33,6 @@
   "keywords": [
     "Warsaw"
   ],
-  "rating": null,
   "copyright": "© 2004 minimal Design&#xD;All rights reserved",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -106,9 +105,9 @@
   },
   "sourceHash": "3fa164c4548ed41d",
   "sourceSize": 139518,
-  "sourceMtime": 1792783285049.5225,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "5842ca03fc867ead"
+  "digest": "738cd821b26f01bd"
 }

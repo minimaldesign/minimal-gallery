@@ -31,7 +31,6 @@
   },
   "placeLabel": "Nice, France",
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "5bc66f49edf2c798",
   "sourceSize": 121628,
-  "sourceMtime": 1792783284981.6365,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0294d858086e4caf"
+  "digest": "9105030f2fdd0b92"
 }

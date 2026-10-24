@@ -33,7 +33,6 @@
   "keywords": [
     "Paris"
   ],
-  "rating": null,
   "copyright": "© 2004 minimal Design All rights reserved",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -106,9 +105,9 @@
   },
   "sourceHash": "dd455691e2b4a8d6",
   "sourceSize": 150402,
-  "sourceMtime": 1792783285000.426,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ba4f375368f427f6"
+  "digest": "3abbc97e406c4945"
 }

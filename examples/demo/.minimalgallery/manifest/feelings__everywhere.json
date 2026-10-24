@@ -31,7 +31,6 @@
   },
   "placeLabel": "Kyoto, Japan",
   "keywords": [],
-  "rating": 4,
   "copyright": "© 2007 minimal design LLC",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "ff3f4a9bc471f103",
   "sourceSize": 220485,
-  "sourceMtime": 1792783285033.427,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "241210e502080703"
+  "digest": "f0776f6d031edc1d"
 }

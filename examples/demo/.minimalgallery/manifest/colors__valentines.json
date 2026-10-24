@@ -28,7 +28,6 @@
   "keywords": [
     "Gourdon"
   ],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -98,9 +97,9 @@
   },
   "sourceHash": "7010159a45a7a849",
   "sourceSize": 137903,
-  "sourceMtime": 1792783284903.6362,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "59ab94272317ad01"
+  "digest": "e7d6e8d1c4e14fa4"
 }

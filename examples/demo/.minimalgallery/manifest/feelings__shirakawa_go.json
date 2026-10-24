@@ -31,7 +31,6 @@
   },
   "placeLabel": "Shirakawa Go, Japan",
   "keywords": [],
-  "rating": null,
   "copyright": "minimal design LLC",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -96,9 +95,9 @@
   },
   "sourceHash": "4f757eb3f2e0626b",
   "sourceSize": 191690,
-  "sourceMtime": 1792783285128.6501,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "dc3b63bd1f18c332"
+  "digest": "b9f060d0374d1547"
 }

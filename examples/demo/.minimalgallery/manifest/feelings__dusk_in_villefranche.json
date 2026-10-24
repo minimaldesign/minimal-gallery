@@ -28,7 +28,6 @@
   "keywords": [
     "Villefranche"
   ],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -98,9 +97,9 @@
   },
   "sourceHash": "4a82f34c564dc267",
   "sourceSize": 135367,
-  "sourceMtime": 1792783285027.2422,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "143a1ea75a0e7b7c"
+  "digest": "010c107ab3044293"
 }

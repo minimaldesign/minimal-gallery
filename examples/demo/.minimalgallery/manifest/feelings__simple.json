@@ -28,7 +28,6 @@
   "keywords": [
     "Gdansk"
   ],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -98,9 +97,9 @@
   },
   "sourceHash": "21959a1b12c274c1",
   "sourceSize": 136400,
-  "sourceMtime": 1792783284933.7454,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "982500d7616bd0f0"
+  "digest": "6a5e8157e58ca814"
 }

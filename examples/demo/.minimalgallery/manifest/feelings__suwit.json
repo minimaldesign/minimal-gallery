@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Suwit",
   "caption": null,
-  "date": "2026-10-23T12:21:25",
+  "date": "2026-10-23T20:59:25",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -26,7 +26,6 @@
   "place": null,
   "placeLabel": null,
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -82,9 +81,9 @@
   },
   "sourceHash": "7afd97887438b272",
   "sourceSize": 234031,
-  "sourceMtime": 1792783285138.6997,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b13e00228bec4270"
+  "digest": "d07ef53fbef167d3"
 }

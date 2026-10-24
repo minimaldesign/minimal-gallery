@@ -31,7 +31,6 @@
   },
   "placeLabel": "Nara, Japan",
   "keywords": [],
-  "rating": 4,
   "copyright": "© 2007 minimal design LLC",
   "author": "Yann Bettremieux",
   "hidden": false,
@@ -99,9 +98,9 @@
   },
   "sourceHash": "ed6b83e45e0c41a8",
   "sourceSize": 156509,
-  "sourceMtime": 1792783285119.04,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "797b87d938b424ee"
+  "digest": "c37d065e742b44f7"
 }

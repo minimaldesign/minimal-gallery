@@ -28,7 +28,6 @@
   "keywords": [
     "Vence"
   ],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -98,9 +97,9 @@
   },
   "sourceHash": "286364f29db6693b",
   "sourceSize": 139849,
-  "sourceMtime": 1792783285035.9614,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2f490b0b029dcc8c"
+  "digest": "e8b01df02f8b8186"
 }

@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Central Park",
   "caption": null,
-  "date": "2026-10-23T12:21:24",
+  "date": "2026-10-23T20:59:25",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -26,7 +26,6 @@
   "place": null,
   "placeLabel": null,
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -82,9 +81,9 @@
   },
   "sourceHash": "db747d6f7d3bbde8",
   "sourceSize": 418504,
-  "sourceMtime": 1792783284984.4526,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "324f0d871f2c4ac5"
+  "digest": "ec1507de9d9a29dd"
 }

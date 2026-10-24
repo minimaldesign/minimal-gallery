@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Across the road",
   "caption": null,
-  "date": "2026-10-23T12:21:24",
+  "date": "2026-10-23T20:59:25",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -26,7 +26,6 @@
   "place": null,
   "placeLabel": null,
   "keywords": [],
-  "rating": null,
   "copyright": null,
   "author": null,
   "hidden": false,
@@ -82,9 +81,9 @@
   },
   "sourceHash": "3c85d5658e4ec57a",
   "sourceSize": 118285,
-  "sourceMtime": 1792783284988.2622,
-  "inputsHash": "96b19068f74db763",
-  "pipelineVersion": "0.3.0",
+  "sourceMtime": 1792814365000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f704f3f1361fba60"
+  "digest": "8fd92363f4be1ad0"
 }
