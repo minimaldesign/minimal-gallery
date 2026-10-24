@@ -15,6 +15,7 @@ photos/
 - Titles, captions, keywords and dates come from the photos’ own metadata, so a Lightroom export with metadata included needs no extra work.
 - Your originals are never changed. Resized copies go to `public/_mg/` in repo mode, or to your storage bucket when you publish in bucket mode, and the details the site reads go to `.minimalgallery/`.
 - Photos placed directly in this folder, outside an album folder, are skipped.
+- When the gallery publishes with git, the photo files stay out of the repository (see `.gitignore`); their sidecars and `_album.md` files are committed. Git is then not a backup of your photos, so keep one of this folder.
 
 To copy a folder in and process it in one step:
 

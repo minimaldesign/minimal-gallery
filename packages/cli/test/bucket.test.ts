@@ -157,7 +157,8 @@ describe('publish in bucket mode', () => {
     expect(s3.objects.size).toBe(4);
     const pushed = git(remote, 'ls-tree', '-r', '--name-only', 'main');
     expect(pushed).toContain('.minimalgallery/manifest/trip__a.json');
-    expect(pushed).toContain('photos/trip/a.jpg');
+    // The originals stay on this computer, even with no .gitignore rule.
+    expect(pushed).not.toContain('photos/trip/a.jpg');
     expect(pushed).not.toContain('.env');
     expect(pushed).not.toContain('cache/media');
   });

@@ -13,6 +13,13 @@ import { Piscina } from 'piscina';
 import sharp from 'sharp';
 import { z } from 'zod';
 import { ladderFromConfig, loadConfig, type GalleryConfig } from './config.ts';
+import {
+  albumPathOf,
+  missingPhotos,
+  readSeen,
+  withAbsentAlbums,
+  writeSeen,
+} from './absent.ts';
 import type { EncodeResult, EncodeTask } from './encode.ts';
 import { readEmbedded } from './embedded.ts';
 import { photoFacets, sortPhotos } from './facets.ts';
@@ -66,7 +73,11 @@ export { MANIFEST_DIR, ALBUMS_FILE } from './schema.ts';
 export interface ProcessOptions {
   /** Re-encode every photo. */
   force?: boolean;
-  /** Remove manifests, derivatives and empty folders of photos that no longer exist. */
+  /**
+   * Remove the manifests and derivatives of photos deleted from this folder,
+   * and empty folders. A photo this folder never had is absent, not deleted
+   * (see `absent.ts`), and is kept.
+   */
   prune?: boolean;
   /** The gallery config. Defaults to `loadConfig(galleryDir)`. */
   config?: GalleryConfig;
@@ -128,8 +139,16 @@ export interface ProcessSummary {
   /** Worker threads and libvips threads per worker used for this run. */
   workers: number;
   threadsPerWorker: number;
-  /** Ids with a manifest or derivatives but no photo. */
+  /**
+   * Ids of photos deleted from this folder that still have a manifest or
+   * derivatives, and of derivatives that no manifest names.
+   */
   orphans: string[];
+  /**
+   * Ids of photos kept from their manifests: their originals are not in this
+   * folder and never were (a clone, or photos added on another computer).
+   */
+  absent: string[];
   pruned: {
     /** Orphaned photo ids removed. */
     ids: string[];
@@ -305,8 +324,8 @@ export async function processGallery(
   const manifestDir = join(galleryDir, MANIFEST_DIR);
   await mkdir(manifestDir, { recursive: true });
 
-  const { albums, photos, unsupported, warnings } =
-    await walkPhotos(galleryDir);
+  const walked = await walkPhotos(galleryDir);
+  const { photos, unsupported, warnings } = walked;
   const errors: PhotoError[] = [];
   let pairedIgnored = 0;
   for (const u of unsupported) {
@@ -322,6 +341,38 @@ export async function processGallery(
     warnings.push(
       `${pairedIgnored} RAW or HEIC file(s) ignored: a JPEG with the same name is next to each`
     );
+
+  // Photos with a manifest but no file here. Those this folder had before
+  // were deleted; the others are absent (their originals are on another
+  // computer) and stay in the gallery as their manifests describe them.
+  const walkedIds = new Set(photos.map((p) => p.id));
+  const seen = await readSeen(galleryDir);
+  const manifestIdsBefore = (await readdir(manifestDir))
+    .filter((f) => f.endsWith('.json') && f !== ALBUMS_FILE)
+    .map((f) => f.slice(0, -5));
+  const { absent } = missingPhotos(manifestIdsBefore, walkedIds, seen);
+  const absentManifests = (
+    await mapLimit(absent, 16, async (id) =>
+      PhotoManifest.safeParse(await readJson(join(manifestDir, `${id}.json`)))
+    )
+  ).flatMap((r) => (r.success ? [r.data] : []));
+  if (absentManifests.length < absent.length)
+    warnings.push(
+      `${absent.length - absentManifests.length} manifest(s) of photos whose originals are not here could not be read; they are kept as they are, out of the albums, until the pipeline runs where the originals are`
+    );
+  const albums = withAbsentAlbums(
+    walked.albums,
+    absentManifests.map((m) => albumPathOf(m.source)),
+    join(galleryDir, 'photos')
+  );
+  // Remember the photos found here; forget those with neither a file nor a
+  // manifest left.
+  const known = new Set([...manifestIdsBefore, ...walkedIds]);
+  const seenNow = new Set([
+    ...[...seen].filter((id) => known.has(id)),
+    ...walkedIds,
+  ]);
+  await writeSeen(galleryDir, seenNow);
 
   const albumFiles = new Map<string, AlbumFile | undefined>();
   await Promise.all(
@@ -368,13 +419,12 @@ export async function processGallery(
     const earlier = addedByHash.get(sourceHash);
     if (!earlier || added < earlier) addedByHash.set(sourceHash, added);
   };
-  const currentIds = new Set(photos.map((p) => p.id));
   await mapLimit(
     (await readdir(manifestDir)).filter(
       (f) =>
         f.endsWith('.json') &&
         f !== ALBUMS_FILE &&
-        !currentIds.has(f.slice(0, -5))
+        !walkedIds.has(f.slice(0, -5))
     ),
     16,
     async (f) => rememberAdded(await readJson(join(manifestDir, f)))
@@ -731,14 +781,25 @@ export async function processGallery(
     await pool?.destroy();
   }
 
-  // Albums.
+  // Albums. Absent photos join them in walk order, by file name.
+  for (const m of absentManifests) manifests.set(m.id, m);
+  const members = absentManifests.length
+    ? [
+        ...photos,
+        ...absentManifests.map((m) => ({
+          id: m.id,
+          albumId: m.album,
+          file: m.file,
+        })),
+      ].sort((a, b) => a.file.localeCompare(b.file))
+    : photos;
   const albumManifests: AlbumManifest[] = [];
   for (const a of albums)
     albumManifests.push(
       await buildAlbum(
         a,
         albumFiles.get(a.id),
-        photos,
+        members,
         manifests,
         config.albums.sort
       )
@@ -753,7 +814,7 @@ export async function processGallery(
   );
 
   // Orphans: manifests and derivative folders with no photo behind them.
-  const current = new Set(photos.map((p) => p.id));
+  const current = new Set([...walkedIds, ...absent]);
   const manifestFiles = await readdir(manifestDir);
   const manifestIds = new Set(
     manifestFiles
@@ -800,6 +861,10 @@ export async function processGallery(
     for (const s of stores)
       if (s.sweep) pruned.swept.push(...(await s.sweep()));
     for (const id of pruned.ids) log(`pruned   ${id}`);
+    if (pruned.ids.length) {
+      for (const id of pruned.ids) seenNow.delete(id);
+      await writeSeen(galleryDir, seenNow);
+    }
   } else if (orphans.length) {
     warnings.push(
       `${orphans.length} orphaned photo(s) with manifests or derivatives; run with --prune to remove them`
@@ -841,6 +906,7 @@ export async function processGallery(
     workers: plan.workers,
     threadsPerWorker: plan.threadsPerWorker,
     orphans,
+    absent,
     pruned,
     errors,
     warnings,
@@ -851,7 +917,7 @@ export async function processGallery(
 async function buildAlbum(
   a: WalkedAlbum,
   file: AlbumFile | undefined,
-  photos: WalkedPhoto[],
+  photos: Array<Pick<WalkedPhoto, 'id' | 'albumId'>>,
   manifests: Map<string, PhotoManifest>,
   defaultSort: AlbumSort
 ): Promise<AlbumManifest> {

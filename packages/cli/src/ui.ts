@@ -21,6 +21,8 @@ export function pipelineRows(
     ['time', `${s.wallSeconds.toFixed(1)} s`],
   ];
   if (s.pruned.ids.length) rows.splice(6, 0, ['pruned', s.pruned.ids.length]);
+  if (s.absent.length)
+    rows.splice(2, 0, ['original not here', s.absent.length]);
   return rows;
 }
 
@@ -33,6 +35,7 @@ export function pipelineLine(s: ProcessSummary): string {
     `${s.skipped} unchanged`,
   ];
   if (s.pruned.ids.length) parts.push(`${s.pruned.ids.length} pruned`);
+  if (s.absent.length) parts.push(`${s.absent.length} not here`);
   if (s.errors.length) parts.push(`${s.errors.length} failed`);
   return `${parts.join(', ')} (${s.wallSeconds.toFixed(1)} s)`;
 }

@@ -12,15 +12,15 @@ This page sets up a gallery on Netlify: importing the repository, the `netlify.t
 3. Netlify reads `netlify.toml` from the repository, so the build command and the publish directory are already set. Leave the base directory empty unless the gallery is in a subfolder of the repository.
 4. Select **Publish**. The site appears at `https://<project>.netlify.app`.
 
-From then on, `npm run publish` processes new photos, commits the photos, manifests and resized copies, and pushes. Each push to the production branch starts a production deploy. The scaffold sets `"minimalgallery": { "publish": "git" }` in `package.json` for Netlify.
+From then on, `npm run publish` processes new photos, commits the manifests, resized copies and sidecars (not the originals; see [Originals and git](/hosting/#originals-and-git)), and pushes. Each push to the production branch starts a production deploy. The scaffold sets `"minimalgallery": { "publish": "git" }` in `package.json` for Netlify.
 
 ## netlify.toml
 
 The scaffold writes this file when you pick Netlify. With npm it reads:
 
 ```toml title="netlify.toml"
-# Netlify builds the site from the committed photos, manifests and resized
-# copies. Photos are processed on your computer, never here.
+# Netlify builds the site from the committed manifests and resized copies.
+# Photos are processed on your computer, never here.
 [build]
   command = "npm run build"
   publish = "dist"

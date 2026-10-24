@@ -88,7 +88,7 @@ minimalgallery sync [--prune] [--force]
 
 | Option | Meaning |
 | --- | --- |
-| `--prune` | Also remove the manifests and derivatives of photos that no longer exist, then empty folders and interrupted writes. |
+| `--prune` | Also remove the manifests and derivatives of photos deleted on this computer, then empty folders and interrupted writes. A photo whose original was never on this computer, as in a clone of the repository, is kept; see [Originals and git](/hosting/#originals-and-git). |
 | `--force` | Encode every photo again. |
 
 `sync` processes every photo in `photos/` that is new or changed:
@@ -97,7 +97,7 @@ minimalgallery sync [--prune] [--force]
 - A photo whose file content is unchanged, for example when only a sidecar was edited, gets a new manifest without being encoded again. Metadata edited inside the photo file changes its content, so that photo is encoded again.
 - Any other photo is encoded, and the derivatives of its earlier version are removed.
 
-It prints a summary: albums, photos, encoded, metadata only, unchanged, failed, bytes written and time. Without `--prune`, it also says how many deleted photos still have derivatives.
+It prints a summary: albums, photos, encoded, metadata only, unchanged, failed, bytes written and time, and how many photos have no original on this computer when some do. Without `--prune`, it also says how many deleted photos still have derivatives.
 
 `sync` exits 1 when any photo fails, which includes a HEIC or RAW file with no JPEG next to it. Every other photo is still processed.
 
@@ -110,12 +110,14 @@ minimalgallery doctor
 `doctor` reads the manifests and the `photos/` folder, encodes nothing and changes nothing. It prints:
 
 - the storage mode and the `originals` setting;
-- photo, album and undated counts, derivative files and bytes, and published originals when there are any;
+- photo, album and undated counts (with the photos whose originals are not on this computer), derivative files and bytes, and published originals when there are any;
 - the number of contexts: the archive, the albums and every facet value;
 - the projected deploy: one page per visible photo, one page and one JSON file per context, the derivatives in repo mode and about 20 other files, against Cloudflare’s limit of 20,000 files;
-- the media bytes in the repository against 1 GB, and about how many more photos fit before each limit;
+- the media bytes in the repository against 1 GB (the originals too, with `commitOriginals`), and about how many more photos fit before each limit;
 - a recommendation: repo mode is fine; plan bucket mode (past 500 photos or 500 MB); or move to bucket mode (over a limit);
-- issues: photos with no manifest (run `sync`), manifests with no photo (run `sync --prune`), and HEIC or RAW files with no JPEG.
+- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), HEIC or RAW files with no JPEG, and committed originals past 500 MB.
+
+A photo whose original is not on this computer and never was is not an issue: in a clone of the repository, every photo is in that case. `doctor` counts them and does not ask to prune them.
 
 `doctor` can recommend bucket mode, which is not built yet. It exits 0.
 
@@ -140,7 +142,7 @@ Without a flag, the method comes from the gallery’s `package.json`, which the 
 }
 ```
 
-The value is `"git"`, `"deploy"` or `"build"`. When neither a flag nor that field is set, `publish` uses `--deploy` if the gallery has a `wrangler.jsonc` file, and otherwise stops and asks you to choose.
+The value is `"git"`, `"deploy"` or `"build"`. With `--git`, `"commitOriginals": true` in the same field commits the original photos too. When neither a flag nor that field is set, `publish` uses `--deploy` if the gallery has a `wrangler.jsonc` file, and otherwise stops and asks you to choose.
 
 Before it commits, pushes or deploys, `publish` lists the steps and asks you to confirm. In a shell with no terminal attached it stops instead, unless you pass `--yes`. Photos that fail to process are reported with a warning, and `publish` goes on without them. Every method needs Astro installed in the gallery (`npm install`).
 
@@ -148,10 +150,12 @@ Before it commits, pushes or deploys, `publish` lists the steps and asks you to 
 
 1. Checks that the gallery is in a git repository.
 2. Processes the photos.
-3. Commits the changes under `photos/`, `.minimalgallery/`, `public/`, `custom.css` and the config file, with the message “Update gallery, YYYY-MM-DD”. Other changes in the repository are left alone.
+3. Commits the changes under `photos/`, `.minimalgallery/`, `public/`, `custom.css` and the config file, with the message “Update gallery, YYYY-MM-DD”. From `photos/` it takes the sidecars (`.md`, `.json`, `.xmp`, `_album.md`) and the files git already tracks, not new originals, unless `commitOriginals` is set; from `.minimalgallery/`, never the cache. Other changes in the repository are left alone.
 4. Pushes to the branch’s upstream. A branch with no upstream is pushed with `git push -u origin HEAD`; with no `origin` remote, `publish` stops and says how to add one.
 
 When nothing has changed and nothing is waiting to be pushed, it says so and exits 0.
+
+It warns when the repository and the setting disagree: originals tracked from an earlier version (with the commands to stop tracking them), new originals that `.gitignore` does not ignore, or originals that `.gitignore` keeps out while `commitOriginals` is on. See [Originals and git](/hosting/#originals-and-git).
 
 #### `--deploy`
 
@@ -176,7 +180,7 @@ minimalgallery watch [--delay <ms>]
 `watch` processes the gallery once when it starts, then again after each batch of changes in `photos/`:
 
 - It waits until each file has finished writing, so a copy from Finder or an export from Lightroom is read once it is complete.
-- The first run, and any run after files were deleted, also prunes the manifests and derivatives of deleted photos.
+- The first run, and any run after files were deleted, also prunes the manifests and derivatives of photos deleted on this computer.
 - Changes that arrive during a run start another run when it finishes.
 - Files and folders whose name starts with `.` are ignored.
 
@@ -274,7 +278,7 @@ Every gallery gets these files:
 | `minimalgallery.config.ts` | `name`, `author` when you gave one, `storage: { mode: 'repo' }`, and a commented `site`. See [Configuration](/reference/configuration/). |
 | `astro.config.mjs` | Static output, trailing slashes, the minimal gallery integration, incremental builds, and a commented `site`. |
 | `.env.example` | The bucket credentials, commented out. |
-| `.gitignore` | `node_modules`, `dist`, `.astro`, `.env` files and `.minimalgallery/cache`. Manifests and `public/_mg` are committed, since hosts build the site from them. |
+| `.gitignore` | `node_modules`, `dist`, `.astro`, `.env` files, `.minimalgallery/cache`, and every file under `photos/` except the sidecars and `_album.md`. Manifests and `public/_mg` are committed, since hosts build the site from them; the originals are not. |
 | `tsconfig.json` | Astro’s strict TypeScript settings. |
 | `photos/README.md` | How to organize photos. |
 | `src/content.config.ts` | The `albums` and `photos` collections. |
@@ -311,7 +315,7 @@ mg-pipeline doctor <gallery folder> [--json report.json]
 
 | Option | Meaning |
 | --- | --- |
-| `--prune` | Remove the manifests, derivatives and empty folders of deleted photos, and interrupted writes. |
+| `--prune` | Remove the manifests, derivatives and empty folders of photos deleted from this folder, and interrupted writes. Photos whose originals this folder never had are kept. |
 | `--force` | Encode every photo again. |
 | `--concurrency N` | The number of encoding workers. Default: the number of CPUs or the number of photos to encode, whichever is smaller. |
 | `--threads N` | libvips threads per worker. Default: the number of CPUs divided by the number of workers, at least 1. |

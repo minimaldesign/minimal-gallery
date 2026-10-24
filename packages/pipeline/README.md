@@ -12,6 +12,12 @@ For each photo it:
 
 Runs are incremental: unchanged photos are skipped, sidecar edits rewrite the manifest without re-encoding.
 
+## Photos whose originals are not here
+
+Git publishing leaves the originals out of the repository, so a clone of a gallery (on another computer, or in CI) has manifests for photos whose files it does not have. A manifest without its photo counts as a deleted photo only when this folder had the photo before; otherwise the photo is absent. An absent photo stays in the gallery as its manifest describes it: it keeps its place in its album (the album is rebuilt even when its folder is missing), its manifest and derivatives are never rewritten or pruned, and the run lists it in `absent`. A clone therefore writes the same `_albums.json` as the computer that has every original. Edits to an absent photo’s sidecars wait for a run on a computer that has the original.
+
+The photos a folder has had are recorded in `.minimalgallery/cache/seen.json`, which git ignores. The record names the folder it was written for; a copy that carries the cache folder along starts a new record instead of trusting it. A gallery that existed before the record starts it on its first run, so a photo deleted before that run is absent rather than deleted: delete its manifest by hand to remove it.
+
 ## Commands
 
 ```sh
@@ -19,19 +25,19 @@ mg-pipeline <galleryDir> [--prune] [--force] [--concurrency N] [--threads N] [--
 mg-pipeline doctor <galleryDir> [--json report.json]
 ```
 
-- `--prune` removes the manifests and derivatives of photos that no longer exist, then empty folders and interrupted writes. Each removed photo id is printed.
+- `--prune` removes the manifests and derivatives of photos deleted from this folder, and derivatives no manifest names, then empty folders and interrupted writes. Each removed photo id is printed. Absent photos are never pruned.
 - `--force` re-encodes every photo.
 - `--concurrency` sets the number of encoding workers; `--threads` sets libvips threads per worker. By default they follow the batch: workers = min(CPUs, photos to encode), threads = max(1, floor(CPUs / workers)). A full gallery gets one thread per worker; a single new photo gets every core.
 - The exit code is 1 when any photo failed (an unsupported format, a file that cannot be decoded). The other photos are still processed.
 
 `doctor` reads the manifests and the photos folder without encoding anything, and prints:
 
-- photo, album and undated counts, derivative files and bytes;
+- photo, album and undated counts (with the photos whose originals are not on this computer), derivative files and bytes;
 - the projected Cloudflare deploy: one HTML page per visible photo, one HTML page and one `<context>.json` per context (the archive, each album, each facet value), the derivatives in repo mode, and about 20 other files;
-- that count against Cloudflare’s 20,000-file limit and, when the gallery publishes from git, the media bytes in the repository against 1 GB, with the number of photos left before each (how a gallery publishes is `minimalgallery.publish` in its `package.json`; publishing from the computer sends the photos with the site, so the repository size does not matter);
+- that count against Cloudflare’s 20,000-file limit and, when the gallery publishes from git, the media bytes in the repository against 1 GB, with the number of photos left before each (how a gallery publishes is `minimalgallery.publish` in its `package.json`; publishing from the computer sends the photos with the site, so the repository size does not matter). With `minimalgallery.commitOriginals`, the originals count towards the repository too;
 - a recommendation: repo mode is fine; plan bucket mode (past 16,000 files, or past 500 MB of photos in the repository when publishing from git); or move to bucket mode (over a limit). Both pieces of advice say that enabling R2 asks for a payment method, even on the free tier;
 - in bucket mode, the staged files waiting for upload and whether credentials are set, read from the disk without the network;
-- issues: photos with no manifest, orphaned manifests, HEIC or RAW files without a JPEG, missing bucket credentials.
+- issues: photos with no manifest, manifests of deleted photos, HEIC or RAW files without a JPEG, missing bucket credentials, committed originals past 500 MB.
 
 ## Configuration
 
