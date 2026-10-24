@@ -56,6 +56,9 @@
     --input-placeholder-color: var(--mg-ink-faint);
     --label-spacing: var(--xs1);
     --select-icon-size: var(--sm1);
+    /* The chevron as an image, drawn in --mg-ink-muted: a stroke color
+       inside a data URL cannot read a custom property. */
+    --admin-select-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23a5a5a5'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
 
     /* inline code and folding sections */
     --text-code-color: var(--mg-ink);
@@ -82,12 +85,14 @@
     background-color: var(--input-background-color);
   }
 
+  /* mCSS paints the chevron by masking the select itself, and the mask
+     also hides the top and bottom border over the chevron, leaving a
+     loose bracket at the right end. The chevron is a background image
+     here instead, and the border stays whole. */
   select {
-    background: linear-gradient(
-      to right,
-      var(--input-background-color) 0 var(--split),
-      var(--mg-ink-muted) var(--split) 100%
-    );
+    mask-image: none;
+    background: var(--input-background-color) var(--admin-select-icon) no-repeat
+      right var(--xs1) center / var(--select-icon-size);
   }
 
   ::placeholder {
