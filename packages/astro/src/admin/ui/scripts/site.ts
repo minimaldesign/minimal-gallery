@@ -146,6 +146,12 @@ interface PublishInfo {
     wranglerInstalled: boolean;
     loggedIn: boolean;
     worker: string | null;
+    accounts: { id: string; name: string }[];
+    accountId: string | null;
+    needsAccount: boolean;
+    customDomain: boolean;
+    subdomain: string | null;
+    subdomainKnown: boolean;
   };
   bucket: { mode: 's3'; credentials: boolean; pending: number } | null;
   site: string | null;
@@ -196,11 +202,27 @@ export async function loadPublish() {
   ready.textContent = `Signed in to GitHub. Publishing commits the gallery and pushes ${
     git.branch ?? 'the current branch'
   }${git.remote ? ` to ${git.remote}` : ''}.`;
+  guide('git-host').hidden = !deploy.worker;
   guide('cf-login').hidden = deploy.loggedIn;
+  // after the login: which account, then the workers.dev name, once
+  const step = cloudflareStep(deploy);
+  guide('cf-account').hidden = step !== 'account';
+  if (step === 'account') {
+    const select = bound<HTMLSelectElement>('cf-accounts', publishForm);
+    select.replaceChildren(
+      ...deploy.accounts.map((a) => new Option(a.name, a.id))
+    );
+  }
+  guide('cf-subdomain').hidden = step !== 'subdomain';
+  showAddress();
   const cf = guide('cf-ready');
-  cf.hidden = !deploy.loggedIn;
+  cf.hidden = step !== 'ready';
+  const address =
+    deploy.subdomain && deploy.worker
+      ? `https://${deploy.worker}.${deploy.subdomain}.workers.dev`
+      : null;
   cf.textContent = deploy.wranglerInstalled
-    ? `Connected to Cloudflare. Publishing deploys ${deploy.worker ? `the worker “${deploy.worker}”` : 'the site'}.`
+    ? `Connected to Cloudflare. Publishing uploads ${deploy.worker ? `the worker “${deploy.worker}”` : 'the site'}${address ? `, served at ${address}` : ''}.`
     : 'Cloudflare’s tool (wrangler) is not installed in this gallery. Run npm install in the gallery folder, then come back.';
 
   const bucketSection = $('[data-bucket]', publishForm);
@@ -229,6 +251,46 @@ export async function loadPublish() {
     log.textContent = info.job.lines.join('\n');
     if (info.job.state !== 'running') ended(info.job);
   }
+}
+
+/** A workers.dev name, as Cloudflare takes it. */
+const SUBDOMAIN = /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
+
+/** What Cloudflare still needs before a first upload. */
+function cloudflareStep(
+  deploy: PublishInfo['deploy']
+): 'login' | 'account' | 'subdomain' | 'ready' {
+  if (!deploy.loggedIn) return 'login';
+  if (deploy.needsAccount) return 'account';
+  if (!deploy.customDomain && deploy.subdomainKnown && !deploy.subdomain)
+    return 'subdomain';
+  return 'ready';
+}
+
+/** The address the typed workers.dev name gives. */
+function showAddress() {
+  const input = field(publishForm, 'subdomain') as HTMLInputElement;
+  const name = input.value.trim() || 'your-name';
+  bound('cf-address', publishForm).textContent = `https://${
+    info?.deploy.worker ?? 'gallery'
+  }.${name}.workers.dev`;
+}
+
+/** Change a publish setting, then check again. */
+async function saveSetting(
+  path: string,
+  method: 'PUT' | 'POST',
+  body: Record<string, unknown>,
+  done: string
+) {
+  try {
+    await api(method, path, body);
+    status(publishForm, done);
+  } catch (error) {
+    status(publishForm, (error as Error).message);
+    return;
+  }
+  await loadPublish();
 }
 
 function showJob(kind: 'publish' | 'connect', state: string) {
@@ -289,7 +351,47 @@ publishForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const method =
     (field(publishForm, 'method') as RadioNodeList).value || info?.method;
+  if (method === 'deploy' && info) {
+    const step = cloudflareStep(info.deploy);
+    if (step !== 'ready') {
+      const name = step === 'login' ? 'cf-login' : `cf-${step}`;
+      guide(name).scrollIntoView({ block: 'nearest' });
+      status(
+        publishForm,
+        step === 'login'
+          ? 'Connect Cloudflare first.'
+          : step === 'account'
+            ? 'Choose the Cloudflare account first.'
+            : 'Choose your workers.dev address first.'
+      );
+      return;
+    }
+  }
   void start('/publish', { method }, 'publish');
+});
+
+// the method is a setting of the gallery, kept in its package.json
+publishForm.addEventListener('change', (event) => {
+  const target = event.target as HTMLInputElement;
+  if (target.name !== 'method') return;
+  void saveSetting(
+    '/publish/settings',
+    'PUT',
+    { method: target.value },
+    'Saved as how this gallery publishes.'
+  );
+});
+
+publishForm.addEventListener('input', (event) => {
+  if ((event.target as HTMLInputElement).name === 'subdomain') showAddress();
+});
+
+// Enter in the workers.dev name registers it rather than publishing
+publishForm.addEventListener('keydown', (event) => {
+  const target = event.target as HTMLInputElement;
+  if (event.key !== 'Enter' || target.name !== 'subdomain') return;
+  event.preventDefault();
+  $<HTMLButtonElement>('[data-action="subdomain"]', publishForm).click();
 });
 
 publishForm.addEventListener('click', (event) => {
@@ -299,6 +401,32 @@ publishForm.addEventListener('click', (event) => {
   if (target?.dataset.action === 'connect')
     void start('/connect/cloudflare', undefined, 'connect');
   if (target?.dataset.action === 'recheck') void loadPublish();
+  if (target?.dataset.action === 'account')
+    void saveSetting(
+      '/publish/settings',
+      'PUT',
+      {
+        accountId: bound<HTMLSelectElement>('cf-accounts', publishForm).value,
+      },
+      'Saved the account in wrangler.jsonc.'
+    );
+  if (target?.dataset.action === 'subdomain') {
+    const input = field(publishForm, 'subdomain') as HTMLInputElement;
+    if (!SUBDOMAIN.test(input.value.trim())) {
+      status(
+        publishForm,
+        'Use lowercase letters, digits and dashes, like yann-photos.'
+      );
+      input.focus();
+      return;
+    }
+    void saveSetting(
+      '/publish/subdomain',
+      'POST',
+      { name: input.value.trim() },
+      'Your workers.dev address is ready.'
+    );
+  }
 });
 
 /** A `log` event. Keeps the log scrolled to the end unless you scrolled up. */

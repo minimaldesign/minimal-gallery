@@ -19,6 +19,13 @@ import {
 import type { PhotoManifest } from '@minimalgallery/pipeline/schema';
 import { stripExtension } from '@minimalgallery/pipeline/slug';
 import { createAlbum, orderAlbum, updateAlbum } from './albums.ts';
+import {
+  registerSubdomain,
+  setAccount,
+  setPublishMethod,
+  wranglerClient,
+  type CloudflareClient,
+} from './cloudflare.ts';
 import { EventHub } from './events.ts';
 import {
   badRequest,
@@ -99,6 +106,8 @@ export interface AdminApiOptions {
   commands?: CommandResolver;
   /** Replaces the git, gh and wrangler checks of `GET /publish` (tests). */
   publishChecks?: (galleryDir: string) => Promise<PublishChecks>;
+  /** Replaces wrangler and Cloudflare’s API for the publish settings (tests). */
+  cloudflare?: CloudflareClient;
   /** Quiet time before a run. Default 1500 ms. */
   debounceMs?: number;
   log?: (message: string) => void;
@@ -163,7 +172,10 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
     debounceMs: options.debounceMs,
   }));
   const commands = options.commands ?? defaultCommands;
-  const checks = options.publishChecks ?? defaultPublishChecks;
+  const cloudflare = () => options.cloudflare ?? wranglerClient(galleryDir);
+  const checks =
+    options.publishChecks ??
+    ((dir: string) => defaultPublishChecks(dir, cloudflare()));
   const hub = new EventHub();
   const uploads: UploadContext = {
     galleryDir,
@@ -595,6 +607,39 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
           throw badRequest("method must be 'git', 'deploy' or 'build'.");
         const job = await startJob('publish', method);
         sendJson(res, 202, { job: job.id });
+      },
+    ],
+    [
+      'PUT',
+      /^\/publish\/settings$/,
+      async (req, res) => {
+        const body = await readJson(req);
+        onlyKeys(body, ['method', 'accountId']);
+        if ('method' in body) {
+          const method = body.method as PublishMethod;
+          if (!PUBLISH_METHODS.includes(method))
+            throw badRequest("method must be 'git', 'deploy' or 'build'.");
+          await setPublishMethod(galleryDir, method);
+        }
+        if ('accountId' in body)
+          await setAccount(galleryDir, cloudflare(), body.accountId);
+        entry.publishInfo = undefined;
+        sendJson(res, 200, { ok: true });
+      },
+    ],
+    [
+      'POST',
+      /^\/publish\/subdomain$/,
+      async (req, res) => {
+        const body = await readJson(req);
+        onlyKeys(body, ['name']);
+        const subdomain = await registerSubdomain(
+          galleryDir,
+          cloudflare(),
+          body.name
+        );
+        entry.publishInfo = undefined;
+        sendJson(res, 200, { subdomain });
       },
     ],
     [

@@ -250,7 +250,15 @@ A comment line is sent every 15 s to keep the connection open.
 {
   method: 'git' | 'deploy' | 'build';  // package.json "minimalgallery.publish", else deploy with wrangler.jsonc, else git with a remote, else build
   git: { repo: boolean, remote: string | null, branch: string | null, ghInstalled: boolean, ghAuthed: boolean };
-  deploy: { wranglerInstalled: boolean, loggedIn: boolean, worker: string | null };
+  deploy: {
+    wranglerInstalled: boolean, loggedIn: boolean, worker: string | null;
+    accounts: { id, name }[];          // the login's accounts (wrangler whoami --json)
+    accountId: string | null;          // "account_id" in wrangler.jsonc, else the only account
+    needsAccount: boolean;             // several accounts and none chosen
+    customDomain: boolean;             // wrangler.jsonc has routes: no workers.dev name needed
+    subdomain: string | null;          // the account's workers.dev subdomain, null when it has none
+    subdomainKnown: boolean;           // false when it could not be read
+  };
   bucket: { mode: 's3', credentials: boolean, pending: number } | null;
   site: string | null;
   last: { method, state: 'done' | 'failed', url: string | null, code: number | null, at: string } | null;
@@ -262,7 +270,12 @@ The `gh` and `wrangler` checks spawn those tools, so this call can take a second
 
 `POST /publish` `{ method }` → `202 { job }` (the job id). Waits for the queue to be idle, pauses it, then runs the gallery’s own `minimalgallery publish --<method> --yes` (from `node_modules/.bin`), streams its output as `log` events and ends with a `job` event: `state: 'done'` with `url` (the last `https://` address it printed, else the config’s `site`), or `state: 'failed'` with the exit `code`. `409` while another job runs.
 
-`POST /connect/cloudflare` → `202 { job }`: runs `wrangler login`, which opens the browser, and streams it the same way. GitHub has no connect call: the UI shows `gh auth login` as guidance.
+`POST /connect/cloudflare` → `202 { job }`: runs `wrangler login`, which opens the browser (to sign in, or to create an account), and streams it the same way. GitHub has no connect call: the UI shows `gh auth login` as guidance.
+
+`wrangler deploy` cannot ask anything without a terminal, so the admin settles two things before a first upload:
+
+- `PUT /publish/settings` `{ method?, accountId? }` → `{ ok: true }`. `method` writes `minimalgallery.publish` in `package.json` (how the gallery publishes is a setting of the gallery, read by `minimalgallery publish` too). `accountId`, one of the login’s accounts, writes `"account_id"` into `wrangler.jsonc`, keeping its comments; `400` for an account the login does not have.
+- `POST /publish/subdomain` `{ name }` → `{ subdomain }`: registers the account’s workers.dev subdomain with Cloudflare’s API (`PUT /accounts/<id>/workers/subdomain`, with the token of wrangler’s own login, `wrangler auth token`). A new account has none, and `wrangler deploy` would otherwise stop at its question. `400` for a name that is not lowercase letters, digits and dashes; `409` with Cloudflare’s own words when it refuses the name (taken, for one).
 
 ## The preview while the admin works
 

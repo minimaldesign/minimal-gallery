@@ -9,6 +9,12 @@ import { randomBytes } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
+import {
+  cloudflareStatus,
+  wranglerClient,
+  type CloudflareClient,
+  type CloudflareStatus,
+} from './cloudflare.ts';
 import { conflict } from './http.ts';
 
 export type PublishMethod = 'git' | 'deploy' | 'build';
@@ -218,29 +224,27 @@ export interface PublishChecks {
     ghInstalled: boolean;
     ghAuthed: boolean;
   };
-  deploy: {
+  deploy: CloudflareStatus & {
     wranglerInstalled: boolean;
-    loggedIn: boolean;
     worker: string | null;
   };
 }
 
 /** What the publish page needs to know before the first click. Spawns git, gh and wrangler. */
 export async function publishChecks(
-  galleryDir: string
+  galleryDir: string,
+  cloudflare: CloudflareClient = wranglerClient(galleryDir)
 ): Promise<PublishChecks> {
   const git = (args: string[]) => capture('git', args, galleryDir);
   const wranglerBin = localBin(galleryDir, 'wrangler');
-  const [inside, remote, branch, ghVersion, ghStatus, who, pkg, worker] =
+  const [inside, remote, branch, ghVersion, ghStatus, cf, pkg, worker] =
     await Promise.all([
       git(['rev-parse', '--is-inside-work-tree']),
       git(['remote', 'get-url', 'origin']),
       git(['branch', '--show-current']),
       capture('gh', ['--version'], galleryDir),
       capture('gh', ['auth', 'status'], galleryDir),
-      wranglerBin
-        ? capture(wranglerBin, ['whoami'], galleryDir, 20000)
-        : Promise.resolve({ code: 127, out: '' }),
+      cloudflareStatus(galleryDir, cloudflare),
       readJson(join(galleryDir, 'package.json')),
       workerName(galleryDir),
     ]);
@@ -266,9 +270,8 @@ export async function publishChecks(
       ghAuthed: ghStatus.code === 0,
     },
     deploy: {
+      ...cf,
       wranglerInstalled: !!wranglerBin,
-      loggedIn:
-        who.code === 0 && !/not authenticated|not logged in/i.test(who.out),
       worker,
     },
   };

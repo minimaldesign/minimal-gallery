@@ -23,7 +23,17 @@ const checks = async (): Promise<PublishChecks> => ({
     ghInstalled: false,
     ghAuthed: false,
   },
-  deploy: { wranglerInstalled: true, loggedIn: true, worker: 'my-gallery' },
+  deploy: {
+    wranglerInstalled: true,
+    loggedIn: true,
+    worker: 'my-gallery',
+    accounts: [{ id: 'a'.repeat(32), name: 'Photos' }],
+    accountId: 'a'.repeat(32),
+    needsAccount: false,
+    customDomain: false,
+    subdomain: 'yann',
+    subdomainKnown: true,
+  },
 });
 
 /** A stand-in for `minimalgallery publish`: prints, waits a little, exits. */
