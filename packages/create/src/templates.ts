@@ -40,9 +40,15 @@ export interface Answers {
 export const ASTRO_VERSION = '^7.4.2';
 export const WRANGLER_VERSION = '^4.152.0';
 
-/** Written to the config while the account id is not known. */
+/*
+ * Stand-ins written to the config while the account id is not known and
+ * while the bucket has no custom domain. @minimalgallery/pipeline exports the
+ * same two strings, and its checks stop publish, sync and doctor --bucket
+ * while the config holds one. They are copied rather than imported so that
+ * npm create does not install the pipeline (sharp, libvips) before the first
+ * question; a test fails if the copies differ.
+ */
 export const ACCOUNT_ID_PLACEHOLDER = 'your-account-id';
-/** Written to the config while the bucket has no custom domain. */
 export const PUBLIC_URL_PLACEHOLDER = 'https://media.example.com';
 
 /** A single-quoted JavaScript string literal. */

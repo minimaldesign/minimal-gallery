@@ -1,7 +1,9 @@
 import { log, spinner } from '@clack/prompts';
 import {
   bucketCredentials,
+  configPlaceholders,
   MISSING_CREDENTIALS,
+  placeholderMessage,
   pendingUploads,
   pruneBucket,
   uploadToBucket,
@@ -24,31 +26,62 @@ function reason(e: unknown): string {
     : err.message;
 }
 
+/**
+ * Stop with a `CliError` while the config still holds a stand-in from
+ * create-minimalgallery: the endpoint stand-in names a host that does not
+ * exist, and the `publicUrl` one would publish every image at
+ * media.example.com. `outcome` ends the message (“Nothing was published.”).
+ */
+export function stopOnPlaceholders(config: GalleryConfig, outcome: string) {
+  const found = configPlaceholders(config);
+  if (found.length)
+    throw new CliError(`${placeholderMessage(found)}\n${outcome}`);
+}
+
 export interface UploadResult {
   /** Files that were waiting for upload before this call. */
   pending: number;
-  /** Null when nothing was waiting, or when credentials are missing and the upload was optional. */
+  /** Null when nothing was waiting, or when the upload was optional and could not start. */
   summary: UploadSummary | null;
   /** True when files wait for upload and there are no credentials. */
   missingCredentials: boolean;
+  /** True when files wait for upload and the config still holds a scaffold stand-in. */
+  placeholders: boolean;
 }
 
 /**
  * Upload the files bucket mode has staged. Does nothing in repo mode or when
- * nothing is waiting. Without credentials it warns, or, when `required`
- * (publishing), stops with a `CliError` so the site is never published
- * pointing at files that are not in the bucket. A failed upload always stops.
+ * nothing is waiting. While the config holds a scaffold stand-in, or without
+ * credentials, it warns, or, when `required` (publishing), stops with a
+ * `CliError` so the site is never published pointing at files that are not
+ * in the bucket. A failed upload always stops.
  */
 export async function uploadStaged(
   root: string,
   config: GalleryConfig,
   options: { required?: boolean; output?: Output } = {}
 ): Promise<UploadResult> {
+  const none = { missingCredentials: false, placeholders: false };
   if (config.storage.mode !== 's3')
-    return { pending: 0, summary: null, missingCredentials: false };
+    return { pending: 0, summary: null, ...none };
   const pending = await pendingUploads(root, { config });
-  if (!pending.files)
-    return { pending: 0, summary: null, missingCredentials: false };
+  if (!pending.files) return { pending: 0, summary: null, ...none };
+  const placeholders = configPlaceholders(config);
+  if (placeholders.length) {
+    if (options.required)
+      throw new CliError(
+        `${pending.files} file(s) wait for upload to the bucket, so nothing was published.\n${placeholderMessage(placeholders)}`
+      );
+    log.warn(
+      `${pending.files} file(s) (${formatBytes(pending.bytes)}) wait for upload.\n${placeholderMessage(placeholders)}`
+    );
+    return {
+      pending: pending.files,
+      summary: null,
+      ...none,
+      placeholders: true,
+    };
+  }
   if (!bucketCredentials(root)) {
     if (options.required)
       throw new CliError(
@@ -57,7 +90,12 @@ export async function uploadStaged(
     log.warn(
       `${pending.files} file(s) (${formatBytes(pending.bytes)}) wait for upload.\n${MISSING_CREDENTIALS}`
     );
-    return { pending: pending.files, summary: null, missingCredentials: true };
+    return {
+      pending: pending.files,
+      summary: null,
+      ...none,
+      missingCredentials: true,
+    };
   }
 
   const output = options.output ?? (process.stdout.isTTY ? 'spinner' : 'lines');
@@ -94,18 +132,19 @@ export async function uploadStaged(
     log.warn(
       `${summary.missing.length} file(s) the manifests name are neither staged nor in the bucket. Run minimalgallery sync --force to encode them again.`
     );
-  return { pending: pending.files, summary, missingCredentials: false };
+  return { pending: pending.files, summary, ...none };
 }
 
 /**
  * Find, and with `apply` delete, the bucket files no manifest references.
- * Needs credentials.
+ * Needs credentials and a config without scaffold stand-ins.
  */
 export async function pruneBucketFiles(
   root: string,
   config: GalleryConfig,
   apply: boolean
 ): Promise<PruneSummary> {
+  stopOnPlaceholders(config, 'Nothing was deleted from the bucket.');
   if (!bucketCredentials(root)) throw new CliError(MISSING_CREDENTIALS);
   try {
     return await pruneBucket(root, { config, dryRun: !apply });
