@@ -20,6 +20,7 @@ import { nextSteps, type Outcome } from './steps.ts';
 import {
   BUCKET_NAME,
   HOST_PUBLISH,
+  PINNED_MANAGERS,
   bucketName,
   galleryConfig,
   projectName,
@@ -148,6 +149,26 @@ async function install(
       `${out.stdout}${out.stderr}`.trim().split('\n').slice(-20).join('\n')
     );
   return out.code === 0;
+}
+
+/**
+ * `pnpm@10.20.0` for package.json, for pnpm and Yarn: the version that runs
+ * this command (from npm_config_user_agent), else what `<pm> --version`
+ * says. Undefined when neither knows.
+ */
+export async function pinnedManager(
+  run: Runner,
+  cwd: string,
+  pm: PackageManager,
+  agent = ''
+): Promise<string | undefined> {
+  if (!PINNED_MANAGERS.includes(pm)) return undefined;
+  const semver = /^\d+\.\d+\.\d+(?:-[\w.]+)?$/;
+  const [name, version] = agent.split(' ')[0].split('/');
+  if (name === pm && semver.test(version ?? '')) return `${pm}@${version}`;
+  const out = await run(pm, ['--version'], { cwd, timeout: 10_000 });
+  const found = out.stdout.trim();
+  return out.code === 0 && semver.test(found) ? `${pm}@${found}` : undefined;
 }
 
 async function chooseAccount(
@@ -487,7 +508,8 @@ export async function main(
   // the admin.
   if (host === 'cloudflare') publish = publishFlag ?? 'deploy';
 
-  const agent = env.npm_config_user_agent?.split('/')[0];
+  const userAgent = env.npm_config_user_agent ?? '';
+  const agent = userAgent.split('/')[0];
   const detected = PMS.includes(agent as PackageManager)
     ? (agent as PackageManager)
     : 'npm';
@@ -521,6 +543,7 @@ export async function main(
     version,
     platform: deps.platform,
     date: deps.date,
+    packageManager: await pinnedManager(run, cwd, pm, userAgent),
   });
   log.success(`Created ${written.length} files in ${dir}`);
 
