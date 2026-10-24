@@ -182,6 +182,12 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 - A run is queued; the photo comes back through a `photo` event.
 - `404` when the photo has no manifest (an unknown id, or a photo the pipeline has not processed yet).
 
+`POST /photos/:id/trash` → `{ trashed }`: moves a duplicate to the system Trash, where it can be taken back out. `trashed` lists what moved, relative to the gallery: the photo, then its `.md`, `.json` and `.xmp` sidecars when they exist (`['photos/japan/Copy.jpg', 'photos/japan/Copy.md']`). macOS uses Foundation’s `trashItemAtURL` (through `osascript`), Linux `gio trash`; other systems get a `500` saying to delete the file by hand.
+
+- Only a duplicate: `409` when no other photo with the same `sourceHash` still has its file, so the last copy is never moved. Hiding it is the way to take a single photo off the site.
+- A run with pruning is queued; the photo goes away through a `photo-removed` event, and the copy that is left loses its `duplicate` badge.
+- `404` for an unknown id or a file that is already gone.
+
 ### Albums
 
 `POST /albums` `{ path, title? }` → `201 { album }`. `path` is the album folder under `photos/`, `/` between nested folders; each segment is slugged (`Japan 2025/Kyoto` creates `photos/japan_2025/kyoto/`), so the folder path is also the id. With `title`, `_album.md` is written with it. `409` when the folder exists.

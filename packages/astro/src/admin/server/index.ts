@@ -4,6 +4,7 @@
  * `http.createServer`; a desktop shell could do the same. The API reference
  * is `../README.md`.
  */
+import { access } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { join } from 'node:path';
 import {
@@ -29,6 +30,7 @@ import {
 import { EventHub } from './events.ts';
 import {
   badRequest,
+  conflict,
   HttpError,
   notFound,
   onlyKeys,
@@ -83,6 +85,7 @@ import {
   writeChunk,
   type UploadContext,
 } from './uploads.ts';
+import { systemTrash, type TrashFn } from './trash.ts';
 import { bridgeWatcher, type WatcherLike } from './watch.ts';
 
 export type { WatcherLike } from './watch.ts';
@@ -108,6 +111,8 @@ export interface AdminApiOptions {
   publishChecks?: (galleryDir: string) => Promise<PublishChecks>;
   /** Replaces wrangler and Cloudflare’s API for the publish settings (tests). */
   cloudflare?: CloudflareClient;
+  /** Replaces the system Trash for “Move to Trash” (tests). */
+  trash?: TrashFn;
   /** Quiet time before a run. Default 1500 ms. */
   debounceMs?: number;
   log?: (message: string) => void;
@@ -476,6 +481,45 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
           overrides: (await readPhotoOverrides(absNoExt)) ?? {},
           overridesFile: exists ? `${relNoExt}.md` : null,
         });
+      },
+    ],
+    [
+      'POST',
+      /^\/photos\/([^/]+)\/trash$/,
+      async (_req, res, [raw]) => {
+        const id = photoParam(raw);
+        const all = await readManifests(galleryDir);
+        const m = all.get(id);
+        if (!m) throw notFound(`There is no photo ${id}.`);
+        const rel = m.original.relativePath;
+        const abs = (path: string) => join(galleryDir, ...path.split('/'));
+        const exists = (path: string) =>
+          access(abs(path)).then(
+            () => true,
+            () => false
+          );
+        if (!rel.startsWith('photos/') || rel.split('/').includes('..'))
+          throw badRequest(`The manifest of ${id} has a bad path.`);
+        // a duplicate only, while another copy of the file is still there
+        const copies = (duplicateIndex(all.values()).get(m.sourceHash) ?? [])
+          .filter((other) => other !== id)
+          .map((other) => all.get(other)!.original.relativePath);
+        let kept = false;
+        for (const copy of copies) kept ||= await exists(copy);
+        if (!kept)
+          throw conflict(
+            `${m.original.relativePath} is the only copy of this photo, so the admin does not move it to the Trash. Hide it instead.`
+          );
+        if (!(await exists(rel)))
+          throw notFound(`The file of ${id} is gone: ${rel}.`);
+        // its sidecars go with it: they describe this file only
+        const relNoExt = stripExtension(rel);
+        const files = [rel];
+        for (const ext of ['.md', '.json', '.xmp'])
+          if (await exists(relNoExt + ext)) files.push(relNoExt + ext);
+        await (options.trash ?? systemTrash)(files.map(abs));
+        queue.schedule({ prune: true });
+        sendJson(res, 200, { trashed: files });
       },
     ],
     [
