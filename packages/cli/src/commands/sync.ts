@@ -49,7 +49,7 @@ export async function syncCommand(args: string[], dir?: string) {
     } else {
       const upload = await uploadStaged(root, config);
       rows.push(['uploaded', upload.summary?.uploaded.length ?? 0]);
-      if (upload.missingCredentials) {
+      if (upload.missingCredentials || upload.placeholders) {
         rows.push(['waiting for upload', upload.pending]);
         code = 1;
       }

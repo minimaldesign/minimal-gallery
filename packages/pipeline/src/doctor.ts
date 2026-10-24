@@ -9,6 +9,7 @@ import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { loadConfig, type GalleryConfig } from './config.ts';
+import { configPlaceholders } from './placeholders.ts';
 import {
   ALBUMS_FILE,
   AlbumsFile,
@@ -254,6 +255,10 @@ export async function doctor(
       stagedBytes: pending.bytes,
       credentials,
     };
+    for (const p of configPlaceholders(config))
+      issues.push(
+        `${p.key} is still the setup’s stand-in, so publish and sync will not upload: ${p.fix.replace(/\.$/, '')}`
+      );
     if (!credentials)
       issues.push(
         'no bucket credentials: add MG_S3_ACCESS_KEY_ID and MG_S3_SECRET_ACCESS_KEY to .env before publishing'

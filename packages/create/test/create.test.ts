@@ -12,7 +12,12 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { loadConfig } from '@minimalgallery/pipeline/config';
+import {
+  ACCOUNT_ID_PLACEHOLDER as PIPELINE_ACCOUNT_ID,
+  configPlaceholders,
+  loadConfig,
+  PUBLIC_URL_PLACEHOLDER as PIPELINE_PUBLIC_URL,
+} from '@minimalgallery/pipeline/config';
 import {
   afterAll,
   afterEach,
@@ -26,7 +31,12 @@ import {
 import { Exit, main } from '../src/cli.ts';
 import { spawnRunner, type Captured, type Runner } from '../src/run.ts';
 import { LAUNCHER_NAME, scaffold } from '../src/scaffold.ts';
-import { bucketName, projectName } from '../src/templates.ts';
+import {
+  ACCOUNT_ID_PLACEHOLDER,
+  bucketName,
+  projectName,
+  PUBLIC_URL_PLACEHOLDER,
+} from '../src/templates.ts';
 import {
   R2_DISABLED,
   WHOAMI_LOGGED_OUT,
@@ -130,6 +140,11 @@ function create(argv: string[], run: Runner) {
 }
 
 describe('create-minimalgallery', () => {
+  it('writes the stand-ins the pipeline checks for', () => {
+    expect(ACCOUNT_ID_PLACEHOLDER).toBe(PIPELINE_ACCOUNT_ID);
+    expect(PUBLIC_URL_PLACEHOLDER).toBe(PIPELINE_PUBLIC_URL);
+  });
+
   it('scaffolds a Cloudflare gallery in repo mode with --yes --no-install', async () => {
     const dir = join(tmp, 'My Gallery');
     // The real command, spawned. Repo mode and direct deploys run neither
@@ -428,6 +443,11 @@ describe('create-minimalgallery', () => {
     });
     const source = await read(dir, 'minimalgallery.config.ts');
     expect(source).toContain('// Placeholder: replace your-account-id');
+    // Publish, sync and doctor --bucket refuse to run on these.
+    expect(configPlaceholders(config).map((p) => p.key)).toEqual([
+      'storage.endpoint',
+      'storage.publicUrl',
+    ]);
 
     expect(output).toContain('Not logged in to Cloudflare yet');
     expect(output).toContain('npx wrangler login');
