@@ -3,6 +3,7 @@ import {
   access,
   mkdir,
   mkdtemp,
+  readdir,
   readFile,
   rm,
   stat,
@@ -600,6 +601,29 @@ describe('create-minimalgallery', () => {
     ).rejects.toThrow('--host cloudflare');
     expect(fake.calls).toEqual([]);
     expect(await exists(join(tmp, 'x1'))).toBe(false);
+  });
+
+  it('writes the feed, sitemap, robots and random routes, built only once the site is known', async () => {
+    const fake = fakeRunner();
+    await create(['routes', '--yes'], fake.run);
+    const pages = join(tmp, 'routes', 'src', 'pages');
+    const written = await readdir(pages);
+    // Every route of the demo, but its v0.8 redirect map.
+    const demo = (
+      await readdir(
+        fileURLToPath(
+          new URL('../../../examples/demo/src/pages', import.meta.url)
+        )
+      )
+    ).filter((f) => f !== 'legacy-ids.json.ts');
+    expect(written.sort()).toEqual(demo.sort());
+    for (const f of ['feed.xml.ts', 'feed.json.ts', 'sitemap.xml.ts']) {
+      const route = await read(pages, f);
+      expect(route).toContain('siteOf(site)');
+      expect(route).toContain('new Response(null, { status: 404 })');
+    }
+    expect(await read(pages, 'random.astro')).toContain('RandomPage');
+    expect(await read(pages, 'robots.txt.ts')).toContain('robotsTxt({ site })');
   });
 
   it('makes valid Cloudflare Worker and R2 bucket names', () => {
