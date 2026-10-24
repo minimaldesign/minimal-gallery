@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import type { GalleryConfig } from '../config.ts';
+import { configPlaceholders, placeholderMessage } from '../placeholders.ts';
 import { STAGE_DIR } from '../schema.ts';
 import { BUCKET_INDEX_FILE, bucketId, bucketStorage } from './bucket.ts';
 import { bucketCredentials, MISSING_CREDENTIALS } from './env.ts';
@@ -12,6 +13,7 @@ export class BucketError extends Error {
   code:
     | 'not-bucket-mode'
     | 'missing-credentials'
+    | 'placeholder'
     | 'no-manifests'
     | 'unreadable-manifests'
     | 'upload-failed';
@@ -44,7 +46,12 @@ export function storageFromConfig(
   const s = config.storage;
   if (s.mode === 'repo')
     return repoStorage({ root: join(galleryDir, 'public', '_mg') });
-  const credentials = bucketCredentials(galleryDir, env);
+  // With the scaffold’s stand-in endpoint there is no bucket to ask.
+  const credentials = configPlaceholders(config).some(
+    (p) => p.key === 'storage.endpoint'
+  )
+    ? null
+    : bucketCredentials(galleryDir, env);
   return bucketStorage({
     stageDir: join(galleryDir, STAGE_DIR),
     publicUrl: s.publicUrl,
@@ -55,7 +62,8 @@ export function storageFromConfig(
 
 /**
  * The bucket itself, for remote operations. Throws a `BucketError` when the
- * config is not in s3 mode or when credentials are missing.
+ * config is not in s3 mode, still holds a scaffold stand-in, or when
+ * credentials are missing.
  */
 export function bucketFromConfig(
   config: Pick<GalleryConfig, 'storage'>,
@@ -69,13 +77,19 @@ export function bucketFromConfig(
   return s3Storage({ ...s, ...credentials, fetch: options.fetch });
 }
 
-/** The s3 storage config, or a `BucketError` in repo mode. */
+/**
+ * The s3 storage config, for remote operations. A `BucketError` in repo mode,
+ * or while the config still holds a stand-in from create-minimalgallery.
+ */
 export function s3Config(config: Pick<GalleryConfig, 'storage'>): S3Config {
   if (config.storage.mode !== 's3')
     throw new BucketError(
       'not-bucket-mode',
       "The gallery is in repo mode: set storage: { mode: 's3', ... } in minimalgallery.config.ts to use a bucket."
     );
+  const placeholders = configPlaceholders(config);
+  if (placeholders.length)
+    throw new BucketError('placeholder', placeholderMessage(placeholders));
   return config.storage;
 }
 

@@ -1,4 +1,5 @@
-// The same feed as JSON Feed 1.1. Not built until `site` is set.
+// The same feed as JSON Feed 1.1. Like the RSS feed, it needs the site’s
+// address.
 import type { APIRoute } from 'astro';
 import { jsonFeed } from '@minimalgallery/astro/feeds';
 import { siteOf } from '@minimalgallery/astro/gallery';

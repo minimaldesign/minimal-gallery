@@ -1,0 +1,56 @@
+/* MESSAGE
+
+   A page that only says one thing (MessagePage.astro): the 404 page, and
+   the home page of a gallery with no photos yet. The gallery's name sits
+   at the top left, where the viewer's breadcrumb starts; the heading and
+   a line of muted text sit in the middle of the window. */
+
+.message {
+  display: grid;
+  place-content: center;
+  min-height: 100svh;
+  padding: var(--lg1) var(--sm3);
+  text-align: center;
+}
+
+/* the way home: the breadcrumb's first crumb, at the HUD's height */
+.message_home {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--mg-hud-height);
+  padding-inline: calc(
+    var(--sm1) * var(--mg-hud-density) + var(--mg-safe-left)
+  );
+  color: var(--mg-ink-muted);
+  font-size: var(--mg-size-hud);
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+}
+
+.message_title {
+  margin-block-end: var(--xs3);
+  color: var(--mg-ink);
+  font-size: var(--text-lg);
+  font-weight: var(--mg-weight-medium);
+  line-height: var(--leading-sm);
+}
+
+.message_text {
+  max-width: 34ch;
+  margin-block-end: 0;
+  color: var(--mg-ink-muted);
+  font-size: var(--text-sm);
+
+  a {
+    color: var(--mg-ink);
+
+    &:hover {
+      color: var(--link-color-hover);
+    }
+  }
+}

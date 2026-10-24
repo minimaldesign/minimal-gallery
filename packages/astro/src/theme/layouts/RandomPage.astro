@@ -16,10 +16,11 @@ import config from 'virtual:minimalgallery/config';
 import { getPhotos, hash, withBase } from '../../gallery.ts';
 
 const paths = (await getPhotos()).map((p) => withBase(p.url));
-// the no-script pick: the same for the same photos (a hash of the list)
-const seed = [...hash(...paths)].reduce((n, c) => n + c.charCodeAt(0), 0);
-const pick = paths[seed % paths.length];
 const base = withBase('/');
+// the no-script pick: the same for the same photos (a hash of the list);
+// home in a gallery with no photos yet
+const seed = [...hash(...paths)].reduce((n, c) => n + c.charCodeAt(0), 0);
+const pick = paths.length ? paths[seed % paths.length] : base;
 ---
 
 <!doctype html>
@@ -51,6 +52,7 @@ const base = withBase('/');
         seen = JSON.parse(sessionStorage.mgSeen || '[]');
       } catch {}
       const go = (list, k = '') => {
+        if (!list.length) return location.replace(base);
         const others = list.filter((p) => p !== from);
         let pool = others.filter((p) => !seen.includes(p));
         if (!pool.length) {

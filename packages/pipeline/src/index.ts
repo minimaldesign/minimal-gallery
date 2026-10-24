@@ -39,6 +39,13 @@ export type {
   LadderVariantConfig,
 } from './config.ts';
 export {
+  ACCOUNT_ID_PLACEHOLDER,
+  PUBLIC_URL_PLACEHOLDER,
+  configPlaceholders,
+  placeholderMessage,
+} from './placeholders.ts';
+export type { ConfigPlaceholder } from './placeholders.ts';
+export {
   doctor,
   formatDoctorReport,
   PAGES_FILE_LIMIT,

@@ -1,5 +1,5 @@
 import { chmod, cp, mkdir, readdir, rename, writeFile } from 'node:fs/promises';
-import { basename, dirname, join } from 'node:path';
+import { basename, dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   astroConfig,
@@ -28,6 +28,8 @@ export interface ScaffoldOptions {
   platform?: NodeJS.Platform;
   /** For wrangler.jsonc. Default: today. */
   date?: string;
+  /** package.json’s `packageManager`, `pnpm@10.20.0`; none when unknown. */
+  packageManager?: string;
 }
 
 /** True when `dir` does not exist or holds nothing but `.DS_Store` or `.git`. */
@@ -59,20 +61,23 @@ export async function scaffold(
   await cp(TEMPLATE_DIR, dir, { recursive: true });
   // npm drops .gitignore from published packages, so the template carries it as _gitignore.
   await rename(join(dir, '_gitignore'), join(dir, '.gitignore'));
-  written.push(
-    '.gitignore',
-    'tsconfig.json',
-    'photos/README.md',
-    'src/content.config.ts',
-    'src/pages/index.astro',
-    'src/pages/[...context]/index.astro',
-    'src/pages/[...context].json.ts',
-    'src/pages/[...album]/[photo].astro'
-  );
+  for (const entry of await readdir(TEMPLATE_DIR, {
+    recursive: true,
+    withFileTypes: true,
+  }))
+    if (entry.isFile()) {
+      const path = relative(TEMPLATE_DIR, join(entry.parentPath, entry.name))
+        .split(sep)
+        .join('/');
+      written.push(path === '_gitignore' ? '.gitignore' : path);
+    }
 
   const project = projectName(basename(dir));
   const pm = answers.packageManager;
-  await write('package.json', packageJson(answers, project, options.version));
+  await write(
+    'package.json',
+    packageJson(answers, project, options.version, options.packageManager)
+  );
   await write('astro.config.mjs', astroConfig(answers));
   await write('minimalgallery.config.ts', galleryConfig(answers));
   await write('.env.example', envExample(answers));

@@ -1,5 +1,5 @@
-// Every context page and photo page, for search engines. Not built until
-// `site` is set.
+// Every context page and photo page, for search engines. A sitemap needs
+// the site’s address: without it the build writes none.
 import type { APIRoute } from 'astro';
 import { sitemap } from '@minimalgallery/astro/feeds';
 import { siteOf } from '@minimalgallery/astro/gallery';

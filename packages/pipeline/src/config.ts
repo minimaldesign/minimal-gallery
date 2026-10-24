@@ -15,6 +15,14 @@ import { z } from 'zod';
 import { defaultLadder, type LadderConfig } from './ladder.ts';
 import { AlbumSort, VariantFormat } from './schema.ts';
 
+export {
+  ACCOUNT_ID_PLACEHOLDER,
+  PUBLIC_URL_PLACEHOLDER,
+  configPlaceholders,
+  placeholderMessage,
+  type ConfigPlaceholder,
+} from './placeholders.ts';
+
 export const LadderVariantConfig = z.object({
   /** Used in derivative file names; lowercase letters, digits and `-`. */
   name: z.string().regex(/^[a-z0-9][a-z0-9-]*$/, {

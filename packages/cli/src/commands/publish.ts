@@ -10,7 +10,7 @@ import {
 import { formatBytes } from '@minimalgallery/pipeline/doctor';
 import { pendingUploads } from '@minimalgallery/pipeline';
 import { parse } from '../args.ts';
-import { uploadStaged } from '../bucket.ts';
+import { stopOnPlaceholders, uploadStaged } from '../bucket.ts';
 import { CliError } from '../errors.ts';
 import { capture, localBin, runOrFail, runTee } from '../exec.ts';
 import { runPipeline } from '../pipeline.ts';
@@ -177,6 +177,8 @@ export async function publishCommand(args: string[], dir?: string) {
   const root = await requireGalleryRoot(dir);
   const method = await choosePublishMethod(root, values);
   const config = await loadConfig(root);
+  // Before the pipeline and the plan: nothing is uploaded, committed or deployed.
+  stopOnPlaceholders(config, 'Nothing was published.');
   if (method === 'deploy') return deploy(root, config, values.yes);
   if (method === 'git') return gitPublish(root, config, values.yes);
 
