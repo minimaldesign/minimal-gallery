@@ -1,0 +1,4 @@
+# Astro’s build assets (CSS, scripts, fonts, resized images) carry a content
+# hash in their names, so they never change.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
