@@ -44,11 +44,11 @@
         "astro",
         "preview",
         "--port",
-        "4421",
+        "4433",
         "--host",
         "--ignore-lock"
       ],
-      "port": 4421
+      "port": 4433
     },
     {
       "name": "prototype",
