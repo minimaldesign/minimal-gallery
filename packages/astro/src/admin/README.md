@@ -160,12 +160,13 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
   original: { bytes, width, height, relativePath, icc };
   variants: { name, width, height, bytes, format, url }[]; // url under '<base>_mg/'
   preview: string;       // the variant closest to 1280 px, for the inspector
+  cameraData: { camera, lens, focal, aperture, shutter, iso }; // display strings as the gallery writes them ('f/5.6', '1/60 s', 'ISO 200'), null when the file has none
   extracted: {           // every layer below the photo’s own sidecar, merged
     title, caption, date, dateSource, camera, lens, exposure, gps, place, placeLabel,
     keywords, copyright, author, hidden,
     from: { [field]: 'album' | 'xmp-sidecar' | 'xmp' | 'iptc' | 'exif' | 'filename' | 'mtime' };
   };
-  overrides: { title?, caption?, date?, keywords?, place?, hidden?, copyright?, author?, ... }; // what <name>.md sets now
+  overrides: { title?, caption?, date?, keywords?, place?, gps?, hidden?, copyright?, author?, ... }; // what <name>.md sets now
   overridesFile: string | null;  // 'photos/colors/Red_door.md' when it exists
   jsonSidecar: object | null;    // fields a <name>.json sets (the admin never edits it; .md wins field by field)
 }
@@ -173,10 +174,10 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 
 `extracted` is what the photo shows when its `.md` sets nothing: the album’s `photos:` map in `_album.md`, the `.xmp` sidecar, embedded XMP, IPTC, EXIF, then the file name and modification time. Show these values greyed; the override affordance writes `overrides`.
 
-`PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, place?: { city?, state?, country?, location? }, hidden?, copyright?, author? }` → `{ overrides, overridesFile }`
+`PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, place?: { city?, state?, country?, location? }, gps?: { lat, lon }, hidden?, copyright?, author? }` → `{ overrides, overridesFile }`
 
 - A key that is absent is left as it is; a key set to `null` is removed (in `place`, per sub-field; an empty `place` is removed).
-- `caption` is the markdown body of `<name>.md`. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `keywords`: an array of strings.
+- `caption` is the markdown body of `<name>.md`. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `keywords`: an array of strings. `gps`: decimal degrees, latitude from -90 to 90 and longitude from -180 to 180, rounded to six decimals and written on one line (`gps: { lat: 35.0116, lon: 135.7681 }`); it only feeds the manifest (for a map), the photo’s own EXIF is never changed.
 - `<name>.md` holds only the overridden fields. Keys and comments the admin does not manage are kept. The file is deleted when nothing is left. The original photo is never touched.
 - A run is queued; the photo comes back through a `photo` event.
 - `404` when the photo has no manifest (an unknown id, or a photo the pipeline has not processed yet).

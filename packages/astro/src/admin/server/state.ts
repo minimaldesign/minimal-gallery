@@ -22,6 +22,7 @@ import {
   type AlbumSort,
   type PhotoManifest,
 } from '@minimalgallery/pipeline/schema';
+import { apertureLabel } from '@minimalgallery/pipeline/facets';
 import {
   albumIdFromPath,
   titleFromFolder,
@@ -369,4 +370,34 @@ export async function bucketState(
 ): Promise<{ pending: number } | null> {
   if (config.storage.mode !== 's3') return null;
   return { pending: (await pendingUploads(galleryDir, { config })).files };
+}
+
+/** Camera data as the gallery’s info pane writes it; null where the file has none. */
+export interface CameraData {
+  camera: string | null;
+  lens: string | null;
+  /** `50 mm`, with the 35 mm equivalent when it differs: `50 mm (75 mm in 35 mm terms)`. */
+  focal: string | null;
+  aperture: string | null;
+  shutter: string | null;
+  iso: string | null;
+}
+
+const mm = (n: number) => `${Math.round(n * 10) / 10} mm`;
+
+export function cameraData(m: PhotoManifest): CameraData {
+  const { focal, focal35 } = m.exposure;
+  return {
+    camera: m.camera,
+    lens: m.lens,
+    focal: focal
+      ? focal35 && Math.round(focal35) !== Math.round(focal)
+        ? `${mm(focal)} (${mm(focal35)} in 35 mm terms)`
+        : mm(focal)
+      : null,
+    aperture:
+      m.facets.aperture != null ? apertureLabel(m.facets.aperture) : null,
+    shutter: m.facets.shutter ? `${m.facets.shutter.label} s` : null,
+    iso: m.facets.iso != null ? `ISO ${m.facets.iso}` : null,
+  };
 }

@@ -30,6 +30,7 @@ layer(components);
 @import url(./component.uploads.css);
 @import url(./component.inspector.css);
 @import url(./component.entry.css);
+@import url(./component.cameraData.css);
 @import url(./component.choice.css);
 @import url(./component.notice.css);
 @import url(./component.copyable.css);

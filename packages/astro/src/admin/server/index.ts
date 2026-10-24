@@ -65,6 +65,7 @@ import {
   readManifest,
   readManifests,
   updateAdminFile,
+  cameraData,
 } from './state.ts';
 import {
   CHUNK_SIZE,
@@ -430,6 +431,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
           camera: m.camera,
           lens: m.lens,
           exposure: m.exposure,
+          cameraData: cameraData(m),
           gps: m.gps,
           place: m.place,
           placeLabel: m.placeLabel,

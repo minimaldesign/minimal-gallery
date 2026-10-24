@@ -955,6 +955,26 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 14:30.
               </p>
             </div>
+            <section class="cameraData" aria-labelledby="p-camera-heading">
+              <h3 class="cameraData_heading" id="p-camera-heading">
+                Camera data
+              </h3>
+              <dl class="cameraData_list">
+                {[
+                  ['camera', 'Camera'],
+                  ['lens', 'Lens'],
+                  ['focal', 'Focal length'],
+                  ['aperture', 'Aperture'],
+                  ['shutter', 'Shutter speed'],
+                  ['iso', 'ISO'],
+                ].map(([key, label]) => (
+                  <>
+                    <dt>{label}</dt>
+                    <dd data-bind={`camera-${key}`} />
+                  </>
+                ))}
+              </dl>
+            </section>
             <div class="entry" data-field="keywords">
               <div class="entry_head">
                 <label class="entry_label" for="p-keywords">
@@ -1017,6 +1037,48 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                   />
                 </div>
               ))}
+              <div class="entry inspector_wide" data-field="gps">
+                <div class="entry_head">
+                  <label class="entry_label" for="p-gps">
+                    Map location
+                  </label>
+                  <span class="entry_from">From the camera</span>
+                  <span class="entry_yours">Yours</span>
+                  <button
+                    type="button"
+                    class="entry_action entry_action-edit"
+                    aria-label="Edit the file’s map location">
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="entry_action entry_action-reset"
+                    aria-label="Reset the map location">
+                    Reset
+                  </button>
+                </div>
+                <input
+                  class="entry_control"
+                  id="p-gps"
+                  name="gps"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="p-gps-hint"
+                />
+                <p class="entry_hint" id="p-gps-hint">
+                  Latitude and longitude, as Apple Maps or Google Maps copy
+                  them: 35.0116, 135.7681. For the map view; the file itself is
+                  not changed.
+                  <a
+                    data-bind="gps-map"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    hidden>
+                    See it on a map
+                  </a>
+                </p>
+              </div>
             </fieldset>
             <div class="entry" data-field="author">
               <div class="entry_head">

@@ -468,8 +468,15 @@ export const isReordering = () => dragging !== null;
 /* INSPECTOR                                                           */
 /* ------------------------------------------------------------------ */
 
+interface Gps {
+  lat: number;
+  lon: number;
+}
+
 interface Detail extends Photo {
   caption: string | null;
+  cameraData: Record<string, string | null>;
+  gps: Gps | null;
   keywords: string[];
   place: Record<string, string | null> | null;
   copyright: string | null;
@@ -500,10 +507,32 @@ const FROM: Record<string, string> = {
   mtime: 'From the file’s date',
 };
 
+/** Map coordinates as the inspector shows them: `35.0116, 135.7681`. */
+const showGps = ({ lat, lon }: Gps) =>
+  `${Math.round(lat * 1e6) / 1e6}, ${Math.round(lon * 1e6) / 1e6}`;
+
+/**
+ * Map coordinates as Apple Maps, Google Maps and most sites copy them:
+ * `35.0116, 135.7681`, `-33.8568 151.2153` or `35.0116° N, 135.7681° E`.
+ * Undefined when the text is not a latitude and a longitude in range.
+ */
+export function parseGps(text: string): Gps | undefined {
+  const m =
+    /^\s*(-?\d+(?:\.\d+)?)\s*°?\s*([NS])?\s*(?:,\s*|\s+)(-?\d+(?:\.\d+)?)\s*°?\s*([EW])?\s*$/i.exec(
+      text
+    );
+  if (!m) return undefined;
+  const lat = Number(m[1]) * (/s/i.test(m[2] ?? '') ? -1 : 1);
+  const lon = Number(m[3]) * (/w/i.test(m[4] ?? '') ? -1 : 1);
+  if (Math.abs(lat) > 90 || Math.abs(lon) > 180) return undefined;
+  return { lat: Math.round(lat * 1e6) / 1e6, lon: Math.round(lon * 1e6) / 1e6 };
+}
+
 /** The value of a field as the inspector shows it. */
 function asText(name: string, value: unknown): string {
   if (value === null || value === undefined) return '';
   if (name === 'date') return showDate(String(value));
+  if (name === 'gps') return showGps(value as Gps);
   if (Array.isArray(value)) return value.join(', ');
   return String(value);
 }
@@ -516,7 +545,18 @@ function fromText(name: string, text: string): unknown {
       .map((k) => k.trim())
       .filter(Boolean);
   if (name === 'date') return text.trim().replace(' ', 'T');
+  if (name === 'gps') return parseGps(text) ?? text;
   return text;
+}
+
+/** The map link under the coordinates, for the value in the field. */
+function updateMapLink() {
+  const input = control<HTMLInputElement>(photoForm, 'gps');
+  const gps = parseGps(input.value.trim() || input.dataset.extracted || '');
+  const link = bound<HTMLAnchorElement>('gps-map');
+  link.hidden = !gps;
+  if (gps)
+    link.href = `https://www.openstreetmap.org/?mlat=${gps.lat}&mlon=${gps.lon}#map=15/${gps.lat}/${gps.lon}`;
 }
 
 const control = <T extends HTMLElement = HTMLInputElement>(
@@ -585,7 +625,9 @@ function fillPhoto() {
   for (const name of TEXT) setEntry(name, ov[name], ex[name]);
   for (const key of PLACE)
     setEntry(`place.${key}`, ov.place?.[key], ex.place?.[key]);
-  for (const name of TEXT) {
+  setEntry('gps', ov.gps, ex.gps);
+  updateMapLink();
+  for (const name of [...TEXT, 'gps']) {
     const entry = $(`[data-field="${name}"]`, photoForm);
     const from = $('.entry_from', entry);
     if (from) from.textContent = FROM[ex.from?.[name] ?? ''] ?? 'From the file';
@@ -594,6 +636,13 @@ function fillPhoto() {
   control<HTMLInputElement>(photoForm, 'hidden').checked = Boolean(
     ov.hidden ?? ex.hidden
   );
+
+  // what the file says about the camera, read only
+  for (const [key, value] of Object.entries(d.cameraData ?? {})) {
+    const dd = bound(`camera-${key}`);
+    dd.textContent = value ?? 'Not in the file';
+    dd.toggleAttribute('data-missing', value === null);
+  }
 
   // the date field says plainly when the date is the file's own
   const mtime = d.attention.includes('date-from-mtime');
@@ -660,6 +709,13 @@ function changedOverrides() {
     if (!same(next, ov.place?.[key])) place[key] = next;
   }
   if (Object.keys(place).length) out.place = place;
+  const gpsInput = control<HTMLInputElement>(photoForm, 'gps');
+  const gpsText = gpsInput.value.trim();
+  const nextGps =
+    gpsText && gpsText !== gpsInput.dataset.extracted
+      ? (parseGps(gpsText) ?? gpsText)
+      : null;
+  if (!same(nextGps, ov.gps)) out.gps = nextGps;
   const hidden = control<HTMLInputElement>(photoForm, 'hidden').checked;
   const nextHidden =
     hidden === Boolean(detail.extracted.hidden) ? null : hidden;
@@ -667,9 +723,10 @@ function changedOverrides() {
   return out;
 }
 
-photoForm.addEventListener('input', () => {
+photoForm.addEventListener('input', (event) => {
   photoForm.dataset.dirty = '';
   status(photoForm, 'Not saved yet.');
+  if ((event.target as HTMLElement).id === 'p-gps') updateMapLink();
 });
 
 photoForm.addEventListener('click', (event) => {
@@ -705,6 +762,15 @@ photoForm.addEventListener('submit', async (event) => {
       'The date needs to look like 2005-02-27 or 2005-02-27 14:30.'
     );
     date.focus();
+    return;
+  }
+  const gps = control<HTMLInputElement>(photoForm, 'gps');
+  if (gps.value.trim() && !parseGps(gps.value)) {
+    status(
+      photoForm,
+      'The map location needs a latitude and a longitude, like 35.0116, 135.7681.'
+    );
+    gps.focus();
     return;
   }
   const changes = changedOverrides();

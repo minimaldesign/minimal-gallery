@@ -222,6 +222,57 @@ describe('PUT /photos/:id/overrides', () => {
     ).toBe(404);
   });
 
+  it('writes map coordinates on one line and shows the camera data', async () => {
+    const dir = await gallery();
+    server = await startServer({ galleryDir: dir });
+    const bare = await server.call('GET', '/photos/colors__bare');
+    expect(bare.body.cameraData).toEqual({
+      camera: null,
+      lens: null,
+      focal: null,
+      aperture: null,
+      shutter: null,
+      iso: null,
+    });
+
+    const red = await server.call('GET', '/photos/colors__red');
+    expect(red.body.cameraData).toMatchObject({
+      camera: expect.stringMatching(/D70/),
+      aperture: 'f/5.6',
+    });
+
+    const put = await server.call('PUT', '/photos/colors__bare/overrides', {
+      gps: { lat: 35.01160009, lon: 135.7681 },
+    });
+    expect(put.status).toBe(200);
+    expect(await readFile(join(dir, 'photos/colors/Bare.md'), 'utf8')).toBe(
+      '---\ngps: { lat: 35.0116, lon: 135.7681 }\n---\n'
+    );
+    await settled(dir);
+    const m = JSON.parse(
+      await readFile(
+        join(dir, '.minimalgallery/manifest/colors__bare.json'),
+        'utf8'
+      )
+    );
+    expect(m.gps).toEqual({ lat: 35.0116, lon: 135.7681 });
+
+    for (const gps of [
+      { lat: 91, lon: 0 },
+      { lat: 0, lon: 181 },
+      { lat: '35', lon: 135 },
+      { lat: 1, lon: 2, alt: 3 },
+      '35.0116, 135.7681',
+    ])
+      expect(
+        (await server.call('PUT', '/photos/colors__bare/overrides', { gps }))
+          .status
+      ).toBe(400);
+
+    await server.call('PUT', '/photos/colors__bare/overrides', { gps: null });
+    await expect(stat(join(dir, 'photos/colors/Bare.md'))).rejects.toThrow();
+  });
+
   it('quotes values YAML would read as something else', async () => {
     const dir = await gallery();
     server = await startServer({ galleryDir: dir });

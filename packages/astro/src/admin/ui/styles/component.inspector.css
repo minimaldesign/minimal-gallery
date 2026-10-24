@@ -121,6 +121,11 @@
   }
 }
 
+/* An entry of an inspector group that takes the whole row. */
+.inspector_wide {
+  grid-column: 1 / -1;
+}
+
 .inspector_foot {
   position: sticky;
   bottom: 0;

@@ -2,6 +2,7 @@
  * The photo inspector’s writer: `<name>.md` next to the photo holds only the
  * fields the owner overrode. The photo itself is never opened for writing.
  */
+import { isMap } from 'yaml';
 import { parseUserDate } from '@minimalgallery/pipeline';
 import { badRequest, onlyKeys } from './http.ts';
 import {
@@ -19,6 +20,7 @@ export const OVERRIDE_KEYS = [
   'date',
   'keywords',
   'place',
+  'gps',
   'hidden',
 ] as const;
 
@@ -87,6 +89,27 @@ export function validateOverrides(
       out.place = sub;
     } else throw badRequest('place must be an object or null.');
   }
+  if ('gps' in body) {
+    const v = body.gps;
+    if (v === null) out.gps = null;
+    else if (v && typeof v === 'object' && !Array.isArray(v)) {
+      const { lat, lon, ...extra } = v as Record<string, unknown>;
+      if (Object.keys(extra).length)
+        throw badRequest('gps takes lat and lon only.');
+      if (
+        typeof lat !== 'number' ||
+        typeof lon !== 'number' ||
+        !(lat >= -90 && lat <= 90) ||
+        !(lon >= -180 && lon <= 180)
+      )
+        throw badRequest(
+          'gps needs a latitude from -90 to 90 and a longitude from -180 to 180.'
+        );
+      // Six decimals is about 10 cm: more than any photo needs.
+      const round = (n: number) => Math.round(n * 1e6) / 1e6;
+      out.gps = { lat: round(lat), lon: round(lon) };
+    } else throw badRequest('gps must be { lat, lon } or null.');
+  }
   return out;
 }
 
@@ -109,6 +132,11 @@ export async function writeOverrides(
       else
         for (const [sub, v] of Object.entries(value as Record<string, unknown>))
           setValue(file.doc, ['place', sub], v);
+    } else if (key === 'gps' && value !== null) {
+      // On one line: `gps: { lat: 35.0116, lon: 135.7681 }`.
+      const node = file.doc.createNode(value);
+      if (isMap(node)) node.flow = true;
+      setValue(file.doc, ['gps'], node);
     } else setValue(file.doc, [key], value);
   }
   return writeMarkdown(file);
