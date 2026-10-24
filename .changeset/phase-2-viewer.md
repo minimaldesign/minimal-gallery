@@ -1,8 +1,8 @@
 ---
-'@minimalgallery/astro': minor
+'@minimalgallery/astro': major
 ---
 
-Viewer completion (Phase 2):
+minimal gallery 2, a rewrite of the 0.8 PHP app, released as 2.0.0 betas until launch. Viewer completion (Phase 2):
 
 - Feeds and a sitemap: `@minimalgallery/astro/feeds` builds RSS 2.0 (`/feed.xml`) and JSON Feed 1.1 (`/feed.json`) with the 50 newest photos (last added first once the manifests carry `added`), each with its JPEG as image and enclosure, a sitemap of every context and photo page with the photo’s image, and `robots.txt`. Every page links both feeds.
 - Link previews: with a `site`, every page carries Open Graph and Twitter card tags, with the photo’s `jpeg1600` (or largest JPEG) as `og:image`. A photo page with a caption uses it as its description; the home page uses the gallery’s description.

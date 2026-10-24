@@ -1,6 +1,6 @@
 {
   "name": "@minimalgallery/astro",
-  "version": "0.0.0",
+  "version": "2.0.0-beta.0",
   "description": "Astro integration, content loader, contexts and the default theme for minimalgallery.",
   "type": "module",
   "license": "MIT",
