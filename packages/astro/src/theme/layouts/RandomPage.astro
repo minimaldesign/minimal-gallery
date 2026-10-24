@@ -4,8 +4,10 @@
  * replaces itself in the history, so Back skips it. Without `?in=` it picks
  * from every photo (the list is in the page); with `?in=<context>` it picks
  * from that context's JSON (the theme script's sessionStorage copy, else a
- * fetch) and the photo page keeps `?in=`. The photo the visitor came from
- * is skipped when there is another. Without script the page refreshes to
+ * fetch) and the photo page keeps `?in=`. Photos already shown in this
+ * visit (sessionStorage mgSeen, kept by the theme script) are left out
+ * until all of the list has been shown; then it starts over, still
+ * skipping the photo the visitor came from. Without script the page refreshes to
  * one photo chosen from the list at build time (the same one for the same
  * photos, so builds stay reproducible). The `r` key steps to a random
  * photo inside the viewer instead; this page is for links.
@@ -44,9 +46,22 @@ const base = withBase('/');
       try {
         from = new URL(document.referrer).pathname;
       } catch {}
+      let seen = [];
+      try {
+        seen = JSON.parse(sessionStorage.mgSeen || '[]');
+      } catch {}
       const go = (list, k = '') => {
         const others = list.filter((p) => p !== from);
-        const pool = others.length ? others : list;
+        let pool = others.filter((p) => !seen.includes(p));
+        if (!pool.length) {
+          // all shown: forget them and start over
+          try {
+            sessionStorage.mgSeen = JSON.stringify(
+              seen.filter((p) => !list.includes(p))
+            );
+          } catch {}
+          pool = others.length ? others : list;
+        }
         location.replace(pool[Math.floor(Math.random() * pool.length)] + k);
       };
       const inContext = (t) =>

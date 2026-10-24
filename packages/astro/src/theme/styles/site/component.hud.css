@@ -128,6 +128,11 @@
   margin-inline-start: auto;
 }
 
+/* the play button stands apart: an empty icon's width after it */
+.hud_play {
+  margin-inline-end: calc(var(--md2) * var(--mg-hud-density));
+}
+
 /* The filmstrip is built by the theme script: no toggle without it. */
 
 .hud_strip {

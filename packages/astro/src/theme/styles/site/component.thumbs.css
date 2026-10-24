@@ -9,7 +9,11 @@
 
    Hovering shows a tooltip (name, date, place). With script it follows
    the pointer (mg.js sets --x and --y on the list); without script it is
-   anchored to the thumbnail. */
+   anchored to the thumbnail.
+
+   The items and the images are a bare li and img (`.thumbs > li`,
+   `.thumbs_link > img`): this markup repeats for every photo on every
+   page, so it carries no class it can do without. */
 
 .thumbs {
   --thumbs-size: var(--mg-row-height);
@@ -64,7 +68,7 @@
   }
 }
 
-.thumbs_item {
+.thumbs > li {
   min-width: 0;
 
   :root:is(
@@ -100,7 +104,7 @@
   }
 }
 
-.thumbs_image {
+.thumbs_link > img {
   width: 100%;
   height: auto;
   aspect-ratio: 1;

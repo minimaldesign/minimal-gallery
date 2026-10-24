@@ -69,11 +69,11 @@
   initial-value: off;
 }
 
-/* label: Slideshow interval; group: Viewer; note: how long each photo stays in a slideshow (Space starts and stops it) */
+/* label: Slideshow interval; group: Viewer; note: how long each photo stays in a slideshow (Space or the play button starts and stops it) */
 @property --mg-slideshow {
   syntax: '<time>';
   inherits: true;
-  initial-value: 5s;
+  initial-value: 3s;
 }
 
 /* label: Hide controls after; group: Overlays; note: idle time before the controls fade; only pointer movement brings them back */
@@ -191,15 +191,18 @@
     --mg-icon-earlier: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15 5l-7 7 7 7' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     --mg-icon-sort: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 6.5 5 3.5l3 3' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     --mg-icon-later: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 5l7 7-7 7' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    /* chevrons (Lucide's chevron-right and chevron-left) drawn at 128px,
-       the largest cursor Chrome and Firefox accept (larger ones are
-       dropped): an 11.2px stroke, black at 70%, over a white outline 1px
-       wide on each side so they read on light and dark photos; hotspot at
-       the center. Chrome shows the pointer fallback where the cursor would
+    /* chevrons (Lucide's chevron-right and chevron-left) drawn on a 128
+       grid and shown at 96px (128px is the largest cursor Chrome and
+       Firefox accept): an 8.4px stroke, black at 70%, over a white outline
+       1px wide on each side so they read on light and dark photos; hotspot
+       at the center. Chrome shows the pointer fallback where the cursor would
        cross the window's edge. */
-    --mg-cursor-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23fff' stroke-width='13.2'/%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
-      64 64;
-    --mg-cursor-prev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23fff' stroke-width='13.2'/%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
-      64 64;
+    --mg-cursor-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23fff' stroke-width='13.9'/%3E%3Cpath d='m48 96 32-32-32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
+      48 48;
+    --mg-cursor-prev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 128 128' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23fff' stroke-width='13.9'/%3E%3Cpath d='m80 96-32-32 32-32' stroke='%23000' stroke-opacity='.7' stroke-width='11.2'/%3E%3C/svg%3E")
+      48 48;
+    /* the slideshow's start and stop answer (stage_flash), filled */
+    --mg-icon-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z'/%3E%3C/svg%3E");
+    --mg-icon-pause: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='5' width='4' height='14' rx='1'/%3E%3Crect x='14' y='5' width='4' height='14' rx='1'/%3E%3C/svg%3E");
   }
 }

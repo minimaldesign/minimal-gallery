@@ -160,11 +160,17 @@
   gap: var(--xs2);
 }
 
+/* the play button stands apart: an empty icon's width after it */
+.table_play {
+  margin-inline-end: calc(var(--md2) * var(--mg-hud-density));
+}
+
 .table_body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--xs2);
-  padding-block-end: calc(var(--xl3) + var(--mg-safe-bottom));
+  /* the same space under the credit as above it */
+  padding-block-end: calc(var(--md1) + var(--mg-safe-bottom));
   padding-inline: calc(var(--mg-gutter) + var(--mg-safe-left))
     var(--mg-safe-right);
 
@@ -194,8 +200,9 @@
   }
 }
 
-/* the credit, centered under the last row of the grid or the list */
+/* the credit, at the right under the last row of the grid or the list */
 .table_credit {
   margin-block-start: var(--md1);
-  text-align: center;
+  padding-inline-end: var(--mg-gutter);
+  text-align: end;
 }

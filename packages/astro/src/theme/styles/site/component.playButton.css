@@ -1,0 +1,22 @@
+/* PLAY BUTTON
+
+   The slideshow's play and pause control, a plain toggle (see
+   component.toggle.css): its icon holds a triangle and two bars, and the
+   one for the state shows (data-play on <html>, set by the theme script).
+   Hidden without script, which runs the slideshow. Where it sits, and the
+   space after it, is up to the container (hud_play, table_play). */
+
+.playButton {
+  :root:not([data-script]) & {
+    display: none;
+  }
+
+  path + path,
+  :root[data-play] & path:first-child {
+    display: none;
+  }
+
+  :root[data-play] & path + path {
+    display: inline;
+  }
+}
