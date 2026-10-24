@@ -270,7 +270,7 @@ Every gallery gets these files:
 
 | File | Contents |
 | --- | --- |
-| `package.json` | The scripts `dev`, `build`, `preview`, `admin`, `publish` and `doctor`; the `minimalgallery.publish` method for your host; `@minimalgallery/astro`, `@minimalgallery/pipeline`, `astro` and `minimalgallery` as dependencies; Node 22.18 or later. |
+| `package.json` | The scripts `dev`, `build`, `preview`, `admin`, `publish` and `doctor`; the `minimalgallery.publish` method for your host; `@minimalgallery/astro`, `@minimalgallery/pipeline`, `astro` and `minimalgallery` as dependencies; Node 22.18 or later; with pnpm or Yarn, `packageManager` with the version on your computer, so hosts install the same one. |
 | `minimalgallery.config.ts` | `name`, `author` when you gave one, `storage: { mode: 'repo' }`, and a commented `site`. See [Configuration](/reference/configuration/). |
 | `astro.config.mjs` | Static output, trailing slashes, the minimal gallery integration, incremental builds, and a commented `site`. |
 | `.env.example` | The bucket credentials, commented out. |
@@ -278,14 +278,16 @@ Every gallery gets these files:
 | `tsconfig.json` | Astro’s strict TypeScript settings. |
 | `photos/README.md` | How to organize photos. |
 | `src/content.config.ts` | The `albums` and `photos` collections. |
-| `src/pages/index.astro`, `src/pages/[...context]/index.astro`, `src/pages/[...context].json.ts`, `src/pages/[...album]/[photo].astro` | The gallery’s routes. See [Theme and tokens](/theme/). |
+| `src/pages/index.astro`, `src/pages/[...context]/index.astro`, `src/pages/[...context].json.ts`, `src/pages/[...album]/[photo].astro`, `src/pages/random.astro` | The gallery’s routes. See [Theme and tokens](/theme/). |
+| `src/pages/feed.xml.ts`, `src/pages/feed.json.ts`, `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts` | The RSS and JSON feeds, the sitemap and `robots.txt`. The feeds and the sitemap need the site’s address (`site`); until it is set, the build leaves them out. |
+| `src/pages/404.astro` | The page for an address the gallery does not have, which every host serves as `404.html`. |
 
 Then, by host:
 
 | Host | Also writes | `publish` method |
 | --- | --- | --- |
 | Cloudflare | `wrangler.jsonc`, which names the Worker after the folder and serves `./dist`; `public/_headers`, which caches `/_mg/*` and `/_astro/*` for a year. `package.json` gets a `deploy` script and `wrangler` as a development dependency, and `.env.example` lists `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` for deploying from CI. | `deploy` |
-| GitHub Pages | `.github/workflows/deploy.yml`, which builds the site on each push to `main` and publishes it to GitHub Pages. `astro.config.mjs` gets commented `site` and `base` lines for a project site. | `git` |
+| GitHub Pages | `.github/workflows/deploy.yml`, which builds the site on each push to `main` or `master`, with the address and base path from the repository’s Pages settings, and publishes it to GitHub Pages. `astro.config.mjs` gets commented `site` and `base` lines, only for building elsewhere. | `git` |
 | Netlify | `netlify.toml`, with the build command, `dist` as the publish folder, Node 24 and the same cache headers. | `git` |
 | Just build it locally | nothing more | `build` |
 

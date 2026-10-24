@@ -1,0 +1,35 @@
+---
+/**
+ * The one template for every page: the viewer with the context's photos
+ * (Viewer.astro). A gallery with no photos yet (a new one, before its
+ * first photo is processed) gets the empty page instead, which in
+ * `astro dev` points at the admin.
+ */
+import type { Context, Photo } from '../../gallery.ts';
+import { withBase } from '../../gallery.ts';
+import MessagePage from './MessagePage.astro';
+import Viewer from './Viewer.astro';
+
+interface Props {
+  /** Undefined only for the home page of a gallery with no photos. */
+  photo?: Photo;
+  context: Context;
+  /** Where the page opens: the viewer, or the panel (context pages). */
+  start?: 'view' | 'grid';
+}
+const { photo, context, start } = Astro.props;
+const admin = import.meta.env.DEV && withBase('/_mg/admin/');
+---
+
+{photo ? (
+  <Viewer photo={photo} context={context} start={start}>
+    <slot name="head" slot="head" />
+  </Viewer>
+) : admin ? (
+  <MessagePage title="No photos yet">
+    Add photos in the&#32;<a href={admin}>admin</a>: each one appears here when
+    it is ready.
+  </MessagePage>
+) : (
+  <MessagePage title="No photos yet" />
+)}

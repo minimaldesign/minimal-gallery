@@ -3,13 +3,14 @@ import {
   access,
   mkdir,
   mkdtemp,
+  readdir,
   readFile,
   rm,
   stat,
   symlink,
 } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { loadConfig } from '@minimalgallery/pipeline/config';
@@ -95,6 +96,7 @@ function fakeRunner(
   const run: Runner = async (command, args, options) => {
     calls.push({ command, args, env: options.env });
     if (args.includes('install')) return ok();
+    if (args[0] === '--version') return ok('10.20.0\n');
     if (args.includes('whoami')) return answers.whoami ?? ok(WHOAMI_ONE);
     if (args.includes('r2')) return answers.create ?? ok('Created bucket');
     if (command === 'git')
@@ -165,6 +167,12 @@ describe('create-minimalgallery', () => {
       'src/content.config.ts',
       'src/pages/index.astro',
       'src/pages/[...album]/[photo].astro',
+      'src/pages/404.astro',
+      'src/pages/feed.xml.ts',
+      'src/pages/feed.json.ts',
+      'src/pages/sitemap.xml.ts',
+      'src/pages/robots.txt.ts',
+      'src/pages/random.astro',
       'photos/README.md',
       '.gitignore',
       '.env.example',
@@ -202,6 +210,8 @@ describe('create-minimalgallery', () => {
       'minimalgallery',
     ]);
     expect(pkg.minimalgallery.publish).toBe('deploy');
+    // npm needs no pinned version
+    expect(pkg.packageManager).toBeUndefined();
     const wrangler = await read(dir, 'wrangler.jsonc');
     expect(wrangler).toContain('"name": "my-gallery"');
     expect(wrangler).toContain(
@@ -529,14 +539,33 @@ describe('create-minimalgallery', () => {
     const gh = await scaffold(
       join(tmp, 'gh'),
       { ...base, host: 'github', publish: 'git' },
-      opts
+      { ...opts, packageManager: 'pnpm@10.20.0' }
     );
     expect(gh).toContain('.github/workflows/deploy.yml');
     expect(gh).not.toContain(LAUNCHER_NAME);
     expect(gh).not.toContain('.env');
+    const workflow = await read(
+      join(tmp, 'gh'),
+      '.github/workflows/deploy.yml'
+    );
+    // pushes to either first branch name deploy
+    expect(workflow).toContain('branches: [main, master]');
+    expect(workflow).toContain('uses: actions/configure-pages@v6');
+    expect(workflow).toContain('uses: withastro/action@v6');
+    expect(workflow).toContain('uses: actions/deploy-pages@v5');
+    // site and base come from the Pages settings, not from astro.config.mjs
+    expect(workflow).toContain(
+      `build-cmd: pnpm run build --site "\${{ steps.pages.outputs.origin }}" --base "\${{ steps.pages.outputs.base_path || '/' }}"`
+    );
+    expect(workflow).toContain('url: ${{ steps.deployment.outputs.page_url }}');
     expect(
-      await read(join(tmp, 'gh'), '.github/workflows/deploy.yml')
-    ).toContain('pnpm install --frozen-lockfile');
+      JSON.parse(await read(join(tmp, 'gh'), 'package.json')).packageManager
+    ).toBe('pnpm@10.20.0');
+    const ghAstro = await read(join(tmp, 'gh'), 'astro.config.mjs');
+    expect(ghAstro).toContain(
+      'the workflow (.github/workflows/deploy.yml) passes'
+    );
+    expect(ghAstro).toContain("  // base: '/<repo>',");
     const ghConfig = await loadGalleryConfig(join(tmp, 'gh'));
     expect(ghConfig.author).toBeUndefined();
     expect(ghConfig.storage).toEqual({ mode: 'repo' });
@@ -573,6 +602,80 @@ describe('create-minimalgallery', () => {
       expect(await read(join(tmp, name), '.env.example')).not.toContain(
         'not available yet'
       );
+  });
+
+  it('lists every file it writes', async () => {
+    const dir = join(tmp, 'listed');
+    const written = await scaffold(
+      dir,
+      {
+        name: 'Photos',
+        author: '',
+        host: 'cloudflare',
+        storage: 'repo',
+        publish: 'deploy',
+        packageManager: 'npm',
+      },
+      { version: '1.2.3', platform: 'linux' }
+    );
+    const onDisk = (
+      await readdir(dir, { recursive: true, withFileTypes: true })
+    )
+      .filter((e) => e.isFile())
+      .map((e) =>
+        relative(dir, join(e.parentPath, e.name)).split(sep).join('/')
+      )
+      .filter((f) => !f.endsWith('.DS_Store'))
+      .sort();
+    expect(written).toEqual(onDisk);
+    expect(written).toContain('src/pages/404.astro');
+    expect(written).toContain('.gitignore');
+  });
+
+  it('pins pnpm and Yarn in package.json, from the user agent or --version', async () => {
+    const fromAgent = fakeRunner();
+    await main(['pm-agent', '--yes', '--no-install', '--host', 'github'], {
+      run: fromAgent.run,
+      interactive: false,
+      cwd: tmp,
+      platform: 'linux',
+      env: { npm_config_user_agent: 'pnpm/10.21.1 npm/? node/v24.11.0' },
+    });
+    expect(fromAgent.calls.some((c) => c.args[0] === '--version')).toBe(false);
+    const agentPkg = JSON.parse(
+      await read(join(tmp, 'pm-agent'), 'package.json')
+    );
+    expect(agentPkg.packageManager).toBe('pnpm@10.21.1');
+    expect(
+      await read(join(tmp, 'pm-agent'), '.github/workflows/deploy.yml')
+    ).toContain('build-cmd: pnpm run build --site');
+
+    const asked = fakeRunner();
+    await create(
+      ['pm-asked', '--yes', '--no-install', '--pm', 'yarn'],
+      asked.run
+    );
+    expect(asked.calls.find((c) => c.args[0] === '--version')?.command).toBe(
+      'yarn'
+    );
+    const askedPkg = JSON.parse(
+      await read(join(tmp, 'pm-asked'), 'package.json')
+    );
+    expect(askedPkg.packageManager).toBe('yarn@10.20.0');
+
+    // not installed: no field, and the scaffold goes on
+    const missing: Runner = async (command, args) =>
+      args[0] === '--version'
+        ? { code: 127, stdout: '', stderr: `spawn ${command} ENOENT` }
+        : ok();
+    await create(
+      ['pm-missing', '--yes', '--no-install', '--pm', 'pnpm'],
+      missing
+    );
+    const missingPkg = JSON.parse(
+      await read(join(tmp, 'pm-missing'), 'package.json')
+    );
+    expect(missingPkg.packageManager).toBeUndefined();
   });
 
   it('refuses flags that do not fit together', async () => {

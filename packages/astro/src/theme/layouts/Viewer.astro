@@ -1,9 +1,9 @@
 ---
 /**
- * The one template for every page: the viewer (stage) on top and, below
- * it, the panel with the context's photos as a grid and as a list. Home
- * and photo pages open on the viewer; album and facet pages open on the
- * panel (`start="grid"`). A photo page carries its album; `?in=` makes the
+ * Every page with a photo (ViewerPage.astro renders it): the viewer
+ * (stage) on top and, below it, the panel with the context's photos as a
+ * grid and as a list. Home and photo pages open on the viewer; album and
+ * facet pages open on the panel (`start="grid"`). A photo page carries its album; `?in=` makes the
  * theme script swap in another context from its JSON. The grid is always
  * in the HTML (its links are the no-script path); the strip and, except on
  * pages that open on the panel, the list rows are built by the theme
@@ -100,18 +100,25 @@ const og = url && {
   start={start}>
   <Fragment slot="head">
     {canonical && <link rel="canonical" href={canonical} />}
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title={site}
-      href={withBase('/feed.xml')}
-    />
-    <link
-      rel="alternate"
-      type="application/feed+json"
-      title={site}
-      href={withBase('/feed.json')}
-    />
+    {
+      // a gallery has feeds only when the site's address is set
+      url && (
+        <>
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title={site}
+            href={withBase('/feed.xml')}
+          />
+          <link
+            rel="alternate"
+            type="application/feed+json"
+            title={site}
+            href={withBase('/feed.json')}
+          />
+        </>
+      )
+    }
     {og && (
       <>
         <meta property="og:type" content="website" />

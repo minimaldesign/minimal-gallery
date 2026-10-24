@@ -1,0 +1,14 @@
+---
+/**
+ * The 404 page, for `src/pages/404.astro`: the build writes it as
+ * `404.html`, which Cloudflare (`not_found_handling: "404-page"`), GitHub
+ * Pages and Netlify serve for an address the gallery does not have.
+ */
+import { withBase } from '../../gallery.ts';
+import MessagePage from './MessagePage.astro';
+---
+
+<MessagePage title="Page not found">
+  There is no page at this address.&#32;
+  <a href={withBase('/')}>See the photos</a>
+</MessagePage>
