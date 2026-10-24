@@ -34,8 +34,17 @@ interface Props {
   class?: string;
   /** Where the page opens: the viewer, or the panel (context pages). */
   start?: 'view' | 'grid';
+  /** Loads the theme script. Default true; pages with no viewer leave it out. */
+  script?: boolean;
 }
-const { title, description, style, class: className, start } = Astro.props;
+const {
+  title,
+  description,
+  style,
+  class: className,
+  start,
+  script = true,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -53,7 +62,9 @@ const { title, description, style, class: className, start } = Astro.props;
     <meta name="mg-root" content={withBase('/')} />
     <Font cssVariable="--mg-font-text" preload={[{ subset: 'latin' }]} />
     <Font cssVariable="--mg-font-mono" />
-    <script is:inline src={themeScript} defer blocking="render"></script>
+    {script && (
+      <script is:inline src={themeScript} defer blocking="render"></script>
+    )}
     <slot name="head" />
   </head>
   <body class={className} style={style}>

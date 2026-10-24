@@ -15,6 +15,7 @@
     "./theme/GalleryLayout.astro": "./src/theme/layouts/GalleryLayout.astro",
     "./theme/LegacyRedirect.astro": "./src/theme/components/LegacyRedirect.astro",
     "./theme/RandomPage.astro": "./src/theme/layouts/RandomPage.astro",
+    "./theme/NotFoundPage.astro": "./src/theme/layouts/NotFoundPage.astro",
     "./theme/components/*": "./src/theme/components/*",
     "./theme/styles/*": "./src/theme/styles/*"
   },

@@ -1,0 +1,36 @@
+---
+/**
+ * A page that only says one thing: the 404 page (NotFoundPage.astro) and
+ * the home page of a gallery with no photos yet (ViewerPage.astro). The
+ * gallery's name links home; the default slot is the line under the
+ * heading. The theme script is left out (there is nothing on the page for
+ * it to do), and search engines are asked not to index it.
+ */
+import config from 'virtual:minimalgallery/config';
+import { withBase } from '../../gallery.ts';
+import GalleryLayout from './GalleryLayout.astro';
+
+interface Props {
+  /** The heading, also the start of the document title. */
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<GalleryLayout
+  title={`${title} · ${config.title}`}
+  description={title}
+  script={false}>
+  <meta slot="head" name="robots" content="noindex" />
+  <main class="message">
+    <a class="message_home" href={withBase('/')}>
+      {config.title}
+    </a>
+    <h1 class="message_title">{title}</h1>
+    {Astro.slots.has('default') && (
+      <p class="message_text">
+        <slot />
+      </p>
+    )}
+  </main>
+</GalleryLayout>

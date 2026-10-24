@@ -1,0 +1,195 @@
+---
+/**
+ * Every page with a photo (ViewerPage.astro renders it): the viewer
+ * (stage) on top and, below it, the panel with the context's photos as a
+ * grid and as a list. Home and photo pages open on the viewer; album and
+ * facet pages open on the panel (`start="grid"`). A photo page carries its album; `?in=` makes the
+ * theme script swap in another context from its JSON. The grid is always
+ * in the HTML (its links are the no-script path); the strip and, except on
+ * pages that open on the panel, the list rows are built by the theme
+ * script from the context JSON when they are shown.
+ */
+import config from 'virtual:minimalgallery/config';
+import {
+  absolute,
+  captionText,
+  neighbors,
+  photoHref,
+  ratioOf,
+  shareImageOf,
+  siteOf,
+  srcsetOf,
+  withBase,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
+import Hud from '../components/Hud.astro';
+import Credit from '../components/Credit.astro';
+import InfoPane from '../components/InfoPane.astro';
+import KeysPane from '../components/KeysPane.astro';
+import Ledger from '../components/Ledger.astro';
+import Palette from '../components/Palette.astro';
+import PanelHead from '../components/PanelHead.astro';
+import Rail from '../components/Rail.astro';
+import Stage from '../components/Stage.astro';
+import Thumbs from '../components/Thumbs.astro';
+import GalleryLayout from './GalleryLayout.astro';
+
+interface Props {
+  photo: Photo;
+  context: Context;
+  /** Where the page opens: the viewer, or the panel (context pages). */
+  start?: 'view' | 'grid';
+}
+const { photo, context, start = 'view' } = Astro.props;
+const site = config.title;
+const { prev, next } = await neighbors(context.id, photo.id);
+const n = context.photos.length;
+const plural = `${n} photo${n === 1 ? '' : 's'}`;
+
+// Chrome prerenders a thumbnail's page on hover (a real page load). The
+// neighbors are not prerendered: with script a step stays in the page, so
+// a prerendered neighbor would be thrown away; their photos are preloaded
+// below instead.
+const rules = JSON.stringify({
+  prerender: [
+    { where: { selector_matches: '.thumbs_link' }, eagerness: 'moderate' },
+  ],
+});
+
+// home is the archive on the viewer; every photo page is in its album
+const home = context.kind === 'archive' && start === 'view';
+const title =
+  start === 'grid'
+    ? `${context.label} · ${site}`
+    : `${photo.title} · ${context.label} · ${site}`;
+const description = home
+  ? config.description
+  : start === 'grid'
+    ? `${context.label}: ${plural} in ${site}.`
+    : (captionText(photo) ??
+      `${photo.title}, a photograph in ${context.label}.`);
+
+// 1:1 of the largest derivative; one under 1600px (small sources) is
+// doubled so zoom still magnifies
+const largest = srcsetOf(photo).largest.width;
+const zoomWidth = largest < 1600 ? largest * 2 : largest;
+const style = [
+  `--photo: ${photo.color}`,
+  `--photo-ratio: ${ratioOf(photo)}`,
+  `--photo-zoom-width: ${zoomWidth}`,
+  photo.placeholder && `--photo-placeholder: url(${photo.placeholder})`,
+]
+  .filter(Boolean)
+  .join('; ');
+const url = siteOf(Astro.site);
+const canonical = url && new URL(Astro.url.pathname, url).href;
+// the link preview: the page's photo (home: the newest) as a JPEG
+const share = shareImageOf(photo);
+const og = url && {
+  title: home ? site : start === 'grid' ? context.label : photo.title,
+  image: absolute(share.url, url),
+};
+---
+
+<GalleryLayout
+  title={title}
+  description={description}
+  class="viewer"
+  style={style}
+  start={start}>
+  <Fragment slot="head">
+    {canonical && <link rel="canonical" href={canonical} />}
+    {
+      // a gallery has feeds only when the site's address is set
+      url && (
+        <>
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title={site}
+            href={withBase('/feed.xml')}
+          />
+          <link
+            rel="alternate"
+            type="application/feed+json"
+            title={site}
+            href={withBase('/feed.json')}
+          />
+        </>
+      )
+    }
+    {og && (
+      <>
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={site} />
+        <meta property="og:title" content={og.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={og.image} />
+        <meta property="og:image:width" content={String(share.width)} />
+        <meta property="og:image:height" content={String(share.height)} />
+        <meta property="og:image:alt" content={photo.title} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </>
+    )}
+    {next && <link rel="next" href={photoHref(next, context)} />}
+    {prev && <link rel="prev" href={photoHref(prev, context)} />}
+    {
+      // the neighbors' photos, fetched at low priority with the hero's own
+      // srcset choice, for browsers that do not prerender them
+      (
+        [
+          ['next', next],
+          ['prev', prev],
+        ] as const
+      ).map(([rel, p]) => {
+        if (!p) return null;
+        const { srcset, src } = srcsetOf(p);
+        return (
+          <link
+            rel="preload"
+            as="image"
+            imagesrcset={srcset || undefined}
+            imagesizes={srcset ? '100vw' : undefined}
+            href={src}
+            fetchpriority="low"
+            data-near={rel}
+          />
+        );
+      })
+    }
+    <script is:inline type="speculationrules" set:html={rules} />
+    <slot name="head" />
+  </Fragment>
+  <a class="a11y-skipLink" href="#grid">
+    Skip to the photos
+  </a>
+  <Stage
+    photo={photo}
+    context={context}
+    prev={prev}
+    next={next}
+    hero={start === 'view'}
+  />
+  <section
+    class:list={['table', { 'table-start': start === 'grid' }]}
+    id="grid"
+    aria-label={context.label}>
+    <Hud photo={photo} context={context} />
+    <div class="table_scroller">
+      <PanelHead context={context} list={start === 'grid'} />
+      <div class="table_body">
+        <div class="table_photos">
+          <Thumbs context={context} current={photo} />
+          <Ledger context={context} current={photo} rows={start === 'grid'} />
+          <Credit class="table_credit" />
+        </div>
+        <Rail context={context} />
+      </div>
+    </div>
+    <InfoPane photo={photo} />
+    <KeysPane />
+  </section>
+  <Palette context={context} />
+</GalleryLayout>
