@@ -60,7 +60,7 @@ Options passed to `minimalgallery({ ... })` override the same keys of that file.
 
 **`site`.** Astro’s `site`, else `site` in the config file, makes URLs absolute. The feeds, the sitemap, the canonical link and the Open Graph tags need it. Without it, pages leave out the canonical link and the `og:*` and `twitter:card` tags, `robots.txt` has no `Sitemap:` line, and the feed and sitemap routes fail the build with a message saying where to set it.
 
-**`credit`.** On by default: “Powered by minimal gallery” after the last row of the grid or the list, and “minimal gallery” with the package version as the footer of the keyboard shortcuts pane, both linking to https://docs.minimalgallery.net/. `minimalgallery({ credit: false })` turns both off. `minimalgallery.config.ts` does not take the key yet: the pipeline’s config schema drops it until it adds `credit` (a follow-up).
+**`credit`.** On by default: “Powered by minimal gallery” at the right after the last row of the grid or the list, and “minimal gallery” with the version of `@minimalgallery/astro` (0.0.0 until the first release) as the footer of the keyboard shortcuts pane, both linking to https://docs.minimalgallery.net/. `minimalgallery({ credit: false })` turns both off. `minimalgallery.config.ts` does not take the key yet: the pipeline’s config schema drops it until it adds `credit` (a follow-up).
 
 The integration registers Geist and Geist Mono with Astro’s Fonts API (self-hosted from their Fontsource packages) and sets Vite’s PostCSS chain for the theme (`@csstools/postcss-global-data` with the mCSS custom media, `postcss-mixins`, `postcss-preset-env` on Baseline 2024 with native cascade layers kept). An inline PostCSS config replaces a project’s `postcss.config.*`; add your own plugins there if you need them.
 
@@ -75,7 +75,7 @@ The theme is a set of components; the site owns its routes, so each can be repla
 | `[...album]/[photo].astro` | `/<album>/<slug>/` | One page per photo, in its album’s context |
 | `[...context].json.ts` | `/grid.json`, `/colors.json`, `/camera/nikon-d70.json`, … | The context JSON the theme script reads for `?in=` |
 | `random.astro` | `/random/`, `/random/?in=<context>` | `<RandomPage />`: a random photo, of that context when `?in=` is given |
-| `feed.xml.ts` | `/feed.xml` | RSS 2.0, the 50 newest photos (`rssFeed`) |
+| `feed.xml.ts` | `/feed.xml` | RSS 2.0, the 50 newest photos: last added first once the manifests carry `added`, newest capture date until then (`rssFeed`) |
 | `feed.json.ts` | `/feed.json` | JSON Feed 1.1, the same photos (`jsonFeed`) |
 | `sitemap.xml.ts` | `/sitemap.xml` | Every context page, every photo page with its image (`sitemap`) |
 | `robots.txt.ts` | `/robots.txt` | Crawling allowed, and the sitemap’s address (`robotsTxt`) |
@@ -131,7 +131,7 @@ Imported from `@minimalgallery/astro/theme/<name>`. `Photo` and `Context` are th
 | --- | --- | --- | --- |
 | `ViewerPage.astro` | `photo: Photo`, `context: Context`, `start?: 'view' \| 'grid'` (default `view`) | `head` | A whole page: the viewer, the panel (grid, list, info pane, keyboard shortcuts pane, credit) and the filter palette, with the head tags under [Routes](#routes) |
 | `GalleryLayout.astro` | `title: string`, `description: string`, `style?: string` (custom properties on `<body>`), `class?: string` (on `<body>`), `start?: 'view' \| 'grid'` (`grid` sets `data-start` on `<html>`) | `head`, default (the body) | The document shell: `restore.js` inline, the fonts, the token contract, `mg.css`, `custom.css`, the theme script |
-| `RandomPage.astro` | none | none | A whole document for `/random/`: it picks a random photo (of the `?in=` context when given, skipping the photo the visitor came from) and replaces itself in the history; without script, a meta refresh to one photo chosen at build time |
+| `RandomPage.astro` | none | none | A whole document for `/random/`: it picks a random photo (of the `?in=` context when given, leaving out the photos already shown in this visit until all have been, and the photo the visitor came from) and replaces itself in the history; without script, a meta refresh to one photo chosen at build time |
 | `LegacyRedirect.astro` | none | none | An inline script for the home page’s `head` slot: it sends v0.8 `/?id=` links to the photo’s page through `/legacy-ids.json` |
 
 ### Components
@@ -140,10 +140,11 @@ Under `theme/components/`, imported from `@minimalgallery/astro/theme/components
 
 | Component | Props | Renders |
 | --- | --- | --- |
-| `Hud` | `photo`, `context` | The bar over the viewer: breadcrumb, then Filter, Info, Filmstrip, Fill window or Fit photo, Keyboard shortcuts |
+| `Hud` | `photo`, `context` | The bar over the viewer: breadcrumb, then the play button, a space, Filter, Info, Filmstrip, Fill window or Fit photo, Keyboard shortcuts |
 | `Stage` | `photo`, `context`, `prev: Photo \| null`, `next: Photo \| null`, `hero: boolean` (the photo is the page’s main image) | The viewer: the photo, the next and previous zones, the zoom checkbox, the strip, the handle down to the photos |
 | `Strip` | `context`, `current: Photo` | The filmstrip container; its frames are built from the context JSON |
-| `PanelHead` | `context`, `list?: boolean` (the list rows are in the HTML) | The panel header: breadcrumb, count, crop pair, size triple, grid or list pair, Filter |
+| `PanelHead` | `context`, `list?: boolean` (the list rows are in the HTML) | The panel header: breadcrumb, count, play button and a space, crop pair, size triple, grid or list pair, Filter |
+| `PlayButton` | `class?: string` (the container’s placement) | The slideshow’s play and pause button; hidden without script |
 | `Thumbs` | `context`, `current: Photo` | The grid |
 | `Ledger` | `context`, `current: Photo`, `rows?: boolean` (render the rows) | The list, a table sortable by column |
 | `Rail` | `context` | The date rail, one tick per year, hidden under two years |
@@ -171,8 +172,8 @@ The theme script (`src/theme/scripts/mg.js`, about 33 KB unminified) is loaded w
 | Key | Viewing mode |
 | --- | --- |
 | `←` `→` | Previous or next photo; nothing past either end |
-| `Space` | Slideshow: starts and stops a timed step every `--mg-slideshow`. Pointer movement, an open dialog or zoom pauses it; it stops at the last photo, on `Esc` and when the panel opens |
-| `r` | A random photo of the current context, inside the page (`/random/` when the context JSON cannot load) |
+| `Space` | Slideshow, as the play button does: starts and stops a timed step every `--mg-slideshow`, with a large play or pause icon that fades out. It starts over after the last photo; an open dialog or zoom pauses it, pointer movement does not; `Esc` and opening the panel stop it |
+| `r` | A random photo of the current context, inside the page, leaving out the photos already shown in this visit until all have been (`/random/` when the context JSON cannot load) |
 | `↑` | Open browsing mode (the panel) |
 | `z` | Zoom to 1:1 and back |
 | `i` | Photo information |
@@ -211,7 +212,7 @@ Every token an owner may change is registered with `@property` in `src/theme/sty
 | `--mg-backdrop-tint` | Backdrop tint | `<percentage>` | `10%` | how much of the photo’s color reaches the backdrop in photo mode |
 | `--mg-view-inset` | Space around the photo | `<length>` | `16px` (`0px` under 768px) | 0 lets the photo meet the edge of the window |
 | `--mg-strip` | Filmstrip | `on \| off` | config `defaults.strip`, else `off` | the row of frames along the bottom of the viewer; off by default, visitors can turn it on, this is the default |
-| `--mg-slideshow` | Slideshow interval | `<time>` | `5s` | how long each photo stays in a slideshow (Space starts and stops it) |
+| `--mg-slideshow` | Slideshow interval | `<time>` | `3s` | how long each photo stays in a slideshow (Space or the play button starts and stops it) |
 
 ### Overlays
 
@@ -329,11 +330,11 @@ A theme that ships its own script may drop everything below. A theme that keeps 
 | Part | Hooks |
 | --- | --- |
 | Head | `<meta name="mg-root">` with the base path (for `<id>.json` and `/random/`); `restore.js` inline before the body; on a step the script updates `<title>`, `meta[name="description"]` and `link[rel="canonical"]` and replaces `link[rel="next"]`, `link[rel="prev"]` and `link[data-near]` |
-| Viewer | `.stage` (the script adds the slideshow clock, `.stage_play`), `.stage_frame` (touch, focus), `.stage_scroller` (panning while zoomed), `.stage_next` (the next link, which holds the `.stage_photo` images; `.is-hidden` fades one out), `.stage_prev`, `.stage_zoom` (checkbox) |
+| Viewer | `.stage` (the script adds the slideshow clock, `.stage_play`, and its start and stop icon, `.stage_flash` with `data-state`), `.playButton button` (the script sets `aria-pressed`), `.stage_frame` (touch, focus), `.stage_scroller` (panning while zoomed), `.stage_next` (the next link, which holds the `.stage_photo` images; `.is-hidden` fades one out), `.stage_prev`, `.stage_zoom` (checkbox) |
 | Strip | `.strip` with `data-context` (context id), `data-in` (the `?in=` its links take, none for an album) and `data-photo` (the page path); its first child is the list (`.strip_list`), followed by an inline `mgStrip(document.currentScript.previousElementSibling)`; frames are `.strip_item > .strip_link > .strip_image` |
 | HUD | `.hud_crumbs a` (the first is the gallery name), `.hud_context`, `.hud_title`, `.hud` (hovered, the controls stay) |
 | Panel | `#grid` (the section, `.table-start` when the page opens on it), `.table_scroller`, `.table_head`, `.table_count`, `.table_context`, `.table_rail` |
-| Grid | `.thumbs` (gets `--x` and `--y`), `.thumbs_item` (`id="y-<year>"` on a year’s first photo), `.thumbs_link`, `.thumbs_image`, `.thumbs_tip.surface` |
+| Grid | `.thumbs` (gets `--x` and `--y`) > `li` (`id="y-<year>"` on a year’s first photo) > `.thumbs_link` > `img` and `.thumbs_tip.surface` |
 | Rail | `.rail_list`, `.rail_link` (`href="#y-<year>"`), `.rail_year.surface` |
 | List | `.ledger`: headers with `.ledger_sort` and `data-type="num"` for numbers (the script sets `aria-sort`), rows `tr[data-i]`, cells `td[data-sort]`; the second cell’s link is a row’s selectable item; built rows add `.ledger_thumb`, `.ledger_image`, `.ledger_preview.surface` (`--preview`) and `.ledger_previewImage` |
 | Settings | `input[name]` for `info`, `keys`, `fit`, `strip`, `crop`, `view` (`grid`, `list`) and `size` (`small`, `medium`, `large`); a checkbox stores its `value` (default `on`) when checked and its `data-off` (default `off`) when not |
@@ -365,5 +366,6 @@ And these storage keys:
 | `sessionStorage` | `mgCtx-<context id>` | The context JSON as text |
 | `sessionStorage` | `mgIdle` | `1` while the controls are hidden, so the next page opens with them hidden |
 | `sessionStorage` | `mgVia` | `thumb` or `other`: how the last page was left, for the view transition |
+| `sessionStorage` | `mgSeen` | The page paths of the photos shown in this visit (JSON), which the `r` key and `/random/` leave out |
 
 A theme with its own script can keep the `mg-<name>` keys so visitors keep their settings across a theme change.
