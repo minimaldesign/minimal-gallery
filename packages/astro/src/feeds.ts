@@ -1,7 +1,8 @@
 /**
  * Feeds and the sitemap, for a site's routes to serve (the demo's are in
  * `examples/demo/src/pages`): RSS 2.0 at `/feed.xml` and JSON Feed 1.1 at
- * `/feed.json` with the newest photos, each with its JPEG as the image and
+ * `/feed.json` with the newest photos (by the date they were added, once
+ * the manifests carry it), each with its JPEG as the image and
  * the enclosure, and `/sitemap.xml` with every context page and photo page
  * (and the photo's image). They need absolute URLs: Astro's `site`, or
  * `site` in the config file. Like the helpers in `gallery.ts` they read the
@@ -42,10 +43,30 @@ function requireSite(site?: URL | string) {
 }
 
 /**
- * Capture times are wall-clock, with no zone, so they are given as UTC: a
- * reader that shows times in its own zone shifts them by its offset.
+ * A photo's date in the feeds: when it was added to the gallery, else its
+ * capture time. Capture times are wall-clock, with no zone, so they are
+ * given as UTC: a reader that shows times in its own zone shifts them by
+ * its offset.
  */
-const utc = (p: Photo) => (p.date ? new Date(`${p.date}Z`) : null);
+const dateOf = (p: Photo) =>
+  p.added ? new Date(p.added) : p.date ? new Date(`${p.date}Z`) : null;
+
+/**
+ * The newest photos: the last added first once the manifests say when
+ * each was added (the ones that do not come after them), newest by
+ * capture date until then.
+ */
+async function newest(limit: number) {
+  const photos = await getPhotos();
+  if (!photos.some((p) => p.added)) return photos.slice(0, limit);
+  return photos
+    .map((p, i) => [p, i] as const)
+    .sort(
+      ([a, i], [b, j]) => (b.added ?? '').localeCompare(a.added ?? '') || i - j
+    )
+    .slice(0, limit)
+    .map(([p]) => p);
+}
 
 /** What both feeds say about one photo. */
 async function items(site: URL, limit: number) {
@@ -54,7 +75,7 @@ async function items(site: URL, limit: number) {
       .filter((c) => c.kind === 'album')
       .map((c) => [c.id, c.label])
   );
-  return (await getPhotos()).slice(0, limit).map((p) => {
+  return (await newest(limit)).map((p) => {
     const img = shareImageOf(p);
     const src = absolute(img.url, site);
     const html =
@@ -64,7 +85,7 @@ async function items(site: URL, limit: number) {
       photo: p,
       url: absolute(p.url, site),
       album: albums.get(p.album) ?? null,
-      date: utc(p),
+      date: dateOf(p),
       summary: captionText(p),
       html,
       image: { ...img, src, type: `image/${img.format}` },

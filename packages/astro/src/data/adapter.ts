@@ -23,7 +23,7 @@ import {
 } from './facets.ts';
 
 /** Bump when the derivation below changes, so cached entries are rebuilt. */
-export const ADAPTER_VERSION = '3';
+export const ADAPTER_VERSION = '4';
 
 export interface Variant {
   name: string;
@@ -45,6 +45,11 @@ export interface PhotoRecord {
   caption: string | null;
   /** Wall-clock capture time, `YYYY-MM-DDTHH:MM:SS`; null when undated. */
   date: string | null;
+  /**
+   * When the photo entered the gallery (ISO 8601, UTC), from the
+   * manifest's `added`; null until the pipeline writes it.
+   */
+  added: string | null;
   dateSource: PhotoManifest['dateSource'];
   camera: string | null;
   lens: string | null;
@@ -158,6 +163,7 @@ export function adaptPhoto(m: PhotoManifest): PhotoRecord {
       bytes,
     })),
     source: m.source,
+    added: (m as { added?: string }).added ?? null,
     hidden: m.hidden,
     facets,
     sortKeys: [
