@@ -11,8 +11,6 @@ export interface Layer {
   /** Wall-clock time, no offset. */
   date?: string;
   keywords?: string[];
-  /** 0 means unrated and is stored as null. */
-  rating?: number;
   copyright?: string;
   author?: string;
   hidden?: boolean;

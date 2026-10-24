@@ -27,7 +27,6 @@ export type InspectedField =
   | 'caption'
   | 'date'
   | 'keywords'
-  | 'rating'
   | 'copyright'
   | 'author'
   | 'hidden'
@@ -153,7 +152,6 @@ export async function inspectPhoto(
     'title',
     'caption',
     'keywords',
-    'rating',
     'copyright',
     'author',
     'hidden',

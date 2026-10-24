@@ -34,7 +34,6 @@ describe('settings', () => {
       site: null,
       albumsSort: 'date',
       defaults: { fit: 'fill', size: 2, backdrop: 'neutral' },
-      about: '',
       customCss: '',
     });
 
@@ -44,7 +43,6 @@ describe('settings', () => {
       description: null,
       albumsSort: 'name',
       defaults: { size: 3, backdrop: 'photo' },
-      about: 'I take *pictures*.',
     });
     expect(put.status).toBe(200);
     expect(put.body).toMatchObject({
@@ -53,7 +51,6 @@ describe('settings', () => {
       description: null,
       albumsSort: 'name',
       defaults: { fit: 'fill', size: 3, backdrop: 'photo' },
-      about: 'I take *pictures*.\n',
     });
     const text = await readFile(file, 'utf8');
     expect(text).toContain(
@@ -72,15 +69,16 @@ describe('settings', () => {
       albums: { sort: 'name' },
       defaults: { size: 3, backdrop: 'photo', crop: 'square' },
     });
-    expect(await readFile(join(dir, 'about.md'), 'utf8')).toBe(
-      'I take *pictures*.\n'
-    );
     const settings = await events.waitFor((e) => e.event === 'settings');
     expect(settings.data.name).toBe('Yann’s “photos”');
 
     // Removing a key brings the default back.
-    await server.call('PUT', '/settings', { name: null, about: null });
+    await server.call('PUT', '/settings', { name: null });
     expect((await loadConfig(dir)).name).toBe('Photos');
+    // There is no about text: the theme would never show it.
+    expect(
+      (await server.call('PUT', '/settings', { about: 'Hello' })).status
+    ).toBe(400);
     await expect(stat(join(dir, 'about.md'))).rejects.toThrow();
   });
 

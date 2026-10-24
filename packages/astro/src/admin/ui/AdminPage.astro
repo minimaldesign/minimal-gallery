@@ -337,8 +337,8 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 photos/<span data-bind="empty-path">album name</span>/
               </code>{' '}
               inside your gallery folder, with all metadata included. Titles,
-              captions, keywords and ratings come along, and new exports show up
-              here while the admin is open.
+              captions and keywords come along, and new exports show up here
+              while the admin is open.
             </p>
           </div>
 
@@ -586,27 +586,6 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                       </label>
                     </div>
                   </fieldset>
-                </div>
-              </section>
-
-              <section class="panel_section" aria-labelledby="s-about">
-                <h2 class="panel_heading" id="s-about">
-                  About
-                </h2>
-                <div class="entry">
-                  <label class="entry_label" for="gallery-about">
-                    About the gallery
-                  </label>
-                  <textarea
-                    class="entry_control"
-                    id="gallery-about"
-                    name="about"
-                    rows="8"></textarea>
-                  <p class="entry_hint">
-                    Markdown: <code>*italic*</code>, <code>**bold**</code>,
-                    <code>[a link](https://example.com)</code>. Saved as
-                    <code>about.md</code> in your gallery folder.
-                  </p>
                 </div>
               </section>
 
@@ -1033,28 +1012,6 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 </div>
               ))}
             </fieldset>
-            <div class="entry" data-field="rating">
-              <div class="entry_head">
-                <label class="entry_label" for="p-rating">
-                  Rating
-                </label>
-                <span class="entry_yours">Yours</span>
-                <button type="button" class="entry_action entry_action-reset">
-                  Reset
-                </button>
-              </div>
-              <select class="entry_control" id="p-rating" name="rating">
-                <option value="" data-bind="rating-file">
-                  From the file
-                </option>
-                <option value="0">No rating</option>
-                <option value="1">★</option>
-                <option value="2">★★</option>
-                <option value="3">★★★</option>
-                <option value="4">★★★★</option>
-                <option value="5">★★★★★</option>
-              </select>
-            </div>
             <div class="entry" data-field="author">
               <div class="entry_head">
                 <label class="entry_label" for="p-author">
@@ -1129,9 +1086,6 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 data-by="1">
                 Move later
               </button>
-              <button type="button" class="bt bt-text" data-action="cover">
-                Use as album cover
-              </button>
             </div>
           </footer>
         </form>
@@ -1204,14 +1158,6 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 Drag photos in the grid to set your order.
               </p>
             </fieldset>
-            <div class="entry">
-              <label class="entry_label" for="a-cover">
-                Cover
-              </label>
-              <select class="entry_control" id="a-cover" name="cover">
-                <option value="">The first photo</option>
-              </select>
-            </div>
             <div class="entry entry-check">
               <input id="a-hidden" name="hidden" type="checkbox" />
               <label class="entry_label" for="a-hidden">

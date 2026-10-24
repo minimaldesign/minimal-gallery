@@ -58,7 +58,6 @@ export interface AlbumEntryData {
   title: string;
   description?: string | null;
   descriptionHtml: string | null;
-  cover?: string | null;
   photoIds: string[];
   children?: string[];
   hidden: boolean;

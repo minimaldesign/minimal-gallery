@@ -72,7 +72,6 @@ An album id in a path is one URL segment: encode it with `encodeURIComponent` (`
   width: number;
   height: number;
   hidden: boolean;
-  rating: number | null; // 1 to 5
   color: string;         // dominant color, 'oklch(0.512 0.084 41.2)'
   thumb: string;         // grid variant, '<base>_mg/<key>'
   attention: ('date-from-mtime' | 'no-exif' | 'duplicate')[];
@@ -93,7 +92,6 @@ An album id in a path is one URL segment: encode it with `encodeURIComponent` (`
   description: string | null; // markdown
   sort: 'date' | 'name' | 'manual';
   order: string[];       // file names, for sort: 'manual'
-  cover: string | null;  // photo id
   hidden: boolean;
   date: string | null;
   count: number;         // photos in this album (not in its children)
@@ -164,10 +162,10 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
   preview: string;       // the variant closest to 1280 px, for the inspector
   extracted: {           // every layer below the photo’s own sidecar, merged
     title, caption, date, dateSource, camera, lens, exposure, gps, place, placeLabel,
-    keywords, rating, copyright, author, hidden,
+    keywords, copyright, author, hidden,
     from: { [field]: 'album' | 'xmp-sidecar' | 'xmp' | 'iptc' | 'exif' | 'filename' | 'mtime' };
   };
-  overrides: { title?, caption?, date?, keywords?, rating?, place?, hidden?, copyright?, author?, ... }; // what <name>.md sets now
+  overrides: { title?, caption?, date?, keywords?, place?, hidden?, copyright?, author?, ... }; // what <name>.md sets now
   overridesFile: string | null;  // 'photos/colors/Red_door.md' when it exists
   jsonSidecar: object | null;    // fields a <name>.json sets (the admin never edits it; .md wins field by field)
 }
@@ -175,10 +173,10 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 
 `extracted` is what the photo shows when its `.md` sets nothing: the album’s `photos:` map in `_album.md`, the `.xmp` sidecar, embedded XMP, IPTC, EXIF, then the file name and modification time. Show these values greyed; the override affordance writes `overrides`.
 
-`PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, rating?, place?: { city?, state?, country?, location? }, hidden?, copyright?, author? }` → `{ overrides, overridesFile }`
+`PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, place?: { city?, state?, country?, location? }, hidden?, copyright?, author? }` → `{ overrides, overridesFile }`
 
 - A key that is absent is left as it is; a key set to `null` is removed (in `place`, per sub-field; an empty `place` is removed).
-- `caption` is the markdown body of `<name>.md`. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `rating`: 0 to 5 (0 is “unrated”). `keywords`: an array of strings.
+- `caption` is the markdown body of `<name>.md`. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `keywords`: an array of strings.
 - `<name>.md` holds only the overridden fields. Keys and comments the admin does not manage are kept. The file is deleted when nothing is left. The original photo is never touched.
 - A run is queued; the photo comes back through a `photo` event.
 - `404` when the photo has no manifest (an unknown id, or a photo the pipeline has not processed yet).
@@ -187,7 +185,7 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 
 `POST /albums` `{ path, title? }` → `201 { album }`. `path` is the album folder under `photos/`, `/` between nested folders; each segment is slugged (`Japan 2025/Kyoto` creates `photos/japan_2025/kyoto/`), so the folder path is also the id. With `title`, `_album.md` is written with it. `409` when the folder exists.
 
-`PUT /albums/:id` `{ title?, description?, sort?, cover?, hidden?, date? }` → `{ album }`. Writes `_album.md`: `description` is its markdown body, `null` removes a key, other keys (`photos:`, `order:`) and comments are kept. `cover` takes a photo id or a file name of the album; it is written as the file name. `sort`: `'date' | 'name' | 'manual'`. A run is queued.
+`PUT /albums/:id` `{ title?, description?, sort?, hidden?, date? }` → `{ album }`. Writes `_album.md`: `description` is its markdown body, `null` removes a key, other keys (`photos:`, `order:`) and comments are kept. `sort`: `'date' | 'name' | 'manual'`. A run is queued.
 
 `PUT /albums/:id/order` `{ order: string[] }` → `{ album }`. File names of photos in the album, in display order. Sets `sort: manual` and `order`. Unknown names give `400`. A run is queued.
 
@@ -235,12 +233,11 @@ A comment line is sent every 15 s to keep the connection open.
 
 ### Settings
 
-`GET /settings` → `{ name, description, author, site, albumsSort, defaults: { fit, strip, crop, view, size, backdrop }, about, customCss }`. Values as resolved, defaults filled in; `description`, `author` and `site` are `null` when unset; `about` and `customCss` are `''` when the file does not exist.
+`GET /settings` → `{ name, description, author, site, albumsSort, defaults: { fit, strip, crop, view, size, backdrop }, customCss }`. Values as resolved, defaults filled in; `description`, `author` and `site` are `null` when unset; `customCss` is `''` when the file does not exist.
 
 `PUT /settings` with any of those keys → the settings object.
 
 - `name`, `description`, `author`, `site`, `albumsSort` (`albums.sort` in the file) and `defaults.*` are edited in `minimalgallery.config.ts` in place: comments and keys the admin does not manage stay as written. `null` removes a key (its default applies). The edit is validated with the pipeline’s schema first; `400` names the bad key. The dev server then restarts (the theme reads the config at startup).
-- `about` writes `about.md` at the gallery root (markdown); `null` or `''` removes it.
 - `customCss` writes `custom.css`. Vite reloads it in the preview; when the file did not exist before, the dev server restarts once so the theme links it.
 - A `settings` event follows. A changed `albumsSort` queues a run.
 

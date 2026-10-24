@@ -149,7 +149,7 @@ The `minio/minio` image is no longer published on Docker Hub; the Chainguard bui
 ```
 photos/
   japan-2025/          album = folder; nesting allowed
-    _album.md          frontmatter: title, cover, sort, order[], hidden, date, photos{}
+    _album.md          frontmatter: title, sort, order[], hidden, date, photos{}
     DSC_0412.jpg       original, never modified
     DSC_0412.md        per-photo override: frontmatter + markdown caption
     DSC_0412.xmp       Lightroom sidecar, read only
@@ -165,7 +165,7 @@ The shape is defined, with comments on each field, by the Zod schemas in [`src/s
 
 - `id`, `album`, `slug`, `file`, and `source`: the path relative to `photos/` (`feelings/Greenport.jpg`), shown as “File” in the viewer.
 - `added`: when the photo first entered the gallery, in UTC (`2026-10-23T19:30:00Z`), for feeds of what is new. Set by the first run that writes the photo’s manifest and kept after that, through re-encodes, sidecar edits and a rename or move of the same file. Manifests written before this field existed get the file’s modification time once.
-- `title`, `caption` (raw markdown), `keywords`, `rating` (1 to 5, or null when unrated), `copyright`, `author`, `hidden`.
+- `title`, `caption` (raw markdown), `keywords`, `copyright`, `author`, `hidden`.
 - `date`, `tz`, `dateSource`: see Dates.
 - `camera`, `lens`, `exposure` (`shutter` as a display string and `shutterSeconds`, `aperture`, `focal`, `focal35`, `iso`, `ev`, `metering`, `flash`), `gps`.
 - `place` (`{ city, state, country, location }`, where `location` is the IPTC Sub-location) and `placeLabel` (“Kyoto, Japan”).
@@ -176,8 +176,6 @@ The shape is defined, with comments on each field, by the Zod schemas in [`src/s
 ## Metadata precedence
 
 Highest first, field by field: `<name>.md` or `<name>.json` sidecar, the `photos:` map in the album’s `_album.md`, `<name>.xmp` sidecar, embedded XMP, IPTC, EXIF, the file name. The `.md` body is the caption. `place` and `exposure` merge per sub-field, so a sidecar can set only the city and keep the country from IPTC.
-
-A rating of 0 (Lightroom’s “unrated”) or -1 (rejected) in the first layer that sets a rating is stored as `null`.
 
 ## Dates
 

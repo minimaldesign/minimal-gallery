@@ -142,8 +142,6 @@ export const PhotoManifest = z.object({
   /** Display string such as “Kyoto, Japan”, or null. */
   placeLabel: z.string().nullable(),
   keywords: z.array(z.string()),
-  /** 1 to 5 stars; null when unrated (XMP Rating 0) or rejected. */
-  rating: z.number().int().min(1).max(5).nullable(),
   copyright: z.string().nullable(),
   author: z.string().nullable(),
   hidden: z.boolean(),
@@ -196,8 +194,6 @@ export const AlbumManifest = z.object({
   title: z.string(),
   /** Raw markdown, from the `_album.md` body. */
   description: z.string().nullable(),
-  /** Photo id of the cover. */
-  cover: z.string().nullable(),
   sort: AlbumSort,
   order: z.array(z.string()),
   hidden: z.boolean(),
@@ -226,8 +222,6 @@ export const PhotoOverrides = z
     camera: z.string(),
     lens: z.string(),
     keywords: z.union([z.array(z.string()), z.string()]),
-    /** 0 means unrated. */
-    rating: z.number(),
     copyright: z.string(),
     author: z.string(),
     hidden: z.boolean(),
@@ -240,7 +234,6 @@ export type PhotoOverrides = z.infer<typeof PhotoOverrides>;
 export const AlbumFrontmatter = z
   .object({
     title: z.string(),
-    cover: z.string(),
     sort: AlbumSort,
     order: z.array(z.string()),
     hidden: z.boolean(),

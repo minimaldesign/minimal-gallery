@@ -37,7 +37,6 @@ const GALLERY_PATHS = [
   '.minimalgallery',
   'public',
   'custom.css',
-  'about.md',
   ...CONFIG_FILES,
 ];
 

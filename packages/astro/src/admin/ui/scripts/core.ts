@@ -20,7 +20,6 @@ export interface Photo {
   width: number;
   height: number;
   hidden: boolean;
-  rating: number | null;
   color?: string;
   thumb: string;
   attention: Attention[];
@@ -35,7 +34,6 @@ export interface Album {
   description: string | null;
   sort: 'date' | 'name' | 'manual';
   order: string[];
-  cover: string | null;
   hidden: boolean;
   date: string | null;
   count: number;

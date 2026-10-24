@@ -33,7 +33,7 @@ Principle: the photo is the page; browsing is a layer over it; metadata is navig
 - **View** (landing state, and every photo URL): one photo, full-bleed, `object-fit: contain`, on a backdrop derived from the photo’s dominant colour (extracted at ingest, stored in the manifest as oklch, dimmed via `color-mix()`). Chrome is a thin HUD that fades out when the pointer is idle: title and album top-left, “N of M” and actions top-right, filmstrip along the bottom. Arrow keys, click-to-advance with wrap (kept from v0.8), swipe on touch. Next and previous pages are prerendered via Speculation Rules, so advancing is instant; the transition is directional (view transition types `forward`/`back` drive a slide, `view-transition-class` keeps the HUD static).
 - **Strip**: the filmstrip is a CSS carousel (`scroll-snap`, `::scroll-marker` and `::scroll-button` where supported, plain snapping scroll elsewhere). Dragging or scrolling the strip upward expands it into the grid: one gesture from viewing to browsing, carried by a scroll-driven animation.
 - **Grid** (album, facet and home-as-archive pages): justified rows that preserve every aspect ratio, so photos are never cropped (row geometry computed at build time from known dimensions; pure flex + `aspect-ratio`). A zoom level (`-`/`+`, like Lightroom) changes row height; `display: grid-lanes` masonry is an optional mode behind `@supports`. Thumbs fade and settle in on scroll (`view-timeline`). A date rail on the right shows the current month and year via a `scroll-state(stuck)` container query, and dragging it scrubs the timeline. Hovering a thumb shows an anchor-positioned tooltip (title, date, camera). Clicking a thumb morphs it into View.
-- **Filter** (the powerful browse): a palette (`/` or Cmd-K) with chips for album, year, month, day-across-years, camera, lens, focal range, aperture, keyword, rating, place. Every chip is a static facet page with a shareable URL; the palette only navigates, so arriving by URL needs no JS. The v0.8 list view’s “click any cell to filter” generalizes: every value in the info panel is a link to its facet page (click “f/1.4”, see every f/1.4 photo).
+- **Filter** (the powerful browse): a palette (`/` or Cmd-K) with chips for album, year, month, day-across-years, camera, lens, focal range, aperture, keyword, place. Every chip is a static facet page with a shareable URL; the palette only navigates, so arriving by URL needs no JS. The v0.8 list view’s “click any cell to filter” generalizes: every value in the info panel is a link to its facet page (click “f/1.4”, see every f/1.4 photo).
 - **Info**: a `popover` panel anchored to the info button (anchor positioning): EXIF, a histogram (tiny SVG computed at ingest), location with a static map image, all values clickable. Animated open/close with `@starting-style` and `transition-behavior: allow-discrete`.
 - **Zoom**: `z` or click toggles 1:1 using the largest derivative or the original inside a scroll container, pan by drag; `cursor: zoom-in`.
 - **Slideshow** (space), **random**, **list** (a sortable table, kept for the spreadsheet-minded), **feed**, **last updated**.
@@ -75,7 +75,7 @@ One theme ships in v2, inside the astro package. The theme contract (layout slot
 ```
 photos/
   japan-2025/                album = folder; nesting allowed
-    _album.md                frontmatter: title, description, cover, sort, order[], hidden, date
+    _album.md                frontmatter: title, description, sort, order[], hidden, date
     DSC_0412.jpg             original, never modified
     DSC_0412.md              per-photo override: frontmatter + markdown caption
     DSC_0412.xmp             Lightroom sidecar, read only
@@ -87,9 +87,9 @@ custom.css                   the user’s last cascade layer
 
 ### Data model
 
-- Album: `id` (slugged folder path), `title`, `description` (markdown), `cover`, `sort` (`date | name | manual`), `order`, `children`, `dateRange`, `count`, `hidden`, `updatedAt`.
-- Photo: `id` = `<album-slug>__<file-slug>` (the v0.8 convention from `mg_brain.php:151`; loader errors on collision), `album`, `title`, `caption`, `date` + `dateSource`, `camera`, `lens`, `exposure` (shutter, aperture, focal, ISO, EV, metering, flash), `gps`, `location`, `keywords`, `rating`, `copyright`, `width/height`, `color` (dominant, oklch), `histogram`, `thumbhash`, `placeholder`, `variants[]`, `original?`, `hidden`, `digest` (feeds Astro’s incremental build `cacheKey`).
-- Facets derived at load, each a static page: year, month across years, day across years (the v0.8 `m`/`d` semantics from `mg_brain.php:198-209`), camera, lens, focal bucket, aperture, keyword, country/city, rating.
+- Album: `id` (slugged folder path), `title`, `description` (markdown), `sort` (`date | name | manual`), `order`, `children`, `dateRange`, `count`, `hidden`, `updatedAt`.
+- Photo: `id` = `<album-slug>__<file-slug>` (the v0.8 convention from `mg_brain.php:151`; loader errors on collision), `album`, `title`, `caption`, `date` + `dateSource`, `camera`, `lens`, `exposure` (shutter, aperture, focal, ISO, EV, metering, flash), `gps`, `location`, `keywords`, `copyright`, `width/height`, `color` (dominant, oklch), `histogram`, `thumbhash`, `placeholder`, `variants[]`, `original?`, `hidden`, `digest` (feeds Astro’s incremental build `cacheKey`).
+- Facets derived at load, each a static page: year, month across years, day across years (the v0.8 `m`/`d` semantics from `mg_brain.php:198-209`), camera, lens, focal bucket, aperture, keyword, country/city.
 - Override precedence: `.md`/`.json` sidecar > `_album.md` per-photo map > `.xmp` sidecar > embedded XMP > IPTC > EXIF > filename/mtime. Date falls back to mtime with `dateSource: "mtime"` so the admin can flag it.
 
 ### URL scheme
@@ -157,9 +157,9 @@ Persona: a photo enthusiast on a Mac with Lightroom, who has opened a terminal a
 3. **Open the admin** (terminal, once, or the `.command` file). `npm run admin` starts the dev server and opens `localhost:4321/_mg/admin`. The first-run screen is a four-step checklist with live ticks: add photos, name the gallery, preview, publish. The grid is an empty state with one large drop target and a line about the Lightroom export preset.
 4. **Add photos.** Drop a folder from Finder: an album appears, thumbnails fill in as each ladder finishes, and a “needs attention” badge marks photos whose date came from mtime, that have no EXIF, or that duplicate an existing file. Clicking the badge opens the inspector on the right field.
 5. **Look.** The Preview button opens the real site in a new tab; it live-reloads as photos land. A `?` overlay shows the keyboard map the first time.
-6. **Make it yours.** Settings: name, tagline, about text (markdown), sort and landing behaviour, and the theme tokens the design phase exposes (accent, backdrop mode: photo colour, neutral dark, light). A custom CSS panel writes `custom.css` and the preview updates live.
+6. **Make it yours.** Settings: name, tagline, sort and landing behaviour, and the theme tokens the design phase exposes (accent, backdrop mode: photo colour, neutral dark, light). A custom CSS panel writes `custom.css` and the preview updates live.
 7. **Publish.** The first click shows “Connect Cloudflare”: a `wrangler login` browser OAuth, then the admin creates the Pages project (and the R2 bucket in bucket mode) and deploys. The log streams in the page and ends with the live URL, a copy button, and a link to Cloudflare’s custom-domain steps. Every later publish is one click. The GitHub path is the alternative: the admin inits the repo, creates it with `gh`, pushes, and shows the Cloudflare Pages “connect repo” link with the build command prefilled.
-8. **Next time.** Double-click the `.command` file (or run `npm run admin`), drop, publish. For a folder-based habit, `minimalgallery watch` plus a Lightroom export preset pointed at `photos/<album>/` with metadata included: titles, captions, keywords and ratings flow through XMP and no sidecars are ever written by hand.
+8. **Next time.** Double-click the `.command` file (or run `npm run admin`), drop, publish. For a folder-based habit, `minimalgallery watch` plus a Lightroom export preset pointed at `photos/<album>/` with metadata included: titles, captions and keywords flow through XMP and no sidecars are ever written by hand.
 9. **Upgrading.** `npx minimalgallery upgrade` updates the packages, migrates the config if a version changed, and runs `doctor`, which reports file count, bytes, and anything it would change.
 
 Power-user variant, no admin: `minimalgallery add ~/Export/japan --album japan-2025`, edit a `.md` sidecar in any editor, `minimalgallery publish`.
@@ -181,7 +181,7 @@ First run:
 
 Adding photos: 3. Sidebar: album tree. Main pane: the current album’s grid with a drop zone. Dropping a Finder folder on the sidebar creates an album; dropping files on the grid adds to it (dropped folders are read recursively in every modern browser via `webkitGetAsEntry`). 4. Each file uploads to localhost in chunks, is hashed and deduped, written to `photos/<album>/`, then processed by Node; progress streams back over SSE and the thumb appears as soon as its ladder is done. The live collection refreshes the preview.
 
-Editing: 5. Click a photo for an inspector: title, caption (markdown), date, location, keywords, rating, hidden. Extracted values show greyed with an override affordance; saving writes `<name>.md` containing only the overridden fields. Album inspector and drag-to-reorder write `_album.md`. Originals are never modified.
+Editing: 5. Click a photo for an inspector: title, caption (markdown), date, location, keywords, hidden. Extracted values show greyed with an override affordance; saving writes `<name>.md` containing only the overridden fields. Album inspector and drag-to-reorder write `_album.md`. Originals are never modified.
 
 Publishing: 6. A Publish button runs `minimalgallery publish`: `sync` pending derivatives to R2 in bucket mode, then `git commit && git push` (host builds) or `astro build && wrangler pages deploy dist`. First time, a guided `wrangler login`. Deploy log and final URL shown in the page.
 
@@ -215,6 +215,7 @@ Decision: A ships in Phase 3. B is not implemented now; during Phase 1 setup the
 - Every gallery carries a quiet “Powered by minimal gallery” credit linking to the docs home: one line at the end of the browsing panel after the last grid row or list row, and a smaller “minimal gallery <version>” line in the Keyboard Shortcuts pane footer. Config option `credit`, on by default.
 - Bucket mode (R2) is the default when the host is Cloudflare: the repo holds manifests and code, derivatives (and optionally originals) live in R2 behind a `media.` subdomain, and Publish uploads new derivatives before the commit and push. Repo mode stays the default for GitHub Pages, Netlify and local builds. The demo moves to bucket mode to dogfood it.
 - Docs: scaffold and navigation in Phase 2 (so the credit link has a target); final content and a design round at the end of Phase 4, after the admin and bucket mode are stress-tested. Starlight restyled with the gallery tokens.
+- No ratings, album covers or about text (decided by Yann during Phase 3): minimal gallery is a gallery, not a photo organizer, and the theme has no place for them. Ratings are not read from Lightroom or sidecars, an album is represented by its first photo (drag to reorder to choose it), and the admin offers none of the three.
 - Work runs two phases at a time at most (#2 and #3 first, on their own branches, each merged by PR), the docs scaffold and one-pager when one merges, the release last, #5 when the photos arrive.
 
 ## Hosting

@@ -591,12 +591,6 @@ function fillPhoto() {
     if (from) from.textContent = FROM[ex.from?.[name] ?? ''] ?? 'From the file';
   }
 
-  const rating = control<HTMLSelectElement>(photoForm, 'rating');
-  const fileRating = Number(ex.rating ?? 0);
-  bound('rating-file').textContent = `From the file: ${
-    fileRating ? '★'.repeat(fileRating) : 'no rating'
-  }`;
-  rating.value = ov.rating === undefined ? '' : String(ov.rating);
   control<HTMLInputElement>(photoForm, 'hidden').checked = Boolean(
     ov.hidden ?? ex.hidden
   );
@@ -666,9 +660,6 @@ function changedOverrides() {
     if (!same(next, ov.place?.[key])) place[key] = next;
   }
   if (Object.keys(place).length) out.place = place;
-  const rating = control<HTMLSelectElement>(photoForm, 'rating').value;
-  const nextRating = rating === '' ? null : Number(rating);
-  if (!same(nextRating, ov.rating)) out.rating = nextRating;
   const hidden = control<HTMLInputElement>(photoForm, 'hidden').checked;
   const nextHidden =
     hidden === Boolean(detail.extracted.hidden) ? null : hidden;
@@ -701,24 +692,8 @@ photoForm.addEventListener('click', (event) => {
     const by = Number(target.closest<HTMLElement>('[data-by]')!.dataset.by);
     const ids = [...grid.children].map((el) => (el as HTMLElement).dataset.id);
     move(app.selected, ids.indexOf(app.selected) + by);
-  } else if (target.closest('[data-action="cover"]') && detail) {
-    void setCover(detail);
   }
 });
-
-async function setCover(photo: Photo) {
-  try {
-    const { album } = await api<{ album: Album }>(
-      'PUT',
-      `/albums/${encodeURIComponent(photo.album)}`,
-      { cover: photo.id }
-    );
-    replaceAlbum(album);
-    status(photoForm, `Now the cover of ${album.title}.`);
-  } catch (error) {
-    status(photoForm, `Not saved: ${(error as Error).message}`);
-  }
-}
 
 photoForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -777,13 +752,14 @@ function fillAlbum() {
   delete albumForm.dataset.dirty;
   status(albumForm, '');
   const photos = (app.state?.photos ?? []).filter((p) => p.album === album.id);
-  const cover = photoById(album.cover) ?? photos[0];
+  // The album's first photo stands for it, as in the gallery.
+  const first = photos[0];
   const preview = bound<HTMLImageElement>('album-preview');
-  if (cover) {
-    showImage(preview, cover.thumb);
+  if (first) {
+    showImage(preview, first.thumb);
     preview.style.setProperty(
       '--inspector-ratio',
-      `${cover.width} / ${cover.height}`
+      `${first.width} / ${first.height}`
     );
   } else {
     delete preview.dataset.src;
@@ -798,10 +774,6 @@ function fillAlbum() {
     album.description ?? '';
   for (const radio of $$<HTMLInputElement>('[name="sort"]', albumForm))
     radio.checked = radio.value === album.sort;
-  const select = control<HTMLSelectElement>(albumForm, 'cover');
-  select.replaceChildren(select.options[0]);
-  for (const p of photos) select.append(new Option(p.title, p.id));
-  select.value = album.cover && photoById(album.cover) ? album.cover : '';
   control<HTMLInputElement>(albumForm, 'hidden').checked = album.hidden;
 }
 
@@ -825,9 +797,6 @@ albumForm.addEventListener('submit', async (event) => {
     changes.description = description || null;
   const sort = $<HTMLInputElement>('[name="sort"]:checked', albumForm)?.value;
   if (sort && sort !== album.sort) changes.sort = sort;
-  const cover = control<HTMLSelectElement>(albumForm, 'cover').value || null;
-  if (cover !== (album.cover && photoById(album.cover) ? album.cover : null))
-    changes.cover = cover;
   const hidden = control<HTMLInputElement>(albumForm, 'hidden').checked;
   if (hidden !== album.hidden) changes.hidden = hidden;
   if (!Object.keys(changes).length) {

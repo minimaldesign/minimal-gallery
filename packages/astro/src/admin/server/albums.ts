@@ -2,12 +2,7 @@
 import { mkdir, readdir, stat } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 import { parseUserDate, PHOTO_EXTENSIONS } from '@minimalgallery/pipeline';
-import {
-  fileSlug,
-  photoIdFor,
-  slugify,
-  stripExtension,
-} from '@minimalgallery/pipeline/slug';
+import { slugify } from '@minimalgallery/pipeline/slug';
 import { badRequest, conflict, notFound, onlyKeys } from './http.ts';
 import {
   bodyOf,
@@ -91,7 +86,7 @@ export async function updateAlbum(
   id: string,
   body: Record<string, unknown>
 ): Promise<void> {
-  onlyKeys(body, ['title', 'description', 'sort', 'cover', 'hidden', 'date']);
+  onlyKeys(body, ['title', 'description', 'sort', 'hidden', 'date']);
   const album = await findAlbum(galleryDir, id);
   const file = await readMarkdown(join(album.abs, '_album.md'));
   if ('title' in body) {
@@ -123,24 +118,6 @@ export async function updateAlbum(
     if (v !== null && (typeof v !== 'string' || !parseUserDate(v)))
       throw badRequest('date must look like 2005-02-27, or be null.');
     setValue(file.doc, ['date'], v);
-  }
-  if ('cover' in body) {
-    const v = body.cover;
-    if (v === null) setValue(file.doc, ['cover'], null);
-    else if (typeof v !== 'string')
-      throw badRequest('cover must be a string or null.');
-    else {
-      const files = await photoFiles(album.abs);
-      const match = files.find(
-        (f) =>
-          f === v ||
-          stripExtension(f) === v ||
-          photoIdFor(album.id, f) === v ||
-          fileSlug(f) === v
-      );
-      if (!match) throw badRequest(`${v} is not a photo in ${album.id}.`);
-      setValue(file.doc, ['cover'], match);
-    }
   }
   await writeMarkdown(file);
 }

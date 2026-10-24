@@ -24,7 +24,6 @@ import {
 } from '@minimalgallery/pipeline/schema';
 import {
   albumIdFromPath,
-  photoIdFor,
   titleFromFolder,
 } from '@minimalgallery/pipeline/slug';
 import { readMarkdown, toPlain } from './frontmatter.ts';
@@ -45,7 +44,6 @@ export interface PhotoSummary {
   width: number;
   height: number;
   hidden: boolean;
-  rating: number | null;
   color: string;
   thumb: string;
   attention: Attention[];
@@ -60,7 +58,6 @@ export interface AlbumSummary {
   description: string | null;
   sort: AlbumSort;
   order: string[];
-  cover: string | null;
   hidden: boolean;
   date: string | null;
   count: number;
@@ -224,7 +221,6 @@ export function photoSummary(
     width: m.width,
     height: m.height,
     hidden: m.hidden,
-    rating: m.rating,
     color: colorCss(m.color),
     thumb: grid ? `${mediaBase}${grid.key}` : '',
     attention,
@@ -269,7 +265,6 @@ export async function albumSummaries(
       const sort = (['date', 'name', 'manual'] as const).find(
         (s) => s === fm.sort
       );
-      const coverFile = asString(fm.cover);
       return {
         id: d.id,
         path: d.path,
@@ -283,7 +278,6 @@ export async function albumSummaries(
         order: Array.isArray(fm.order)
           ? fm.order.map(String)
           : (entry?.order ?? []),
-        cover: coverFile ? photoIdFor(d.id, coverFile) : (entry?.cover ?? null),
         hidden:
           typeof fm.hidden === 'boolean' ? fm.hidden : (entry?.hidden ?? false),
         date:

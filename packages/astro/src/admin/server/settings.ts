@@ -1,7 +1,7 @@
 /**
  * The settings page: keys of `minimalgallery.config.ts` edited in place with
  * magicast (comments and keys the admin does not manage stay as written),
- * `about.md` and `custom.css` at the gallery root.
+ * and `custom.css` at the gallery root.
  */
 import { readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -22,7 +22,6 @@ export interface Settings {
   site: string | null;
   albumsSort: GalleryConfig['albums']['sort'];
   defaults: GalleryConfig['defaults'];
-  about: string;
   customCss: string;
 }
 
@@ -33,7 +32,6 @@ const SETTINGS_KEYS = [
   'site',
   'albumsSort',
   'defaults',
-  'about',
   'customCss',
 ] as const;
 const DEFAULT_KEYS = ['fit', 'strip', 'crop', 'view', 'size', 'backdrop'];
@@ -59,9 +57,8 @@ async function writeAtomic(path: string, text: string) {
 }
 
 export async function readSettings(galleryDir: string): Promise<Settings> {
-  const [config, about, customCss] = await Promise.all([
+  const [config, customCss] = await Promise.all([
     loadConfig(galleryDir),
-    readText(join(galleryDir, 'about.md')),
     readText(join(galleryDir, 'custom.css')),
   ]);
   return {
@@ -71,7 +68,6 @@ export async function readSettings(galleryDir: string): Promise<Settings> {
     site: config.site ?? null,
     albumsSort: config.albums.sort,
     defaults: config.defaults,
-    about: about ?? '',
     customCss: customCss ?? '',
   };
 }
@@ -168,9 +164,12 @@ export async function writeSettings(
   body: Record<string, unknown>
 ): Promise<SettingsChange> {
   onlyKeys(body, SETTINGS_KEYS);
-  for (const key of ['about', 'customCss'] as const)
-    if (key in body && body[key] !== null && typeof body[key] !== 'string')
-      throw badRequest(`${key} must be a string or null.`);
+  if (
+    'customCss' in body &&
+    body.customCss !== null &&
+    typeof body.customCss !== 'string'
+  )
+    throw badRequest('customCss must be a string or null.');
   const edits = configEdits(body);
 
   let configChanged = false;
@@ -192,14 +191,6 @@ export async function writeSettings(
       }
       configChanged = true;
     }
-  }
-
-  if ('about' in body) {
-    const about = join(galleryDir, 'about.md');
-    const text = (body.about as string | null) ?? '';
-    if (text.trim())
-      await writeAtomic(about, text.endsWith('\n') ? text : `${text}\n`);
-    else await rm(about, { force: true });
   }
 
   let cssCreated = false;

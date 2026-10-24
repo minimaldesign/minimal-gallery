@@ -143,7 +143,6 @@ describe('PUT /photos/:id/overrides', () => {
       title: 'Red door',
       date: '2005-03-01',
       keywords: ['door', 'red', 'door'],
-      rating: 4,
       place: { city: 'Kyoto', country: 'Japan' },
     });
     expect(put.status).toBe(200);
@@ -159,7 +158,6 @@ describe('PUT /photos/:id/overrides', () => {
       title: 'Red door',
       date: '2005-03-01',
       keywords: ['door', 'red'],
-      rating: 4,
       place: { city: 'Kyoto', country: 'Japan' },
       caption: 'Old caption',
     });
@@ -176,7 +174,6 @@ describe('PUT /photos/:id/overrides', () => {
       date: '2005-03-01T00:00:00',
       dateSource: 'sidecar',
       keywords: ['door', 'red'],
-      rating: 4,
       caption: 'Old caption',
       place: { city: 'Kyoto', country: 'Japan' },
     });
@@ -192,9 +189,9 @@ describe('PUT /photos/:id/overrides', () => {
     expect(text).not.toContain('city');
     expect(text).toContain('country: Japan');
 
-    // Bad values are refused before anything is written.
+    // Bad values, and ratings (not kept), are refused before anything is written.
     for (const body of [
-      { rating: 7 },
+      { rating: 4 },
       { date: 'yesterday' },
       { keywords: 'a, b' },
       { color: 'red' },
@@ -208,7 +205,6 @@ describe('PUT /photos/:id/overrides', () => {
     const cleared = await server.call('PUT', '/photos/colors__red/overrides', {
       title: null,
       keywords: null,
-      rating: null,
       place: null,
     });
     expect(cleared.body.overrides).toEqual({ lightroom: 'keep me' });
@@ -297,20 +293,17 @@ describe('albums', () => {
     const edited = await server.call('PUT', '/albums/colors', {
       title: 'Colours',
       description: 'New *description*',
-      cover: 'colors__undated',
       hidden: true,
     });
     expect(edited.status).toBe(200);
     expect(edited.body.album).toMatchObject({
       title: 'Colours',
       description: 'New *description*',
-      cover: 'colors__undated',
       hidden: true,
     });
     let text = await readFile(join(dir, 'photos/colors/_album.md'), 'utf8');
     expect(text).toContain('# album notes');
     expect(text).toContain('title: Map title');
-    expect(text).toContain('cover: Undated.jpg');
     expect(text).toContain('New *description*');
     expect(text).not.toContain('Old description');
 
@@ -321,7 +314,7 @@ describe('albums', () => {
       (await server.call('PUT', '/albums/colors', { sort: 'random' })).status
     ).toBe(400);
     expect(
-      (await server.call('PUT', '/albums/colors', { cover: 'Nope.jpg' })).status
+      (await server.call('PUT', '/albums/colors', { cover: 'Red.jpg' })).status
     ).toBe(400);
     expect((await server.call('PUT', '/albums/nope', {})).status).toBe(404);
 

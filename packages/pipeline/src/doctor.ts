@@ -195,7 +195,6 @@ export async function doctor(
     focal: new Set(),
     keyword: new Set(),
     place: new Set(),
-    rating: new Set(),
   };
   for (const m of visible) {
     const f = m.facets;
@@ -208,7 +207,6 @@ export async function doctor(
     if (f.focalBucket) facetSets.focal.add(f.focalBucket);
     for (const k of f.keywords) facetSets.keyword.add(k.slug);
     if (f.place) facetSets.place.add(f.place.slug);
-    if (m.rating) facetSets.rating.add(String(m.rating));
   }
   const facets = Object.fromEntries(
     Object.entries(facetSets).map(([k, v]) => [k, v.size])

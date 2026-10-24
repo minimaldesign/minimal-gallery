@@ -18,7 +18,6 @@ export const OVERRIDE_KEYS = [
   'caption',
   'date',
   'keywords',
-  'rating',
   'place',
   'hidden',
 ] as const;
@@ -65,15 +64,6 @@ export function validateOverrides(
       const list = [...new Set(v.map((k) => k.trim()).filter(Boolean))];
       out.keywords = list.length ? list : null;
     } else throw badRequest('keywords must be an array of strings or null.');
-  }
-  if ('rating' in body) {
-    const v = body.rating;
-    if (
-      v !== null &&
-      !(Number.isInteger(v) && (v as number) >= 0 && (v as number) <= 5)
-    )
-      throw badRequest('rating must be a whole number from 0 to 5, or null.');
-    out.rating = v;
   }
   if ('hidden' in body) {
     const v = body.hidden;

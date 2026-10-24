@@ -134,14 +134,6 @@ export function xmpToLayer(xml: string): Layer {
   if (creator) layer.author = creator;
   const rights = get('dc:rights');
   if (rights) layer.copyright = rights;
-  // Lightroom writes 0 for unrated and -1 for rejected; both become 0 here,
-  // which the merge stores as null.
-  const rating = get('xmp:Rating');
-  if (rating !== undefined && rating !== '') {
-    const n = Number(rating);
-    if (Number.isFinite(n))
-      layer.rating = Math.max(0, Math.min(5, Math.round(n)));
-  }
   const city = get('photoshop:City');
   const state = get('photoshop:State');
   const country = get('photoshop:Country');

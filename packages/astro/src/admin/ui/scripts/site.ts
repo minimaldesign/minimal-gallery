@@ -1,6 +1,6 @@
 /**
  * The two pages about the site rather than the photos: Settings (the
- * gallery's name and look, the about text, custom.css) and Publish (the
+ * gallery's name and look, custom.css) and Publish (the
  * method, first-run guidance, the streamed log and the final URL).
  */
 import { $, $$, api, ApiError, bound, count, emit, status } from './core.ts';
@@ -16,13 +16,12 @@ interface Settings {
   site: string | null;
   albumsSort: string;
   defaults: Record<string, string | number | boolean>;
-  about: string;
   customCss: string;
 }
 
 const settingsForm = $<HTMLFormElement>('[data-form="settings"]');
 const cssForm = $<HTMLFormElement>('[data-form="css"]');
-const TEXTS = ['name', 'description', 'author', 'site', 'about'] as const;
+const TEXTS = ['name', 'description', 'author', 'site'] as const;
 const DEFAULTS = ['fit', 'strip', 'crop', 'view', 'size', 'backdrop'];
 let settings: Settings | null = null;
 
@@ -89,10 +88,11 @@ settingsForm.addEventListener('submit', async (event) => {
     status(settingsForm, 'Nothing to save.');
     return;
   }
-  await save(settingsForm, changes, (saved) =>
-    'about' in changes && Object.keys(changes).length === 1
-      ? 'Saved to about.md.'
-      : `Saved. The preview restarts with the new settings${saved.name ? `, as “${saved.name}”` : ''}.`
+  await save(
+    settingsForm,
+    changes,
+    (saved) =>
+      `Saved. The preview restarts with the new settings${saved.name ? `, as “${saved.name}”` : ''}.`
   );
 });
 

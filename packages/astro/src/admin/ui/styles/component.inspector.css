@@ -3,8 +3,8 @@
    The right column of the photos view. It holds two forms and shows one,
    by data-inspector on the block (the script sets it): the open photo
    (preview, title, file, attention notices, its fields, then Save and the
-   order and cover actions) or, with no photo open in an album, the album
-   (title, description, sort, cover, hidden). The foot stays in reach at
+   order actions) or, with no photo open in an album, the album (title,
+   description, sort, hidden). The foot stays in reach at
    the bottom while the fields scroll. */
 
 .inspector {

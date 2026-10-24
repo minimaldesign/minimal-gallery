@@ -59,7 +59,7 @@ import { walkPhotos, type WalkedAlbum, type WalkedPhoto } from './walk.ts';
  * rebuilt from the metadata; derivatives are kept. Derivative changes bump
  * ENCODER_VERSION in `ladder.ts` instead.
  */
-export const PIPELINE_VERSION = '0.3.0';
+export const PIPELINE_VERSION = '0.4.0';
 
 export { MANIFEST_DIR, ALBUMS_FILE } from './schema.ts';
 
@@ -863,16 +863,6 @@ async function buildAlbum(
   const sort = fm.sort ?? defaultSort;
   const ordered = sortPhotos(own, sort, fm.order ?? []);
 
-  const coverPhoto = fm.cover
-    ? own.find(
-        (m) =>
-          m.file === fm.cover || m.file.replace(/\.[^.]+$/, '') === fm.cover
-      )
-    : undefined;
-  if (fm.cover && !coverPhoto)
-    throw new Error(
-      `${a.path}/_album.md: cover “${fm.cover}” is not a photo in this album`
-    );
   const dates = own
     .filter((m) => m.dateSource !== 'mtime')
     .map((m) => m.date)
@@ -883,8 +873,6 @@ async function buildAlbum(
     parent: a.parent,
     title: fm.title ?? titleFromFolder(a.path),
     description: file?.description ?? null,
-    cover:
-      (coverPhoto ?? ordered.find((m) => !m.hidden) ?? ordered[0])?.id ?? null,
     sort,
     order: fm.order ?? [],
     hidden: fm.hidden ?? false,
