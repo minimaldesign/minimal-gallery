@@ -35,6 +35,22 @@
       "port": 4421
     },
     {
+      "name": "demo-lan",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "minimalgallery-demo",
+        "exec",
+        "astro",
+        "preview",
+        "--port",
+        "4421",
+        "--host",
+        "--ignore-lock"
+      ],
+      "port": 4421
+    },
+    {
       "name": "prototype",
       "runtimeExecutable": "python3",
       "runtimeArgs": [
