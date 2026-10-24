@@ -11,6 +11,7 @@
 .strip {
   view-transition-name: strip;
   view-transition-class: chrome;
+  padding-block-end: var(--mg-safe-bottom);
   border-width: var(--border-sm) 0 0;
 
   :root:is(

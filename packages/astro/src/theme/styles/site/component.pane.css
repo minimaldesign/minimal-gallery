@@ -20,7 +20,7 @@
 
   view-transition-class: chrome;
   position: fixed;
-  inset: var(--pane-top) var(--xs3) auto auto;
+  inset: var(--pane-top) calc(var(--xs3) + var(--mg-safe-right)) auto auto;
   z-index: var(--z-4);
   display: none;
   width: min(21rem, 100vw - 2 * var(--xs3));
@@ -63,6 +63,7 @@
     width: 100%;
     max-height: 60dvh;
     margin: 0;
+    padding-block-end: calc(var(--sm1) + var(--mg-safe-bottom));
     border-width: var(--border-sm) 0 0;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
@@ -74,7 +75,7 @@
 
 .pane-keys {
   view-transition-name: keys;
-  inset: var(--pane-top) auto auto var(--xs3);
+  inset: var(--pane-top) auto auto calc(var(--xs3) + var(--mg-safe-left));
   width: min(23rem, 100vw - 2 * var(--xs3));
 }
 

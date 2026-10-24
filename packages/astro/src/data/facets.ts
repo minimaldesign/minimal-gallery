@@ -91,6 +91,9 @@ export const RESERVED_SEGMENTS = new Set([
   ...FACETS.map((f) => f.route),
   'grid',
   'legacy-ids',
+  // /feed.json is the JSON feed and /random/ the random page
+  'feed',
+  'random',
   '_astro',
   '_mg',
 ]);

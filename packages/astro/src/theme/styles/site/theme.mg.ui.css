@@ -35,6 +35,12 @@
     --mg-hud-height: calc(var(--lg3) * var(--mg-hud-density));
     --mg-edge-height: var(--xl3);
     --mg-gutter: var(--sm1);
+    /* SAFE AREAS: where a phone's notch, island or home indicator covers
+       the window (viewport-fit=cover lets the photo run under them); the
+       chrome keeps clear of them. 0 everywhere else. */
+    --mg-safe-right: env(safe-area-inset-right, 0px);
+    --mg-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --mg-safe-left: env(safe-area-inset-left, 0px);
 
     @media (--md-n-below) {
       --mg-edge-height: var(--xl2);

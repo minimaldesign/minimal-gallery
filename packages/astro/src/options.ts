@@ -1,10 +1,11 @@
-import type { GalleryConfigInput } from './config.ts';
+import type { GalleryConfigInput, ThemeOptions } from './config.ts';
 
 /**
  * Options for the integration. `galleryDir` says where the gallery lives;
  * every other key overrides the same key of `minimalgallery.config.ts`.
  */
-export interface MinimalgalleryOptions extends GalleryConfigInput {
+export interface MinimalgalleryOptions
+  extends GalleryConfigInput, ThemeOptions {
   /** Directory holding `photos/`, `.minimalgallery/` and the config file. Defaults to the Astro project root. */
   galleryDir?: string;
 }

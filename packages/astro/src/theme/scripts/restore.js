@@ -8,10 +8,10 @@
   r.dataset.script = '';
   if (r.dataset.start || location.hash == '#grid') r.dataset.panel = '';
   addEventListener('pagereveal', (e) => (self.mgReveal = e), { once: true });
-  self.mgStrip = (n, ps) => {
+  self.mgStrip = (n, ps, q) => {
     const d = n.dataset;
     const c = new URLSearchParams(location.search).get('in');
-    const q = c || d.in;
+    q ??= c || d.in;
     const on = r.dataset.strip
       ? r.dataset.strip == 'on'
       : getComputedStyle(r).getPropertyValue('--mg-strip').trim() == 'on';

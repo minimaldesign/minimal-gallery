@@ -1,0 +1,29 @@
+---
+/**
+ * The slideshow's play and pause button (Space does the same), first among
+ * the HUD's and the panel header's controls; `class` mixes the container's
+ * placement in. One icon holds both shapes and CSS shows the one for the
+ * state (`data-play` on <html>); the theme script keeps `aria-pressed` in
+ * step. Hidden without script: the slideshow is the script's.
+ */
+import Tip from './Tip.astro';
+
+interface Props {
+  class?: string;
+}
+const { class: placement } = Astro.props;
+---
+
+<div class:list={['toggle toggle-plain playButton', placement]}>
+  <button
+    class="toggle_option"
+    type="button"
+    aria-label="Slideshow"
+    aria-pressed="false">
+    <svg class="toggle_svg" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M5 3.25v9.5l7.5-4.75z" />
+      <path d="M5.5 3.5v9M10.5 3.5v9" />
+    </svg>
+    <Tip label="Slideshow" shortcut="Space" />
+  </button>
+</div>

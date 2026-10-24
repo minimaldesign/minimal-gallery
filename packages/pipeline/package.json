@@ -1,6 +1,6 @@
 {
   "name": "@minimalgallery/pipeline",
-  "version": "0.0.0",
+  "version": "2.0.0-beta.0",
   "description": "Local photo processing for minimalgallery: metadata, derivatives, manifests.",
   "type": "module",
   "license": "MIT",

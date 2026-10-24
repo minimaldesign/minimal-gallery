@@ -11,14 +11,20 @@
  */
 import config from 'virtual:minimalgallery/config';
 import {
+  absolute,
+  captionText,
   neighbors,
   photoHref,
   ratioOf,
+  shareImageOf,
+  siteOf,
   srcsetOf,
+  withBase,
   type Context,
   type Photo,
 } from '../../gallery.ts';
 import Hud from '../components/Hud.astro';
+import Credit from '../components/Credit.astro';
 import InfoPane from '../components/InfoPane.astro';
 import KeysPane from '../components/KeysPane.astro';
 import Ledger from '../components/Ledger.astro';
@@ -51,14 +57,18 @@ const rules = JSON.stringify({
   ],
 });
 
+// home is the archive on the viewer; every photo page is in its album
+const home = context.kind === 'archive' && start === 'view';
 const title =
   start === 'grid'
     ? `${context.label} · ${site}`
     : `${photo.title} · ${context.label} · ${site}`;
-const description =
-  start === 'grid'
+const description = home
+  ? config.description
+  : start === 'grid'
     ? `${context.label}: ${plural} in ${site}.`
-    : `${photo.title}, a photograph in ${context.label}.`;
+    : (captionText(photo) ??
+      `${photo.title}, a photograph in ${context.label}.`);
 
 // 1:1 of the largest derivative; one under 1600px (small sources) is
 // doubled so zoom still magnifies
@@ -72,9 +82,14 @@ const style = [
 ]
   .filter(Boolean)
   .join('; ');
-const canonical = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site).href
-  : undefined;
+const url = siteOf(Astro.site);
+const canonical = url && new URL(Astro.url.pathname, url).href;
+// the link preview: the page's photo (home: the newest) as a JPEG
+const share = shareImageOf(photo);
+const og = url && {
+  title: home ? site : start === 'grid' ? context.label : photo.title,
+  image: absolute(share.url, url),
+};
 ---
 
 <GalleryLayout
@@ -85,6 +100,32 @@ const canonical = Astro.site
   start={start}>
   <Fragment slot="head">
     {canonical && <link rel="canonical" href={canonical} />}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site}
+      href={withBase('/feed.xml')}
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title={site}
+      href={withBase('/feed.json')}
+    />
+    {og && (
+      <>
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={site} />
+        <meta property="og:title" content={og.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={og.image} />
+        <meta property="og:image:width" content={String(share.width)} />
+        <meta property="og:image:height" content={String(share.height)} />
+        <meta property="og:image:alt" content={photo.title} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </>
+    )}
     {next && <link rel="next" href={photoHref(next, context)} />}
     {prev && <link rel="prev" href={photoHref(prev, context)} />}
     {
@@ -135,6 +176,7 @@ const canonical = Astro.site
         <div class="table_photos">
           <Thumbs context={context} current={photo} />
           <Ledger context={context} current={photo} rows={start === 'grid'} />
+          <Credit class="table_credit" />
         </div>
         <Rail context={context} />
       </div>

@@ -15,6 +15,8 @@ const base = $('meta[name="mg-root"]').content;
 const coarse = matchMedia('(pointer: coarse)').matches;
 // syncPanel() runs from restore(), early: its state is declared up here
 let synced = false;
+// the panel's play button asked for a slideshow: it starts at the viewer
+let playSoon = false;
 // the strip's latest glide (center() runs early too): a newer one takes over
 let tween = 0;
 // the panel (the photos below the viewer) is up when it covers the window
@@ -29,12 +31,14 @@ const esc = (s) => String(s).replace(/[&<"]/g, (c) => `&#${c.charCodeAt()};`);
 history.scrollRestoration = 'manual';
 const visit = performance.getEntriesByType('navigation')[0]?.type;
 if (!location.hash && !$('.table-start')) scrollTo(0, 0);
-// context pages open at the grid where scroll-initial-target is missing
+// context pages open at the grid where scroll-initial-target did not
+// already put them there (it is missing outside Chrome, and Chrome 156
+// leaves this page at the top)
 else if (
   $('.table-start') &&
   !location.hash &&
   visit !== 'back_forward' &&
-  !CSS.supports('scroll-initial-target: nearest')
+  scrollY < innerHeight / 2
 )
   $('#grid').scrollIntoView();
 
@@ -161,13 +165,18 @@ d.addEventListener('change', (e) => {
 // wanted or the page is idle. The JSON also carries everything the viewer
 // shows, so a step needs nothing else.
 const own = $('.strip').dataset;
-const ctx = new URLSearchParams(location.search).get('in');
+// a context id is slugs joined by `/` (`grid`, `colors`, `aperture/1.4`);
+// anything else is ignored, so `?in=//host/x` cannot fetch another site's
+// JSON (its info rows and captions are written into the page as markup)
+const ctx = new URLSearchParams(location.search)
+  .get('in')
+  ?.match(/^[\w.-]+(\/[\w.-]+)*$/)?.[0];
 const ctxId = ctx || own.context;
 const linkIn = ctx || own.in;
-const inCtx = (p) =>
-  linkIn
-    ? `${p.href}?in=${encodeURIComponent(linkIn).replace(/%2F/g, '/')}`
-    : p.href;
+const query = linkIn
+  ? `?in=${encodeURIComponent(linkIn).replace(/%2F/g, '/')}`
+  : '';
+const inCtx = (p) => p.href + query;
 // the photo shown, matched by its page path (slugs repeat); a step moves it
 let here = own.photo;
 let context; // { photos, i, title, href } once loaded
@@ -247,7 +256,7 @@ function nav(c) {
 // the filmstrip's frames, when the strip is on (the builder is shared with
 // the inline call after the strip, in the head script)
 function strip(c) {
-  mgStrip($('.strip'), c.photos);
+  mgStrip($('.strip'), c.photos, linkIn || '');
   center();
 }
 // the grid and the rail of another context (`?in=`)
@@ -260,7 +269,7 @@ function thumbs(c) {
     .map((p) => {
       const id = seen.has(p.year) ? '' : ` id="y-${p.year}"`;
       seen.add(p.year);
-      return `<li class="thumbs_item"${id} ${attrs(p)}><a class="thumbs_link" href="${inCtx(p)}"${current(p)}><img class="thumbs_image" src="${p.thumb}" alt="${esc(p.title)}" loading="lazy"><span class="thumbs_tip surface" aria-hidden="true"><b>${esc(p.title)}</b>${esc(p.tip)}</span></a></li>`;
+      return `<li${id} ${attrs(p)}><a class="thumbs_link" href="${inCtx(p)}"${current(p)}><img src="${p.thumb}" alt="${esc(p.title)}" loading="lazy"><span class="thumbs_tip surface" aria-hidden="true"><b>${esc(p.title)}</b>${esc(p.tip)}</span></a></li>`;
     })
     .join('');
   $('.rail_list').innerHTML = [...seen]
@@ -413,6 +422,9 @@ function stepTo(i, push = true) {
       : a.removeAttribute('aria-current');
   center(true);
   if (push) history.pushState({ mg: p.href }, '', inCtx(p));
+  shown(p.href);
+  // a slideshow's clock starts again with every photo, whoever stepped
+  if (root.hasAttribute('data-play')) replay();
 }
 // every entry of this document is a photo of this context (or a hash link
 // on one): back and forward step in place
@@ -526,12 +538,17 @@ if (!coarse) {
 // focus, so arrow keys start from it.
 function syncPanel() {
   const up = atPanel();
+  if (playSoon && scrollY < 2) {
+    playSoon = false;
+    play(true);
+  }
   const opened = up && synced && !root.hasAttribute('data-panel');
   synced = true;
   root.toggleAttribute('data-panel', up);
   if (up) {
     delete root.dataset.idle;
     ss.mgIdle = '';
+    if (root.hasAttribute('data-play')) play(false, false);
   }
   if (opened && !d.activeElement?.closest('.table_scroller')) select(pick());
 }
@@ -584,6 +601,117 @@ function go(rel) {
   if (!a.href) return;
   hide('key');
   step(a.href);
+}
+// SLIDESHOW: Space or the play button starts and stops a timed step
+// through the context, which starts over after the last photo. Its clock
+// is a CSS animation (stage_play, a hairline that fills over
+// --mg-slideshow): when it ends, the next photo comes in and it starts
+// again. CSS pauses it while a dialog is open or the photo is zoomed. A
+// large play or pause icon (stage_flash) answers each start and stop. It
+// stops on Escape and when the panel opens; the panel's play button goes
+// back to the viewer and starts it there.
+let bar, flash;
+function play(on = !root.hasAttribute('data-play'), answer = true) {
+  if (!on) {
+    if (answer && root.hasAttribute('data-play')) flashIcon('pause');
+    playSoon = false;
+    delete root.dataset.play;
+    return pressed(false);
+  }
+  // from the panel: back to the viewer first (a layout change during the
+  // smooth scroll would make the page snap back to the panel)
+  if (root.hasAttribute('data-panel')) {
+    playSoon = true;
+    return toViewer();
+  }
+  if (!bar) {
+    bar = d.createElement('span');
+    bar.className = 'stage_play';
+    bar.ariaHidden = 'true';
+    bar.addEventListener('animationend', advance);
+    $('.stage').append(bar);
+  }
+  hide('key');
+  flashIcon('play');
+  pressed(true);
+  replay();
+}
+// the next photo, or the first one after the last
+function advance() {
+  const a = $('.stage_next');
+  if (a.href) return step(a.href);
+  withCtx(
+    (c) => (c.photos.length > 1 ? stepTo(0) : play(false)),
+    () => play(false)
+  );
+}
+// the clock from zero: a bar taken out of the layout and put back starts
+// its animation again
+function replay() {
+  delete root.dataset.play;
+  bar.offsetWidth;
+  root.dataset.play = '';
+}
+function pressed(on) {
+  for (const b of $$('.playButton button')) b.ariaPressed = String(on);
+}
+function flashIcon(state) {
+  if (!flash) {
+    flash = d.createElement('span');
+    flash.className = 'stage_flash surface';
+    flash.ariaHidden = 'true';
+    $('.stage').append(flash);
+  }
+  flash.dataset.state = state;
+  flash.classList.remove('is-on');
+  flash.offsetWidth;
+  flash.classList.add('is-on');
+}
+d.addEventListener('click', (e) => {
+  if (e.target.closest('.playButton button')) play();
+});
+// RANDOM: r steps to another photo of the context, inside the page,
+// leaving out the photos already shown in this visit (sessionStorage
+// mgSeen, shared with the /random/ page) until every one of the context
+// has been; then it starts over. The /random/ page does the same for
+// links, and here when the context's JSON cannot be loaded.
+function seen() {
+  try {
+    return JSON.parse(ss.mgSeen || '[]');
+  } catch {
+    return [];
+  }
+}
+function shown(href) {
+  const list = seen();
+  if (list.includes(href)) return;
+  list.push(href);
+  try {
+    ss.mgSeen = JSON.stringify(list);
+  } catch {}
+}
+shown(here);
+function random() {
+  withCtx(
+    (c) => {
+      const ps = c.photos;
+      if (ps.length < 2) return;
+      const done = new Set(seen());
+      const others = ps.map((p, i) => i).filter((i) => i !== c.i);
+      let pool = others.filter((i) => !done.has(ps[i].href));
+      if (!pool.length) {
+        // all shown: forget this context's photos, except the one on screen
+        const mine = new Set(ps.map((p) => p.href));
+        ss.mgSeen = JSON.stringify(
+          [...done].filter((h) => !mine.has(h) || h === here)
+        );
+        pool = others;
+      }
+      hide('key');
+      stepTo(pool[Math.floor(Math.random() * pool.length)]);
+    },
+    () => (location.href = `${base}random/${query}`)
+  );
 }
 const palette = () => {
   const p = $('dialog.palette');
@@ -663,11 +791,30 @@ const keys = {
   '?': () => $('input[name="keys"]').click(),
   g: toPanel,
 };
+// the viewer's own keys: in the panel, Space scrolls and r does nothing
+const viewing = {
+  ' ': () => play(),
+  r: random,
+};
 addEventListener('keydown', (e) => {
   const k = e.key;
+  // PALETTE: Tab and Shift+Tab go round the search field and the chips
+  // that match, inside the dialog (Safari leaves links out of the Tab
+  // order, Firefox stops on the chips' scroller first)
+  const dialog = k === 'Tab' && e.target.closest('dialog.palette');
+  if (dialog) {
+    const list = [
+      $('.palette_search', dialog),
+      ...$$('.chip', dialog).filter((c) => !c.closest('[hidden]')),
+    ];
+    const i = list.indexOf(d.activeElement);
+    e.preventDefault();
+    return list.at((i + (e.shiftKey ? -1 : 1)) % list.length).focus();
+  }
   const field = e.target.closest('input[type="search"]');
   const mod = e.metaKey || e.ctrlKey || e.altKey;
   if (k === 'Escape') {
+    if (root.hasAttribute('data-play')) play(false);
     // in the filter field, the first Escape clears the search
     if (field?.value) {
       e.preventDefault();
@@ -694,6 +841,12 @@ addEventListener('keydown', (e) => {
   } else if (keys[k]) {
     e.preventDefault();
     keys[k]();
+  } else if (viewing[k] && !root.hasAttribute('data-panel') && !e.repeat) {
+    // a control reached by keyboard keeps Space (a checkbox toggles)
+    const control = e.target.closest('input, button, select, textarea');
+    if (k === ' ' && control?.matches(':focus-visible')) return;
+    e.preventDefault();
+    viewing[k]();
   }
 });
 

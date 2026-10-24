@@ -3,8 +3,9 @@
 // signed-off behaviours that the performance work must not break (`?in=`
 // context, no wrap, panel keys, toggles, panes, palette, sort, settings
 // before first paint, the strip and list built on demand, and the
-// no-script fallbacks). Prints one line per check and exits non-zero on a
-// failure.
+// no-script fallbacks), and the Phase 2 additions (slideshow, random,
+// feeds, sitemap, link previews, the credit). Prints one line per check
+// and exits non-zero on a failure.
 //
 //   node bench/behaviours.mjs [--url http://localhost:4421] [--engines webkit]
 
@@ -290,6 +291,63 @@ async function run(engine) {
     !(await $eval('.stage_prev', (a) => a.hasAttribute('href')))
   );
 
+  // CONTEXT PAGE, first visit in a new window: opens on the panel
+  // (Chrome 156 supports scroll-initial-target and still opened it at the
+  // top; the script now checks where the page is)
+  const fresh = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+  });
+  const fp = await fresh.newPage();
+  await fp.goto(opt.url + '/feelings/', { waitUntil: 'load' });
+  await fp.waitForTimeout(600);
+  ok(
+    'context page, first visit: on the panel',
+    await fp.evaluate(
+      () =>
+        scrollY >= innerHeight - 2 &&
+        document.documentElement.hasAttribute('data-panel')
+    )
+  );
+  await fp.$eval('.table_scroller', (s) => (s.scrollTop = s.scrollHeight));
+  await fp.waitForTimeout(300);
+  // the credit's text: its space above is the credit's own padding
+  const gaps = await fp.evaluate(() => {
+    const p = document.querySelector('.table_credit');
+    const c = p.getBoundingClientRect();
+    const top = c.top + parseFloat(getComputedStyle(p).paddingBlockStart);
+    const last = [...document.querySelectorAll('.thumbs > li')]
+      .at(-1)
+      .getBoundingClientRect();
+    return [top - last.bottom, innerHeight - c.bottom].map(Math.round);
+  });
+  ok(
+    'credit: the same space above and below',
+    Math.abs(gaps[0] - gaps[1]) <= 2,
+    `${gaps[0]} and ${gaps[1]} px`
+  );
+  // a context with few photos: the credit still at the bottom, centered
+  await fp.goto(opt.url + '/motion/', { waitUntil: 'load' });
+  await fp.waitForTimeout(600);
+  const low = await fp.evaluate(() => {
+    const c = document.querySelector('.table_credit').getBoundingClientRect();
+    const col = document.querySelector('.table_photos').getBoundingClientRect();
+    return [
+      innerHeight - c.bottom,
+      (c.left + c.right) / 2 - (col.left + col.right) / 2,
+    ].map(Math.round);
+  });
+  ok(
+    'credit: at the bottom of a short panel, centered',
+    Math.abs(low[0] - gaps[1]) <= 2 && Math.abs(low[1]) <= 1,
+    `${low[0]} px from the bottom`
+  );
+  const keysLine = await fp.$eval(
+    '.keys_credit',
+    (p) => getComputedStyle(p).textAlign
+  );
+  ok('credit: the keys pane line at the right', keysLine === 'end');
+  await fresh.close();
+
   // CONTEXT PAGE opens on the panel, list rows in its HTML
   await page.evaluate(() => localStorage.setItem('mg-view', 'list'));
   await go('/feelings/');
@@ -310,6 +368,280 @@ async function run(engine) {
   ok(
     'home: next in grid',
     (await $eval('.stage_next', (a) => a.search)) === '?in=grid'
+  );
+
+  // HEAD: feeds and the link preview
+  await go(ALBUM);
+  const head = await page.evaluate(() => {
+    const at = (s, a = 'content') => document.querySelector(s)?.[a];
+    return {
+      rss: at('link[type="application/rss+xml"]', 'href'),
+      json: at('link[type="application/feed+json"]', 'href'),
+      image: at('meta[property="og:image"]'),
+      url: at('meta[property="og:url"]'),
+      title: at('meta[property="og:title"]'),
+      card: at('meta[name="twitter:card"]'),
+    };
+  });
+  ok(
+    'head: feed links',
+    /\/feed\.xml$/.test(head.rss) && /\/feed\.json$/.test(head.json)
+  );
+  ok(
+    'head: og:url is the page',
+    head.url && new URL(head.url).pathname === ALBUM
+  );
+  ok('head: og:title is the photo', head.title === album.photos[ai].title);
+  ok('head: large card', head.card === 'summary_large_image');
+  const img =
+    head.image && (await fetch(opt.url + new URL(head.image).pathname));
+  ok(
+    'head: og:image is an absolute JPEG',
+    /^https?:/.test(head.image ?? '') &&
+      img?.ok &&
+      img.headers.get('content-type') === 'image/jpeg'
+  );
+  const feeds = await page.evaluate(async () => {
+    const xml = async (u) =>
+      new DOMParser().parseFromString(
+        await (await fetch(u)).text(),
+        'application/xml'
+      );
+    const rss = await xml('/feed.xml');
+    const map = await xml('/sitemap.xml');
+    const json = await (await fetch('/feed.json')).json();
+    return {
+      rss:
+        !rss.querySelector('parsererror') &&
+        rss.querySelectorAll('item').length,
+      enclosure: rss.querySelector('item enclosure')?.getAttribute('length'),
+      json:
+        json.version === 'https://jsonfeed.org/version/1.1' &&
+        json.items.length,
+      map:
+        !map.querySelector('parsererror') &&
+        map.getElementsByTagName('url').length,
+    };
+  });
+  ok('feed.xml: 50 items', feeds.rss === 50);
+  ok('feed.xml: enclosure length', +feeds.enclosure > 0);
+  ok('feed.json: 50 items', feeds.json === 50);
+  ok(
+    'sitemap: every photo and context',
+    feeds.map > 241 + 6,
+    String(feeds.map)
+  );
+
+  // CREDIT and the new key rows
+  ok(
+    'credit: after the photos',
+    await page.evaluate(
+      () =>
+        document
+          .querySelector('.table_photos > :last-child')
+          ?.matches('.credit') &&
+        document.querySelector('.table_credit a').href ===
+          'https://docs.minimalgallery.net/'
+    )
+  );
+  ok(
+    'credit: version in the keys pane',
+    /^minimal gallery \d+\.\d+\.\d+/.test(
+      await $eval('.keys_credit', (p) => p.textContent.trim())
+    )
+  );
+  const caps = await page.$$eval('#keys dt kbd', (k) =>
+    k.map((x) => x.textContent)
+  );
+  ok('keys: Space and r rows', caps.includes('Space') && caps.includes('r'));
+
+  // SLIDESHOW: Space or the play button starts a timed step in place,
+  // pointer movement does not pause it, it starts over after the last
+  // photo; a short interval for the test
+  const short = () =>
+    page.addStyleTag({ content: ':root { --mg-slideshow: 700ms; }' });
+  const index = async () =>
+    album.photos.findIndex((p) => p.href === new URL(page.url()).pathname);
+  const pressed = () =>
+    page.$$eval('.playButton button', (b) => b.map((x) => x.ariaPressed));
+  await short();
+  await page.evaluate(() => (window.__same = true));
+  await page.keyboard.press(' ');
+  ok('Space: slideshow on', (await html()).play === '');
+  ok(
+    'Space: the play icon answers',
+    await $eval('.stage_flash', (f) => f.matches('.is-on[data-state="play"]'))
+  );
+  ok(
+    'play buttons pressed',
+    (await pressed()).every((x) => x === 'true')
+  );
+  await page.waitForTimeout(1600);
+  const played = await index();
+  ok(
+    'slideshow: steps in place',
+    played > ai && (await page.evaluate(() => window.__same)),
+    `${played - ai} steps`
+  );
+  await page.mouse.move(600, 400);
+  await page.mouse.move(640, 430, { steps: 4 });
+  const moved = await index();
+  await page.waitForTimeout(1600);
+  ok(
+    'slideshow: pointer movement does not pause it',
+    (await index()) > moved &&
+      (await $eval(
+        '.stage_play',
+        (b) => getComputedStyle(b).animationPlayState
+      )) === 'running'
+  );
+  await page.keyboard.press(' ');
+  ok(
+    'Space again: off, the pause icon answers',
+    (await html()).play === undefined &&
+      (await $eval('.stage_flash', (f) => f.dataset.state)) === 'pause' &&
+      (await pressed()).every((x) => x === 'false')
+  );
+  const held = await index();
+  await page.waitForTimeout(1600);
+  ok('slideshow off: no more steps', (await index()) === held);
+  await go(album.photos.at(-2).href);
+  await short();
+  // the HUD is hidden after the keys above, and WebKit's synthetic pointer
+  // moves cannot show it: the button is clicked from script
+  const playClick = () =>
+    page.$eval('.hud .playButton button', (b) => b.click());
+  await playClick();
+  await page.waitForTimeout(2600);
+  const looped = await index();
+  ok(
+    'play button: starts, and the slideshow starts over after the last photo',
+    (await html()).play === '' && looped >= 0 && looped < 3,
+    `at ${looped}`
+  );
+  await playClick();
+  ok('play button again: off', (await html()).play === undefined);
+  await page.keyboard.press('ArrowUp');
+  await page.waitForTimeout(900);
+  await page.keyboard.press(' ');
+  ok('Space in the panel: no slideshow', (await html()).play === undefined);
+  await page.click('.table_head .playButton button');
+  await page.waitForTimeout(1200);
+  ok(
+    'panel play button: back to the viewer, playing',
+    (await html()).play === '' && (await html()).panel === undefined
+  );
+  await page.keyboard.press('Escape');
+  ok('Escape: slideshow off', (await html()).play === undefined);
+
+  // FIT PHOTO with the strip: the photo is sized above the strip
+  await go(ALBUM);
+  await page.keyboard.press('f');
+  await page.keyboard.press('s');
+  await page.waitForTimeout(400);
+  const clear = await page.evaluate(() => {
+    const ph = document.querySelector('.stage_photo').getBoundingClientRect();
+    const st = document.querySelector('.strip').getBoundingClientRect();
+    return [ph.bottom, st.top, ph.left, ph.right, st.width].map(Math.round);
+  });
+  ok(
+    'fit photo: above the strip, inside the window',
+    clear[0] <= clear[1] + 1 &&
+      clear[2] >= 0 &&
+      clear[3] <= 1440 &&
+      clear[4] <= 1440,
+    `photo ${clear[2]}–${clear[3]} ending at ${clear[0]}, strip from ${clear[1]}`
+  );
+  await page.keyboard.press('s');
+  await page.keyboard.press('f');
+
+  // PALETTE: Tab goes from the search field to the first chip, and round
+  await page.keyboard.press('/');
+  await page.waitForTimeout(300);
+  await page.keyboard.press('Tab');
+  const first = await page.evaluate(
+    () =>
+      document.activeElement ===
+      [...document.querySelectorAll('#palette .chip')].find(
+        (c) => !c.closest('[hidden]')
+      )
+  );
+  await page.keyboard.press('Shift+Tab');
+  const back = await page.evaluate(() =>
+    document.activeElement.matches('.palette_search')
+  );
+  await page.keyboard.press('Shift+Tab');
+  const last = await page.evaluate(
+    () =>
+      document.activeElement ===
+      [...document.querySelectorAll('#palette .chip')].at(-1)
+  );
+  ok('palette: Tab to the first chip, Shift+Tab round', first && back && last);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(200);
+
+  // RANDOM: r steps in place inside the context; /random/ redirects
+  await go(GRID);
+  await page.evaluate(() => (window.__same = true));
+  await page.keyboard.press('r');
+  await page.waitForTimeout(1200);
+  const r = new URL(page.url());
+  ok(
+    'r: random photo in place, in the context',
+    r.search === '?in=grid' &&
+      r.pathname !== GRID.split('?')[0] &&
+      all.photos.some((p) => p.href === r.pathname) &&
+      (await page.evaluate(() => window.__same))
+  );
+  // r leaves out the photos already shown until all have been
+  const motion = await json('/motion.json');
+  await page.evaluate(() => sessionStorage.removeItem('mgSeen'));
+  await go(motion.photos[0].href);
+  const seenAll = [new URL(page.url()).pathname];
+  for (let n = 1; n < motion.photos.length; n++) {
+    await page.keyboard.press('r');
+    await page.waitForTimeout(300);
+    seenAll.push(new URL(page.url()).pathname);
+  }
+  ok(
+    'r: no photo twice until all were shown',
+    new Set(seenAll).size === motion.photos.length,
+    seenAll.map((x) => x.split('/').at(-2)).join(', ')
+  );
+  await page.keyboard.press('r');
+  await page.waitForTimeout(300);
+  ok('r: then it starts over', new URL(page.url()).pathname !== seenAll.at(-1));
+  const landed = async (path) => {
+    await page.goto(opt.url + path);
+    await page
+      .waitForURL((u) => u.pathname !== '/random/', { timeout: 5000 })
+      .catch(() => {});
+    return new URL(page.url());
+  };
+  const r1 = await landed('/random/');
+  ok(
+    '/random/: a photo page',
+    all.photos.some((p) => p.href === r1.pathname) && !r1.search
+  );
+  const r2 = await landed('/random/?in=feelings');
+  ok(
+    '/random/?in=: keeps the context',
+    album.photos.some((p) => p.href === r2.pathname) &&
+      r2.search === '?in=feelings'
+  );
+
+  // ?in= takes context ids only: no other host's JSON
+  const foreign = [];
+  const spy = (q) =>
+    new URL(q.url()).hostname === 'example.com' && foreign.push(q.url());
+  page.on('request', spy);
+  await go(`${ALBUM}?in=//example.com/x`);
+  page.off('request', spy);
+  ok(
+    '?in=//host: ignored',
+    !foreign.length &&
+      (await $eval('.stage_next', (a) => a.pathname + a.search)) ===
+        album.photos[ai + 1].href
   );
   ok('no console errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   await context.close();

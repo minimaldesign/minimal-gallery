@@ -1,0 +1,31 @@
+---
+/**
+ * The credit: “Powered by minimal gallery” at the end of the photos, or
+ * with `version` the smaller “minimal gallery <version>” line of the
+ * keyboard shortcuts pane. Both link to the docs. Not rendered when the
+ * config's `credit` is false. `class` mixes the container's placement in.
+ */
+import config from 'virtual:minimalgallery/config';
+
+interface Props {
+  version?: boolean;
+  class?: string;
+}
+const { version = false, class: placement } = Astro.props;
+// a literal address: the docs live at their own domain
+const docs = 'https://docs.minimalgallery.net/';
+---
+
+{config.credit && (
+  <p class:list={['credit', { 'credit-small': version }, placement]}>
+    {version ? (
+      <>
+        <a href={docs}>minimal gallery</a> {config.version}
+      </>
+    ) : (
+      <>
+        Powered by <a href={docs}>minimal gallery</a>
+      </>
+    )}
+  </p>
+)}
