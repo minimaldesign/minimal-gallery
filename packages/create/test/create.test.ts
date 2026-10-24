@@ -232,9 +232,32 @@ describe('create-minimalgallery', () => {
     ).rejects.toMatchObject({ code: 1 });
   });
 
-  it('defaults to bucket mode and git publishing on Cloudflare', async () => {
+  it('publishes from this computer in repo mode by default on Cloudflare', async () => {
     const fake = fakeRunner({ git: freshGit });
-    expect(await create(['cf-bucket', '--yes'], fake.run)).toBe(0);
+    expect(await create(['cf-default', '--yes'], fake.run)).toBe(0);
+    const dir = join(tmp, 'cf-default');
+    // No bucket, no git: nothing to ask wrangler or git for.
+    expect(fake.wrangler()).toEqual([]);
+    expect(fake.calls.some((c) => c.command === 'git')).toBe(false);
+    const config = await loadGalleryConfig(dir);
+    expect(config.storage).toEqual({ mode: 'repo' });
+    const pkg = JSON.parse(await read(dir, 'package.json'));
+    expect(pkg.minimalgallery.publish).toBe('deploy');
+    expect(await read(dir, 'public/_headers')).toContain('/_mg/*');
+    expect(await read(dir, 'wrangler.jsonc')).toContain('wrangler deploy');
+    expect(output).not.toContain('bucket');
+    expect(output).not.toContain('gh repo create');
+    expect(output).toContain('connects Cloudflare');
+  });
+
+  it('sets up bucket mode and git publishing when asked', async () => {
+    const fake = fakeRunner({ git: freshGit });
+    expect(
+      await create(
+        ['cf-bucket', '--yes', '--storage', 'bucket', '--publish', 'git'],
+        fake.run
+      )
+    ).toBe(0);
     const dir = join(tmp, 'cf-bucket');
 
     // wrangler: the account id, then the bucket in that account.
@@ -381,7 +404,18 @@ describe('create-minimalgallery', () => {
 
   it('leaves placeholders and the steps when wrangler is not logged in', async () => {
     const fake = fakeRunner({ whoami: ok(WHOAMI_LOGGED_OUT) });
-    await create(['cf-logged-out', '--yes', '--no-git'], fake.run);
+    await create(
+      [
+        'cf-logged-out',
+        '--yes',
+        '--storage',
+        'bucket',
+        '--publish',
+        'git',
+        '--no-git',
+      ],
+      fake.run
+    );
     const dir = join(tmp, 'cf-logged-out');
 
     // No bucket creation without a login.
@@ -406,7 +440,7 @@ describe('create-minimalgallery', () => {
 
   it('takes the first of several accounts with --yes', async () => {
     const fake = fakeRunner({ whoami: ok(WHOAMI_TWO) });
-    await create(['cf-accounts', '--yes', '--no-git'], fake.run);
+    await create(['cf-accounts', '--yes', '--storage', 'bucket'], fake.run);
     const config = await loadGalleryConfig(join(tmp, 'cf-accounts'));
     expect(config.storage).toMatchObject({
       endpoint: `https://${'a'.repeat(32)}.r2.cloudflarestorage.com`,
@@ -417,9 +451,12 @@ describe('create-minimalgallery', () => {
     expect(output).toContain('Using the Cloudflare account “Studio”');
   });
 
-  it('keeps repo mode on Cloudflare with --storage repo, without wrangler', async () => {
+  it('publishes repo mode from git with --publish git, without wrangler', async () => {
     const fake = fakeRunner({ git: freshGit });
-    await create(['cf-repo', '--yes', '--storage', 'repo'], fake.run);
+    await create(
+      ['cf-repo', '--yes', '--storage', 'repo', '--publish', 'git'],
+      fake.run
+    );
     expect(fake.wrangler()).toEqual([]);
     const config = await loadGalleryConfig(join(tmp, 'cf-repo'));
     expect(config.storage).toEqual({ mode: 'repo' });
@@ -449,6 +486,8 @@ describe('create-minimalgallery', () => {
       [
         'cf-git',
         '--yes',
+        '--publish',
+        'git',
         '--access-key-id',
         'f'.repeat(32),
         '--secret-access-key',

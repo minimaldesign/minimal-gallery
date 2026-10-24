@@ -37,11 +37,13 @@ const USAGE = `Usage: npm create minimalgallery@latest [folder] [options]
   --name <text>              gallery name
   --author <text>            your name
   --host <host>              cloudflare (recommended), github, netlify or local
-  --storage <mode>           bucket: the resized photos in a Cloudflare R2 bucket
-                             (the default on Cloudflare); repo: in the repository,
-                             fine under about 500 photos (the only mode elsewhere)
-  --publish <method>         on Cloudflare: git (push to GitHub, Cloudflare builds
-                             it; the default) or deploy (upload from this computer)
+  --storage <mode>           repo (the default): the resized photos are published
+                             with the site, up to Cloudflare's 20,000-file limit,
+                             roughly 3,000 photos; bucket: in a Cloudflare R2
+                             bucket, for larger galleries (enabling R2 asks for a
+                             payment method, even on the free tier)
+  --publish <method>         on Cloudflare: deploy (upload from this computer; the
+                             default) or git (push to GitHub, Cloudflare builds it)
   --bucket <name>            R2 bucket name (default: <folder>-media)
   --media-domain <domain>    the bucket’s custom domain, such as media.example.com
   --account-id <id>          Cloudflare account id (default: from wrangler whoami)
@@ -56,7 +58,7 @@ const HOSTS: Array<{ value: Host; label: string; hint: string }> = [
   {
     value: 'cloudflare',
     label: 'Cloudflare',
-    hint: 'recommended, free: Workers static assets and R2',
+    hint: 'recommended, free: publish straight from this computer',
   },
   { value: 'github', label: 'GitHub Pages', hint: 'free, up to 1 GB' },
   {
@@ -73,7 +75,7 @@ const HOSTS: Array<{ value: Host; label: string; hint: string }> = [
 const PMS: PackageManager[] = ['npm', 'pnpm', 'yarn', 'bun'];
 
 const BUCKET_NOTE =
-  'Bucket mode keeps the resized photos in a Cloudflare R2 bucket, served from a media domain of yours, instead of in the repository.';
+  'Bucket mode keeps the resized photos in a Cloudflare R2 bucket, served from a media domain of yours, instead of publishing them with the site. Enabling R2 asks for a payment method in the Cloudflare dashboard, even on the free tier.';
 
 const DOMAIN =
   /^(?=.{4,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9-]{2,63}$/;
@@ -403,30 +405,16 @@ export async function main(
   let publish = HOST_PUBLISH[host];
   let bucket: Answers['bucket'];
   let token: BucketToken | undefined;
+  // The simplest path is the default: the resized photos go up with the
+  // site. Bucket mode (R2) is an opt-in, with --storage bucket.
   if (host === 'cloudflare') {
-    if (storageFlag !== 'repo') log.info(BUCKET_NOTE);
-    storage =
-      storageFlag ??
-      (ask
-        ? answered(
-            await select<StorageMode>({
-              message: 'Where should the resized photos live?',
-              options: [
-                {
-                  value: 'bucket',
-                  label: 'In a Cloudflare R2 bucket',
-                  hint: 'recommended',
-                },
-                {
-                  value: 'repo',
-                  label: 'Keep the photos in the repository',
-                  hint: 'fine under about 500 photos',
-                },
-              ],
-              initialValue: 'bucket',
-            })
-          )
-        : 'bucket');
+    // A bucket-only flag (--bucket, --media-domain, the R2 token) asks for
+    // bucket mode as well.
+    const bucketFlags = [values.bucket, values['media-domain'], keyFlag].some(
+      (v) => v !== undefined
+    );
+    storage = storageFlag ?? (bucketFlags ? 'bucket' : 'repo');
+    if (storage === 'bucket') log.info(BUCKET_NOTE);
   }
 
   if (storage === 'bucket') {
@@ -494,29 +482,10 @@ export async function main(
     }
   }
 
-  if (host === 'cloudflare')
-    publish =
-      publishFlag ??
-      (ask
-        ? answered(
-            await select<PublishMethod>({
-              message: 'How will you publish?',
-              options: [
-                {
-                  value: 'git',
-                  label: 'Push to GitHub, Cloudflare builds it',
-                  hint: 'recommended',
-                },
-                {
-                  value: 'deploy',
-                  label: 'Upload from this computer',
-                  hint: 'no GitHub account needed',
-                },
-              ],
-              initialValue: 'git',
-            })
-          )
-        : 'git');
+  // Publishing from this computer is the default; git (Cloudflare builds
+  // from a GitHub repository) is an opt-in, with --publish git or later in
+  // the admin.
+  if (host === 'cloudflare') publish = publishFlag ?? 'deploy';
 
   const agent = env.npm_config_user_agent?.split('/')[0];
   const detected = PMS.includes(agent as PackageManager)

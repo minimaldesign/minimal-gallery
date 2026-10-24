@@ -27,9 +27,9 @@ mg-pipeline doctor <galleryDir> [--json report.json]
 `doctor` reads the manifests and the photos folder without encoding anything, and prints:
 
 - photo, album and undated counts, derivative files and bytes;
-- the projected Cloudflare Pages deploy: one HTML page per visible photo, one HTML page and one `<context>.json` per context (the archive, each album, each facet value), the derivatives in repo mode, and about 20 other files;
-- that count against Pages’ 20,000 file limit, and the media bytes in the repository against 1 GB, with the number of photos left before each;
-- a recommendation: repo mode is fine; plan bucket mode (past 500 photos or 500 MB); or move to bucket mode (over a limit);
+- the projected Cloudflare deploy: one HTML page per visible photo, one HTML page and one `<context>.json` per context (the archive, each album, each facet value), the derivatives in repo mode, and about 20 other files;
+- that count against Cloudflare’s 20,000-file limit and, when the gallery publishes from git, the media bytes in the repository against 1 GB, with the number of photos left before each (how a gallery publishes is `minimalgallery.publish` in its `package.json`; publishing from the computer sends the photos with the site, so the repository size does not matter);
+- a recommendation: repo mode is fine; plan bucket mode (past 16,000 files, or past 500 MB of photos in the repository when publishing from git); or move to bucket mode (over a limit). Both pieces of advice say that enabling R2 asks for a payment method, even on the free tier;
 - in bucket mode, the staged files waiting for upload and whether credentials are set, read from the disk without the network;
 - issues: photos with no manifest, orphaned manifests, HEIC or RAW files without a JPEG, missing bucket credentials.
 

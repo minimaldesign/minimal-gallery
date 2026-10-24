@@ -84,7 +84,7 @@ export function bucketName(project: string): string {
 
 /** The publishing method each host uses. Cloudflare asks; the others have one. */
 export const HOST_PUBLISH: Record<Host, PublishMethod> = {
-  cloudflare: 'git',
+  cloudflare: 'deploy',
   github: 'git',
   netlify: 'git',
   local: 'build',
@@ -133,8 +133,9 @@ export function packageJson(
 function storageLines(answers: Answers): string[] {
   if (answers.storage === 'repo' || !answers.bucket)
     return [
-      '  // Repo mode: resized photos are committed and deployed with the site.',
-      `  // Fine up to about 500 photos; ${runCommand(answers.packageManager, 'doctor')} says when to move on.`,
+      '  // Repo mode: the resized photos are published with the site. Good up to',
+      '  // a few thousand photos (Cloudflare takes 20,000 files per site);',
+      `  // ${runCommand(answers.packageManager, 'doctor')} says how close the gallery is.`,
       "  storage: { mode: 'repo' },",
     ];
   const { name, domain, accountId } = answers.bucket;

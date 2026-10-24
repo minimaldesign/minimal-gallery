@@ -1,10 +1,11 @@
 /**
  * `doctor`: a health report for a gallery, read from the manifests and the
  * photos folder. It never encodes. It projects the number of files a
- * Cloudflare Pages deploy would hold and the size of the repository, against
- * Pages’ 20,000 file limit and a 1 GB repository, and recommends a storage
- * mode.
+ * Cloudflare deploy would hold, against its 20,000-file limit, and, when the
+ * gallery publishes from git, the size of the repository against 1 GB, and
+ * recommends a storage mode.
  */
+import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { loadConfig, type GalleryConfig } from './config.ts';
@@ -18,11 +19,17 @@ import { bucketCredentials } from './storage/env.ts';
 import { pendingUploads } from './storage/sync.ts';
 import { walkPhotos, type UnsupportedFile } from './walk.ts';
 
+/** Files in one Cloudflare deploy (a Worker version’s static assets). */
 export const PAGES_FILE_LIMIT = 20_000;
+/** A repository size to stay under when the gallery publishes from git. */
 export const REPO_BYTE_LIMIT = 1_000_000_000;
-/** Above either of these, bucket mode is recommended before it is needed. */
-export const REPO_PHOTO_ADVICE = 500;
+/** Past these, bucket mode is recommended before it is needed. */
+export const FILE_ADVICE = 16_000;
 export const REPO_BYTE_ADVICE = 500_000_000;
+
+/** What setting up a bucket involves, said wherever bucket mode is advised. */
+const BUCKET_COST =
+  'Enabling R2 in the Cloudflare dashboard asks for a payment method, even on the free tier.';
 /**
  * Files every build has besides photo and context pages: feed, map, random,
  * 404, sitemap, robots, icons, CSS and JS bundles. An estimate.
@@ -34,6 +41,12 @@ export type Recommendation = 'repo-ok' | 'consider-bucket' | 'move-to-bucket';
 export interface DoctorReport {
   galleryDir: string;
   storage: GalleryConfig['storage']['mode'];
+  /**
+   * How the gallery publishes (`minimalgallery.publish` in package.json, else
+   * `deploy` when there is a wrangler config), or null when that is unknown.
+   * The repository size only matters for `git`.
+   */
+  publish: 'git' | 'deploy' | 'build' | null;
   originals: GalleryConfig['originals'];
   photos: number;
   albums: number;
@@ -117,6 +130,23 @@ async function readManifests(dir: string): Promise<{
 }
 
 /** Build the report for a gallery directory. */
+/**
+ * How the gallery publishes, as the CLI decides it: `minimalgallery.publish`
+ * in package.json, else `deploy` when a wrangler config exists, else null.
+ */
+async function publishMethod(dir: string): Promise<DoctorReport['publish']> {
+  try {
+    const pkg = JSON.parse(await readFile(join(dir, 'package.json'), 'utf8'));
+    const setting = pkg?.minimalgallery?.publish;
+    if (setting === 'git' || setting === 'deploy' || setting === 'build')
+      return setting;
+  } catch {}
+  return existsSync(join(dir, 'wrangler.jsonc')) ||
+    existsSync(join(dir, 'wrangler.json'))
+    ? 'deploy'
+    : null;
+}
+
 export async function doctor(
   dir: string,
   options: { config?: GalleryConfig } = {}
@@ -257,20 +287,24 @@ export async function doctor(
       ? Math.max(0, Math.floor((REPO_BYTE_LIMIT - repoBytes) / bytesPerPhoto))
       : null;
 
+  const publish = await publishMethod(dir);
+  // The repository only grows with the photos when the site is built from it.
+  const repoMatters = publish === 'git' || publish === null;
+  const overRepo = repoMatters && repoBytes > REPO_BYTE_LIMIT;
   let recommendation: Recommendation;
   let message: string;
-  if (total > PAGES_FILE_LIMIT || repoBytes > REPO_BYTE_LIMIT) {
+  if (total > PAGES_FILE_LIMIT || overRepo) {
     recommendation = 'move-to-bucket';
     message =
       config.storage.mode === 'repo'
-        ? 'Move to bucket mode: the deploy is over Cloudflare Pages’ 20,000 file limit or the repository is over 1 GB. Set storage: { mode: "s3", ... } in minimalgallery.config.ts.'
+        ? `Move to bucket mode: ${overRepo ? 'the repository is over 1 GB' : 'the deploy is over Cloudflare’s 20,000-file limit'}. Set storage: { mode: "s3", ... } in minimalgallery.config.ts. ${BUCKET_COST}`
         : 'Even with derivatives in the bucket, the HTML pages alone are over 20,000 files. Hide albums, drop facets, or host on a service without a file limit.';
   } else if (
     repoMedia &&
-    (visible.length > REPO_PHOTO_ADVICE || repoBytes > REPO_BYTE_ADVICE)
+    (total > FILE_ADVICE || (repoMatters && repoBytes > REPO_BYTE_ADVICE))
   ) {
     recommendation = 'consider-bucket';
-    message = `Repo mode works today, but the gallery is past ${REPO_PHOTO_ADVICE} photos or 500 MB. Plan the move to bucket mode before the limits.`;
+    message = `Repo mode works today, but the gallery is getting close to ${total > FILE_ADVICE ? 'Cloudflare’s 20,000-file limit' : '1 GB of photos in the repository'}. Plan the move to bucket mode before then. ${BUCKET_COST}`;
   } else {
     recommendation = 'repo-ok';
     message = repoMedia
@@ -281,6 +315,7 @@ export async function doctor(
   return {
     galleryDir: dir,
     storage: config.storage.mode,
+    publish,
     originals: config.originals,
     photos: walked?.photos.length ?? manifests.length,
     albums: walked?.albums.length ?? albums?.albums.length ?? 0,
@@ -355,13 +390,17 @@ export function formatDoctorReport(r: DoctorReport): string {
     ],
     [
       'repo media',
-      `${formatBytes(r.repo.bytes)} of ${formatBytes(r.repo.limit)} (${pct(r.repo.bytes, r.repo.limit)})`,
+      r.publish === 'git' || r.publish === null
+        ? `${formatBytes(r.repo.bytes)} of ${formatBytes(r.repo.limit)} (${pct(r.repo.bytes, r.repo.limit)})`
+        : `${formatBytes(r.repo.bytes)}, uploaded with the site (no repository limit when publishing from this computer)`,
     ],
     [
       'headroom',
       `about ${r.headroom.photosUntilFileLimit} more photos before the file limit` +
         (r.headroom.photosUntilByteLimit !== null
-          ? `, ${r.headroom.photosUntilByteLimit} before 1 GB`
+          ? r.publish === 'git' || r.publish === null
+            ? `, ${r.headroom.photosUntilByteLimit} before 1 GB`
+            : ''
           : ''),
     ]
   );

@@ -175,7 +175,7 @@ export function nextSteps(answers: Answers, outcome: Outcome): string {
     const login =
       outcome.cloudflare?.login === 'logged-in'
         ? ''
-        : ' The first time, it asks you to run npx wrangler login.';
+        : ' The first time, the admin’s Publish page connects Cloudflare: you sign in, or create a free account, in your browser and choose the name of your workers.dev address.';
     last = `Then publish from the admin, or with ${publish}: it ${upload}builds the site and deploys it to Cloudflare.${login}`;
   } else
     last = `${publish} builds the site into dist/, ready to upload to any static host.`;
