@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Central Park",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 427,
       "bytes": 33485,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__central_park/4363b764-grid.avif",
+      "url": "/_mg/light__central_park/4363b764-grid.avif",
       "key": "light__central_park/4363b764-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 600,
       "bytes": 101016,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__central_park/4363b764-jpeg1600.jpg",
+      "url": "/_mg/light__central_park/4363b764-jpeg1600.jpg",
       "key": "light__central_park/4363b764-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "db747d6f7d3bbde8",
   "sourceSize": 418504,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ec1507de9d9a29dd"
+  "digest": "e644b5ddc895ec24"
 }

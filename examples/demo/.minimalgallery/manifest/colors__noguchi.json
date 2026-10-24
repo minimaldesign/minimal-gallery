@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Noguchi",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 640,
       "bytes": 13007,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__noguchi/bed6f1ca-grid.avif",
+      "url": "/_mg/colors__noguchi/bed6f1ca-grid.avif",
       "key": "colors__noguchi/bed6f1ca-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 899,
       "bytes": 44478,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__noguchi/bed6f1ca-jpeg1600.jpg",
+      "url": "/_mg/colors__noguchi/bed6f1ca-jpeg1600.jpg",
       "key": "colors__noguchi/bed6f1ca-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "4985c31291b8f8d4",
   "sourceSize": 192925,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a094ca5312a9f708"
+  "digest": "96f739336c845ff7"
 }

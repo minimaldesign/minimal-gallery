@@ -47,7 +47,7 @@
       "height": 425,
       "bytes": 50796,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__wind_snow_and_sun/5049c8f0-grid.avif",
+      "url": "/_mg/light__wind_snow_and_sun/5049c8f0-grid.avif",
       "key": "light__wind_snow_and_sun/5049c8f0-grid.avif"
     },
     {
@@ -56,7 +56,7 @@
       "height": 465,
       "bytes": 95756,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__wind_snow_and_sun/5049c8f0-jpeg1600.jpg",
+      "url": "/_mg/light__wind_snow_and_sun/5049c8f0-jpeg1600.jpg",
       "key": "light__wind_snow_and_sun/5049c8f0-jpeg1600.jpg"
     }
   ],
@@ -97,9 +97,9 @@
   },
   "sourceHash": "17bd334df26b8bf3",
   "sourceSize": 181514,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "cbe150dad0f11a6f"
+  "digest": "63dd2ec320146698"
 }

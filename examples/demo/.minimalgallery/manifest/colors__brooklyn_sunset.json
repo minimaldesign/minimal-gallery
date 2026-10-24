@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 9590,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__brooklyn_sunset/11db769a-grid.avif",
+      "url": "/_mg/colors__brooklyn_sunset/11db769a-grid.avif",
       "key": "colors__brooklyn_sunset/11db769a-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 25343,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__brooklyn_sunset/11db769a-jpeg1600.jpg",
+      "url": "/_mg/colors__brooklyn_sunset/11db769a-jpeg1600.jpg",
       "key": "colors__brooklyn_sunset/11db769a-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "431c8abf91c9cace",
   "sourceSize": 55954,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e7fe8d24c5ca0fc7"
+  "digest": "241c557be1a920b3"
 }

@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 16126,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__post_no_bills/9b1d64e8-grid.avif",
+      "url": "/_mg/feelings__post_no_bills/9b1d64e8-grid.avif",
       "key": "feelings__post_no_bills/9b1d64e8-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 38675,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__post_no_bills/9b1d64e8-jpeg1600.jpg",
+      "url": "/_mg/feelings__post_no_bills/9b1d64e8-jpeg1600.jpg",
       "key": "feelings__post_no_bills/9b1d64e8-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "e4d24cd94429bc2c",
   "sourceSize": 142094,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0287709fa272122f"
+  "digest": "82238a9d823374bf"
 }

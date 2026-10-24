@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Cause toujours",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 428,
       "bytes": 16131,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__cause_toujours/ed2a44ae-grid.avif",
+      "url": "/_mg/people__cause_toujours/ed2a44ae-grid.avif",
       "key": "people__cause_toujours/ed2a44ae-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 602,
       "bytes": 55075,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__cause_toujours/ed2a44ae-jpeg1600.jpg",
+      "url": "/_mg/people__cause_toujours/ed2a44ae-jpeg1600.jpg",
       "key": "people__cause_toujours/ed2a44ae-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "e4e8acde93a37682",
   "sourceSize": 150969,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "918dd8a299e96018"
+  "digest": "9179c7d244dae136"
 }

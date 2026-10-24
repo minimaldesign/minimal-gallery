@@ -47,7 +47,7 @@
       "height": 425,
       "bytes": 17807,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__valentines/0f48f5a2-grid.avif",
+      "url": "/_mg/colors__valentines/0f48f5a2-grid.avif",
       "key": "colors__valentines/0f48f5a2-grid.avif"
     },
     {
@@ -56,7 +56,7 @@
       "height": 465,
       "bytes": 40190,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__valentines/0f48f5a2-jpeg1600.jpg",
+      "url": "/_mg/colors__valentines/0f48f5a2-jpeg1600.jpg",
       "key": "colors__valentines/0f48f5a2-jpeg1600.jpg"
     }
   ],
@@ -97,9 +97,9 @@
   },
   "sourceHash": "7010159a45a7a849",
   "sourceSize": 137903,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e7d6e8d1c4e14fa4"
+  "digest": "16e37cbc6412a363"
 }

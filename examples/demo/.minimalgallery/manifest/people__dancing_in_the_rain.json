@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 39017,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__dancing_in_the_rain/69fa948b-grid.avif",
+      "url": "/_mg/people__dancing_in_the_rain/69fa948b-grid.avif",
       "key": "people__dancing_in_the_rain/69fa948b-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 74147,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__dancing_in_the_rain/69fa948b-jpeg1600.jpg",
+      "url": "/_mg/people__dancing_in_the_rain/69fa948b-jpeg1600.jpg",
       "key": "people__dancing_in_the_rain/69fa948b-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "55fa3bfc93442373",
   "sourceSize": 216537,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "5db2dc613c25cfcc"
+  "digest": "b9151fa0b8beab8f"
 }

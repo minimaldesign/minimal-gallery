@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 11543,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__late_afternoon_storm/14767731-grid.avif",
+      "url": "/_mg/colors__late_afternoon_storm/14767731-grid.avif",
       "key": "colors__late_afternoon_storm/14767731-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 24824,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__late_afternoon_storm/14767731-jpeg1600.jpg",
+      "url": "/_mg/colors__late_afternoon_storm/14767731-jpeg1600.jpg",
       "key": "colors__late_afternoon_storm/14767731-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "f1fd1f74f368fa80",
   "sourceSize": 181331,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fe6e3eebcb8d5a9c"
+  "digest": "ae5a12f001731d84"
 }

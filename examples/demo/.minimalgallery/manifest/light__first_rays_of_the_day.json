@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 16312,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__first_rays_of_the_day/7281eab4-grid.avif",
+      "url": "/_mg/light__first_rays_of_the_day/7281eab4-grid.avif",
       "key": "light__first_rays_of_the_day/7281eab4-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 31450,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__first_rays_of_the_day/7281eab4-jpeg1600.jpg",
+      "url": "/_mg/light__first_rays_of_the_day/7281eab4-jpeg1600.jpg",
       "key": "light__first_rays_of_the_day/7281eab4-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "8f07d2df621cf06b",
   "sourceSize": 170507,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "080c043878ec7d0d"
+  "digest": "5dcbeddb68347577"
 }

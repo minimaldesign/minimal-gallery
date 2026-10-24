@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 41182,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__pachinko/6ecbd05f-grid.avif",
+      "url": "/_mg/people__pachinko/6ecbd05f-grid.avif",
       "key": "people__pachinko/6ecbd05f-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 83117,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__pachinko/6ecbd05f-jpeg1600.jpg",
+      "url": "/_mg/people__pachinko/6ecbd05f-jpeg1600.jpg",
       "key": "people__pachinko/6ecbd05f-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "187a1bbb4bfa4aeb",
   "sourceSize": 146239,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "80d74980ac88dc6f"
+  "digest": "cd173d91a55803a6"
 }

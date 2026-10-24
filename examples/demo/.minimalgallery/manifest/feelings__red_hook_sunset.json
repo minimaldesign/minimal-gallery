@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 11391,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__red_hook_sunset/b0055c82-grid.avif",
+      "url": "/_mg/feelings__red_hook_sunset/b0055c82-grid.avif",
       "key": "feelings__red_hook_sunset/b0055c82-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 28404,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__red_hook_sunset/b0055c82-jpeg1600.jpg",
+      "url": "/_mg/feelings__red_hook_sunset/b0055c82-jpeg1600.jpg",
       "key": "feelings__red_hook_sunset/b0055c82-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "c9957e8ed97b2401",
   "sourceSize": 149669,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "aa9f778866cd56c3"
+  "digest": "160d70a6b3706c2f"
 }

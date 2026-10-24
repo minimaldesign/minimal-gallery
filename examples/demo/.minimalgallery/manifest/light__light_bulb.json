@@ -52,7 +52,7 @@
       "height": 425,
       "bytes": 7768,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__light_bulb/22848482-grid.avif",
+      "url": "/_mg/light__light_bulb/22848482-grid.avif",
       "key": "light__light_bulb/22848482-grid.avif"
     },
     {
@@ -61,7 +61,7 @@
       "height": 465,
       "bytes": 17608,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__light_bulb/22848482-jpeg1600.jpg",
+      "url": "/_mg/light__light_bulb/22848482-jpeg1600.jpg",
       "key": "light__light_bulb/22848482-jpeg1600.jpg"
     }
   ],
@@ -105,9 +105,9 @@
   },
   "sourceHash": "c805426a85f0b8d6",
   "sourceSize": 151288,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0165ccb5448ceff3"
+  "digest": "b8051980e7d13af7"
 }

@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 11992,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__from_a_whisper_to_a_scream/987cd15b-grid.avif",
+      "url": "/_mg/feelings__from_a_whisper_to_a_scream/987cd15b-grid.avif",
       "key": "feelings__from_a_whisper_to_a_scream/987cd15b-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 25288,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__from_a_whisper_to_a_scream/987cd15b-jpeg1600.jpg",
+      "url": "/_mg/feelings__from_a_whisper_to_a_scream/987cd15b-jpeg1600.jpg",
       "key": "feelings__from_a_whisper_to_a_scream/987cd15b-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "e72a43cade68b1f1",
   "sourceSize": 134582,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "678ed6999246ed62"
+  "digest": "c27ee0e252247c7e"
 }

@@ -52,7 +52,7 @@
       "height": 425,
       "bytes": 18335,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__tabaco_dragon/94102971-grid.avif",
+      "url": "/_mg/shapes__tabaco_dragon/94102971-grid.avif",
       "key": "shapes__tabaco_dragon/94102971-grid.avif"
     },
     {
@@ -61,7 +61,7 @@
       "height": 465,
       "bytes": 38390,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__tabaco_dragon/94102971-jpeg1600.jpg",
+      "url": "/_mg/shapes__tabaco_dragon/94102971-jpeg1600.jpg",
       "key": "shapes__tabaco_dragon/94102971-jpeg1600.jpg"
     }
   ],
@@ -105,9 +105,9 @@
   },
   "sourceHash": "a8f2734c4c9bcfaa",
   "sourceSize": 135922,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "375f5f3cdc74303e"
+  "digest": "ce6b003da98550b1"
 }

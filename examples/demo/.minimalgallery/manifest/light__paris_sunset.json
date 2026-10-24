@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 45190,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__paris_sunset/dae4b0cb-grid.avif",
+      "url": "/_mg/light__paris_sunset/dae4b0cb-grid.avif",
       "key": "light__paris_sunset/dae4b0cb-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 87565,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__paris_sunset/dae4b0cb-jpeg1600.jpg",
+      "url": "/_mg/light__paris_sunset/dae4b0cb-jpeg1600.jpg",
       "key": "light__paris_sunset/dae4b0cb-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "2a404aaaf4396f70",
   "sourceSize": 154489,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "19927b4b892b1bbb"
+  "digest": "8af69d91600d1591"
 }

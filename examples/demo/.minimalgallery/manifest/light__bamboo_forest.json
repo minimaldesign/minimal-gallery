@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 58979,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__bamboo_forest/0fd4d421-grid.avif",
+      "url": "/_mg/light__bamboo_forest/0fd4d421-grid.avif",
       "key": "light__bamboo_forest/0fd4d421-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 110666,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__bamboo_forest/0fd4d421-jpeg1600.jpg",
+      "url": "/_mg/light__bamboo_forest/0fd4d421-jpeg1600.jpg",
       "key": "light__bamboo_forest/0fd4d421-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "e986cd90dd373fe2",
   "sourceSize": 230038,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "401e05d158d24a59"
+  "digest": "fed312f11a9a3b9f"
 }

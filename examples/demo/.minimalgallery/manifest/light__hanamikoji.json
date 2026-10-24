@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 14419,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__hanamikoji/29e2c576-grid.avif",
+      "url": "/_mg/light__hanamikoji/29e2c576-grid.avif",
       "key": "light__hanamikoji/29e2c576-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 31701,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__hanamikoji/29e2c576-jpeg1600.jpg",
+      "url": "/_mg/light__hanamikoji/29e2c576-jpeg1600.jpg",
       "key": "light__hanamikoji/29e2c576-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "6a6881735d243d62",
   "sourceSize": 175967,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2fb8042570fba191"
+  "digest": "f22c538d37b5ad51"
 }

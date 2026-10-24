@@ -47,7 +47,7 @@
       "height": 425,
       "bytes": 12994,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__dusk_in_villefranche/c287aa07-grid.avif",
+      "url": "/_mg/feelings__dusk_in_villefranche/c287aa07-grid.avif",
       "key": "feelings__dusk_in_villefranche/c287aa07-grid.avif"
     },
     {
@@ -56,7 +56,7 @@
       "height": 465,
       "bytes": 24371,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__dusk_in_villefranche/c287aa07-jpeg1600.jpg",
+      "url": "/_mg/feelings__dusk_in_villefranche/c287aa07-jpeg1600.jpg",
       "key": "feelings__dusk_in_villefranche/c287aa07-jpeg1600.jpg"
     }
   ],
@@ -97,9 +97,9 @@
   },
   "sourceHash": "4a82f34c564dc267",
   "sourceSize": 135367,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "010c107ab3044293"
+  "digest": "3bd8d3fc8036c8f7"
 }

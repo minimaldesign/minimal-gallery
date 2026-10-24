@@ -50,7 +50,7 @@
       "height": 428,
       "bytes": 22038,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__arashiyama_smile/2b0b7f22-grid.avif",
+      "url": "/_mg/people__arashiyama_smile/2b0b7f22-grid.avif",
       "key": "people__arashiyama_smile/2b0b7f22-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 602,
       "bytes": 72655,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__arashiyama_smile/2b0b7f22-jpeg1600.jpg",
+      "url": "/_mg/people__arashiyama_smile/2b0b7f22-jpeg1600.jpg",
       "key": "people__arashiyama_smile/2b0b7f22-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "21a983894307732e",
   "sourceSize": 137809,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "32b07aed98d44a92"
+  "digest": "41445d763da4c0e6"
 }

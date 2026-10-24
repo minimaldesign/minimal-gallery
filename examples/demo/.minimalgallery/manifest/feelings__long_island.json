@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Long Island",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 21464,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__long_island/3d087f18-grid.avif",
+      "url": "/_mg/feelings__long_island/3d087f18-grid.avif",
       "key": "feelings__long_island/3d087f18-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 42453,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__long_island/3d087f18-jpeg1600.jpg",
+      "url": "/_mg/feelings__long_island/3d087f18-jpeg1600.jpg",
       "key": "feelings__long_island/3d087f18-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "c1a44e9596c07f91",
   "sourceSize": 115774,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1150f4bb15970008"
+  "digest": "f8f9bc390f3422f2"
 }

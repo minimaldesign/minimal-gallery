@@ -50,7 +50,7 @@
       "height": 428,
       "bytes": 17249,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__gomen_ne/b29aa084-grid.avif",
+      "url": "/_mg/people__gomen_ne/b29aa084-grid.avif",
       "key": "people__gomen_ne/b29aa084-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 602,
       "bytes": 55204,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__gomen_ne/b29aa084-jpeg1600.jpg",
+      "url": "/_mg/people__gomen_ne/b29aa084-jpeg1600.jpg",
       "key": "people__gomen_ne/b29aa084-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "ed6b83e45e0c41a8",
   "sourceSize": 156509,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c37d065e742b44f7"
+  "digest": "decc4d73fed1230b"
 }

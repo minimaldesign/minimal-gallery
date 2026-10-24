@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 8004,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__haleakala/0b52f255-grid.avif",
+      "url": "/_mg/colors__haleakala/0b52f255-grid.avif",
       "key": "colors__haleakala/0b52f255-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 20523,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__haleakala/0b52f255-jpeg1600.jpg",
+      "url": "/_mg/colors__haleakala/0b52f255-jpeg1600.jpg",
       "key": "colors__haleakala/0b52f255-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "b2141e3bc2172258",
   "sourceSize": 139935,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4a04eade6f0e05af"
+  "digest": "893d03691fa59fd4"
 }

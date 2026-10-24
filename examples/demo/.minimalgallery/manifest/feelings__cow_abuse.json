@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 20209,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__cow_abuse/5b2ce332-grid.avif",
+      "url": "/_mg/feelings__cow_abuse/5b2ce332-grid.avif",
       "key": "feelings__cow_abuse/5b2ce332-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 44207,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__cow_abuse/5b2ce332-jpeg1600.jpg",
+      "url": "/_mg/feelings__cow_abuse/5b2ce332-jpeg1600.jpg",
       "key": "feelings__cow_abuse/5b2ce332-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "ef77ceb771e459c4",
   "sourceSize": 130532,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "637ed5591e7d42d1"
+  "digest": "08370e9d7a8545ba"
 }

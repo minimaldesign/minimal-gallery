@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 53198,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__evian/997a7b44-grid.avif",
+      "url": "/_mg/shapes__evian/997a7b44-grid.avif",
       "key": "shapes__evian/997a7b44-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 104308,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__evian/997a7b44-jpeg1600.jpg",
+      "url": "/_mg/shapes__evian/997a7b44-jpeg1600.jpg",
       "key": "shapes__evian/997a7b44-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "aac18fbe9d43128b",
   "sourceSize": 201781,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "eb94b6be59efc470"
+  "digest": "ce2e177d082aac43"
 }

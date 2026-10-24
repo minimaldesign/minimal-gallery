@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 35130,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__kyoto_monster/61911047-grid.avif",
+      "url": "/_mg/shapes__kyoto_monster/61911047-grid.avif",
       "key": "shapes__kyoto_monster/61911047-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 80812,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__kyoto_monster/61911047-jpeg1600.jpg",
+      "url": "/_mg/shapes__kyoto_monster/61911047-jpeg1600.jpg",
       "key": "shapes__kyoto_monster/61911047-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "5e240885eb040ba6",
   "sourceSize": 167589,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d9a006f53ae6b1a7"
+  "digest": "96bb6fe2cf38ca46"
 }

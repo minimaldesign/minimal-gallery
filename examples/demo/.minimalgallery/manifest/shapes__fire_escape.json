@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Fire Escape",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 35551,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__fire_escape/afdd0d0e-grid.avif",
+      "url": "/_mg/shapes__fire_escape/afdd0d0e-grid.avif",
       "key": "shapes__fire_escape/afdd0d0e-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 74126,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__fire_escape/afdd0d0e-jpeg1600.jpg",
+      "url": "/_mg/shapes__fire_escape/afdd0d0e-jpeg1600.jpg",
       "key": "shapes__fire_escape/afdd0d0e-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "5a426fabdec5255e",
   "sourceSize": 169473,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e4329a0f354f8a78"
+  "digest": "e833d1dc367a92e9"
 }

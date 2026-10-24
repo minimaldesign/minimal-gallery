@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 9785,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__the_firm/9fd2fe93-grid.avif",
+      "url": "/_mg/feelings__the_firm/9fd2fe93-grid.avif",
       "key": "feelings__the_firm/9fd2fe93-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 23230,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__the_firm/9fd2fe93-jpeg1600.jpg",
+      "url": "/_mg/feelings__the_firm/9fd2fe93-jpeg1600.jpg",
       "key": "feelings__the_firm/9fd2fe93-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "27bfe1b06cf68bfb",
   "sourceSize": 176177,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8e006b553ccdcc18"
+  "digest": "ca029929d5116ac6"
 }

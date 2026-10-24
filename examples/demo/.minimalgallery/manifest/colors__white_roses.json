@@ -52,7 +52,7 @@
       "height": 425,
       "bytes": 16819,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__white_roses/b61a2685-grid.avif",
+      "url": "/_mg/colors__white_roses/b61a2685-grid.avif",
       "key": "colors__white_roses/b61a2685-grid.avif"
     },
     {
@@ -61,7 +61,7 @@
       "height": 465,
       "bytes": 35972,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__white_roses/b61a2685-jpeg1600.jpg",
+      "url": "/_mg/colors__white_roses/b61a2685-jpeg1600.jpg",
       "key": "colors__white_roses/b61a2685-jpeg1600.jpg"
     }
   ],
@@ -105,9 +105,9 @@
   },
   "sourceHash": "2857bda1abb2894a",
   "sourceSize": 123357,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1c3254bf258519ce"
+  "digest": "a03bb51c6b101b7a"
 }

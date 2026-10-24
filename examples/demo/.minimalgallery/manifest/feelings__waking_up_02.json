@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 28080,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__waking_up_02/67c7b72f-grid.avif",
+      "url": "/_mg/feelings__waking_up_02/67c7b72f-grid.avif",
       "key": "feelings__waking_up_02/67c7b72f-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 57689,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__waking_up_02/67c7b72f-jpeg1600.jpg",
+      "url": "/_mg/feelings__waking_up_02/67c7b72f-jpeg1600.jpg",
       "key": "feelings__waking_up_02/67c7b72f-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "538787fe4ecbe036",
   "sourceSize": 149664,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "97dd35c5f3f5c012"
+  "digest": "599883d077f5adfb"
 }

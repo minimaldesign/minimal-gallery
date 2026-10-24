@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 7895,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__tulipe/c0640dc9-grid.avif",
+      "url": "/_mg/colors__tulipe/c0640dc9-grid.avif",
       "key": "colors__tulipe/c0640dc9-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 19604,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__tulipe/c0640dc9-jpeg1600.jpg",
+      "url": "/_mg/colors__tulipe/c0640dc9-jpeg1600.jpg",
       "key": "colors__tulipe/c0640dc9-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "dfb7963d39ff0f78",
   "sourceSize": 134264,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "caf8de95f70bdf9c"
+  "digest": "131f571c4cef4ba5"
 }

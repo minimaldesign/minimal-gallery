@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 47060,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__impressionist_anatomy/594503c7-grid.avif",
+      "url": "/_mg/colors__impressionist_anatomy/594503c7-grid.avif",
       "key": "colors__impressionist_anatomy/594503c7-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 89537,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__impressionist_anatomy/594503c7-jpeg1600.jpg",
+      "url": "/_mg/colors__impressionist_anatomy/594503c7-jpeg1600.jpg",
       "key": "colors__impressionist_anatomy/594503c7-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "e7bf54836b7d3516",
   "sourceSize": 183450,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "7d3eea77336bae69"
+  "digest": "1f7da490fda3caa2"
 }

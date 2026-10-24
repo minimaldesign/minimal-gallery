@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 12890,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__saxophonist/353c97d0-grid.avif",
+      "url": "/_mg/people__saxophonist/353c97d0-grid.avif",
       "key": "people__saxophonist/353c97d0-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 31341,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__saxophonist/353c97d0-jpeg1600.jpg",
+      "url": "/_mg/people__saxophonist/353c97d0-jpeg1600.jpg",
       "key": "people__saxophonist/353c97d0-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "26f3152c9feb3c97",
   "sourceSize": 170524,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "06b97816828b83ef"
+  "digest": "582d1250f0528e05"
 }

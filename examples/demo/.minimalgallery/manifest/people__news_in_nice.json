@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 13359,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__news_in_nice/9c80c56c-grid.avif",
+      "url": "/_mg/people__news_in_nice/9c80c56c-grid.avif",
       "key": "people__news_in_nice/9c80c56c-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 35748,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__news_in_nice/9c80c56c-jpeg1600.jpg",
+      "url": "/_mg/people__news_in_nice/9c80c56c-jpeg1600.jpg",
       "key": "people__news_in_nice/9c80c56c-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "97fc6377bb1aed20",
   "sourceSize": 122873,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "35811775f44a0dff"
+  "digest": "8223138715190d62"
 }

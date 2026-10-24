@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Cool",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 32511,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__cool/69cd98d6-grid.avif",
+      "url": "/_mg/people__cool/69cd98d6-grid.avif",
       "key": "people__cool/69cd98d6-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 67480,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__cool/69cd98d6-jpeg1600.jpg",
+      "url": "/_mg/people__cool/69cd98d6-jpeg1600.jpg",
       "key": "people__cool/69cd98d6-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "9288a28cb334e5d8",
   "sourceSize": 177907,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b40997ccad945a1d"
+  "digest": "3a56bb9f79d60a7b"
 }

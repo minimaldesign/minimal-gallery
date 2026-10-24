@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 44631,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__painter/4c9d2a48-grid.avif",
+      "url": "/_mg/colors__painter/4c9d2a48-grid.avif",
       "key": "colors__painter/4c9d2a48-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 93412,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__painter/4c9d2a48-jpeg1600.jpg",
+      "url": "/_mg/colors__painter/4c9d2a48-jpeg1600.jpg",
       "key": "colors__painter/4c9d2a48-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "2437f562ee30bbfd",
   "sourceSize": 195410,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d562e3d27eeca8e7"
+  "digest": "eb2e2abfa56f8f7f"
 }

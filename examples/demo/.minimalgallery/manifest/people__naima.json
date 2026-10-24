@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 36330,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__naima/d277153c-grid.avif",
+      "url": "/_mg/people__naima/d277153c-grid.avif",
       "key": "people__naima/d277153c-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 70483,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__naima/d277153c-jpeg1600.jpg",
+      "url": "/_mg/people__naima/d277153c-jpeg1600.jpg",
       "key": "people__naima/d277153c-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "88781e5b3805d3cd",
   "sourceSize": 157913,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "59f501e81ce974da"
+  "digest": "1d0f36dfb7a7c500"
 }

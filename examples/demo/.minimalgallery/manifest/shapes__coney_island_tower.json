@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 14224,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__coney_island_tower/607c6e83-grid.avif",
+      "url": "/_mg/shapes__coney_island_tower/607c6e83-grid.avif",
       "key": "shapes__coney_island_tower/607c6e83-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 31980,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__coney_island_tower/607c6e83-jpeg1600.jpg",
+      "url": "/_mg/shapes__coney_island_tower/607c6e83-jpeg1600.jpg",
       "key": "shapes__coney_island_tower/607c6e83-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "da182f3e76bb585c",
   "sourceSize": 152045,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "bcfda5bd32ef5bcc"
+  "digest": "2e6bff559a12f104"
 }

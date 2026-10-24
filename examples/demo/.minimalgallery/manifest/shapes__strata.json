@@ -47,7 +47,7 @@
       "height": 425,
       "bytes": 25307,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__strata/8c2e298f-grid.avif",
+      "url": "/_mg/shapes__strata/8c2e298f-grid.avif",
       "key": "shapes__strata/8c2e298f-grid.avif"
     },
     {
@@ -56,7 +56,7 @@
       "height": 465,
       "bytes": 52896,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__strata/8c2e298f-jpeg1600.jpg",
+      "url": "/_mg/shapes__strata/8c2e298f-jpeg1600.jpg",
       "key": "shapes__strata/8c2e298f-jpeg1600.jpg"
     }
   ],
@@ -97,9 +97,9 @@
   },
   "sourceHash": "7aa3e8a87e971213",
   "sourceSize": 130250,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "49535eea7eae3f1f"
+  "digest": "9f606ef64fa0ddc9"
 }

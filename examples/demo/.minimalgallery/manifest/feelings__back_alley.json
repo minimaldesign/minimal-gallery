@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 35056,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__back_alley/8172e07f-grid.avif",
+      "url": "/_mg/feelings__back_alley/8172e07f-grid.avif",
       "key": "feelings__back_alley/8172e07f-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 71365,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__back_alley/8172e07f-jpeg1600.jpg",
+      "url": "/_mg/feelings__back_alley/8172e07f-jpeg1600.jpg",
       "key": "feelings__back_alley/8172e07f-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "17cfca498d87eeb1",
   "sourceSize": 170474,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1c78de14582df8d1"
+  "digest": "fee8f3d19f56c98b"
 }

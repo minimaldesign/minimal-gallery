@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 24708,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__real_life_sandbox/3705a234-grid.avif",
+      "url": "/_mg/light__real_life_sandbox/3705a234-grid.avif",
       "key": "light__real_life_sandbox/3705a234-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 66029,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__real_life_sandbox/3705a234-jpeg1600.jpg",
+      "url": "/_mg/light__real_life_sandbox/3705a234-jpeg1600.jpg",
       "key": "light__real_life_sandbox/3705a234-jpeg1600.jpg"
     }
   ],
@@ -95,9 +95,9 @@
   },
   "sourceHash": "ee94ceabaad58bfc",
   "sourceSize": 142883,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4935ef170344ff37"
+  "digest": "3bce41ecbdd4edce"
 }

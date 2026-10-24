@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 18776,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__cool_old_dude/5d017567-grid.avif",
+      "url": "/_mg/people__cool_old_dude/5d017567-grid.avif",
       "key": "people__cool_old_dude/5d017567-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 42369,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__cool_old_dude/5d017567-jpeg1600.jpg",
+      "url": "/_mg/people__cool_old_dude/5d017567-jpeg1600.jpg",
       "key": "people__cool_old_dude/5d017567-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "ad9e955b126cfe10",
   "sourceSize": 130911,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d57286a3daecb3da"
+  "digest": "a17c385c69d9f054"
 }

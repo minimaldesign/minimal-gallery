@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 49477,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__kyoto_tag/28dfb588-grid.avif",
+      "url": "/_mg/colors__kyoto_tag/28dfb588-grid.avif",
       "key": "colors__kyoto_tag/28dfb588-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 95109,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__kyoto_tag/28dfb588-jpeg1600.jpg",
+      "url": "/_mg/colors__kyoto_tag/28dfb588-jpeg1600.jpg",
       "key": "colors__kyoto_tag/28dfb588-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "eedbe3d0d343030a",
   "sourceSize": 189158,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3a7f1b591b340703"
+  "digest": "ccf8664290d7806a"
 }

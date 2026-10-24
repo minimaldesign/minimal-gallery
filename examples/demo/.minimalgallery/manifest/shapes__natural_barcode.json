@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 17559,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__natural_barcode/4c2dcd61-grid.avif",
+      "url": "/_mg/shapes__natural_barcode/4c2dcd61-grid.avif",
       "key": "shapes__natural_barcode/4c2dcd61-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 67168,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__natural_barcode/4c2dcd61-jpeg1600.jpg",
+      "url": "/_mg/shapes__natural_barcode/4c2dcd61-jpeg1600.jpg",
       "key": "shapes__natural_barcode/4c2dcd61-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "fbd836adaa80d7e4",
   "sourceSize": 163125,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2ae1e8c1760c8cfe"
+  "digest": "e4a4835f29253c87"
 }

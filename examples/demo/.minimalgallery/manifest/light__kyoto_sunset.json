@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 24166,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__kyoto_sunset/2ae49b25-grid.avif",
+      "url": "/_mg/light__kyoto_sunset/2ae49b25-grid.avif",
       "key": "light__kyoto_sunset/2ae49b25-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 47781,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__kyoto_sunset/2ae49b25-jpeg1600.jpg",
+      "url": "/_mg/light__kyoto_sunset/2ae49b25-jpeg1600.jpg",
       "key": "light__kyoto_sunset/2ae49b25-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "2a89b15a9e2d3351",
   "sourceSize": 152714,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "7d4b9be26d0d48ba"
+  "digest": "571b31196e97e70b"
 }

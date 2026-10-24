@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 41168,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__kyoto_kids/abe3dd76-grid.avif",
+      "url": "/_mg/people__kyoto_kids/abe3dd76-grid.avif",
       "key": "people__kyoto_kids/abe3dd76-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 81146,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__kyoto_kids/abe3dd76-jpeg1600.jpg",
+      "url": "/_mg/people__kyoto_kids/abe3dd76-jpeg1600.jpg",
       "key": "people__kyoto_kids/abe3dd76-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "7a1ca9e48ba8d086",
   "sourceSize": 160914,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "5e65a9caf265fd41"
+  "digest": "00301b137de3ab5b"
 }

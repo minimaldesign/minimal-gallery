@@ -1,6 +1,7 @@
-# Bucket mode: manifests (.minimalgallery/manifest) are committed and the
-# Cloudflare build reads them; resized photos wait in .minimalgallery/cache
-# until minimalgallery sync uploads them to the bucket.
+# Repo mode: the resized photos (public/_mg) are encoded before each build,
+# in CI too, and deployed with the site. The manifests are committed, so
+# each photo keeps the date it was added; .minimalgallery/cache holds the
+# pipeline's scratch files.
 .minimalgallery/cache/
 public/_mg/
 dist/

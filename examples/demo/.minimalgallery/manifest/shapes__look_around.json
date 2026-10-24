@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Look around",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 427,
       "bytes": 32953,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__look_around/fcf855c4-grid.avif",
+      "url": "/_mg/shapes__look_around/fcf855c4-grid.avif",
       "key": "shapes__look_around/fcf855c4-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 600,
       "bytes": 92884,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__look_around/fcf855c4-jpeg1600.jpg",
+      "url": "/_mg/shapes__look_around/fcf855c4-jpeg1600.jpg",
       "key": "shapes__look_around/fcf855c4-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "1127c0ab9d21d3c6",
   "sourceSize": 216140,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3ab29a88230a55ec"
+  "digest": "1b617b56e1e2ff12"
 }

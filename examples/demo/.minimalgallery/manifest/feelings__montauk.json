@@ -45,7 +45,7 @@
       "height": 640,
       "bytes": 20209,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__montauk/2287a2a6-grid.avif",
+      "url": "/_mg/feelings__montauk/2287a2a6-grid.avif",
       "key": "feelings__montauk/2287a2a6-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 900,
       "bytes": 61302,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__montauk/2287a2a6-jpeg1600.jpg",
+      "url": "/_mg/feelings__montauk/2287a2a6-jpeg1600.jpg",
       "key": "feelings__montauk/2287a2a6-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "680c72636c6c73b1",
   "sourceSize": 161646,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "939affa3da77bf96"
+  "digest": "6c712cca7ecfee3b"
 }

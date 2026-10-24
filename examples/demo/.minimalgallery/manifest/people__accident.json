@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 30450,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__accident/5796950e-grid.avif",
+      "url": "/_mg/people__accident/5796950e-grid.avif",
       "key": "people__accident/5796950e-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 67952,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__accident/5796950e-jpeg1600.jpg",
+      "url": "/_mg/people__accident/5796950e-jpeg1600.jpg",
       "key": "people__accident/5796950e-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "aca1266f7cb81ec9",
   "sourceSize": 125711,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "9f1668e8f81a59bc"
+  "digest": "1da26b8c6035bb2f"
 }

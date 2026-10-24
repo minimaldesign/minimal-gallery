@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Suwit",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 424,
       "bytes": 25253,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__suwit/822ab626-grid.avif",
+      "url": "/_mg/feelings__suwit/822ab626-grid.avif",
       "key": "feelings__suwit/822ab626-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 596,
       "bytes": 84222,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__suwit/822ab626-jpeg1600.jpg",
+      "url": "/_mg/feelings__suwit/822ab626-jpeg1600.jpg",
       "key": "feelings__suwit/822ab626-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "7afd97887438b272",
   "sourceSize": 234031,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d07ef53fbef167d3"
+  "digest": "0381ec1b35cb8e5a"
 }

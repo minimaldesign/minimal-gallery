@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 14903,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__on_the_edge/3eb4ad2a-grid.avif",
+      "url": "/_mg/colors__on_the_edge/3eb4ad2a-grid.avif",
       "key": "colors__on_the_edge/3eb4ad2a-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 34972,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__on_the_edge/3eb4ad2a-jpeg1600.jpg",
+      "url": "/_mg/colors__on_the_edge/3eb4ad2a-jpeg1600.jpg",
       "key": "colors__on_the_edge/3eb4ad2a-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "16f65330a35b3e1f",
   "sourceSize": 67613,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "51c1bc9d7e8f585c"
+  "digest": "3f9ed21b29e8b978"
 }

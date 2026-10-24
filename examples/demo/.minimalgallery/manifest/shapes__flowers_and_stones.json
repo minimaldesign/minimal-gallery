@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 32299,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__flowers_and_stones/30822257-grid.avif",
+      "url": "/_mg/shapes__flowers_and_stones/30822257-grid.avif",
       "key": "shapes__flowers_and_stones/30822257-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 60816,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__flowers_and_stones/30822257-jpeg1600.jpg",
+      "url": "/_mg/shapes__flowers_and_stones/30822257-jpeg1600.jpg",
       "key": "shapes__flowers_and_stones/30822257-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "8919d2e3a8d0f26b",
   "sourceSize": 143865,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "411c06726b8f0973"
+  "digest": "81b3efc65d095e04"
 }

@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 16441,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/motion__taking_off/807cc22d-grid.avif",
+      "url": "/_mg/motion__taking_off/807cc22d-grid.avif",
       "key": "motion__taking_off/807cc22d-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 36218,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/motion__taking_off/807cc22d-jpeg1600.jpg",
+      "url": "/_mg/motion__taking_off/807cc22d-jpeg1600.jpg",
       "key": "motion__taking_off/807cc22d-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "5acb19d4baaae965",
   "sourceSize": 131953,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1cbf52aaa3d0b36a"
+  "digest": "e660e01fd3c1bbd2"
 }

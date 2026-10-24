@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 41752,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__in_chinatown/2aae3652-grid.avif",
+      "url": "/_mg/people__in_chinatown/2aae3652-grid.avif",
       "key": "people__in_chinatown/2aae3652-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 93090,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__in_chinatown/2aae3652-jpeg1600.jpg",
+      "url": "/_mg/people__in_chinatown/2aae3652-jpeg1600.jpg",
       "key": "people__in_chinatown/2aae3652-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "398bd662e49d1ffd",
   "sourceSize": 166987,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "49d01ac1cecf4fee"
+  "digest": "3df138a5ca108170"
 }

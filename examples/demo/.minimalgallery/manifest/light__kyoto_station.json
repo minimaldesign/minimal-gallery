@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 22704,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__kyoto_station/fb84d8f2-grid.avif",
+      "url": "/_mg/light__kyoto_station/fb84d8f2-grid.avif",
       "key": "light__kyoto_station/fb84d8f2-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 42615,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__kyoto_station/fb84d8f2-jpeg1600.jpg",
+      "url": "/_mg/light__kyoto_station/fb84d8f2-jpeg1600.jpg",
       "key": "light__kyoto_station/fb84d8f2-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "9a85c7e2a256ff7a",
   "sourceSize": 129546,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "5fd38a1579a866cf"
+  "digest": "ea3da9b06f05ad5e"
 }

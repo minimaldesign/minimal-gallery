@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 27093,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__bistro_latino/1a8b91e9-grid.avif",
+      "url": "/_mg/colors__bistro_latino/1a8b91e9-grid.avif",
       "key": "colors__bistro_latino/1a8b91e9-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 51469,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__bistro_latino/1a8b91e9-jpeg1600.jpg",
+      "url": "/_mg/colors__bistro_latino/1a8b91e9-jpeg1600.jpg",
       "key": "colors__bistro_latino/1a8b91e9-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "d033f128b4133df1",
   "sourceSize": 214586,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d105d990c140bef0"
+  "digest": "084b3eb842b290e4"
 }

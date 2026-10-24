@@ -45,7 +45,7 @@
       "height": 480,
       "bytes": 35652,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__greenport/c492737e-grid.avif",
+      "url": "/_mg/feelings__greenport/c492737e-grid.avif",
       "key": "feelings__greenport/c492737e-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 675,
       "bytes": 128212,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__greenport/c492737e-jpeg1600.jpg",
+      "url": "/_mg/feelings__greenport/c492737e-jpeg1600.jpg",
       "key": "feelings__greenport/c492737e-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "40ea98a0776c7622",
   "sourceSize": 331411,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "dea2a397e6d2d1cc"
+  "digest": "8c03ebf354a54cd6"
 }

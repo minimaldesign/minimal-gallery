@@ -52,7 +52,7 @@
       "height": 425,
       "bytes": 23889,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__eiffel/0c19cc6d-grid.avif",
+      "url": "/_mg/shapes__eiffel/0c19cc6d-grid.avif",
       "key": "shapes__eiffel/0c19cc6d-grid.avif"
     },
     {
@@ -61,7 +61,7 @@
       "height": 465,
       "bytes": 55550,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__eiffel/0c19cc6d-jpeg1600.jpg",
+      "url": "/_mg/shapes__eiffel/0c19cc6d-jpeg1600.jpg",
       "key": "shapes__eiffel/0c19cc6d-jpeg1600.jpg"
     }
   ],
@@ -105,9 +105,9 @@
   },
   "sourceHash": "c1d5c6e71503280a",
   "sourceSize": 135082,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e84e35b86615b52b"
+  "digest": "3ff75e7ea5644eff"
 }

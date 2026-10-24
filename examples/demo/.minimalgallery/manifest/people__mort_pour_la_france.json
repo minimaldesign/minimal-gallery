@@ -45,7 +45,7 @@
       "height": 640,
       "bytes": 45589,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__mort_pour_la_france/ffd90ce2-grid.avif",
+      "url": "/_mg/people__mort_pour_la_france/ffd90ce2-grid.avif",
       "key": "people__mort_pour_la_france/ffd90ce2-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 980,
       "bytes": 161001,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__mort_pour_la_france/ffd90ce2-jpeg1600.jpg",
+      "url": "/_mg/people__mort_pour_la_france/ffd90ce2-jpeg1600.jpg",
       "key": "people__mort_pour_la_france/ffd90ce2-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "0a3147fb71f7ebd0",
   "sourceSize": 291321,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d2e330452bc909a0"
+  "digest": "779674c515741aba"
 }

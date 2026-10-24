@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "We will miss you",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 640,
       "bytes": 23579,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__we_will_miss_you/387b9679-grid.avif",
+      "url": "/_mg/people__we_will_miss_you/387b9679-grid.avif",
       "key": "people__we_will_miss_you/387b9679-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 700,
       "bytes": 55361,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__we_will_miss_you/387b9679-jpeg1600.jpg",
+      "url": "/_mg/people__we_will_miss_you/387b9679-jpeg1600.jpg",
       "key": "people__we_will_miss_you/387b9679-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "1e69039a67c7a767",
   "sourceSize": 175714,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "11a46045564d01a5"
+  "digest": "f1f60eac3f38d88d"
 }

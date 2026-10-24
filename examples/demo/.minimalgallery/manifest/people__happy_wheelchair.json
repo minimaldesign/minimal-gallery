@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 17615,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__happy_wheelchair/47bd3328-grid.avif",
+      "url": "/_mg/people__happy_wheelchair/47bd3328-grid.avif",
       "key": "people__happy_wheelchair/47bd3328-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 38692,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__happy_wheelchair/47bd3328-jpeg1600.jpg",
+      "url": "/_mg/people__happy_wheelchair/47bd3328-jpeg1600.jpg",
       "key": "people__happy_wheelchair/47bd3328-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "89003cfdd2fdd739",
   "sourceSize": 80451,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c212a88520dacda5"
+  "digest": "980bcc6ba00473f3"
 }

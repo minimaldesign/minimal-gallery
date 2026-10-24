@@ -47,7 +47,7 @@
       "height": 425,
       "bytes": 24220,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__olivier_de_saint_paul/69f73549-grid.avif",
+      "url": "/_mg/light__olivier_de_saint_paul/69f73549-grid.avif",
       "key": "light__olivier_de_saint_paul/69f73549-grid.avif"
     },
     {
@@ -56,7 +56,7 @@
       "height": 465,
       "bytes": 52357,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__olivier_de_saint_paul/69f73549-jpeg1600.jpg",
+      "url": "/_mg/light__olivier_de_saint_paul/69f73549-jpeg1600.jpg",
       "key": "light__olivier_de_saint_paul/69f73549-jpeg1600.jpg"
     }
   ],
@@ -97,9 +97,9 @@
   },
   "sourceHash": "286364f29db6693b",
   "sourceSize": 139849,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e8b01df02f8b8186"
+  "digest": "1c40862a4d47b275"
 }

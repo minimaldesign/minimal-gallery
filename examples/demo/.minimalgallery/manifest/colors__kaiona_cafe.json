@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 20740,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__kaiona_cafe/dec71a6a-grid.avif",
+      "url": "/_mg/colors__kaiona_cafe/dec71a6a-grid.avif",
       "key": "colors__kaiona_cafe/dec71a6a-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 46843,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__kaiona_cafe/dec71a6a-jpeg1600.jpg",
+      "url": "/_mg/colors__kaiona_cafe/dec71a6a-jpeg1600.jpg",
       "key": "colors__kaiona_cafe/dec71a6a-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "ebcf7370ec31af6b",
   "sourceSize": 128338,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3aedbbd64bc74e4f"
+  "digest": "c081c3f2f1c6d4c3"
 }

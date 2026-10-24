@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "My ceiling",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 2858,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__my_ceiling/61c1f5a2-grid.avif",
+      "url": "/_mg/shapes__my_ceiling/61c1f5a2-grid.avif",
       "key": "shapes__my_ceiling/61c1f5a2-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 9725,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__my_ceiling/61c1f5a2-jpeg1600.jpg",
+      "url": "/_mg/shapes__my_ceiling/61c1f5a2-jpeg1600.jpg",
       "key": "shapes__my_ceiling/61c1f5a2-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "0121142f6d99f41a",
   "sourceSize": 90351,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8f10c43196e4e028"
+  "digest": "236d0261590ff8b8"
 }

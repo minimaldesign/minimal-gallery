@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 20786,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__harman_kardon/f7fb2625-grid.avif",
+      "url": "/_mg/shapes__harman_kardon/f7fb2625-grid.avif",
       "key": "shapes__harman_kardon/f7fb2625-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 43707,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__harman_kardon/f7fb2625-jpeg1600.jpg",
+      "url": "/_mg/shapes__harman_kardon/f7fb2625-jpeg1600.jpg",
       "key": "shapes__harman_kardon/f7fb2625-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "8926209de476facb",
   "sourceSize": 139972,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "cbf093f137c96084"
+  "digest": "fe6ca83b3d48c1e3"
 }

@@ -52,7 +52,7 @@
       "height": 428,
       "bytes": 40194,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__a_quiet_evening/595458c1-grid.avif",
+      "url": "/_mg/feelings__a_quiet_evening/595458c1-grid.avif",
       "key": "feelings__a_quiet_evening/595458c1-grid.avif"
     },
     {
@@ -61,7 +61,7 @@
       "height": 602,
       "bytes": 131501,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__a_quiet_evening/595458c1-jpeg1600.jpg",
+      "url": "/_mg/feelings__a_quiet_evening/595458c1-jpeg1600.jpg",
       "key": "feelings__a_quiet_evening/595458c1-jpeg1600.jpg"
     }
   ],
@@ -105,9 +105,9 @@
   },
   "sourceHash": "56e47987e9c33d21",
   "sourceSize": 223248,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "7009269145f554d1"
+  "digest": "df82f91ab9636129"
 }

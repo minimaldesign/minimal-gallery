@@ -45,7 +45,7 @@
       "height": 428,
       "bytes": 17883,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__biwa/b56749e5-grid.avif",
+      "url": "/_mg/feelings__biwa/b56749e5-grid.avif",
       "key": "feelings__biwa/b56749e5-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 602,
       "bytes": 49991,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__biwa/b56749e5-jpeg1600.jpg",
+      "url": "/_mg/feelings__biwa/b56749e5-jpeg1600.jpg",
       "key": "feelings__biwa/b56749e5-jpeg1600.jpg"
     }
   ],
@@ -87,9 +87,9 @@
   },
   "sourceHash": "f79d76972a7070c4",
   "sourceSize": 119371,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8e3b3e2c0f039b62"
+  "digest": "69cd3ae6044f967b"
 }

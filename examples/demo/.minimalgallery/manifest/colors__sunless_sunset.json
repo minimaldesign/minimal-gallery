@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 19434,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__sunless_sunset/e8039042-grid.avif",
+      "url": "/_mg/colors__sunless_sunset/e8039042-grid.avif",
       "key": "colors__sunless_sunset/e8039042-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 42825,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__sunless_sunset/e8039042-jpeg1600.jpg",
+      "url": "/_mg/colors__sunless_sunset/e8039042-jpeg1600.jpg",
       "key": "colors__sunless_sunset/e8039042-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "ec137f9f6f4b1dae",
   "sourceSize": 138665,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6cbf6c816c243c7a"
+  "digest": "68f388a88bcfbb54"
 }

@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 23066,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__withering_sakura/2e8e2056-grid.avif",
+      "url": "/_mg/colors__withering_sakura/2e8e2056-grid.avif",
       "key": "colors__withering_sakura/2e8e2056-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 45853,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__withering_sakura/2e8e2056-jpeg1600.jpg",
+      "url": "/_mg/colors__withering_sakura/2e8e2056-jpeg1600.jpg",
       "key": "colors__withering_sakura/2e8e2056-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "de4e2ed66d27e4d8",
   "sourceSize": 147470,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c83e3ab90320f876"
+  "digest": "57fe26156b004aef"
 }

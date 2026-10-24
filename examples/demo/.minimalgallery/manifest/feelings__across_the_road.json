@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Across the road",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 640,
       "bytes": 16643,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/feelings__across_the_road/31a1137f-grid.avif",
+      "url": "/_mg/feelings__across_the_road/31a1137f-grid.avif",
       "key": "feelings__across_the_road/31a1137f-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 700,
       "bytes": 36905,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/feelings__across_the_road/31a1137f-jpeg1600.jpg",
+      "url": "/_mg/feelings__across_the_road/31a1137f-jpeg1600.jpg",
       "key": "feelings__across_the_road/31a1137f-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "3c85d5658e4ec57a",
   "sourceSize": 118285,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8fd92363f4be1ad0"
+  "digest": "a7be9950f668b6b5"
 }

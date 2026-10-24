@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 27712,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__28_reed_dog/262bd20e-grid.avif",
+      "url": "/_mg/people__28_reed_dog/262bd20e-grid.avif",
       "key": "people__28_reed_dog/262bd20e-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 72867,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__28_reed_dog/262bd20e-jpeg1600.jpg",
+      "url": "/_mg/people__28_reed_dog/262bd20e-jpeg1600.jpg",
       "key": "people__28_reed_dog/262bd20e-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "8fc681c460f07376",
   "sourceSize": 171206,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "840ec80419152f13"
+  "digest": "ec8ac5a4614ea324"
 }

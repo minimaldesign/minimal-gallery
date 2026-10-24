@@ -50,7 +50,7 @@
       "height": 425,
       "bytes": 23746,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/light__towards_the_sun/c039d1fc-grid.avif",
+      "url": "/_mg/light__towards_the_sun/c039d1fc-grid.avif",
       "key": "light__towards_the_sun/c039d1fc-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 45327,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/light__towards_the_sun/c039d1fc-jpeg1600.jpg",
+      "url": "/_mg/light__towards_the_sun/c039d1fc-jpeg1600.jpg",
       "key": "light__towards_the_sun/c039d1fc-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "b3977ae0aa49f1f0",
   "sourceSize": 156411,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "395d727075ae0ef9"
+  "digest": "3eaec009736e5d21"
 }

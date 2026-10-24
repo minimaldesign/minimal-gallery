@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 42058,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/colors__sakura_impression/858af31a-grid.avif",
+      "url": "/_mg/colors__sakura_impression/858af31a-grid.avif",
       "key": "colors__sakura_impression/858af31a-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 82147,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/colors__sakura_impression/858af31a-jpeg1600.jpg",
+      "url": "/_mg/colors__sakura_impression/858af31a-jpeg1600.jpg",
       "key": "colors__sakura_impression/858af31a-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "9d382b67cbfb5337",
   "sourceSize": 164084,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a10c845cdbfe76e2"
+  "digest": "7b8eae230d70fe14"
 }

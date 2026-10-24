@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 46189,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__tourist_props/9d717208-grid.avif",
+      "url": "/_mg/people__tourist_props/9d717208-grid.avif",
       "key": "people__tourist_props/9d717208-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 89673,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__tourist_props/9d717208-jpeg1600.jpg",
+      "url": "/_mg/people__tourist_props/9d717208-jpeg1600.jpg",
       "key": "people__tourist_props/9d717208-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "6ede0d12c589ba5b",
   "sourceSize": 189146,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "85f0d2bbd42c63a4"
+  "digest": "26d99a0ee3e03369"
 }

@@ -50,7 +50,7 @@
       "height": 428,
       "bytes": 17368,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/people__last_day_in_kyoto/252dfcbc-grid.avif",
+      "url": "/_mg/people__last_day_in_kyoto/252dfcbc-grid.avif",
       "key": "people__last_day_in_kyoto/252dfcbc-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 602,
       "bytes": 57460,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/people__last_day_in_kyoto/252dfcbc-jpeg1600.jpg",
+      "url": "/_mg/people__last_day_in_kyoto/252dfcbc-jpeg1600.jpg",
       "key": "people__last_day_in_kyoto/252dfcbc-jpeg1600.jpg"
     }
   ],
@@ -98,9 +98,9 @@
   },
   "sourceHash": "f8c430fd43f89281",
   "sourceSize": 136383,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2ba3aac70fc5b66e"
+  "digest": "6c3d835aa777218d"
 }

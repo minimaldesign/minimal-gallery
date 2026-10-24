@@ -7,7 +7,7 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Eugene",
   "caption": null,
-  "date": "2026-10-23T20:59:25",
+  "date": "2026-10-23T22:38:11",
   "dateSource": "mtime",
   "camera": null,
   "lens": null,
@@ -45,7 +45,7 @@
       "height": 419,
       "bytes": 7170,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__eugene/5cb8431e-grid.avif",
+      "url": "/_mg/shapes__eugene/5cb8431e-grid.avif",
       "key": "shapes__eugene/5cb8431e-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 589,
       "bytes": 26737,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__eugene/5cb8431e-jpeg1600.jpg",
+      "url": "/_mg/shapes__eugene/5cb8431e-jpeg1600.jpg",
       "key": "shapes__eugene/5cb8431e-jpeg1600.jpg"
     }
   ],
@@ -81,9 +81,9 @@
   },
   "sourceHash": "54b39b13104a1ebb",
   "sourceSize": 87376,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "cc0890079712c323"
+  "digest": "ff8c50893b356227"
 }

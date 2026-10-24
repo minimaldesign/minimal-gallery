@@ -45,7 +45,7 @@
       "height": 425,
       "bytes": 22089,
       "format": "avif",
-      "url": "https://media.minimalgallery.net/shapes__metal_door_sunset/a5b66825-grid.avif",
+      "url": "/_mg/shapes__metal_door_sunset/a5b66825-grid.avif",
       "key": "shapes__metal_door_sunset/a5b66825-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 47462,
       "format": "jpeg",
-      "url": "https://media.minimalgallery.net/shapes__metal_door_sunset/a5b66825-jpeg1600.jpg",
+      "url": "/_mg/shapes__metal_door_sunset/a5b66825-jpeg1600.jpg",
       "key": "shapes__metal_door_sunset/a5b66825-jpeg1600.jpg"
     }
   ],
@@ -90,9 +90,9 @@
   },
   "sourceHash": "16b3af83a564f593",
   "sourceSize": 160116,
-  "sourceMtime": 1792814365000,
+  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4ee80c5276a3923f"
+  "digest": "6a9bb876bc92206e"
 }
