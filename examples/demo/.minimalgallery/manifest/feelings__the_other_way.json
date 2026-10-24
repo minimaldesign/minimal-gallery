@@ -4,6 +4,7 @@
   "file": "The_other_way.jpg",
   "source": "feelings/The_other_way.jpg",
   "slug": "the_other_way",
+  "added": "2026-10-23T19:21:25Z",
   "title": "The other way",
   "caption": null,
   "date": "2005-02-23T14:41:03",
@@ -91,8 +92,8 @@
   "sourceHash": "72bbc315aa1f02d9",
   "sourceSize": 135128,
   "sourceMtime": 1792783285151.2058,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b40a54bb3e848eeb"
+  "digest": "6b3ff45c62eeca73"
 }

@@ -4,6 +4,7 @@
   "file": "This_Morning.jpg",
   "source": "light/This_Morning.jpg",
   "slug": "this_morning",
+  "added": "2026-10-23T19:21:25Z",
   "title": "This Morning's Clouds...",
   "caption": null,
   "date": "2006-08-22T05:47:26",
@@ -99,8 +100,8 @@
   "sourceHash": "3e7b30a9be7b04f5",
   "sourceSize": 137834,
   "sourceMtime": 1792783285060.9067,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b6c240f5636de6bb"
+  "digest": "1747670ca6575a2a"
 }

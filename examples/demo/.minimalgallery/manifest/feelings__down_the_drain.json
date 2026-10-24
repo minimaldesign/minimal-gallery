@@ -4,6 +4,7 @@
   "file": "Down_the_drain.jpg",
   "source": "feelings/Down_the_drain.jpg",
   "slug": "down_the_drain",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Down the drain",
   "caption": "That's about as exciting as my life got today...",
   "date": "2005-03-08T16:50:22",
@@ -91,8 +92,8 @@
   "sourceHash": "6c4dd0d6e855a624",
   "sourceSize": 125301,
   "sourceMtime": 1792783285023.8528,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c29e62204f29aa33"
+  "digest": "9ae25209e63383e7"
 }

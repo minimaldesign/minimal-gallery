@@ -4,6 +4,7 @@
   "file": "Real_Life_Sandbox.jpg",
   "source": "light/Real_Life_Sandbox.jpg",
   "slug": "real_life_sandbox",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Real Life Sandbox",
   "caption": null,
   "date": "2006-01-28T16:32:55",
@@ -96,8 +97,8 @@
   "sourceHash": "ee94ceabaad58bfc",
   "sourceSize": 142883,
   "sourceMtime": 1792783285050.0269,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "31ba0b3bc73750c5"
+  "digest": "e0a22e020196cdfe"
 }

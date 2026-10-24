@@ -4,6 +4,7 @@
   "file": "Waking_up_02.jpg",
   "source": "feelings/Waking_up_02.jpg",
   "slug": "waking_up_02",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Waking up 02",
   "caption": null,
   "date": "2005-04-10T17:40:30",
@@ -91,8 +92,8 @@
   "sourceHash": "538787fe4ecbe036",
   "sourceSize": 149664,
   "sourceMtime": 1792783284872.637,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "af012d63628b703d"
+  "digest": "97cc5dce5dd9b80b"
 }

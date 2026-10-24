@@ -4,6 +4,7 @@
   "file": "Coney_Island.jpg",
   "source": "colors/Coney_Island.jpg",
   "slug": "coney_island",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Coney Island",
   "caption": null,
   "date": "2004-11-01T17:20:36",
@@ -91,8 +92,8 @@
   "sourceHash": "8d3d00ec0fce3494",
   "sourceSize": 151576,
   "sourceMtime": 1792783284981.2703,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "41a1e775a415f41c"
+  "digest": "64a0046cecc266b1"
 }

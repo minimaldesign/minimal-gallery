@@ -4,6 +4,7 @@
   "file": "Rusty_Beauty.jpg",
   "source": "shapes/Rusty_Beauty.jpg",
   "slug": "rusty_beauty",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Rusty Beauty",
   "caption": null,
   "date": "2005-12-22T13:15:15",
@@ -96,8 +97,8 @@
   "sourceHash": "ee012a7f7a6a1985",
   "sourceSize": 240088,
   "sourceMtime": 1792783285097.966,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8e4f98783da34ff7"
+  "digest": "9761bef3e96554d7"
 }

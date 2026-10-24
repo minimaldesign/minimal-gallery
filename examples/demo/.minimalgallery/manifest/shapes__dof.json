@@ -4,6 +4,7 @@
   "file": "DOF.jpg",
   "source": "shapes/DOF.jpg",
   "slug": "dof",
+  "added": "2026-10-23T19:21:25Z",
   "title": "DOF",
   "caption": null,
   "date": "2005-06-28T15:06:07",
@@ -91,8 +92,8 @@
   "sourceHash": "9c8063d5b1f69e49",
   "sourceSize": 154176,
   "sourceMtime": 1792783285019.4685,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e09e9d3e81f97bca"
+  "digest": "f87d5b626d994d59"
 }

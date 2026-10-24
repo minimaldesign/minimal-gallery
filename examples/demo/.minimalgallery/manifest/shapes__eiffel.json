@@ -4,6 +4,7 @@
   "file": "Eiffel.jpg",
   "source": "shapes/Eiffel.jpg",
   "slug": "eiffel",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Eiffel",
   "caption": null,
   "date": "2005-01-13T11:56:02",
@@ -106,8 +107,8 @@
   "sourceHash": "c1d5c6e71503280a",
   "sourceSize": 135082,
   "sourceMtime": 1792783285023.9417,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "edbc184c49bb8c39"
+  "digest": "b07f39649fa3018e"
 }

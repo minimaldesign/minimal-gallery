@@ -4,6 +4,7 @@
   "file": "Apple_in_Paris.jpg",
   "source": "people/Apple_in_Paris.jpg",
   "slug": "apple_in_paris",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Apple in Paris",
   "caption": null,
   "date": "2005-01-12T09:52:16",
@@ -99,8 +100,8 @@
   "sourceHash": "c8a729e89bb3c61d",
   "sourceSize": 161992,
   "sourceMtime": 1792783285096.2937,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "87152d2a62ecfc14"
+  "digest": "6aac6c5697916e48"
 }

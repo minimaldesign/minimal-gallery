@@ -4,6 +4,7 @@
   "file": "Grounded_Stars.jpg",
   "source": "shapes/Grounded_Stars.jpg",
   "slug": "grounded_stars",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Grounded Stars",
   "caption": null,
   "date": "2005-04-09T12:41:19",
@@ -91,8 +92,8 @@
   "sourceHash": "a713289918a2b3f0",
   "sourceSize": 158779,
   "sourceMtime": 1792783285052.4885,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "69148247507ca736"
+  "digest": "c3ce8c5c6f132200"
 }

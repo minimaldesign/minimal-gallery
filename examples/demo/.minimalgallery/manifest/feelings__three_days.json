@@ -4,6 +4,7 @@
   "file": "Three_Days.jpg",
   "source": "feelings/Three_Days.jpg",
   "slug": "three_days",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Three days, just a blur...",
   "caption": null,
   "date": "2006-11-05T23:36:12",
@@ -99,8 +100,8 @@
   "sourceHash": "ae0d0103494adb5b",
   "sourceSize": 148982,
   "sourceMtime": 1792783285152.5422,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c38e320e4435a7d0"
+  "digest": "6f7af8ec696c0cf3"
 }

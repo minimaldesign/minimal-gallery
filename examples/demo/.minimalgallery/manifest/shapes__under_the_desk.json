@@ -4,6 +4,7 @@
   "file": "Under_the_desk.jpg",
   "source": "shapes/Under_the_desk.jpg",
   "slug": "under_the_desk",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Under the desk",
   "caption": "And you thought it was messy under your desk?",
   "date": "2005-12-21T14:10:22",
@@ -96,8 +97,8 @@
   "sourceHash": "1a82bb743b546ca9",
   "sourceSize": 171397,
   "sourceMtime": 1792783285122.5837,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b70bde8982907704"
+  "digest": "b152645daa3cbf54"
 }

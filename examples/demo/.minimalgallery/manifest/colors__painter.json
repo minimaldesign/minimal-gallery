@@ -4,6 +4,7 @@
   "file": "Painter.jpg",
   "source": "colors/Painter.jpg",
   "slug": "painter",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Painter",
   "caption": null,
   "date": "2005-08-28T17:06:05",
@@ -99,8 +100,8 @@
   "sourceHash": "2437f562ee30bbfd",
   "sourceSize": 195410,
   "sourceMtime": 1792783285024.287,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0a1ea714cfd1b690"
+  "digest": "5d6d12a46367d824"
 }

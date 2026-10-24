@@ -4,6 +4,7 @@
   "file": "On_Christmas.jpg",
   "source": "people/On_Christmas.jpg",
   "slug": "on_christmas",
+  "added": "2026-10-23T19:21:24Z",
   "title": "On Christmas",
   "caption": "As some of you might have noticed, minimal Gallery's file chronology is all messed up right now. This is due to an incredible lack of professionalism from my hosting company. I also could not upload anything to my server for about a week! It seems to be resolved now, although I still have to hear even a simple apologies from them... I will be switching hosting company in the next few months as well as create a script to fix their errors. In the meantime, here's a photo I was supposed to upload on the 25th of December...",
   "date": "2005-12-25T17:37:34",
@@ -96,8 +97,8 @@
   "sourceHash": "1da539f0bb8c0197",
   "sourceSize": 196846,
   "sourceMtime": 1792783284847.0432,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e865d6cb81eb8a3f"
+  "digest": "2c5744f1bba374f0"
 }

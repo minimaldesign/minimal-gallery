@@ -4,6 +4,7 @@
   "file": "The_coming.jpg",
   "source": "light/The_coming.jpg",
   "slug": "the_coming",
+  "added": "2026-10-23T19:21:25Z",
   "title": "The coming",
   "caption": null,
   "date": "2005-05-21T13:34:48",
@@ -91,8 +92,8 @@
   "sourceHash": "b2a48a2219a24f8e",
   "sourceSize": 165543,
   "sourceMtime": 1792783285059.5488,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "845cf900ef812c6f"
+  "digest": "050a5958ba50b6ec"
 }

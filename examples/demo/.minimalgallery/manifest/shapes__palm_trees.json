@@ -4,6 +4,7 @@
   "file": "Palm_trees.jpg",
   "source": "shapes/Palm_trees.jpg",
   "slug": "palm_trees",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Palm trees",
   "caption": null,
   "date": "2005-04-17T10:21:11",
@@ -91,8 +92,8 @@
   "sourceHash": "3cbb563d43a42fbd",
   "sourceSize": 144228,
   "sourceMtime": 1792783285077.1475,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f294168b187b6058"
+  "digest": "6175312e107a3acc"
 }

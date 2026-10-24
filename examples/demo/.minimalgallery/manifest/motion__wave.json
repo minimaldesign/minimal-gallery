@@ -4,6 +4,7 @@
   "file": "Wave.jpg",
   "source": "motion/Wave.jpg",
   "slug": "wave",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Wave",
   "caption": "I took that one in one of the most beautiful places in the World, somewhere hidden in the South of France.  No, I won't tell you how to get there ;)",
   "date": "2005-01-27T10:17:41",
@@ -98,8 +99,8 @@
   "sourceHash": "f68390cd21947d7d",
   "sourceSize": 160004,
   "sourceMtime": 1792783285084.7712,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "dde2ce84929a7002"
+  "digest": "6def235160ebdbff"
 }

@@ -4,6 +4,7 @@
   "file": "Kyoto_monster.jpg",
   "source": "shapes/Kyoto_monster.jpg",
   "slug": "kyoto_monster",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kyoto monster",
   "caption": null,
   "date": "2005-04-05T12:23:22",
@@ -91,8 +92,8 @@
   "sourceHash": "5e240885eb040ba6",
   "sourceSize": 167589,
   "sourceMtime": 1792783285060.8643,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ad471200a400441d"
+  "digest": "a4614ec22b1c82ce"
 }

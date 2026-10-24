@@ -4,6 +4,7 @@
   "file": "simple.jpg",
   "source": "feelings/simple.jpg",
   "slug": "simple",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Simple",
   "caption": null,
   "date": "2005-01-18T10:03:45",
@@ -98,8 +99,8 @@
   "sourceHash": "21959a1b12c274c1",
   "sourceSize": 136400,
   "sourceMtime": 1792783284933.7454,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "dc8c90ab61b7ce60"
+  "digest": "982500d7616bd0f0"
 }

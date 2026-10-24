@@ -4,6 +4,7 @@
   "file": "Gdansk.jpg",
   "source": "colors/Gdansk.jpg",
   "slug": "gdansk",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Gdansk",
   "caption": null,
   "date": "2005-01-18T09:32:45",
@@ -98,8 +99,8 @@
   "sourceHash": "314bec4b29dfa73a",
   "sourceSize": 133165,
   "sourceMtime": 1792783285000.6387,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "04ba42bafa9163af"
+  "digest": "0d7e55907e9438f0"
 }

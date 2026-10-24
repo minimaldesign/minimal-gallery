@@ -4,6 +4,7 @@
   "file": "Kyoto_Bikers.jpg",
   "source": "people/Kyoto_Bikers.jpg",
   "slug": "kyoto_bikers",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kyoto Bikers",
   "caption": null,
   "date": "2005-04-04T14:34:23",
@@ -91,8 +92,8 @@
   "sourceHash": "0232a26037301124",
   "sourceSize": 155968,
   "sourceMtime": 1792783285131.5842,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "126059d27404637d"
+  "digest": "07450d0a9fdd7383"
 }

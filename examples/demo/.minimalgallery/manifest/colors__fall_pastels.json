@@ -4,6 +4,7 @@
   "file": "Fall_pastels.jpg",
   "source": "colors/Fall_pastels.jpg",
   "slug": "fall_pastels",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Fall pastels",
   "caption": null,
   "date": "2004-10-11T13:36:01",
@@ -88,8 +89,8 @@
   "sourceHash": "06b6ac48bd7be5b6",
   "sourceSize": 220598,
   "sourceMtime": 1792783284995.6414,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "259f5ce9f7698c2f"
+  "digest": "b5ee0662edd70491"
 }

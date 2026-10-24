@@ -4,6 +4,7 @@
   "file": "Kyoto_Kids.jpg",
   "source": "people/Kyoto_Kids.jpg",
   "slug": "kyoto_kids",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kyoto Kids",
   "caption": null,
   "date": "2005-04-05T17:27:49",
@@ -91,8 +92,8 @@
   "sourceHash": "7a1ca9e48ba8d086",
   "sourceSize": 160914,
   "sourceMtime": 1792783285138.316,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "84fec831c1a24370"
+  "digest": "84b2754071261105"
 }

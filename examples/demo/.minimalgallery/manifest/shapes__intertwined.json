@@ -4,6 +4,7 @@
   "file": "intertwined.jpg",
   "source": "shapes/intertwined.jpg",
   "slug": "intertwined",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Intertwined",
   "caption": null,
   "date": "2005-04-16T13:12:23",
@@ -88,8 +89,8 @@
   "sourceHash": "fe1f427ed98ebfe4",
   "sourceSize": 176827,
   "sourceMtime": 1792783285139.6096,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "52e48e74271f90ed"
+  "digest": "341d26ab39d3d96d"
 }

@@ -4,6 +4,7 @@
   "file": "Tea_in_Kyoto.jpg",
   "source": "feelings/Tea_in_Kyoto.jpg",
   "slug": "tea_in_kyoto",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Tea in Kyoto",
   "caption": null,
   "date": "2005-04-05T14:33:02",
@@ -91,8 +92,8 @@
   "sourceHash": "fc0666037e2bff1f",
   "sourceSize": 119312,
   "sourceMtime": 1792783285139.671,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1e68e03e3a708d42"
+  "digest": "d83818f44907b6b9"
 }

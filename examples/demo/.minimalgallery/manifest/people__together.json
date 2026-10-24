@@ -4,6 +4,7 @@
   "file": "Together.jpg",
   "source": "people/Together.jpg",
   "slug": "together",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Together",
   "caption": null,
   "date": "2005-01-30T11:28:04",
@@ -103,8 +104,8 @@
   "sourceHash": "14c719c99363f1c4",
   "sourceSize": 152668,
   "sourceMtime": 1792783284902.0027,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d12babbb6a568958"
+  "digest": "5ba8e9baaa5d6afc"
 }

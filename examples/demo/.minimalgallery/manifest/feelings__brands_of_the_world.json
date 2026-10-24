@@ -4,6 +4,7 @@
   "file": "Brands_of_the_World.jpg",
   "source": "feelings/Brands_of_the_World.jpg",
   "slug": "brands_of_the_world",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Brands of the World",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "d56b4c6de80535a4",
   "sourceSize": 181760,
   "sourceMtime": 1792783285009.3538,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "82ea55e34b31e493"
+  "digest": "b6233fb8d51f45f2"
 }

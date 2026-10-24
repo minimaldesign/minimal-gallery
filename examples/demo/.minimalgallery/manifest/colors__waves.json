@@ -4,6 +4,7 @@
   "file": "Waves.jpg",
   "source": "colors/Waves.jpg",
   "slug": "waves",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Waves",
   "caption": null,
   "date": "2004-08-17T17:21:50",
@@ -88,8 +89,8 @@
   "sourceHash": "57504450a6997f22",
   "sourceSize": 67349,
   "sourceMtime": 1792783284903.9233,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6786e49d5af0327b"
+  "digest": "0090d5434e269d26"
 }

@@ -4,6 +4,7 @@
   "file": "prayer.jpg",
   "source": "feelings/prayer.jpg",
   "slug": "prayer",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Prayer",
   "caption": null,
   "date": "2026-10-23T12:21:24",
@@ -82,8 +83,8 @@
   "sourceHash": "8027fc360889c143",
   "sourceSize": 114665,
   "sourceMtime": 1792783284910.7312,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6ce5ada6a895b154"
+  "digest": "156ae155b3109188"
 }

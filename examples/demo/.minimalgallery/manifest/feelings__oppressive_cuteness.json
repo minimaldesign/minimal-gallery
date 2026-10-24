@@ -4,6 +4,7 @@
   "file": "Oppressive_Cuteness.jpg",
   "source": "feelings/Oppressive_Cuteness.jpg",
   "slug": "oppressive_cuteness",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Oppressive Cuteness",
   "caption": null,
   "date": "2005-04-05T12:08:42",
@@ -91,8 +92,8 @@
   "sourceHash": "d221106041c76248",
   "sourceSize": 143797,
   "sourceMtime": 1792783285119.5618,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1109444b72e89bf2"
+  "digest": "2edae9834a110aab"
 }

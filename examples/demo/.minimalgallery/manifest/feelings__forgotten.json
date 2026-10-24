@@ -4,6 +4,7 @@
   "file": "Forgotten.jpg",
   "source": "feelings/Forgotten.jpg",
   "slug": "forgotten",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Forgotten",
   "caption": "8-bit RGB flat JPEG file, 700x465 pixels (9.72x6.46 inches) @ 72.00 pixels/inch, written by Adobe Photoshop CS",
   "date": "2005-01-16T07:53:25",
@@ -106,8 +107,8 @@
   "sourceHash": "3fa164c4548ed41d",
   "sourceSize": 139518,
   "sourceMtime": 1792783285049.5225,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c1c0d12ffb3ee8ca"
+  "digest": "5842ca03fc867ead"
 }

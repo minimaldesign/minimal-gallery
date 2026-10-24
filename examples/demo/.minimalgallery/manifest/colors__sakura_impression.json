@@ -4,6 +4,7 @@
   "file": "Sakura_Impression.jpg",
   "source": "colors/Sakura_Impression.jpg",
   "slug": "sakura_impression",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Sakura Impression",
   "caption": null,
   "date": "2005-04-09T13:01:43",
@@ -91,8 +92,8 @@
   "sourceHash": "9d382b67cbfb5337",
   "sourceSize": 164084,
   "sourceMtime": 1792783285028.5933,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2d8381f986aff189"
+  "digest": "41041759054febf6"
 }

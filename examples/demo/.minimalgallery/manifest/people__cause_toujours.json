@@ -4,6 +4,7 @@
   "file": "Cause_toujours.jpg",
   "source": "people/Cause_toujours.jpg",
   "slug": "cause_toujours",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Cause toujours",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "e4e8acde93a37682",
   "sourceSize": 150969,
   "sourceMtime": 1792783285104.4138,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a24413f65dbbb688"
+  "digest": "3e415f7efd003d22"
 }

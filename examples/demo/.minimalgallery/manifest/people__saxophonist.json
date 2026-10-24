@@ -4,6 +4,7 @@
   "file": "Saxophonist.jpg",
   "source": "people/Saxophonist.jpg",
   "slug": "saxophonist",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Saxophonist",
   "caption": null,
   "date": "2005-09-07T15:35:32",
@@ -99,8 +100,8 @@
   "sourceHash": "26f3152c9feb3c97",
   "sourceSize": 170524,
   "sourceMtime": 1792783284872.735,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "31addf3d9adad3c1"
+  "digest": "eca1ef89a9326f89"
 }

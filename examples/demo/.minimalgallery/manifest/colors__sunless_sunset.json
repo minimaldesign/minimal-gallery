@@ -4,6 +4,7 @@
   "file": "Sunless_Sunset.jpg",
   "source": "colors/Sunless_Sunset.jpg",
   "slug": "sunless_sunset",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Sunless Sunset",
   "caption": null,
   "date": "2004-11-01T17:56:10",
@@ -91,8 +92,8 @@
   "sourceHash": "ec137f9f6f4b1dae",
   "sourceSize": 138665,
   "sourceMtime": 1792783284856.2441,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b81f9c6051d3aa1f"
+  "digest": "ae7dd3df08675a35"
 }

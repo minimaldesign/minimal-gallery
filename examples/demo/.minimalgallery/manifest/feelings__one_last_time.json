@@ -4,6 +4,7 @@
   "file": "One_last_time.jpg",
   "source": "feelings/One_last_time.jpg",
   "slug": "one_last_time",
+  "added": "2026-10-23T19:21:25Z",
   "title": "One last time",
   "caption": "On the Baltic shore, a bulldozer stops to admire the cold beauty of the sea one last time...",
   "date": "2005-01-19T10:43:43",
@@ -98,8 +99,8 @@
   "sourceHash": "19c2981573605bc5",
   "sourceSize": 119297,
   "sourceMtime": 1792783285115.8452,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "cb3493e392e4f06b"
+  "digest": "a82c5f2e1256e9a7"
 }

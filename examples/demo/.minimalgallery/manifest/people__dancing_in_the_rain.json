@@ -4,6 +4,7 @@
   "file": "Dancing_in_the_rain.jpg",
   "source": "people/Dancing_in_the_rain.jpg",
   "slug": "dancing_in_the_rain",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Dancing in the rain",
   "caption": "I went to Union Square  this afternoon to work on a new little photographic idea I got (I'd call it \"conceptual art\" but it sounds a little too pompous ;)  As soon as I started shooting, I got attacked by some crazy guy calling me names who seemed to think that I wasn't allowed to take photos of Union Square because he happened to sit there.  About an hour later, I was done working on my idea, and the rain started pouring.  I still had my camera in hand when the people on today's photo spontaneously started posing for me.  A refreshing change after the nut case from earlier...  Thanks guys :)",
   "date": "2005-06-06T17:08:04",
@@ -91,8 +92,8 @@
   "sourceHash": "55fa3bfc93442373",
   "sourceSize": 216537,
   "sourceMtime": 1792783285108.477,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a949d829def95e77"
+  "digest": "392b418977b2d55d"
 }

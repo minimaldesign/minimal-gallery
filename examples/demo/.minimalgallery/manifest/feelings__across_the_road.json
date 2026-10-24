@@ -4,6 +4,7 @@
   "file": "Across_the_road.jpg",
   "source": "feelings/Across_the_road.jpg",
   "slug": "across_the_road",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Across the road",
   "caption": null,
   "date": "2026-10-23T12:21:24",
@@ -82,8 +83,8 @@
   "sourceHash": "3c85d5658e4ec57a",
   "sourceSize": 118285,
   "sourceMtime": 1792783284988.2622,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0d6a1a88c49ba518"
+  "digest": "f704f3f1361fba60"
 }

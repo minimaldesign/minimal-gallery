@@ -4,6 +4,7 @@
   "file": "Wind_Snow_and_Sun.jpg",
   "source": "light/Wind_Snow_and_Sun.jpg",
   "slug": "wind_snow_and_sun",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Wind Snow and Sun",
   "caption": null,
   "date": "2005-01-25T10:50:41",
@@ -98,8 +99,8 @@
   "sourceHash": "17bd334df26b8bf3",
   "sourceSize": 181514,
   "sourceMtime": 1792783285069.6042,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1ef2cf24a33696e3"
+  "digest": "6926c63bca0c56ad"
 }

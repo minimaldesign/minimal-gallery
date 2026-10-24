@@ -4,6 +4,7 @@
   "file": "Bamboo_forest.jpg",
   "source": "light/Bamboo_forest.jpg",
   "slug": "bamboo_forest",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Bamboo forest",
   "caption": null,
   "date": "2005-04-08T10:35:43",
@@ -91,8 +92,8 @@
   "sourceHash": "e986cd90dd373fe2",
   "sourceSize": 230038,
   "sourceMtime": 1792783284938.7085,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "449605689180cded"
+  "digest": "55bcf2f47b6c6796"
 }

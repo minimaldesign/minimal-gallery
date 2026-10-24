@@ -4,6 +4,7 @@
   "file": "Oasis.jpg",
   "source": "light/Oasis.jpg",
   "slug": "oasis",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Oasis",
   "caption": null,
   "date": "2007-11-14T16:21:40",
@@ -85,8 +86,8 @@
   "sourceHash": "f49865dad8b3ed48",
   "sourceSize": 238505,
   "sourceMtime": 1792783285032.8613,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c1c9b672b024ba57"
+  "digest": "f1a407857562641c"
 }

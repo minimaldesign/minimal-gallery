@@ -4,6 +4,7 @@
   "file": "Zen_Temptation.jpg",
   "source": "feelings/Zen_Temptation.jpg",
   "slug": "zen_temptation",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Zen Temptation",
   "caption": null,
   "date": "2006-01-02T15:22:37",
@@ -99,8 +100,8 @@
   "sourceHash": "170262e5de6244b5",
   "sourceSize": 146172,
   "sourceMtime": 1792783284891.9702,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fad9798d9dd82f26"
+  "digest": "854f251063698ba7"
 }

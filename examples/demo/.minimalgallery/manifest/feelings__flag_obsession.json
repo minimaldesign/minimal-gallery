@@ -4,6 +4,7 @@
   "file": "Flag_Obsession.jpg",
   "source": "feelings/Flag_Obsession.jpg",
   "slug": "flag_obsession",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Flag Obsession",
   "caption": null,
   "date": "2005-07-03T15:50:05",
@@ -91,8 +92,8 @@
   "sourceHash": "2c431e64321330a5",
   "sourceSize": 250731,
   "sourceMtime": 1792783285043.4128,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "23778e8f40a71fa6"
+  "digest": "8b38395d6dea4406"
 }

@@ -4,6 +4,7 @@
   "file": "Nice_to_meet_you.jpg",
   "source": "feelings/Nice_to_meet_you.jpg",
   "slug": "nice_to_meet_you",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Nice to meet you",
   "caption": null,
   "date": "2005-02-23T17:02:42",
@@ -91,8 +92,8 @@
   "sourceHash": "e937918977aa7e86",
   "sourceSize": 163700,
   "sourceMtime": 1792783285111.3027,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b55567e999a956a1"
+  "digest": "d19e1f4b546ca1b6"
 }

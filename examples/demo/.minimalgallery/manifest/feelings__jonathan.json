@@ -4,6 +4,7 @@
   "file": "Jonathan.jpg",
   "source": "feelings/Jonathan.jpg",
   "slug": "jonathan",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Jonathan",
   "caption": null,
   "date": "2005-11-03T16:50:56",
@@ -99,8 +100,8 @@
   "sourceHash": "180e3b12fa924a69",
   "sourceSize": 135189,
   "sourceMtime": 1792783285074.1382,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e059f90039c51942"
+  "digest": "512cc99d78cb55d7"
 }

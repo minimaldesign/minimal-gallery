@@ -4,6 +4,7 @@
   "file": "First_rays_of_the_day.jpg",
   "source": "light/First_rays_of_the_day.jpg",
   "slug": "first_rays_of_the_day",
+  "added": "2026-10-23T19:21:24Z",
   "title": "First rays of the day",
   "caption": null,
   "date": "2005-04-16T06:16:53",
@@ -91,8 +92,8 @@
   "sourceHash": "8f07d2df621cf06b",
   "sourceSize": 170507,
   "sourceMtime": 1792783284998.337,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "77eafdcd899ac220"
+  "digest": "ed361421b46f6ddc"
 }

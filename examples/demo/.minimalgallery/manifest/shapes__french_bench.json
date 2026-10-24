@@ -4,6 +4,7 @@
   "file": "French_bench.jpg",
   "source": "shapes/French_bench.jpg",
   "slug": "french_bench",
+  "added": "2026-10-23T19:21:25Z",
   "title": "French bench",
   "caption": "They don't make them like they used to anymore...",
   "date": "2005-01-28T12:03:14",
@@ -99,8 +100,8 @@
   "sourceHash": "3951e24d819387ef",
   "sourceSize": 190244,
   "sourceMtime": 1792783285038.9626,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1bdc1ab96abf936f"
+  "digest": "f883877870e11f63"
 }

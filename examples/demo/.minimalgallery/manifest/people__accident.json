@@ -4,6 +4,7 @@
   "file": "Accident.jpg",
   "source": "people/Accident.jpg",
   "slug": "accident",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Accident",
   "caption": null,
   "date": "2004-08-17T16:26:08",
@@ -88,8 +89,8 @@
   "sourceHash": "aca1266f7cb81ec9",
   "sourceSize": 125711,
   "sourceMtime": 1792783285090.7761,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3744abb6cd0cc9da"
+  "digest": "b15e79880fd9fd5d"
 }

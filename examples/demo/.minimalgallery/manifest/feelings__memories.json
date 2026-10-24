@@ -4,6 +4,7 @@
   "file": "memories.jpg",
   "source": "feelings/memories.jpg",
   "slug": "memories",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Memories",
   "caption": null,
   "date": "2005-04-01T11:20:04",
@@ -99,8 +100,8 @@
   "sourceHash": "f3ea0f095822f072",
   "sourceSize": 161164,
   "sourceMtime": 1792783284901.9172,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2786122c1e1d944f"
+  "digest": "4540c7a282758da2"
 }

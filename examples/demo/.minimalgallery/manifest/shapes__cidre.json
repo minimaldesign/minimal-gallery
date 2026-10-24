@@ -4,6 +4,7 @@
   "file": "Cidre.jpg",
   "source": "shapes/Cidre.jpg",
   "slug": "cidre",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Cidre",
   "caption": null,
   "date": "2005-01-31T09:20:23",
@@ -91,8 +92,8 @@
   "sourceHash": "07da34dbef7d2492",
   "sourceSize": 134138,
   "sourceMtime": 1792783284992.0105,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b51d177e37b419fa"
+  "digest": "c1830d70878b3857"
 }

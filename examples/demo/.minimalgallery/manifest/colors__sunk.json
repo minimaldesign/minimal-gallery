@@ -4,6 +4,7 @@
   "file": "sunk.jpg",
   "source": "colors/sunk.jpg",
   "slug": "sunk",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Sunk",
   "caption": null,
   "date": "2005-11-14T16:13:29",
@@ -99,8 +100,8 @@
   "sourceHash": "8093613d66635bae",
   "sourceSize": 158938,
   "sourceMtime": 1792783284951.9448,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "453cf646cc2a5ee5"
+  "digest": "4f75508e022b9f49"
 }

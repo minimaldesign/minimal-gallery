@@ -4,6 +4,7 @@
   "file": "Balcony.jpg",
   "source": "shapes/Balcony.jpg",
   "slug": "balcony",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Balcony",
   "caption": null,
   "date": "2005-01-28T11:55:23",
@@ -99,8 +100,8 @@
   "sourceHash": "5bc66f49edf2c798",
   "sourceSize": 121628,
   "sourceMtime": 1792783284981.6365,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0d461074d1a60d0a"
+  "digest": "0294d858086e4caf"
 }

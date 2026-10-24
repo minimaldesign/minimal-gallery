@@ -4,6 +4,7 @@
   "file": "Brick_or_Tree.jpg",
   "source": "light/Brick_or_Tree.jpg",
   "slug": "brick_or_tree",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Brick or Tree",
   "caption": null,
   "date": "2004-11-10T16:20:08",
@@ -91,8 +92,8 @@
   "sourceHash": "6b4175bb6558f2aa",
   "sourceSize": 164664,
   "sourceMtime": 1792783284955.8142,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "83ca4fcbf2edb909"
+  "digest": "155d88903fd0cadc"
 }

@@ -4,6 +4,7 @@
   "file": "Shirakawa-Go.jpg",
   "source": "feelings/Shirakawa-Go.jpg",
   "slug": "shirakawa_go",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Shirakawa Go",
   "caption": null,
   "date": "2007-11-15T05:09:57",
@@ -96,8 +97,8 @@
   "sourceHash": "4f757eb3f2e0626b",
   "sourceSize": 191690,
   "sourceMtime": 1792783285128.6501,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "70f22c9d5690e82c"
+  "digest": "dc3b63bd1f18c332"
 }

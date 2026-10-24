@@ -4,6 +4,7 @@
   "file": "Kanazawa.jpg",
   "source": "feelings/Kanazawa.jpg",
   "slug": "kanazawa",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kanazawa",
   "caption": null,
   "date": "2005-04-03T16:18:07",
@@ -91,8 +92,8 @@
   "sourceHash": "bd21adddf1890f76",
   "sourceSize": 150949,
   "sourceMtime": 1792783285077.1467,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b19e012a49f439a4"
+  "digest": "5d0011f082ad2b4b"
 }

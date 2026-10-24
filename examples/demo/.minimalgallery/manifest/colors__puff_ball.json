@@ -4,6 +4,7 @@
   "file": "Puff_Ball.jpg",
   "source": "colors/Puff_Ball.jpg",
   "slug": "puff_ball",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Puff Ball",
   "caption": "Another shot from Haleakala...  After that one, I'm done ;)",
   "date": "2005-04-16T05:52:53",
@@ -91,8 +92,8 @@
   "sourceHash": "0740d05350dc4106",
   "sourceSize": 139843,
   "sourceMtime": 1792783285026.8926,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "80c84bc1c740191d"
+  "digest": "bfa2284bdcc6d19f"
 }

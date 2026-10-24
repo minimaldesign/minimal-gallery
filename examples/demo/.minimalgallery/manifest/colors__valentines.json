@@ -4,6 +4,7 @@
   "file": "Valentines.jpg",
   "source": "colors/Valentines.jpg",
   "slug": "valentines",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Valentines",
   "caption": null,
   "date": "2005-01-25T08:35:58",
@@ -98,8 +99,8 @@
   "sourceHash": "7010159a45a7a849",
   "sourceSize": 137903,
   "sourceMtime": 1792783284903.6362,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a0fa1cad834d128d"
+  "digest": "59ab94272317ad01"
 }

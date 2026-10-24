@@ -4,6 +4,7 @@
   "file": "Step.jpg",
   "source": "shapes/Step.jpg",
   "slug": "step",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Step",
   "caption": null,
   "date": "2005-08-29T17:01:06",
@@ -99,8 +100,8 @@
   "sourceHash": "ec292e6ccb5e9384",
   "sourceSize": 191569,
   "sourceMtime": 1792783285106.0984,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "448ba75e04539180"
+  "digest": "feec4c72594fee04"
 }

@@ -4,6 +4,7 @@
   "file": "Ronin.jpg",
   "source": "people/Ronin.jpg",
   "slug": "ronin",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Ronin",
   "caption": "I did a photo shoot for a New York based band last week. I doubt they’ll use that shot, so I asked for their permission to put it on my site because I like it a lot.",
   "date": "2005-02-27T18:16:10",
@@ -88,8 +89,8 @@
   "sourceHash": "62189e6548cdc7e6",
   "sourceSize": 103891,
   "sourceMtime": 1792783284856.1504,
-  "inputsHash": "23983cc6464abe2a",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "4f00d222d7e7f2d9",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "35caae68be083fb6"
+  "digest": "86e1da2e823f24e1"
 }

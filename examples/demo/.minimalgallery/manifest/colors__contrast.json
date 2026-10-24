@@ -4,6 +4,7 @@
   "file": "Contrast.jpg",
   "source": "colors/Contrast.jpg",
   "slug": "contrast",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Contrast",
   "caption": "Ok, after this one, I think I'm done with the photos from \"The Gates.\"",
   "date": "2005-02-23T16:53:51",
@@ -91,8 +92,8 @@
   "sourceHash": "012867f4c3b57675",
   "sourceSize": 158197,
   "sourceMtime": 1792783284988.3916,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0c70bc831e13e573"
+  "digest": "b792dbc860fa482f"
 }

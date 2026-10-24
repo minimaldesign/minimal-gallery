@@ -4,6 +4,7 @@
   "file": "zip_it.jpg",
   "source": "people/zip_it.jpg",
   "slug": "zip_it",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Zip it",
   "caption": null,
   "date": "2005-01-30T11:22:56",
@@ -103,8 +104,8 @@
   "sourceHash": "b0da81f5126ae8fa",
   "sourceSize": 155114,
   "sourceMtime": 1792783284978.7185,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ca00cab4f4d42bbc"
+  "digest": "a23ebf587b34456f"
 }

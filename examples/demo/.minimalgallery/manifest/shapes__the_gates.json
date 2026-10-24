@@ -4,6 +4,7 @@
   "file": "The_Gates.jpg",
   "source": "shapes/The_Gates.jpg",
   "slug": "the_gates",
+  "added": "2026-10-23T19:21:25Z",
   "title": "The Gates",
   "caption": "Yes, I think it's funny...",
   "date": "2005-02-23T16:38:46",
@@ -116,8 +117,8 @@
   "sourceHash": "ea815097c494397f",
   "sourceSize": 157285,
   "sourceMtime": 1792783285116.1343,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "440e56af09536447"
+  "digest": "b079f537140390b7"
 }

@@ -4,6 +4,7 @@
   "file": "Tabaco_dragon.jpg",
   "source": "shapes/Tabaco_dragon.jpg",
   "slug": "tabaco_dragon",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Tabaco dragon",
   "caption": null,
   "date": "2005-01-12T11:25:18",
@@ -106,8 +107,8 @@
   "sourceHash": "a8f2734c4c9bcfaa",
   "sourceSize": 135922,
   "sourceMtime": 1792783285114.285,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3374a00754ecb608"
+  "digest": "cf3bfeb82b0aa882"
 }

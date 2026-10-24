@@ -4,6 +4,7 @@
   "file": "Kyoto_Station.jpg",
   "source": "light/Kyoto_Station.jpg",
   "slug": "kyoto_station",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kyoto Station",
   "caption": null,
   "date": "2005-04-09T16:33:47",
@@ -91,8 +92,8 @@
   "sourceHash": "9a85c7e2a256ff7a",
   "sourceSize": 129546,
   "sourceMtime": 1792783285009.5845,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1fd187e1e93ad612"
+  "digest": "6a1d95581f93eb48"
 }

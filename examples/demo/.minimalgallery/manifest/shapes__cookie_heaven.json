@@ -4,6 +4,7 @@
   "file": "Cookie_Heaven.jpg",
   "source": "shapes/Cookie_Heaven.jpg",
   "slug": "cookie_heaven",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Cookie Heaven",
   "caption": null,
   "date": "2005-04-10T20:18:04",
@@ -91,8 +92,8 @@
   "sourceHash": "de606a91cd0f2cdd",
   "sourceSize": 150845,
   "sourceMtime": 1792783285013.8733,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "9518e42dfe948e4e"
+  "digest": "48fb11515a2f7f96"
 }

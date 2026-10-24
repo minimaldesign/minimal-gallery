@@ -4,6 +4,7 @@
   "file": "News_in_Nice.jpg",
   "source": "people/News_in_Nice.jpg",
   "slug": "news_in_nice",
+  "added": "2026-10-23T19:21:25Z",
   "title": "News in Nice",
   "caption": "I took that one from the window of a car, while driving by.  Although I had about 0.5 second to shoot, I still managed to get the horizon straight and the guy where I wanted him to be.  Not bad :)",
   "date": "2005-01-28T11:15:38",
@@ -99,8 +100,8 @@
   "sourceHash": "97fc6377bb1aed20",
   "sourceSize": 122873,
   "sourceMtime": 1792783285162.641,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d6579620f08b8446"
+  "digest": "1759a0a59c888452"
 }

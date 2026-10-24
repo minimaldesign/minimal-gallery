@@ -4,6 +4,7 @@
   "file": "Petits_Coquillages.jpg",
   "source": "shapes/Petits_Coquillages.jpg",
   "slug": "petits_coquillages",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Petits Coquillages",
   "caption": null,
   "date": "2005-01-30T11:02:05",
@@ -98,8 +99,8 @@
   "sourceHash": "e73254eaaa4b7300",
   "sourceSize": 160146,
   "sourceMtime": 1792783285081.3354,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "27151848cdceaab8"
+  "digest": "e3c5ee36f895e0f0"
 }

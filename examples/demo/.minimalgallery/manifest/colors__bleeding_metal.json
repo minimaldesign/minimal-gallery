@@ -4,6 +4,7 @@
   "file": "Bleeding_Metal.jpg",
   "source": "colors/Bleeding_Metal.jpg",
   "slug": "bleeding_metal",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Bleeding Metal",
   "caption": null,
   "date": "2005-04-05T12:03:31",
@@ -91,8 +92,8 @@
   "sourceHash": "9ffc463e86b091d4",
   "sourceSize": 156825,
   "sourceMtime": 1792783284978.1174,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "98a349d671323454"
+  "digest": "957295787c3f7927"
 }

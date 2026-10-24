@@ -4,6 +4,7 @@
   "file": "Long_Island.jpg",
   "source": "feelings/Long_Island.jpg",
   "slug": "long_island",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Long Island",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "c1a44e9596c07f91",
   "sourceSize": 115774,
   "sourceMtime": 1792783285095.0984,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6d7b5a1b830ecdca"
+  "digest": "08b4dbfcef46e9bc"
 }

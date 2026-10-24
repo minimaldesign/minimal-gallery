@@ -4,6 +4,7 @@
   "file": "The_Firm.jpg",
   "source": "feelings/The_Firm.jpg",
   "slug": "the_firm",
+  "added": "2026-10-23T19:21:25Z",
   "title": "The Firm",
   "caption": null,
   "date": "2005-12-21T15:41:47",
@@ -88,8 +89,8 @@
   "sourceHash": "27bfe1b06cf68bfb",
   "sourceSize": 176177,
   "sourceMtime": 1792783285143.4915,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ddd1b5e518eb9203"
+  "digest": "1c52dcaa7f2d4cab"
 }

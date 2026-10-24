@@ -4,6 +4,7 @@
   "file": "Soba_ya.jpg",
   "source": "light/Soba_ya.jpg",
   "slug": "soba_ya",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Soba ya",
   "caption": null,
   "date": "2004-06-16T18:47:31",
@@ -88,8 +89,8 @@
   "sourceHash": "470bfad13c967b14",
   "sourceSize": 159780,
   "sourceMtime": 1792783285053.8914,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d8ddab7edbbfe4f4"
+  "digest": "7b4952b4f5776b3a"
 }

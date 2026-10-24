@@ -4,6 +4,7 @@
   "file": "Flowers_and_Stones.jpg",
   "source": "shapes/Flowers_and_Stones.jpg",
   "slug": "flowers_and_stones",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Flowers and Stones",
   "caption": null,
   "date": "2005-01-31T10:38:01",
@@ -91,8 +92,8 @@
   "sourceHash": "8919d2e3a8d0f26b",
   "sourceSize": 143865,
   "sourceMtime": 1792783285034.239,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "54155b36ce7eb670"
+  "digest": "62579f780c56ede5"
 }

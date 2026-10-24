@@ -4,6 +4,7 @@
   "file": "Ginza_Apple_Store.jpg",
   "source": "shapes/Ginza_Apple_Store.jpg",
   "slug": "ginza_apple_store",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Ginza Apple Store",
   "caption": null,
   "date": "2005-04-10T18:07:37",
@@ -91,8 +92,8 @@
   "sourceHash": "98321d161b652b94",
   "sourceSize": 118650,
   "sourceMtime": 1792783285049.3013,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0d56e4562dffcb43"
+  "digest": "2122bf80d9ab9e90"
 }

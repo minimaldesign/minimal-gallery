@@ -4,6 +4,7 @@
   "file": "Kyoto_Night.jpg",
   "source": "light/Kyoto_Night.jpg",
   "slug": "kyoto_night",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kyoto Night",
   "caption": null,
   "date": "2005-04-04T18:55:34",
@@ -91,8 +92,8 @@
   "sourceHash": "1b27428e9300fa2d",
   "sourceSize": 151081,
   "sourceMtime": 1792783285009.275,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d20b2b90faeb9eb0"
+  "digest": "6f7d1241f86dc98a"
 }

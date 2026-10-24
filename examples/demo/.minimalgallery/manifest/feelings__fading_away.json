@@ -4,6 +4,7 @@
   "file": "Fading_away.jpg",
   "source": "feelings/Fading_away.jpg",
   "slug": "fading_away",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Fading away",
   "caption": "Faded flowers in a cemetery in Warsaw, Poland.",
   "date": "2005-01-16T07:47:10",
@@ -99,8 +100,8 @@
   "sourceHash": "44504932c13da6fa",
   "sourceSize": 165412,
   "sourceMtime": 1792783285035.8767,
-  "inputsHash": "1c0331298142a27b",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "1722a01fc50eb680",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "db241ef73322a7cb"
+  "digest": "e0a0997a6046bb28"
 }

@@ -4,6 +4,7 @@
   "file": "blue_door.jpg",
   "source": "colors/blue_door.jpg",
   "slug": "blue_door",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Blue door",
   "caption": null,
   "date": "2005-01-30T11:29:49",
@@ -98,8 +99,8 @@
   "sourceHash": "c2af6891c8e18a1e",
   "sourceSize": 168941,
   "sourceMtime": 1792783284913.9448,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "74c98789c359e1ec"
+  "digest": "4c3937ade1fb40d2"
 }

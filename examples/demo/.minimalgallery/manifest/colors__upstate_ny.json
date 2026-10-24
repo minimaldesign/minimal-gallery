@@ -4,6 +4,7 @@
   "file": "Upstate_NY.jpg",
   "source": "colors/Upstate_NY.jpg",
   "slug": "upstate_ny",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Upstate NY",
   "caption": null,
   "date": "2004-10-11T13:10:07",
@@ -88,8 +89,8 @@
   "sourceHash": "6dc14f6de4d1718e",
   "sourceSize": 220022,
   "sourceMtime": 1792783284886.1912,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "68540a09853f9a08"
+  "digest": "345be79bf297da2f"
 }

@@ -4,6 +4,7 @@
   "file": "Chocolate_DNA.jpg",
   "source": "shapes/Chocolate_DNA.jpg",
   "slug": "chocolate_dna",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Chocolate DNA",
   "caption": "Just for clarification, no Photoshop editing was done (besides routine levels/color correction and sharpening) on either this photo or the previous one (Cookie Heaven), those two are shots of the the stuff that was displayed a few weeks back in the windows of the (very cool) Shiseido Building in Ginza, Tokyo.",
   "date": "2005-04-10T20:19:21",
@@ -91,8 +92,8 @@
   "sourceHash": "73e9fc67b5371aea",
   "sourceSize": 156246,
   "sourceMtime": 1792783284985.4307,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1a79b15e98555f72"
+  "digest": "3cf97408f2e45946"
 }

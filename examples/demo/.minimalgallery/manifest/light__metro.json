@@ -4,6 +4,7 @@
   "file": "Metro.jpg",
   "source": "light/Metro.jpg",
   "slug": "metro",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Metro",
   "caption": null,
   "date": "2005-01-14T06:00:13",
@@ -106,8 +107,8 @@
   "sourceHash": "202390bed4bd9bad",
   "sourceSize": 158954,
   "sourceMtime": 1792783285031.5195,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e12002d4718b9b1a"
+  "digest": "a6b4d91c2c506e0c"
 }

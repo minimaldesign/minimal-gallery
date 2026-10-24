@@ -4,6 +4,7 @@
   "file": "Coney_Island_sushi.jpg",
   "source": "motion/Coney_Island_sushi.jpg",
   "slug": "coney_island_sushi",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Coney Island sushi",
   "caption": null,
   "date": "2004-11-01T17:21:49",
@@ -91,8 +92,8 @@
   "sourceHash": "b08fafb4a66cb4d0",
   "sourceSize": 163199,
   "sourceMtime": 1792783285073.042,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "907ee64146b9f50e"
+  "digest": "85d951e8f16d1fa1"
 }

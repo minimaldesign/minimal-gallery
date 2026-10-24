@@ -4,6 +4,7 @@
   "file": "Late_Afternoon_Storm.jpg",
   "source": "colors/Late_Afternoon_Storm.jpg",
   "slug": "late_afternoon_storm",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Late Afternoon Storm",
   "caption": "To answer questions I got regarding the previous image (\"The coming\"): a big storm just passed above my head in Brooklyn last night, the light out my window turned into a deep \"end of the World\" kind of yellow, so I got on my roof via the fire escape real quick and shot a bunch of pictures of the clouds before the rain started pouring. Here's another one of those. The colors in either photos are 100% natural, not from concentrate, no Photoshop added.",
   "date": "2005-05-21T13:35:11",
@@ -91,8 +92,8 @@
   "sourceHash": "f1fd1f74f368fa80",
   "sourceSize": 181331,
   "sourceMtime": 1792783285015.6765,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "bc0eb2c09b20a5e4"
+  "digest": "2aff8531716639ad"
 }

@@ -4,6 +4,7 @@
   "file": "Montauk.jpg",
   "source": "feelings/Montauk.jpg",
   "slug": "montauk",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Montauk",
   "caption": null,
   "date": "2008-07-02T15:03:23",
@@ -88,8 +89,8 @@
   "sourceHash": "680c72636c6c73b1",
   "sourceSize": 161646,
   "sourceMtime": 1792783285105.3074,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3a0efef733a79c6e"
+  "digest": "9a64e6ac9d494ce2"
 }

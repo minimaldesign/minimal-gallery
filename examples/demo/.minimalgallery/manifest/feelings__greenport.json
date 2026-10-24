@@ -4,6 +4,7 @@
   "file": "Greenport.jpg",
   "source": "feelings/Greenport.jpg",
   "slug": "greenport",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Greenport",
   "caption": null,
   "date": "2013-08-02T15:42:17",
@@ -88,8 +89,8 @@
   "sourceHash": "40ea98a0776c7622",
   "sourceSize": 331411,
   "sourceMtime": 1792783285063.7021,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "bf143eee227445ae"
+  "digest": "1b23a98ae44d87bd"
 }

@@ -4,6 +4,7 @@
   "file": "red_and_green.jpg",
   "source": "colors/red_and_green.jpg",
   "slug": "red_and_green",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Red and green",
   "caption": null,
   "date": "2005-04-03T14:48:32",
@@ -91,8 +92,8 @@
   "sourceHash": "c8308ef8a492e7f9",
   "sourceSize": 152389,
   "sourceMtime": 1792783284948.06,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "cc26a21bf4200bef"
+  "digest": "f540981e761cafe6"
 }

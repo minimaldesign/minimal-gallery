@@ -4,6 +4,7 @@
   "file": "Towards_the_sun.jpg",
   "source": "light/Towards_the_sun.jpg",
   "slug": "towards_the_sun",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Towards the sun",
   "caption": null,
   "date": "2005-11-03T16:02:40",
@@ -99,8 +100,8 @@
   "sourceHash": "b3977ae0aa49f1f0",
   "sourceSize": 156411,
   "sourceMtime": 1792783285067.1824,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "00c2b9e2bbdb40fb"
+  "digest": "2dc47e8eb7e59be7"
 }

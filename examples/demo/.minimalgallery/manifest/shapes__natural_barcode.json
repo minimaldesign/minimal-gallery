@@ -4,6 +4,7 @@
   "file": "Natural_Barcode.jpg",
   "source": "shapes/Natural_Barcode.jpg",
   "slug": "natural_barcode",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Natural Barcode",
   "caption": null,
   "date": "2005-04-10T20:20:45",
@@ -91,8 +92,8 @@
   "sourceHash": "fbd836adaa80d7e4",
   "sourceSize": 163125,
   "sourceMtime": 1792783285068.065,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "bbd86effa3af0ed6"
+  "digest": "65a367d057823104"
 }

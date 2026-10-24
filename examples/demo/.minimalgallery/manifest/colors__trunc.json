@@ -4,6 +4,7 @@
   "file": "Trunc.jpg",
   "source": "colors/Trunc.jpg",
   "slug": "trunc",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Trunc",
   "caption": null,
   "date": "2004-11-16T15:57:04",
@@ -91,8 +92,8 @@
   "sourceHash": "e2f1834d26c444c1",
   "sourceSize": 141708,
   "sourceMtime": 1792783284859.5266,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4047081010bafde2"
+  "digest": "90b881287ff2c0de"
 }

@@ -4,6 +4,7 @@
   "file": "The_yoga_queen.jpg",
   "source": "people/The_yoga_queen.jpg",
   "slug": "the_yoga_queen",
+  "added": "2026-10-23T19:21:24Z",
   "title": "The yoga queen",
   "caption": null,
   "date": "2004-09-12T13:39:22",
@@ -88,8 +89,8 @@
   "sourceHash": "292969a140a1f827",
   "sourceSize": 129923,
   "sourceMtime": 1792783284897.0784,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d370fae694120c82"
+  "digest": "21e667cbba162464"
 }

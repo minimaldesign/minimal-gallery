@@ -4,6 +4,7 @@
   "file": "Coney_Island_Tower.jpg",
   "source": "shapes/Coney_Island_Tower.jpg",
   "slug": "coney_island_tower",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Coney Island Tower",
   "caption": null,
   "date": "2005-11-03T16:15:18",
@@ -99,8 +100,8 @@
   "sourceHash": "da182f3e76bb585c",
   "sourceSize": 152045,
   "sourceMtime": 1792783285002.0825,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0838bd9b95762cec"
+  "digest": "a12cbd77175dcf53"
 }

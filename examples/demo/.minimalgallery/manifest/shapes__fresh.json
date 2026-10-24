@@ -4,6 +4,7 @@
   "file": "fresh.jpg",
   "source": "shapes/fresh.jpg",
   "slug": "fresh",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Fresh",
   "caption": null,
   "date": "2005-06-28T15:03:51",
@@ -91,8 +92,8 @@
   "sourceHash": "2bc373401fd4d9d1",
   "sourceSize": 168762,
   "sourceMtime": 1792783285132.2917,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "dc22cca924d458d9"
+  "digest": "f3c12ac6dd8c3147"
 }

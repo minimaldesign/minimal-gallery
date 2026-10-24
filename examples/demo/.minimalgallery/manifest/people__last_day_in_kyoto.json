@@ -4,6 +4,7 @@
   "file": "Last_day_in_Kyoto.jpg",
   "source": "people/Last_day_in_Kyoto.jpg",
   "slug": "last_day_in_kyoto",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Last day in Kyoto",
   "caption": null,
   "date": "2007-11-26T10:28:02",
@@ -99,8 +100,8 @@
   "sourceHash": "f8c430fd43f89281",
   "sourceSize": 136383,
   "sourceMtime": 1792783285143.2622,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "542bb8e368104b51"
+  "digest": "a56921eb22c5a5eb"
 }

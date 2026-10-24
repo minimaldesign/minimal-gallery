@@ -4,6 +4,7 @@
   "file": "Open_Gates.jpg",
   "source": "feelings/Open_Gates.jpg",
   "slug": "open_gates",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Open Gates",
   "caption": null,
   "date": "2005-11-14T16:01:32",
@@ -99,8 +100,8 @@
   "sourceHash": "e02dcf0080f75be0",
   "sourceSize": 140700,
   "sourceMtime": 1792783285117.7249,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "97bc6d8728edc385"
+  "digest": "3d8d3cab6b314074"
 }

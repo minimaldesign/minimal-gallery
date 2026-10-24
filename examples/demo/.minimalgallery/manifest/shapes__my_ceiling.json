@@ -4,6 +4,7 @@
   "file": "My_ceiling.jpg",
   "source": "shapes/My_ceiling.jpg",
   "slug": "my_ceiling",
+  "added": "2026-10-23T19:21:25Z",
   "title": "My ceiling",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "0121142f6d99f41a",
   "sourceSize": 90351,
   "sourceMtime": 1792783285064.3892,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8c1e045469e39070"
+  "digest": "437b8ee38be38a47"
 }

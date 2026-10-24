@@ -4,6 +4,7 @@
   "file": "Brooklyn_sunset.jpg",
   "source": "colors/Brooklyn_sunset.jpg",
   "slug": "brooklyn_sunset",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Brooklyn sunset",
   "caption": null,
   "date": "2004-10-06T18:21:48",
@@ -88,8 +89,8 @@
   "sourceHash": "431c8abf91c9cace",
   "sourceSize": 55954,
   "sourceMtime": 1792783284980.9907,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "eb7c572b18ad0e4c"
+  "digest": "929716a2975396ba"
 }

@@ -4,6 +4,7 @@
   "file": "The_Path.jpg",
   "source": "feelings/The_Path.jpg",
   "slug": "the_path",
+  "added": "2026-10-23T19:21:25Z",
   "title": "The Path",
   "caption": null,
   "date": "2007-11-21T13:01:58",
@@ -106,8 +107,8 @@
   "sourceHash": "5b97aa61638f353b",
   "sourceSize": 217304,
   "sourceMtime": 1792783285148.3877,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ea72da2acfa74312"
+  "digest": "feef613757e421c8"
 }

@@ -4,6 +4,7 @@
   "file": "Bloody_Green.jpg",
   "source": "colors/Bloody_Green.jpg",
   "slug": "bloody_green",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Bloody Green",
   "caption": null,
   "date": "2005-01-18T09:38:53",
@@ -99,8 +100,8 @@
   "sourceHash": "c84ec899b9fd847b",
   "sourceSize": 132833,
   "sourceMtime": 1792783284980.6394,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a2eff1dfd7d6aa3d"
+  "digest": "69905586b2e02cb6"
 }

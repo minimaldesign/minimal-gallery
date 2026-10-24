@@ -4,6 +4,7 @@
   "file": "On_the_way_back.jpg",
   "source": "light/On_the_way_back.jpg",
   "slug": "on_the_way_back",
+  "added": "2026-10-23T19:21:25Z",
   "title": "On the way back",
   "caption": null,
   "date": "2008-10-17T12:58:52",
@@ -85,8 +86,8 @@
   "sourceHash": "7fe8e7084b8c15bb",
   "sourceSize": 164047,
   "sourceMtime": 1792783285040.1968,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "50d0880073c2f952"
+  "digest": "3822fd0dd973bd5e"
 }

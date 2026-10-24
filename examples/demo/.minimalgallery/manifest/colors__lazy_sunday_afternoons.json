@@ -4,6 +4,7 @@
   "file": "lazy-sunday-afternoons.jpg",
   "source": "colors/lazy-sunday-afternoons.jpg",
   "slug": "lazy_sunday_afternoons",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Lazy sunday afternoons",
   "caption": null,
   "date": "2009-05-10T14:22:09",
@@ -85,8 +86,8 @@
   "sourceHash": "01879adebcced07f",
   "sourceSize": 232863,
   "sourceMtime": 1792783284936.624,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a2a26b07af0d6c93"
+  "digest": "44803db467dafb22"
 }

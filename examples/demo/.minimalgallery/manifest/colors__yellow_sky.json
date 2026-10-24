@@ -4,6 +4,7 @@
   "file": "yellow_sky.jpg",
   "source": "colors/yellow_sky.jpg",
   "slug": "yellow_sky",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Yellow sky",
   "caption": null,
   "date": "2005-01-31T11:56:15",
@@ -91,8 +92,8 @@
   "sourceHash": "e6cfe68815a0613b",
   "sourceSize": 111955,
   "sourceMtime": 1792783284979.3352,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a0e73aa6cb6ef212"
+  "digest": "be5476957a842197"
 }

@@ -4,6 +4,7 @@
   "file": "Wood_and_Sand.jpg",
   "source": "shapes/Wood_and_Sand.jpg",
   "slug": "wood_and_sand",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Wood and Sand",
   "caption": null,
   "date": "2004-11-01T16:53:35",
@@ -91,8 +92,8 @@
   "sourceHash": "e10b54f49ff187e4",
   "sourceSize": 141566,
   "sourceMtime": 1792783285125.7786,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "9f080d28a09af3ff"
+  "digest": "49931f4ca9fe33a9"
 }

@@ -4,6 +4,7 @@
   "file": "Metal_door_sunset.jpg",
   "source": "shapes/Metal_door_sunset.jpg",
   "slug": "metal_door_sunset",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Metal door sunset",
   "caption": null,
   "date": "2004-11-16T16:12:42",
@@ -91,8 +92,8 @@
   "sourceHash": "16b3af83a564f593",
   "sourceSize": 160116,
   "sourceMtime": 1792783285063.8103,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "05974f89f17b2b90"
+  "digest": "185e79fc0c9b022a"
 }

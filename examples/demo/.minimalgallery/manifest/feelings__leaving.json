@@ -4,6 +4,7 @@
   "file": "Leaving.jpg",
   "source": "feelings/Leaving.jpg",
   "slug": "leaving",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Leaving",
   "caption": "That's where the stone from yesterday is from...",
   "date": "2005-01-28T11:10:48",
@@ -99,8 +100,8 @@
   "sourceHash": "3db786bad7274d40",
   "sourceSize": 169360,
   "sourceMtime": 1792783285084.6694,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fa6b05308688644d"
+  "digest": "5ba77b84f682a412"
 }

@@ -4,6 +4,7 @@
   "file": "Mort_pour_la_France.jpg",
   "source": "people/Mort_pour_la_France.jpg",
   "slug": "mort_pour_la_france",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Mort pour la France",
   "caption": "I told myself I would not post huge images that don't even fit on most monitors like today's, but somehow I like the mood in this one and there was just no other way to make it work. Sorry... :)",
   "date": "2005-01-27T08:34:15",
@@ -91,8 +92,8 @@
   "sourceHash": "0a3147fb71f7ebd0",
   "sourceSize": 291321,
   "sourceMtime": 1792783285157.5027,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "08d37cc51bb26295"
+  "digest": "f90e84cf3eea7b31"
 }

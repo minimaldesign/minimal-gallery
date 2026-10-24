@@ -4,6 +4,7 @@
   "file": "Loin_des_yeux_mais_pas_le_reste.jpg",
   "source": "light/Loin_des_yeux_mais_pas_le_reste.jpg",
   "slug": "loin_des_yeux_mais_pas_le_reste",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Loin des yeux mais pas le reste",
   "caption": null,
   "date": "2005-09-24T01:27:41",
@@ -91,8 +92,8 @@
   "sourceHash": "156d6ac3c7b0171f",
   "sourceSize": 122472,
   "sourceMtime": 1792783285027.102,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4616e4a112b4f2a4"
+  "digest": "fe1a2b3939601a09"
 }

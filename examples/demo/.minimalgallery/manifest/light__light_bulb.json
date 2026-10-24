@@ -4,6 +4,7 @@
   "file": "Light_bulb.jpg",
   "source": "light/Light_bulb.jpg",
   "slug": "light_bulb",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Light bulb",
   "caption": "I found this feather filled light bulb in a store window somewhere in Paris.  It was shot at dusk and the light environment was pretty funky.  Came out kind of interesting.",
   "date": "2005-01-12T12:06:01",
@@ -106,8 +107,8 @@
   "sourceHash": "c805426a85f0b8d6",
   "sourceSize": 151288,
   "sourceMtime": 1792783285015.992,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "bc52eb16e863ab21"
+  "digest": "49bde18932062e4a"
 }

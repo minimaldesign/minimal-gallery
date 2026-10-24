@@ -4,6 +4,7 @@
   "file": "Kyoto_Tag.jpg",
   "source": "colors/Kyoto_Tag.jpg",
   "slug": "kyoto_tag",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kyoto Tag",
   "caption": null,
   "date": "2005-04-05T12:10:56",
@@ -91,8 +92,8 @@
   "sourceHash": "eedbe3d0d343030a",
   "sourceSize": 189158,
   "sourceMtime": 1792783285008.8955,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "de95ea91da43ae24"
+  "digest": "97373f5421cd2477"
 }

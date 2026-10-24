@@ -4,6 +4,7 @@
   "file": "Dusk_in_Villefranche.jpg",
   "source": "feelings/Dusk_in_Villefranche.jpg",
   "slug": "dusk_in_villefranche",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Dusk in Villefranche",
   "caption": "Tu te souviens?",
   "date": "2005-01-30T12:47:09",
@@ -98,8 +99,8 @@
   "sourceHash": "4a82f34c564dc267",
   "sourceSize": 135367,
   "sourceMtime": 1792783285027.2422,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ab9dab4accb9f1be"
+  "digest": "143a1ea75a0e7b7c"
 }

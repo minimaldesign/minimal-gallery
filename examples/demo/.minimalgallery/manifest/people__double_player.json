@@ -4,6 +4,7 @@
   "file": "Double_Player.jpg",
   "source": "people/Double_Player.jpg",
   "slug": "double_player",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Double Player",
   "caption": "Not the most artistic photo ever, but I had never seen someone playing flugelhorn and trumpet at the same time before, the guy could play the same melody with both hands at the same time, kinda cool...  I thought I'd share.",
   "date": "2005-08-18T14:30:24",
@@ -91,8 +92,8 @@
   "sourceHash": "bce84c33468dda40",
   "sourceSize": 161524,
   "sourceMtime": 1792783285110.1697,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "42d6abf223177796"
+  "digest": "bde45a3a9c5efe17"
 }

@@ -4,6 +4,7 @@
   "file": "Red_Hook_Sunset.jpg",
   "source": "feelings/Red_Hook_Sunset.jpg",
   "slug": "red_hook_sunset",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Red Hook Sunset",
   "caption": "It's going to rain tomorrow...",
   "date": "2005-11-14T16:44:22",
@@ -99,8 +100,8 @@
   "sourceHash": "c9957e8ed97b2401",
   "sourceSize": 149669,
   "sourceMtime": 1792783285125.6853,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "9dffec66cbd039f6"
+  "digest": "4ba71fde3f4c52fa"
 }

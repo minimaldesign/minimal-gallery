@@ -4,6 +4,7 @@
   "file": "On_Broadway.jpg",
   "source": "people/On_Broadway.jpg",
   "slug": "on_broadway",
+  "added": "2026-10-23T19:21:24Z",
   "title": "On Broadway",
   "caption": null,
   "date": "2004-08-23T17:57:56",
@@ -88,8 +89,8 @@
   "sourceHash": "077079da977839a9",
   "sourceSize": 130876,
   "sourceMtime": 1792783284845.2222,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a856a932fa7eb0c2"
+  "digest": "389527b34ebcc984"
 }

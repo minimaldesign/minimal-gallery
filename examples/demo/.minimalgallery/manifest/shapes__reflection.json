@@ -4,6 +4,7 @@
   "file": "Reflection.jpg",
   "source": "shapes/Reflection.jpg",
   "slug": "reflection",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Reflection",
   "caption": null,
   "date": "2005-04-07T15:12:23",
@@ -91,8 +92,8 @@
   "sourceHash": "3b251af261bfc174",
   "sourceSize": 158831,
   "sourceMtime": 1792783285087.494,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f0d120379014cc4a"
+  "digest": "77431db878e7e26b"
 }

@@ -4,6 +4,7 @@
   "file": "Polish_Sun.jpg",
   "source": "light/Polish_Sun.jpg",
   "slug": "polish_sun",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Polish Sun",
   "caption": null,
   "date": "2005-01-16T08:00:28",
@@ -106,8 +107,8 @@
   "sourceHash": "48a3343e624388b9",
   "sourceSize": 153464,
   "sourceMtime": 1792783285043.5042,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "60ab9bb0c8a78b99"
+  "digest": "ad11ba37252a55c2"
 }

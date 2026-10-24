@@ -4,6 +4,7 @@
   "file": "Wanna_go_back.jpg",
   "source": "feelings/Wanna_go_back.jpg",
   "slug": "wanna_go_back",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Wanna go back",
   "caption": null,
   "date": "2005-04-14T12:35:29",
@@ -91,8 +92,8 @@
   "sourceHash": "0070d1680e5a914d",
   "sourceSize": 114261,
   "sourceMtime": 1792783284886.8286,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "45b607a1d86ecb99"
+  "digest": "d5d5cab41c409cc5"
 }

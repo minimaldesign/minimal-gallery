@@ -4,6 +4,7 @@
   "file": "Pain_in_the_neck.jpg",
   "source": "shapes/Pain_in_the_neck.jpg",
   "slug": "pain_in_the_neck",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Pain in the neck",
   "caption": null,
   "date": "2005-07-20T16:56:10",
@@ -91,8 +92,8 @@
   "sourceHash": "fd8825ca9e92b154",
   "sourceSize": 161080,
   "sourceMtime": 1792783285074.8022,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "8f581dd33f9040b1"
+  "digest": "a20866ce5f16580c"
 }

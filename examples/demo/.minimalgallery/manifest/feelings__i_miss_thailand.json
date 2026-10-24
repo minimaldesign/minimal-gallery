@@ -4,6 +4,7 @@
   "file": "I_Miss_Thailand.jpg",
   "source": "feelings/I_Miss_Thailand.jpg",
   "slug": "i_miss_thailand",
+  "added": "2026-10-23T19:21:25Z",
   "title": "I Miss Thailand",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "ab4226c0129f9d54",
   "sourceSize": 150509,
   "sourceMtime": 1792783285068.3354,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d51a02aa34251cca"
+  "digest": "71b7003ee98dcf4b"
 }

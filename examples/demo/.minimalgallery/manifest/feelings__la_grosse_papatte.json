@@ -4,6 +4,7 @@
   "file": "La_grosse_papatte.jpg",
   "source": "feelings/La_grosse_papatte.jpg",
   "slug": "la_grosse_papatte",
+  "added": "2026-10-23T19:21:25Z",
   "title": "La grosse papatte",
   "caption": "My first use of Photoshop CS3 (beta)...",
   "date": "2006-11-05T22:55:21",
@@ -99,8 +100,8 @@
   "sourceHash": "a8c2081bc156d875",
   "sourceSize": 137383,
   "sourceMtime": 1792783285077.5725,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "81231630761b0010"
+  "digest": "a6ce69ca9db21ce1"
 }

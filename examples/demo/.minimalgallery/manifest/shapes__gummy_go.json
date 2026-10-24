@@ -4,6 +4,7 @@
   "file": "Gummy_Go.jpg",
   "source": "shapes/Gummy_Go.jpg",
   "slug": "gummy_go",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Gummy Go",
   "caption": null,
   "date": "2005-04-05T14:11:21",
@@ -91,8 +92,8 @@
   "sourceHash": "01f6919d3d841822",
   "sourceSize": 156855,
   "sourceMtime": 1792783285056.3657,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1b77b93c24f0e4b2"
+  "digest": "9eec13a489a6c204"
 }

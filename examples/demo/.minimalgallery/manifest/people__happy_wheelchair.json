@@ -4,6 +4,7 @@
   "file": "Happy_wheelchair.jpg",
   "source": "people/Happy_wheelchair.jpg",
   "slug": "happy_wheelchair",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Happy wheelchair",
   "caption": null,
   "date": "2004-07-14T15:57:55",
@@ -88,8 +89,8 @@
   "sourceHash": "89003cfdd2fdd739",
   "sourceSize": 80451,
   "sourceMtime": 1792783285119.8215,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "039f671d48414ccf"
+  "digest": "c3bb619279910f49"
 }

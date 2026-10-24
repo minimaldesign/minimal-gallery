@@ -4,6 +4,7 @@
   "file": "Self_portrait_in_SOHO.jpg",
   "source": "people/Self_portrait_in_SOHO.jpg",
   "slug": "self_portrait_in_soho",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Self portrait in SOHO",
   "caption": null,
   "date": "2004-07-20T17:05:27",
@@ -88,8 +89,8 @@
   "sourceHash": "f0175d0ef7adaede",
   "sourceSize": 94480,
   "sourceMtime": 1792783284884.7053,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "046079228a749ae3"
+  "digest": "0ceda38ea0b4bd38"
 }

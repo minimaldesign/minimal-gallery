@@ -4,6 +4,7 @@
   "file": "Books_and_streetlight.jpg",
   "source": "light/Books_and_streetlight.jpg",
   "slug": "books_and_streetlight",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Books and streetlight",
   "caption": null,
   "date": "2005-08-01T21:38:53",
@@ -91,8 +92,8 @@
   "sourceHash": "db39e57b9f7a1913",
   "sourceSize": 148921,
   "sourceMtime": 1792783284951.0823,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4597380ff020f5d1"
+  "digest": "43d8068a0008e4a7"
 }

@@ -4,6 +4,7 @@
   "file": "sOFt_buiLDing.jpg",
   "source": "shapes/sOFt_buiLDing.jpg",
   "slug": "soft_building",
+  "added": "2026-10-23T19:21:25Z",
   "title": "SOFt buiLDing",
   "caption": null,
   "date": "2004-08-01T19:05:20",
@@ -88,8 +89,8 @@
   "sourceHash": "8488afeccc961fff",
   "sourceSize": 108313,
   "sourceMtime": 1792783285146.7139,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a9d8383d4f68332e"
+  "digest": "96ebba2e9cb856f2"
 }

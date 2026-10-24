@@ -4,6 +4,7 @@
   "file": "Gomen ne.jpg",
   "source": "people/Gomen ne.jpg",
   "slug": "gomen_ne",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Gomen ne",
   "caption": null,
   "date": "2007-11-12T11:31:51",
@@ -99,8 +100,8 @@
   "sourceHash": "ed6b83e45e0c41a8",
   "sourceSize": 156509,
   "sourceMtime": 1792783285119.04,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ff2fbe7d07d3cef8"
+  "digest": "797b87d938b424ee"
 }

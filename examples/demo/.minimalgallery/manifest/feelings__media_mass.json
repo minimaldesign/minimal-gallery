@@ -4,6 +4,7 @@
   "file": "Media_mass.jpg",
   "source": "feelings/Media_mass.jpg",
   "slug": "media_mass",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Media mass",
   "caption": null,
   "date": "2005-03-25T16:51:54",
@@ -91,8 +92,8 @@
   "sourceHash": "68533730376e9cc2",
   "sourceSize": 186788,
   "sourceMtime": 1792783285102.7207,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "52b101ad497a4810"
+  "digest": "2e6389ba6f62ebdf"
 }

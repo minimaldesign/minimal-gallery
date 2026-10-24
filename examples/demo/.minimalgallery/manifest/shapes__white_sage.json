@@ -4,6 +4,7 @@
   "file": "White_Sage.jpg",
   "source": "shapes/White_Sage.jpg",
   "slug": "white_sage",
+  "added": "2026-10-23T19:21:25Z",
   "title": "White Sage",
   "caption": null,
   "date": "2006-03-03T20:53:58",
@@ -99,8 +100,8 @@
   "sourceHash": "64fa65c8f4047b5a",
   "sourceSize": 79401,
   "sourceMtime": 1792783285124.469,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "4d6472151e559d7a"
+  "digest": "3425833cc97e33de"
 }

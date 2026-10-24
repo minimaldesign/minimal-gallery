@@ -4,6 +4,7 @@
   "file": "Paris_Sunset.jpg",
   "source": "light/Paris_Sunset.jpg",
   "slug": "paris_sunset",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Paris Sunset",
   "caption": null,
   "date": "2005-01-13T12:06:25",
@@ -99,8 +100,8 @@
   "sourceHash": "2a404aaaf4396f70",
   "sourceSize": 154489,
   "sourceMtime": 1792783285042.13,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ddd06b64eeda98c2"
+  "digest": "466fa74134983603"
 }

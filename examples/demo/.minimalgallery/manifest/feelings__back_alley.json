@@ -4,6 +4,7 @@
   "file": "Back_alley.jpg",
   "source": "feelings/Back_alley.jpg",
   "slug": "back_alley",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Back alley",
   "caption": null,
   "date": "2005-08-31T14:33:01",
@@ -99,8 +100,8 @@
   "sourceHash": "17cfca498d87eeb1",
   "sourceSize": 170474,
   "sourceMtime": 1792783285000.3542,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "902a84764bd2a538"
+  "digest": "59542fe94655c660"
 }

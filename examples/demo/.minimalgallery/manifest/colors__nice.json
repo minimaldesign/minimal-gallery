@@ -4,6 +4,7 @@
   "file": "Nice.jpg",
   "source": "colors/Nice.jpg",
   "slug": "nice",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Nice",
   "caption": "Shot in Nice, South of France, in February.  The weather was strange that day.  My eyes got caught by the contrast between the vibrant blue of the Mediterranean and the melancholic pastels of the cloudy Winter sky...  and that weird looking plant too I guess...",
   "date": "2005-01-28T11:57:20",
@@ -99,8 +100,8 @@
   "sourceHash": "e4e1173d0f3b4e36",
   "sourceSize": 128593,
   "sourceMtime": 1792783285017.2827,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "898c5461f86c1006"
+  "digest": "741486d18acc455e"
 }

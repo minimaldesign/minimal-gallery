@@ -4,6 +4,7 @@
   "file": "Coconut_Tree_04.jpg",
   "source": "shapes/Coconut_Tree_04.jpg",
   "slug": "coconut_tree_04",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Coconut Tree 04",
   "caption": null,
   "date": "2005-04-16T11:19:31",
@@ -91,8 +92,8 @@
   "sourceHash": "792660110e6c9665",
   "sourceSize": 172093,
   "sourceMtime": 1792783284998.4917,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e27af06c7e5af9e5"
+  "digest": "6a6cec1f8d2b3847"
 }

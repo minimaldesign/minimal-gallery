@@ -4,6 +4,7 @@
   "file": "28_REED_dog.jpg",
   "source": "people/28_REED_dog.jpg",
   "slug": "28_reed_dog",
+  "added": "2026-10-23T19:21:25Z",
   "title": "28 REED dog",
   "caption": null,
   "date": "2005-11-14T16:07:42",
@@ -99,8 +100,8 @@
   "sourceHash": "8fc681c460f07376",
   "sourceSize": 171206,
   "sourceMtime": 1792783285088.3198,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6bf9fabcfa3a7c14"
+  "digest": "8c319ee23fd940c0"
 }

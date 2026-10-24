@@ -4,6 +4,7 @@
   "file": "Kaiona_Cafe.jpg",
   "source": "colors/Kaiona_Cafe.jpg",
   "slug": "kaiona_cafe",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Kaiona Cafe",
   "caption": null,
   "date": "2005-04-18T11:57:55",
@@ -91,8 +92,8 @@
   "sourceHash": "ebcf7370ec31af6b",
   "sourceSize": 128338,
   "sourceMtime": 1792783285004.5107,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0ee088f73a54eb30"
+  "digest": "0ea1cf5ac8b7acce"
 }

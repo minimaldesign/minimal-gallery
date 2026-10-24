@@ -4,6 +4,7 @@
   "file": "friends.jpg",
   "source": "people/friends.jpg",
   "slug": "friends",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Friends",
   "caption": null,
   "date": "2007-11-16T23:41:52",
@@ -96,8 +97,8 @@
   "sourceHash": "45882e6b6bf03762",
   "sourceSize": 182236,
   "sourceMtime": 1792783284950.5615,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f2f35a876db0f891"
+  "digest": "a7f741f75b19a240"
 }

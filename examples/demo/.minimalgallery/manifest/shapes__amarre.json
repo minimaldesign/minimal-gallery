@@ -4,6 +4,7 @@
   "file": "amarre.jpg",
   "source": "shapes/amarre.jpg",
   "slug": "amarre",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Amarre",
   "caption": "I'm leaving today for 3 weeks.  I was going to write a script to automatically upload a picture to my server everyday, but I didn't have time so I took a much simpler approach: I uploaded 21 photos at once :)  Feel free to look at all of them right away, but then don't complain if you have nothing new to check out until I get back...",
   "date": "2005-01-30T11:05:35",
@@ -98,8 +99,8 @@
   "sourceHash": "40ec90e47db352b4",
   "sourceSize": 148017,
   "sourceMtime": 1792783285129.686,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "eabf6a29e30c2d6a"
+  "digest": "ca9357199d89e25c"
 }

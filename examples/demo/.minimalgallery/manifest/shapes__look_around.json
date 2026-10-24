@@ -4,6 +4,7 @@
   "file": "look-around.jpg",
   "source": "shapes/look-around.jpg",
   "slug": "look_around",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Look around",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "1127c0ab9d21d3c6",
   "sourceSize": 216140,
   "sourceMtime": 1792783285145.0159,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "1c27efea74aff32c"
+  "digest": "f9bc1b76c8e333c9"
 }

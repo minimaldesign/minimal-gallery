@@ -4,6 +4,7 @@
   "file": "Frozen.jpg",
   "source": "feelings/Frozen.jpg",
   "slug": "frozen",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Frozen",
   "caption": null,
   "date": "2005-01-25T07:59:28",
@@ -98,8 +99,8 @@
   "sourceHash": "9a4eca0288a504b5",
   "sourceSize": 149774,
   "sourceMtime": 1792783285052.2888,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c99e3cea66ec2729"
+  "digest": "ccf2e91ccd3fb8c6"
 }

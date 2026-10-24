@@ -4,6 +4,7 @@
   "file": "Halloween.jpg",
   "source": "shapes/Halloween.jpg",
   "slug": "halloween",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Halloween",
   "caption": null,
   "date": "2004-10-28T21:10:35",
@@ -91,8 +92,8 @@
   "sourceHash": "56ad1b93999ece20",
   "sourceSize": 125740,
   "sourceMtime": 1792783285056.7869,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d9bca4f93224d006"
+  "digest": "a44f507e52e6b063"
 }

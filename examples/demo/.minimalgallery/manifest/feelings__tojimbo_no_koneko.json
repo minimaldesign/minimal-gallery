@@ -4,6 +4,7 @@
   "file": "Tojimbo_no_koneko.jpg",
   "source": "feelings/Tojimbo_no_koneko.jpg",
   "slug": "tojimbo_no_koneko",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Tojimbo no koneko",
   "caption": null,
   "date": "2005-06-01T11:13:17",
@@ -91,8 +92,8 @@
   "sourceHash": "61eee1170db6ae65",
   "sourceSize": 163019,
   "sourceMtime": 1792783284843.9172,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "7ca5510409fb4d2d"
+  "digest": "4b468ef3d3324b3b"
 }

@@ -4,6 +4,7 @@
   "file": "pachinko.jpg",
   "source": "people/pachinko.jpg",
   "slug": "pachinko",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Pachinko",
   "caption": "I still don't get how you play it.  But I don't think I could stay in a patchinko parlor for more than 10 minutes anyway, it's so loud in there!  This shot is not the best it could have been since you're actually not allowed to take pictures in there and playing the dumb gaijin who doesn't know didn't work long enough...",
   "date": "2005-04-05T16:25:06",
@@ -88,8 +89,8 @@
   "sourceHash": "187a1bbb4bfa4aeb",
   "sourceSize": 146239,
   "sourceMtime": 1792783284956.1865,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "778c30bd8aa24b5d"
+  "digest": "6e2197ef36052b55"
 }

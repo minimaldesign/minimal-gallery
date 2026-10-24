@@ -4,6 +4,7 @@
   "file": "Naima.jpg",
   "source": "people/Naima.jpg",
   "slug": "naima",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Naima",
   "caption": null,
   "date": "2005-01-28T16:52:33",
@@ -91,8 +92,8 @@
   "sourceHash": "88781e5b3805d3cd",
   "sourceSize": 157913,
   "sourceMtime": 1792783285161.9287,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "604935584984e0fe"
+  "digest": "2ee29e8046467137"
 }

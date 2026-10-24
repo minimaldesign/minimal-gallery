@@ -4,6 +4,7 @@
   "file": "In_Chinatown.jpg",
   "source": "people/In_Chinatown.jpg",
   "slug": "in_chinatown",
+  "added": "2026-10-23T19:21:25Z",
   "title": "In Chinatown",
   "caption": null,
   "date": "2004-08-17T16:16:06",
@@ -88,8 +89,8 @@
   "sourceHash": "398bd662e49d1ffd",
   "sourceSize": 166987,
   "sourceMtime": 1792783285127.069,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c027bf6ee6c9d931"
+  "digest": "48b6772b9a0d40f1"
 }

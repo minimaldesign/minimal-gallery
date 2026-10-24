@@ -4,6 +4,7 @@
   "file": "Gion_crowd.jpg",
   "source": "people/Gion_crowd.jpg",
   "slug": "gion_crowd",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Gion crowd",
   "caption": null,
   "date": "2005-04-05T17:56:33",
@@ -91,8 +92,8 @@
   "sourceHash": "e25d9ab5a343c8de",
   "sourceSize": 148713,
   "sourceMtime": 1792783285115.4634,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "5c276286b37fcf4d"
+  "digest": "fb01318ad880e4aa"
 }

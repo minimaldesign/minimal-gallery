@@ -4,6 +4,7 @@
   "file": "Arashiyama.jpg",
   "source": "feelings/Arashiyama.jpg",
   "slug": "arashiyama",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Arashiyama",
   "caption": null,
   "date": "2005-04-08T09:05:39",
@@ -91,8 +92,8 @@
   "sourceHash": "7cbb1b38a2b8f7cb",
   "sourceSize": 168926,
   "sourceMtime": 1792783284996.3208,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fa1db19d85c1d905"
+  "digest": "9518a9d51cb7f674"
 }

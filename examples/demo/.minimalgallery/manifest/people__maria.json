@@ -4,6 +4,7 @@
   "file": "Maria.jpg",
   "source": "people/Maria.jpg",
   "slug": "maria",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Maria",
   "caption": null,
   "date": "2005-07-20T17:05:47",
@@ -91,8 +92,8 @@
   "sourceHash": "c61818a2c5270361",
   "sourceSize": 145732,
   "sourceMtime": 1792783285147.9236,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2da79a77758d7657"
+  "digest": "fba52e680e227922"
 }

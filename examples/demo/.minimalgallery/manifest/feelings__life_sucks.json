@@ -4,6 +4,7 @@
   "file": "Life_sucks.jpg",
   "source": "feelings/Life_sucks.jpg",
   "slug": "life_sucks",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Life sucks",
   "caption": null,
   "date": "2004-11-06T17:02:34",
@@ -91,8 +92,8 @@
   "sourceHash": "46744f6083d677cc",
   "sourceSize": 145562,
   "sourceMtime": 1792783285086.7969,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0bead0851fdc37e1"
+  "digest": "cac0f40d5c4b03cf"
 }

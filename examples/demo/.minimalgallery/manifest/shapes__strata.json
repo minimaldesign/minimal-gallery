@@ -4,6 +4,7 @@
   "file": "strata.jpg",
   "source": "shapes/strata.jpg",
   "slug": "strata",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Strata",
   "caption": null,
   "date": "2005-01-30T11:55:53",
@@ -98,8 +99,8 @@
   "sourceHash": "7aa3e8a87e971213",
   "sourceSize": 130250,
   "sourceMtime": 1792783285146.9602,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b4cc454009c90ac0"
+  "digest": "8eedaf175dc03865"
 }

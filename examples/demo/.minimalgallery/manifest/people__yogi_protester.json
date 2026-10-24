@@ -4,6 +4,7 @@
   "file": "Yogi_protester.jpg",
   "source": "people/Yogi_protester.jpg",
   "slug": "yogi_protester",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Yogi protester",
   "caption": null,
   "date": "2004-08-31T16:05:17",
@@ -88,8 +89,8 @@
   "sourceHash": "220f6fb17a189b6a",
   "sourceSize": 164293,
   "sourceMtime": 1792783284944.6921,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "bf8aa9d611ffff2c"
+  "digest": "d0f9aa8e69685904"
 }

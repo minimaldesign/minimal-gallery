@@ -4,6 +4,7 @@
   "file": "Mushroom.jpg",
   "source": "feelings/Mushroom.jpg",
   "slug": "mushroom",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Mushroom",
   "caption": null,
   "date": "2007-11-26T12:40:35",
@@ -99,8 +100,8 @@
   "sourceHash": "d0b40928673fba47",
   "sourceSize": 167252,
   "sourceMtime": 1792783285106.9727,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "046ad38eca45a2a5"
+  "digest": "318c2915ec50ead4"
 }

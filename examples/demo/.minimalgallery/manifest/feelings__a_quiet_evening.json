@@ -4,6 +4,7 @@
   "file": "A Quiet Evening.jpg",
   "source": "feelings/A Quiet Evening.jpg",
   "slug": "a_quiet_evening",
+  "added": "2026-10-23T19:21:24Z",
   "title": "A Quiet Evening",
   "caption": null,
   "date": "2007-11-14T16:30:48",
@@ -106,8 +107,8 @@
   "sourceHash": "56e47987e9c33d21",
   "sourceSize": 223248,
   "sourceMtime": 1792783284982.8755,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c9d2c3cfc7f6429b"
+  "digest": "779b0f1915db9c78"
 }

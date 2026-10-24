@@ -4,6 +4,7 @@
   "file": "Fresh_Paint.jpg",
   "source": "colors/Fresh_Paint.jpg",
   "slug": "fresh_paint",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Fresh Paint",
   "caption": "That's how it felt at the time...  Montmartre, Paris.",
   "date": "2005-01-14T09:38:33",
@@ -106,8 +107,8 @@
   "sourceHash": "dd455691e2b4a8d6",
   "sourceSize": 150402,
   "sourceMtime": 1792783285000.426,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2bd1deca919941fc"
+  "digest": "ba4f375368f427f6"
 }

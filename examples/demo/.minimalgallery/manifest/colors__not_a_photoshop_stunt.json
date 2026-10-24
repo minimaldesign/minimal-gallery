@@ -4,6 +4,7 @@
   "file": "Not_a_photoshop_stunt.jpg",
   "source": "colors/Not_a_photoshop_stunt.jpg",
   "slug": "not_a_photoshop_stunt",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Not a photoshop stunt",
   "caption": null,
   "date": "2004-10-07T13:51:33",
@@ -88,8 +89,8 @@
   "sourceHash": "0da93bac00f1c0d9",
   "sourceSize": 94421,
   "sourceMtime": 1792783285020.3044,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "123ad2409d13082f"
+  "digest": "c3dc7dee736d5ef9"
 }

@@ -4,6 +4,7 @@
   "file": "Tulipe.jpg",
   "source": "colors/Tulipe.jpg",
   "slug": "tulipe",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Tulipe",
   "caption": null,
   "date": "2005-02-19T15:32:47",
@@ -91,8 +92,8 @@
   "sourceHash": "dfb7963d39ff0f78",
   "sourceSize": 134264,
   "sourceMtime": 1792783284871.903,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ce864bf9544d6439"
+  "digest": "392e2098cf306387"
 }

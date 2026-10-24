@@ -4,6 +4,7 @@
   "file": "Mister_Clean.jpg",
   "source": "people/Mister_Clean.jpg",
   "slug": "mister_clean",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Mister Clean",
   "caption": null,
   "date": "2005-01-30T11:40:16",
@@ -98,8 +99,8 @@
   "sourceHash": "67ba4421da44af8c",
   "sourceSize": 153213,
   "sourceMtime": 1792783285150.9763,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fdcbc62d63044e59"
+  "digest": "38266ec4ec5bb7e3"
 }

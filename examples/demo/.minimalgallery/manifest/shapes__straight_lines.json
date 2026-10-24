@@ -4,6 +4,7 @@
   "file": "Straight_lines.jpg",
   "source": "shapes/Straight_lines.jpg",
   "slug": "straight_lines",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Straight lines",
   "caption": null,
   "date": "2004-11-01T16:50:38",
@@ -91,8 +92,8 @@
   "sourceHash": "d4b9ea9f324f526b",
   "sourceSize": 142868,
   "sourceMtime": 1792783285111.2463,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ec6b901da7a3481e"
+  "digest": "770336abe468dc68"
 }

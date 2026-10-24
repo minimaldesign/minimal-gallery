@@ -4,6 +4,7 @@
   "file": "Harman_Kardon.jpg",
   "source": "shapes/Harman_Kardon.jpg",
   "slug": "harman_kardon",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Harman Kardon",
   "caption": null,
   "date": "2005-01-28T16:55:43",
@@ -91,8 +92,8 @@
   "sourceHash": "8926209de476facb",
   "sourceSize": 139972,
   "sourceMtime": 1792783285059.296,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2656404da4516172"
+  "digest": "e5b626e53b03eb15"
 }

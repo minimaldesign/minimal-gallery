@@ -4,6 +4,7 @@
   "file": "Maiko_Fans.jpg",
   "source": "people/Maiko_Fans.jpg",
   "slug": "maiko_fans",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Maiko Fans",
   "caption": null,
   "date": "2005-04-05T18:12:24",
@@ -91,8 +92,8 @@
   "sourceHash": "aeef421bd90ce7e9",
   "sourceSize": 171190,
   "sourceMtime": 1792783285146.5173,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d0c7c8f089c0e378"
+  "digest": "49cfb0aca15c71b9"
 }

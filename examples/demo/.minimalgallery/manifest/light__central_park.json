@@ -4,6 +4,7 @@
   "file": "Central Park.jpg",
   "source": "light/Central Park.jpg",
   "slug": "central_park",
+  "added": "2026-10-23T19:21:24Z",
   "title": "Central Park",
   "caption": null,
   "date": "2026-10-23T12:21:24",
@@ -82,8 +83,8 @@
   "sourceHash": "db747d6f7d3bbde8",
   "sourceSize": 418504,
   "sourceMtime": 1792783284984.4526,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "755731f12db3d51b"
+  "digest": "324f0d871f2c4ac5"
 }

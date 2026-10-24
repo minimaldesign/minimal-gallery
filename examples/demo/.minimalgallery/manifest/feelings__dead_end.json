@@ -4,6 +4,7 @@
   "file": "Dead_End.jpg",
   "source": "feelings/Dead_End.jpg",
   "slug": "dead_end",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Dead End",
   "caption": null,
   "date": "2004-11-16T17:16:54",
@@ -91,8 +92,8 @@
   "sourceHash": "d1d6988bb6a2a7a1",
   "sourceSize": 117260,
   "sourceMtime": 1792783285019.197,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "065dfac97583320e"
+  "digest": "f1230fde6bdc34b3"
 }

@@ -4,6 +4,7 @@
   "file": "Suwit.jpg",
   "source": "feelings/Suwit.jpg",
   "slug": "suwit",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Suwit",
   "caption": null,
   "date": "2026-10-23T12:21:25",
@@ -82,8 +83,8 @@
   "sourceHash": "7afd97887438b272",
   "sourceSize": 234031,
   "sourceMtime": 1792783285138.6997,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b1c12d1621b5458e"
+  "digest": "b13e00228bec4270"
 }

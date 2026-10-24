@@ -4,6 +4,7 @@
   "file": "Fountain.jpg",
   "source": "motion/Fountain.jpg",
   "slug": "fountain",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Fountain",
   "caption": null,
   "date": "2004-10-01T15:33:53",
@@ -88,8 +89,8 @@
   "sourceHash": "8cfb6780a3969746",
   "sourceSize": 178994,
   "sourceMtime": 1792783285074.5208,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "282489f7838ac4f6"
+  "digest": "b66f8d86452b3a0b"
 }

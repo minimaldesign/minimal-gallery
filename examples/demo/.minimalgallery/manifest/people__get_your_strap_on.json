@@ -4,6 +4,7 @@
   "file": "Get your strap on.jpg",
   "source": "people/Get your strap on.jpg",
   "slug": "get_your_strap_on",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Get your strap on",
   "caption": null,
   "date": "2007-11-13T11:47:42",
@@ -99,8 +100,8 @@
   "sourceHash": "7f1ed255f41f56bf",
   "sourceSize": 151268,
   "sourceMtime": 1792783285113.2004,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6dae82df4294db5f"
+  "digest": "f8eb704db512abbb"
 }

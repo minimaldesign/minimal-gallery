@@ -4,6 +4,7 @@
   "file": "Sun_Fire.jpg",
   "source": "light/Sun_Fire.jpg",
   "slug": "sun_fire",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Sun Fire",
   "caption": null,
   "date": "2005-01-27T12:16:23",
@@ -98,8 +99,8 @@
   "sourceHash": "9ac1710c3d34e8a6",
   "sourceSize": 155384,
   "sourceMtime": 1792783285056.4312,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "d01464bd0b5be41d"
+  "digest": "eca7b0190483e12d"
 }

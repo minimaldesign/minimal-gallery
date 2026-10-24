@@ -4,6 +4,7 @@
   "file": "Hanamikoji.jpg",
   "source": "light/Hanamikoji.jpg",
   "slug": "hanamikoji",
+  "added": "2026-10-23T19:21:25Z",
   "title": "Hanamikoji",
   "caption": null,
   "date": "2005-04-05T17:44:50",
@@ -91,8 +92,8 @@
   "sourceHash": "6a6881735d243d62",
   "sourceSize": 175967,
   "sourceMtime": 1792783285001.9507,
-  "inputsHash": "8fc1c0f473b0b01c",
-  "pipelineVersion": "0.2.1",
+  "inputsHash": "96b19068f74db763",
+  "pipelineVersion": "0.3.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0831d05992280462"
+  "digest": "3fe3353431ca60cd"
 }
