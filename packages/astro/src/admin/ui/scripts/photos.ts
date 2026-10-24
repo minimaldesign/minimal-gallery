@@ -673,11 +673,9 @@ function fillPhoto() {
         });
         actions.append(button);
       }
-      if (others.length) {
+      if (others.length)
         bound('duplicate-text', notice).textContent =
-          'Another photo in the gallery has exactly the same file. If you meant to show it twice, nothing needs to change; otherwise move this one to the Trash, or hide one of them.';
-        actions.append(trashButton(d));
-      }
+          'Another photo in the gallery has exactly the same file. If you meant to show it twice, nothing needs to change; otherwise hide one of them.';
     }
     notices.append(notice);
   }
@@ -685,34 +683,6 @@ function fillPhoto() {
   const inAlbum = Boolean(app.album);
   for (const b of $$<HTMLButtonElement>('[data-action="move"]', photoForm))
     b.hidden = !inAlbum;
-}
-
-/**
- * “Move to Trash” for a duplicate: the file and its sidecars go to the
- * system Trash, and the run that follows takes the photo out of the grid
- * (a `photo-removed` event closes the inspector).
- */
-function trashButton(d: Detail) {
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'bt';
-  button.textContent = 'Move this one to the Trash';
-  button.addEventListener('click', async () => {
-    button.disabled = true;
-    try {
-      const { trashed } = await api<{ trashed: string[] }>(
-        'POST',
-        `/photos/${encodeURIComponent(d.id)}/trash`
-      );
-      const files = count(trashed.length, 'file');
-      toast(`${d.title} is in the Trash`, `${files}: ${trashed.join(', ')}.`);
-      announce(`${d.title} moved to the Trash.`);
-    } catch (error) {
-      button.disabled = false;
-      toast('The photo was not moved to the Trash', (error as Error).message);
-    }
-  });
-  return button;
 }
 
 /** The overrides the form asks for that differ from what the .md holds now. */
