@@ -37,7 +37,6 @@ const firstOfYear = (p: Photo) => {
     const t = thumbOf(p);
     return (
       <li
-        class="thumbs_item"
         id={firstOfYear(p)}
         style={`--ar: ${ratioOf(p)}; --photo: ${p.color}`}>
         <a
@@ -45,7 +44,6 @@ const firstOfYear = (p: Photo) => {
           href={photoHref(p, context)}
           aria-current={p.id === current.id ? 'page' : undefined}>
           <img
-            class="thumbs_image"
             src={withBase(t.url)}
             srcset={srcset || undefined}
             sizes={srcset ? '(width < 768px) 34vw, 20vw' : undefined}

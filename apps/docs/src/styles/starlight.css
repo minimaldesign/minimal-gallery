@@ -1,0 +1,16 @@
+/* Starlight’s custom CSS entry (customCss in astro.config.mjs).
+
+   Starlight keeps its own CSS in the starlight.* cascade layers, declared
+   before this file, so every layer below ranks above it. The mCSS raw
+   scales (spacing, borders) come first because the gallery’s tokens are
+   written in them; then the gallery’s theme, the product site’s additions,
+   and the patch that maps Starlight onto them. The framework itself (reset,
+   elements, blocks) is not loaded here: Starlight brings its own. */
+
+@import '@minimalgallery/astro/theme/styles/framework/theme.default.tokens.css'
+  layer(theme.default);
+@import '@minimalgallery/astro/theme/styles/site/theme.mg.tokens.css';
+@import '@minimalgallery/astro/theme/styles/site/theme.mg.ui.css';
+@import './site/theme.docs.css';
+
+@import './site/patch.starlight.css';

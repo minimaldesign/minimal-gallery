@@ -16,6 +16,7 @@
 @import url(./site/global.transitions.css);
 
 @import url(./site/component.toggle.css);
+@import url(./site/component.playButton.css);
 @import url(./site/component.hud.css);
 @import url(./site/component.stage.css);
 @import url(./site/component.table.css);
@@ -28,5 +29,6 @@
 @import url(./site/component.palette.css);
 @import url(./site/component.keys.css);
 @import url(./site/component.ledger.css);
+@import url(./site/component.credit.css);
 
 @import url(./site/page.viewer.css);

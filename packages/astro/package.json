@@ -1,6 +1,6 @@
 {
   "name": "@minimalgallery/astro",
-  "version": "0.0.0",
+  "version": "2.0.0-beta.0",
   "description": "Astro integration, content loader, contexts and the default theme for minimalgallery.",
   "type": "module",
   "license": "MIT",
@@ -8,11 +8,13 @@
     ".": "./src/index.ts",
     "./loader": "./src/loader.ts",
     "./gallery": "./src/gallery.ts",
+    "./feeds": "./src/feeds.ts",
     "./config": "./src/config.ts",
     "./facets": "./src/data/facets.ts",
     "./theme/ViewerPage.astro": "./src/theme/layouts/ViewerPage.astro",
     "./theme/GalleryLayout.astro": "./src/theme/layouts/GalleryLayout.astro",
     "./theme/LegacyRedirect.astro": "./src/theme/components/LegacyRedirect.astro",
+    "./theme/RandomPage.astro": "./src/theme/layouts/RandomPage.astro",
     "./theme/components/*": "./src/theme/components/*",
     "./theme/styles/*": "./src/theme/styles/*"
   },

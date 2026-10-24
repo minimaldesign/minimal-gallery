@@ -1,0 +1,95 @@
+---
+/**
+ * The random page (`/random/`): sends the visitor to a random photo and
+ * replaces itself in the history, so Back skips it. Without `?in=` it picks
+ * from every photo (the list is in the page); with `?in=<context>` it picks
+ * from that context's JSON (the theme script's sessionStorage copy, else a
+ * fetch) and the photo page keeps `?in=`. Photos already shown in this
+ * visit (sessionStorage mgSeen, kept by the theme script) are left out
+ * until all of the list has been shown; then it starts over, still
+ * skipping the photo the visitor came from. Without script the page refreshes to
+ * one photo chosen from the list at build time (the same one for the same
+ * photos, so builds stay reproducible). The `r` key steps to a random
+ * photo inside the viewer instead; this page is for links.
+ */
+import config from 'virtual:minimalgallery/config';
+import { getPhotos, hash, withBase } from '../../gallery.ts';
+
+const paths = (await getPhotos()).map((p) => withBase(p.url));
+// the no-script pick: the same for the same photos (a hash of the list)
+const seed = [...hash(...paths)].reduce((n, c) => n + c.charCodeAt(0), 0);
+const pick = paths[seed % paths.length];
+const base = withBase('/');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Random photo · {config.title}</title>
+    <style>
+      html {
+        background-color: oklch(0.14 0 0);
+        color-scheme: dark;
+      }
+    </style>
+    <noscript>
+      <meta http-equiv="refresh" content={`0; url=${pick}`} />
+    </noscript>
+    <script is:inline define:vars={{ paths, base }}>
+      const id = new URLSearchParams(location.search)
+        .get('in')
+        ?.match(/^[\w.-]+(\/[\w.-]+)*$/)?.[0];
+      let from;
+      try {
+        from = new URL(document.referrer).pathname;
+      } catch {}
+      let seen = [];
+      try {
+        seen = JSON.parse(sessionStorage.mgSeen || '[]');
+      } catch {}
+      const go = (list, k = '') => {
+        const others = list.filter((p) => p !== from);
+        let pool = others.filter((p) => !seen.includes(p));
+        if (!pool.length) {
+          // all shown: forget them and start over
+          try {
+            sessionStorage.mgSeen = JSON.stringify(
+              seen.filter((p) => !list.includes(p))
+            );
+          } catch {}
+          pool = others.length ? others : list;
+        }
+        location.replace(pool[Math.floor(Math.random() * pool.length)] + k);
+      };
+      const inContext = (t) =>
+        go(
+          JSON.parse(t).photos.map((p) => p.href),
+          `?in=${encodeURIComponent(id).replace(/%2F/g, '/')}`
+        );
+      let cached;
+      try {
+        cached = id && sessionStorage[`mgCtx-${id}`];
+      } catch {}
+      if (!id) go(paths);
+      else if (cached) inContext(cached);
+      else
+        fetch(`${base}${id}.json`)
+          .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+          .then((t) => {
+            try {
+              sessionStorage[`mgCtx-${id}`] = t;
+            } catch {}
+            inContext(t);
+          })
+          .catch(() => go(paths));
+    </script>
+  </head>
+  <body>
+    <p>
+      <a href={pick}>A random photo</a>
+    </p>
+  </body>
+</html>

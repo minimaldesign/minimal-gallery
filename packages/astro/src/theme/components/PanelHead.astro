@@ -1,15 +1,17 @@
 ---
 /**
  * The panel header, the top of the window while the panel is up: the
- * breadcrumb (home / context) and the count; the crop pair and the size
- * triple (grid view only); then the grid/list pair and Filter at the right
- * end, so nothing moves between views. Radios, so they work without script,
+ * breadcrumb (home / context) and the count; the slideshow's play button
+ * and a space; the crop pair and the size triple (grid view only); then
+ * the grid/list pair and Filter at the right end, so nothing moves between
+ * views. Radios, so they work without script,
  * except the grid/list pair on pages whose list rows are built by script
  * (`list` false): hidden without it, and grid until it runs.
  */
 import config from 'virtual:minimalgallery/config';
 import { contextHref, withBase, type Context } from '../../gallery.ts';
 import FilterButton from './FilterButton.astro';
+import PlayButton from './PlayButton.astro';
 import ToggleOption from './ToggleOption.astro';
 
 interface Props {
@@ -43,6 +45,7 @@ const n = context.photos.length;
     </span>
   </nav>
   <div class="table_tools">
+    <PlayButton class="table_play" />
     <fieldset class="toggle table_gridOnly">
       <legend class="a11y-srOnly">Thumbnail shape</legend>
       <ToggleOption

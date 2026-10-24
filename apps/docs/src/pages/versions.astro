@@ -1,0 +1,54 @@
+---
+/**
+ * The version history, from the changesets changelogs of the four packages
+ * (src/lib/changelog.ts). Empty until the first release.
+ */
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection, render } from 'astro:content';
+
+const RELEASES = 'https://github.com/minimaldesign/minimal-gallery/releases';
+const versions = await Promise.all(
+  (await getCollection('versions'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (entry) => ({
+      version: entry.data.version,
+      slug: `v${entry.data.version.replaceAll('.', '-')}`,
+      Content: (await render(entry)).Content,
+    }))
+);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Version history',
+    description:
+      'What changed in each version of minimal gallery, from the packages’ changelogs.',
+  }}
+  headings={versions.map((v) => ({
+    depth: 2,
+    slug: v.slug,
+    text: v.version,
+  }))}>
+  <p>
+    The four packages (<code>create-minimalgallery</code>,{' '}
+    <code>minimalgallery</code>, <code>@minimalgallery/astro</code> and{' '}
+    <code>@minimalgallery/pipeline</code>) share one version number, so a
+    version here is the same version of each. This page is built from their
+    changelogs; each release is also on <a href={RELEASES}>GitHub</a>. To move a
+    gallery to the latest version, run <code>npx minimalgallery upgrade</code>{' '}
+    in its folder.
+  </p>
+  {versions.length ? (
+    versions.map(({ version, slug, Content }) => (
+      <section>
+        <h2 id={slug}>{version}</h2>
+        <Content />
+      </section>
+    ))
+  ) : (
+    <p>
+      No version has been released yet. The first release will be listed here,
+      with every change since.
+    </p>
+  )}
+</StarlightPage>

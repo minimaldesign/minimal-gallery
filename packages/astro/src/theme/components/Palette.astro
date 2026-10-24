@@ -3,6 +3,8 @@
  * The filter palette: a dialog of chips, one per album and facet value,
  * each a static context page with its own URL. Opened by Filter (command
  * invoker), `/` or ⌘K; typing narrows the chips, Enter opens the first.
+ * Tab goes round the field and the chips (the theme script); the chips'
+ * scroller is out of the Tab order (Firefox would stop on it).
  */
 import { contextHref, getPalette, type Context } from '../../gallery.ts';
 
@@ -38,7 +40,7 @@ const groups = await getPalette();
       <kbd>Esc</kbd>
     </button>
   </form>
-  <div class="palette_groups">
+  <div class="palette_groups" tabindex="-1">
     {groups.map((g) => (
       <section class="palette_group">
         <h2 class="palette_heading">{g.heading}</h2>

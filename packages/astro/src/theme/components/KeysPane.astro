@@ -1,14 +1,19 @@
 ---
 /**
- * The keyboard shortcuts pane, top left, in two sections. In a
- * combination, a string with spaces around it is a word (“or”), everything
- * else is a key cap. The shortcut letter is bold in its description.
+ * The keyboard shortcuts pane, top left, in two sections, with the
+ * credit's version line as its footer. In a combination, a string with
+ * spaces around it is a word (“or”), everything else is a key cap. The
+ * shortcut letter is bold in its description.
  */
+import Credit from './Credit.astro';
+
 const KEYS: Array<[string, Array<[string[], string]>]> = [
   [
     'Viewing mode',
     [
       [['←', '→'], 'Previous / next photo'],
+      [['Space'], 'Slideshow'],
+      [['r'], '<b>R</b>andom photo'],
       [['↑'], 'Open browsing mode'],
       [['z'], '<b>Z</b>oom to 1:1 and back'],
       [['i'], 'Photo <b>i</b>nformation'],
@@ -48,7 +53,7 @@ const KEYS: Array<[string, Array<[string[], string]>]> = [
       <dl class="keys_list">
         {rows.map(([combo, action]) => (
           <>
-            <dt class="keys_combo">
+            <dt>
               {combo.map((k) =>
                 k.startsWith(' ') ? (
                   <span class="keys_or">{k.trim()}</span>
@@ -57,10 +62,11 @@ const KEYS: Array<[string, Array<[string[], string]>]> = [
                 )
               )}
             </dt>
-            <dd class="keys_action" set:html={action} />
+            <dd set:html={action} />
           </>
         ))}
       </dl>
     </section>
   ))}
+  <Credit version class="keys_credit" />
 </aside>

@@ -1,0 +1,28 @@
+/* CLOSING
+
+   The way out of the page: to the demo gallery and to the docs. */
+
+.closing {
+  padding-block: var(--xl1) var(--xl3);
+}
+
+.closing_title {
+  margin: 0 0 var(--xs3);
+  color: var(--docs-heading);
+  font-size: var(--docs-size-section);
+  font-weight: var(--mg-weight-medium);
+}
+
+.closing_text {
+  max-inline-size: var(--docs-measure);
+  margin: 0 0 var(--sm3);
+  color: var(--docs-text);
+  line-height: var(--leading-lg);
+}
+
+.closing_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs2);
+  margin: 0;
+}

@@ -1,0 +1,68 @@
+/* PRODUCT SITE THEME
+
+   The docs site wears the gallery’s theme: the token contract and raw
+   palette (theme.mg.tokens.css) and the semantic tokens and element rules
+   (theme.mg.ui.css) are imported from @minimalgallery/astro before this
+   file, so every color, type and radius here is the gallery’s own. This
+   file adds only what a page of text needs on top, for the one-pager and
+   for Starlight alike. */
+
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@layer theme.user {
+  html {
+    /* theme.mg.ui.css snaps the gallery page between the viewer and the
+       panel and hides the page scrollbar. A page of text scrolls freely
+       and keeps its scrollbar. */
+    scroll-snap-type: none;
+    scrollbar-width: auto;
+
+    &::-webkit-scrollbar {
+      display: revert;
+    }
+  }
+
+  :root {
+    /* TEXT: long reading is muted ink; headings, links and code are full
+       ink, so they stand out without underlines or color */
+    --docs-text: var(--mg-ink-muted);
+    --docs-heading: var(--mg-ink);
+    --docs-measure: 40rem;
+    --docs-tracking-display: -0.02em;
+    --docs-size-display: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+    --docs-size-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+    --docs-size-section: 1.5rem;
+    --docs-size-item: 1.0625rem;
+    --docs-size-step: 1rem;
+    --docs-leading-display: 1.08;
+
+    /* mCSS UI tokens this theme answers */
+    --heading-letter-spacing: var(--docs-tracking-display);
+    --text-code-color: var(--mg-ink);
+    --text-code-muted-color: var(--mg-ink-muted);
+    --text-code-background-color: var(--mg-white-a6);
+    --wrap-width: minmax(0, 72rem);
+    --wrap-lg-spacing: var(--md2);
+
+    /* BUTTONS (the framework’s .bt): controls are 6px, full ink on the
+       primary, a hairline on the outline */
+    --bt-font-size: 0.875rem;
+    --bt-font-weight: var(--mg-weight-medium);
+    --bt-border-radius: var(--radius-md);
+    --bt-color: var(--mg-ink);
+    --bt-color-hover: var(--mg-ink);
+    --bt-background-color: var(--mg-control-hover);
+    --bt-background-color-hover: var(--mg-control-active);
+    --bt-border-color: var(--mg-hairline);
+    --bt-primary-color: var(--mg-ground);
+    --bt-primary-color-hover: var(--mg-ground);
+    --bt-primary-background-color: var(--mg-accent);
+    --bt-primary-background-color-hover: var(--mg-gray-700);
+    --bt-primary-border-color: var(--mg-accent);
+    --bt-primary-border-color-hover: var(--mg-gray-700);
+    --bt-outline-border-color: var(--mg-hairline);
+    --bt-outline-border-color-hover: var(--mg-white-a14);
+    --bt-outline-color-hover: var(--mg-ink);
+    --bt-outline-background-color-hover: var(--mg-control-hover);
+  }
+}

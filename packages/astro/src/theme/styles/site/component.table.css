@@ -45,7 +45,11 @@
 
 .table_scroller {
   position: relative;
+  /* a column, so the photos can fill what the header leaves (and a short
+     context still ends with the credit at the bottom) */
+  display: flex;
   flex: 1;
+  flex-direction: column;
   min-height: 0;
   overflow-y: auto;
   container-type: size;
@@ -66,17 +70,21 @@
   gap: var(--xs2) var(--sm1);
   min-height: var(--mg-panel-head-height);
   margin-block-end: var(--xs2);
-  padding-inline: var(--sm1);
+  padding-inline: calc(var(--sm1) + var(--mg-safe-left))
+    calc(var(--sm1) + var(--mg-safe-right));
   border-width: 0 0 var(--border-sm);
   font-size: var(--mg-size-hud);
 
   @media (--md-n-below) {
-    padding: var(--xs2) var(--xs3);
+    padding-block: var(--xs2);
+    padding-inline: calc(var(--xs3) + var(--mg-safe-left))
+      calc(var(--xs3) + var(--mg-safe-right));
   }
 }
 
 /* BREADCRUMB: home / context, then the count; home stays one click away
-   while the HUD is gone */
+   while the HUD is gone. On a phone it has the first row to itself, the
+   tools wrap below (on one row the tools left it no width at all). */
 .table_crumbs {
   display: flex;
   flex: 1;
@@ -84,6 +92,10 @@
   gap: var(--xs2);
   min-width: 0;
   white-space: nowrap;
+
+  @media (--md-n-below) {
+    flex-basis: 100%;
+  }
 
   ol {
     display: flex;
@@ -112,7 +124,9 @@
   }
 
   a {
+    overflow: hidden;
     color: inherit;
+    text-overflow: ellipsis;
 
     &:hover {
       color: var(--link-color-hover);
@@ -150,25 +164,37 @@
   gap: var(--xs2);
 }
 
+/* the play button stands apart: an empty icon's width after it */
+.table_play {
+  margin-inline-end: calc(var(--md2) * var(--mg-hud-density));
+}
+
 .table_body {
   display: grid;
+  flex: 1 0 auto;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--xs2);
-  padding-block-end: var(--xl3);
-  padding-inline: var(--mg-gutter) 0;
+  /* the same space under the credit as above it */
+  padding-block-end: calc(var(--md1) + var(--mg-safe-bottom));
+  padding-inline: calc(var(--mg-gutter) + var(--mg-safe-left))
+    var(--mg-safe-right);
 
   @media (--md-n-below) {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/* the rail: a sticky column on the right, exactly as tall as the
-   scroller's view below the header (100cqh: the scroller is a container) */
+/* the rail: a sticky column on the right, as tall as the scroller's view
+   between the header and the panel's bottom space (100cqh: the scroller
+   is a container), so a short context never scrolls for it */
 .table_rail {
   position: sticky;
   top: calc(var(--mg-panel-head-height) + var(--xs2));
   align-self: start;
-  height: calc(100cqh - var(--mg-panel-head-height) - var(--sm3));
+  height: calc(
+    100cqh - var(--mg-panel-head-height) - var(--xs2) - var(--md1) -
+      var(--mg-safe-bottom)
+  );
 
   :root:is(
       [data-view='list'],
@@ -181,4 +207,20 @@
   @media (--md-n-below) {
     display: none;
   }
+}
+
+/* the grid or the list, then the credit, which the column's spare
+   height pushes to the bottom of the panel when the photos are few */
+.table_photos {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* the credit, centered under the last row of the grid or the list, or at
+   the bottom of the panel */
+.table_credit {
+  margin-block-start: auto;
+  padding-block-start: var(--md1);
+  text-align: center;
 }

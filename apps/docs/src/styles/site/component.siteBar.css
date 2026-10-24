@@ -1,0 +1,39 @@
+/* SITE BAR
+
+   The one-pager’s navigation, drawn as the gallery’s HUD: a translucent
+   surface floating 12px from the top of the window, the name on the left
+   where the gallery has its breadcrumb, a few text links on the right. */
+
+.siteBar {
+  position: fixed;
+  z-index: 2;
+  inset-block-start: var(--xs3);
+  inset-inline: var(--xs3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sm1);
+  block-size: var(--mg-hud-height);
+  padding-inline: var(--sm1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  font-size: var(--mg-size-hud);
+}
+
+.siteBar_home {
+  color: var(--mg-ink);
+  font-weight: var(--mg-weight-medium);
+}
+
+.siteBar_nav {
+  display: flex;
+  gap: var(--sm2);
+}
+
+.siteBar_link {
+  color: var(--mg-ink-muted);
+
+  &:hover {
+    color: var(--mg-ink);
+  }
+}
