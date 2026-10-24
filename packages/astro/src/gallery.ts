@@ -58,20 +58,14 @@ interface Index {
 }
 
 const BASE = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-/** A site path with the configured base; a full URL (a bucket's) as it is. */
-export const withBase = (path: string) =>
-  /^[a-z][a-z\d+.-]*:/i.test(path) ? path : BASE + path.replace(/^\//, '');
-
 /**
- * The site's public URL: Astro's `site`, else the config file's. Feeds,
- * the sitemap and social previews need it; pages only use it when set.
+ * A site path with the configured base. Absolute URLs, such as a bucket’s
+ * media in bucket mode, are returned as they are.
  */
-export const siteOf = (site?: URL | string) =>
-  site ? new URL(site) : config.site ? new URL(config.site) : undefined;
-
-/** A site path (or a full URL) as an absolute URL. */
-export const absolute = (path: string, site: URL) =>
-  new URL(withBase(path), site).href;
+export const withBase = (path: string) =>
+  /^([a-z][a-z0-9+.-]*:)?\/\//i.test(path)
+    ? path
+    : BASE + path.replace(/^\//, '');
 
 export const ARCHIVE_ID = 'grid';
 
@@ -241,6 +235,19 @@ export const facetHref = (key: FacetKey, slug: string) =>
 
 /** The first value of a facet on a photo. */
 export const facetOf = (p: Photo, key: FacetKey) => p.facets[key]?.[0];
+
+// URLS for feeds, the sitemap and link previews
+
+/**
+ * The site's public URL: Astro's `site`, else the config file's. Feeds,
+ * the sitemap and social previews need it; pages only use it when set.
+ */
+export const siteOf = (site?: URL | string) =>
+  site ? new URL(site) : config.site ? new URL(config.site) : undefined;
+
+/** A site path (or a full URL) as an absolute URL. */
+export const absolute = (path: string, site: URL) =>
+  new URL(withBase(path), site).href;
 
 // IMAGES from the derivative ladder
 
