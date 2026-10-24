@@ -7,7 +7,7 @@ A minimal gallery is a static site: your computer processes the photos, and the 
 
 ## Which host
 
-- **Cloudflare** is recommended. Static files are served with no bandwidth charge, a deploy can hold 20,000 files, and bucket mode on Cloudflare R2 is planned for galleries that outgrow that. See [Cloudflare](/hosting/cloudflare/).
+- **Cloudflare** is recommended. You publish straight from your computer, with no git repository and no GitHub account; static files are served with no bandwidth charge; and a deploy can hold 20,000 files, roughly 3,000 full-size photos. Bucket mode on Cloudflare R2 is planned for galleries that outgrow that. See [Cloudflare](/hosting/cloudflare/).
 - **GitHub Pages** is fine for small galleries. The published site is limited to 1 GB, the repository must be public on a free account, and there is no bucket mode. See [GitHub Pages](/hosting/github-pages/).
 - **Netlify** works, but is not recommended for large galleries. Its free plan is paid in credits, and a gallery spends them on bandwidth and on every publish; when they run out, the site is paused until the next month. See [Netlify](/hosting/netlify/).
 
@@ -31,9 +31,9 @@ Each photo adds one HTML page and, in repo mode, about five resized files of abo
 
 ## Repo mode and bucket mode
 
-In **repo mode** (the default and, for now, the only mode), the pipeline writes the resized copies to `public/_mg/` and one manifest per photo to `.minimalgallery/manifest/`. Both are committed with the `photos/` folder, and the host deploys the resized copies with the pages. Nothing else is needed: no storage account, no keys.
+In **repo mode** (the default, and for now the only mode), the pipeline writes the resized copies to `public/_mg/` and one manifest per photo to `.minimalgallery/manifest/`, inside the gallery folder. The resized copies are published with the pages: uploaded with the site when you publish from your computer, or committed with the `photos/` folder when your host builds from git. Nothing else is needed: no storage account, no keys. The name comes from the config value, `storage: { mode: 'repo' }`; a git repository is not required.
 
-In **bucket mode**, the resized copies go to an S3-compatible bucket such as Cloudflare R2, served from a subdomain like `media.example.com`. The repository keeps the photos, the manifests and the code, and the deploy holds only the pages, so a gallery can grow far past the file and size limits above.
+In **bucket mode**, the resized copies go to an S3-compatible bucket such as Cloudflare R2, served from a subdomain like `media.example.com`. The deploy then holds only the pages, so a gallery can grow far past the file and size limits above. It is an option for large galleries, not the default: it needs a bucket, a domain and an access key, and Cloudflare asks for a payment method before it enables R2, even on the free tier.
 
 :::caution[Not built yet]
 
@@ -59,12 +59,14 @@ So the work happens once, on your computer, and only for new or changed photos. 
 
 | Method | Command | What it does | Hosts |
 | --- | --- | --- | --- |
-| Git | `minimalgallery publish --git` | Processes new photos, commits the gallery’s changes and pushes. The host builds and deploys the site from the repository. | Cloudflare, GitHub Pages, Netlify |
-| Direct upload | `minimalgallery publish --deploy` | Processes new photos, builds the site on your computer and uploads `dist/` with `wrangler deploy`. No git repository needed. | Cloudflare |
+| Direct upload | `minimalgallery publish --deploy` | Processes new photos, builds the site on your computer and uploads `dist/` with `wrangler deploy`. No git repository needed. | Cloudflare (the default) |
+| Git | `minimalgallery publish --git` | Processes new photos, commits the gallery’s changes and pushes. The host builds and deploys the site from the repository. | GitHub Pages, Netlify, and Cloudflare if you choose it |
 
 `npm run publish` runs `minimalgallery publish`, and the `minimalgallery.publish` field in `package.json` picks the method: `"git"`, `"deploy"` or `"build"` (build into `dist/` and stop). The scaffold sets `"deploy"` for Cloudflare, `"git"` for GitHub Pages and Netlify, and `"build"` for a local build. Both methods show what they are about to do and ask before they push or upload; `--yes` skips the question. See [Command line](/reference/cli/).
 
-Git is the better default when you already use GitHub or GitLab: every published version is a commit, and the host builds it. Direct upload suits a gallery that lives only on your computer.
+Direct upload is the default on Cloudflare because it needs nothing beyond a Cloudflare account. Only new or changed files are sent, so a publish after the first is quick, and Cloudflare keeps every version you deploy. The gallery folder on your computer is then the only copy of your photos, sidecars and album order, so keep it in your backups.
+
+Choose git when you want more than that: every published version kept as a commit, a copy of the gallery on GitHub or GitLab, or publishing from more than one computer. GitHub Pages and Netlify always publish from git. [Cloudflare](/hosting/cloudflare/#publish-from-git-optional) explains how to switch a gallery to git.
 
 ## Custom domains
 

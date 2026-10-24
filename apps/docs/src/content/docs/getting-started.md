@@ -209,9 +209,9 @@ The first time, it stops and asks you to connect Cloudflare. This is needed once
 npx wrangler login
 ```
 
-Your browser opens on Cloudflare. Sign in, or create the free account, allow access, and go back to Terminal. Run `npm run publish` again. It processes any new photos, shows what it is about to do (build the site, then upload it) and asks “Go ahead?”. Choose Yes: it builds the site into `dist/` and uploads it to Cloudflare. The last lines show your gallery’s address on `workers.dev`.
+Your browser opens on Cloudflare. Sign in, or create the free account on the same page, allow access, and go back to Terminal. Run `npm run publish` again. It processes any new photos, shows what it is about to do (build the site, then upload it) and asks “Go ahead?”. Choose Yes: it builds the site into `dist/` and uploads it to Cloudflare. On a new Cloudflare account, it first asks to register a `workers.dev` subdomain: answer yes and type a name, which becomes part of your gallery’s address. The last lines show that address.
 
-Every later publish is the same command, without the login. To use your own domain, see [Cloudflare](/hosting/cloudflare/).
+Every later publish is the same command, without the login, and sends only what changed. No git repository or GitHub account is involved; to publish from git instead, or to use your own domain, see [Cloudflare](/hosting/cloudflare/).
 
 ### GitHub Pages or Netlify
 

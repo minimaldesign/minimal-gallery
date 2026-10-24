@@ -1,9 +1,9 @@
 ---
 title: Cloudflare
-description: Host a minimal gallery on Cloudflare Workers with static assets, published from a git repository or uploaded from your computer, with cache headers, a custom domain and hotlink protection.
+description: Host a minimal gallery on Cloudflare Workers with static assets, uploaded from your computer or built from a git repository, with cache headers, a custom domain and hotlink protection.
 ---
 
-This page sets up a gallery on Cloudflare: the Worker the scaffold configures, the two ways to publish (Workers Builds from a git repository, or direct upload from your computer), cache headers, a custom domain, the limits, hotlink protection, and the planned bucket mode on R2.
+This page sets up a gallery on Cloudflare: the Worker the scaffold configures, the two ways to publish (from your computer, the default, or from a git repository with Workers Builds), cache headers, a custom domain, the limits, hotlink protection, and the planned bucket mode on R2.
 
 ## Workers with static assets
 
@@ -28,9 +28,31 @@ With the default HTML handling, a URL without its trailing slash, like `/japan-2
 
 The scaffold also adds `wrangler` to the gallery’s `devDependencies`, so every computer and every build uses the same version.
 
-## Publish from git with Workers Builds
+## Publish from your computer
 
-Workers Builds connects the Worker to a GitHub or GitLab repository: every push to the production branch builds the site and deploys it. Nothing goes live without a commit, and every published version is in the history.
+Direct upload builds the site on your computer and sends it to Cloudflare. It needs no git repository and no GitHub account, and it is the scaffold’s default for Cloudflare (`"publish": "deploy"` in `package.json`).
+
+```sh
+npx wrangler login
+npm run publish
+```
+
+The first time:
+
+1. `npx wrangler login` opens your browser on Cloudflare. Sign in, or create a free account on the same page, then allow access. You do this once per computer.
+2. `npm run publish` processes new photos, shows the plan (`astro build`, then `wrangler deploy`) and asks before it goes ahead. Pass `--yes` to skip the question: `npm run publish -- --yes`.
+3. On a new Cloudflare account, `wrangler deploy` asks to register a `workers.dev` subdomain. Answer yes and type a name: it becomes the address of everything you publish on this account, `https://my-gallery.<name>.workers.dev` for this gallery.
+4. The first upload creates the Worker, and the last lines show the gallery’s address.
+
+Later publishes send only new or changed files. Cloudflare keeps every version you deploy: `npx wrangler rollback` in the gallery folder puts the previous one back.
+
+The `deploy` script (`npm run deploy`) runs `astro build && wrangler deploy` without processing new photos first. Use `npm run publish` unless you know every photo is already processed.
+
+To deploy from another CI service (GitHub Actions, for example) rather than Workers Builds, run `npm run deploy` there with `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` set as secrets. `.env.example` lists both.
+
+## Publish from git (optional)
+
+With Workers Builds, Cloudflare builds the gallery from a GitHub or GitLab repository: every push to the production branch builds the site and deploys it. Choose it when you want every published version kept as a commit, a copy of the gallery on GitHub or GitLab, or to publish from more than one computer. Nothing goes live without a commit.
 
 1. Push the gallery to a new GitHub or GitLab repository. Commit the lockfile your package manager wrote (`package-lock.json`, `pnpm-lock.yaml`, `yarn.lock` or `bun.lock`).
 2. In the Cloudflare dashboard, open **Workers & Pages**, select **Create application**, choose GitHub or GitLab, and pick the repository. If the Worker already exists (from a direct upload), open it instead and select **Connect** under **Settings** > **Build**.
@@ -62,21 +84,6 @@ From then on, `npm run publish` processes new photos, commits the photos, manife
 Under **Settings** > **Build** > **Build cache**, select **Enable**. Cloudflare then keeps `node_modules/.astro` between builds, where Astro stores its incremental build cache, so pages whose photos have not changed are not rendered again. The cache is kept for 7 days after it was last used.
 
 :::
-
-## Publish by direct upload
-
-Direct upload builds the site on your computer and sends it to Cloudflare. It needs no git repository and no GitHub account. It is the scaffold’s default for Cloudflare (`"publish": "deploy"`).
-
-```sh
-npx wrangler login
-npm run publish
-```
-
-`npx wrangler login` opens your browser to sign in to Cloudflare; you do it once per computer. `npm run publish` then processes new photos, shows the plan (`astro build`, then `wrangler deploy`), asks before it goes ahead, builds the site and uploads `dist/`. The first upload creates the Worker. Pass `--yes` to skip the question: `npm run publish -- --yes`.
-
-The `deploy` script (`npm run deploy`) runs `astro build && wrangler deploy` without processing new photos first. Use `npm run publish` unless you know every photo is already processed.
-
-To deploy from another CI service (GitHub Actions, for example) rather than Workers Builds, run `npm run deploy` there with `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` set as secrets. `.env.example` lists both.
 
 ## Cache headers
 
@@ -166,7 +173,7 @@ In bucket mode the resized copies go to a Cloudflare R2 bucket, served from a su
 
 The setup will be:
 
-1. Create an R2 bucket. In the bucket’s **Settings**, under **Custom Domains**, add `media.example.com`. The domain must be a zone in the same Cloudflare account as the bucket. Do not use the bucket’s `r2.dev` address for a public gallery: it is rate limited and meant for development.
+1. Enable R2 in the Cloudflare dashboard, under **R2 Object Storage**. Cloudflare asks for a payment method before it enables R2, even if the gallery stays within the free tier. Then create an R2 bucket. In the bucket’s **Settings**, under **Custom Domains**, add `media.example.com`. The domain must be a zone in the same Cloudflare account as the bucket. Do not use the bucket’s `r2.dev` address for a public gallery: it is rate limited and meant for development.
 2. Create an R2 API token that can read and write the bucket. Its keys go in `MG_S3_ACCESS_KEY_ID` and `MG_S3_SECRET_ACCESS_KEY`, as environment variables or in the gallery’s `.env` file, never in the config. `.env` is not committed.
 
 3. Point the gallery at the bucket in `minimalgallery.config.ts`:
