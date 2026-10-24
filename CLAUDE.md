@@ -25,7 +25,8 @@ Static photo gallery toolkit: an Astro 7.4 integration plus a local Node pipelin
 
 - Node 24.11 via nodenv (`.node-version`), pnpm 10 (after a global install run `nodenv rehash`), ExifTool and cjxl installed.
 - Yann keeps the prototype served on port 4410 and the app’s preview may hold 4322; use 4421 and up for your own servers.
-- The demo’s generated files (`examples/demo/.minimalgallery`, `public/_mg`) are ignored; run `node packages/pipeline/dist/cli.js examples/demo` after `pnpm build` to regenerate them.
+- The demo is in repo mode: its manifests (`examples/demo/.minimalgallery/manifest`) are committed, so each photo keeps its `added` date, and the resized photos (`public/_mg`) are ignored: `demo:ci` encodes them before the build, in Cloudflare’s build too. After changing photos or the pipeline, run `node packages/pipeline/dist/cli.js examples/demo` after `pnpm build` and commit the manifests. Moving the demo to bucket mode later is the checklist in PR #8.
+- The admin runs only under `astro dev` (`pnpm --filter minimalgallery-demo run admin`, at `/_mg/admin/`); its local HTTP API is described in `packages/astro/src/admin/README.md`.
 
 ## Open work
 

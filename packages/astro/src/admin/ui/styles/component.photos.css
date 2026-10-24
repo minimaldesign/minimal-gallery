@@ -1,0 +1,159 @@
+/* PHOTOS
+
+   The grid of the current album (or of every photo): square thumbnails,
+   the title under each, attention flags in the corner. A tile is a button
+   that opens the photo in the inspector (aria-current marks the open
+   one). In an album the tiles can be dragged to a new order (the script
+   sets is-dragging on the moving tile and data-drop on the one it would
+   land beside), or moved with Option and the arrow keys. A photo still
+   uploading or being processed is aria-busy, showing the local file
+   dimmed until its thumbnail arrives. */
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--admin-tile-size), 1fr));
+  gap: var(--sm1) var(--xs3);
+  margin: 0;
+  padding: var(--admin-gutter);
+  list-style: none;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.photos_item {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--xs1);
+  min-width: 0;
+
+  &[draggable='true'] {
+    cursor: grab;
+  }
+
+  &.is-dragging {
+    opacity: var(--o-2);
+  }
+
+  /* where a dragged tile would land */
+  &[data-drop]::after {
+    content: '';
+    position: absolute;
+    inset-block: 0 var(--md1);
+    width: 2px;
+    border-radius: 1px;
+    background-color: var(--mg-accent);
+  }
+
+  &[data-drop='before']::after {
+    inset-inline-start: calc(-1 * var(--xs2));
+  }
+
+  &[data-drop='after']::after {
+    inset-inline-end: calc(-1 * var(--xs2));
+  }
+}
+
+.photos_open {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background-color: var(--mg-gray-200);
+  cursor: pointer;
+
+  &[aria-current='true'] {
+    outline: var(--border-md) solid var(--mg-accent);
+    outline-offset: var(--border-md);
+  }
+
+  .photos_item[aria-busy='true'] &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      var(--mg-white-a10) 50%,
+      transparent 70%
+    );
+    background-size: 300% 100%;
+
+    @media (--motionOK) {
+      animation: photos-busy calc(1400ms * var(--mg-motion)) linear infinite;
+    }
+  }
+}
+
+@keyframes photos-busy {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -50% 0;
+  }
+}
+
+.photos_image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--mg-duration-slide) var(--mg-ease-out);
+  pointer-events: none;
+
+  @starting-style {
+    opacity: 0;
+  }
+
+  /* waiting for its file: no broken-image mark, no alt text */
+  &:not([src]) {
+    visibility: hidden;
+  }
+
+  .photos_item[aria-busy='true'] & {
+    opacity: var(--o-2);
+  }
+
+  .photos_item[data-hidden] & {
+    opacity: var(--o-2);
+  }
+}
+
+.photos_title {
+  overflow: hidden;
+  color: var(--mg-ink-muted);
+  font-size: var(--mg-size-small);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .photos_item:has([aria-current='true']) & {
+    color: var(--mg-ink);
+  }
+}
+
+/* the status line of a photo still on its way (uploading, processing) */
+.photos_state {
+  position: absolute;
+  inset: auto var(--xs2) calc(var(--md1) + var(--xs2));
+  color: var(--mg-ink);
+  font-size: var(--mg-size-small);
+  pointer-events: none;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.photos_flags {
+  position: absolute;
+  inset: var(--xs1) var(--xs1) auto auto;
+  display: flex;
+  gap: var(--xs1);
+}

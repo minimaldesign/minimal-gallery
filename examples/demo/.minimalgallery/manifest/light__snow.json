@@ -1,0 +1,105 @@
+{
+  "id": "light__snow",
+  "album": "light",
+  "file": "snow.jpg",
+  "source": "light/snow.jpg",
+  "slug": "snow",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Snow",
+  "caption": null,
+  "date": "2005-01-25T10:37:21",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/1000",
+    "shutterSeconds": 0.001,
+    "aperture": 8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Thorenc"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3841,
+    "c": 0.0466,
+    "h": 231.46
+  },
+  "thumbhash": "pPcZHYSHiIdwh3eId4d4eHdwdgdn",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFB//EABcBAAMBAAAAAAAAAAAAAAAAAAEDBAD/2gAMAwEAAhADEAAAAJLksY7ZPQEf/8QAJBAAAQIEBQUAAAAAAAAAAAAAAgESAAMREwQFBhAhFiIyYZH/2gAIAQEAAT8A6azO8MmyLlJB5rT7AaWxqsdNkC/x7vdNhER4RESP/8QAGhEAAgIDAAAAAAAAAAAAAAAAAhMAARBRUv/aAAgBAgEBPwBw6jh5vP8A/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECExBRUv/aAAgBAwEBPwCmWymXSHj/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14446,
+      "format": "avif",
+      "url": "/_mg/light__snow/a65fe108-grid.avif",
+      "key": "light__snow/a65fe108-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 32747,
+      "format": "jpeg",
+      "url": "/_mg/light__snow/a65fe108-jpeg1600.jpg",
+      "key": "light__snow/a65fe108-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 122640,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/snow.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-25",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.001,
+      "label": "1/1000"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "thorenc",
+        "label": "Thorenc"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "563b6dcfe7efc86e",
+  "sourceSize": 122640,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c2ff67844a372699"
+}

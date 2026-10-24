@@ -1,0 +1,98 @@
+{
+  "id": "colors__trunc",
+  "album": "colors",
+  "file": "Trunc.jpg",
+  "source": "colors/Trunc.jpg",
+  "slug": "trunc",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Trunc",
+  "caption": null,
+  "date": "2004-11-16T15:57:04",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 4,
+    "focal": 170,
+    "focal35": 255,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.523,
+    "c": 0.025,
+    "h": 285.5
+  },
+  "thumbhash": "n/cJHYKgl4eJiIiId4eHiICYB4V5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgX/xAAVAQEBAAAAAAAAAAAAAAAAAAADBP/aAAwDAQACEAMQAAAAkVGtiYhaKGVf/8QAHhAAAgEFAAMAAAAAAAAAAAAAAQIDAAQRITEFEmH/2gAIAQEAAT8AE3vOXHcjleKLrMWyrRkE/eVZopiZiN6qzZkkkCnGxX//xAAbEQEAAgIDAAAAAAAAAAAAAAABAAIREgMhQf/aAAgBAgEBPwBprTXyXtqGDucy5Yg2rP/EABgRAAMBAQAAAAAAAAAAAAAAAAABAhFB/9oACAEDAQE/AJesS0g4f//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 38216,
+      "format": "avif",
+      "url": "/_mg/colors__trunc/307446fe-grid.avif",
+      "key": "colors__trunc/307446fe-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 70108,
+      "format": "jpeg",
+      "url": "/_mg/colors__trunc/307446fe-jpeg1600.jpg",
+      "key": "colors__trunc/307446fe-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 141708,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Trunc.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 170,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e2f1834d26c444c1",
+  "sourceSize": 141708,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c644d4ae7be4afa3"
+}

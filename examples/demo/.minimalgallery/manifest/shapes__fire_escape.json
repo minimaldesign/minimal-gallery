@@ -1,0 +1,89 @@
+{
+  "id": "shapes__fire_escape",
+  "album": "shapes",
+  "file": "Fire_Escape.jpg",
+  "source": "shapes/Fire_Escape.jpg",
+  "slug": "fire_escape",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Fire Escape",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GggKBYCxiGjLWXifheVHhgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAAgSI8sz//EACIQAAMAAQMDBQAAAAAAAAAAAAECAwQABREGIjESFCFRYv/aAAgBAQABPwC3UW6OTjYZq0U7IFpc0P5bW233q9Mq2emT7UyAd+FX0/R41elIPESdkCqhHB8fAOsDJvbbZPShLDJVOfHa/ka//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 35551,
+      "format": "avif",
+      "url": "/_mg/shapes__fire_escape/afdd0d0e-grid.avif",
+      "key": "shapes__fire_escape/afdd0d0e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 74126,
+      "format": "jpeg",
+      "url": "/_mg/shapes__fire_escape/afdd0d0e-jpeg1600.jpg",
+      "key": "shapes__fire_escape/afdd0d0e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 169473,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Fire_Escape.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "5a426fabdec5255e",
+  "sourceSize": 169473,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "e833d1dc367a92e9"
+}

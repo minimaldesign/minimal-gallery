@@ -1,0 +1,98 @@
+{
+  "id": "feelings__flag_obsession",
+  "album": "feelings",
+  "file": "Flag_Obsession.jpg",
+  "source": "feelings/Flag_Obsession.jpg",
+  "slug": "flag_obsession",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Flag Obsession",
+  "caption": null,
+  "date": "2005-07-03T15:50:05",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 16,
+    "focal": 24,
+    "focal35": 36,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5173,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "nRgGDYJfeWmheXhyaMl4gKmPePiY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIDBP/EABUBAQEAAAAAAAAAAAAAAAAAAAEE/9oADAMBAAIQAxAAAAAnoxIqRT//xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABCIREhMhIzFSgf/aAAgBAQABPwB4TkVRiAVVgABUtvxh22vgBj7DzUU8pkILnFV0+1JeXI5e6cW0HQV//8QAGREBAQADAQAAAAAAAAAAAAAAAQACEWEh/9oACAECAQE/ADoezjKmu5Wr/8QAGxEAAwACAwAAAAAAAAAAAAAAAAERAhJBUdH/2gAIAQMBAT8AvXBtWYpO08Z//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 70226,
+      "format": "avif",
+      "url": "/_mg/feelings__flag_obsession/3743d4c6-grid.avif",
+      "key": "feelings__flag_obsession/3743d4c6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 130770,
+      "format": "jpeg",
+      "url": "/_mg/feelings__flag_obsession/3743d4c6-jpeg1600.jpg",
+      "key": "feelings__flag_obsession/3743d4c6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 250731,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Flag_Obsession.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 16,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 24,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "2c431e64321330a5",
+  "sourceSize": 250731,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a0e5482e7a79a52e"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "feelings__arashiyama",
+  "album": "feelings",
+  "file": "Arashiyama.jpg",
+  "source": "feelings/Arashiyama.jpg",
+  "slug": "arashiyama",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Arashiyama",
+  "caption": null,
+  "date": "2005-04-08T09:05:39",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 18,
+    "focal": 52,
+    "focal35": 78,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3582,
+    "c": 0.0228,
+    "h": 18.27
+  },
+  "thumbhash": "WxgSBYCPiIiLh4iLd4eImT4C6AOQ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgX/xAAWAQEBAQAAAAAAAAAAAAAAAAACAAP/2gAMAwEAAhADEAAAAKueoCnBQRH/xAAjEAABAwMCBwAAAAAAAAAAAAACAQMEAAUREiETIyQxUWKS/9oACAEBAAE/ALjepjGrrXFAlyPD05qfdX5RqpqReN+6e1S2WVZXlB8pU0AFwsJjev/EABcRAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8A2o//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREQ/9oACAEDAQE/AIXGf//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 36326,
+      "format": "avif",
+      "url": "/_mg/feelings__arashiyama/481e2339-grid.avif",
+      "key": "feelings__arashiyama/481e2339-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 68502,
+      "format": "jpeg",
+      "url": "/_mg/feelings__arashiyama/481e2339-jpeg1600.jpg",
+      "key": "feelings__arashiyama/481e2339-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 168926,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Arashiyama.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-08",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 18,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 52,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "7cbb1b38a2b8f7cb",
+  "sourceSize": 168926,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "4f67ff215b162cf8"
+}

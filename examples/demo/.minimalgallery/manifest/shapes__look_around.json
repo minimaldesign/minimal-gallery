@@ -1,0 +1,89 @@
+{
+  "id": "shapes__look_around",
+  "album": "shapes",
+  "file": "look-around.jpg",
+  "source": "shapes/look-around.jpg",
+  "slug": "look_around",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Look around",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 600,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DQgGBYCuipVGeFOwSoRIZwAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAMIAMkc//8QAIBAAAgICAQUBAAAAAAAAAAAAAQIDEQAhEgQTMTJRYf/aAAgBAQABPwCWL0h4BWQAt+3jQpB245GpnG9bUfc6lQsUrjTcKvIyS1k78Z//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 427,
+      "bytes": 32953,
+      "format": "avif",
+      "url": "/_mg/shapes__look_around/fcf855c4-grid.avif",
+      "key": "shapes__look_around/fcf855c4-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 600,
+      "bytes": 92884,
+      "format": "jpeg",
+      "url": "/_mg/shapes__look_around/fcf855c4-jpeg1600.jpg",
+      "key": "shapes__look_around/fcf855c4-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 216140,
+    "width": 900,
+    "height": 600,
+    "relativePath": "photos/shapes/look-around.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "1127c0ab9d21d3c6",
+  "sourceSize": 216140,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1b617b56e1e2ff12"
+}

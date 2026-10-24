@@ -1,0 +1,106 @@
+{
+  "id": "shapes__on_5th_avenue",
+  "album": "shapes",
+  "file": "On_5th_Avenue.jpg",
+  "source": "shapes/On_5th_Avenue.jpg",
+  "slug": "on_5th_avenue",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "On Fifth Avenue",
+  "caption": null,
+  "date": "2006-05-24T16:56:00",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "New York",
+    "state": "NY",
+    "country": "USA",
+    "location": "Midtown"
+  },
+  "placeLabel": "New York, USA",
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DggKBYDxVHeWZYiUdZmIlgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQH/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAz0SAS8//xAAhEAACAQQCAgMAAAAAAAAAAAABAgMEBRESACIhYTFBcf/aAAgBAQABPwBkkt9HE5KiSdGChWyUT48+25YLdT1IWZ9t45Nv1frhJlpNnOzDGCfZxy3XGtpekMxVXCxkYB65LY5//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 29804,
+      "format": "avif",
+      "url": "/_mg/shapes__on_5th_avenue/c9f16fee-grid.avif",
+      "key": "shapes__on_5th_avenue/c9f16fee-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 56769,
+      "format": "jpeg",
+      "url": "/_mg/shapes__on_5th_avenue/c9f16fee-jpeg1600.jpg",
+      "key": "shapes__on_5th_avenue/c9f16fee-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 149639,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/On_5th_Avenue.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2006",
+    "month": "05",
+    "day": "05-24",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "new-york-usa",
+      "label": "New York, USA"
+    }
+  },
+  "sourceHash": "918bc7713b2a9b2b",
+  "sourceSize": 149639,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6c8a995160680e8e"
+}

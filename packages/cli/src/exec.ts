@@ -48,6 +48,41 @@ export function capture(
   });
 }
 
+/**
+ * Run a command with its output shown as it comes and also collected, for
+ * commands whose output carries a result (wrangler prints the deployed URL).
+ */
+export function runTee(
+  command: string,
+  args: string[],
+  cwd: string
+): Promise<Captured> {
+  return new Promise((done, fail) => {
+    const child = spawn(command, args, {
+      cwd,
+      stdio: ['inherit', 'pipe', 'pipe'],
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', (d) => {
+      stdout += d;
+      process.stdout.write(d);
+    });
+    child.stderr.on('data', (d) => {
+      stderr += d;
+      process.stderr.write(d);
+    });
+    child.on('error', (e) =>
+      fail(
+        (e as NodeJS.ErrnoException).code === 'ENOENT'
+          ? new CliError(`${command} is not installed or not on the PATH.`)
+          : e
+      )
+    );
+    child.on('close', (code) => done({ code: code ?? 1, stdout, stderr }));
+  });
+}
+
 /** Run a command and stop with an error when it fails. */
 export async function runOrFail(
   command: string,

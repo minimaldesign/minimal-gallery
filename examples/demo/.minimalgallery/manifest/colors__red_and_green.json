@@ -1,0 +1,98 @@
+{
+  "id": "colors__red_and_green",
+  "album": "colors",
+  "file": "red_and_green.jpg",
+  "source": "colors/red_and_green.jpg",
+  "slug": "red_and_green",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Red and green",
+  "caption": null,
+  "date": "2005-04-03T14:48:32",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 3.2,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3536,
+    "c": 0.0346,
+    "h": 66.32
+  },
+  "thumbhash": "0ygGDYJgZ6o4aIeZmId4RXA4CYeT",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABcBAAMBAAAAAAAAAAAAAAAAAAACAwT/2gAMAwEAAhADEAAAAMXmvdlRFlIP/8QAIBAAAgIBBAMBAAAAAAAAAAAAAQIDEQAEEhMxISJBcf/aAAgBAQABPwDSoy8/Lo9noFO4WbbplJrIJRFGI5HRlrwbvGd0kIViB1X6MZVZaI+Z/8QAGREBAAIDAAAAAAAAAAAAAAAAAQARAhBB/9oACAECAQE/AHlZRLd//8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQYf/aAAgBAwEBPwA0g3//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 34508,
+      "format": "avif",
+      "url": "/_mg/colors__red_and_green/9ae3703b-grid.avif",
+      "key": "colors__red_and_green/9ae3703b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 74867,
+      "format": "jpeg",
+      "url": "/_mg/colors__red_and_green/9ae3703b-jpeg1600.jpg",
+      "key": "colors__red_and_green/9ae3703b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 152389,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/red_and_green.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 3.2,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "c8308ef8a492e7f9",
+  "sourceSize": 152389,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "62878a25935d8b81"
+}

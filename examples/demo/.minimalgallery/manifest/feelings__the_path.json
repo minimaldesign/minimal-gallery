@@ -1,0 +1,113 @@
+{
+  "id": "feelings__the_path",
+  "album": "feelings",
+  "file": "The_Path.jpg",
+  "source": "feelings/The_Path.jpg",
+  "slug": "the_path",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "The Path",
+  "caption": null,
+  "date": "2007-11-21T13:01:58",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/30",
+    "shutterSeconds": 0.03333333333333333,
+    "aperture": 3.5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 400,
+    "ev": 1,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": null
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [
+    "HDR"
+  ],
+  "copyright": "minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "E/gJBYAKlJefVId4d1eHdl7fGApy",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAE/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAICDIR//EAB4QAAIBBQEBAQAAAAAAAAAAAAECAwAEBREhEiJB/9oACAEBAAE/AMJk7fHe4FgaW6lPwFQg1k72Ka5QxmUIB0ONEMW7VuoGz3asdHZqVR6U/va//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 44580,
+      "format": "avif",
+      "url": "/_mg/feelings__the_path/116542f3-grid.avif",
+      "key": "feelings__the_path/116542f3-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 135535,
+      "format": "jpeg",
+      "url": "/_mg/feelings__the_path/116542f3-jpeg1600.jpg",
+      "key": "feelings__the_path/116542f3-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 217304,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/feelings/The_Path.jpg",
+    "icc": "ProPhoto RGB"
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-21",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 3.5,
+    "shutter": {
+      "seconds": 0.03333333333333333,
+      "label": "1/30"
+    },
+    "iso": 400,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [
+      {
+        "slug": "hdr",
+        "label": "HDR"
+      }
+    ],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "5b97aa61638f353b",
+  "sourceSize": 217304,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ccccb028d089d281"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "feelings__leaving",
+  "album": "feelings",
+  "file": "Leaving.jpg",
+  "source": "feelings/Leaving.jpg",
+  "slug": "leaving",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Leaving",
+  "caption": "That's where the stone from yesterday is from...",
+  "date": "2005-01-28T11:10:48",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nice",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Nice, France",
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4017,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FwgOBYBpd3hniHiAidd5aAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMG/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAARM2FP/EACEQAAEDBAIDAQAAAAAAAAAAAAIBAwQAERIUBUExYbHC/9oACAEBAAE/AA4KfIxvrglu3L/Kd44I1hOXGE/TpF+a3JeChsu4r5TNaKQ+gqiOnZesq//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 30357,
+      "format": "avif",
+      "url": "/_mg/feelings__leaving/04bc2133-grid.avif",
+      "key": "feelings__leaving/04bc2133-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 58646,
+      "format": "jpeg",
+      "url": "/_mg/feelings__leaving/04bc2133-jpeg1600.jpg",
+      "key": "feelings__leaving/04bc2133-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 169360,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Leaving.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "nice-france",
+      "label": "Nice, France"
+    }
+  },
+  "sourceHash": "3db786bad7274d40",
+  "sourceSize": 169360,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "867cb7e690645636"
+}

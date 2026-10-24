@@ -1,0 +1,106 @@
+{
+  "id": "light__prayers",
+  "album": "light",
+  "file": "Prayers.jpg",
+  "source": "light/Prayers.jpg",
+  "slug": "prayers",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Prayers",
+  "caption": null,
+  "date": "2007-11-12T15:29:49",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 5,
+    "focal": 65,
+    "focal35": 97,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nara",
+    "state": null,
+    "country": "Japan",
+    "location": "To-Dai ji"
+  },
+  "placeLabel": "Nara, Japan",
+  "keywords": [],
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.2261,
+    "c": 0.0371,
+    "h": 64.16
+  },
+  "thumbhash": "zCgGDYIBz628SLi2W6qIpQGcB5BY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUH/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwIE/9oADAMBAAIQAxAAAADP8rsm4DE8b//EACIQAAEDAwMFAAAAAAAAAAAAAAIBAwQAERITIVIUMTJhwf/aAAgBAQABPwBia71sgzMtVUJAw5L8qVGCM0Rg35Mnte+ONquqSitzSpD7pkWRquy9/ab1/8QAGREAAwEBAQAAAAAAAAAAAAAAAAECETKB/9oACAECAQE/AKWTJOusY+PCT//EABgRAQEBAQEAAAAAAAAAAAAAAAECACGB/9oACAEDAQE/AIVrJJGOX7nf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 10537,
+      "format": "avif",
+      "url": "/_mg/light__prayers/2060eca9-grid.avif",
+      "key": "light__prayers/2060eca9-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 38220,
+      "format": "jpeg",
+      "url": "/_mg/light__prayers/2060eca9-jpeg1600.jpg",
+      "key": "light__prayers/2060eca9-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 128066,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/light/Prayers.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-12",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": 100,
+    "focal": 65,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "nara-japan",
+      "label": "Nara, Japan"
+    }
+  },
+  "sourceHash": "f2e60b752bf584f0",
+  "sourceSize": 128066,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "f908da1c83e27dd1"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "light__brick_or_tree",
+  "album": "light",
+  "file": "Brick_or_Tree.jpg",
+  "source": "light/Brick_or_Tree.jpg",
+  "slug": "brick_or_tree",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Brick or Tree",
+  "caption": null,
+  "date": "2004-11-10T16:20:08",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 6.3,
+    "focal": 46,
+    "focal35": 69,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3536,
+    "c": 0.0346,
+    "h": 66.32
+  },
+  "thumbhash": "mjkKFYLviIhJeXh3eGdnh99I94pj",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQUGB//EABYBAQEBAAAAAAAAAAAAAAAAAAQFA//aAAwDAQACEAMQAAAAMmgiRnZi2zGkX//EACMQAAEDAwIHAAAAAAAAAAAAAAIAAQMEBRESIQYiI0NRYbH/2gAIAQEAAT8AvlLDqlCnHp4KUPW/MzK3V8dHJrkASx5XEzMJw4btzt8Ujvuv/8QAHREAAgIBBQAAAAAAAAAAAAAAAQIAAyEQEUFCcv/aAAgBAgEBPwClzgk87GWIXGDKO3pdP//EABwRAAICAgMAAAAAAAAAAAAAAAABAhESMUFhcv/aAAgBAwEBPwBxeNdWRkls4XljP//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 39357,
+      "format": "avif",
+      "url": "/_mg/light__brick_or_tree/42389d9c-grid.avif",
+      "key": "light__brick_or_tree/42389d9c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 92510,
+      "format": "jpeg",
+      "url": "/_mg/light__brick_or_tree/42389d9c-jpeg1600.jpg",
+      "key": "light__brick_or_tree/42389d9c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 164664,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Brick_or_Tree.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-10",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 46,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "6b4175bb6558f2aa",
+  "sourceSize": 164664,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "12ebfe2b4336de93"
+}

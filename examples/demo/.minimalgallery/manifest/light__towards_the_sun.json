@@ -1,0 +1,106 @@
+{
+  "id": "light__towards_the_sun",
+  "album": "light",
+  "file": "Towards_the_sun.jpg",
+  "source": "light/Towards_the_sun.jpg",
+  "slug": "towards_the_sun",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Towards the sun",
+  "caption": null,
+  "date": "2005-11-03T16:02:40",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 60,
+    "focal35": 90,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Coney Island"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2913,
+    "c": 0.0358,
+    "h": 65.64
+  },
+  "thumbhash": "FhkSDYJleHhvh3d6h3eHhq3f9npf",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgUGB//EABkBAAIDAQAAAAAAAAAAAAAAAAEDAAIEBf/aAAwDAQACEAMQAAAAR83XRvVmtiQn/8QAIBAAAQIGAwEAAAAAAAAAAAAAAwACAQQSFCExBQYRkv/aAAgBAQABPwCT50QyDe+Vrp1mEFM98uBOHaP+kPafj1f/xAAbEQADAAIDAAAAAAAAAAAAAAAAAQIDERITIf/aAAgBAgEBPwDpqXvkmVWS514MR//EABcRAQEBAQAAAAAAAAAAAAAAAAEAAhH/2gAIAQMBAT8Admjh0jAMTf/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23746,
+      "format": "avif",
+      "url": "/_mg/light__towards_the_sun/c039d1fc-grid.avif",
+      "key": "light__towards_the_sun/c039d1fc-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 45327,
+      "format": "jpeg",
+      "url": "/_mg/light__towards_the_sun/c039d1fc-jpeg1600.jpg",
+      "key": "light__towards_the_sun/c039d1fc-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 156411,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Towards_the_sun.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 60,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "b3977ae0aa49f1f0",
+  "sourceSize": 156411,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3eaec009736e5d21"
+}

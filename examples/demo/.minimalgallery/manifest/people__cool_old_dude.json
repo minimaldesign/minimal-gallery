@@ -1,0 +1,98 @@
+{
+  "id": "people__cool_old_dude",
+  "album": "people",
+  "file": "Cool_old_dude.jpg",
+  "source": "people/Cool_old_dude.jpg",
+  "slug": "cool_old_dude",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Cool old dude",
+  "caption": null,
+  "date": "2005-04-04T15:49:19",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 7.1,
+    "focal": 86,
+    "focal35": 129,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DwgOBYBbn6eIZ4aFaFd2eAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEBv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAMaCLJT/xAAjEAACAQQBAwUAAAAAAAAAAAACAwEABAUREgYTISIjMmGi/9oACAEBAAE/ALy4xqrx6A7hMiQDuFqIHW9xXUlmhCLURcJsBAt9I8dQ3zoqzvuZNxlEcpYf51WdYcrsfPzQMl96r//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18776,
+      "format": "avif",
+      "url": "/_mg/people__cool_old_dude/5d017567-grid.avif",
+      "key": "people__cool_old_dude/5d017567-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 42369,
+      "format": "jpeg",
+      "url": "/_mg/people__cool_old_dude/5d017567-jpeg1600.jpg",
+      "key": "people__cool_old_dude/5d017567-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 130911,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Cool_old_dude.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-04",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 86,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "ad9e955b126cfe10",
+  "sourceSize": 130911,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a17c385c69d9f054"
+}

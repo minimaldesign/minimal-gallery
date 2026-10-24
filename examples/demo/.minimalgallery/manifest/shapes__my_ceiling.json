@@ -1,0 +1,89 @@
+{
+  "id": "shapes__my_ceiling",
+  "album": "shapes",
+  "file": "My_ceiling.jpg",
+  "source": "shapes/My_ceiling.jpg",
+  "slug": "my_ceiling",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "My ceiling",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3701,
+    "c": 0.0743,
+    "h": 71.03
+  },
+  "thumbhash": "GUoaJYSQeIeHh4eGd4eHh1B4CKKm",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAAB//EABUBAQEAAAAAAAAAAAAAAAAAAAUE/9oADAMBAAIQAxAAAAA7PtbjKwpWJgJQ/8QAIBAAAQMDBQEAAAAAAAAAAAAAAQADBAIFEQYSFCMxcf/aAAgBAQABPwCJjafisNqjVw2qABgNhRCVpaS/w2+w+L//xAAdEQACAQQDAAAAAAAAAAAAAAAAAwIBBBEhEiIx/9oACAECAQE/AGekYTuGypneRo7q2vHR/8QAGhEAAgMBAQAAAAAAAAAAAAAAAQIAAxEEEv/aAAgBAwEBPwBZZaOetMG7FiKLKh6Gz//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 2858,
+      "format": "avif",
+      "url": "/_mg/shapes__my_ceiling/61c1f5a2-grid.avif",
+      "key": "shapes__my_ceiling/61c1f5a2-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 9725,
+      "format": "jpeg",
+      "url": "/_mg/shapes__my_ceiling/61c1f5a2-jpeg1600.jpg",
+      "key": "shapes__my_ceiling/61c1f5a2-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 90351,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/My_ceiling.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0121142f6d99f41a",
+  "sourceSize": 90351,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "236d0261590ff8b8"
+}

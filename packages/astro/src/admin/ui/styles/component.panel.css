@@ -1,0 +1,69 @@
+/* PANEL
+
+   The column of a page of settings (Settings, Publish): sections divided
+   by hairlines, each with a heading, a line of explanation and its
+   fields; the actions stay in reach at the bottom. */
+
+.panel {
+  display: grid;
+  gap: var(--sm3);
+  width: min(100%, 46rem);
+  padding: var(--sm3) var(--admin-gutter) var(--xl1);
+}
+
+.panel_form {
+  display: grid;
+  gap: var(--sm3);
+}
+
+.panel_section {
+  display: grid;
+  gap: var(--sm1);
+  padding-block-start: var(--sm3);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+
+  .panel_form:first-child > &:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.panel_heading {
+  color: var(--mg-ink);
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+}
+
+.panel_note {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--mg-ink-muted);
+  line-height: var(--leading-lg);
+}
+
+.panel_fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--sm1);
+}
+
+.panel_actions {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs3);
+  padding-block: var(--xs3);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+  background-color: var(--mg-ground);
+}
+
+.panel_status {
+  color: var(--mg-ink-muted);
+}

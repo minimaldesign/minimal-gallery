@@ -1,0 +1,106 @@
+{
+  "id": "feelings__fading_away",
+  "album": "feelings",
+  "file": "Fading_away.jpg",
+  "source": "feelings/Fading_away.jpg",
+  "slug": "fading_away",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Fading away",
+  "caption": "Faded flowers in a cemetery in Warsaw, Poland.",
+  "date": "2005-01-16T07:47:10",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Warsaw",
+    "state": null,
+    "country": "Poland",
+    "location": null
+  },
+  "placeLabel": "Warsaw, Poland",
+  "keywords": [],
+  "copyright": "© 2004 minimal Design\nAll rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3357,
+    "c": 0.0266,
+    "h": 107.75
+  },
+  "thumbhash": "lPgFDYAPZld/Z1dTd2iHdUqfpf2e",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAYAQEAAwEAAAAAAAAAAAAAAAABAAIDBP/aAAwDAQACEAMQAAAAkcyFDbVBH//EAB8QAAICAgMAAwAAAAAAAAAAAAECAxEABBIhIhMkUf/aAAgBAQABPwCFNVIkT44n4BfUo9fubUyHnIFFdLVEVmk7SyLzN+DmxI/11JsGHkb77vP/xAAYEQEBAQEBAAAAAAAAAAAAAAABAAIxQv/aAAgBAgEBPwBzt9JYHiQQX//EABcRAQADAAAAAAAAAAAAAAAAAAEAEFH/2gAIAQMBAT8AUyN//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 15905,
+      "format": "avif",
+      "url": "/_mg/feelings__fading_away/74edc381-grid.avif",
+      "key": "feelings__fading_away/74edc381-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 34616,
+      "format": "jpeg",
+      "url": "/_mg/feelings__fading_away/74edc381-jpeg1600.jpg",
+      "key": "feelings__fading_away/74edc381-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 165412,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Fading_away.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "warsaw-poland",
+      "label": "Warsaw, Poland"
+    }
+  },
+  "sourceHash": "44504932c13da6fa",
+  "sourceSize": 165412,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "f20e6362c519c868",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c2fcb8f9702b6340"
+}

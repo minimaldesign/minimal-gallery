@@ -1,0 +1,106 @@
+{
+  "id": "feelings__back_alley",
+  "album": "feelings",
+  "file": "Back_alley.jpg",
+  "source": "feelings/Back_alley.jpg",
+  "slug": "back_alley",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Back alley",
+  "caption": null,
+  "date": "2005-08-31T14:33:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 44,
+    "focal35": 66,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "New York",
+    "state": "NY",
+    "country": "USA",
+    "location": "Mott Street"
+  },
+  "placeLabel": "New York, USA",
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2957,
+    "c": 0.0241,
+    "h": 18.61
+  },
+  "thumbhash": "URgGBYBVK6pYiZWAWTqYhLlkoEwG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgP/2gAMAwEAAhADEAAAAMbjq4SwFn//xAAhEAACAQMEAwEAAAAAAAAAAAABAgMABBEFEiFBEzEyof/aAAgBAQABPwCO2smDANOexheD+V4dNg0iBoIybkzMs+85+c4IHQIozzJjbK469mri4meYAvwUQ4HAzX//xAAWEQADAAAAAAAAAAAAAAAAAAAAARD/2gAIAQIBAT8AHf/EABgRAAIDAAAAAAAAAAAAAAAAAAABEBEh/9oACAEDAQE/AKQshn//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 35056,
+      "format": "avif",
+      "url": "/_mg/feelings__back_alley/8172e07f-grid.avif",
+      "key": "feelings__back_alley/8172e07f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 71365,
+      "format": "jpeg",
+      "url": "/_mg/feelings__back_alley/8172e07f-jpeg1600.jpg",
+      "key": "feelings__back_alley/8172e07f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 170474,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Back_alley.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "08",
+    "day": "08-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 44,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "new-york-usa",
+      "label": "New York, USA"
+    }
+  },
+  "sourceHash": "17cfca498d87eeb1",
+  "sourceSize": 170474,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "fee8f3d19f56c98b"
+}

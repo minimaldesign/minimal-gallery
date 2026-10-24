@@ -1,0 +1,98 @@
+{
+  "id": "people__no_more",
+  "album": "people",
+  "file": "No_more.jpg",
+  "source": "people/No_more.jpg",
+  "slug": "no_more",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "No more",
+  "caption": null,
+  "date": "2004-11-06T17:12:55",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 2.8,
+    "focal": 105,
+    "focal35": 157,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5173,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "0wcGDYAnuYiYhkdvlpl3h4yrz/j5",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAEG/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAMnVpCMj/8QAHxAAAgICAgMBAAAAAAAAAAAAAQIDBAAREjEiMkJx/9oACAEBAAE/AIbMhY6blKkOkiP0rjRy/euWpi7QCNoaq8lHrvfeRqostKB5lQN/mFFJJKgk95//xAAaEQACAgMAAAAAAAAAAAAAAAABAgAhEDFB/9oACAECAQE/AFWnuADXc//EABcRAQADAAAAAAAAAAAAAAAAAAEAEDL/2gAIAQMBAT8AXEW//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 27862,
+      "format": "avif",
+      "url": "/_mg/people__no_more/e1909c70-grid.avif",
+      "key": "people__no_more/e1909c70-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 55918,
+      "format": "jpeg",
+      "url": "/_mg/people__no_more/e1909c70-jpeg1600.jpg",
+      "key": "people__no_more/e1909c70-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 129308,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/No_more.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-06",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 105,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8ce6982f50d8509a",
+  "sourceSize": 129308,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "bf831d676cab9491"
+}

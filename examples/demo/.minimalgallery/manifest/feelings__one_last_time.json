@@ -1,0 +1,105 @@
+{
+  "id": "feelings__one_last_time",
+  "album": "feelings",
+  "file": "One_last_time.jpg",
+  "source": "feelings/One_last_time.jpg",
+  "slug": "one_last_time",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "One last time",
+  "caption": "On the Baltic shore, a bulldozer stops to admire the cold beauty of the sea one last time...",
+  "date": "2005-01-19T10:43:43",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Gdansk"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.931,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "MwgKBYBUmXmKd3ivaXZncwAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFBv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAANqUBgf/xAAhEAACAQMDBQAAAAAAAAAAAAABAwIAERIEBSETMTJTsf/aAAgBAQABPwDTb292q6K9vdJftvH5T9W6IOSZ9r+NMAAyERfIc2pTWTWMpE8Gv//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18017,
+      "format": "avif",
+      "url": "/_mg/feelings__one_last_time/33192943-grid.avif",
+      "key": "feelings__one_last_time/33192943-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 36981,
+      "format": "jpeg",
+      "url": "/_mg/feelings__one_last_time/33192943-jpeg1600.jpg",
+      "key": "feelings__one_last_time/33192943-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 119297,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/One_last_time.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-19",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [
+      {
+        "slug": "gdansk",
+        "label": "Gdansk"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "19c2981573605bc5",
+  "sourceSize": 119297,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "51aa604e3d582ff6"
+}

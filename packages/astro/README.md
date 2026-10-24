@@ -369,3 +369,9 @@ And these storage keys:
 | `sessionStorage` | `mgSeen` | The page paths of the photos shown in this visit (JSON), which the `r` key and `/random/` leave out |
 
 A theme with its own script can keep the `mg-<name>` keys so visitors keep their settings across a theme change.
+
+## The browser admin
+
+Under `astro dev` (and `minimalgallery admin`, which starts it), the integration adds the admin at `/_mg/admin/`: drop photos or folders to add them (dedupe by content, processed as they land, thumbnails as each finishes), fix what needs attention (dates from the file’s time, no camera data, duplicates), edit a photo’s title, caption, date, place, keywords and visibility (written to `<name>.md`, only the fields you change; originals are never touched), edit and reorder albums (`_album.md`), change the settings and `custom.css`, and publish. Files copied into `photos/` in Finder show up too.
+
+It answers only this computer (a loopback address, a `localhost` host name and a per-process token) and is never part of a build: `astro build` loads none of it. In bucket mode the dev server serves photos from the local stage until they are uploaded, so the preview works before the first publish. The local HTTP API it uses, for a future desktop shell or anything else, is described in [`src/admin/README.md`](src/admin/README.md).

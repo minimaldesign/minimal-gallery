@@ -1,0 +1,105 @@
+{
+  "id": "colors__gdansk",
+  "album": "colors",
+  "file": "Gdansk.jpg",
+  "source": "colors/Gdansk.jpg",
+  "slug": "gdansk",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Gdansk",
+  "caption": null,
+  "date": "2005-01-18T09:32:45",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 40,
+    "focal35": 60,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Gdansk"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3582,
+    "c": 0.0228,
+    "h": 18.27
+  },
+  "thumbhash": "lRgKDYJWeIpfZJh3d2mIh1hPhPZE",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAAh47tjmqgCf/EACEQAAIBAwMFAAAAAAAAAAAAAAECAwAEEQUxQRIhIjKi/9oACAEBAAE/ANNuo9LuGnKdUsQIUngsN8VLqVpJbBypDqgHl39qugGc542rJKkniMH6xX//xAAZEQACAwEAAAAAAAAAAAAAAAAAAgEQETH/2gAIAQIBAT8A1hV6RX//xAAYEQACAwAAAAAAAAAAAAAAAAAAAQIQIv/aAAgBAwEBPwDI5Dr/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 27349,
+      "format": "avif",
+      "url": "/_mg/colors__gdansk/805ef13e-grid.avif",
+      "key": "colors__gdansk/805ef13e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 57794,
+      "format": "jpeg",
+      "url": "/_mg/colors__gdansk/805ef13e-jpeg1600.jpg",
+      "key": "colors__gdansk/805ef13e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 133165,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Gdansk.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-18",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 40,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "gdansk",
+        "label": "Gdansk"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "314bec4b29dfa73a",
+  "sourceSize": 133165,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "433366a05c26e54e"
+}

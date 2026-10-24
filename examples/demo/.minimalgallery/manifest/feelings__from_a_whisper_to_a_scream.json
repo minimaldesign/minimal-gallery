@@ -1,0 +1,106 @@
+{
+  "id": "feelings__from_a_whisper_to_a_scream",
+  "album": "feelings",
+  "file": "From_a_whisper_to_a_scream.jpg",
+  "source": "feelings/From_a_whisper_to_a_scream.jpg",
+  "slug": "from_a_whisper_to_a_scream",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "From a Whisper to a Scream",
+  "caption": null,
+  "date": "2006-10-31T07:11:43",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "10.5 mm f/2.8",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 2.8,
+    "focal": 10.5,
+    "focal35": 15,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Carrol Gardens"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "copyright": "© minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DQgOBYCveIl4mIh2VnWIeAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgf/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAA+CxsTk//EACIQAAICAQQBBQAAAAAAAAAAAAIDAQQABQYRMhIjJEJSYv/aAAgBAQABPwDcNVFK5Z01bQSmUIiCkPlx5dvrhShKTFbTGwMzBcTBAyPzxmne72XefY9RqbkLWZdhDxw+05//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 11992,
+      "format": "avif",
+      "url": "/_mg/feelings__from_a_whisper_to_a_scream/987cd15b-grid.avif",
+      "key": "feelings__from_a_whisper_to_a_scream/987cd15b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 25288,
+      "format": "jpeg",
+      "url": "/_mg/feelings__from_a_whisper_to_a_scream/987cd15b-jpeg1600.jpg",
+      "key": "feelings__from_a_whisper_to_a_scream/987cd15b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 134582,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/From_a_whisper_to_a_scream.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2006",
+    "month": "10",
+    "day": "10-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "10-5-mm-f-2-8",
+      "label": "10.5 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 10.5,
+    "focalBucket": "wide",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "e72a43cade68b1f1",
+  "sourceSize": 134582,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c27ee0e252247c7e"
+}

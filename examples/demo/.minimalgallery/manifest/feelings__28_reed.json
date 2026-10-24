@@ -1,0 +1,106 @@
+{
+  "id": "feelings__28_reed",
+  "album": "feelings",
+  "file": "28_REED.jpg",
+  "source": "feelings/28_REED.jpg",
+  "slug": "28_reed",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "28 REED",
+  "caption": null,
+  "date": "2005-11-14T15:57:41",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Red Hook"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FggKBYCbk6afWYhllodmeQAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgED/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAobCpuf/EACUQAAEDAgMJAAAAAAAAAAAAAAECAwQAEgURIRMUIjEyQWFxgf/aAAgBAQABPwAysNQw7ZIAc2KyglJAuA0HuoEqU1iUXfZLojq6isADl3pDjlo41aeaefecOS1khI0+1//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23220,
+      "format": "avif",
+      "url": "/_mg/feelings__28_reed/d510a319-grid.avif",
+      "key": "feelings__28_reed/d510a319-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 51455,
+      "format": "jpeg",
+      "url": "/_mg/feelings__28_reed/d510a319-jpeg1600.jpg",
+      "key": "feelings__28_reed/d510a319-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 152767,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/28_REED.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "61ae8f39ddf3a4fe",
+  "sourceSize": 152767,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3dfa66e0133c2dd9"
+}

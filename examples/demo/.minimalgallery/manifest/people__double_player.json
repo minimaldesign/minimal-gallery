@@ -1,0 +1,98 @@
+{
+  "id": "people__double_player",
+  "album": "people",
+  "file": "Double_Player.jpg",
+  "source": "people/Double_Player.jpg",
+  "slug": "double_player",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Double Player",
+  "caption": "Not the most artistic photo ever, but I had never seen someone playing flugelhorn and trumpet at the same time before, the guy could play the same melody with both hands at the same time, kinda cool...  I thought I'd share.",
+  "date": "2005-08-18T14:30:24",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "UQgGFYIwzJSHasShl1iIh5RvCIRo",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwAC/9oADAMBAAIQAxAAAADElKmoTFemv//EACQQAAIBBAAFBQAAAAAAAAAAAAECAwAEERIFExUhYSIxQnGC/9oACAEBAAE/AIViklw2O5KEsdRt4IoWlsnKjYPA2x2dvkPAFJGj3CZHtMCPvcCuLyydatcMR6kT8g1//8QAHBEAAQQDAQAAAAAAAAAAAAAAAAECAxESIjJx/9oACAECAQE/AHR7UleCxuS8hnbiXlT/xAAbEQACAgMBAAAAAAAAAAAAAAAAAQIRIjEyYf/aAAgBAwEBPwCDwt2zGlWzSil4R6P/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 30634,
+      "format": "avif",
+      "url": "/_mg/people__double_player/b28bad7c-grid.avif",
+      "key": "people__double_player/b28bad7c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 66267,
+      "format": "jpeg",
+      "url": "/_mg/people__double_player/b28bad7c-jpeg1600.jpg",
+      "key": "people__double_player/b28bad7c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 161524,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Double_Player.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "08",
+    "day": "08-18",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "bce84c33468dda40",
+  "sourceSize": 161524,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "02b889108514289a"
+}

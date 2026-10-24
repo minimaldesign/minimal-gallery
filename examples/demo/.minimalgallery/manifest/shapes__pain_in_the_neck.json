@@ -1,0 +1,98 @@
+{
+  "id": "shapes__pain_in_the_neck",
+  "album": "shapes",
+  "file": "Pain_in_the_neck.jpg",
+  "source": "shapes/Pain_in_the_neck.jpg",
+  "slug": "pain_in_the_neck",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Pain in the neck",
+  "caption": null,
+  "date": "2005-07-20T16:56:10",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 22,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5325,
+    "c": 0.0204,
+    "h": 17.81
+  },
+  "thumbhash": "WRgGBYCurK3dNFdglziJg3alQEYJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQT/xAAXAQEBAQEAAAAAAAAAAAAAAAABAAID/9oADAMBAAIQAxAAAACfHQui0XH/xAAjEAACAQMCBwEAAAAAAAAAAAABAgMABBIFURETIjJBUnFi/9oACAEBAAE/AJXtY3mRguETsJMwGY7AE1JDbScxxboPb8jwPpq/kc6zqKFjgjqwGx4U3SkajtIyP01//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAFB/9oACAEDAQE/ADaf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 44420,
+      "format": "avif",
+      "url": "/_mg/shapes__pain_in_the_neck/52122258-grid.avif",
+      "key": "shapes__pain_in_the_neck/52122258-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 83133,
+      "format": "jpeg",
+      "url": "/_mg/shapes__pain_in_the_neck/52122258-jpeg1600.jpg",
+      "key": "shapes__pain_in_the_neck/52122258-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 161080,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Pain_in_the_neck.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-20",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 22,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "fd8825ca9e92b154",
+  "sourceSize": 161080,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "64499bb87552b2a3"
+}

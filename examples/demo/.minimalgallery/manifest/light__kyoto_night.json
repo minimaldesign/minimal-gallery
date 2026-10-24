@@ -1,0 +1,98 @@
+{
+  "id": "light__kyoto_night",
+  "album": "light",
+  "file": "Kyoto_Night.jpg",
+  "source": "light/Kyoto_Night.jpg",
+  "slug": "kyoto_night",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Kyoto Night",
+  "caption": null,
+  "date": "2005-04-04T18:55:34",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/30",
+    "shutterSeconds": 0.03333333333333333,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 500,
+    "ev": 0.67,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "D1oKJYSAtZViqHeWhZiIhYBSByV1",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQYH/8QAFgEBAQEAAAAAAAAAAAAAAAAABAMF/9oADAMBAAIQAxAAAADMSMssl5KJIQp//8QAIhAAAgIBBAEFAAAAAAAAAAAAAQMCBAAFERIhFRNBQmGS/9oACAEBAAE/APGvUGtEBKKJQEwe+5e32M0+ku7fXXYkLAqifCfx66GaTZfCy0RYRyCt/wA5B7vMW5czv6MM/8QAIREAAgEDAwUAAAAAAAAAAAAAAQIDABESBBQhEzFBQrH/2gAIAQIBAT8A3CPityC4Nqldo4WcPkeoRcea1KIY047Z/aKrtIuPc1//xAAgEQACAQQBBQAAAAAAAAAAAAABAgADERIhMRMUQlKx/9oACAEDAQE/ABRK8rexF4AvVxx0F4lB2zbfr8gY9xU34if/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13605,
+      "format": "avif",
+      "url": "/_mg/light__kyoto_night/9fcc0b7d-grid.avif",
+      "key": "light__kyoto_night/9fcc0b7d-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 39683,
+      "format": "jpeg",
+      "url": "/_mg/light__kyoto_night/9fcc0b7d-jpeg1600.jpg",
+      "key": "light__kyoto_night/9fcc0b7d-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 151081,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Kyoto_Night.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-04",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.03333333333333333,
+      "label": "1/30"
+    },
+    "iso": 500,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "1b27428e9300fa2d",
+  "sourceSize": 151081,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "baa7f3c772bb2aa3"
+}

@@ -1,0 +1,98 @@
+{
+  "id": "shapes__metal_door_sunset",
+  "album": "shapes",
+  "file": "Metal_door_sunset.jpg",
+  "source": "shapes/Metal_door_sunset.jpg",
+  "slug": "metal_door_sunset",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Metal door sunset",
+  "caption": null,
+  "date": "2004-11-16T16:12:42",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 4.5,
+    "focal": 145,
+    "focal35": 217,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5727,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HwgGFYRhaXh/iHeHd4d4d5BnB4h2",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAQDAv/aAAwDAQACEAMQAAAADTNQi8ykr0L/AP/EAB8QAAICAgEFAAAAAAAAAAAAAAECAAMRIZEiMUJDYf/aAAgBAQABPwCu3Y+LFuAqAz6HHJiM3VvxEBLI+T2ryOZ//8QAHBEAAgICAwAAAAAAAAAAAAAAAQIAgSEiMkJy/9oACAECAQE/AAdRcOWf0sHFbnZqn//EABgRAAMBAQAAAAAAAAAAAAAAAAACQnIh/9oACAEDAQE/AKF4iYcolcsf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 22089,
+      "format": "avif",
+      "url": "/_mg/shapes__metal_door_sunset/a5b66825-grid.avif",
+      "key": "shapes__metal_door_sunset/a5b66825-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 47462,
+      "format": "jpeg",
+      "url": "/_mg/shapes__metal_door_sunset/a5b66825-jpeg1600.jpg",
+      "key": "shapes__metal_door_sunset/a5b66825-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 160116,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Metal_door_sunset.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 145,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "16b3af83a564f593",
+  "sourceSize": 160116,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6a9bb876bc92206e"
+}

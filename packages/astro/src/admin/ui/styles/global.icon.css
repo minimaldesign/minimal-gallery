@@ -1,0 +1,17 @@
+/* GLOBAL: ICON
+
+   The admin's line icons (Lucide-style, 24px grid, 1.5px strokes), drawn
+   from the sprite at the top of the page with <use>. Mixed onto every
+   inline SVG icon; a block that needs another size mixes its own class on
+   beside this one. */
+
+.icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

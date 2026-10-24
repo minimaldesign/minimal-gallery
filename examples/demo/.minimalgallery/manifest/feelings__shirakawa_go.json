@@ -1,0 +1,103 @@
+{
+  "id": "feelings__shirakawa_go",
+  "album": "feelings",
+  "file": "Shirakawa-Go.jpg",
+  "source": "feelings/Shirakawa-Go.jpg",
+  "slug": "shirakawa_go",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Shirakawa Go",
+  "caption": null,
+  "date": "2007-11-15T05:09:57",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/30",
+    "shutterSeconds": 0.03333333333333333,
+    "aperture": 22,
+    "focal": 22,
+    "focal35": 33,
+    "iso": 400,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Shirakawa Go",
+    "state": null,
+    "country": "Japan",
+    "location": null
+  },
+  "placeLabel": "Shirakawa Go, Japan",
+  "keywords": [],
+  "copyright": "minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.5727,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FQgKBYCWeGZvmnd/hzhohgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQG/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAy5WAJ//EACAQAAIBAwQDAAAAAAAAAAAAAAECAwAREgQFIXExMmH/2gAIAQEAAT8A1G6LIIjBlF5ZmIv0Kh3+IDGTSqzgdgt9qFVK+op4Y85Bjxa9f//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 22793,
+      "format": "avif",
+      "url": "/_mg/feelings__shirakawa_go/f20245df-grid.avif",
+      "key": "feelings__shirakawa_go/f20245df-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 66846,
+      "format": "jpeg",
+      "url": "/_mg/feelings__shirakawa_go/f20245df-jpeg1600.jpg",
+      "key": "feelings__shirakawa_go/f20245df-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 191690,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/feelings/Shirakawa-Go.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-15",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": 22,
+    "shutter": {
+      "seconds": 0.03333333333333333,
+      "label": "1/30"
+    },
+    "iso": 400,
+    "focal": 22,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": {
+      "slug": "shirakawa-go-japan",
+      "label": "Shirakawa Go, Japan"
+    }
+  },
+  "sourceHash": "4f757eb3f2e0626b",
+  "sourceSize": 191690,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "94c2783cab17a178"
+}

@@ -2,11 +2,12 @@ import { chmod, cp, mkdir, readdir, rename, writeFile } from 'node:fs/promises';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  HEADERS,
   astroConfig,
+  dotEnv,
   envExample,
   galleryConfig,
   githubPagesWorkflow,
+  headers,
   launcher,
   netlifyToml,
   packageJson,
@@ -48,9 +49,9 @@ export async function scaffold(
   options: ScaffoldOptions
 ): Promise<string[]> {
   const written: string[] = [];
-  const write = async (path: string, content: string) => {
+  const write = async (path: string, content: string, mode?: number) => {
     await mkdir(dirname(join(dir, path)), { recursive: true });
-    await writeFile(join(dir, path), content);
+    await writeFile(join(dir, path), content, { mode });
     written.push(path);
   };
 
@@ -75,11 +76,14 @@ export async function scaffold(
   await write('astro.config.mjs', astroConfig(answers));
   await write('minimalgallery.config.ts', galleryConfig(answers));
   await write('.env.example', envExample(answers));
+  // The bucket token, when given: only here, never in the config. Git ignores .env.
+  if (answers.storage === 'bucket' && answers.bucket && answers.token)
+    await write('.env', dotEnv(answers.bucket.name, answers.token), 0o600);
 
   if (answers.host === 'cloudflare') {
     const date = options.date ?? new Date().toISOString().slice(0, 10);
-    await write('wrangler.jsonc', wranglerJsonc(project, date));
-    await write('public/_headers', HEADERS);
+    await write('wrangler.jsonc', wranglerJsonc(answers, project, date));
+    await write('public/_headers', headers(answers.storage));
   } else if (answers.host === 'github') {
     await write('.github/workflows/deploy.yml', githubPagesWorkflow(pm));
   } else if (answers.host === 'netlify') {

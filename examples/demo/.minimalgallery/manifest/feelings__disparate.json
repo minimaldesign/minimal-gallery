@@ -1,0 +1,98 @@
+{
+  "id": "feelings__disparate",
+  "album": "feelings",
+  "file": "Disparate.jpg",
+  "source": "feelings/Disparate.jpg",
+  "slug": "disparate",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Disparate",
+  "caption": null,
+  "date": "2005-07-26T13:57:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "BwgGBYDeAXu9i4V03um5VfCICH+I",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFB//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAM8JwoEP/8QAIRAAAgEDBAMBAAAAAAAAAAAAAQIDABIhBBETMRQiQVH/2gAIAQEAAT8Aa7XwN5aETGG+CbbLAHpv2tMZVhPVjsA2c1ySegvbZV2Geq0+So+cgr//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 6791,
+      "format": "avif",
+      "url": "/_mg/feelings__disparate/08cd9430-grid.avif",
+      "key": "feelings__disparate/08cd9430-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 16911,
+      "format": "jpeg",
+      "url": "/_mg/feelings__disparate/08cd9430-jpeg1600.jpg",
+      "key": "feelings__disparate/08cd9430-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 132561,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Disparate.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-26",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "c3134ff5c67b2d8f",
+  "sourceSize": 132561,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "92fa92159928cd78"
+}

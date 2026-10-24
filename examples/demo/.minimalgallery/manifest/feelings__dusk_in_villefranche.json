@@ -1,0 +1,105 @@
+{
+  "id": "feelings__dusk_in_villefranche",
+  "album": "feelings",
+  "file": "Dusk_in_Villefranche.jpg",
+  "source": "feelings/Dusk_in_Villefranche.jpg",
+  "slug": "dusk_in_villefranche",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Dusk in Villefranche",
+  "caption": "Tu te souviens?",
+  "date": "2005-01-30T12:47:09",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5173,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "0gcKBYB4d4hvh3iIiGiIaHBvVvdH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAAAzbg7KRVr/8QAIBAAAQMDBQEAAAAAAAAAAAAAAgABAwQRMhIVITFBcv/aAAgBAQABPwCKuBhvIDh9WW6U3prIbFyngi0YN0v/xAAYEQACAwAAAAAAAAAAAAAAAAAAECFRgf/aAAgBAgEBPwDSbf8A/8QAFxEAAwEAAAAAAAAAAAAAAAAAABAhUf/aAAgBAwEBPwCYR//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 12994,
+      "format": "avif",
+      "url": "/_mg/feelings__dusk_in_villefranche/c287aa07-grid.avif",
+      "key": "feelings__dusk_in_villefranche/c287aa07-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 24371,
+      "format": "jpeg",
+      "url": "/_mg/feelings__dusk_in_villefranche/c287aa07-jpeg1600.jpg",
+      "key": "feelings__dusk_in_villefranche/c287aa07-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 135367,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Dusk_in_Villefranche.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "4a82f34c564dc267",
+  "sourceSize": 135367,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3bd8d3fc8036c8f7"
+}

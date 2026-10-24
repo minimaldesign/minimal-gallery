@@ -1,0 +1,98 @@
+{
+  "id": "colors__late_afternoon_storm",
+  "album": "colors",
+  "file": "Late_Afternoon_Storm.jpg",
+  "source": "colors/Late_Afternoon_Storm.jpg",
+  "slug": "late_afternoon_storm",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Late Afternoon Storm",
+  "caption": "To answer questions I got regarding the previous image (\"The coming\"): a big storm just passed above my head in Brooklyn last night, the light out my window turned into a deep \"end of the World\" kind of yellow, so I got on my roof via the fire escape real quick and shot a bunch of pictures of the clouds before the rain started pouring. Here's another one of those. The colors in either photos are 100% natural, not from concentrate, no Photoshop added.",
+  "date": "2005-05-21T13:35:11",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5558,
+    "c": 0.1,
+    "h": 70.53
+  },
+  "thumbhash": "WzkORYhQdnehd4hph1h4eGl/lvZX",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQMH/8QAFgEBAQEAAAAAAAAAAAAAAAAABQME/9oADAMBAAIQAxAAAAAAJZvTGbo2ryr/AP/EACAQAAIBBAEFAAAAAAAAAAAAAAEDAgAEBRESBjEyQZL/2gAIAQEAAT8AxarbhDhtrDH5o2pYduXEy9Rj2rppCnKUGR2NCkYvHxVEi2h41//EABsRAAIDAQEBAAAAAAAAAAAAAAECAAMRMQQS/9oACAECAQE/ALa7nY6MG8Ep8LMNxlE+EQkqoBhZt7P/xAAbEQACAgMBAAAAAAAAAAAAAAABAgADESExBP/aAAgBAwEBPwCtq1HcmWepQcaYwuz6ZiRAoxyf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 11543,
+      "format": "avif",
+      "url": "/_mg/colors__late_afternoon_storm/14767731-grid.avif",
+      "key": "colors__late_afternoon_storm/14767731-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 24824,
+      "format": "jpeg",
+      "url": "/_mg/colors__late_afternoon_storm/14767731-jpeg1600.jpg",
+      "key": "colors__late_afternoon_storm/14767731-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 181331,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Late_Afternoon_Storm.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "05",
+    "day": "05-21",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "f1fd1f74f368fa80",
+  "sourceSize": 181331,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ae5a12f001731d84"
+}

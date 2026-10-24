@@ -1,0 +1,89 @@
+{
+  "id": "light__heavy_clouds_but_no_rain",
+  "album": "light",
+  "file": "Heavy_Clouds_but_No_Rain.jpg",
+  "source": "light/Heavy_Clouds_but_No_Rain.jpg",
+  "slug": "heavy_clouds_but_no_rain",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Heavy Clouds but No Rain",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "jggOFYBViHh/h4iReTiJh1aOYPQI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGB//EABgBAAMBAQAAAAAAAAAAAAAAAAACAwEE/9oADAMBAAIQAxAAAACPg7ZdzPpmB//EAB8QAAIBAgcAAAAAAAAAAAAAAAECAwQSAAUGEDJx0f/aAAgBAQABPwCjqMnkmBqFjIWO2w+4nTSwiDWKHC8FkYg9nf8A/8QAGhEAAgIDAAAAAAAAAAAAAAAAAQIAAxARIv/aAAgBAgEBPwBg+uYDfn//xAAYEQACAwAAAAAAAAAAAAAAAAAAARAjQf/aAAgBAwEBPwBNaVz/AP/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14057,
+      "format": "avif",
+      "url": "/_mg/light__heavy_clouds_but_no_rain/294ff9e3-grid.avif",
+      "key": "light__heavy_clouds_but_no_rain/294ff9e3-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 30151,
+      "format": "jpeg",
+      "url": "/_mg/light__heavy_clouds_but_no_rain/294ff9e3-jpeg1600.jpg",
+      "key": "light__heavy_clouds_but_no_rain/294ff9e3-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 81088,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Heavy_Clouds_but_No_Rain.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "ee3f5fdec53f2393",
+  "sourceSize": 81088,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "52eac8c009fbaca5"
+}

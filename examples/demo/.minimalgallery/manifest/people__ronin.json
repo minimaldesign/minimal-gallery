@@ -1,0 +1,95 @@
+{
+  "id": "people__ronin",
+  "album": "people",
+  "file": "Ronin.jpg",
+  "source": "people/Ronin.jpg",
+  "slug": "ronin",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Ronin",
+  "caption": "I did a photo shoot for a New York based band last week. I doubt they’ll use that shot, so I asked for their permission to put it on my site because I like it a lot.",
+  "date": "2005-02-27T18:16:10",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 50,
+    "focal35": 75,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GAgiDYKJd3mPeId5d3d3hweJcaAY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABYBAQEBAAAAAAAAAAAAAAAAAAIBA//aAAwDAQACEAMQAAAAfDSSQzZAKL//xAAhEAABAgYCAwAAAAAAAAAAAAACAwQAAQUHETESEyNRgf/aAAgBAQABPwBzcumA6XbNkCMA0uRcQMhhC4S5Uqpt1m/fNQz8hq6BWEgEueZakGPs8R7j/8QAGhEAAwADAQAAAAAAAAAAAAAAAQIRAAMQQf/aAAgBAgEBPwDYzKlUU0YL73//xAAbEQADAAIDAAAAAAAAAAAAAAABAhEAAxASMf/aAAgBAwEBPwDSqPsjt1WE3DKZ5z//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13439,
+      "format": "avif",
+      "url": "/_mg/people__ronin/03957214-grid.avif",
+      "key": "people__ronin/03957214-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 26945,
+      "format": "jpeg",
+      "url": "/_mg/people__ronin/03957214-jpeg1600.jpg",
+      "key": "people__ronin/03957214-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 103891,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Ronin.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-27",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": null,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "62189e6548cdc7e6",
+  "sourceSize": 103891,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "d567544b20fbf515",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "7dde94f7955730dd"
+}

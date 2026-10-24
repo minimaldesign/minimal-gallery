@@ -1,0 +1,98 @@
+{
+  "id": "feelings__ahead",
+  "album": "feelings",
+  "file": "Ahead.jpg",
+  "source": "feelings/Ahead.jpg",
+  "slug": "ahead",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Ahead",
+  "caption": null,
+  "date": "2005-07-20T17:40:01",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/20",
+    "shutterSeconds": 0.05,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FRgODYSQephWZ3iKemiHiAeKZoBX",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAD/9oADAMBAAIQAxAAAAAxOqbOBjch/8QAIBAAAgICAgIDAAAAAAAAAAAAAgMBEQAEBRIGIRNCYv/aAAgBAQABPwDVEZJwsH7jRTFVWae+HFis9VctaxUdoKugX6kozynXRHJAULi2qHv+qKsVp6yPH/kWujIWjM3M+oLP/8QAGREBAAIDAAAAAAAAAAAAAAAAAAECAxEx/9oACAECAQE/AJVZOw0//8QAHBEAAgICAwAAAAAAAAAAAAAAAAECAxEhMVGB/9oACAEDAQE/AIY3nstWvSvhkm2z/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 11110,
+      "format": "avif",
+      "url": "/_mg/feelings__ahead/66d33fe3-grid.avif",
+      "key": "feelings__ahead/66d33fe3-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 25402,
+      "format": "jpeg",
+      "url": "/_mg/feelings__ahead/66d33fe3-jpeg1600.jpg",
+      "key": "feelings__ahead/66d33fe3-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 146995,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Ahead.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-20",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.05,
+      "label": "1/20"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "b050c10fc3fd556d",
+  "sourceSize": 146995,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "64353d450ae10a8a"
+}

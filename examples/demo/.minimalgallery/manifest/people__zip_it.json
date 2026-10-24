@@ -1,0 +1,110 @@
+{
+  "id": "people__zip_it",
+  "album": "people",
+  "file": "zip_it.jpg",
+  "source": "people/zip_it.jpg",
+  "slug": "zip_it",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Zip it",
+  "caption": null,
+  "date": "2005-01-30T11:22:56",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 6.3,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche",
+    "People"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.6723,
+    "c": 0.03,
+    "h": 248.27
+  },
+  "thumbhash": "4PcJFYLxeYVyhYqWZ3h5iHd/d/ZX",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQME/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAEDBP/aAAwDAQACEAMQAAAANp4l0Yb6/8QAIBAAAgIDAAEFAAAAAAAAAAAAAQMCEQAEIQUSEyIxQv/aAAgBAQABPwDb13a7EvXJoQUy94wIEo2a5mnqKbJTSPk2Kywn9cq83ErbqthONxMaPazxUR6xA9jZFHv0M//EABsRAAIBBQAAAAAAAAAAAAAAAAABEhETMUGR/9oACAECAQE/AKN9LaEiKljR/8QAGhEBAAMAAwAAAAAAAAAAAAAAAQAREiExgf/aAAgBAwEBPwASybS+eostx7P/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 34971,
+      "format": "avif",
+      "url": "/_mg/people__zip_it/db8bbe45-grid.avif",
+      "key": "people__zip_it/db8bbe45-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 64933,
+      "format": "jpeg",
+      "url": "/_mg/people__zip_it/db8bbe45-jpeg1600.jpg",
+      "key": "people__zip_it/db8bbe45-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 155114,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/zip_it.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 6.3,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      },
+      {
+        "slug": "people",
+        "label": "People"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "b0da81f5126ae8fa",
+  "sourceSize": 155114,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c1192d5a93695a2d"
+}

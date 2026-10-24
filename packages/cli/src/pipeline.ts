@@ -1,31 +1,30 @@
 import { log, spinner } from '@clack/prompts';
-import { processGallery, type ProcessSummary } from '@minimalgallery/pipeline';
+import {
+  processGallery,
+  type GalleryConfig,
+  type ProcessSummary,
+} from '@minimalgallery/pipeline';
 import { loadConfig } from '@minimalgallery/pipeline/config';
-import { CliError } from './errors.ts';
-
-export const BUCKET_MODE_MESSAGE =
-  "Bucket mode (storage: { mode: 's3' }) is not available yet: this version cannot upload to a bucket.\n" +
-  "Set storage: { mode: 'repo' } in minimalgallery.config.ts to process this gallery now. Repo mode is fine up to about 500 photos.";
 
 export interface RunOptions {
   prune?: boolean;
   force?: boolean;
   /** `spinner` for one-off commands, `lines` for long-running ones, `silent` for none. */
   output?: 'spinner' | 'lines' | 'silent';
+  /** Default: `loadConfig(root)`. */
+  config?: GalleryConfig;
 }
 
 /**
- * Run the pipeline over the gallery. Stops before encoding anything when the
- * gallery is in bucket mode, which this version cannot upload to. Warnings and
- * failed photos are printed; the caller decides the exit code.
+ * Run the pipeline over the gallery. In bucket mode the derivatives are
+ * staged locally; uploading them is a separate step (`uploadStaged`).
+ * Warnings and failed photos are printed; the caller decides the exit code.
  */
 export async function runPipeline(
   root: string,
   options: RunOptions = {}
 ): Promise<ProcessSummary> {
-  const config = await loadConfig(root);
-  if (config.storage.mode === 's3') throw new CliError(BUCKET_MODE_MESSAGE);
-
+  const config = options.config ?? (await loadConfig(root));
   const output = options.output ?? (process.stdout.isTTY ? 'spinner' : 'lines');
   const spin = output === 'spinner' ? spinner() : null;
   spin?.start('Processing photos');

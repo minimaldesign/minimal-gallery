@@ -1,0 +1,105 @@
+{
+  "id": "light__clotures",
+  "album": "light",
+  "file": "Clotures.jpg",
+  "source": "light/Clotures.jpg",
+  "slug": "clotures",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Clotures",
+  "caption": null,
+  "date": "2005-01-27T12:16:39",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 3.5,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Cap Taillat"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5173,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "XhgGDYI8epRvZ4eCd1d3hi9n8oM2",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAwT/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQP/2gAMAwEAAhADEAAAAEx2NCGOSn//xAAdEAACAQUBAQAAAAAAAAAAAAABAgADBBESMUIT/9oACAEBAAE/AAaCKACecly1FfmQowY7HPfBl5UfRDt6In//xAAbEQACAgMBAAAAAAAAAAAAAAAAAQIRAzJBgf/aAAgBAgEBPwBSkQt2c9MezP/EABsRAQACAgMAAAAAAAAAAAAAAAEAAhExAxKB/9oACAEDAQE/AGtDSy+DEd+TkDqT/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 26811,
+      "format": "avif",
+      "url": "/_mg/light__clotures/ca17d13f-grid.avif",
+      "key": "light__clotures/ca17d13f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 71632,
+      "format": "jpeg",
+      "url": "/_mg/light__clotures/ca17d13f-jpeg1600.jpg",
+      "key": "light__clotures/ca17d13f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 139645,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Clotures.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-27",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 3.5,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "cap-taillat",
+        "label": "Cap Taillat"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "efe2ebbcec328d1d",
+  "sourceSize": 139645,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "008d066fc2640ff0"
+}

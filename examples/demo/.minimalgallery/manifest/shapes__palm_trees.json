@@ -1,0 +1,98 @@
+{
+  "id": "shapes__palm_trees",
+  "album": "shapes",
+  "file": "Palm_trees.jpg",
+  "source": "shapes/Palm_trees.jpg",
+  "slug": "palm_trees",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Palm trees",
+  "caption": null,
+  "date": "2005-04-17T10:21:11",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.6936,
+    "c": 0.019,
+    "h": 17.62
+  },
+  "thumbhash": "n/cFDYJvh3h6iYhkd3lxn19m8WUW",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAgMEAf/aAAwDAQACEAMQAAAAQehIaaHZ2mf/xAAeEAACAgICAwAAAAAAAAAAAAABAgMEACERIlKBkf/aAAgBAQABPwBlpncFgqT4yZILkfLpYkb3j06q8AQJ8y6BHYdU6gDQGs//xAAeEQACAQMFAAAAAAAAAAAAAAABAgADESESE0JSgf/aAAgBAgEBPwDVU5LfyA0zgqBNx+xlNiVF8z//xAAdEQACAQQDAAAAAAAAAAAAAAABAgADERIhQlKB/9oACAEDAQE/AMafFrewq42GJmCdRKigMbC2p//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 19561,
+      "format": "avif",
+      "url": "/_mg/shapes__palm_trees/6df35a6b-grid.avif",
+      "key": "shapes__palm_trees/6df35a6b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 35451,
+      "format": "jpeg",
+      "url": "/_mg/shapes__palm_trees/6df35a6b-jpeg1600.jpg",
+      "key": "shapes__palm_trees/6df35a6b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 144228,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Palm_trees.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-17",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "3cbb563d43a42fbd",
+  "sourceSize": 144228,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b54a1b8ceee70a17"
+}

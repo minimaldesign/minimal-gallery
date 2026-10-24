@@ -1,0 +1,98 @@
+{
+  "id": "people__sararimen",
+  "album": "people",
+  "file": "sararimen.jpg",
+  "source": "people/sararimen.jpg",
+  "slug": "sararimen",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Sararimen",
+  "caption": null,
+  "date": "2005-04-05T12:29:05",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GAgKBYD7SYg7qYVOhFijegAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAxyikIn//xAAkEAACAgIBAQkAAAAAAAAAAAABAgMEABEFIgYhIzEzQWGBof/aAAgBAQABPwDnDSqVhJDsWfTiRDsfY+M4vtJyTUoqVbwSWLbXpaUt7k5Uo1LFezLNXR5E7lZh5dJOSVa50piGiyn91n//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 32161,
+      "format": "avif",
+      "url": "/_mg/people__sararimen/287c2c64-grid.avif",
+      "key": "people__sararimen/287c2c64-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 64125,
+      "format": "jpeg",
+      "url": "/_mg/people__sararimen/287c2c64-jpeg1600.jpg",
+      "key": "people__sararimen/287c2c64-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 137744,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/sararimen.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "97440864d158d1cf",
+  "sourceSize": 137744,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "14b9cda3724623f4"
+}

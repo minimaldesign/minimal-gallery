@@ -1,0 +1,98 @@
+{
+  "id": "people__maiko_fans",
+  "album": "people",
+  "file": "Maiko_Fans.jpg",
+  "source": "people/Maiko_Fans.jpg",
+  "slug": "maiko_fans",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Maiko Fans",
+  "caption": null,
+  "date": "2005-04-05T18:12:24",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 3.8,
+    "focal": 27,
+    "focal35": 40,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EQgODYJ3RnVQmIeFl7l5duYvjfik",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEBv/EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAAAwUrc1phY/8QAIhAAAgEEAAcBAAAAAAAAAAAAAgMBAAQFEQYSExUhMUKh/9oACAEBAAE/AF8O5A8QF6tf3O4oMZ17cVuFS9FuNjMFV3kb1RItweUKKY2HuPMxV01ncGjzzqFB+1//xAAdEQABBAIDAAAAAAAAAAAAAAABAAIREgMiMUHB/9oACAECAQE/ADtHipWdiDMrC9waQD2ncr//xAAdEQEAAQMFAAAAAAAAAAAAAAABAAIDERIhIjGB/9oACAEDAQE/ADaNzVjiIGJcBfJT1P/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23955,
+      "format": "avif",
+      "url": "/_mg/people__maiko_fans/7f1cafde-grid.avif",
+      "key": "people__maiko_fans/7f1cafde-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 50270,
+      "format": "jpeg",
+      "url": "/_mg/people__maiko_fans/7f1cafde-jpeg1600.jpg",
+      "key": "people__maiko_fans/7f1cafde-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 171190,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Maiko_Fans.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 3.8,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": 200,
+    "focal": 27,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "aeef421bd90ce7e9",
+  "sourceSize": 171190,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "bd8524d775d88a98"
+}

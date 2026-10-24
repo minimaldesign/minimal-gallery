@@ -1,0 +1,98 @@
+{
+  "id": "feelings__wanna_go_back",
+  "album": "feelings",
+  "file": "Wanna_go_back.jpg",
+  "source": "feelings/Wanna_go_back.jpg",
+  "slug": "wanna_go_back",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Wanna go back",
+  "caption": null,
+  "date": "2005-04-14T12:35:29",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/400",
+    "shutterSeconds": 0.0025,
+    "aperture": 10,
+    "focal": 55,
+    "focal35": 82,
+    "iso": 250,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.8694,
+    "c": 0.0561,
+    "h": 248.47
+  },
+  "thumbhash": "5dgNRYaNeHdfhoeKiJiId3JwVQem",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgIE/8QAGAEAAgMAAAAAAAAAAAAAAAAABAUAAgP/2gAMAwEAAhADEAAAAFOoOFQTVSiK6f/EAB0QAQEAAgMAAwAAAAAAAAAAAAECAxEABAUSE4H/2gAIAQEAAT8Art9rFDeSMcyG108z+x84+svEVc7nQjz2qrHPWJUKyafw3yFq8VKqy7d8/8QAHxEAAgICAQUAAAAAAAAAAAAAAQIDEQAEBRIhIkFx/9oACAECAQE/ANrej14wyqXN1XUBm1ykjxlY0pSvm139AzcUFlJyQ9yPVjP/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAIAQMBAT8ArqvY4wCiJQQdfOHkM2f/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 24003,
+      "format": "avif",
+      "url": "/_mg/feelings__wanna_go_back/593f762e-grid.avif",
+      "key": "feelings__wanna_go_back/593f762e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 52280,
+      "format": "jpeg",
+      "url": "/_mg/feelings__wanna_go_back/593f762e-jpeg1600.jpg",
+      "key": "feelings__wanna_go_back/593f762e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 114261,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Wanna_go_back.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 10,
+    "shutter": {
+      "seconds": 0.0025,
+      "label": "1/400"
+    },
+    "iso": 250,
+    "focal": 55,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0070d1680e5a914d",
+  "sourceSize": 114261,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2d4ac780c5561c1b"
+}

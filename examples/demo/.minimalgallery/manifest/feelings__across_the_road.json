@@ -1,0 +1,89 @@
+{
+  "id": "feelings__across_the_road",
+  "album": "feelings",
+  "file": "Across_the_road.jpg",
+  "source": "feelings/Across_the_road.jpg",
+  "slug": "across_the_road",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Across the road",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 700,
+  "color": {
+    "l": 0.6268,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HfgNBwBmeHifeHd1iLd4Z4eHWARaiGAN",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAQABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAAAdyCskNEv/8QAIRAAAgEDAwUAAAAAAAAAAAAAAQIRAAMEBRIxEyEiUZH/2gAIAQEAAT8AGVt5cLPurmTbZYAdm+CsbXsFGRenv8Zkng0dbsvb3WkInvBav//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 640,
+      "bytes": 16643,
+      "format": "avif",
+      "url": "/_mg/feelings__across_the_road/31a1137f-grid.avif",
+      "key": "feelings__across_the_road/31a1137f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 700,
+      "bytes": 36905,
+      "format": "jpeg",
+      "url": "/_mg/feelings__across_the_road/31a1137f-jpeg1600.jpg",
+      "key": "feelings__across_the_road/31a1137f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 118285,
+    "width": 700,
+    "height": 700,
+    "relativePath": "photos/feelings/Across_the_road.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "3c85d5658e4ec57a",
+  "sourceSize": 118285,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a7be9950f668b6b5"
+}

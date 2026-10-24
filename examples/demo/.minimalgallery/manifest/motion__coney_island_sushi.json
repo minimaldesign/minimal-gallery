@@ -1,0 +1,98 @@
+{
+  "id": "motion__coney_island_sushi",
+  "album": "motion",
+  "file": "Coney_Island_sushi.jpg",
+  "source": "motion/Coney_Island_sushi.jpg",
+  "slug": "coney_island_sushi",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Coney Island sushi",
+  "caption": null,
+  "date": "2004-11-01T17:21:49",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/1250",
+    "shutterSeconds": 0.0008,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2301,
+    "c": 0.026,
+    "h": 19.24
+  },
+  "thumbhash": "lAgODYAJh5aIeIh2iHiHiAhrlfEj",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQF/8QAGAEAAgMAAAAAAAAAAAAAAAAAAAMBAgT/2gAMAwEAAhADEAAAAMXK2YBZUiP/xAAjEAABAwIFBQAAAAAAAAAAAAADAQIRAAQFBhMiQRIhMTJh/9oACAEBAAE/AMDUCAMU1yUYG9nJPp9SsxIEF0FAP2OAq+ZrBHu19OdkKvTxWYHK8wp4mK//xAAYEQADAQEAAAAAAAAAAAAAAAAAARECIf/aAAgBAgEBPwDfYp0x1DSlMn//xAAXEQEAAwAAAAAAAAAAAAAAAAABABCh/9oACAEDAQE/ADI3/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18836,
+      "format": "avif",
+      "url": "/_mg/motion__coney_island_sushi/f9d70b52-grid.avif",
+      "key": "motion__coney_island_sushi/f9d70b52-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 39696,
+      "format": "jpeg",
+      "url": "/_mg/motion__coney_island_sushi/f9d70b52-jpeg1600.jpg",
+      "key": "motion__coney_island_sushi/f9d70b52-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 163199,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/motion/Coney_Island_sushi.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.0008,
+      "label": "1/1250"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "b08fafb4a66cb4d0",
+  "sourceSize": 163199,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "514e82daf84631eb"
+}

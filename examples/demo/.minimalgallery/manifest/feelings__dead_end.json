@@ -1,0 +1,98 @@
+{
+  "id": "feelings__dead_end",
+  "album": "feelings",
+  "file": "Dead_End.jpg",
+  "source": "feelings/Dead_End.jpg",
+  "slug": "dead_end",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Dead End",
+  "caption": null,
+  "date": "2004-11-16T17:16:54",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 8,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9791,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "JAgeBYCIeIiPd3h3d3iHd0Z5UBYH",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAALkWmDhR/8QAIBAAAgEEAQUAAAAAAAAAAAAAAQIDAAQRISIFBhMWYv/aAAgBAQABPwC67y6HbQvIkxnwCQsVe627xq/CEfRywqO5ncSAyHAYUg8kFwWJJQ8dnWq//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 20751,
+      "format": "avif",
+      "url": "/_mg/feelings__dead_end/f9a7e65d-grid.avif",
+      "key": "feelings__dead_end/f9a7e65d-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 39535,
+      "format": "jpeg",
+      "url": "/_mg/feelings__dead_end/f9a7e65d-jpeg1600.jpg",
+      "key": "feelings__dead_end/f9a7e65d-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 117260,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Dead_End.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "d1d6988bb6a2a7a1",
+  "sourceSize": 117260,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2a28608e6c0fe993"
+}

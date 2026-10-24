@@ -1,0 +1,106 @@
+{
+  "id": "people__gomen_ne",
+  "album": "people",
+  "file": "Gomen ne.jpg",
+  "source": "people/Gomen ne.jpg",
+  "slug": "gomen_ne",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Gomen ne",
+  "caption": null,
+  "date": "2007-11-12T11:31:51",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 44,
+    "focal35": 66,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Nara",
+    "state": null,
+    "country": "Japan",
+    "location": "To-Dai ji"
+  },
+  "placeLabel": "Nara, Japan",
+  "keywords": [],
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "CwgGBYCAdVN/iWeVl4Z3dQAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAM4GpKh5/8QAHhAAAgICAgMAAAAAAAAAAAAAAQIDEQAEEiETIlL/2gAIAQEAAT8AinSSDWRbbws12TXeasqS7CR8bd/UBrr6rvI5pU6WRlAYEUawEvrh2YsxNkk3ef/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 17249,
+      "format": "avif",
+      "url": "/_mg/people__gomen_ne/b29aa084-grid.avif",
+      "key": "people__gomen_ne/b29aa084-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 55204,
+      "format": "jpeg",
+      "url": "/_mg/people__gomen_ne/b29aa084-jpeg1600.jpg",
+      "key": "people__gomen_ne/b29aa084-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 156509,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/people/Gomen ne.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-12",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 100,
+    "focal": 44,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "nara-japan",
+      "label": "Nara, Japan"
+    }
+  },
+  "sourceHash": "ed6b83e45e0c41a8",
+  "sourceSize": 156509,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "decc4d73fed1230b"
+}

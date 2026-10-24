@@ -1,0 +1,103 @@
+{
+  "id": "light__real_life_sandbox",
+  "album": "light",
+  "file": "Real_Life_Sandbox.jpg",
+  "source": "light/Real_Life_Sandbox.jpg",
+  "slug": "real_life_sandbox",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Real Life Sandbox",
+  "caption": null,
+  "date": "2006-01-28T16:32:55",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/640",
+    "shutterSeconds": 0.0015625,
+    "aperture": 9,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 320,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Coney Island"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "copyright": "© minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "zSgGDYJ6iJhflpeMdFm5iWtfu/bF",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQMFBv/EABgBAAMBAQAAAAAAAAAAAAAAAAIDBAAB/9oADAMBAAIQAxAAAADDyVDuaJT2p//EACEQAAIBAwMFAAAAAAAAAAAAAAECAwAEEQUTMhJRYnGB/9oACAEBAAE/AJLs2xkZzvA8FVSuPtPqMEyjpYr44wagUPyyc9zV8iQzJtqF9V//xAAcEQACAgIDAAAAAAAAAAAAAAABAgARAyESMUH/2gAIAQIBAT8ACcqrUGNh5G11MZLKbn//xAAbEQACAwADAAAAAAAAAAAAAAABAgADERIhQf/aAAgBAwEBPwAvx3e4bFPsUbLAFYYJ/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 24708,
+      "format": "avif",
+      "url": "/_mg/light__real_life_sandbox/3705a234-grid.avif",
+      "key": "light__real_life_sandbox/3705a234-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 66029,
+      "format": "jpeg",
+      "url": "/_mg/light__real_life_sandbox/3705a234-jpeg1600.jpg",
+      "key": "light__real_life_sandbox/3705a234-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 142883,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Real_Life_Sandbox.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2006",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.0015625,
+      "label": "1/640"
+    },
+    "iso": 320,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "ee94ceabaad58bfc",
+  "sourceSize": 142883,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3bce41ecbdd4edce"
+}

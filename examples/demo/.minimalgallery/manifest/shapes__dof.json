@@ -1,0 +1,98 @@
+{
+  "id": "shapes__dof",
+  "album": "shapes",
+  "file": "DOF.jpg",
+  "source": "shapes/DOF.jpg",
+  "slug": "dof",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "DOF",
+  "caption": null,
+  "date": "2005-06-28T15:06:07",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2042,
+    "c": 0.0286,
+    "h": 108.69
+  },
+  "thumbhash": "jhgKFYL9qmeJiYh2d4iId/t4p493",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQIG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAAzmGwTVAfU//EACEQAAEEAQMFAAAAAAAAAAAAAAIAAQMEERITIQUGMXHB/9oACAEBAAE/AO6NuW7VceTKrECqOASax8OZM3oV1aaUpKpOb52MfFXItYNnhmX/xAAaEQACAgMAAAAAAAAAAAAAAAAAAgMxATJx/9oACAECAQE/AI6Hojxt0Y//xAAZEQADAAMAAAAAAAAAAAAAAAAAAjEBQXH/2gAIAQMBAT8Aei0fXDB//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 10437,
+      "format": "avif",
+      "url": "/_mg/shapes__dof/8b62b18c-grid.avif",
+      "key": "shapes__dof/8b62b18c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 25607,
+      "format": "jpeg",
+      "url": "/_mg/shapes__dof/8b62b18c-jpeg1600.jpg",
+      "key": "shapes__dof/8b62b18c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 154176,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/DOF.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "06",
+    "day": "06-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "9c8063d5b1f69e49",
+  "sourceSize": 154176,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "9736d13b1edfc62c"
+}

@@ -1,0 +1,158 @@
+/* INSPECTOR
+
+   The right column of the photos view. It holds two forms and shows one,
+   by data-inspector on the block (the script sets it): the open photo
+   (preview, title, file, attention notices, its fields, then Save and the
+   order actions) or, with no photo open in an album, the album (title,
+   description, sort, hidden). The foot stays in reach at
+   the bottom while the fields scroll. */
+
+.inspector {
+  background-color: var(--mg-gray-100);
+}
+
+.inspector_form {
+  display: none;
+  flex-direction: column;
+  min-height: 100%;
+
+  .inspector[data-inspector='photo'] &.inspector_form-photo,
+  .inspector[data-inspector='album'] &.inspector_form-album {
+    display: flex;
+  }
+}
+
+.inspector_head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--xs3);
+  padding: var(--sm1);
+  border-block-end: var(--border-sm) solid var(--mg-hairline);
+}
+
+.inspector_preview {
+  grid-column: 1 / -1;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 15rem;
+  aspect-ratio: var(--inspector-ratio, 3 / 2);
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background-color: var(--mg-ground);
+
+  &:not([src]),
+  &[src=''] {
+    visibility: hidden;
+  }
+}
+
+.inspector_names {
+  display: grid;
+  gap: var(--xs1);
+  min-width: 0;
+}
+
+.inspector_title {
+  overflow-wrap: anywhere;
+  color: var(--mg-ink);
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+}
+
+.inspector_file {
+  margin: 0;
+  color: var(--mg-ink-faint);
+  font-family: var(--mono);
+  font-size: var(--mg-size-small);
+  overflow-wrap: anywhere;
+}
+
+.inspector_close {
+  /* its tip is placed against it */
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--md1);
+  height: var(--md1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--mg-accent);
+  }
+}
+
+.inspector_notices {
+  display: grid;
+  gap: var(--xs2);
+  padding: var(--sm1) var(--sm1) 0;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.inspector_body {
+  display: grid;
+  gap: var(--sm1);
+  padding: var(--sm1);
+}
+
+/* a group of fields with one heading (Place) */
+.inspector_group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--xs3);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  > [aria-hidden] {
+    margin: 0;
+    color: var(--mg-ink-muted);
+    font-size: inherit;
+  }
+}
+
+/* An entry of an inspector group that takes the whole row. */
+.inspector_wide {
+  grid-column: 1 / -1;
+}
+
+.inspector_foot {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--xs2);
+  margin-block-start: auto;
+  padding: var(--xs3) var(--sm1);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+  background-color: var(--mg-gray-100);
+}
+
+.inspector_status {
+  flex: 1;
+  min-width: 0;
+  color: var(--mg-ink-muted);
+  font-size: var(--mg-size-small);
+}
+
+.inspector_tools {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  gap: var(--xs2);
+
+  &:empty {
+    display: none;
+  }
+}

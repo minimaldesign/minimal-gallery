@@ -1,0 +1,113 @@
+{
+  "id": "shapes__eiffel",
+  "album": "shapes",
+  "file": "Eiffel.jpg",
+  "source": "shapes/Eiffel.jpg",
+  "slug": "eiffel",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Eiffel",
+  "caption": null,
+  "date": "2005-01-13T11:56:02",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [
+    "Paris"
+  ],
+  "copyright": "© 2004 minimal Design All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EQgKBYD4eJplh1eLuHpVmQAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAAYWMgof//EACUQAAIBAwMCBwAAAAAAAAAAAAIDAQQFIQAREgYTFCIjQlFTYf/aAAgBAQABPwCrUmqT4pBtY5hyFQ1uOTi80F+bTjVC+sePGoiDYB843mdy3nOI11BbqIuob+qUemNnOsgPbD/s1aI7tqYZ5IKxQjPxGv/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23889,
+      "format": "avif",
+      "url": "/_mg/shapes__eiffel/0c19cc6d-grid.avif",
+      "key": "shapes__eiffel/0c19cc6d-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 55550,
+      "format": "jpeg",
+      "url": "/_mg/shapes__eiffel/0c19cc6d-jpeg1600.jpg",
+      "key": "shapes__eiffel/0c19cc6d-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 135082,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Eiffel.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-13",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "paris",
+        "label": "Paris"
+      }
+    ],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "c1d5c6e71503280a",
+  "sourceSize": 135082,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3ff75e7ea5644eff"
+}

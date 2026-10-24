@@ -1,0 +1,86 @@
+/* SIDEBAR
+
+   The left column: the gallery's name (home), the album tree with its New
+   album control, the links to Settings and Publish, and at the foot the
+   first-run checklist and the queue. A darker panel than the ground, so
+   the photos stay the brightest thing on the screen. */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sm3);
+  padding: var(--sm1) var(--xs3);
+  background-color: var(--mg-gray-100);
+}
+
+.sidebar_head {
+  display: flex;
+  align-items: center;
+  gap: var(--xs2);
+  min-height: var(--md2);
+  padding-inline: var(--xs2);
+}
+
+.sidebar_brand {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--mg-ink);
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar_section {
+  display: grid;
+  gap: var(--xs1);
+}
+
+.sidebar_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--md1);
+  padding-inline: var(--xs2) 0;
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+}
+
+/* the icon button beside a heading (New album) */
+.sidebar_add {
+  /* its tip is placed against it */
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--md1);
+  height: var(--md1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--mg-ink-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--mg-duration-quick) var(--mg-ease-out),
+    color var(--mg-duration-quick) var(--mg-ease-out);
+
+  &:hover {
+    background-color: var(--mg-control-hover);
+    color: var(--mg-accent);
+  }
+}
+
+.sidebar_hint {
+  margin: 0;
+  padding: var(--xs1) var(--xs2) 0;
+  color: var(--mg-ink-faint);
+  font-size: var(--mg-size-small);
+  line-height: var(--leading-md);
+}
+
+.sidebar_foot {
+  display: grid;
+  gap: var(--xs3);
+  margin-block-start: auto;
+}

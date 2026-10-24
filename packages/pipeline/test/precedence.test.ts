@@ -29,7 +29,6 @@ describe('XMP sidecars', () => {
       title: 'XMP title',
       caption: 'XMP caption',
       keywords: ['bamboo', 'forest'],
-      rating: 4,
       place: {
         city: 'Kyoto',
         state: undefined,
@@ -58,7 +57,7 @@ describe('override precedence', () => {
     await write(p('b.xmp'), LIGHTROOM_XMP);
     await write(
       p('_album.md'),
-      '---\ntitle: Kyoto\nsort: name\nphotos:\n  a.jpg: { title: From album }\n  b.jpg: { title: From album, rating: 2 }\n---\nAlbum text.\n'
+      '---\ntitle: Kyoto\nsort: name\nphotos:\n  a.jpg: { title: From album }\n  b.jpg: { title: From album }\n---\nAlbum text.\n'
     );
     // c: only the .xmp sidecar.
     await write(p('c.xmp'), LIGHTROOM_XMP);
@@ -78,7 +77,6 @@ describe('override precedence', () => {
     expect(a.keywords).toEqual(['bamboo', 'forest']);
     const b = await read('kyoto__b');
     expect(b.title).toBe('From album');
-    expect(b.rating).toBe(2);
     expect(b.caption).toBe('XMP caption');
     expect(b.place.city).toBe('Kyoto');
     expect(b.placeLabel).toBe('Kyoto, Japan');

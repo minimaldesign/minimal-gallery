@@ -1,0 +1,95 @@
+{
+  "id": "colors__on_the_edge",
+  "album": "colors",
+  "file": "On_the_edge.jpg",
+  "source": "colors/On_the_edge.jpg",
+  "slug": "on_the_edge",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "On the edge",
+  "caption": null,
+  "date": "2004-09-22T17:22:46",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 52,
+    "focal35": 78,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FPgFDYDJYnJkWWmzcwlVvMp/e/Ej",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQMG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAAAy+apSXuDBf/EACAQAAICAgEFAQAAAAAAAAAAAAECAwQAEQUSMTNBUoH/2gAIAQEAAT8Amfi4qMJq8hDO7+SIoyOn72IzjadV569ibT1mD7jh2COkYXYKQNAb9ADLFaGTZZSST9HP/8QAGxEBAAEFAQAAAAAAAAAAAAAAAQIAAxAREjH/2gAIAQIBAT8AtxIy3IEptdrz47xqv//EABsRAQADAQADAAAAAAAAAAAAAAEAAiERAxJB/9oACAEDAQE/AK8HdIte6cJ5VK4/ZSz6mz//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14903,
+      "format": "avif",
+      "url": "/_mg/colors__on_the_edge/3eb4ad2a-grid.avif",
+      "key": "colors__on_the_edge/3eb4ad2a-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 34972,
+      "format": "jpeg",
+      "url": "/_mg/colors__on_the_edge/3eb4ad2a-jpeg1600.jpg",
+      "key": "colors__on_the_edge/3eb4ad2a-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 67613,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/On_the_edge.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "09",
+    "day": "09-22",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": null,
+    "focal": 52,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "16f65330a35b3e1f",
+  "sourceSize": 67613,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3f9ed21b29e8b978"
+}

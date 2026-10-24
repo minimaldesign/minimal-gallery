@@ -1,0 +1,106 @@
+{
+  "id": "people__shooting_in_paris",
+  "album": "people",
+  "file": "Shooting_in_Paris.jpg",
+  "source": "people/Shooting_in_Paris.jpg",
+  "slug": "shooting_in_paris",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Shooting in Paris",
+  "caption": null,
+  "date": "2005-01-13T12:09:45",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [],
+  "copyright": "© 2004 minimal Design&#xA;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3967,
+    "c": 0.0258,
+    "h": 107.52
+  },
+  "thumbhash": "lBgGDYLXWmeNl2dvhnhrmJxfVvXG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFBv/EABcBAAMBAAAAAAAAAAAAAAAAAAECAwT/2gAMAwEAAhADEAAAAM9mqEq0S66//8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBRITISIjMTJR/9oACAEBAAE/ANRvbxIYHysphwo3sexB+Ck1gTWzm4j54eNgF34KmlVZJnDDINWVnaiN/Cv0ffWv/8QAGxEBAAICAwAAAAAAAAAAAAAAAQACAxEQMUH/2gAIAQIBAT8ApZs6dhK4yqvr3wBP/8QAGxEBAAEFAQAAAAAAAAAAAAAAAQIAAxARMVH/2gAIAQMBAT8AJHlNyfFdGf/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 25047,
+      "format": "avif",
+      "url": "/_mg/people__shooting_in_paris/77271e42-grid.avif",
+      "key": "people__shooting_in_paris/77271e42-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 49595,
+      "format": "jpeg",
+      "url": "/_mg/people__shooting_in_paris/77271e42-jpeg1600.jpg",
+      "key": "people__shooting_in_paris/77271e42-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 165781,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Shooting_in_Paris.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-13",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "f726ce0c93e93305",
+  "sourceSize": 165781,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d5ba99fef7bb8b8e"
+}

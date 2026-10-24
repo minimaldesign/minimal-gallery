@@ -8,10 +8,15 @@ export type {
 export { albumSlug } from './album.ts';
 export { findGalleryRoot, requireGalleryRoot } from './root.ts';
 export { detectPackageManager, type PackageManager } from './exec.ts';
-export { runPipeline, BUCKET_MODE_MESSAGE } from './pipeline.ts';
+export { runPipeline } from './pipeline.ts';
+export { uploadStaged, pruneBucketFiles } from './bucket.ts';
+export type { UploadResult } from './bucket.ts';
+export { adminDevArgs, ADMIN_PATH } from './commands/admin.ts';
 export {
   changedFiles,
   choosePublishMethod,
+  lastUrl,
+  siteUrl,
   wranglerProjectName,
   type PublishMethod,
 } from './commands/publish.ts';

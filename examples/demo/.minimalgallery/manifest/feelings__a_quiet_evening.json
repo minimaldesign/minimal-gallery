@@ -1,0 +1,113 @@
+{
+  "id": "feelings__a_quiet_evening",
+  "album": "feelings",
+  "file": "A Quiet Evening.jpg",
+  "source": "feelings/A Quiet Evening.jpg",
+  "slug": "a_quiet_evening",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "A Quiet Evening",
+  "caption": null,
+  "date": "2007-11-14T16:30:48",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 8,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Oumi-Imazu",
+    "state": null,
+    "country": "Japan",
+    "location": null
+  },
+  "placeLabel": "Oumi-Imazu, Japan",
+  "keywords": [
+    "HDR"
+  ],
+  "copyright": "minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "1BgGFYZoeIhrh3iPh5eGd0Z7f/b2",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABcBAQEBAQAAAAAAAAAAAAAAAAIDAQT/2gAMAwEAAhADEAAAAMzy3IdeQlTP/8QAIBAAAgEEAQUAAAAAAAAAAAAAAQIDAAQREgUTIUFxsf/aAAgBAQABPwCO9mVSOhbNnzo2abkb6QELovrap440gkZUXYdwSM/aLtICGOa//8QAHBEBAAIBBQAAAAAAAAAAAAAAAQACAzFBQpGS/9oACAECAQE/ALVoork9Qx4DhZ6m0NZ//8QAGxEBAAIDAQEAAAAAAAAAAAAAAQACAwQRQZH/2gAIAQMBAT8ApsWoPK4/ktt5n0IhxgCT/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 40194,
+      "format": "avif",
+      "url": "/_mg/feelings__a_quiet_evening/595458c1-grid.avif",
+      "key": "feelings__a_quiet_evening/595458c1-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 131501,
+      "format": "jpeg",
+      "url": "/_mg/feelings__a_quiet_evening/595458c1-jpeg1600.jpg",
+      "key": "feelings__a_quiet_evening/595458c1-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 223248,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/feelings/A Quiet Evening.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 100,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "hdr",
+        "label": "HDR"
+      }
+    ],
+    "place": {
+      "slug": "oumi-imazu-japan",
+      "label": "Oumi-Imazu, Japan"
+    }
+  },
+  "sourceHash": "56e47987e9c33d21",
+  "sourceSize": 223248,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "df82f91ab9636129"
+}

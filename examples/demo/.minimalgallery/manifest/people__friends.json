@@ -1,0 +1,103 @@
+{
+  "id": "people__friends",
+  "album": "people",
+  "file": "friends.jpg",
+  "source": "people/friends.jpg",
+  "slug": "friends",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Friends",
+  "caption": null,
+  "date": "2007-11-16T23:41:52",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 5.3,
+    "focal": 95,
+    "focal35": 142,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": null
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [],
+  "copyright": "minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FggKBYBraWZViHhgeNdXdAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQIE/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAACIBzIf/EAB8QAAICAgIDAQAAAAAAAAAAAAECAwQAEQUSEzGhIv/aAAgBAQABPwBuFDRoa5Owf2zehlynYgVg0auqx9iwOgATr7kvKcgYkQ2pOoJ+HeNasSeR3mcsx2x37z//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 23671,
+      "format": "avif",
+      "url": "/_mg/people__friends/ab39fb50-grid.avif",
+      "key": "people__friends/ab39fb50-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 65968,
+      "format": "jpeg",
+      "url": "/_mg/people__friends/ab39fb50-jpeg1600.jpg",
+      "key": "people__friends/ab39fb50-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 182236,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/people/friends.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-16",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": 5.3,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": 100,
+    "focal": 95,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "45882e6b6bf03762",
+  "sourceSize": 182236,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "39d6dde483df9b79"
+}

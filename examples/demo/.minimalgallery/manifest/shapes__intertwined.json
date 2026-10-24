@@ -1,0 +1,95 @@
+{
+  "id": "shapes__intertwined",
+  "album": "shapes",
+  "file": "intertwined.jpg",
+  "source": "shapes/intertwined.jpg",
+  "slug": "intertwined",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Intertwined",
+  "caption": null,
+  "date": "2005-04-16T13:12:23",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 80,
+    "focal35": 120,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DwgGBYK5molShpivd1eHaaaQiQm4",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAABAUGB//EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/2gAMAwEAAhADEAAAAM9VEhbzoma//8QAIBAAAgEEAQUAAAAAAAAAAAAAAQIDAAQSIRExYXGBwf/aAAgBAQABPwCeSRLiQvFhkpGP3zSuzAqeCRr0OlXNvBLqSJWHcVNaW0ZzSIKwYbFf/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAQ/9oACAECAQE/AJd//8QAFhEBAQEAAAAAAAAAAAAAAAAAABEQ/9oACAEDAQE/AETP/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 45592,
+      "format": "avif",
+      "url": "/_mg/shapes__intertwined/296794c5-grid.avif",
+      "key": "shapes__intertwined/296794c5-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 89972,
+      "format": "jpeg",
+      "url": "/_mg/shapes__intertwined/296794c5-jpeg1600.jpg",
+      "key": "shapes__intertwined/296794c5-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 176827,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/intertwined.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": null,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "fe1f427ed98ebfe4",
+  "sourceSize": 176827,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c6c23b984bfda31f"
+}

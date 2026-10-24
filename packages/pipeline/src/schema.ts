@@ -3,6 +3,11 @@ import { z } from 'zod';
 /** Where manifests live, relative to the gallery directory. */
 export const MANIFEST_DIR = '.minimalgallery/manifest';
 export const ALBUMS_FILE = '_albums.json';
+/**
+ * Bucket mode keeps derivatives here, relative to the gallery directory,
+ * until they are uploaded. Ignored by git; the dev server serves it.
+ */
+export const STAGE_DIR = '.minimalgallery/cache/media';
 
 /**
  * A capture date as the camera’s clock showed it: local wall-clock time, no
@@ -112,6 +117,16 @@ export const PhotoManifest = z.object({
   source: z.string(),
   /** Last segment of the photo URL inside its album. */
   slug: z.string(),
+  /**
+   * When the photo first entered the gallery, in UTC (`2026-10-23T19:30:00Z`):
+   * the first run that wrote its manifest. Kept when the photo is encoded
+   * again, its sidecar changes, or the same file comes back under another
+   * name. Optional only so manifests from older pipelines still load.
+   */
+  added: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/)
+    .optional(),
   title: z.string(),
   /** Raw markdown. */
   caption: z.string().nullable(),
@@ -127,8 +142,6 @@ export const PhotoManifest = z.object({
   /** Display string such as “Kyoto, Japan”, or null. */
   placeLabel: z.string().nullable(),
   keywords: z.array(z.string()),
-  /** 1 to 5 stars; null when unrated (XMP Rating 0) or rejected. */
-  rating: z.number().int().min(1).max(5).nullable(),
   copyright: z.string().nullable(),
   author: z.string().nullable(),
   hidden: z.boolean(),
@@ -181,8 +194,6 @@ export const AlbumManifest = z.object({
   title: z.string(),
   /** Raw markdown, from the `_album.md` body. */
   description: z.string().nullable(),
-  /** Photo id of the cover. */
-  cover: z.string().nullable(),
   sort: AlbumSort,
   order: z.array(z.string()),
   hidden: z.boolean(),
@@ -211,8 +222,6 @@ export const PhotoOverrides = z
     camera: z.string(),
     lens: z.string(),
     keywords: z.union([z.array(z.string()), z.string()]),
-    /** 0 means unrated. */
-    rating: z.number(),
     copyright: z.string(),
     author: z.string(),
     hidden: z.boolean(),
@@ -225,7 +234,6 @@ export type PhotoOverrides = z.infer<typeof PhotoOverrides>;
 export const AlbumFrontmatter = z
   .object({
     title: z.string(),
-    cover: z.string(),
     sort: AlbumSort,
     order: z.array(z.string()),
     hidden: z.boolean(),

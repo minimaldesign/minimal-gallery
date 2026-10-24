@@ -1,0 +1,95 @@
+{
+  "id": "shapes__soft_building",
+  "album": "shapes",
+  "file": "sOFt_buiLDing.jpg",
+  "source": "shapes/sOFt_buiLDing.jpg",
+  "slug": "soft_building",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "SOFt buiLDing",
+  "caption": null,
+  "date": "2004-08-01T19:05:20",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 18,
+    "focal35": 27,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "GPgJDYJ/fJZ9ioeDTLPGZ4NNX+j2",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAXAQADAQAAAAAAAAAAAAAAAAAAAgMB/9oADAMBAAIQAxAAAAA7TDGszViB/8QAIBAAAgICAgIDAAAAAAAAAAAAAgMBBAURABIyQRMh0f/aAAgBAQABPwDKGqy+a2URLEeQMiNGET7AuZFdjELQmraTYpwkSDWo+v3law92KsfI0jlVhXTc+Pfe+XTMH9RIoHcTqJ965//EABoRAQACAwEAAAAAAAAAAAAAAAEAAhESIQP/2gAIAQIBAT8AAqo9Fh463bbPWK4Zl1n/xAAbEQEAAgIDAAAAAAAAAAAAAAABAAIREhMhMv/aAAgBAwEBPwBs2BPQTn3oVawDYmDL1P/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 22144,
+      "format": "avif",
+      "url": "/_mg/shapes__soft_building/1d15b057-grid.avif",
+      "key": "shapes__soft_building/1d15b057-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 55009,
+      "format": "jpeg",
+      "url": "/_mg/shapes__soft_building/1d15b057-jpeg1600.jpg",
+      "key": "shapes__soft_building/1d15b057-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 108313,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/sOFt_buiLDing.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": null,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8488afeccc961fff",
+  "sourceSize": 108313,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "4da45351dae917f4"
+}

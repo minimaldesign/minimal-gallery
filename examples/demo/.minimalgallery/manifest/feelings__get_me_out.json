@@ -1,0 +1,95 @@
+{
+  "id": "feelings__get_me_out",
+  "album": "feelings",
+  "file": "Get_me_out.jpg",
+  "source": "feelings/Get_me_out.jpg",
+  "slug": "get_me_out",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Get me out",
+  "caption": null,
+  "date": "2004-08-31T16:09:34",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5,
+    "focal": 60,
+    "focal35": 90,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "megFDYRWumV/mHqCeZdYmPBopeCI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMG/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/2gAMAwEAAhADEAAAACwKInI1FIn/xAAgEAACAQQBBQAAAAAAAAAAAAABAgMABBIhExEiMVLB/9oACAEBAAE/AIxy3tk1tNGgV2SQH12cqk4Ukgd442kSJgSoGLL52KeRxGoy0X+VmxiVuu+41//EABwRAAICAwEBAAAAAAAAAAAAAAECABESITFRE//aAAgBAgEBPwBG+i4sDdR8kLKLrXSTOc8lknZ8n//EABsRAAICAwEAAAAAAAAAAAAAAAECABEDITFR/9oACAEDAQE/AMbhhVR2VTQFzh15Omf/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 27135,
+      "format": "avif",
+      "url": "/_mg/feelings__get_me_out/952fbf7f-grid.avif",
+      "key": "feelings__get_me_out/952fbf7f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 61926,
+      "format": "jpeg",
+      "url": "/_mg/feelings__get_me_out/952fbf7f-jpeg1600.jpg",
+      "key": "feelings__get_me_out/952fbf7f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 118595,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Get_me_out.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": null,
+    "focal": 60,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8d2d95956d37f9c4",
+  "sourceSize": 118595,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d452c97b23e90f6b"
+}

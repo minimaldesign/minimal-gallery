@@ -1,0 +1,89 @@
+{
+  "id": "people__cause_toujours",
+  "album": "people",
+  "file": "Cause_toujours.jpg",
+  "source": "people/Cause_toujours.jpg",
+  "slug": "cause_toujours",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Cause toujours",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "STkGFYKcRVXvh2erZol3iZ3/qtZ/",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABgBAAIDAAAAAAAAAAAAAAAAAAMFAQIE/9oADAMBAAIQAxAAAADGqmcTUEwZUNT/xAAjEAABAwMCBwAAAAAAAAAAAAACAQQRAAMSBQYTIjEyQVFh/9oACAEBAAE/AHW4Duaa2AFEyWRvZp59pRcR5m4gVJFxUJjJPlM2jc2xkQSuE9VpvyWyMe6Imv/EABwRAAICAwEBAAAAAAAAAAAAAAEDAhEABCExEv/aAAgBAgEBPwBeqRsM+hQAuFYKVUO17eOcyLQBLl43sgD5n//EAB0RAAIDAAIDAAAAAAAAAAAAAAERAAIDEiExMkH/2gAIAQMBAT8AO7rTiQWUZfM3dh5EyzocyV2pn6k/VP/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 16131,
+      "format": "avif",
+      "url": "/_mg/people__cause_toujours/ed2a44ae-grid.avif",
+      "key": "people__cause_toujours/ed2a44ae-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 55075,
+      "format": "jpeg",
+      "url": "/_mg/people__cause_toujours/ed2a44ae-jpeg1600.jpg",
+      "key": "people__cause_toujours/ed2a44ae-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 150969,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/people/Cause_toujours.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "e4e8acde93a37682",
+  "sourceSize": 150969,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "9179c7d244dae136"
+}

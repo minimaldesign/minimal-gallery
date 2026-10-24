@@ -1,0 +1,106 @@
+{
+  "id": "shapes__coquillage",
+  "album": "shapes",
+  "file": "Coquillage.jpg",
+  "source": "shapes/Coquillage.jpg",
+  "slug": "coquillage",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Coquillage",
+  "caption": null,
+  "date": "2005-01-28T16:30:24",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": true
+  },
+  "gps": null,
+  "place": {
+    "city": "Nice",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Nice, France",
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3407,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FggKBYAgf3eHaYiwSrh3aQAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgQH/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAFjUz8pP/xAAeEAACAgICAwAAAAAAAAAAAAABAgMEABIFMQYhcf/aAAgBAQABPwCvtJaSIlhu4VCOvecr49Fx9RrCXxJqASrLqT8zdgpIJBByW9ctIgnndwvQOf/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8AH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 28085,
+      "format": "avif",
+      "url": "/_mg/shapes__coquillage/1e36240a-grid.avif",
+      "key": "shapes__coquillage/1e36240a-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 54447,
+      "format": "jpeg",
+      "url": "/_mg/shapes__coquillage/1e36240a-jpeg1600.jpg",
+      "key": "shapes__coquillage/1e36240a-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 157941,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Coquillage.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-28",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "nice-france",
+      "label": "Nice, France"
+    }
+  },
+  "sourceHash": "8378748e2f2076c4",
+  "sourceSize": 157941,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6592964d62fa8e73"
+}

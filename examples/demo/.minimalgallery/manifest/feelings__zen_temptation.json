@@ -1,0 +1,106 @@
+{
+  "id": "feelings__zen_temptation",
+  "album": "feelings",
+  "file": "Zen_Temptation.jpg",
+  "source": "feelings/Zen_Temptation.jpg",
+  "slug": "zen_temptation",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Zen Temptation",
+  "caption": null,
+  "date": "2006-01-02T15:22:37",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "50.0 mm f/1.8",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 3.2,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Manhattan",
+    "state": "NY",
+    "country": "USA",
+    "location": "Midtown"
+  },
+  "placeLabel": "Manhattan, USA",
+  "keywords": [],
+  "copyright": "© 2006 minimal design",
+  "author": "minimal design",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4264,
+    "c": 0.085,
+    "h": 78.06
+  },
+  "thumbhash": "VUoKJYIIipZ/hXl8h5d4h5mfWIb7",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQEC/8QAGAEAAwEBAAAAAAAAAAAAAAAAAQMFAgb/2gAMAwEAAhADEAAAAD+dqRoAoY0Hf//EACMQAAIBAwIHAQAAAAAAAAAAAAECAwAFEQQSEyEiUXLBwtH/2gAIAQEAAT8At93njnhdA5QcQMVHer1fX1MtvGW2RucE+NZMbxBDjoHzWsJTS5U8zt9ftf/EAB0RAQABBAMBAAAAAAAAAAAAAAEAAgMSMQRCgcH/2gAIAQIBAT8At8fBXTGy1UXMt4/Z19gCz//EABwRAQACAQUAAAAAAAAAAAAAAAEAAgMRMTJBgf/aAAgBAwEBPwBvrWx0wuVEDdJTl5MimO0//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 16283,
+      "format": "avif",
+      "url": "/_mg/feelings__zen_temptation/d3bdfa7e-grid.avif",
+      "key": "feelings__zen_temptation/d3bdfa7e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 41987,
+      "format": "jpeg",
+      "url": "/_mg/feelings__zen_temptation/d3bdfa7e-jpeg1600.jpg",
+      "key": "feelings__zen_temptation/d3bdfa7e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 146172,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Zen_Temptation.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2006",
+    "month": "01",
+    "day": "01-02",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "50-0-mm-f-1-8",
+      "label": "50.0 mm f/1.8"
+    },
+    "aperture": 3.2,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "manhattan-usa",
+      "label": "Manhattan, USA"
+    }
+  },
+  "sourceHash": "170262e5de6244b5",
+  "sourceSize": 146172,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "734e33a5ffa5efec"
+}

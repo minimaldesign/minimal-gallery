@@ -1,0 +1,98 @@
+{
+  "id": "light__kyoto_station",
+  "album": "light",
+  "file": "Kyoto_Station.jpg",
+  "source": "light/Kyoto_Station.jpg",
+  "slug": "kyoto_station",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Kyoto Station",
+  "caption": null,
+  "date": "2005-04-09T16:33:47",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 7.1,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "CQgGBYBYCpmPVJKqaEeZYwAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQMEB//EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAM5CRiz/xAAhEAACAgICAQUAAAAAAAAAAAABAwIEABMFEhExU4GRsf/aAAgBAQABPwCvyWqk6rOhXltl2LDA7Blh9NnFhCg8WjY7H0CtYH2ZZyEpE1ZmRMzVV5PwcYSFpA9tZ/c//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 22704,
+      "format": "avif",
+      "url": "/_mg/light__kyoto_station/fb84d8f2-grid.avif",
+      "key": "light__kyoto_station/fb84d8f2-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 42615,
+      "format": "jpeg",
+      "url": "/_mg/light__kyoto_station/fb84d8f2-jpeg1600.jpg",
+      "key": "light__kyoto_station/fb84d8f2-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 129546,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Kyoto_Station.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-09",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 7.1,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "9a85c7e2a256ff7a",
+  "sourceSize": 129546,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ea3da9b06f05ad5e"
+}

@@ -6,6 +6,7 @@ import globalData from '@csstools/postcss-global-data';
 import postcssMixins from 'postcss-mixins';
 import postcssPresetEnv from 'postcss-preset-env';
 import { applyDefaultsToTokens, resolveConfig } from './config.ts';
+import { setupAdmin } from './admin/inject.ts';
 import { fontsourceVariable } from './fonts.ts';
 import { setSharedOptions, type MinimalgalleryOptions } from './options.ts';
 
@@ -37,7 +38,8 @@ export default function minimalgallery(
   return {
     name: '@minimalgallery/astro',
     hooks: {
-      'astro:config:setup': async ({ config, updateConfig, logger }) => {
+      'astro:config:setup': async (params) => {
+        const { config, updateConfig, logger } = params;
         const root = fileURLToPath(config.root);
         const { galleryDir: dir, ...overrides } = options;
         const galleryDir = resolve(root, dir ?? '.');
@@ -117,6 +119,8 @@ export default function minimalgallery(
             ],
           },
         });
+        // The browser admin, under astro dev only.
+        await setupAdmin(params, galleryDir);
         if (
           config.experimental?.incrementalBuild &&
           (config.build?.concurrency ?? 1) > 1

@@ -59,7 +59,7 @@ import { walkPhotos, type WalkedAlbum, type WalkedPhoto } from './walk.ts';
  * rebuilt from the metadata; derivatives are kept. Derivative changes bump
  * ENCODER_VERSION in `ladder.ts` instead.
  */
-export const PIPELINE_VERSION = '0.2.1';
+export const PIPELINE_VERSION = '0.4.0';
 
 export { MANIFEST_DIR, ALBUMS_FILE } from './schema.ts';
 
@@ -79,6 +79,12 @@ export interface ProcessOptions {
   /** libvips threads inside each worker. Default: see `workerPlan`. */
   threadsPerWorker?: number;
   log?: (message: string) => void;
+  /** After the cheap first pass: how many photos there are and how many need work. */
+  onPlan?: (plan: { photos: number; pending: number }) => void;
+  /** After each photo that was encoded or had its manifest rebuilt. */
+  onPhoto?: (manifest: PhotoManifest, result: PhotoResult) => void;
+  /** After each photo that could not be processed. */
+  onError?: (error: PhotoError) => void;
 }
 
 export type PhotoStatus = 'encoded' | 'metadata' | 'skipped';
@@ -191,6 +197,9 @@ async function writeIfChanged(path: string, text: string): Promise<boolean> {
   await rename(tmp, path);
   return true;
 }
+
+/** A date as ISO 8601 UTC to the second: `2026-10-23T19:30:00Z`. */
+const utcSeconds = (d: Date) => d.toISOString().replace(/\.\d{3}Z$/, 'Z');
 
 function percentile(sorted: number[], p: number): number {
   if (!sorted.length) return NaN;
@@ -340,9 +349,37 @@ export async function processGallery(
     sidecars: Awaited<ReturnType<typeof readPhotoSidecars>>;
     inputsHash: string;
     reusable: ReusableManifest | undefined;
+    /** The `added` of this photo’s earlier manifest. */
+    added: string | undefined;
+    /** Whether this photo had a manifest before this run. */
+    known: boolean;
   }
   const pending: Pending[] = [];
   const results: PhotoResult[] = [];
+
+  // When each file first entered the gallery, by content, from the earlier
+  // manifests: a photo renamed or moved since keeps its date, though its id
+  // and manifest are new. The manifests of current photos are read in pass
+  // 1; the others (renamed, moved or deleted photos) here.
+  const addedByHash = new Map<string, string>();
+  const rememberAdded = (raw: unknown) => {
+    const { sourceHash, added } = (raw ?? {}) as Record<string, unknown>;
+    if (typeof sourceHash !== 'string' || typeof added !== 'string') return;
+    const earlier = addedByHash.get(sourceHash);
+    if (!earlier || added < earlier) addedByHash.set(sourceHash, added);
+  };
+  const currentIds = new Set(photos.map((p) => p.id));
+  await mapLimit(
+    (await readdir(manifestDir)).filter(
+      (f) =>
+        f.endsWith('.json') &&
+        f !== ALBUMS_FILE &&
+        !currentIds.has(f.slice(0, -5))
+    ),
+    16,
+    async (f) => rememberAdded(await readJson(join(manifestDir, f)))
+  );
+
   await mapLimit(photos, 16, async (photo) => {
     const t0 = performance.now();
     try {
@@ -359,13 +396,19 @@ export async function processGallery(
       const full = prevRaw ? PhotoManifest.safeParse(prevRaw) : undefined;
       const loose = prevRaw ? ReusableManifest.safeParse(prevRaw) : undefined;
       const prev = full?.success ? full.data : undefined;
+      rememberAdded(prevRaw);
       if (
         !options.force &&
         prev &&
+        prev.added !== undefined &&
         prev.ladderHash === ladderHash &&
         prev.sourceSize === st.size &&
         prev.sourceMtime === st.mtimeMs &&
         prev.inputsHash === inputsHash &&
+        // A changed storage address (a new publicUrl) rewrites the manifest.
+        prev.variants.every((v) => v.url === storage.url(v.key)) &&
+        (!prev.original.key ||
+          prev.original.url === originalsStorage?.url(prev.original.key)) &&
         (originalsStorage
           ? prev.original.key === originalKeyFor(photo, prev.sourceHash)
           : prev.original.key === undefined) &&
@@ -396,16 +439,25 @@ export async function processGallery(
         sidecars,
         inputsHash,
         reusable: loose?.success ? loose.data : undefined,
+        added:
+          typeof (prevRaw as { added?: unknown } | undefined)?.added ===
+          'string'
+            ? (prevRaw as { added: string }).added
+            : undefined,
+        known: prevRaw !== undefined,
       });
     } catch (e) {
-      errors.push({
+      const error: PhotoError = {
         path: photo.relativePath,
         kind: 'metadata',
         message: (e as Error).message,
-      });
+      };
+      errors.push(error);
+      options.onError?.(error);
     }
   });
 
+  options.onPlan?.({ photos: photos.length, pending: pending.length });
   const plan = workerPlan(availableParallelism(), pending.length, {
     concurrency: options.concurrency,
     threadsPerWorker: options.threadsPerWorker,
@@ -465,16 +517,19 @@ export async function processGallery(
       reusable.sourceHash === sourceHash &&
       (await present(reusable.variants.map((v) => [storage, v.key])))
     ) {
-      // Same pixels: keep the derivatives, rebuild the metadata.
-      const { width, height, color, thumbhash, placeholder, variants } =
-        reusable;
+      // Same pixels: keep the derivatives, rebuild the metadata. URLs are
+      // computed again, in case the storage address changed.
+      const { width, height, color, thumbhash, placeholder } = reusable;
       encoded = {
         width,
         height,
         color,
         thumbhash,
         placeholder,
-        variants,
+        variants: reusable.variants.map((v) => ({
+          ...v,
+          url: storage.url(v.key),
+        })),
         icc: reusable.original.icc,
       };
       status = 'metadata';
@@ -492,7 +547,12 @@ export async function processGallery(
         );
       }
       encodeSeconds = r.seconds;
-      const hash8 = sourceHash.slice(0, 8);
+      // The key changes with the pixels and with the ladder (sizes, formats,
+      // quality, color, encoder), so a cached derivative is never stale.
+      const hash8 = (await hashString(`${sourceHash}\n${ladderHash}`)).slice(
+        0,
+        8
+      );
       const variants: PhotoManifest['variants'] = [];
       for (const v of r.variants) {
         const key = `${photo.id}/${hash8}-${v.name}.${EXTENSIONS[v.format]}`;
@@ -588,6 +648,13 @@ export async function processGallery(
       file: photo.file,
       source: photo.source,
       slug: photo.slug,
+      // Kept from the earlier manifest, or from another file with the same
+      // content; a photo from before `added` existed gets its file’s time;
+      // a new photo, now.
+      added:
+        job.added ??
+        addedByHash.get(sourceHash) ??
+        utcSeconds(job.known ? job.mtime : new Date()),
       ...meta,
       width: encoded.width,
       height: encoded.height,
@@ -641,11 +708,12 @@ export async function processGallery(
         const r = await processOne(job);
         results.push(r);
         done++;
+        options.onPhoto?.(manifests.get(r.id)!, r);
         log(
           `[${done}/${pending.length}] ${r.status.padEnd(8)} ${job.photo.relativePath}`
         );
       } catch (e: any) {
-        errors.push({
+        const error: PhotoError = {
           path: job.photo.relativePath,
           kind:
             e instanceof UnsupportedInputError
@@ -654,7 +722,9 @@ export async function processGallery(
                 ? 'decode'
                 : 'metadata',
           message: e?.message ?? String(e),
-        });
+        };
+        errors.push(error);
+        options.onError?.(error);
       }
     });
   } finally {
@@ -793,16 +863,6 @@ async function buildAlbum(
   const sort = fm.sort ?? defaultSort;
   const ordered = sortPhotos(own, sort, fm.order ?? []);
 
-  const coverPhoto = fm.cover
-    ? own.find(
-        (m) =>
-          m.file === fm.cover || m.file.replace(/\.[^.]+$/, '') === fm.cover
-      )
-    : undefined;
-  if (fm.cover && !coverPhoto)
-    throw new Error(
-      `${a.path}/_album.md: cover “${fm.cover}” is not a photo in this album`
-    );
   const dates = own
     .filter((m) => m.dateSource !== 'mtime')
     .map((m) => m.date)
@@ -813,8 +873,6 @@ async function buildAlbum(
     parent: a.parent,
     title: fm.title ?? titleFromFolder(a.path),
     description: file?.description ?? null,
-    cover:
-      (coverPhoto ?? ordered.find((m) => !m.hidden) ?? ordered[0])?.id ?? null,
     sort,
     order: fm.order ?? [],
     hidden: fm.hidden ?? false,

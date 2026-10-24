@@ -1,0 +1,98 @@
+{
+  "id": "feelings__subtlety",
+  "album": "feelings",
+  "file": "Subtlety.jpg",
+  "source": "feelings/Subtlety.jpg",
+  "slug": "subtlety",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Subtlety",
+  "caption": null,
+  "date": "2005-02-23T16:03:39",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 11,
+    "focal": 24,
+    "focal35": 36,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2768,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "WRgKJYYBS5iNh4qDiPk4iA150qAn",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQf/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAwL/2gAMAwEAAhADEAAAACyMVUWeR2hef//EACAQAAICAwABBQAAAAAAAAAAAAECAwQAESEFEhMiQmH/2gAIAQEAAT8A8Wllw1mufjv6aH7oluDPKe6Kxls2WnYEAtzQZukDWSySVyEidkVwfUoPDvmG/cdK9dpiYlQkJzWwCc//xAAdEQACAgIDAQAAAAAAAAAAAAABAgADBBEhIlEx/9oACAECAQE/AMm3M2gqQaZtEjmYgsRCbT2MpZiPsVj77P/EABwRAAIDAQADAAAAAAAAAAAAAAECAAMRBBIhgf/aAAgBAwEBPwDmr4vFza50LoB9TqNTuopXFEsAjKNPyf/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 38712,
+      "format": "avif",
+      "url": "/_mg/feelings__subtlety/dfbfca7b-grid.avif",
+      "key": "feelings__subtlety/dfbfca7b-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 79792,
+      "format": "jpeg",
+      "url": "/_mg/feelings__subtlety/dfbfca7b-jpeg1600.jpg",
+      "key": "feelings__subtlety/dfbfca7b-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 156021,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Subtlety.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-23",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 11,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 24,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "f75cdc991ff24c52",
+  "sourceSize": 156021,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "682ab08ad73be341"
+}

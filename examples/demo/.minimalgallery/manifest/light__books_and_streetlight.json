@@ -1,0 +1,98 @@
+{
+  "id": "light__books_and_streetlight",
+  "album": "light",
+  "file": "Books_and_streetlight.jpg",
+  "source": "light/Books_and_streetlight.jpg",
+  "slug": "books_and_streetlight",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Books and streetlight",
+  "caption": null,
+  "date": "2005-08-01T21:38:53",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "2.5",
+    "shutterSeconds": 2.5,
+    "aperture": 3.5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "SBgKDYIK2ERkeIeGeZZ4dQt2x5CI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEB//EABcBAAMBAAAAAAAAAAAAAAAAAAECAwD/2gAMAwEAAhADEAAAAMvncyisJmX/xAAhEAACAgICAQUAAAAAAAAAAAACAwEEABESIQUTFTJRcf/aAAgBAQABPwCkgxagGzC1u79T5cY/M8tXGr5U0ivgIyvUZ7ndUdRoNgTQHFcwA9RrX13jrdi7bh9lpMaRDspz/8QAHBEAAgICAwAAAAAAAAAAAAAAAREAAgMxEiEi/9oACAECAQE/ALItbExl0BnCvrrcAFQgJ//EAB0RAQACAgIDAAAAAAAAAAAAAAEAAhEhAxIiMUH/2gAIAQMBAT8ApZqAmn7OUxdne3jv1FbOWf/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 7613,
+      "format": "avif",
+      "url": "/_mg/light__books_and_streetlight/ad3f8626-grid.avif",
+      "key": "light__books_and_streetlight/ad3f8626-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 19428,
+      "format": "jpeg",
+      "url": "/_mg/light__books_and_streetlight/ad3f8626-jpeg1600.jpg",
+      "key": "light__books_and_streetlight/ad3f8626-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 148921,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Books_and_streetlight.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "08",
+    "day": "08-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 3.5,
+    "shutter": {
+      "seconds": 2.5,
+      "label": "2.5"
+    },
+    "iso": 200,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "db39e57b9f7a1913",
+  "sourceSize": 148921,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "eb67b428e8ff9ce5"
+}

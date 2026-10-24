@@ -1,8 +1,26 @@
 /** Files whose content depends on the answers. Static files live in `template/`. */
 
 export type Host = 'cloudflare' | 'github' | 'netlify' | 'local';
-export type Size = 'small' | 'large';
+/** `repo`: resized photos committed with the site. `bucket`: in a Cloudflare R2 bucket. */
+export type StorageMode = 'repo' | 'bucket';
+/** The `minimalgallery.publish` setting in package.json. */
+export type PublishMethod = 'git' | 'deploy' | 'build';
 export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
+
+export interface BucketAnswers {
+  /** R2 bucket name. */
+  name: string;
+  /** The bucket’s custom domain (`media.example.com`), or empty when it is not set up yet. */
+  domain: string;
+  /** Cloudflare account id, or empty when it is not known yet. */
+  accountId: string;
+}
+
+/** An R2 API token’s S3 keys. They go to `.env`, never to the config. */
+export interface BucketToken {
+  accessKeyId: string;
+  secretAccessKey: string;
+}
 
 export interface Answers {
   /** Gallery name, shown as the site title. */
@@ -10,17 +28,38 @@ export interface Answers {
   /** Your name, or empty. */
   author: string;
   host: Host;
-  /** `small`: under 500 photos (repo mode); `large`: more (bucket mode, later). */
-  size: Size;
+  storage: StorageMode;
+  /** Bucket mode only. */
+  bucket?: BucketAnswers;
+  /** Bucket mode only, and optional. */
+  token?: BucketToken;
+  publish: PublishMethod;
   packageManager: PackageManager;
 }
 
 export const ASTRO_VERSION = '^7.4.2';
 export const WRANGLER_VERSION = '^4.152.0';
 
+/** Written to the config while the account id is not known. */
+export const ACCOUNT_ID_PLACEHOLDER = 'your-account-id';
+/** Written to the config while the bucket has no custom domain. */
+export const PUBLIC_URL_PLACEHOLDER = 'https://media.example.com';
+
 /** A single-quoted JavaScript string literal. */
 const str = (s: string) =>
   `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n')}'`;
+
+/**
+ * `key: 'value',` at an indent, broken after the colon past 80 columns the
+ * way Prettier does, so a formatter on save leaves the file alone.
+ */
+function prop(indent: number, key: string, value: string): string[] {
+  const pad = ' '.repeat(indent);
+  const line = `${pad}${key}: ${str(value)},`;
+  return line.length <= 80
+    ? [line]
+    : [`${pad}${key}:`, `${pad}  ${str(value)},`];
+}
 
 /** Cloudflare Worker names: lowercase letters, digits and dashes. */
 export function projectName(input: string): string {
@@ -35,12 +74,25 @@ export function projectName(input: string): string {
   return slug || 'my-gallery';
 }
 
-const PUBLISH: Record<Host, 'deploy' | 'git' | 'build'> = {
+/** R2 bucket names: 3 to 63 lowercase letters, digits and dashes, no dash at either end. */
+export const BUCKET_NAME = /^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/;
+
+/** The default bucket name for a project: `<project>-media`. */
+export function bucketName(project: string): string {
+  return `${project.slice(0, 57).replace(/-+$/, '')}-media`;
+}
+
+/** The publishing method each host uses. Cloudflare asks; the others have one. */
+export const HOST_PUBLISH: Record<Host, PublishMethod> = {
   cloudflare: 'deploy',
   github: 'git',
   netlify: 'git',
   local: 'build',
 };
+
+export function r2Endpoint(accountId: string): string {
+  return `https://${accountId || ACCOUNT_ID_PLACEHOLDER}.r2.cloudflarestorage.com`;
+}
 
 export function packageJson(
   answers: Answers,
@@ -63,7 +115,7 @@ export function packageJson(
         ? { deploy: 'astro build && wrangler deploy' }
         : {}),
     },
-    minimalgallery: { publish: PUBLISH[answers.host] },
+    minimalgallery: { publish: answers.publish },
     engines: { node: '>=22.18' },
     dependencies: {
       '@minimalgallery/astro': ours,
@@ -78,6 +130,48 @@ export function packageJson(
   return JSON.stringify(pkg, null, 2) + '\n';
 }
 
+function storageLines(answers: Answers): string[] {
+  if (answers.storage === 'repo' || !answers.bucket)
+    return [
+      '  // Repo mode: the resized photos are published with the site. Good up to',
+      '  // a few thousand photos (Cloudflare takes 20,000 files per site);',
+      `  // ${runCommand(answers.packageManager, 'doctor')} says how close the gallery is.`,
+      "  storage: { mode: 'repo' },",
+    ];
+  const { name, domain, accountId } = answers.bucket;
+  const lines = [
+    '  // Bucket mode: the resized photos live in the Cloudflare R2 bucket below,',
+    '  // served from its custom domain. Publish uploads new ones before it',
+    '  // commits or deploys. The API token is in .env, never in this file.',
+    '  storage: {',
+    "    mode: 's3',",
+    ...prop(4, 'bucket', name),
+  ];
+  if (!accountId)
+    lines.push(
+      `    // Placeholder: replace ${ACCOUNT_ID_PLACEHOLDER} with your Cloudflare account id,`,
+      '    // which npx wrangler whoami prints.'
+    );
+  lines.push(
+    ...prop(4, 'endpoint', r2Endpoint(accountId)),
+    "    region: 'auto',"
+  );
+  if (!domain)
+    lines.push(
+      '    // Placeholder: connect a custom domain to the bucket (R2, the bucket,',
+      '    // Settings, Custom Domains), then put its address here.'
+    );
+  lines.push(
+    ...prop(
+      4,
+      'publicUrl',
+      domain ? `https://${domain}` : PUBLIC_URL_PLACEHOLDER
+    ),
+    '  },'
+  );
+  return lines;
+}
+
 export function galleryConfig(answers: Answers): string {
   const lines = [
     `import { defineConfig } from '@minimalgallery/pipeline/config';`,
@@ -85,26 +179,16 @@ export function galleryConfig(answers: Answers): string {
     '// Gallery settings. Every key is optional; see the README of',
     '// @minimalgallery/pipeline for the full list.',
     'export default defineConfig({',
-    `  name: ${str(answers.name)},`,
+    ...prop(2, 'name', answers.name),
   ];
-  if (answers.author) lines.push(`  author: ${str(answers.author)},`);
+  if (answers.author) lines.push(...prop(2, 'author', answers.author));
   lines.push(
     '  // The public address, for canonical links, the feed and share images.',
-    "  // site: 'https://photos.example.com',"
+    "  // site: 'https://photos.example.com',",
+    ...storageLines(answers),
+    '});',
+    ''
   );
-  if (answers.size === 'large')
-    lines.push(
-      '  // You expect more than 500 photos. Bucket mode, which keeps the resized',
-      '  // photos in a storage bucket such as Cloudflare R2, is not available yet,',
-      '  // so the gallery starts in repo mode. npm run doctor says how close it is',
-      '  // to the hosting limits.'
-    );
-  else
-    lines.push(
-      '  // Repo mode: resized photos are committed and deployed with the site.',
-      '  // Fine up to about 500 photos; npm run doctor says when to move on.'
-    );
-  lines.push("  storage: { mode: 'repo' },", '});', '');
   return lines.join('\n');
 }
 
@@ -138,28 +222,78 @@ export function astroConfig(answers: Answers): string {
   ].join('\n');
 }
 
+const ENV_INTRO =
+  '# Copy to .env, which git ignores, for values that must stay out of the repository.';
+
 export function envExample(answers: Answers): string {
-  const lines = [
-    '# Copy to .env for values that must stay out of git. Repo mode needs none.',
-    '',
-    '# Bucket mode (not available yet): keys for the S3-compatible bucket.',
-    '# MG_S3_ACCESS_KEY_ID=',
-    '# MG_S3_SECRET_ACCESS_KEY=',
-  ];
+  const lines =
+    answers.storage === 'bucket' && answers.bucket
+      ? [
+          ENV_INTRO,
+          '',
+          `# The R2 API token that publish uses to upload photos to ${answers.bucket.name}.`,
+          '# Create it in the Cloudflare dashboard: R2, Manage API tokens, with the',
+          `# permission Object Read & Write on ${answers.bucket.name} only. Cloudflare`,
+          '# shows the two values once.',
+          'MG_S3_ACCESS_KEY_ID=',
+          'MG_S3_SECRET_ACCESS_KEY=',
+        ]
+      : [
+          ENV_INTRO,
+          '# Repo mode needs none.',
+          '',
+          '# Bucket mode only: the API token for the S3-compatible bucket.',
+          '# MG_S3_ACCESS_KEY_ID=',
+          '# MG_S3_SECRET_ACCESS_KEY=',
+        ];
   if (answers.host === 'cloudflare')
     lines.push(
       '',
-      '# Only for deploying from CI. On your computer, npx wrangler login is enough.',
+      '# Only for running wrangler deploy from another CI service. On your computer,',
+      '# npx wrangler login is enough, and Cloudflare’s own builds need neither.',
       '# CLOUDFLARE_ACCOUNT_ID=',
       '# CLOUDFLARE_API_TOKEN='
     );
   return lines.join('\n') + '\n';
 }
 
-export function wranglerJsonc(project: string, date: string): string {
-  return `// Cloudflare Workers (static assets) for this gallery. npm run publish
-// processes new photos, runs astro build, then wrangler deploy, which uploads
-// ./dist under this name. public/_headers sets the cache headers.
+/** `.env` with the bucket token. Git ignores it. */
+export function dotEnv(bucket: string, token: BucketToken): string {
+  return [
+    '# Secrets for this gallery. Git ignores this file: never commit it.',
+    `# The R2 API token for the bucket ${bucket}.`,
+    `MG_S3_ACCESS_KEY_ID=${token.accessKeyId}`,
+    `MG_S3_SECRET_ACCESS_KEY=${token.secretAccessKey}`,
+    '',
+  ].join('\n');
+}
+
+export function wranglerJsonc(
+  answers: Answers,
+  project: string,
+  date: string
+): string {
+  const pm = answers.packageManager;
+  const comment =
+    answers.publish === 'git'
+      ? [
+          '// Cloudflare Workers (static assets) for this gallery. Cloudflare builds it',
+          '// from the connected repository on every push (build command',
+          `// ${runCommand(pm, 'build')}, deploy command npx wrangler deploy), and`,
+          '// wrangler deploy uploads ./dist under this name.',
+        ]
+      : [
+          `// Cloudflare Workers (static assets) for this gallery. ${runCommand(pm, 'publish')}`,
+          '// processes new photos, runs astro build, then wrangler deploy, which uploads',
+          '// ./dist under this name.',
+        ];
+  if (answers.storage === 'bucket')
+    comment.push(
+      '// The photos are not in ./dist: the R2 bucket’s custom domain serves them,',
+      '// so this Worker needs no bucket binding.'
+    );
+  comment.push('// public/_headers sets the cache headers.');
+  return `${comment.join('\n')}
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "${project}",
@@ -169,16 +303,26 @@ export function wranglerJsonc(project: string, date: string): string {
 `;
 }
 
-export const HEADERS = `# Resized photos are content-addressed (<hash8>-<variant>), so they never change.
-/_mg/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Astro’s build assets (CSS, the theme script, fonts) carry a content hash in
-# their names, so they never change either. Without this rule the host serves
-# them with max-age=0, and browsers fetch the CSS and script again on every page.
+const ASTRO_HEADERS = `# Astro’s build assets (CSS, the theme script, fonts) carry a content hash in
+# their names, so they never change. Without this rule the host serves them
+# with max-age=0, and browsers fetch the CSS and script again on every page.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 `;
+
+/** `public/_headers` for Cloudflare. */
+export function headers(storage: StorageMode): string {
+  return storage === 'bucket'
+    ? `# The photos come from the R2 bucket, uploaded by publish with their own
+# Cache-Control header, so only the site’s files need a rule here.
+
+${ASTRO_HEADERS}`
+    : `# Resized photos are content-addressed (<hash8>-<variant>), so they never change.
+/_mg/*
+  Cache-Control: public, max-age=31536000, immutable
+
+${ASTRO_HEADERS}`;
+}
 
 const RUN: Record<PackageManager, string> = {
   npm: 'npm run',

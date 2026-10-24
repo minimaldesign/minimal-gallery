@@ -1,0 +1,95 @@
+{
+  "id": "people__pachinko",
+  "album": "people",
+  "file": "pachinko.jpg",
+  "source": "people/pachinko.jpg",
+  "slug": "pachinko",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Pachinko",
+  "caption": "I still don't get how you play it.  But I don't think I could stay in a patchinko parlor for more than 10 minutes anyway, it's so loud in there!  This shot is not the best it could have been since you're actually not allowed to take pictures in there and playing the dumb gaijin who doesn't know didn't work long enough...",
+  "date": "2005-04-05T16:25:06",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/13",
+    "shutterSeconds": 0.07692307692307693,
+    "aperture": 3.5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "kSgGHYYWppuOymWfRoZnhvCWC9+p",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABgBAAIDAAAAAAAAAAAAAAAAAAMEAQIF/9oADAMBAAIQAxAAAADI0MYDTMZ8ld7/xAAgEAACAQQCAwEAAAAAAAAAAAABAgMABBFBBRIGFCEj/9oACAEBAAE/ALXlrmW79e0jEjNEqAYwO+yan5F5VtoiAxaZQ2ieo2K8PRf3fA7l3+1CcNdY3M1f/8QAHBEBAAIDAAMAAAAAAAAAAAAAAQIhAAMEEnKh/9oACAECAQE/ACJKJWdAGnbV+LeM5GwiNGtfmdlur0M//8QAHhEBAAEEAgMAAAAAAAAAAAAAAQIAAwQRBSESQmH/2gAIAQMBAT8Alfl5STWlaw7m79mOvcqD0H2NcaDmqnZBSv/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 41182,
+      "format": "avif",
+      "url": "/_mg/people__pachinko/6ecbd05f-grid.avif",
+      "key": "people__pachinko/6ecbd05f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 83117,
+      "format": "jpeg",
+      "url": "/_mg/people__pachinko/6ecbd05f-jpeg1600.jpg",
+      "key": "people__pachinko/6ecbd05f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 146239,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/pachinko.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 3.5,
+    "shutter": {
+      "seconds": 0.07692307692307693,
+      "label": "1/13"
+    },
+    "iso": null,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "187a1bbb4bfa4aeb",
+  "sourceSize": 146239,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "cd173d91a55803a6"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "shapes__strata",
+  "album": "shapes",
+  "file": "strata.jpg",
+  "source": "shapes/strata.jpg",
+  "slug": "strata",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Strata",
+  "caption": null,
+  "date": "2005-01-30T11:55:53",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/50",
+    "shutterSeconds": 0.02,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Villefranche"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HAgOBYBkhnZ/h2iGiYiHiV+U9AVY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAAUzqxZhVAf//EACIQAAIBAwMFAQAAAAAAAAAAAAECAwAEEQUSQRMhMTJCUf/aAAgBAQABPwDTr9OnDvuIo2tU7Dvg5+ifmm1FerDIlxHJDtYuG9h+HPI4oxrGYwu4AJn2J8nFWssolCiRwCzKcHgZNf/EABYRAQEBAAAAAAAAAAAAAAAAAAEAEP/aAAgBAgEBPwAYnP/EABcRAQEBAQAAAAAAAAAAAAAAAAEAAhD/2gAIAQMBAT8ASSzz/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 25307,
+      "format": "avif",
+      "url": "/_mg/shapes__strata/8c2e298f-grid.avif",
+      "key": "shapes__strata/8c2e298f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 52896,
+      "format": "jpeg",
+      "url": "/_mg/shapes__strata/8c2e298f-jpeg1600.jpg",
+      "key": "shapes__strata/8c2e298f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 130250,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/strata.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-30",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.02,
+      "label": "1/50"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "villefranche",
+        "label": "Villefranche"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "7aa3e8a87e971213",
+  "sourceSize": 130250,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "9f606ef64fa0ddc9"
+}

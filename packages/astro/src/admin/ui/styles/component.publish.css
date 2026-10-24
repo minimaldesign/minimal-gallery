@@ -1,0 +1,34 @@
+/* PUBLISH
+
+   The publish page's own parts: the guidance that belongs to the chosen
+   method (shown with :has() on the method radios, no script), and the
+   result once a publish ends (the live URL with Copy and Open). The rest
+   of the page is a .panel. */
+
+.publish_guide {
+  display: none;
+
+  .publish:has(input[name='method'][value='git']:checked) &[data-method='git'],
+  .publish:has(input[name='method'][value='deploy']:checked)
+    &[data-method='deploy'],
+  .publish:has(input[name='method'][value='build']:checked)
+    &[data-method='build'] {
+    display: grid;
+  }
+}
+
+.publish_result {
+  display: grid;
+  gap: var(--xs3);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.publish_url {
+  color: var(--mg-ink);
+  font-size: var(--text-lg);
+  font-weight: var(--mg-weight-medium);
+  overflow-wrap: anywhere;
+}

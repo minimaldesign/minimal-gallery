@@ -1,0 +1,27 @@
+/* LOG
+
+   The streamed output of a publish or of Connect Cloudflare, as it
+   arrives: mono, a dark well, wrapping long lines, scrolled to the end by
+   the script while you have not scrolled up. */
+
+.log {
+  max-height: 26rem;
+  min-height: 10rem;
+  margin: 0;
+  padding: var(--xs3) var(--sm1);
+  overflow: auto;
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--mg-gray-50);
+  color: var(--mg-ink-muted);
+  font-family: var(--mono);
+  font-size: var(--mg-size-small);
+  line-height: var(--leading-lg);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+
+  &:empty::before {
+    content: 'Waiting for output…';
+    color: var(--mg-ink-faint);
+  }
+}

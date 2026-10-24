@@ -1,0 +1,106 @@
+{
+  "id": "feelings__cold",
+  "album": "feelings",
+  "file": "Cold.jpg",
+  "source": "feelings/Cold.jpg",
+  "slug": "cold",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Cold",
+  "caption": null,
+  "date": "2005-01-13T12:38:41",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/50",
+    "shutterSeconds": 0.02,
+    "aperture": 2.8,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 320,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [],
+  "copyright": "© 2004 minimal Design&#xA;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.641,
+    "c": 0.0194,
+    "h": 17.67
+  },
+  "thumbhash": "ligKDYD2SHd+iXWGhneXhiVwJgJI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABgBAAIDAAAAAAAAAAAAAAAAAAECAAME/9oADAMBAAIQAxAAAACJXpbU5JIEn//EAB8QAAIBBAIDAAAAAAAAAAAAAAEDAgAEEyEFERJhsf/aAAgBAQABPwDmLlJs8MgSWH5XD3SDZxSNFOt+6LmOWrJLy1TLp6IMxsMezGv/xAAfEQEAAgAGAwAAAAAAAAAAAAABAAIDERIhQVETcaH/2gAIAQIBAT8Auq1Dvf1K2sZjw/JXfGu9ARDzDzpSf//EAB0RAQACAQUBAAAAAAAAAAAAAAEAAhEhIzNRYWL/2gAIAQMBAT8AMBZ80iVcJ1LcdD1YO2n1P//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13523,
+      "format": "avif",
+      "url": "/_mg/feelings__cold/8ff8e7a9-grid.avif",
+      "key": "feelings__cold/8ff8e7a9-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 28352,
+      "format": "jpeg",
+      "url": "/_mg/feelings__cold/8ff8e7a9-jpeg1600.jpg",
+      "key": "feelings__cold/8ff8e7a9-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 117142,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Cold.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-13",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.02,
+      "label": "1/50"
+    },
+    "iso": 320,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "04d5057a57b86085",
+  "sourceSize": 117142,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1808f8979a6add28"
+}

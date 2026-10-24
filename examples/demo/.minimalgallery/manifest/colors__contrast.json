@@ -1,0 +1,98 @@
+{
+  "id": "colors__contrast",
+  "album": "colors",
+  "file": "Contrast.jpg",
+  "source": "colors/Contrast.jpg",
+  "slug": "contrast",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Contrast",
+  "caption": "Ok, after this one, I think I'm done with the photos from \"The Gates.\"",
+  "date": "2005-02-23T16:53:51",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/500",
+    "shutterSeconds": 0.002,
+    "aperture": 5.6,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3379,
+    "c": 0.0822,
+    "h": 49.33
+  },
+  "thumbhash": "VWoGHYRben2dqXe0eAqyWUdIb4X0",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABcBAQEBAQAAAAAAAAAAAAAAAAQFAgP/2gAMAwEAAhADEAAAAI8eoGejhFZ1J//EACMQAAIBAwQBBQAAAAAAAAAAAAIDAQQRIQAFEzESI0FCgYL/2gAIAQEAAT8AOt21rgbwOWw1zzQFvAT6uMT7Tpi0NpiCkqQdMsKc+lObT0ds41t6VFu1eEgMjAdfodVUWVIfHnbj71//xAAgEQACAQIHAQAAAAAAAAAAAAABAgADEQQSFCExMkFh/9oACAECAQE/AHSk45KzTuHBWxW0rbYdT8lPvf3Is//EAB8RAAEEAQUBAAAAAAAAAAAAAAIAAQMRQRIUMTIzcf/aAAgBAwEBPwADnB+GJbmNwcSsSvKj9i+upOlY1kv/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18310,
+      "format": "avif",
+      "url": "/_mg/colors__contrast/e0a0ad24-grid.avif",
+      "key": "colors__contrast/e0a0ad24-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 44766,
+      "format": "jpeg",
+      "url": "/_mg/colors__contrast/e0a0ad24-jpeg1600.jpg",
+      "key": "colors__contrast/e0a0ad24-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 158197,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Contrast.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "02",
+    "day": "02-23",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.002,
+      "label": "1/500"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "012867f4c3b57675",
+  "sourceSize": 158197,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "f5735d8577c25202"
+}

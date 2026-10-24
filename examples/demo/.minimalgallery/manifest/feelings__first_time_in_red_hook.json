@@ -1,0 +1,106 @@
+{
+  "id": "feelings__first_time_in_red_hook",
+  "album": "feelings",
+  "file": "First_time_in_Red_Hook.jpg",
+  "source": "feelings/First_time_in_Red_Hook.jpg",
+  "slug": "first_time_in_red_hook",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "First time in Red Hook",
+  "caption": null,
+  "date": "2005-11-14T16:04:26",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 11,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Red Hook"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2719,
+    "c": 0.0276,
+    "h": 108.1
+  },
+  "thumbhash": "UBgKBYCGaHd/h3eNiPd3e6CPCrpn",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgIE/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQMC/9oADAMBAAIQAxAAAAAhKm3KTpix/8QAHxAAAgEEAgMAAAAAAAAAAAAAAQIDAAQFERIVIVFh/9oACAEBAAE/AO3zLwpA13ccFOxS5zOMmuzu+PsVNcTBiocgfKtppGHlt1//xAAXEQEBAQEAAAAAAAAAAAAAAAAAEQEC/9oACAECAQE/AJy2I1//xAAXEQADAQAAAAAAAAAAAAAAAAAAARAh/9oACAEDAQE/ANqP/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 22620,
+      "format": "avif",
+      "url": "/_mg/feelings__first_time_in_red_hook/60e24510-grid.avif",
+      "key": "feelings__first_time_in_red_hook/60e24510-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 46731,
+      "format": "jpeg",
+      "url": "/_mg/feelings__first_time_in_red_hook/60e24510-jpeg1600.jpg",
+      "key": "feelings__first_time_in_red_hook/60e24510-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 150110,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/First_time_in_Red_Hook.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 11,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "42744e17b36d61b7",
+  "sourceSize": 150110,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2eb81531afe30f3d"
+}

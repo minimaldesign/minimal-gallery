@@ -1,0 +1,89 @@
+{
+  "id": "light__central_park",
+  "album": "light",
+  "file": "Central Park.jpg",
+  "source": "light/Central Park.jpg",
+  "slug": "central_park",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Central Park",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 600,
+  "color": {
+    "l": 0.2044,
+    "c": 0.0389,
+    "h": 250.11
+  },
+  "thumbhash": "D+gFHYJfA2EkpqqaZ6eJZhZvSvHI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgP/xAAXAQADAQAAAAAAAAAAAAAAAAABAwQC/9oADAMBAAIQAxAAAAAYERnchpUO2P/EACMQAAEDAwIHAAAAAAAAAAAAAAIBAwQAERMSQQUWIzNRYXP/2gAIAQEAAT8AFmW1wnPhJY5nbVshjU2URKS5DUzARMj3t5pyQ9y2MbX0UcAkH3epnec+i1//xAAhEQACAQMDBQAAAAAAAAAAAAABAhEAAxIEEzJBcoGhsf/aAAgBAgEBPwBrTb0kx7mtPYAgYrirEqF6TWRJbz8qxwXtFf/EABwRAQACAgMBAAAAAAAAAAAAAAECEQATA0FRcf/aAAgBAwEBPwDbDSCLbXgVnLPu20pvAGEDqzOZds/uf//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 427,
+      "bytes": 33485,
+      "format": "avif",
+      "url": "/_mg/light__central_park/4363b764-grid.avif",
+      "key": "light__central_park/4363b764-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 600,
+      "bytes": 101016,
+      "format": "jpeg",
+      "url": "/_mg/light__central_park/4363b764-jpeg1600.jpg",
+      "key": "light__central_park/4363b764-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 418504,
+    "width": 900,
+    "height": 600,
+    "relativePath": "photos/light/Central Park.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "db747d6f7d3bbde8",
+  "sourceSize": 418504,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "e644b5ddc895ec24"
+}

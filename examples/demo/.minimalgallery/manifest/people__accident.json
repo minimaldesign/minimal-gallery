@@ -1,0 +1,95 @@
+{
+  "id": "people__accident",
+  "album": "people",
+  "file": "Accident.jpg",
+  "source": "people/Accident.jpg",
+  "slug": "accident",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Accident",
+  "caption": null,
+  "date": "2004-08-17T16:26:08",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 9,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FQgGDYA34MvLeYeju4VobpBKDZV0",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMF/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAIDAf/aAAwDAQACEAMQAAAAyDRI0KIiNP/EACMQAAIBAwMEAwAAAAAAAAAAAAECAwAEEhETIQUjMUJRodH/2gAIAQEAAT8A6fML6W9jL5LuGOJY/YYk0Igl3tSXwiIhiGZHkqceCPv4pEVCWXJTlrqrEc0nbYsgAP7ya//EABoRAQACAwEAAAAAAAAAAAAAAAEAAgMRQSH/2gAIAQIBAT8A9ZahkNWBE7EIqdn/xAAZEQEBAQADAAAAAAAAAAAAAAABABESIUH/2gAIAQMBAT8A6IeDooj5Fhf/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 30450,
+      "format": "avif",
+      "url": "/_mg/people__accident/5796950e-grid.avif",
+      "key": "people__accident/5796950e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 67952,
+      "format": "jpeg",
+      "url": "/_mg/people__accident/5796950e-jpeg1600.jpg",
+      "key": "people__accident/5796950e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 125711,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Accident.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "08",
+    "day": "08-17",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 9,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "aca1266f7cb81ec9",
+  "sourceSize": 125711,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1da26b8c6035bb2f"
+}

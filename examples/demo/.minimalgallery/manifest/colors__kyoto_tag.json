@@ -1,0 +1,98 @@
+{
+  "id": "colors__kyoto_tag",
+  "album": "colors",
+  "file": "Kyoto_Tag.jpg",
+  "source": "colors/Kyoto_Tag.jpg",
+  "slug": "kyoto_tag",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Kyoto Tag",
+  "caption": null,
+  "date": "2005-04-05T12:10:56",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 24,
+    "focal35": 36,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.7316,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HwgODYI/doh3d4h5iHiIiYCWBlZo",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgX/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQP/2gAMAwEAAhADEAAAAKtg4auXmXL/AP/EACEQAAIBAgYDAAAAAAAAAAAAAAECAwAEBRESEyFxMUJh/9oACAEBAAE/ALUS7RaR9Q9ePArFZdTvIdZ3MxyMgPg6qNVMYUgEcVjsENulkkSALvucu6//xAAYEQEAAwEAAAAAAAAAAAAAAAABAAIRMf/aAAgBAgEBPwDMWWsicexmAk//xAAZEQEAAwEBAAAAAAAAAAAAAAABAAIxUSH/2gAIAQMBAT8AMlaj08IKZGyiryf/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 49477,
+      "format": "avif",
+      "url": "/_mg/colors__kyoto_tag/28dfb588-grid.avif",
+      "key": "colors__kyoto_tag/28dfb588-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 95109,
+      "format": "jpeg",
+      "url": "/_mg/colors__kyoto_tag/28dfb588-jpeg1600.jpg",
+      "key": "colors__kyoto_tag/28dfb588-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 189158,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Kyoto_Tag.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-05",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 24,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "eedbe3d0d343030a",
+  "sourceSize": 189158,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ccf8664290d7806a"
+}

@@ -1,0 +1,95 @@
+{
+  "id": "colors__not_a_photoshop_stunt",
+  "album": "colors",
+  "file": "Not_a_photoshop_stunt.jpg",
+  "source": "colors/Not_a_photoshop_stunt.jpg",
+  "slug": "not_a_photoshop_stunt",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Not a photoshop stunt",
+  "caption": null,
+  "date": "2004-10-07T13:51:33",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2481,
+    "c": 0.0484,
+    "h": 157.92
+  },
+  "thumbhash": "jygGDYYNcXtKSIV6SWdmY182NcBn",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQQG/8QAFgEBAQEAAAAAAAAAAAAAAAAABAMC/9oADAMBAAIQAxAAAADImRFWykSBo3//xAAhEAACAgECBwAAAAAAAAAAAAABAgMRAAQhBRITFDFBUf/aAAgBAQABPwDSNGkZRIGmjKBiWFFR928DDL23VrnthtvWPJIs3FlV2VYmtApoAo1DCzTsjyksz6ohifd5/8QAHBEBAQACAgMAAAAAAAAAAAAAAQIAAxMhBBFh/9oACAECAQE/AORE5GRVAMBZVc8aIrTq2VI2Qel+9uR3ef/EABwRAQACAwADAAAAAAAAAAAAAAECAwARIRIxUv/aAAgBAwEBPwChogW11lkvIj3h6ctm1zlJNqk3eVSTYPFMgsqoj9yM/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23490,
+      "format": "avif",
+      "url": "/_mg/colors__not_a_photoshop_stunt/d724fb74-grid.avif",
+      "key": "colors__not_a_photoshop_stunt/d724fb74-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 51798,
+      "format": "jpeg",
+      "url": "/_mg/colors__not_a_photoshop_stunt/d724fb74-jpeg1600.jpg",
+      "key": "colors__not_a_photoshop_stunt/d724fb74-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 94421,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Not_a_photoshop_stunt.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-07",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0da93bac00f1c0d9",
+  "sourceSize": 94421,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "5ac392f8fe509dce"
+}

@@ -1,0 +1,95 @@
+{
+  "id": "shapes__no_time",
+  "album": "shapes",
+  "file": "No_time.jpg",
+  "source": "shapes/No_time.jpg",
+  "slug": "no_time",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "No time",
+  "caption": null,
+  "date": "2004-04-04T17:45:08",
+  "dateSource": "xmp",
+  "camera": "Canon PowerShot S230",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/50",
+    "shutterSeconds": 0.02,
+    "aperture": 4,
+    "focal": 10.8125,
+    "focal35": null,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 465,
+  "height": 700,
+  "color": {
+    "l": 0.4489,
+    "c": 0.0686,
+    "h": 108.87
+  },
+  "thumbhash": "0hgKHQS/iaZnOJeoiGZnh0C4BHiZ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAYABADAREAAhEBAxEB/8QAFgAAAwAAAAAAAAAAAAAAAAAAAgUG/8QAGAEBAAMBAAAAAAAAAAAAAAAAAwIEBQD/2gAMAwEAAhADEAAAAEoTkotZcKcFLTrFmXf/xAAhEAACAQMEAwEAAAAAAAAAAAABAgMABBIFERMxQUJRIf/aAAgBAQABPwDUbdMAmIpoeOXbv5U9vIbma4dy8XgH12+DzU1ssgeRFGPYIq/1K4O0KIWX2Za5y0eIVuv09V//xAAbEQACAgMBAAAAAAAAAAAAAAABAgARAxIhBP/aAAgBAgEBPwDLkKtUu1sTKrOXbWqMDEECemn4vBNKaf/EABsRAAIDAAMAAAAAAAAAAAAAAAABAhEhAzFR/9oACAEDAQE/AIZpHWRpVtkPTijJd6xLEf/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 425,
+      "height": 640,
+      "bytes": 19647,
+      "format": "avif",
+      "url": "/_mg/shapes__no_time/89de8051-grid.avif",
+      "key": "shapes__no_time/89de8051-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 465,
+      "height": 700,
+      "bytes": 43801,
+      "format": "jpeg",
+      "url": "/_mg/shapes__no_time/89de8051-jpeg1600.jpg",
+      "key": "shapes__no_time/89de8051-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 85880,
+    "width": 465,
+    "height": 700,
+    "relativePath": "photos/shapes/No_time.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "04",
+    "day": "04-04",
+    "camera": {
+      "slug": "canon-powershot-s230",
+      "label": "Canon PowerShot S230"
+    },
+    "lens": null,
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.02,
+      "label": "1/50"
+    },
+    "iso": null,
+    "focal": 10.8,
+    "focalBucket": "wide",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "095710a01ae3fe80",
+  "sourceSize": 85880,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "afdb4a22359172c1"
+}

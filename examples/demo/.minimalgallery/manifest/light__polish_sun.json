@@ -1,0 +1,113 @@
+{
+  "id": "light__polish_sun",
+  "album": "light",
+  "file": "Polish_Sun.jpg",
+  "source": "light/Polish_Sun.jpg",
+  "slug": "polish_sun",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Polish Sun",
+  "caption": null,
+  "date": "2005-01-16T08:00:28",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/1000",
+    "shutterSeconds": 0.001,
+    "aperture": 8,
+    "focal": 112,
+    "focal35": 168,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Warsaw",
+    "state": null,
+    "country": "Poland",
+    "location": null
+  },
+  "placeLabel": "Warsaw, Poland",
+  "keywords": [
+    "Warsaw"
+  ],
+  "copyright": "© 2004 minimal Design All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.5727,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HggODYJPdndomIhleJd4d6pQaQqn",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQYH/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDAP/aAAwDAQACEAMQAAAAWVpDFqdM/cf/xAAeEAACAQUAAwAAAAAAAAAAAAACAwEABAURIRITIv/aAAgBAQABPwAcT7VCajieVlnQhhIg45ydUq+uxxVtp5dRV0ZtuC8ymfvVf//EABcRAQADAAAAAAAAAAAAAAAAAAEAEBH/2gAIAQIBAT8AHbJ//8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAx/9oACAEDAQE/AGCJ2//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 34112,
+      "format": "avif",
+      "url": "/_mg/light__polish_sun/ca7d9e0f-grid.avif",
+      "key": "light__polish_sun/ca7d9e0f-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 65579,
+      "format": "jpeg",
+      "url": "/_mg/light__polish_sun/ca7d9e0f-jpeg1600.jpg",
+      "key": "light__polish_sun/ca7d9e0f-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 153464,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Polish_Sun.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.001,
+      "label": "1/1000"
+    },
+    "iso": 200,
+    "focal": 112,
+    "focalBucket": "tele",
+    "keywords": [
+      {
+        "slug": "warsaw",
+        "label": "Warsaw"
+      }
+    ],
+    "place": {
+      "slug": "warsaw-poland",
+      "label": "Warsaw, Poland"
+    }
+  },
+  "sourceHash": "48a3343e624388b9",
+  "sourceSize": 153464,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "8d009db40e90dc37"
+}

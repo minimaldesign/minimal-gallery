@@ -1,0 +1,98 @@
+{
+  "id": "feelings__down_the_drain",
+  "album": "feelings",
+  "file": "Down_the_drain.jpg",
+  "source": "feelings/Down_the_drain.jpg",
+  "slug": "down_the_drain",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Down the drain",
+  "caption": "That's about as exciting as my life got today...",
+  "date": "2005-03-08T16:50:22",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/60",
+    "shutterSeconds": 0.016666666666666666,
+    "aperture": 4.5,
+    "focal": 56,
+    "focal35": 84,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": true
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.7702,
+    "c": 0.0177,
+    "h": 196.79
+  },
+  "thumbhash": "oucFDYAGt2Z+u4aXWWiqeAeAVhB4",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQF/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQACA//aAAwDAQACEAMQAAAAq3zds8SL/8QAIxAAAgEEAAYDAAAAAAAAAAAAAQIDAAQREgYTFSIxQjJRsf/aAAgBAQABPwCGWS7kCTF2hifJA9384OPVauZbWLfkrEHKhSDgfI/orhdRKIC/cQ0lXccfU7Z9F23kGcfS1//EABgRAAMBAQAAAAAAAAAAAAAAAAABIQIR/9oACAECAQE/AG+QThuCP//EABgRAAMBAQAAAAAAAAAAAAAAAAABAiER/9oACAEDAQE/AJXdGtJGf//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 13259,
+      "format": "avif",
+      "url": "/_mg/feelings__down_the_drain/87e85447-grid.avif",
+      "key": "feelings__down_the_drain/87e85447-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 33222,
+      "format": "jpeg",
+      "url": "/_mg/feelings__down_the_drain/87e85447-jpeg1600.jpg",
+      "key": "feelings__down_the_drain/87e85447-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 125301,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Down_the_drain.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "03",
+    "day": "03-08",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.016666666666666666,
+      "label": "1/60"
+    },
+    "iso": 200,
+    "focal": 56,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "6c4dd0d6e855a624",
+  "sourceSize": 125301,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "72d02a8c31316350"
+}

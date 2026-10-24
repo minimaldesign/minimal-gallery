@@ -1,0 +1,98 @@
+{
+  "id": "colors__sunless_sunset",
+  "album": "colors",
+  "file": "Sunless_Sunset.jpg",
+  "source": "colors/Sunless_Sunset.jpg",
+  "slug": "sunless_sunset",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Sunless Sunset",
+  "caption": null,
+  "date": "2004-11-01T17:56:10",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 4.5,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.523,
+    "c": 0.025,
+    "h": 285.5
+  },
+  "thumbhash": "XHkGJYwfaHi7hoeGh5eIhmqPl/eI",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQIDBP/EABkBAAIDAQAAAAAAAAAAAAAAAAMFAQIEBv/aAAwDAQACEAMQAAAAVX0WI4J7k5mv/8QAGxAAAgMAAwAAAAAAAAAAAAAAAQIAAyEREkH/2gAIAQEAAT8AWzCCRLwrAgQWOOvDex2bdn//xAAcEQACAgIDAAAAAAAAAAAAAAAAAQISA1ERE1L/2gAIAQIBAT8A6Fohja4KQ8lY6R//xAAeEQACAQMFAAAAAAAAAAAAAAAAAQIDBBESExQxUv/aAAgBAwEBPwDlsqXKwzcn6Zqk+2z/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 19434,
+      "format": "avif",
+      "url": "/_mg/colors__sunless_sunset/e8039042-grid.avif",
+      "key": "colors__sunless_sunset/e8039042-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 42825,
+      "format": "jpeg",
+      "url": "/_mg/colors__sunless_sunset/e8039042-jpeg1600.jpg",
+      "key": "colors__sunless_sunset/e8039042-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 138665,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Sunless_Sunset.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "ec137f9f6f4b1dae",
+  "sourceSize": 138665,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "68f388a88bcfbb54"
+}

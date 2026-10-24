@@ -1,0 +1,98 @@
+{
+  "id": "colors__withering_sakura",
+  "album": "colors",
+  "file": "Withering_Sakura.jpg",
+  "source": "colors/Withering_Sakura.jpg",
+  "slug": "withering_sakura",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Withering Sakura",
+  "caption": null,
+  "date": "2005-04-09T12:54:12",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.504,
+    "c": 0.0194,
+    "h": 196.55
+  },
+  "thumbhash": "HAgGBYBqZoZ/ind5dkd1dk+S9pVG",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAwEAAv/aAAwDAQACEAMQAAAAPusWRKBQ/8QAHxABAAIBAwUAAAAAAAAAAAAAAQADAgQSIhMhMkGh/9oACAEBAAE/AG+jZw3KPJZ1w9s04OOoxfE7/SNtliueSs//xAAcEQEAAgEFAAAAAAAAAAAAAAABABExAhIhQcH/2gAIAQIBAT8ANx5Lvslq6eckoMT/xAAbEQEAAgIDAAAAAAAAAAAAAAABABESMSFRcf/aAAgBAwEBPwBxTfsaO5QDxqWu5//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 23066,
+      "format": "avif",
+      "url": "/_mg/colors__withering_sakura/2e8e2056-grid.avif",
+      "key": "colors__withering_sakura/2e8e2056-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 45853,
+      "format": "jpeg",
+      "url": "/_mg/colors__withering_sakura/2e8e2056-jpeg1600.jpg",
+      "key": "colors__withering_sakura/2e8e2056-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 147470,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Withering_Sakura.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-09",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "de4e2ed66d27e4d8",
+  "sourceSize": 147470,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "57fe26156b004aef"
+}

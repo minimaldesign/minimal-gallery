@@ -1,0 +1,95 @@
+{
+  "id": "feelings__montauk",
+  "album": "feelings",
+  "file": "Montauk.jpg",
+  "source": "feelings/Montauk.jpg",
+  "slug": "montauk",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Montauk",
+  "caption": null,
+  "date": "2008-07-02T15:03:23",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/320",
+    "shutterSeconds": 0.003125,
+    "aperture": 8,
+    "focal": 50,
+    "focal35": 75,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 900,
+  "color": {
+    "l": 0.4017,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HQgOBwBvl2irh3hjh0eHWIdjBgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAQABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAB8hRQEP//EACAQAAIBBAIDAQAAAAAAAAAAAAEDAgAEBRExQiJBgZH/2gAIAQEAAT8AfjMBM+eMTr1139FZWzsHOuJFIRPpFUQI/lMy14yQJVEaO+TVxJjWzYTHZO+a/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 640,
+      "bytes": 20209,
+      "format": "avif",
+      "url": "/_mg/feelings__montauk/2287a2a6-grid.avif",
+      "key": "feelings__montauk/2287a2a6-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 900,
+      "bytes": 61302,
+      "format": "jpeg",
+      "url": "/_mg/feelings__montauk/2287a2a6-jpeg1600.jpg",
+      "key": "feelings__montauk/2287a2a6-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 161646,
+    "width": 900,
+    "height": 900,
+    "relativePath": "photos/feelings/Montauk.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2008",
+    "month": "07",
+    "day": "07-02",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.003125,
+      "label": "1/320"
+    },
+    "iso": 100,
+    "focal": 50,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "680c72636c6c73b1",
+  "sourceSize": 161646,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6c712cca7ecfee3b"
+}

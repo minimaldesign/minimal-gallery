@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { doctor } from '../src/doctor.ts';
+import { doctor, formatDoctorReport } from '../src/doctor.ts';
 import { isHeic } from '../src/formats.ts';
 import { processGallery } from '../src/process.ts';
 import { tempGallery, write, writeJpeg } from './helpers.ts';
@@ -108,6 +108,17 @@ describe('doctor', () => {
     expect(r.contexts.total).toBe(7);
     expect(r.pages.total).toBe(2 + 7 * 2 + r.pages.fixedFiles + 4);
     expect(r.issues.join()).toMatch(/no manifest/);
+    expect(r.publish).toBeNull();
+
+    // Publishing from this computer: the repository size is not a limit.
+    await writeFile(
+      join(dir, 'package.json'),
+      JSON.stringify({ minimalgallery: { publish: 'deploy' } })
+    );
+    expect((await doctor(dir)).publish).toBe('deploy');
+    expect(formatDoctorReport(await doctor(dir))).toMatch(
+      /uploaded with the site/
+    );
   });
 });
 

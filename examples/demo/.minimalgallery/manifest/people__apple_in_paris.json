@@ -1,0 +1,106 @@
+{
+  "id": "people__apple_in_paris",
+  "album": "people",
+  "file": "Apple_in_Paris.jpg",
+  "source": "people/Apple_in_Paris.jpg",
+  "slug": "apple_in_paris",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Apple in Paris",
+  "caption": null,
+  "date": "2005-01-12T09:52:16",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/30",
+    "shutterSeconds": 0.03333333333333333,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [],
+  "copyright": "© 2004 minimal Design&#xA;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3457,
+    "c": 0.1132,
+    "h": 25.37
+  },
+  "thumbhash": "FykGFYL6BFQ2dIaVesi5V/VRYv6G",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQEC/8QAFwEAAwEAAAAAAAAAAAAAAAAAAgMEAf/aAAwDAQACEAMQAAAAHmqqixqhGD//xAAiEAACAgEEAQUAAAAAAAAAAAABAgMEEQAFEiETIiRBobH/2gAIAQEAAT8Akpyw7XAtx5okyQq8APSx67HfeqCe3j8NuVJXfgVVRnivyc63W/bnoVBLMzZdwfrVW1YjEpSVhhj+a//EAB4RAAIDAAEFAAAAAAAAAAAAAAECAAMRMQQUISJB/9oACAECAQE/AE6gu6VE+APXBLbGrdwQMBlSL3HHBGS5FOaPs//EABwRAAICAgMAAAAAAAAAAAAAAAECABEDIRMxQf/aAAgBAwEBPwBtK7hRbdmzFIyUxAJIjseKY2O9+T//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 35912,
+      "format": "avif",
+      "url": "/_mg/people__apple_in_paris/e89027f3-grid.avif",
+      "key": "people__apple_in_paris/e89027f3-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 80168,
+      "format": "jpeg",
+      "url": "/_mg/people__apple_in_paris/e89027f3-jpeg1600.jpg",
+      "key": "people__apple_in_paris/e89027f3-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 161992,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/people/Apple_in_Paris.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-12",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.03333333333333333,
+      "label": "1/30"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "c8a729e89bb3c61d",
+  "sourceSize": 161992,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "fd3c1c6134e6d96d"
+}

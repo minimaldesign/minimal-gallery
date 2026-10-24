@@ -26,8 +26,6 @@ export function overridesToLayer(o: PhotoOverrides, where: string): Layer {
     layer.date = d;
   }
   if (o.keywords !== undefined) layer.keywords = toKeywords(o.keywords);
-  if (o.rating !== undefined)
-    layer.rating = Math.max(0, Math.min(5, Math.round(o.rating)));
   if (o.copyright !== undefined) layer.copyright = o.copyright;
   if (o.author !== undefined) layer.author = o.author;
   if (o.hidden !== undefined) layer.hidden = o.hidden;

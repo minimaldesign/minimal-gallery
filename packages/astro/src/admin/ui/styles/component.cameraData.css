@@ -1,0 +1,41 @@
+/* CAMERA DATA
+
+   What the photo’s file says about the camera and the exposure, read only,
+   in the photo inspector: the values the gallery’s info pane shows. A
+   value the file lacks says so, so a photo without camera data is plain
+   to see before it is published. */
+
+.cameraData {
+  display: grid;
+  gap: var(--xs2);
+}
+
+.cameraData_heading {
+  margin: 0;
+  color: var(--mg-ink-muted);
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.cameraData_list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--xs1) var(--sm1);
+  margin: 0;
+
+  dt {
+    margin: 0;
+    color: var(--mg-ink-faint);
+    font-weight: inherit;
+  }
+
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+
+    &[data-missing] {
+      color: var(--mg-ink-faint);
+    }
+  }
+}

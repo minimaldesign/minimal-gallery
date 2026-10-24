@@ -1,0 +1,98 @@
+{
+  "id": "shapes__straight_curves",
+  "album": "shapes",
+  "file": "Straight_curves.jpg",
+  "source": "shapes/Straight_curves.jpg",
+  "slug": "straight_curves",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Straight curves",
+  "caption": null,
+  "date": "2004-11-10T16:09:24",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/250",
+    "shutterSeconds": 0.004,
+    "aperture": 8,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3945,
+    "c": 0.0341,
+    "h": 248.7
+  },
+  "thumbhash": "HAgSDYKAWneIh4eHeHiHiGwQ6QSR",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABwb/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAAL/2gAMAwEAAhADEAAAAI60o2SoqUdR/wD/xAAiEAACAQIFBQAAAAAAAAAAAAABAgMABAURFCJRISVhgZP/2gAIAQEAAT8AVo0iUFlzMvHoCo4O1R7ciEAIoAaOxPMpz+lWrNpsU3HZdoq+FKDpX//EABwRAAICAgMAAAAAAAAAAAAAAAABAhEEEiMycf/aAAgBAgEBPwCU+erdaDVMi28li7S9P//EABwRAAICAgMAAAAAAAAAAAAAAAABAjEUIzJCcf/aAAgBAwEBPwCMNVdi0NLHY+MfD//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 26848,
+      "format": "avif",
+      "url": "/_mg/shapes__straight_curves/ede8d3fe-grid.avif",
+      "key": "shapes__straight_curves/ede8d3fe-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 70945,
+      "format": "jpeg",
+      "url": "/_mg/shapes__straight_curves/ede8d3fe-jpeg1600.jpg",
+      "key": "shapes__straight_curves/ede8d3fe-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 166688,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Straight_curves.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-10",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 8,
+    "shutter": {
+      "seconds": 0.004,
+      "label": "1/250"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "96340e403778d1dd",
+  "sourceSize": 166688,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "b73c01e5fe73c314"
+}

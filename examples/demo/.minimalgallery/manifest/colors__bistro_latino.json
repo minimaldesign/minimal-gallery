@@ -1,0 +1,98 @@
+{
+  "id": "colors__bistro_latino",
+  "album": "colors",
+  "file": "Bistro_Latino.jpg",
+  "source": "colors/Bistro_Latino.jpg",
+  "slug": "bistro_latino",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Bistro Latino",
+  "caption": null,
+  "date": "2005-07-20T18:07:06",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 34,
+    "focal35": 51,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.6676,
+    "c": 0.0663,
+    "h": 108.07
+  },
+  "thumbhash": "5QkGDYB/wXZkhYl+o9Z3h891Gn9i",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgX/xAAXAQADAQAAAAAAAAAAAAAAAAACAwQF/9oADAMBAAIQAxAAAABHiNh0EviM7ar/xAAiEAACAQQCAQUAAAAAAAAAAAABAwIABBESBSFhIkFCUXH/2gAIAQEAAT8AULuxjF8JemXyByPw0t/JX/LhThIJlcGOYwAGtF7Q3TfrbB8jHv8AdNytkBAkA9kA+a//xAAfEQABAwMFAAAAAAAAAAAAAAARAAECAxITISJBYbH/2gAIAQIBAT8ALTdupKpjhTJa+3lS9dlLcTqAF//EABwRAQABBAMAAAAAAAAAAAAAAAEAAhEScSFBgf/aAAgBAwEBPwCzSuoc6iGXkpAC3bP/2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 27093,
+      "format": "avif",
+      "url": "/_mg/colors__bistro_latino/1a8b91e9-grid.avif",
+      "key": "colors__bistro_latino/1a8b91e9-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 51469,
+      "format": "jpeg",
+      "url": "/_mg/colors__bistro_latino/1a8b91e9-jpeg1600.jpg",
+      "key": "colors__bistro_latino/1a8b91e9-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 214586,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Bistro_Latino.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "07",
+    "day": "07-20",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 34,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "d033f128b4133df1",
+  "sourceSize": 214586,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "084b3eb842b290e4"
+}

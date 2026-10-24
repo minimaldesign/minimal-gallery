@@ -1,15 +1,25 @@
-import { log } from '@clack/prompts';
 import { parse } from '../args.ts';
 import { CliError } from '../errors.ts';
 import { localBin, run } from '../exec.ts';
 import { requireGalleryRoot } from '../root.ts';
-import { watchGallery } from './watch.ts';
 
 export const ADMIN_USAGE = `Usage: minimalgallery admin [-- <astro dev options>]
 
-The browser admin is not built yet. Until it is, this processes photos as
-they land in photos/ and starts the Astro dev server, which shows the
-gallery and reloads as it changes.`;
+Starts the Astro dev server and opens the browser admin at /_mg/admin/:
+add photos by dropping them in, edit titles, captions and albums, change
+the settings and publish. The admin processes photos as they land in
+photos/, including files you copy there in Finder, and the preview reloads
+as they do. It runs only on this computer and is never part of the built
+site. Press Ctrl+C to stop it.`;
+
+/** Where the admin lives under the dev server. */
+export const ADMIN_PATH = '/_mg/admin/';
+
+/** The `astro dev` arguments for the admin: open it, unless the caller already chose. */
+export function adminDevArgs(extra: string[]): string[] {
+  const opens = extra.some((a) => a === '--open' || a.startsWith('--open='));
+  return ['dev', ...(opens ? [] : ['--open', ADMIN_PATH]), ...extra];
+}
 
 export async function adminCommand(args: string[], dir?: string) {
   const { positionals } = parse(args, {}, ADMIN_USAGE);
@@ -19,16 +29,7 @@ export async function adminCommand(args: string[], dir?: string) {
     throw new CliError(
       'Astro is not installed in this gallery. Run npm install first.'
     );
-  log.info(
-    'The browser admin (drag and drop, editing, a publish button) arrives in a later version.\n' +
-      'For now: drop photos into photos/<album>/ in Finder or run minimalgallery add, and the preview below updates.'
-  );
-  const stop = await watchGallery(root);
-  // Ctrl+C reaches astro too; wait for it to exit, then stop watching.
+  // Ctrl+C reaches astro too; wait for it to exit.
   process.on('SIGINT', () => {});
-  try {
-    return await run(astro, ['dev', '--open', ...positionals], root);
-  } finally {
-    await stop();
-  }
+  return run(astro, adminDevArgs(positionals), root);
 }

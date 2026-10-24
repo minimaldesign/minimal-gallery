@@ -1,0 +1,98 @@
+{
+  "id": "feelings__itchy",
+  "album": "feelings",
+  "file": "Itchy.jpg",
+  "source": "feelings/Itchy.jpg",
+  "slug": "itchy",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Itchy",
+  "caption": null,
+  "date": "2004-11-01T17:23:24",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/1000",
+    "shutterSeconds": 0.001,
+    "aperture": 2.8,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4555,
+    "c": 0.0251,
+    "h": 107.35
+  },
+  "thumbhash": "lQgGFYJiGV5fp4VkeUZ5ooB5DIfX",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgQFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAMEAf/aAAwDAQACEAMQAAAAz540DTHIo6//xAAeEAABBAMAAwAAAAAAAAAAAAACAAEDEQQTFCFRgf/aAAgBAQABPwCNg9LdAOHo5geVzt5Xu6QKAn4cor89Lj8X/8QAHREAAQQCAwAAAAAAAAAAAAAAAgABA0ESExARNP/aAAgBAgEBPwBai3lI8pY0NcP7hasO1//EAB0RAAIBBAMAAAAAAAAAAAAAAAECAAMQEUESE0T/2gAIAQMBAT8AzDUHUqBFzs28ZO+U/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 14470,
+      "format": "avif",
+      "url": "/_mg/feelings__itchy/aa033770-grid.avif",
+      "key": "feelings__itchy/aa033770-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 32573,
+      "format": "jpeg",
+      "url": "/_mg/feelings__itchy/aa033770-jpeg1600.jpg",
+      "key": "feelings__itchy/aa033770-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 149278,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Itchy.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-01",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.001,
+      "label": "1/1000"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "32e43476deb7f4c4",
+  "sourceSize": 149278,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "cec4c99f684dea1c"
+}

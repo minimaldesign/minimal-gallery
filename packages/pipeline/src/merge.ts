@@ -30,7 +30,6 @@ export type MergedMetadata = Pick<
   | 'place'
   | 'placeLabel'
   | 'keywords'
-  | 'rating'
   | 'copyright'
   | 'author'
   | 'hidden'
@@ -55,8 +54,7 @@ const isSet = (v: unknown) =>
 /**
  * Field-by-field merge: for each field, the first layer that sets it wins.
  * `place` and `exposure` merge per sub-field, so a sidecar can set only the
- * city and keep the country from IPTC. A rating of 0 (unrated) in the first
- * layer that sets one is stored as null.
+ * city and keep the country from IPTC.
  */
 export function mergeLayers({
   layers,
@@ -106,7 +104,6 @@ export function mergeLayers({
   const place = Object.values(placeRaw).some((v) => v !== null)
     ? placeRaw
     : null;
-  const rating = first('rating');
   const tz =
     exifOffset && dateSource !== 'mtime' && exifOffset.date === date
       ? exifOffset.offset
@@ -134,7 +131,6 @@ export function mergeLayers({
     place,
     placeLabel: placeLabel(place),
     keywords: first('keywords') ?? [],
-    rating: rating && rating >= 1 ? Math.min(5, Math.round(rating)) : null,
     copyright: first('copyright') ?? null,
     author: first('author') ?? null,
     hidden: first('hidden') ?? false,

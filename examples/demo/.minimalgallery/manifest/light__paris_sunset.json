@@ -1,0 +1,106 @@
+{
+  "id": "light__paris_sunset",
+  "album": "light",
+  "file": "Paris_Sunset.jpg",
+  "source": "light/Paris_Sunset.jpg",
+  "slug": "paris_sunset",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Paris Sunset",
+  "caption": null,
+  "date": "2005-01-13T12:06:25",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/160",
+    "shutterSeconds": 0.00625,
+    "aperture": 14,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [],
+  "copyright": "© 2004 minimal Design&#xA;All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "yTgKHYRQTXt7l5ejWJl3eFB5A6VY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgMH/8QAFwEAAwEAAAAAAAAAAAAAAAAAAwQFAv/aAAwDAQACEAMQAAAAykTC5BwLSn1wT//EAB4QAQABBAMBAQAAAAAAAAAAAAEDAAIREgQiMQZR/9oACAEBAAE/AIXbkDZhD9fan4Vsfz7Lub7CgHXd6lW+lEkiBs4xmv/EABwRAAICAgMAAAAAAAAAAAAAAAACASEREgME0f/aAAgBAgEBPwBqWxebbtQuK8JNVzNH/8QAHREAAgIBBQAAAAAAAAAAAAAAAAIBERIDISJBof/aAAgBAwEBPwBJ53AyY6HsCmbVG/R//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 45190,
+      "format": "avif",
+      "url": "/_mg/light__paris_sunset/dae4b0cb-grid.avif",
+      "key": "light__paris_sunset/dae4b0cb-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 87565,
+      "format": "jpeg",
+      "url": "/_mg/light__paris_sunset/dae4b0cb-jpeg1600.jpg",
+      "key": "light__paris_sunset/dae4b0cb-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 154489,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Paris_Sunset.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-13",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 14,
+    "shutter": {
+      "seconds": 0.00625,
+      "label": "1/160"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "2a404aaaf4396f70",
+  "sourceSize": 154489,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "8af69d91600d1591"
+}

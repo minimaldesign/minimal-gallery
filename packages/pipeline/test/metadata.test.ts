@@ -36,28 +36,6 @@ const xmp = (attrs: string, body = '') => `<x:xmpmeta xmlns:x="adobe:ns:meta/">
  </rdf:RDF>
 </x:xmpmeta>`;
 
-describe('rating', () => {
-  it('stores XMP Rating 0 (unrated) and -1 (rejected) as null', () => {
-    expect(xmpToLayer(xmp('xap:Rating="0"')).rating).toBe(0);
-    expect(merge([['xmp', xmpToLayer(xmp('xap:Rating="0"'))]]).rating).toBe(
-      null
-    );
-    expect(merge([['xmp', xmpToLayer(xmp('xap:Rating="-1"'))]]).rating).toBe(
-      null
-    );
-    expect(merge([['xmp', xmpToLayer(xmp('xap:Rating="3"'))]]).rating).toBe(3);
-  });
-
-  it('lets an unrated sidecar override a stale embedded rating', () => {
-    expect(
-      merge([
-        ['xmp-sidecar', { rating: 0 }],
-        ['xmp', { rating: 4 }],
-      ]).rating
-    ).toBe(null);
-  });
-});
-
 describe('dates and offsets', () => {
   it('keeps the wall-clock time and drops offsets when parsing', () => {
     expect(parseExifDate('2005:02:27 18:16:10')).toBe('2005-02-27T18:16:10');

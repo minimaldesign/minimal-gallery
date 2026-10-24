@@ -2,6 +2,8 @@ import { log } from '@clack/prompts';
 import { watch } from 'chokidar';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { pendingUploads } from '@minimalgallery/pipeline';
+import { loadConfig } from '@minimalgallery/pipeline/config';
 import { parse } from '../args.ts';
 import { CliError } from '../errors.ts';
 import { runPipeline } from '../pipeline.ts';
@@ -11,7 +13,9 @@ import { pipelineLine } from '../ui.ts';
 export const WATCH_USAGE = `Usage: minimalgallery watch [--delay <ms>]
 
 Processes photos as they are added, changed or removed in photos/.
-Runs once at start, then after each batch of changes.
+Runs once at start, then after each batch of changes. In bucket mode the
+new files stay staged; minimalgallery sync or publish uploads them. The
+admin (minimalgallery admin) does the same while it runs.
   --delay   wait this long after the last change before processing (default 1500)`;
 
 const timeNow = () => new Date().toTimeString().slice(0, 8);
@@ -48,11 +52,18 @@ export async function watchGallery(
     prune = false;
     try {
       if (count) console.log(`${timeNow()}  ${count} change(s), processing`);
+      const config = await loadConfig(root);
       const summary = await runPipeline(root, {
+        config,
         prune: withPrune,
         output: 'silent',
       });
-      console.log(`${timeNow()}  ${pipelineLine(summary)}`);
+      let line = pipelineLine(summary);
+      if (config.storage.mode === 's3') {
+        const pending = await pendingUploads(root, { config });
+        if (pending.files) line += `; ${pending.files} file(s) wait for upload`;
+      }
+      console.log(`${timeNow()}  ${line}`);
     } catch (e) {
       log.error((e as Error).message);
     } finally {

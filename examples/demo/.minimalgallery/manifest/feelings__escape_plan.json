@@ -1,0 +1,95 @@
+{
+  "id": "feelings__escape_plan",
+  "album": "feelings",
+  "file": "Escape_plan.jpg",
+  "source": "feelings/Escape_plan.jpg",
+  "slug": "escape_plan",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Escape plan",
+  "caption": null,
+  "date": "2004-07-20T18:41:32",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/40",
+    "shutterSeconds": 0.025,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": null,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "URgGDYIfg+u9qkeCdVh0ZwxfszAY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQMG/8QAFwEBAQEBAAAAAAAAAAAAAAAAAwEAAv/aAAwDAQACEAMQAAAAz4qZNJeD4v8A/8QAJBAAAgECBAcBAAAAAAAAAAAAAQIDAAQREiJRBRMUIVJhcYH/2gAIAQEAAT8AV7SVLrpguk4Kvdv01MsU7IY5EcLplbllcrHff7XBpXLXpLeNXjMuoHAtK+b3X//EABwRAAICAgMAAAAAAAAAAAAAAAECACEDERIycf/aAAgBAgEBPwAW51uY1ZuVEXUHYTGTt/Z//8QAIBEAAAUDBQAAAAAAAAAAAAAAAAECAyEEEjERQUOBkf/aAAgBAwEBPwA0ElosTk+w82lNkpxpA4vBUJKxmNh//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 21270,
+      "format": "avif",
+      "url": "/_mg/feelings__escape_plan/16943587-grid.avif",
+      "key": "feelings__escape_plan/16943587-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 48566,
+      "format": "jpeg",
+      "url": "/_mg/feelings__escape_plan/16943587-jpeg1600.jpg",
+      "key": "feelings__escape_plan/16943587-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 95235,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Escape_plan.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "07",
+    "day": "07-20",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": null,
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.025,
+      "label": "1/40"
+    },
+    "iso": null,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "b734bc788a66303f",
+  "sourceSize": 95235,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "a319d8edbfbb4cdd"
+}

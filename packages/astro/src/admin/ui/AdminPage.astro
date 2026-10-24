@@ -1,0 +1,1574 @@
+---
+/**
+ * The admin's one page, injected at `/_mg/admin/` under `astro dev` only.
+ * Hash routes pick the view: `#/` (every photo, and the first-run state),
+ * `#/album/<id>`, `#/settings`, `#/publish`. The page talks to the admin
+ * API over HTTP and Server-Sent Events only (its address and the
+ * per-process token are printed into the head), never to Node, so a
+ * desktop shell can host it later.
+ *
+ * The markup carries every view and form; `admin.ts` fills them from the
+ * API, handles drops and uploads, and keeps the views live. State shows
+ * through native elements and attributes the CSS reads: `details`,
+ * `popover`, `dialog`, `:has()` on the radios and placeholders,
+ * `aria-current`, `aria-busy`, `data-*`.
+ */
+import { Font } from 'astro:assets';
+import '../../theme/styles/site/theme.mg.tokens.css';
+import './styles/admin.css';
+import { getAdminInfo } from '../token.ts';
+
+export const prerender = false;
+
+const { token, api } = getAdminInfo();
+const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<!doctype html>
+<html lang="en" data-route="photos">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Admin</title>
+    <meta name="mg-admin-token" content={token} />
+    <meta name="mg-admin-api" content={api} />
+    <meta name="mg-root" content={root} />
+    <Font cssVariable="--mg-font-text" preload={[{ subset: 'latin' }]} />
+    <Font cssVariable="--mg-font-mono" />
+  </head>
+  <body class="admin">
+    <svg
+      class="admin_sprite"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg">
+      <symbol id="i-photos" viewBox="0 0 24 24">
+        <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+        <circle cx="9" cy="9" r="2"></circle>
+        <path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"></path>
+      </symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24">
+        <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
+      </symbol>
+      <symbol id="i-files" viewBox="0 0 24 24">
+        <path d="M18 22H4a2 2 0 0 1-2-2V6"></path>
+        <path d="m22 13-1.3-1.3a2.4 2.4 0 0 0-3.4 0L11 18"></path>
+        <circle cx="12" cy="8" r="2"></circle>
+        <rect width="16" height="16" x="6" y="2" rx="2"></rect>
+      </symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24">
+        <path d="M12 3v12"></path>
+        <path d="m17 8-5-5-5 5"></path>
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      </symbol>
+      <symbol id="i-open" viewBox="0 0 24 24">
+        <path d="M7 7h10v10"></path>
+        <path d="M7 17 17 7"></path>
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <path d="M5 12h14"></path>
+        <path d="M12 5v14"></path>
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="M20 6 9 17l-5-5"></path>
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 2"></path>
+      </symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24">
+        <path d="m2 2 20 20"></path>
+        <path d="M14.6 14.6a3 3 0 1 1-4.1-4.1"></path>
+        <path d="M20 20H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2l.8-.2"></path>
+        <path d="M9.7 4H14a2 2 0 0 1 1.8 1l.5 1A2 2 0 0 0 18 7h2a2 2 0 0 1 2 2v7.3"></path>
+      </symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect width="14" height="14" x="8" y="8" rx="2"></rect>
+        <path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"></path>
+      </symbol>
+      <symbol id="i-hidden" viewBox="0 0 24 24">
+        <path d="M10.7 5.1A10.7 10.7 0 0 1 22 12a10.8 10.8 0 0 1-1.5 2.8"></path>
+        <path d="M14.1 14.2a3 3 0 0 1-4.3-4.3"></path>
+        <path d="M17.5 17.5A10.8 10.8 0 0 1 2 12a10.8 10.8 0 0 1 4.5-5.1"></path>
+        <path d="m2 2 20 20"></path>
+      </symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24">
+        <path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3"></path>
+        <path d="M14 2v4M8 10v4M16 18v4"></path>
+      </symbol>
+      <symbol id="i-publish" viewBox="0 0 24 24">
+        <path d="M14.5 21.7a.5.5 0 0 0 .9 0l6.5-19a.5.5 0 0 0-.6-.6l-19 6.5a.5.5 0 0 0 0 .9l7.9 3.2a2 2 0 0 1 1.1 1.1Z"></path>
+        <path d="m21.9 2.1-11 11"></path>
+      </symbol>
+    </svg>
+
+    <a class="a11y-skipLink" href="#main">
+      Skip to the photos
+    </a>
+
+    <div class="admin_shell">
+      <aside class="admin_sidebar sidebar" aria-label="Gallery">
+        <header class="sidebar_head">
+          <a class="sidebar_brand" href="#/" data-bind="name">
+            Photos
+          </a>
+        </header>
+
+        <nav class="sidebar_section" aria-labelledby="albums-heading">
+          <div class="sidebar_heading">
+            <h2 id="albums-heading">Albums</h2>
+            <button
+              type="button"
+              class="sidebar_add"
+              popovertarget="new-album"
+              aria-label="New album">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-plus"></use>
+              </svg>
+              <span class="tip surface" aria-hidden="true">
+                New album
+              </span>
+            </button>
+          </div>
+          <ul class="menu" data-tree>
+            <li class="menu_item">
+              <a class="menu_link" href="#/" data-album="">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-photos"></use>
+                </svg>
+                <span class="menu_label">All photos</span>
+                <span class="menu_count" data-bind="total"></span>
+              </a>
+            </li>
+          </ul>
+          <p class="sidebar_hint">Drop a folder here to make an album.</p>
+        </nav>
+
+        <nav class="sidebar_section" aria-label="Site">
+          <ul class="menu">
+            <li class="menu_item">
+              <a class="menu_link" href="#/settings">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-settings"></use>
+                </svg>
+                <span class="menu_label">Settings</span>
+              </a>
+            </li>
+            <li class="menu_item">
+              <a class="menu_link" href="#/publish">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-publish"></use>
+                </svg>
+                <span class="menu_label">Publish</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar_foot">
+          <details class="checklist" open hidden data-checklist>
+            <summary class="checklist_summary">
+              Getting started
+              <span class="checklist_count" data-bind="steps">
+                0 of 4
+              </span>
+            </summary>
+            <ol class="checklist_steps">
+              <li class="checklist_step" data-step="photos">
+                <span class="checklist_tick" aria-hidden="true">
+                  <svg class="icon checklist_check">
+                    <use href="#i-check"></use>
+                  </svg>
+                </span>
+                <a href="#/" data-focus="pick-folder">
+                  Add photos
+                </a>
+                <span class="a11y-srOnly" data-done-text></span>
+              </li>
+              <li class="checklist_step" data-step="named">
+                <span class="checklist_tick" aria-hidden="true">
+                  <svg class="icon checklist_check">
+                    <use href="#i-check"></use>
+                  </svg>
+                </span>
+                <a href="#/settings" data-focus="gallery-name">
+                  Name the gallery
+                </a>
+                <span class="a11y-srOnly" data-done-text></span>
+              </li>
+              <li class="checklist_step" data-step="previewed">
+                <span class="checklist_tick" aria-hidden="true">
+                  <svg class="icon checklist_check">
+                    <use href="#i-check"></use>
+                  </svg>
+                </span>
+                <a href={root} target="_blank" rel="noopener" data-preview>
+                  Preview the site
+                </a>
+                <span class="a11y-srOnly" data-done-text></span>
+              </li>
+              <li class="checklist_step" data-step="published">
+                <span class="checklist_tick" aria-hidden="true">
+                  <svg class="icon checklist_check">
+                    <use href="#i-check"></use>
+                  </svg>
+                </span>
+                <a href="#/publish">Publish</a>
+                <span class="a11y-srOnly" data-done-text></span>
+              </li>
+            </ol>
+          </details>
+
+          <div class="queue" role="status" data-queue>
+            <span class="queue_text">
+              <span class="queue_dot" aria-hidden="true"></span>
+              <span class="queue_label" data-bind="queue">
+                Connecting…
+              </span>
+            </span>
+            <progress
+              class="queue_progress"
+              max="1"
+              value="0"
+              aria-label="Processing"
+              data-bind="queue-progress"></progress>
+          </div>
+        </div>
+      </aside>
+
+      <main class="admin_main" id="main" tabindex="-1">
+        <!-- PHOTOS: every photo (#/) or one album (#/album/<id>) -->
+        <section
+          class="admin_view admin_view-photos"
+          aria-labelledby="photos-title"
+          data-photos-view>
+          <header class="bar">
+            <div class="bar_title">
+              <ol class="bar_crumbs" aria-label="Albums above" data-crumbs></ol>
+              <h1 class="bar_heading" id="photos-title" data-bind="view-title">
+                All photos
+              </h1>
+              <span class="bar_count" data-bind="view-count"></span>
+            </div>
+            <div class="bar_actions">
+              <label class="bt">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-files"></use>
+                </svg>
+                Choose photos
+                <input
+                  class="a11y-srOnly"
+                  type="file"
+                  multiple
+                  accept="image/*,.heic,.heif,.xmp,.md,.json"
+                  data-pick
+                />
+              </label>
+              <label class="bt">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-folder"></use>
+                </svg>
+                Choose a folder
+                <input
+                  class="a11y-srOnly"
+                  type="file"
+                  webkitdirectory
+                  data-pick="folder"
+                />
+              </label>
+              <a
+                class="bt bt-primary"
+                href={root}
+                target="_blank"
+                rel="noopener"
+                data-preview>
+                Preview
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-open"></use>
+                </svg>
+                <span class="a11y-srOnly">(opens in a new tab)</span>
+              </a>
+            </div>
+          </header>
+
+          <div class="drop drop-empty" hidden data-empty>
+            <svg class="icon drop_icon" aria-hidden="true">
+              <use href="#i-upload"></use>
+            </svg>
+            <p class="drop_title" data-bind="empty-title">
+              Drop a folder of photos here
+            </p>
+            <p data-bind="empty-text">
+              Each folder becomes an album, and folders inside it become albums
+              inside that one. Photos keep their files, untouched.
+            </p>
+            <div class="drop_actions">
+              <label class="bt bt-md">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-folder"></use>
+                </svg>
+                Choose a folder
+                <input
+                  class="a11y-srOnly"
+                  type="file"
+                  webkitdirectory
+                  id="pick-folder"
+                  data-pick="folder"
+                />
+              </label>
+              <label class="bt bt-md">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-files"></use>
+                </svg>
+                Choose photos
+                <input
+                  class="a11y-srOnly"
+                  type="file"
+                  multiple
+                  accept="image/*,.heic,.heif,.xmp,.md,.json"
+                  data-pick
+                />
+              </label>
+            </div>
+            <p class="drop_note" data-empty-note>
+              Exporting from Lightroom? Make an export preset that saves into
+              <code>
+                photos/<span data-bind="empty-path">album name</span>/
+              </code>{' '}
+              inside your gallery folder, with all metadata included. Titles,
+              captions and keywords come along, and new exports show up here
+              while the admin is open.
+            </p>
+          </div>
+
+          <p class="a11y-srOnly" id="photos-keys">
+            Arrow keys move between photos. In an album, Option or Alt with an
+            arrow key moves the photo.
+          </p>
+          <ol class="photos" aria-labelledby="photos-title" data-grid></ol>
+
+          <div class="drop drop-overlay" aria-hidden="true" data-overlay>
+            <svg class="icon drop_icon" aria-hidden="true">
+              <use href="#i-upload"></use>
+            </svg>
+            <p class="drop_title" data-bind="overlay-title">
+              Drop to add photos
+            </p>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section
+          class="admin_view admin_view-settings"
+          aria-labelledby="settings-title">
+          <header class="bar">
+            <div class="bar_title">
+              <h1 class="bar_heading" id="settings-title">
+                Settings
+              </h1>
+            </div>
+          </header>
+          <div class="panel">
+            <form class="panel_form" data-form="settings" aria-busy="true">
+              <section class="panel_section" aria-labelledby="s-gallery">
+                <h2 class="panel_heading" id="s-gallery">
+                  Gallery
+                </h2>
+                <div class="panel_fields">
+                  <div class="entry">
+                    <label class="entry_label" for="gallery-name">
+                      Name
+                    </label>
+                    <input
+                      class="entry_control"
+                      id="gallery-name"
+                      name="name"
+                      type="text"
+                      required
+                      autocomplete="off"
+                    />
+                    <p class="entry_hint">
+                      Opens every page title and the breadcrumb.
+                    </p>
+                  </div>
+                  <div class="entry">
+                    <label class="entry_label" for="gallery-tagline">
+                      Tagline
+                    </label>
+                    <input
+                      class="entry_control"
+                      id="gallery-tagline"
+                      name="description"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <p class="entry_hint">
+                      One line for search results and link previews.
+                    </p>
+                  </div>
+                  <div class="entry">
+                    <label class="entry_label" for="gallery-author">
+                      Your name
+                    </label>
+                    <input
+                      class="entry_control"
+                      id="gallery-author"
+                      name="author"
+                      type="text"
+                      autocomplete="name"
+                    />
+                    <p class="entry_hint">
+                      Credited as the photographer when a photo names no one
+                      else.
+                    </p>
+                  </div>
+                  <div class="entry">
+                    <label class="entry_label" for="gallery-site">
+                      Site address
+                    </label>
+                    <input
+                      class="entry_control"
+                      id="gallery-site"
+                      name="site"
+                      type="url"
+                      placeholder="https://photos.example.com"
+                      autocomplete="url"
+                    />
+                    <p class="entry_hint">
+                      Where the gallery will live. Used for links shared from
+                      it.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel_section" aria-labelledby="s-albums">
+                <h2 class="panel_heading" id="s-albums">
+                  Albums
+                </h2>
+                <fieldset class="entry entry-choice">
+                  <legend>Order of photos in an album</legend>
+                  <span class="entry_label" aria-hidden="true">
+                    Order of photos in an album
+                  </span>
+                  <div class="choice">
+                    <label class="choice_option">
+                      <input type="radio" name="albumsSort" value="date" />
+                      Newest first
+                    </label>
+                    <label class="choice_option">
+                      <input type="radio" name="albumsSort" value="name" />
+                      By file name
+                    </label>
+                    <label class="choice_option">
+                      <input type="radio" name="albumsSort" value="manual" />
+                      Your order
+                    </label>
+                  </div>
+                  <p class="entry_hint">
+                    For albums that do not choose their own. “Your order” starts
+                    newest first until you drag photos around.
+                  </p>
+                </fieldset>
+              </section>
+
+              <section class="panel_section" aria-labelledby="s-viewer">
+                <h2 class="panel_heading" id="s-viewer">
+                  Viewer
+                </h2>
+                <p class="panel_note">
+                  How the gallery looks to a first-time visitor. Visitors can
+                  change each of these, and their choice is remembered.
+                </p>
+                <div class="panel_fields">
+                  <fieldset class="entry entry-choice">
+                    <legend>Photo</legend>
+                    <span class="entry_label" aria-hidden="true">
+                      Photo
+                    </span>
+                    <div class="choice">
+                      <label class="choice_option">
+                        <input type="radio" name="fit" value="fill" />
+                        Fill window
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="fit" value="fit" />
+                        Fit photo
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="entry entry-choice">
+                    <legend>Filmstrip</legend>
+                    <span class="entry_label" aria-hidden="true">
+                      Filmstrip
+                    </span>
+                    <div class="choice">
+                      <label class="choice_option">
+                        <input type="radio" name="strip" value="false" />
+                        Off
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="strip" value="true" />
+                        On
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="entry entry-choice">
+                    <legend>Thumbnails</legend>
+                    <span class="entry_label" aria-hidden="true">
+                      Thumbnails
+                    </span>
+                    <div class="choice">
+                      <label class="choice_option">
+                        <input type="radio" name="crop" value="square" />
+                        Crop
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="crop" value="original" />
+                        Original
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="entry entry-choice">
+                    <legend>Browsing mode</legend>
+                    <span class="entry_label" aria-hidden="true">
+                      Browsing mode
+                    </span>
+                    <div class="choice">
+                      <label class="choice_option">
+                        <input type="radio" name="view" value="grid" />
+                        Grid
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="view" value="list" />
+                        List
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="entry entry-choice">
+                    <legend>Thumbnail size</legend>
+                    <span class="entry_label" aria-hidden="true">
+                      Thumbnail size
+                    </span>
+                    <div class="choice">
+                      <label class="choice_option">
+                        <input type="radio" name="size" value="1" />
+                        Small
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="size" value="2" />
+                        Medium
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="size" value="3" />
+                        Large
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="entry entry-choice">
+                    <legend>Backdrop</legend>
+                    <span class="entry_label" aria-hidden="true">
+                      Backdrop
+                    </span>
+                    <div class="choice">
+                      <label class="choice_option">
+                        <input type="radio" name="backdrop" value="neutral" />
+                        Neutral
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="backdrop" value="photo" />
+                        Photo color
+                      </label>
+                      <label class="choice_option">
+                        <input type="radio" name="backdrop" value="light" />
+                        Light
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+              </section>
+
+              <div class="panel_actions">
+                <button class="bt bt-primary bt-md" type="submit">
+                  Save settings
+                </button>
+                <span class="panel_status" role="status" data-status></span>
+              </div>
+            </form>
+
+            <form class="panel_form" data-form="css" aria-busy="true">
+              <section class="panel_section" aria-labelledby="s-css">
+                <h2 class="panel_heading" id="s-css">
+                  Custom CSS
+                </h2>
+                <p class="panel_note">
+                  The last word over the theme, saved as
+                  <code>custom.css</code>. The preview picks it up as soon as
+                  you save. Start with the theme’s settings, like
+                  <code>--mg-ground</code> for the background or
+                  <code>--mg-row-height</code> for the thumbnail size.
+                </p>
+                <div class="entry">
+                  <label class="entry_label" for="gallery-css">
+                    custom.css
+                  </label>
+                  <textarea
+                    class="entry_control entry_control-code"
+                    id="gallery-css"
+                    name="customCss"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    placeholder={
+                      '@layer theme.user {\n  :root {\n    --mg-ground: oklch(0.1 0 0);\n  }\n}'
+                    }></textarea>
+                </div>
+              </section>
+              <div class="panel_actions">
+                <button class="bt bt-primary bt-md" type="submit">
+                  Save CSS
+                </button>
+                <span class="panel_status" role="status" data-status></span>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- PUBLISH -->
+        <section
+          class="admin_view admin_view-publish"
+          aria-labelledby="publish-title">
+          <header class="bar">
+            <div class="bar_title">
+              <h1 class="bar_heading" id="publish-title">
+                Publish
+              </h1>
+            </div>
+          </header>
+          <div class="panel publish" data-publish>
+            <form class="panel_form" data-form="publish" aria-busy="true">
+              <section class="panel_section" aria-labelledby="p-method">
+                <h2 class="panel_heading" id="p-method">
+                  How to publish
+                </h2>
+                <fieldset class="choice choice-stacked">
+                  <legend>Method</legend>
+                  <label class="choice_option">
+                    <input type="radio" name="method" value="deploy" />
+                    <span class="choice_label">Upload to Cloudflare</span>
+                    <span class="choice_note">
+                      Builds the site on this computer and uploads it, photos
+                      included. Only what changed is sent, and Cloudflare keeps
+                      every version you publish.
+                    </span>
+                  </label>
+                  <label class="choice_option">
+                    <input type="radio" name="method" value="git" />
+                    <span class="choice_label">Publish from GitHub</span>
+                    <span class="choice_note">
+                      Commits your changes and pushes them to GitHub, and your
+                      host builds the site from there. Gives you a history of
+                      every published version, a backup on GitHub, and
+                      publishing from more than one computer.
+                    </span>
+                  </label>
+                  <label class="choice_option">
+                    <input type="radio" name="method" value="build" />
+                    <span class="choice_label">Build only</span>
+                    <span class="choice_note">
+                      Makes the site in the <code>dist</code> folder, ready to
+                      upload anywhere you like.
+                    </span>
+                  </label>
+                </fieldset>
+              </section>
+
+              <section
+                class="panel_section publish_guide"
+                data-method="git"
+                aria-label="GitHub">
+                <div class="notice" data-guide="gh-missing" hidden>
+                  <p class="notice_title">
+                    Install the GitHub command line tool
+                  </p>
+                  <p>
+                    Publishing this way uses GitHub’s own tool. Get it from
+                    <a
+                      href="https://cli.github.com"
+                      target="_blank"
+                      rel="noopener">
+                      cli.github.com
+                    </a>
+                    , then come back and sign in.
+                  </p>
+                </div>
+                <div class="notice" data-guide="gh-login" hidden>
+                  <p class="notice_title">Sign in to GitHub once</p>
+                  <p>
+                    Open Terminal, run this, and follow its questions. Then come
+                    back here.
+                  </p>
+                  <div class="copyable">
+                    <code class="copyable_value">gh auth login</code>
+                    <button
+                      type="button"
+                      class="bt copyable_button"
+                      data-copy="gh auth login">
+                      <span class="copyable_label">Copy</span>
+                      <span class="copyable_done">Copied</span>
+                    </button>
+                  </div>
+                  <div class="notice_actions">
+                    <button type="button" class="bt" data-action="recheck">
+                      I’ve signed in
+                    </button>
+                  </div>
+                </div>
+                <div class="notice" data-guide="git-repo" hidden>
+                  <p class="notice_title">
+                    This folder is not a git repository yet
+                  </p>
+                  <p>
+                    Publishing this way needs the gallery folder in a GitHub
+                    repository, connected to your host. Pick Upload to
+                    Cloudflare if you would rather skip GitHub.
+                  </p>
+                </div>
+                <div class="notice" data-guide="git-host" hidden>
+                  <p class="notice_title">Let Cloudflare build from GitHub</p>
+                  <p>
+                    Once the gallery is on GitHub, connect the repository in the
+                    Cloudflare dashboard: Workers and Pages, Create, Import a
+                    repository. Build command <code>npm run build</code>, deploy
+                    command <code>npx wrangler deploy</code>. From then on,
+                    every push publishes the site.
+                  </p>
+                </div>
+                <p class="panel_note" data-guide="git-ready" hidden></p>
+              </section>
+
+              <section
+                class="panel_section publish_guide"
+                data-method="deploy"
+                aria-label="Cloudflare">
+                <div class="notice" data-guide="cf-login" hidden>
+                  <p class="notice_title">Connect Cloudflare</p>
+                  <p>
+                    Cloudflare opens in your browser: sign in, or create a free
+                    account, and allow this computer to publish. When it says
+                    you’re logged in, come back here.
+                  </p>
+                  <div class="notice_actions">
+                    <button type="button" class="bt" data-action="connect">
+                      Connect Cloudflare
+                    </button>
+                  </div>
+                </div>
+                <div class="notice" data-guide="cf-account" hidden>
+                  <p class="notice_title">Choose the Cloudflare account</p>
+                  <p>Your login has several accounts. Publish to:</p>
+                  <div class="notice_actions">
+                    <select
+                      class="entry_control"
+                      name="accountId"
+                      aria-label="Cloudflare account"
+                      data-bind="cf-accounts"></select>
+                    <button type="button" class="bt" data-action="account">
+                      Use this account
+                    </button>
+                  </div>
+                </div>
+                <div class="notice" data-guide="cf-subdomain" hidden>
+                  <p class="notice_title">Choose your workers.dev address</p>
+                  <p>
+                    Your gallery gets an address on workers.dev, with a name you
+                    choose once for your Cloudflare account. You can add your
+                    own domain later.
+                  </p>
+                  <p>
+                    <code data-bind="cf-address"></code>
+                  </p>
+                  <div class="notice_actions">
+                    <input
+                      class="entry_control"
+                      name="subdomain"
+                      type="text"
+                      autocomplete="off"
+                      spellcheck="false"
+                      aria-label="workers.dev name"
+                      pattern="[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?"
+                    />
+                    <button type="button" class="bt" data-action="subdomain">
+                      Use this name
+                    </button>
+                  </div>
+                </div>
+                <p class="panel_note" data-guide="cf-ready" hidden></p>
+              </section>
+
+              <section
+                class="panel_section publish_guide"
+                data-method="build"
+                aria-label="Build">
+                <p class="panel_note">
+                  The site goes into the <code>dist</code> folder of your
+                  gallery. Upload that folder to any static host.
+                </p>
+              </section>
+
+              <section
+                class="panel_section"
+                aria-labelledby="p-bucket"
+                hidden
+                data-bucket>
+                <h2 class="panel_heading" id="p-bucket">
+                  Media storage
+                </h2>
+                <p class="panel_note" data-bind="bucket-text"></p>
+                <div class="notice notice-attention" hidden data-bucket-keys>
+                  <p class="notice_title">The bucket’s keys are missing</p>
+                  <p>
+                    Add them to the <code>.env</code> file in your gallery
+                    folder, as <code>MG_S3_ACCESS_KEY_ID</code> and
+                    <code>MG_S3_SECRET_ACCESS_KEY</code>, then come back here.
+                    Your photos stay on this computer until then.
+                  </p>
+                </div>
+              </section>
+
+              <div class="panel_actions">
+                <button class="bt bt-primary bt-md" type="submit">
+                  Publish
+                </button>
+                <span class="panel_status" role="status" data-status></span>
+              </div>
+            </form>
+
+            <section
+              class="panel_section"
+              aria-labelledby="p-log"
+              hidden
+              data-job>
+              <h2 class="panel_heading" id="p-log" data-bind="job-title">
+                Publishing
+              </h2>
+              <div class="publish_result notice" hidden data-result>
+                <p class="notice_title">Your gallery is live</p>
+                <a
+                  class="publish_url"
+                  href=""
+                  target="_blank"
+                  rel="noopener"
+                  data-bind="url"></a>
+                <div class="copyable">
+                  <output class="copyable_value" data-bind="url-text"></output>
+                  <button
+                    type="button"
+                    class="bt copyable_button"
+                    data-copy=""
+                    data-bind="url-copy">
+                    <span class="copyable_label">Copy</span>
+                    <span class="copyable_done">Copied</span>
+                  </button>
+                </div>
+                <p>
+                  To serve it from your own domain, follow
+                  <a
+                    href="https://developers.cloudflare.com/workers/configuration/routing/custom-domains/"
+                    target="_blank"
+                    rel="noopener">
+                    Cloudflare’s custom domain steps
+                  </a>
+                  .
+                </p>
+              </div>
+              <div class="notice notice-error" hidden data-failed>
+                <p class="notice_title">Publishing stopped</p>
+                <p data-bind="failed-text">
+                  Nothing went live. The log below says what happened.
+                </p>
+              </div>
+              <pre class="log" role="log" aria-label="Output" data-log></pre>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <!-- INSPECTOR -->
+      <aside
+        class="admin_inspector inspector"
+        aria-label="Inspector"
+        data-inspector-panel>
+        <form
+          class="inspector_form inspector_form-photo"
+          data-form="photo"
+          aria-labelledby="photo-title"
+          novalidate>
+          <header class="inspector_head">
+            <img class="inspector_preview" alt="" data-bind="photo-preview" />
+            <div class="inspector_names">
+              <h2
+                class="inspector_title"
+                id="photo-title"
+                data-bind="photo-title"></h2>
+              <p class="inspector_file" data-bind="photo-file"></p>
+            </div>
+            <button
+              type="button"
+              class="inspector_close"
+              data-action="close"
+              aria-label="Close the photo">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-close"></use>
+              </svg>
+              <span class="tip surface" aria-hidden="true">
+                Close the photo <kbd>Esc</kbd>
+              </span>
+            </button>
+          </header>
+          <div class="inspector_notices" data-notices></div>
+          <div class="inspector_body">
+            <div class="entry" data-field="title">
+              <div class="entry_head">
+                <label class="entry_label" for="p-title">
+                  Title
+                </label>
+                <span class="entry_from">From the file</span>
+                <span class="entry_yours">Yours</span>
+                <button type="button" class="entry_action entry_action-edit">
+                  Edit
+                </button>
+                <button type="button" class="entry_action entry_action-reset">
+                  Reset
+                </button>
+              </div>
+              <input
+                class="entry_control"
+                id="p-title"
+                name="title"
+                type="text"
+                autocomplete="off"
+              />
+            </div>
+            <div class="entry" data-field="caption">
+              <div class="entry_head">
+                <label class="entry_label" for="p-caption">
+                  Caption
+                </label>
+                <span class="entry_from">From the file</span>
+                <span class="entry_yours">Yours</span>
+                <button type="button" class="entry_action entry_action-edit">
+                  Edit
+                </button>
+                <button type="button" class="entry_action entry_action-reset">
+                  Reset
+                </button>
+              </div>
+              <textarea
+                class="entry_control"
+                id="p-caption"
+                name="caption"
+                rows="4"></textarea>
+              <p class="entry_hint">
+                Markdown, shown under the photo’s details.
+              </p>
+            </div>
+            <div class="entry" data-field="date">
+              <div class="entry_head">
+                <label class="entry_label" for="p-date">
+                  Date taken
+                </label>
+                <span class="entry_from">From the file</span>
+                <span class="entry_yours">Yours</span>
+                <button type="button" class="entry_action entry_action-edit">
+                  Edit
+                </button>
+                <button type="button" class="entry_action entry_action-reset">
+                  Reset
+                </button>
+              </div>
+              <input
+                class="entry_control"
+                id="p-date"
+                name="date"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                pattern="\d{4}-\d{2}-\d{2}([ T]\d{2}:\d{2}(:\d{2})?)?"
+                aria-describedby="p-date-hint"
+              />
+              <p class="entry_hint" id="p-date-hint" data-bind="date-hint">
+                Year, month, day, then the time if you know it: 2005-02-27
+                14:30.
+              </p>
+            </div>
+            <section class="cameraData" aria-labelledby="p-camera-heading">
+              <h3 class="cameraData_heading" id="p-camera-heading">
+                Camera data
+              </h3>
+              <dl class="cameraData_list">
+                {[
+                  ['camera', 'Camera'],
+                  ['lens', 'Lens'],
+                  ['focal', 'Focal length'],
+                  ['aperture', 'Aperture'],
+                  ['shutter', 'Shutter speed'],
+                  ['iso', 'ISO'],
+                ].map(([key, label]) => (
+                  <>
+                    <dt>{label}</dt>
+                    <dd data-bind={`camera-${key}`} />
+                  </>
+                ))}
+              </dl>
+            </section>
+            <div class="entry" data-field="keywords">
+              <div class="entry_head">
+                <label class="entry_label" for="p-keywords">
+                  Keywords
+                </label>
+                <span class="entry_from">From the file</span>
+                <span class="entry_yours">Yours</span>
+                <button type="button" class="entry_action entry_action-edit">
+                  Edit
+                </button>
+                <button type="button" class="entry_action entry_action-reset">
+                  Reset
+                </button>
+              </div>
+              <input
+                class="entry_control"
+                id="p-keywords"
+                name="keywords"
+                type="text"
+                autocomplete="off"
+                aria-describedby="p-keywords-hint"
+              />
+              <p class="entry_hint" id="p-keywords-hint">
+                Separated by commas. Each one gets its own page.
+              </p>
+            </div>
+            <fieldset class="inspector_group">
+              <legend>Place</legend>
+              <span aria-hidden="true">Place</span>
+              {[
+                ['location', 'Location'],
+                ['city', 'City'],
+                ['state', 'State or region'],
+                ['country', 'Country'],
+              ].map(([key, label]) => (
+                <div class="entry" data-field={`place.${key}`}>
+                  <div class="entry_head">
+                    <label class="entry_label" for={`p-place-${key}`}>
+                      {label}
+                    </label>
+                    <button
+                      type="button"
+                      class="entry_action entry_action-edit"
+                      aria-label={`Edit the file’s ${label.toLowerCase()}`}>
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      class="entry_action entry_action-reset"
+                      aria-label={`Reset the ${label.toLowerCase()}`}>
+                      Reset
+                    </button>
+                  </div>
+                  <input
+                    class="entry_control"
+                    id={`p-place-${key}`}
+                    name={`place.${key}`}
+                    type="text"
+                    autocomplete="off"
+                  />
+                </div>
+              ))}
+              <div class="entry inspector_wide" data-field="gps">
+                <div class="entry_head">
+                  <label class="entry_label" for="p-gps">
+                    Map location
+                  </label>
+                  <span class="entry_from">From the camera</span>
+                  <span class="entry_yours">Yours</span>
+                  <button
+                    type="button"
+                    class="entry_action entry_action-edit"
+                    aria-label="Edit the file’s map location">
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="entry_action entry_action-reset"
+                    aria-label="Reset the map location">
+                    Reset
+                  </button>
+                </div>
+                <input
+                  class="entry_control"
+                  id="p-gps"
+                  name="gps"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="p-gps-hint"
+                />
+                <p class="entry_hint" id="p-gps-hint">
+                  Latitude and longitude, as Apple Maps or Google Maps copy
+                  them: 35.0116, 135.7681. For the map view; the file itself is
+                  not changed.
+                  <a
+                    data-bind="gps-map"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    hidden>
+                    See it on a map
+                  </a>
+                </p>
+              </div>
+            </fieldset>
+            <div class="entry" data-field="author">
+              <div class="entry_head">
+                <label class="entry_label" for="p-author">
+                  Photographer
+                </label>
+                <span class="entry_from">From the file</span>
+                <span class="entry_yours">Yours</span>
+                <button type="button" class="entry_action entry_action-edit">
+                  Edit
+                </button>
+                <button type="button" class="entry_action entry_action-reset">
+                  Reset
+                </button>
+              </div>
+              <input
+                class="entry_control"
+                id="p-author"
+                name="author"
+                type="text"
+                autocomplete="off"
+              />
+            </div>
+            <div class="entry" data-field="copyright">
+              <div class="entry_head">
+                <label class="entry_label" for="p-copyright">
+                  Copyright
+                </label>
+                <span class="entry_from">From the file</span>
+                <span class="entry_yours">Yours</span>
+                <button type="button" class="entry_action entry_action-edit">
+                  Edit
+                </button>
+                <button type="button" class="entry_action entry_action-reset">
+                  Reset
+                </button>
+              </div>
+              <input
+                class="entry_control"
+                id="p-copyright"
+                name="copyright"
+                type="text"
+                autocomplete="off"
+              />
+            </div>
+            <div class="entry entry-check" data-field="hidden">
+              <input id="p-hidden" name="hidden" type="checkbox" />
+              <label class="entry_label" for="p-hidden">
+                Hide this photo
+              </label>
+              <p class="entry_hint">
+                It stays in its folder but leaves the site.
+              </p>
+            </div>
+          </div>
+          <footer class="inspector_foot">
+            <button class="bt bt-primary" type="submit">
+              Save
+            </button>
+            <span class="inspector_status" role="status" data-status></span>
+            <div class="inspector_tools" data-album-tools>
+              <button
+                type="button"
+                class="bt bt-text"
+                data-action="move"
+                data-by="-1">
+                Move earlier
+              </button>
+              <button
+                type="button"
+                class="bt bt-text"
+                data-action="move"
+                data-by="1">
+                Move later
+              </button>
+            </div>
+          </footer>
+        </form>
+
+        <form
+          class="inspector_form inspector_form-album"
+          data-form="album"
+          aria-labelledby="album-title">
+          <header class="inspector_head">
+            <img class="inspector_preview" alt="" data-bind="album-preview" />
+            <div class="inspector_names">
+              <h2
+                class="inspector_title"
+                id="album-title"
+                data-bind="album-title"></h2>
+              <p class="inspector_file" data-bind="album-path"></p>
+            </div>
+          </header>
+          <div class="inspector_body">
+            <div class="entry">
+              <label class="entry_label" for="a-title">
+                Title
+              </label>
+              <input
+                class="entry_control"
+                id="a-title"
+                name="title"
+                type="text"
+                autocomplete="off"
+                aria-describedby="a-title-hint"
+              />
+              <p class="entry_hint" id="a-title-hint">
+                Leave it empty to use the folder’s name.
+              </p>
+            </div>
+            <div class="entry">
+              <label class="entry_label" for="a-description">
+                Description
+              </label>
+              <textarea
+                class="entry_control"
+                id="a-description"
+                name="description"
+                rows="5"
+                aria-describedby="a-description-hint"></textarea>
+              <p class="entry_hint" id="a-description-hint">
+                Markdown, shown above the album’s photos.
+              </p>
+            </div>
+            <fieldset class="entry entry-choice">
+              <legend>Order</legend>
+              <span class="entry_label" aria-hidden="true">
+                Order
+              </span>
+              <div class="choice">
+                <label class="choice_option">
+                  <input type="radio" name="sort" value="date" />
+                  Newest first
+                </label>
+                <label class="choice_option">
+                  <input type="radio" name="sort" value="name" />
+                  By name
+                </label>
+                <label class="choice_option">
+                  <input type="radio" name="sort" value="manual" />
+                  Your order
+                </label>
+              </div>
+              <p class="entry_hint">
+                Drag photos in the grid to set your order.
+              </p>
+            </fieldset>
+            <div class="entry entry-check">
+              <input id="a-hidden" name="hidden" type="checkbox" />
+              <label class="entry_label" for="a-hidden">
+                Hide this album
+              </label>
+              <p class="entry_hint">
+                Its photos leave the site; the folder stays as it is.
+              </p>
+            </div>
+          </div>
+          <footer class="inspector_foot">
+            <button class="bt bt-primary" type="submit">
+              Save album
+            </button>
+            <span class="inspector_status" role="status" data-status></span>
+          </footer>
+        </form>
+      </aside>
+    </div>
+
+    <!-- UPLOADS -->
+    <section
+      class="uploads surface"
+      aria-labelledby="uploads-title"
+      hidden
+      data-uploads>
+      <div class="uploads_head">
+        <h2 class="uploads_title" id="uploads-title" data-bind="uploads-title">
+          Adding photos
+        </h2>
+        <button
+          type="button"
+          class="uploads_close"
+          data-action="close-uploads"
+          aria-label="Close the list">
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-close"></use>
+          </svg>
+          <span class="tip tip-start surface" aria-hidden="true">
+            Close the list
+          </span>
+        </button>
+        <progress
+          max="1"
+          value="0"
+          aria-labelledby="uploads-title"
+          data-bind="uploads-progress"></progress>
+        <p class="uploads_summary" data-bind="uploads-summary"></p>
+      </div>
+      <details class="uploads_details">
+        <summary>Show each file</summary>
+        <ol class="uploads_list" data-upload-list></ol>
+      </details>
+    </section>
+
+    <ol class="toasts" aria-live="assertive" data-toasts></ol>
+    <p class="a11y-srOnly" aria-live="polite" data-announce></p>
+
+    <!-- NEW ALBUM -->
+    <div class="sheet surface" id="new-album" popover>
+      <form class="sheet_form" data-form="new-album">
+        <h2 class="sheet_title">New album</h2>
+        <div class="entry">
+          <label class="entry_label" for="new-album-name">
+            Name
+          </label>
+          <input
+            class="entry_control"
+            id="new-album-name"
+            name="title"
+            type="text"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="entry">
+          <label class="entry_label" for="new-album-parent">
+            Inside
+          </label>
+          <select class="entry_control" id="new-album-parent" name="parent">
+            <option value="">No other album</option>
+          </select>
+        </div>
+        <p class="sheet_text" role="status" data-status></p>
+        <div class="sheet_actions">
+          <button
+            type="button"
+            class="bt"
+            popovertarget="new-album"
+            popovertargetaction="hide">
+            Cancel
+          </button>
+          <button type="submit" class="bt bt-primary">
+            Create album
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- WHICH ALBUM, for photos dropped outside an album -->
+    <dialog
+      class="sheet surface"
+      aria-labelledby="pick-album-title"
+      data-pick-album>
+      <form class="sheet_form" method="dialog">
+        <h2 class="sheet_title" id="pick-album-title">
+          Add these photos to which album?
+        </h2>
+        <p class="sheet_text" data-bind="pick-text"></p>
+        <div class="entry">
+          <label class="entry_label" for="pick-album-name">
+            Album
+          </label>
+          <input
+            class="entry_control"
+            id="pick-album-name"
+            name="album"
+            type="text"
+            list="album-names"
+            required
+            autocomplete="off"
+            aria-describedby="pick-album-hint"
+          />
+          <p class="entry_hint" id="pick-album-hint">
+            Pick one, or type a name for a new album.
+          </p>
+          <datalist id="album-names"></datalist>
+        </div>
+        <div class="sheet_actions">
+          <button class="bt" value="cancel" formnovalidate>
+            Cancel
+          </button>
+          <button class="bt bt-primary" value="add">
+            Add photos
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <template data-template="album">
+      <li class="menu_item">
+        <a class="menu_link" href="">
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-folder"></use>
+          </svg>
+          <span class="menu_label"></span>
+          <span class="menu_count"></span>
+        </a>
+      </li>
+    </template>
+
+    <template data-template="photo">
+      <li class="photos_item">
+        <button
+          type="button"
+          class="photos_open"
+          tabindex="-1"
+          aria-describedby="photos-keys">
+          <img class="photos_image" alt="" decoding="async" />
+          <span class="a11y-srOnly photos_note"></span>
+          <span class="photos_state"></span>
+        </button>
+        <span class="photos_title" aria-hidden="true"></span>
+        <span class="photos_flags"></span>
+      </li>
+    </template>
+
+    <template data-template="flag-date-from-mtime">
+      <button
+        type="button"
+        class="flag"
+        tabindex="-1"
+        data-attention="date-from-mtime"
+        aria-label="No capture date: set the date"
+        title="No capture date: the date is the file’s">
+        <svg class="icon flag_icon" aria-hidden="true">
+          <use href="#i-clock"></use>
+        </svg>
+      </button>
+    </template>
+    <template data-template="flag-no-exif">
+      <button
+        type="button"
+        class="flag"
+        tabindex="-1"
+        data-attention="no-exif"
+        aria-label="No camera data"
+        title="No camera data">
+        <svg class="icon flag_icon" aria-hidden="true">
+          <use href="#i-camera"></use>
+        </svg>
+      </button>
+    </template>
+    <template data-template="flag-duplicate">
+      <button
+        type="button"
+        class="flag"
+        tabindex="-1"
+        data-attention="duplicate"
+        aria-label="Same photo as another one"
+        title="Same photo as another one">
+        <svg class="icon flag_icon" aria-hidden="true">
+          <use href="#i-copy"></use>
+        </svg>
+      </button>
+    </template>
+    <template data-template="flag-hidden">
+      <span class="flag flag-quiet" title="Hidden from the site">
+        <svg class="icon flag_icon" aria-hidden="true">
+          <use href="#i-hidden"></use>
+        </svg>
+        <span class="a11y-srOnly">Hidden</span>
+      </span>
+    </template>
+
+    <template data-template="notice-date-from-mtime">
+      <div
+        class="notice notice-attention"
+        tabindex="-1"
+        data-notice="date-from-mtime">
+        <p class="notice_title">
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-clock"></use>
+          </svg>
+          No capture date
+        </p>
+        <p>
+          The file holds no date, so the photo is dated by when the file was
+          last changed, often the day it was exported. Type the date it was
+          taken below.
+        </p>
+      </div>
+    </template>
+    <template data-template="notice-no-exif">
+      <div class="notice notice-attention" tabindex="-1" data-notice="no-exif">
+        <p class="notice_title">
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-camera"></use>
+          </svg>
+          No camera data
+        </p>
+        <p>
+          The file has no camera, lens or exposure details, so the photo is
+          missing from those pages. When you export, include all metadata to
+          keep them.
+        </p>
+      </div>
+    </template>
+    <template data-template="notice-duplicate">
+      <div
+        class="notice notice-attention"
+        tabindex="-1"
+        data-notice="duplicate">
+        <p class="notice_title">
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-copy"></use>
+          </svg>
+          Same photo as another one
+        </p>
+        <p data-bind="duplicate-text">
+          Another photo in the gallery has exactly the same file.
+        </p>
+        <div class="notice_actions" data-duplicates></div>
+      </div>
+    </template>
+
+    <template data-template="upload">
+      <li class="uploads_item" data-state="queued">
+        <span class="uploads_name"></span>
+        <span class="uploads_state">Waiting</span>
+        <progress max="1" value="0" aria-hidden="true"></progress>
+        <span class="uploads_reason"></span>
+      </li>
+    </template>
+
+    <template data-template="toast">
+      <li class="toasts_item surface">
+        <strong class="toasts_title"></strong>
+        <p class="toasts_text"></p>
+        <button type="button" class="toasts_close" aria-label="Dismiss">
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-close"></use>
+          </svg>
+          <span class="tip surface" aria-hidden="true">
+            Dismiss
+          </span>
+        </button>
+      </li>
+    </template>
+
+    <script>
+      import './admin.ts';
+    </script>
+  </body>
+</html>

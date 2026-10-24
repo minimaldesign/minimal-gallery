@@ -1,0 +1,113 @@
+{
+  "id": "shapes__tabaco_dragon",
+  "album": "shapes",
+  "file": "Tabaco_dragon.jpg",
+  "source": "shapes/Tabaco_dragon.jpg",
+  "slug": "tabaco_dragon",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Tabaco dragon",
+  "caption": null,
+  "date": "2005-01-12T11:25:18",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/20",
+    "shutterSeconds": 0.05,
+    "aperture": 4.5,
+    "focal": 55,
+    "focal35": 82,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Paris",
+    "state": null,
+    "country": "France",
+    "location": null
+  },
+  "placeLabel": "Paris, France",
+  "keywords": [
+    "Paris"
+  ],
+  "copyright": "© 2004 minimal Design All rights reserved",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3879,
+    "c": 0.0203,
+    "h": 196.34
+  },
+  "thumbhash": "mfcFBYBdh4gElYimZohplvfDbh/c",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgUGB//EABYBAQEBAAAAAAAAAAAAAAAAAAABA//aAAwDAQACEAMQAAAAS65kUq5zH//EACAQAAIABgIDAAAAAAAAAAAAAAECAAMEERIhMWETI3H/2gAIAQEAAT8Ak0U6lbMexnGLBNlInNTPiZwzKMRkF61f5FU72pRfTUYmN2xHMTXfzXyPJj//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18335,
+      "format": "avif",
+      "url": "/_mg/shapes__tabaco_dragon/94102971-grid.avif",
+      "key": "shapes__tabaco_dragon/94102971-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 38390,
+      "format": "jpeg",
+      "url": "/_mg/shapes__tabaco_dragon/94102971-jpeg1600.jpg",
+      "key": "shapes__tabaco_dragon/94102971-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 135922,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Tabaco_dragon.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-12",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.05,
+      "label": "1/20"
+    },
+    "iso": 200,
+    "focal": 55,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "paris",
+        "label": "Paris"
+      }
+    ],
+    "place": {
+      "slug": "paris-france",
+      "label": "Paris, France"
+    }
+  },
+  "sourceHash": "a8f2734c4c9bcfaa",
+  "sourceSize": 135922,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "ce6b003da98550b1"
+}

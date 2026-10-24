@@ -1,0 +1,98 @@
+{
+  "id": "feelings__life_sucks",
+  "album": "feelings",
+  "file": "Life_sucks.jpg",
+  "source": "feelings/Life_sucks.jpg",
+  "slug": "life_sucks",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Life sucks",
+  "caption": null,
+  "date": "2004-11-06T17:02:34",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 2.8,
+    "focal": 145,
+    "focal35": 217,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.4716,
+    "c": 0.0325,
+    "h": 66.9
+  },
+  "thumbhash": "WhgGDYCHZXxyd3VQqIm8g9wPxfmC",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAED/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAP/2gAMAwEAAhADEAAAACSqcpreX//EACEQAAIBAwMFAAAAAAAAAAAAAAECAwAEIhESExQhMlFh/9oACAEBAAE/AEsGCA3EJAXJOR9mr1FFEYmUxtcysTkW2xegfpqyHU8k85aSXTyZiTTYEBewr//EABsRAAIDAAMAAAAAAAAAAAAAAAARAQIhEjFR/9oACAECAQE/AKqeW6J2zogUeH//xAAYEQADAQEAAAAAAAAAAAAAAAAAASERQf/aAAgBAwEBPwBzDlHDT//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 28278,
+      "format": "avif",
+      "url": "/_mg/feelings__life_sucks/d0646a8c-grid.avif",
+      "key": "feelings__life_sucks/d0646a8c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 60691,
+      "format": "jpeg",
+      "url": "/_mg/feelings__life_sucks/d0646a8c-jpeg1600.jpg",
+      "key": "feelings__life_sucks/d0646a8c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 145562,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Life_sucks.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "11",
+    "day": "11-06",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 200,
+    "focal": 145,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "46744f6083d677cc",
+  "sourceSize": 145562,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "6d0512ca4f0b42ba"
+}

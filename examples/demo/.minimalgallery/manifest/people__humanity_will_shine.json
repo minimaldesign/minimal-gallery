@@ -1,0 +1,89 @@
+{
+  "id": "people__humanity_will_shine",
+  "album": "people",
+  "file": "Humanity-Will-Shine.jpg",
+  "source": "people/Humanity-Will-Shine.jpg",
+  "slug": "humanity_will_shine",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Humanity Will Shine",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 600,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "FQgWBYCPl4lmh2eJeIeHiAAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAACAIH/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAkzMSwXj/xAAjEAACAgIBAgcAAAAAAAAAAAACAwEEABEFEkIUISIxMlJh/9oACAEBAAE/AOSq3VPt0m9ANQjxY7mSAk9xbjuH65yDHTacQGwlEcysi3Hpn835ZyFOsS7ryXthU2Lktz8Ne2PAY1n/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AB//2Q==",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 427,
+      "bytes": 23363,
+      "format": "avif",
+      "url": "/_mg/people__humanity_will_shine/9f9d73c4-grid.avif",
+      "key": "people__humanity_will_shine/9f9d73c4-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 600,
+      "bytes": 67581,
+      "format": "jpeg",
+      "url": "/_mg/people__humanity_will_shine/9f9d73c4-jpeg1600.jpg",
+      "key": "people__humanity_will_shine/9f9d73c4-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 158462,
+    "width": 900,
+    "height": 600,
+    "relativePath": "photos/people/Humanity-Will-Shine.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "4e25abcaad6839be",
+  "sourceSize": 158462,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "2309a3a6a5b5f5eb"
+}

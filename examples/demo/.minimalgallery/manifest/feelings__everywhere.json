@@ -1,0 +1,106 @@
+{
+  "id": "feelings__everywhere",
+  "album": "feelings",
+  "file": "Everywhere.jpg",
+  "source": "feelings/Everywhere.jpg",
+  "slug": "everywhere",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Everywhere",
+  "caption": null,
+  "date": "2007-11-13T14:45:47",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": "18.0-200.0 mm f/3.5-5.6",
+  "exposure": {
+    "shutter": "1/100",
+    "shutterSeconds": 0.01,
+    "aperture": 5.6,
+    "focal": 75,
+    "focal35": 112,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Kyoto",
+    "state": null,
+    "country": "Japan",
+    "location": "Kiyomizu Temple"
+  },
+  "placeLabel": "Kyoto, Japan",
+  "keywords": [],
+  "copyright": "© 2007 minimal design LLC",
+  "author": "Yann Bettremieux",
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.209,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "EAgKBYCQaXdbiHmWhXh3eQAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgIH/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAAzwUh8o//xAAeEAACAQUBAQEAAAAAAAAAAAABAgMABBESIUFRcf/aAAgBAQABPwBVRWjePYK3jdwR+VaypPGZLiYMi8Xm2CfTVpEkxZZASNvpHoHlXSIiIijVdVOBzuK//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 48292,
+      "format": "avif",
+      "url": "/_mg/feelings__everywhere/21774f8c-grid.avif",
+      "key": "feelings__everywhere/21774f8c-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 127665,
+      "format": "jpeg",
+      "url": "/_mg/feelings__everywhere/21774f8c-jpeg1600.jpg",
+      "key": "feelings__everywhere/21774f8c-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 220485,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/feelings/Everywhere.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-13",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": {
+      "slug": "18-0-200-0-mm-f-3-5-5-6",
+      "label": "18.0-200.0 mm f/3.5-5.6"
+    },
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.01,
+      "label": "1/100"
+    },
+    "iso": 100,
+    "focal": 75,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "kyoto-japan",
+      "label": "Kyoto, Japan"
+    }
+  },
+  "sourceHash": "ff3f4a9bc471f103",
+  "sourceSize": 220485,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1063dded1c02b06b"
+}

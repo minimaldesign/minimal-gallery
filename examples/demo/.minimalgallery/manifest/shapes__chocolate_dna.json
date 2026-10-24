@@ -1,0 +1,98 @@
+{
+  "id": "shapes__chocolate_dna",
+  "album": "shapes",
+  "file": "Chocolate_DNA.jpg",
+  "source": "shapes/Chocolate_DNA.jpg",
+  "slug": "chocolate_dna",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "Chocolate DNA",
+  "caption": "Just for clarification, no Photoshop editing was done (besides routine levels/color correction and sharpening) on either this photo or the previous one (Cookie Heaven), those two are shots of the the stuff that was displayed a few weeks back in the windows of the (very cool) Shiseido Building in Ginza, Tokyo.",
+  "date": "2005-04-10T20:19:21",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/30",
+    "shutterSeconds": 0.03333333333333333,
+    "aperture": 3.5,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 250,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.2719,
+    "c": 0.0276,
+    "h": 108.1
+  },
+  "thumbhash": "1CkONYhHZ4h5eId/dqd3eFdwfQan",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIFBv/EABgBAAMBAQAAAAAAAAAAAAAAAAABBQME/9oADAMBAAIQAxAAAADNcGwFyHXZr//EACEQAAAGAgEFAAAAAAAAAAAAAAABAgMEBRFBEiJRYpLR/9oACAEBAAE/AKu9vorWY+fUSL69TCSyolIaLOu4qFqJhPzxFp1w3OWmywP/xAAeEQACAgEFAQAAAAAAAAAAAAABAgAEEgMRITJicf/aAAgBAgEBPwDUesr99j9iGqz8OCZZUZMZXAzU+p//xAAcEQACAwADAQAAAAAAAAAAAAABAgADESEicYH/2gAIAQMBAT8ASq5hwpyNVcq6VOSknB5Lj1+T/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 18787,
+      "format": "avif",
+      "url": "/_mg/shapes__chocolate_dna/4f7a2d1e-grid.avif",
+      "key": "shapes__chocolate_dna/4f7a2d1e-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 43547,
+      "format": "jpeg",
+      "url": "/_mg/shapes__chocolate_dna/4f7a2d1e-jpeg1600.jpg",
+      "key": "shapes__chocolate_dna/4f7a2d1e-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 156246,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/shapes/Chocolate_DNA.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-10",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 3.5,
+    "shutter": {
+      "seconds": 0.03333333333333333,
+      "label": "1/30"
+    },
+    "iso": 250,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "73e9fc67b5371aea",
+  "sourceSize": 156246,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "d86d540c8a9ca013"
+}

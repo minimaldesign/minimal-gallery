@@ -1,0 +1,98 @@
+{
+  "id": "feelings__post_elections",
+  "album": "feelings",
+  "file": "Post_elections.jpg",
+  "source": "feelings/Post_elections.jpg",
+  "slug": "post_elections",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Post elections",
+  "caption": null,
+  "date": "2004-10-31T17:22:39",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/30",
+    "shutterSeconds": 0.03333333333333333,
+    "aperture": 4.5,
+    "focal": 70,
+    "focal35": 105,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.3339,
+    "c": 0.0354,
+    "h": 248.93
+  },
+  "thumbhash": "ligKLYpkk2daWHmgejiXWUqGoGQJ",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgQF/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgQBAwX/2gAMAwEAAhADEAAAAD6mjpsKnCrjkf/EACEQAAEDBAIDAQAAAAAAAAAAAAIBAwQABRESE1EUITJT/9oACAEBAAE/ALO1ZSQPM0JR7JUwtQ4NkgTznM3FvX8vtaKQ9qynIWFD3RiDLjvGIjnpK//EAB0RAAIBBAMAAAAAAAAAAAAAAAECAAMEETESE8H/2gAIAQIBAT8Aq3Fx2EKCqgylctyXK73B7MAT/8QAHBEAAQUBAQEAAAAAAAAAAAAAAQACAwQREzFR/9oACAEDAQE/AIKlXkC8hziPvisUm85MkAw6EVpK/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 24031,
+      "format": "avif",
+      "url": "/_mg/feelings__post_elections/f63087fc-grid.avif",
+      "key": "feelings__post_elections/f63087fc-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 49073,
+      "format": "jpeg",
+      "url": "/_mg/feelings__post_elections/f63087fc-jpeg1600.jpg",
+      "key": "feelings__post_elections/f63087fc-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 146151,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Post_elections.jpg",
+    "icc": "Adobe RGB (1998)"
+  },
+  "facets": {
+    "year": "2004",
+    "month": "10",
+    "day": "10-31",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.03333333333333333,
+      "label": "1/30"
+    },
+    "iso": 200,
+    "focal": 70,
+    "focalBucket": "short-tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "8c50e2c2d4ba865b",
+  "sourceSize": 146151,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "0550eb1c5007b848"
+}

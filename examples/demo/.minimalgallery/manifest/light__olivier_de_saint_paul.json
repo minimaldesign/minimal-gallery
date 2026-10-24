@@ -1,0 +1,105 @@
+{
+  "id": "light__olivier_de_saint_paul",
+  "album": "light",
+  "file": "Olivier_de_Saint_Paul.jpg",
+  "source": "light/Olivier_de_Saint_Paul.jpg",
+  "slug": "olivier_de_saint_paul",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Olivier de Saint Paul",
+  "caption": null,
+  "date": "2005-01-29T12:32:10",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "18.0-70.0 mm f/3.5-4.5",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 48,
+    "focal35": 72,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [
+    "Vence"
+  ],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "DggKHYQYVqp/cqeHh1eIgViPifWY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAwQFBv/EABcBAQEBAQAAAAAAAAAAAAAAAAMBAAL/2gAMAwEAAhADEAAAAMmTJXmE5jm//8QAHxAAAQQCAgMAAAAAAAAAAAAAAgEDBCEAERIiBRMy/9oACAEBAAE/APBzmICumUMF5jQFd5Mkw5URiM1BFtwDP2O7++29pjkh7ivfCkPIiCh0lJSZ/8QAGxEAAQQDAAAAAAAAAAAAAAAAAgABAxEQEyP/2gAIAQIBAT8AKEzrpSGI2O9ifH//xAAbEQACAgMBAAAAAAAAAAAAAAACEQABAxASQf/aAAgBAwEBPwAcoi1Usx5XPulP/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 24220,
+      "format": "avif",
+      "url": "/_mg/light__olivier_de_saint_paul/69f73549-grid.avif",
+      "key": "light__olivier_de_saint_paul/69f73549-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 52357,
+      "format": "jpeg",
+      "url": "/_mg/light__olivier_de_saint_paul/69f73549-jpeg1600.jpg",
+      "key": "light__olivier_de_saint_paul/69f73549-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 139849,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/light/Olivier_de_Saint_Paul.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2005",
+    "month": "01",
+    "day": "01-29",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "18-0-70-0-mm-f-3-5-4-5",
+      "label": "18.0-70.0 mm f/3.5-4.5"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 48,
+    "focalBucket": "short-tele",
+    "keywords": [
+      {
+        "slug": "vence",
+        "label": "Vence"
+      }
+    ],
+    "place": null
+  },
+  "sourceHash": "286364f29db6693b",
+  "sourceSize": 139849,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "1c40862a4d47b275"
+}

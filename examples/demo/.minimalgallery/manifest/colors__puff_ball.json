@@ -1,0 +1,98 @@
+{
+  "id": "colors__puff_ball",
+  "album": "colors",
+  "file": "Puff_Ball.jpg",
+  "source": "colors/Puff_Ball.jpg",
+  "slug": "puff_ball",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Puff Ball",
+  "caption": "Another shot from Haleakala...  After that one, I'm done ;)",
+  "date": "2005-04-16T05:52:53",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 2.8,
+    "focal": 170,
+    "focal35": 255,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.9356,
+    "c": 0.0454,
+    "h": 84.57
+  },
+  "thumbhash": "6QcWNYaIhnh/eHd4h3d3iJiPh/ln",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQb/xAAYAQADAQEAAAAAAAAAAAAAAAACAwQBBf/aAAwDAQACEAMQAAAAvJ3nOCD6UB5Z/8QAIxAAAgECBAcAAAAAAAAAAAAAAgMBAAQFERIhBiIxUYKhsf/aAAgBAQABPwAcfsDGZW3XtM5ZTVrxUh7iU4RV5UCV6p2nr3mr4zSHIUx7+1//xAAcEQACAgIDAAAAAAAAAAAAAAAAEQECAwQSFIH/2gAIAQIBAT8A6+w4dF6ZdTJWrpPIckH/xAAcEQABAwUAAAAAAAAAAAAAAAACAAMRARATIUH/2gAIAQMBAT8Ays8KU2+BVgtX/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 5948,
+      "format": "avif",
+      "url": "/_mg/colors__puff_ball/3d25819a-grid.avif",
+      "key": "colors__puff_ball/3d25819a-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 14721,
+      "format": "jpeg",
+      "url": "/_mg/colors__puff_ball/3d25819a-jpeg1600.jpg",
+      "key": "colors__puff_ball/3d25819a-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 139843,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Puff_Ball.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 2.8,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 170,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "0740d05350dc4106",
+  "sourceSize": 139843,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "c0c4ae239c4ec2a4"
+}

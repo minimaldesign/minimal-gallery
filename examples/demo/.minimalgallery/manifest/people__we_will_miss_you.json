@@ -1,0 +1,89 @@
+{
+  "id": "people__we_will_miss_you",
+  "album": "people",
+  "file": "We_will_miss_you.jpg",
+  "source": "people/We_will_miss_you.jpg",
+  "slug": "we_will_miss_you",
+  "added": "2026-10-23T19:21:24Z",
+  "title": "We will miss you",
+  "caption": null,
+  "date": "2026-10-23T22:38:11",
+  "dateSource": "mtime",
+  "camera": null,
+  "lens": null,
+  "exposure": {
+    "shutter": null,
+    "shutterSeconds": null,
+    "aperture": null,
+    "focal": null,
+    "focal35": null,
+    "iso": null,
+    "ev": null,
+    "metering": null,
+    "flash": null
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 700,
+  "color": {
+    "l": 0.9191,
+    "c": 0.0626,
+    "h": 107.57
+  },
+  "thumbhash": "IRgKHwSdWmdPdodWeEiYWHhyyfq1aacP",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAQABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQMG/8QAGAEAAgMAAAAAAAAAAAAAAAAAAwQAAQL/2gAMAwEAAhADEAAAAFQM1gTz1i3Nf//EACEQAAICAgIBBQAAAAAAAAAAAAECAwQFEgARYRQhIkJR/9oACAEBAAE/AJY8HrFNIJ3dnWEaL9uWLWDx1Yxdyds2zfEuAT5HM9k77JX9JFG1YxgOD7OXPnk0tpay1xUeGJFGo33Ykfp5/8QAHxEAAgIBBAMAAAAAAAAAAAAAAQIDEQAEEiFBEyIx/9oACAECAQE/AFSY2FqvuLDNI3XHGaUR7SWf2vA0VlvIGJvqs//EAB4RAAICAQUBAAAAAAAAAAAAAAECAAMSERMhQmJx/9oACAEDAQE/AN16jidB9juz8x6WezAIfMNFq9J//9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 640,
+      "bytes": 23579,
+      "format": "avif",
+      "url": "/_mg/people__we_will_miss_you/387b9679-grid.avif",
+      "key": "people__we_will_miss_you/387b9679-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 700,
+      "bytes": 55361,
+      "format": "jpeg",
+      "url": "/_mg/people__we_will_miss_you/387b9679-jpeg1600.jpg",
+      "key": "people__we_will_miss_you/387b9679-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 175714,
+    "width": 700,
+    "height": 700,
+    "relativePath": "photos/people/We_will_miss_you.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": null,
+    "month": null,
+    "day": null,
+    "camera": null,
+    "lens": null,
+    "aperture": null,
+    "shutter": null,
+    "iso": null,
+    "focal": null,
+    "focalBucket": null,
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "1e69039a67c7a767",
+  "sourceSize": 175714,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "f1f60eac3f38d88d"
+}

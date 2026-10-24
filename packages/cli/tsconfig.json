@@ -8,7 +8,7 @@
     "noUncheckedIndexedAccess": false,
     "declaration": true,
     "outDir": "dist",
-    "rootDir": ".",
+    "rootDir": "..",
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "erasableSyntaxOnly": true,

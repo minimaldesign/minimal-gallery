@@ -1,0 +1,95 @@
+{
+  "id": "feelings__biwa",
+  "album": "feelings",
+  "file": "Biwa.jpg",
+  "source": "feelings/Biwa.jpg",
+  "slug": "biwa",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Biwa",
+  "caption": null,
+  "date": "2007-11-14T15:15:37",
+  "dateSource": "xmp",
+  "camera": "Nikon D200",
+  "lens": null,
+  "exposure": {
+    "shutter": "1/125",
+    "shutterSeconds": 0.008,
+    "aperture": 5.6,
+    "focal": 18,
+    "focal35": 27,
+    "iso": 100,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": null,
+  "author": null,
+  "hidden": false,
+  "width": 900,
+  "height": 602,
+  "color": {
+    "l": 0.6797,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "HAgOBYBod3d/d4d2iKd4dgAAAAAA",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQIDBv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAKCGGCf/xAAgEAACAgEDBQAAAAAAAAAAAAABAgADEQQhIjJRYXOT/9oACAEBAAE/AK77wozSPoss1jAc60A9yyt3bYu2Md4/SD4n/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwAf/9k=",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 428,
+      "bytes": 17883,
+      "format": "avif",
+      "url": "/_mg/feelings__biwa/b56749e5-grid.avif",
+      "key": "feelings__biwa/b56749e5-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 900,
+      "height": 602,
+      "bytes": 49991,
+      "format": "jpeg",
+      "url": "/_mg/feelings__biwa/b56749e5-jpeg1600.jpg",
+      "key": "feelings__biwa/b56749e5-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 119371,
+    "width": 900,
+    "height": 602,
+    "relativePath": "photos/feelings/Biwa.jpg",
+    "icc": null
+  },
+  "facets": {
+    "year": "2007",
+    "month": "11",
+    "day": "11-14",
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
+    "lens": null,
+    "aperture": 5.6,
+    "shutter": {
+      "seconds": 0.008,
+      "label": "1/125"
+    },
+    "iso": 100,
+    "focal": 18,
+    "focalBucket": "normal",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "f79d76972a7070c4",
+  "sourceSize": 119371,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "69cd3ae6044f967b"
+}

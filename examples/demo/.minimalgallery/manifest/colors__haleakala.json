@@ -1,0 +1,98 @@
+{
+  "id": "colors__haleakala",
+  "album": "colors",
+  "file": "Haleakala.jpg",
+  "source": "colors/Haleakala.jpg",
+  "slug": "haleakala",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Haleakala",
+  "caption": "I had to wake up at 4:00 AM, drive for 2 hours, then literally freeze to the point where I couldn't feel my hands anymore (would you have thought about bringing gloves to Maui?  I didn't...), but it was worth it.  It's about 5000 meters high on the top of the volcano, and I swear I could hear the opening of Strauss' \"Also Sprach Zarathustra\" as the sun came out...",
+  "date": "2005-04-16T05:57:15",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/80",
+    "shutterSeconds": 0.0125,
+    "aperture": 4.5,
+    "focal": 80,
+    "focal35": 120,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": null,
+  "placeLabel": null,
+  "keywords": [],
+  "copyright": "© 2005 minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.45,
+    "c": 0.0649,
+    "h": 249.45
+  },
+  "thumbhash": "4hcONYx5eIePiHh2h3eIeHmflvdY",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgMF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwUC/9oADAMBAAIQAxAAAABAFDLcA1OPfGv/xAAeEAACAgICAwAAAAAAAAAAAAABAgADBBEFISJhgv/aAAgBAQABPwC7l8Vx2yaPuXchikgK4H0ZQ7E9mXKoA0NeM//EABoRAQADAAMAAAAAAAAAAAAAAAEAAgMEMUH/2gAIAQIBAT8ArxtDqrK5bB7GCz//xAAbEQEAAgIDAAAAAAAAAAAAAAABAAMCBBQhQf/aAAgBAwEBPwDk1B3YTO/WyfIRCf/Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 8004,
+      "format": "avif",
+      "url": "/_mg/colors__haleakala/0b52f255-grid.avif",
+      "key": "colors__haleakala/0b52f255-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 20523,
+      "format": "jpeg",
+      "url": "/_mg/colors__haleakala/0b52f255-jpeg1600.jpg",
+      "key": "colors__haleakala/0b52f255-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 139935,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/colors/Haleakala.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "04",
+    "day": "04-16",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4.5,
+    "shutter": {
+      "seconds": 0.0125,
+      "label": "1/80"
+    },
+    "iso": 200,
+    "focal": 80,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": null
+  },
+  "sourceHash": "b2141e3bc2172258",
+  "sourceSize": 139935,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "893d03691fa59fd4"
+}

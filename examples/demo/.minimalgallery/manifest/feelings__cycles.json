@@ -1,0 +1,106 @@
+{
+  "id": "feelings__cycles",
+  "album": "feelings",
+  "file": "Cycles.jpg",
+  "source": "feelings/Cycles.jpg",
+  "slug": "cycles",
+  "added": "2026-10-23T19:21:25Z",
+  "title": "Cycles",
+  "caption": "We might as well stand still.",
+  "date": "2005-11-03T16:54:41",
+  "dateSource": "xmp",
+  "camera": "Nikon D70",
+  "lens": "80.0-200.0 mm f/2.8",
+  "exposure": {
+    "shutter": "1/200",
+    "shutterSeconds": 0.005,
+    "aperture": 4,
+    "focal": 200,
+    "focal35": 300,
+    "iso": 200,
+    "ev": 0,
+    "metering": "Pattern",
+    "flash": false
+  },
+  "gps": null,
+  "place": {
+    "city": "Brooklyn",
+    "state": "NY",
+    "country": "USA",
+    "location": "Coney Island"
+  },
+  "placeLabel": "Brooklyn, USA",
+  "keywords": [],
+  "copyright": "© minimal design",
+  "author": null,
+  "hidden": false,
+  "width": 700,
+  "height": 465,
+  "color": {
+    "l": 0.1344,
+    "c": 0,
+    "h": 0
+  },
+  "thumbhash": "kwgSDYBpiHeLh3hweId3i4ePYvco",
+  "placeholder": "data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAALABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAEH/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAIEAf/aAAwDAQACEAMQAAAADOxMM5oWh//EAB4QAAEFAAIDAAAAAAAAAAAAAAEAAwQFEQISITFT/9oACAEBAAE/AOECrcPDrZ13vz2ezFMr4I3JUZzPm4CgSiv/xAAZEQACAwEAAAAAAAAAAAAAAAACEQABEFH/2gAIAQIBAT8ARdjKt//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8AH//Z",
+  "variants": [
+    {
+      "name": "grid",
+      "width": 640,
+      "height": 425,
+      "bytes": 20759,
+      "format": "avif",
+      "url": "/_mg/feelings__cycles/f959594d-grid.avif",
+      "key": "feelings__cycles/f959594d-grid.avif"
+    },
+    {
+      "name": "jpeg1600",
+      "width": 700,
+      "height": 465,
+      "bytes": 49572,
+      "format": "jpeg",
+      "url": "/_mg/feelings__cycles/f959594d-jpeg1600.jpg",
+      "key": "feelings__cycles/f959594d-jpeg1600.jpg"
+    }
+  ],
+  "original": {
+    "bytes": 128006,
+    "width": 700,
+    "height": 465,
+    "relativePath": "photos/feelings/Cycles.jpg",
+    "icc": "sRGB IEC61966-2.1"
+  },
+  "facets": {
+    "year": "2005",
+    "month": "11",
+    "day": "11-03",
+    "camera": {
+      "slug": "nikon-d70",
+      "label": "Nikon D70"
+    },
+    "lens": {
+      "slug": "80-0-200-0-mm-f-2-8",
+      "label": "80.0-200.0 mm f/2.8"
+    },
+    "aperture": 4,
+    "shutter": {
+      "seconds": 0.005,
+      "label": "1/200"
+    },
+    "iso": 200,
+    "focal": 200,
+    "focalBucket": "tele",
+    "keywords": [],
+    "place": {
+      "slug": "brooklyn-usa",
+      "label": "Brooklyn, USA"
+    }
+  },
+  "sourceHash": "576bedde8ac71e3d",
+  "sourceSize": 128006,
+  "sourceMtime": 1792820291000,
+  "inputsHash": "87b66e7f2b0c0139",
+  "pipelineVersion": "0.4.0",
+  "ladderHash": "bdfeaf80a8e4c82b",
+  "digest": "3a60bc338360a3bb"
+}

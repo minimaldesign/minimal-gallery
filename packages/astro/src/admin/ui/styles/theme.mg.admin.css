@@ -1,0 +1,136 @@
+/* MINIMAL GALLERY THEME: ADMIN
+
+   What the admin adds to the mg theme, in the same layer (theme.user) and
+   imported after theme.mg.ui.css: the shell's measures, the state colors
+   (the only color in the chrome: attention and errors), and the framework
+   tokens the admin's controls answer (buttons, inputs, progress). The
+   admin is a tool page, not the viewer: the page scrolls normally and
+   shows its scrollbars. */
+
+@layer base, elements, global, components, theme.default, theme.user, external, helpers;
+
+@layer theme.user {
+  :root {
+    /* SHELL */
+    --admin-sidebar-width: 15rem;
+    --admin-inspector-width: 23rem;
+    --admin-bar-height: var(--xl1);
+    --admin-tile-size: 9.5rem;
+    --admin-gutter: var(--sm3);
+
+    @media (--md-n-below) {
+      --admin-tile-size: 6.5rem;
+      --admin-gutter: var(--sm1);
+    }
+
+    /* STATE: the only color in the chrome */
+    --admin-attention: var(--maybe-300);
+    --admin-error: var(--no-300);
+    --admin-over: var(--mg-white-a6);
+
+    /* buttons (the framework's component.button.css) */
+    --bt-min-width: 0;
+    --bt-font-size: var(--mg-size-hud);
+    --bt-font-weight: var(--mg-weight-medium);
+    --bt-color: var(--mg-ink);
+    --bt-color-hover: var(--mg-accent);
+    --bt-background-color: var(--mg-white-a6);
+    --bt-background-color-hover: var(--mg-control-active);
+    --bt-border-color: var(--mg-hairline);
+    --bt-border-radius: var(--radius-md);
+    --bt-border-radius-lg: var(--radius-lg);
+    --bt-primary-color: var(--mg-ground);
+    --bt-primary-color-hover: var(--mg-ground);
+    --bt-primary-background-color: var(--mg-gray-700);
+    --bt-primary-background-color-hover: var(--mg-accent);
+    --bt-primary-border-color: transparent;
+    --bt-primary-border-color-hover: transparent;
+
+    /* inputs */
+    --input-height: var(--md2);
+    --input-padding: var(--xs2);
+    --input-border-color: var(--mg-white-a14);
+    --input-border-radius: var(--radius-md);
+    --input-border-color-invalid: var(--admin-error);
+    --input-background-color: var(--mg-gray-100);
+    --input-placeholder-color: var(--mg-ink-faint);
+    --label-spacing: var(--xs1);
+    --select-icon-size: var(--sm1);
+    /* The chevron as an image, drawn in --mg-ink-muted: a stroke color
+       inside a data URL cannot read a custom property. */
+    --admin-select-icon: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23a5a5a5'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
+
+    /* inline code and folding sections */
+    --text-code-color: var(--mg-ink);
+    --text-code-background-color: var(--mg-white-a6);
+    --details-icon-size: var(--sm1);
+
+    /* progress */
+    --progress-height: var(--xs1);
+    --progress-color: var(--mg-ink);
+    --progress-track-color: var(--mg-white-a10);
+    --progress-border-radius: var(--radius-sm);
+  }
+
+  html {
+    scroll-snap-type: none;
+    scrollbar-width: auto;
+  }
+
+  body {
+    font-size: var(--mg-size-hud);
+  }
+
+  :is(input, textarea, select) {
+    background-color: var(--input-background-color);
+  }
+
+  /* mCSS paints the chevron by masking the select itself, and the mask
+     also hides the top and bottom border over the chevron, leaving a
+     loose bracket at the right end. The chevron is a background image
+     here instead, and the border stays whole. */
+  select {
+    mask-image: none;
+    background: var(--input-background-color) var(--admin-select-icon) no-repeat
+      right var(--xs1) center / var(--select-icon-size);
+  }
+
+  ::placeholder {
+    color: var(--input-placeholder-color);
+    opacity: 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-size: inherit;
+    line-height: var(--leading-md);
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.92em;
+  }
+
+  .bt {
+    gap: var(--xs2);
+    text-wrap: nowrap;
+
+    /* the icon's own class draws it; the gap spaces it */
+    svg {
+      margin: 0;
+    }
+
+    /* a file input inside a button label: the label shows the focus */
+    &:has(input:focus-visible) {
+      outline: var(--focus-ring-width) solid var(--focus-ring-color);
+      outline-offset: var(--focus-ring-offset);
+    }
+
+    &[aria-busy='true'] {
+      cursor: progress;
+      opacity: var(--o-3);
+    }
+  }
+}
