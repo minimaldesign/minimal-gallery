@@ -15,10 +15,10 @@ interface Props {
 }
 const { class: className } = Astro.props;
 
-// The photos, chosen for a mix of color and black and white, subjects and
-// light. The glob names them one by one so that only these are bundled.
+// The photos, chosen by Yann. The glob names them one by one so that only
+// these are bundled.
 const files = import.meta.glob<ImageMetadata>(
-  '../../../../../examples/demo/photos/{feelings/Ahead,colors/Brooklyn_sunset,colors/blue_door,people/Naima,colors/Not_a_photoshop_stunt,feelings/Montauk,colors/lazy-sunday-afternoons,light/Bamboo_forest,colors/Kaiona_Cafe,shapes/Coquillage,motion/Hanami_fire,colors/Puff_Ball,feelings/Get_me_out,people/Double_Player,colors/Tulipe,shapes/Halloween,feelings/Post_elections,feelings/Cold,feelings/Wanna_go_back,feelings/Introspection,colors/Fall_pastels,feelings/Waking_up_02,light/Kyoto_Night,shapes/Cidre,feelings/Subtlety,people/Maria,light/Sun_Fire,colors/Nice,feelings/Life_sucks,feelings/Perfection,shapes/Kyoto_monster,feelings/Down_the_drain,light/Loin_des_yeux_mais_pas_le_reste,feelings/Greenport,people/Apple_in_Paris,shapes/Cookie_Heaven,feelings/Tojimbo_no_koneko,people/Tourist_props,shapes/fresh,feelings/Kanazawa,light/First_rays_of_the_day,feelings/cow_abuse,light/Real_Life_Sandbox,shapes/strata}.jpg',
+  '../../../../../examples/demo/photos/{feelings/Montauk,feelings/Mushroom,people/Last_day_in_Kyoto,people/Arashiyama Smile,feelings/The_Path,colors/Takayama,feelings/Shirakawa-Go,feelings/A Quiet Evening,light/Prayers,people/On_Christmas,colors/sunk,feelings/Cycles,feelings/Jonathan,light/Reflection,shapes/Coney_Island_Tower,light/Loin_des_yeux_mais_pas_le_reste,people/Saxophonist,colors/Painter,feelings/Disparate,feelings/Ahead,people/Dancing_in_the_rain,light/The_coming,people/Baby_Surfer,colors/Haleakala,colors/Puff_Ball,shapes/Chocolate_DNA,feelings/Waking_up_02,light/Kyoto_Station,colors/Sakura_Impression,colors/Ohara_Garden,motion/Hanami_fire,light/Kyoto_Sunset,people/Gion_crowd,light/Hanamikoji,people/Kyoto_Kids,shapes/wired,people/sararimen,colors/Bleeding_Metal,people/Konnichiwa,light/Kyoto_Night,people/Kyoto_Bikers,colors/blue_door,feelings/Chain,shapes/amarre,people/Naima,light/snow,feelings/Cold,people/Apple_in_Paris,feelings/Itchy,colors/Upstate_NY}.jpg',
   { import: 'default' }
 );
 
