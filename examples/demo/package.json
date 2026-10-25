@@ -6,6 +6,8 @@
     "photos": "mg-pipeline .",
     "dev": "astro dev",
     "admin": "minimalgallery admin",
+    "publish": "minimalgallery publish",
+    "doctor": "minimalgallery doctor",
     "sync": "minimalgallery sync",
     "build": "astro build",
     "preview": "astro preview",
@@ -22,6 +24,6 @@
     "wrangler": "^4.152.0"
   },
   "minimalgallery": {
-    "publish": "git"
+    "publish": "deploy"
   }
 }

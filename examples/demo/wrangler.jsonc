@@ -1,5 +1,5 @@
 // Cloudflare config for the demo gallery: a Worker that serves static assets.
-// Cloudflare folded Pages into Workers in 2026; `wrangler deploy` uploads dist.
+// `pnpm demo:publish` uploads dist from this computer, as a user's gallery does.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "minimalgallery-demo",
@@ -12,7 +12,4 @@
     "directory": "./dist",
     "not_found_handling": "404-page",
   },
-  // Cloudflare builds other branches than master with `wrangler preview`,
-  // which needs this block; it can stay empty.
-  "previews": {},
 }
