@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Fire Escape",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "5a426fabdec5255e",
   "sourceSize": 169473,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e833d1dc367a92e9"
+  "digest": "2ca273b8e0cc53ac"
 }

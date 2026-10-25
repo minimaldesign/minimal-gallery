@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Cool",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "9288a28cb334e5d8",
   "sourceSize": 177907,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3a56bb9f79d60a7b"
+  "digest": "09c41933432dacda"
 }

@@ -70,8 +70,8 @@ describe('GET /state', () => {
       'colors',
       'japan/kyoto',
     ]);
-    expect(byId.colors__undated.attention).toEqual(['date-from-mtime']);
-    expect(byId.colors__bare.attention).toEqual(['date-from-mtime', 'no-exif']);
+    expect(byId.colors__undated.attention).toEqual(['no-date']);
+    expect(byId.colors__bare.attention).toEqual(['no-date', 'no-exif']);
     expect(byId.colors__red.attention).toEqual(['duplicate']);
     expect(byId.colors__red.duplicateOf).toEqual(['japan_kyoto__copy']);
     expect(byId.japan_kyoto__copy.duplicateOf).toEqual(['colors__red']);

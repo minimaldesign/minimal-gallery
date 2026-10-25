@@ -22,7 +22,8 @@ import {
 } from './absent.ts';
 import type { EncodeResult, EncodeTask } from './encode.ts';
 import { readEmbedded } from './embedded.ts';
-import { photoFacets, sortPhotos } from './facets.ts';
+import { isDated, photoFacets, sortPhotos } from './facets.ts';
+import { readFileStats, writeFileStats, type FileStat } from './filestats.ts';
 import {
   isHeic,
   UnsupportedInputError,
@@ -35,7 +36,7 @@ import {
 } from './ladder.ts';
 import type { Layer, LayerName } from './layers.ts';
 import { mergeLayers } from './merge.ts';
-import { dateToLocal, parseUserDate } from './normalize.ts';
+import { parseUserDate } from './normalize.ts';
 import {
   ALBUMS_FILE,
   AlbumManifest,
@@ -250,15 +251,11 @@ async function mapLimit<T, R>(
   return out;
 }
 
-/** Digest of a manifest: every field except `digest` and the file-system bookkeeping. */
+/** Digest of a manifest: every field except `digest` and the inputs bookkeeping. */
 export async function manifestDigest(
   m: Omit<PhotoManifest, 'digest'> | Omit<AlbumManifest, 'digest'>
 ): Promise<string> {
-  const {
-    sourceMtime: _m,
-    inputsHash: _i,
-    ...rest
-  } = m as Record<string, unknown>;
+  const { inputsHash: _i, ...rest } = m as Record<string, unknown>;
   return hashString(stableStringify(rest));
 }
 
@@ -347,6 +344,8 @@ export async function processGallery(
   // computer) and stay in the gallery as their manifests describe them.
   const walkedIds = new Set(photos.map((p) => p.id));
   const seen = await readSeen(galleryDir);
+  const fileStats = await readFileStats(galleryDir);
+  const fileStatsNow = new Map<string, FileStat>();
   const manifestIdsBefore = (await readdir(manifestDir))
     .filter((f) => f.endsWith('.json') && f !== ALBUMS_FILE)
     .map((f) => f.slice(0, -5));
@@ -452,8 +451,11 @@ export async function processGallery(
         prev &&
         prev.added !== undefined &&
         prev.ladderHash === ladderHash &&
-        prev.sourceSize === st.size &&
-        prev.sourceMtime === st.mtimeMs &&
+        // The file is the one this folder saw last time: same size and
+        // modification time, and the content hash the manifest names.
+        fileStats.get(photo.id)?.size === st.size &&
+        fileStats.get(photo.id)?.mtimeMs === st.mtimeMs &&
+        fileStats.get(photo.id)?.sourceHash === prev.sourceHash &&
         prev.inputsHash === inputsHash &&
         // A changed storage address (a new publicUrl) rewrites the manifest.
         prev.variants.every((v) => v.url === storage.url(v.key)) &&
@@ -470,6 +472,11 @@ export async function processGallery(
         ]))
       ) {
         manifests.set(photo.id, prev);
+        fileStatsNow.set(photo.id, {
+          size: st.size,
+          mtimeMs: st.mtimeMs,
+          sourceHash: prev.sourceHash,
+        });
         results.push({
           id: photo.id,
           status: 'skipped',
@@ -685,7 +692,6 @@ export async function processGallery(
         ['exif', embedded.exifCreateDate],
         ['iptc', embedded.iptcDate],
       ],
-      mtimeDate: dateToLocal(job.mtime),
       exifOffset:
         embedded.exif.date && embedded.exifOffset
           ? { date: embedded.exif.date, offset: embedded.exifOffset }
@@ -725,7 +731,6 @@ export async function processGallery(
       facets: photoFacets(meta),
       sourceHash,
       sourceSize: job.size,
-      sourceMtime: job.mtimeMs,
       inputsHash: job.inputsHash,
       pipelineVersion: PIPELINE_VERSION,
       ladderHash,
@@ -735,6 +740,11 @@ export async function processGallery(
       digest: await manifestDigest(body),
     });
     manifests.set(photo.id, manifest);
+    fileStatsNow.set(photo.id, {
+      size: job.size,
+      mtimeMs: job.mtimeMs,
+      sourceHash,
+    });
     const manifestWritten = await writeIfChanged(
       join(manifestDir, `${photo.id}.json`),
       `${JSON.stringify(manifest, null, 2)}\n`
@@ -780,6 +790,7 @@ export async function processGallery(
   } finally {
     await pool?.destroy();
   }
+  await writeFileStats(galleryDir, fileStatsNow);
 
   // Albums. Absent photos join them in walk order, by file name.
   for (const m of absentManifests) manifests.set(m.id, m);
@@ -930,7 +941,7 @@ async function buildAlbum(
   const ordered = sortPhotos(own, sort, fm.order ?? []);
 
   const dates = own
-    .filter((m) => m.dateSource !== 'mtime')
+    .filter(isDated)
     .map((m) => m.date)
     .sort();
   const body: Omit<AlbumManifest, 'digest'> = {

@@ -3,13 +3,13 @@
  * its own sidecar (`<name>.md` or `<name>.json`), field by field, and what
  * those sidecars set now. Nothing is written and nothing is encoded.
  */
-import { readFile, stat } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 import { readEmbedded } from './embedded.ts';
 import type { Layer, LayerName } from './layers.ts';
 import { mergeLayers, type MergedMetadata } from './merge.ts';
-import { dateToLocal, parseUserDate } from './normalize.ts';
+import { parseUserDate } from './normalize.ts';
 import type { PhotoOverrides } from './schema.ts';
 import { overridesToLayer, readAlbumFile } from './sidecars.ts';
 import { fileSlug, stripExtension, titleFromFile } from './slug.ts';
@@ -18,8 +18,8 @@ import { xmpToLayer } from './xmp.ts';
 export { PHOTO_EXTENSIONS } from './walk.ts';
 export { parseUserDate } from './normalize.ts';
 
-/** Where an extracted value came from: a layer below the sidecar, or the file’s mtime. */
-export type ExtractedSource = Exclude<LayerName, 'sidecar'> | 'mtime';
+/** Where an extracted value came from: a layer below the sidecar, or `none` for a date no layer has. */
+export type ExtractedSource = Exclude<LayerName, 'sidecar'> | 'none';
 
 /** The fields `from` reports. `place` and `exposure` report per sub-field (`place.city`). */
 export type InspectedField =
@@ -104,9 +104,8 @@ export async function inspectPhoto(
   const absNoExt = join(albumDir, stripExtension(file));
   const relNoExt = ['photos', ...parts, stripExtension(file)].join('/');
 
-  const [bytes, st, album, xmp, overrides, json] = await Promise.all([
+  const [bytes, album, xmp, overrides, json] = await Promise.all([
     readFile(abs),
-    stat(abs),
     readAlbumFile(join(albumDir, '_album.md')),
     readText(`${absNoExt}.xmp`).then(
       async (t) => t ?? (await readText(`${absNoExt}.XMP`))
@@ -140,7 +139,6 @@ export async function inspectPhoto(
   const merged = mergeLayers({
     layers,
     dateFallbacks,
-    mtimeDate: dateToLocal(st.mtime),
     exifOffset:
       embedded.exif.date && embedded.exifOffset
         ? { date: embedded.exif.date, offset: embedded.exifOffset }
@@ -166,7 +164,7 @@ export async function inspectPhoto(
   const dateHit = layers.find(([, l]) => isSet(l.date));
   from.date = dateHit
     ? dateHit[0]
-    : (dateFallbacks.find(([, d]) => d)?.[0] ?? 'mtime');
+    : (dateFallbacks.find(([, d]) => d)?.[0] ?? 'none');
   for (const group of ['place', 'exposure'] as const) {
     const keys = new Set(
       layers.flatMap(([, l]) => Object.keys((l[group] as object) ?? {}))

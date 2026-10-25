@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Brands of the World",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "d56b4c6de80535a4",
   "sourceSize": 181760,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "6dde7534c16f04a5"
+  "digest": "263ba8e308889a26"
 }

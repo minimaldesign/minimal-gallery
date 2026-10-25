@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Central Park",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "db747d6f7d3bbde8",
   "sourceSize": 418504,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e644b5ddc895ec24"
+  "digest": "2be185cbc1f21889"
 }

@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "We will miss you",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "1e69039a67c7a767",
   "sourceSize": 175714,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f1f60eac3f38d88d"
+  "digest": "5db1ba94ee5ad686"
 }

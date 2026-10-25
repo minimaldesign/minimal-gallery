@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { readFile } from 'node:fs/promises';
+import { readFile, rm, utimes } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { Layer, LayerName } from '../src/layers.ts';
 import { mergeLayers } from '../src/merge.ts';
@@ -21,7 +21,6 @@ const merge = (
   mergeLayers({
     layers,
     dateFallbacks: [],
-    mtimeDate: '2026-10-22T12:00:00',
     ...extra,
   });
 
@@ -85,7 +84,7 @@ describe('dates and offsets', () => {
     expect(edited.tz).toBeUndefined();
   });
 
-  it('writes tz end to end and marks mtime dates', async () => {
+  it('writes tz end to end and leaves undated photos without a date', async () => {
     const dir = await tempGallery();
     await writeJpeg(join(dir, 'photos/a/tokyo.jpg'), {
       date: '2024:04:05 10:11:12',
@@ -109,7 +108,8 @@ describe('dates and offsets', () => {
       day: '04-05',
     });
     const nodate = await read('a__nodate');
-    expect(nodate.dateSource).toBe('mtime');
+    expect(nodate.dateSource).toBe('none');
+    expect(nodate.date).toBeNull();
     expect(nodate.tz).toBeUndefined();
     expect(nodate.facets).toMatchObject({ year: null, month: null, day: null });
     expect(nodate).not.toHaveProperty('histogram');
@@ -121,6 +121,40 @@ describe('dates and offsets', () => {
       '2024-04-05T10:11:12',
       '2024-04-05T10:11:12',
     ]);
+  });
+
+  it('rewrites no manifest when a new copy of the gallery dates its files differently', async () => {
+    const dir = await tempGallery();
+    await writeJpeg(join(dir, 'photos/a/dated.jpg'), {
+      date: '2024:04:05 10:11:12',
+    });
+    await writeJpeg(join(dir, 'photos/a/undated.jpg'), { date: null });
+    await processGallery(dir, { concurrency: 2 });
+    const manifestDir = join(dir, '.minimalgallery/manifest');
+    const snapshot = async () =>
+      Promise.all(
+        ['a__dated.json', 'a__undated.json', '_albums.json'].map((f) =>
+          readFile(join(manifestDir, f), 'utf8')
+        )
+      );
+    const before = await snapshot();
+    expect(before.join()).not.toContain('Mtime');
+
+    // A fresh clone: every file dated now, and no cache folder.
+    const later = new Date(Date.now() + 3_600_000);
+    for (const f of ['dated.jpg', 'undated.jpg'])
+      await utimes(join(dir, 'photos/a', f), later, later);
+    await rm(join(dir, '.minimalgallery/cache'), {
+      recursive: true,
+      force: true,
+    });
+    const run = await processGallery(dir, { concurrency: 2 });
+    expect(run.encoded).toBe(0);
+    expect(await snapshot()).toEqual(before);
+
+    // With the cache rebuilt, the next run skips both photos outright.
+    const again = await processGallery(dir, { concurrency: 2 });
+    expect(again.skipped).toBe(2);
   });
 });
 

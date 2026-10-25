@@ -22,9 +22,11 @@ export const LocalDate = z
 export const UtcOffset = z.string().regex(/^[+-]\d{2}:\d{2}$/);
 
 /**
- * Where the date came from. `mtime` means no layer had a capture date and the
- * file’s modification time was used: such photos stay in their albums, but
- * are left out of date facets and sorted after dated photos.
+ * Where the date came from. `none` means no layer had a capture date, and
+ * the photo has no date: the file’s own modification or creation time is
+ * never used, since it says when the file was copied, not when the photo
+ * was taken. Undated photos stay in their albums, but are left out of date
+ * facets and sorted after dated photos.
  */
 export const DateSource = z.enum([
   'sidecar',
@@ -32,7 +34,7 @@ export const DateSource = z.enum([
   'xmp',
   'iptc',
   'exif',
-  'mtime',
+  'none',
 ]);
 
 export const Exposure = z.object({
@@ -89,7 +91,7 @@ export const FocalBucket = z.enum(['wide', 'normal', 'short-tele', 'tele']);
 
 /**
  * Facet keys precomputed per photo. Date keys are null for undated photos
- * (`dateSource: 'mtime'`). Slugs come from `facetSlug()` in `./facets`.
+ * (`dateSource: 'none'`). Slugs come from `facetSlug()` in `./facets`.
  */
 export const PhotoFacets = z.object({
   year: z.string().nullable(),
@@ -130,7 +132,8 @@ export const PhotoManifest = z.object({
   title: z.string(),
   /** Raw markdown. */
   caption: z.string().nullable(),
-  date: LocalDate,
+  /** The capture date, or null when the photo has none (`dateSource: 'none'`). */
+  date: LocalDate.nullable(),
   /** UTC offset of `date`, present only when EXIF OffsetTimeOriginal records it. */
   tz: UtcOffset.optional(),
   dateSource: DateSource,
@@ -167,7 +170,6 @@ export const PhotoManifest = z.object({
   facets: PhotoFacets,
   sourceHash: z.string(),
   sourceSize: z.number().int(),
-  sourceMtime: z.number(),
   /** Hash of the sidecar inputs (.md/.json/.xmp and the album’s per-photo entry). */
   inputsHash: z.string(),
   pipelineVersion: z.string(),

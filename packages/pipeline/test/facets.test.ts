@@ -115,7 +115,9 @@ describe('photoFacets', () => {
   });
 
   it('leaves date keys empty for undated photos', () => {
-    expect(photoFacets({ ...base, dateSource: 'mtime' })).toMatchObject({
+    expect(
+      photoFacets({ ...base, date: null, dateSource: 'none' })
+    ).toMatchObject({
       year: null,
       month: null,
       day: null,
@@ -126,7 +128,7 @@ describe('photoFacets', () => {
 describe('sortPhotos', () => {
   const p = (
     file: string,
-    date: string,
+    date: string | null,
     dateSource: SortablePhoto['dateSource'] = 'exif'
   ): SortablePhoto => ({
     id: `a__${file}`,
@@ -137,9 +139,9 @@ describe('sortPhotos', () => {
   });
   const photos = [
     p('old', '2001-01-01T00:00:00'),
-    p('undated_b', '2030-01-01T00:00:00', 'mtime'),
+    p('undated_b', null, 'none'),
     p('new', '2020-06-01T00:00:00'),
-    p('undated_a', '2029-01-01T00:00:00', 'mtime'),
+    p('undated_a', null, 'none'),
     p('dsc_2', '2010-01-01T00:00:00'),
     p('dsc_10', '2010-01-01T00:00:00'),
   ];

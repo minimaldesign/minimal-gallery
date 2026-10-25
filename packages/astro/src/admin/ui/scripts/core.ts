@@ -6,7 +6,7 @@
  * anything that serves the same API.
  */
 
-export type Attention = 'date-from-mtime' | 'no-exif' | 'duplicate';
+export type Attention = 'no-date' | 'no-exif' | 'duplicate';
 
 export interface Photo {
   id: string;
