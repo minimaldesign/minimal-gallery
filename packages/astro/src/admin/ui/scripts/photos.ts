@@ -646,7 +646,10 @@ function fillPhoto() {
 
   // the date field says plainly when the photo has no date
   const undated = d.attention.includes('no-date');
-  $('[data-field="date"]', photoForm).toggleAttribute('data-attention', undated);
+  $('[data-field="date"]', photoForm).toggleAttribute(
+    'data-attention',
+    undated
+  );
   bound('date-hint').textContent = undated
     ? 'The file holds no date. Type the date the photo was taken: 2005-02-27 14:30.'
     : 'Year, month, day, then the time if you know it: 2005-02-27 14:30.';
