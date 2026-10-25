@@ -28,4 +28,4 @@ The CSS is mCSS, as in the gallery. Every value comes from the gallery’s theme
 
 ## Deploying
 
-Cloudflare Workers Builds builds this site from `master`, like the demo: root directory `apps/docs`, build command `cd ../.. && pnpm install --frozen-lockfile && pnpm --filter minimalgallery-docs build`, deploy command `npx wrangler deploy`. Do not deploy from a machine.
+Like the demo, the site is published from this computer: `pnpm docs:publish` at the repository root builds it and uploads `dist/` with `wrangler deploy`, as the Worker `minimalgallery-docs`. The custom domain in `wrangler.jsonc` makes the first deploy create the `docs.minimalgallery.net` DNS record and certificate, since the minimalgallery.net zone is in the same Cloudflare account. Pushing to `master` deploys nothing.
