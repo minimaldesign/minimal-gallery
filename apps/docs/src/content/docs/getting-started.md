@@ -63,17 +63,11 @@ cd my-gallery
 npm run admin
 ```
 
-It processes the photos in `photos/`, keeps watching that folder, and opens the site in your browser, usually at `http://localhost:4321/`. The first start resizes every photo before the browser opens. Each photo becomes up to five copies, so a large folder takes a few minutes, and Terminal prints one line when it is done. Later starts skip photos that have not changed.
+It opens the admin in your browser, usually at `http://localhost:4321/_mg/admin/`, with a checklist for your first steps. The admin processes the photos in `photos/` and keeps watching that folder. From it you can drop in photos and folders, edit titles, captions and albums, change the settings and publish, and its Preview button opens the gallery as visitors will see it. The first start resizes every photo before the browser opens. Each photo becomes up to five copies, so a large folder takes a few minutes, and Terminal prints one line when it is done. Later starts skip photos that have not changed.
 
 The preview runs as long as that Terminal window stays open. Press Ctrl+C in it to stop.
 
 On macOS you can double-click `Open minimalgallery.command` in the gallery folder instead. It opens a Terminal window, installs the packages if they are missing, and starts the same preview. Close the window to stop it.
-
-:::note[Coming next]
-
-`npm run admin` will open a browser admin at `localhost:4321/_mg/admin`, with a first-run checklist, folders dropped onto the page to add albums, an inspector to edit titles and captions, and a publish button. Until it ships, `npm run admin` runs the preview and the folder watcher described on this page: you add photos in Finder or with `npx minimalgallery add`, edit metadata in Lightroom or in sidecar files, and publish from Terminal.
-
-:::
 
 ## 4. Add more photos
 

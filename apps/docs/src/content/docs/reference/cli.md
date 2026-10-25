@@ -18,7 +18,7 @@ minimalgallery <command> [options] [--dir <folder>]
 | [`doctor`](#doctor) | Reports counts and sizes against the hosting limits. Changes nothing. |
 | [`publish`](#publish) | Processes photos, then commits and pushes, deploys to Cloudflare, or builds. |
 | [`watch`](#watch) | Processes photos as they are added, changed or removed in `photos/`. |
-| [`admin`](#admin) | Starts the Astro dev server with `watch` running. The browser admin is not built yet. |
+| [`admin`](#admin) | Starts the Astro dev server and opens the browser admin. |
 | [`upgrade`](#upgrade) | Updates the minimal gallery packages, then runs `doctor`. |
 
 The `minimalgallery` package is a dependency of every gallery that `npm create minimalgallery@latest` creates. Run it from the gallery folder with `npx minimalgallery <command>`, or through the `admin`, `publish` and `doctor` scripts of the gallery’s `package.json` (`npm run publish`). It needs Node 22.18 or later.
@@ -185,19 +185,13 @@ It prints one line per run, with the counts and the time. An error is printed an
 minimalgallery admin [-- <astro dev options>]
 ```
 
-:::note[Not built yet]
-
-The browser admin, with drag and drop, editing and a publish button, is not built. For now, `minimalgallery admin` runs `watch` and the Astro dev server: add photos to `photos/<album>/` in Finder or with `minimalgallery add`, and the preview updates.
-
-:::
-
-`admin` starts the same watcher as `minimalgallery watch`, then runs `astro dev --open`, which opens the gallery in your browser. Options after `--` go to `astro dev`:
+`admin` runs `astro dev` and opens the browser admin at `/_mg/admin/`. From it you add photos by dropping them in, edit titles, captions and albums, change the settings and publish. It processes photos as they land in `photos/`, including files you copy there in Finder, and the preview reloads as they do. It runs only on this computer and is never part of the built site. Options after `--` go to `astro dev`:
 
 ```sh
 npx minimalgallery admin -- --port 4400
 ```
 
-Ctrl+C stops the dev server and the watcher. `admin` exits with the dev server’s exit code, and needs Astro installed in the gallery.
+Ctrl+C stops the dev server. `admin` exits with the dev server’s exit code, and needs Astro installed in the gallery.
 
 ### upgrade
 
