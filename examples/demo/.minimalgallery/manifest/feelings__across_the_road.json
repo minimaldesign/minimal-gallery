@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Across the road",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "3c85d5658e4ec57a",
   "sourceSize": 118285,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "a7be9950f668b6b5"
+  "digest": "7679443cb4592190"
 }

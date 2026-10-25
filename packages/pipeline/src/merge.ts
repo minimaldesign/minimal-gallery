@@ -5,9 +5,8 @@ import type { PhotoManifest } from './schema.ts';
 export interface MergeInput {
   /** Highest precedence first. */
   layers: Array<[LayerName, Layer]>;
-  /** Extra date candidates used after every layer, before mtime. */
+  /** Extra date candidates used after every layer. */
   dateFallbacks: Array<[PhotoManifest['dateSource'], string | undefined]>;
-  mtimeDate: string;
   /**
    * EXIF DateTimeOriginal with its OffsetTimeOriginal. The offset is stored
    * as `tz` only when the merged date is that same wall-clock time, so an
@@ -42,7 +41,7 @@ const DATE_SOURCE: Record<LayerName, PhotoManifest['dateSource']> = {
   xmp: 'xmp',
   iptc: 'iptc',
   exif: 'exif',
-  filename: 'mtime',
+  filename: 'none',
 };
 
 const isSet = (v: unknown) =>
@@ -59,18 +58,17 @@ const isSet = (v: unknown) =>
 export function mergeLayers({
   layers,
   dateFallbacks,
-  mtimeDate,
   exifOffset,
 }: MergeInput): MergedMetadata {
   const first = <K extends keyof Layer>(k: K): Layer[K] | undefined => {
     for (const [, l] of layers) if (isSet(l[k])) return l[k];
     return undefined;
   };
-  let date: string | undefined;
-  let dateSource: PhotoManifest['dateSource'] = 'mtime';
+  let date: string | null = null;
+  let dateSource: PhotoManifest['dateSource'] = 'none';
   for (const [name, l] of layers) {
     if (isSet(l.date)) {
-      date = l.date;
+      date = l.date as string;
       dateSource = DATE_SOURCE[name];
       break;
     }
@@ -83,10 +81,6 @@ export function mergeLayers({
         break;
       }
     }
-  }
-  if (!date) {
-    date = mtimeDate;
-    dateSource = 'mtime';
   }
   const sub = <T extends 'place' | 'exposure'>(k: T, key: string) => {
     for (const [, l] of layers) {
@@ -105,7 +99,7 @@ export function mergeLayers({
     ? placeRaw
     : null;
   const tz =
-    exifOffset && dateSource !== 'mtime' && exifOffset.date === date
+    exifOffset && date && exifOffset.date === date
       ? exifOffset.offset
       : undefined;
   return {

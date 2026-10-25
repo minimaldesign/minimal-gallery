@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Suwit",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "7afd97887438b272",
   "sourceSize": 234031,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0381ec1b35cb8e5a"
+  "digest": "f370ba7a6368b908"
 }

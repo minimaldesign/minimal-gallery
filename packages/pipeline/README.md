@@ -187,7 +187,7 @@ Highest first, field by field: `<name>.md` or `<name>.json` sidecar, the `photos
 
 `date` is the camera’s wall-clock time, `YYYY-MM-DDTHH:MM:SS`, with no offset. Offsets written in XMP or IPTC are dropped: they belong to the computer that edited the file, not to the place the photo was taken. The only offset kept is EXIF OffsetTimeOriginal, stored as `tz` (`+09:00`), and only when `date` is the camera’s own DateTimeOriginal. Most cameras made before 2016 do not record it.
 
-When no layer has a capture date, the pipeline tries EXIF CreateDate, then IPTC DateCreated, then the file’s modification time with `dateSource: 'mtime'`. Undated photos stay in their albums, but have no date facets and sort after dated photos.
+When no layer has a capture date, the pipeline tries EXIF CreateDate, then IPTC DateCreated. A photo none of them dates has `date: null` and `dateSource: 'none'`: the file’s modification or creation time is never used, since it records when the file was copied, not when the photo was taken. Undated photos stay in their albums, but have no date facets and sort after dated photos.
 
 ## Sorting
 
@@ -218,7 +218,7 @@ Facet slugs come from one function, `facetSlug()`: lowercase, Latin accents remo
 
 ## Incremental runs
 
-1. Same file size and mtime, same sidecars, same pipeline version, ladder and color, derivatives present: skipped.
+1. Same file size and modification time as this folder’s last run, same sidecars, same pipeline version, ladder and color, derivatives present: skipped. The sizes, times and hashes of the last run are in `.minimalgallery/cache/files.json`, which git ignores, never in the manifests: git does not keep modification times, so a fresh clone gives every file a new one, and the manifests must not change with it. A clone, another computer or CI starts with no record, so every photo goes to step 2 once.
 2. Otherwise the file is hashed (xxhash64). Same hash and same ladder: metadata is read again and the manifest rewritten, nothing is encoded. Sidecar edits and pipeline upgrades that only change the manifest land here.
 3. Otherwise the photo is encoded, and derivatives from its earlier version are removed.
 

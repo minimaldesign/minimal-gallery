@@ -256,11 +256,11 @@ The first source that has a date wins, and `dateSource` in the manifest records 
 | 5 | EXIF DateTimeOriginal | `exif` |
 | 6 | EXIF CreateDate | `exif` |
 | 7 | IPTC Date Created, with Time Created (midnight without it) | `iptc` |
-| 8 | the file’s modification time, in the local time of the computer that runs the pipeline | `mtime` |
+| none of these | no date: `date` is empty | `none` |
 
 Time zone offsets written in XMP or IPTC are dropped: they belong to the computer that edited the file, not to the place the photo was taken. The only offset kept is EXIF OffsetTimeOriginal, stored as `tz` (`+09:00`), and only when `date` is the camera’s own DateTimeOriginal. Most cameras made before 2016 do not record it.
 
-A photo with `dateSource: mtime` counts as undated. It stays in its album and in the archive, sorted after the dated photos, but it is left out of the year, month and day pages. `minimalgallery add` keeps the files’ modification times when it copies them.
+A photo with `dateSource: none` is undated. It stays in its album and in the archive, sorted after the dated photos, but it is left out of the year, month and day pages, and its information pane shows no date. The file’s own modification or creation date is never used: it says when the file was copied or exported, not when the photo was taken. To date such a photo, write its date in a sidecar, as below. The admin marks every undated photo, and its mark leads to the date field.
 
 ### Writing a date in a sidecar
 

@@ -67,14 +67,14 @@ An album id in a path is one URL segment: encode it with `encodeURIComponent` (`
   source: string;        // 'colors/Red_door.jpg', relative to photos/
   slug: string;
   title: string;
-  date: string;          // 'YYYY-MM-DDTHH:MM:SS', wall clock
-  dateSource: 'sidecar' | 'album' | 'xmp' | 'iptc' | 'exif' | 'mtime';
+  date: string | null;   // 'YYYY-MM-DDTHH:MM:SS', wall clock; null when the photo has no capture date
+  dateSource: 'sidecar' | 'album' | 'xmp' | 'iptc' | 'exif' | 'none';
   width: number;
   height: number;
   hidden: boolean;
   color: string;         // dominant color, 'oklch(0.512 0.084 41.2)'
   thumb: string;         // grid variant, '<base>_mg/<key>'
-  attention: ('date-from-mtime' | 'no-exif' | 'duplicate')[];
+  attention: ('no-date' | 'no-exif' | 'duplicate')[];
   duplicateOf?: string[]; // ids with the same content, when 'duplicate'
 }
 ```
@@ -164,7 +164,7 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
   extracted: {           // every layer below the photo’s own sidecar, merged
     title, caption, date, dateSource, camera, lens, exposure, gps, place, placeLabel,
     keywords, copyright, author, hidden,
-    from: { [field]: 'album' | 'xmp-sidecar' | 'xmp' | 'iptc' | 'exif' | 'filename' | 'mtime' };
+    from: { [field]: 'album' | 'xmp-sidecar' | 'xmp' | 'iptc' | 'exif' | 'filename' | 'none' };
   };
   overrides: { title?, caption?, date?, keywords?, place?, gps?, hidden?, copyright?, author?, ... }; // what <name>.md sets now
   overridesFile: string | null;  // 'photos/colors/Red_door.md' when it exists
@@ -172,7 +172,7 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 }
 ```
 
-`extracted` is what the photo shows when its `.md` sets nothing: the album’s `photos:` map in `_album.md`, the `.xmp` sidecar, embedded XMP, IPTC, EXIF, then the file name and modification time. Show these values greyed; the override affordance writes `overrides`.
+`extracted` is what the photo shows when its `.md` sets nothing: the album’s `photos:` map in `_album.md`, the `.xmp` sidecar, embedded XMP, IPTC, EXIF, then the file name (for the title). A date no layer has is `null`, with `from.date: 'none'`. Show these values greyed; the override affordance writes `overrides`.
 
 `PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, place?: { city?, state?, country?, location? }, gps?: { lat, lon }, hidden?, copyright?, author? }` → `{ overrides, overridesFile }`
 
@@ -200,7 +200,7 @@ Chunked, deduplicated by content hash (xxhash64, the pipeline’s `sourceHash`).
    - `201 { id, chunkSize }`, or
    - `200 { status: 'skipped', reason }` right away for a HEIC or RAW name (“HEIC: export a JPEG instead”) or an unsupported format, so its bytes are never sent.
 
-   `album`: an album id; its folder is created when it does not exist. `name`: the file name, no folders. `size` in bytes. `lastModified`: milliseconds since the epoch (`File.lastModified`); it becomes the file’s mtime, which the pipeline uses when a photo has no capture date. `sidecarOf`: for an `.xmp`, `.md` or `.json` dropped with its photo, the upload id of that photo; the sidecar follows the photo’s final name.
+   `album`: an album id; its folder is created when it does not exist. `name`: the file name, no folders. `size` in bytes. `lastModified`: milliseconds since the epoch (`File.lastModified`); it becomes the file’s modification time, as in a Finder copy. The pipeline never reads it as a date. `sidecarOf`: for an `.xmp`, `.md` or `.json` dropped with its photo, the upload id of that photo; the sidecar follows the photo’s final name.
 
 2. `PUT /uploads/:id?offset=<n>`, body the raw bytes of one chunk (at most `chunkSize`, 4 MiB) → `{ received }`. Chunks go in order. Sending an offset already received again (a retry) rewrites from there; an offset past `received` gives `409 { error, received }`, so the client can resume from `received`.
 3. `POST /uploads/:id/complete` → one of:

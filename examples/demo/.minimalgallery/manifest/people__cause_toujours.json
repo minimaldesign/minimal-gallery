@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Cause toujours",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "e4e8acde93a37682",
   "sourceSize": 150969,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "9179c7d244dae136"
+  "digest": "4b18602639079789"
 }

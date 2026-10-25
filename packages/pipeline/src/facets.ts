@@ -122,9 +122,11 @@ export function placeLabel(place: Place | null | undefined): string | null {
   return parts.length ? parts.join(', ') : null;
 }
 
-/** True when the photo has a real capture date (not the file’s mtime). */
-export function isDated(photo: Pick<PhotoManifest, 'dateSource'>): boolean {
-  return photo.dateSource !== 'mtime';
+/** True when the photo has a capture date. */
+export function isDated<T extends Pick<PhotoManifest, 'date'>>(
+  photo: T
+): photo is T & { date: string } {
+  return photo.date !== null;
 }
 
 type FacetInput = Pick<
@@ -140,8 +142,8 @@ type FacetInput = Pick<
 
 /** Facet keys for one photo. Date keys are null when the photo is undated. */
 export function photoFacets(p: FacetInput): PhotoFacets {
-  const dated = isDated(p);
-  const [y, m, d] = p.date.slice(0, 10).split('-');
+  const [y, m, d] = isDated(p) ? p.date.slice(0, 10).split('-') : [];
+  const dated = y !== undefined;
   const e = p.exposure;
   const keywords: FacetRef[] = [];
   const seen = new Set<string>();
@@ -188,17 +190,15 @@ const byName = (a: SortablePhoto, b: SortablePhoto) =>
  * rest of the list); undated photos are in file-name order.
  */
 export function compareNewestFirst(a: SortablePhoto, b: SortablePhoto): number {
-  const da = isDated(a);
-  const db = isDated(b);
-  if (da !== db) return da ? -1 : 1;
-  if (!da) return byName(a, b);
+  if (!isDated(a) || !isDated(b))
+    return isDated(a) ? -1 : isDated(b) ? 1 : byName(a, b);
   return b.date.localeCompare(a.date) || byName(b, a);
 }
 
 /**
  * Sort photos for an album or any other context. Returns a new array.
  *
- * - `date`: newest first, undated photos (`dateSource: 'mtime'`) last.
+ * - `date`: newest first, undated photos (`dateSource: 'none'`) last.
  * - `name`: by file name, numbers compared as numbers (`2` before `10`).
  * - `manual`: photos named in `order` first, in that order (an entry matches
  *   the file name, the file name without extension, or the slug); the rest

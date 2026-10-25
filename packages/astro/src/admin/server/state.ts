@@ -31,7 +31,7 @@ import { readMarkdown, toPlain } from './frontmatter.ts';
 
 export const ADMIN_FILE = '.minimalgallery/cache/admin.json';
 
-export type Attention = 'date-from-mtime' | 'no-exif' | 'duplicate';
+export type Attention = 'no-date' | 'no-exif' | 'duplicate';
 
 export interface PhotoSummary {
   id: string;
@@ -40,7 +40,8 @@ export interface PhotoSummary {
   source: string;
   slug: string;
   title: string;
-  date: string;
+  /** Null when the photo has no capture date. */
+  date: string | null;
   dateSource: PhotoManifest['dateSource'];
   width: number;
   height: number;
@@ -198,7 +199,7 @@ export function photoSummary(
 ): PhotoSummary {
   const e = m.exposure;
   const attention: Attention[] = [];
-  if (m.dateSource === 'mtime') attention.push('date-from-mtime');
+  if (m.date === null) attention.push('no-date');
   if (
     m.camera === null &&
     m.lens === null &&

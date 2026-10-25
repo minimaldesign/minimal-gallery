@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "Eugene",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "54b39b13104a1ebb",
   "sourceSize": 87376,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ff8c50893b356227"
+  "digest": "21fa0bb0f8bc7618"
 }

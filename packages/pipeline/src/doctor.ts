@@ -342,7 +342,7 @@ export async function doctor(
     missingManifests,
     orphans,
     absent,
-    undated: current.filter((m) => m.dateSource === 'mtime').length,
+    undated: current.filter((m) => m.date === null).length,
     unsupported,
     derivatives: { files: derivFiles, bytes: derivBytes },
     publishedOriginals: { files: origFiles, bytes: origBytes },

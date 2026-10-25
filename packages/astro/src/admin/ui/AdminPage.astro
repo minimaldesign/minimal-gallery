@@ -1370,14 +1370,14 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       </li>
     </template>
 
-    <template data-template="flag-date-from-mtime">
+    <template data-template="flag-no-date">
       <button
         type="button"
         class="flag"
         tabindex="-1"
-        data-attention="date-from-mtime"
+        data-attention="no-date"
         aria-label="No capture date: set the date"
-        title="No capture date: the date is the file’s">
+        title="No capture date">
         <svg class="icon flag_icon" aria-hidden="true">
           <use href="#i-clock"></use>
         </svg>
@@ -1418,11 +1418,11 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       </span>
     </template>
 
-    <template data-template="notice-date-from-mtime">
+    <template data-template="notice-no-date">
       <div
         class="notice notice-attention"
         tabindex="-1"
-        data-notice="date-from-mtime">
+        data-notice="no-date">
         <p class="notice_title">
           <svg class="icon" aria-hidden="true">
             <use href="#i-clock"></use>
@@ -1430,9 +1430,9 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           No capture date
         </p>
         <p>
-          The file holds no date, so the photo is dated by when the file was
-          last changed, often the day it was exported. Type the date it was
-          taken below.
+          The file holds no date, so the photo has none: it is left out of the
+          year, month and day pages and comes after the dated photos. Type the
+          date it was taken below.
         </p>
       </div>
     </template>

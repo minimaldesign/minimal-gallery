@@ -68,7 +68,7 @@ npx minimalgallery add ~/Pictures/Export/japan --album "Japan 2025"
 2. It turns the album name into a folder name with the same rule as album ids: `"Japan 2025"` gives `photos/japan_2025/`. A `/` in the name makes a nested album: `--album family/birthdays`.
 3. It leaves out duplicates: a photo whose content matches a photo anywhere in `photos/`, or one earlier in the same batch, is listed as already in the gallery and not copied.
 4. It renames on a clash: a file name already used in the album, or one that would give the same photo id, gets `-2`, `-3` and so on (`DSC_0412.jpg` becomes `DSC_0412-2.jpg`). Its sidecars are renamed to match.
-5. It copies the files and keeps their modification times, which the pipeline uses for photos with no capture date.
+5. It copies the files and keeps their modification times, as a Finder copy does.
 
 The photos of every subfolder go into the one album; the subfolders are not kept as nested albums.
 
@@ -89,7 +89,7 @@ minimalgallery sync [--prune] [--force] [--no-upload] [--yes]
 
 `sync` processes every photo in `photos/` that is new or changed:
 
-- A photo with the same size, modification time, sidecars and settings, whose derivatives are all present, is skipped.
+- A photo with the same size, modification time, sidecars and settings as at the last run on this computer, whose derivatives are all present, is skipped. The first run in a fresh copy of the gallery (a clone, another computer) reads every photo once, but writes no manifest that has not changed.
 - A photo whose file content is unchanged, for example when only a sidecar was edited, gets a new manifest without being encoded again. Metadata edited inside the photo file changes its content, so that photo is encoded again.
 - Any other photo is encoded, and the derivatives of its earlier version are removed.
 

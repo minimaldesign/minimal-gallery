@@ -600,7 +600,7 @@ export async function select(
   if (app.selected !== id) return;
   fillPhoto();
   photoForm.removeAttribute('aria-busy');
-  if (focus === 'date-from-mtime') $<HTMLInputElement>('#p-date').focus();
+  if (focus === 'no-date') $<HTMLInputElement>('#p-date').focus();
   else if (focus)
     $<HTMLElement>(`[data-notice="${focus}"]`, photoForm)?.focus();
 }
@@ -644,11 +644,11 @@ function fillPhoto() {
     dd.toggleAttribute('data-missing', value === null);
   }
 
-  // the date field says plainly when the date is the file's own
-  const mtime = d.attention.includes('date-from-mtime');
-  $('[data-field="date"]', photoForm).toggleAttribute('data-attention', mtime);
-  bound('date-hint').textContent = mtime
-    ? 'This is when the file was last changed. Type the date the photo was taken: 2005-02-27 14:30.'
+  // the date field says plainly when the photo has no date
+  const undated = d.attention.includes('no-date');
+  $('[data-field="date"]', photoForm).toggleAttribute('data-attention', undated);
+  bound('date-hint').textContent = undated
+    ? 'The file holds no date. Type the date the photo was taken: 2005-02-27 14:30.'
     : 'Year, month, day, then the time if you know it: 2005-02-27 14:30.';
 
   // attention notices

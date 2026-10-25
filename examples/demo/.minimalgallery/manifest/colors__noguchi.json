@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:24Z",
   "title": "Noguchi",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "4985c31291b8f8d4",
   "sourceSize": 192925,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "96f739336c845ff7"
+  "digest": "ec89432b27ea2f13"
 }

@@ -7,8 +7,8 @@
   "added": "2026-10-23T19:21:25Z",
   "title": "My ceiling",
   "caption": null,
-  "date": "2026-10-23T22:38:11",
-  "dateSource": "mtime",
+  "date": null,
+  "dateSource": "none",
   "camera": null,
   "lens": null,
   "exposure": {
@@ -81,9 +81,8 @@
   },
   "sourceHash": "0121142f6d99f41a",
   "sourceSize": 90351,
-  "sourceMtime": 1792820291000,
   "inputsHash": "87b66e7f2b0c0139",
   "pipelineVersion": "0.4.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "236d0261590ff8b8"
+  "digest": "0dde2b43453b9777"
 }
