@@ -13,13 +13,11 @@ import { readFileSync } from 'node:fs';
 import { writeFile } from 'node:fs/promises';
 import { basename, join, relative, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
-import { setUpGit } from './git.ts';
 import { spawnRunner, type Runner } from './run.ts';
 import { LAUNCHER_NAME, isEmptyDir, scaffold } from './scaffold.ts';
 import { nextSteps, type Outcome } from './steps.ts';
 import {
   BUCKET_NAME,
-  HOST_PUBLISH,
   PINNED_MANAGERS,
   bucketName,
   galleryConfig,
@@ -28,7 +26,6 @@ import {
   type BucketToken,
   type Host,
   type PackageManager,
-  type PublishMethod,
   type StorageMode,
 } from './templates.ts';
 import { createBucket, whoami, type Account } from './wrangler.ts';
@@ -37,14 +34,15 @@ const USAGE = `Usage: npm create minimalgallery@latest [folder] [options]
 
   --name <text>              gallery name
   --author <text>            your name
-  --host <host>              cloudflare (recommended), github, netlify or local
-  --storage <mode>           repo (the default): the resized photos are published
-                             with the site, up to Cloudflare's 20,000-file limit,
-                             roughly 3,000 photos; bucket: in a Cloudflare R2
-                             bucket, for larger galleries (enabling R2 asks for a
-                             payment method, even on the free tier)
-  --publish <method>         on Cloudflare: deploy (upload from this computer; the
-                             default) or git (push to GitHub, Cloudflare builds it)
+  --host <host>              cloudflare (the default): publish to Cloudflare from
+                             this computer; local: build a folder to upload to
+                             any host yourself
+  --storage <mode>           on Cloudflare, for the resized photos. repo (the
+                             default): they are published with the site, up to
+                             Cloudflare's 20,000-file limit, roughly 3,000 photos;
+                             bucket: photo storage in a Cloudflare R2 bucket, for
+                             larger libraries (enabling R2 asks for a payment
+                             method, even on the free tier)
   --bucket <name>            R2 bucket name (default: <folder>-media)
   --media-domain <domain>    the bucket’s custom domain, such as media.example.com
   --account-id <id>          Cloudflare account id (default: from wrangler whoami)
@@ -52,31 +50,37 @@ const USAGE = `Usage: npm create minimalgallery@latest [folder] [options]
   --secret-access-key <key>
   --pm <name>                npm, pnpm, yarn or bun
   --yes                      use the defaults for anything not given, without asking
-  --no-install               do not install the packages
-  --no-git                   do not create the git repository`;
+  --no-install               do not install the packages`;
 
 const HOSTS: Array<{ value: Host; label: string; hint: string }> = [
   {
     value: 'cloudflare',
     label: 'Cloudflare',
-    hint: 'recommended, free: publish straight from this computer',
-  },
-  { value: 'github', label: 'GitHub Pages', hint: 'free, up to 1 GB' },
-  {
-    value: 'netlify',
-    label: 'Netlify',
-    hint: 'works, not recommended for large galleries',
+    hint: 'free: publish from this computer with one command',
   },
   {
     value: 'local',
-    label: 'Just build it locally',
-    hint: 'upload dist/ anywhere',
+    label: 'My own host',
+    hint: 'builds a folder (dist/) for you to upload anywhere',
+  },
+];
+
+const SIZES: Array<{ value: StorageMode; label: string; hint: string }> = [
+  {
+    value: 'repo',
+    label: 'Up to about 3,000 photos',
+    hint: 'the photos are published with the site; free',
+  },
+  {
+    value: 'bucket',
+    label: 'More than that',
+    hint: 'adds photo storage on Cloudflare R2: needs your own domain on Cloudflare and a card on file',
   },
 ];
 const PMS: PackageManager[] = ['npm', 'pnpm', 'yarn', 'bun'];
 
 const BUCKET_NOTE =
-  'Bucket mode keeps the resized photos in a Cloudflare R2 bucket, served from a media domain of yours, instead of publishing them with the site. Enabling R2 asks for a payment method in the Cloudflare dashboard, even on the free tier.';
+  'Photo storage keeps the resized photos in a Cloudflare R2 bucket, served from a media domain of yours, instead of publishing them with the site. Enabling R2 asks for a payment method in the Cloudflare dashboard, even on the free tier.';
 
 const DOMAIN =
   /^(?=.{4,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9-]{2,63}$/;
@@ -265,22 +269,6 @@ async function setUpBucket(
   return result;
 }
 
-async function gitRepository(
-  run: Runner,
-  dir: string
-): Promise<NonNullable<Outcome['git']>> {
-  const spin = spinner();
-  spin.start('Creating the git repository');
-  const git = await setUpGit(run, dir);
-  if (git.status === 'committed')
-    spin.stop('Created the git repository, with a first commit');
-  else if (git.status === 'unavailable') spin.stop('git is not installed');
-  else if (git.status === 'inside')
-    spin.stop(`The folder is inside the git repository at ${git.root}`);
-  else spin.stop(`git could not make the first commit: ${git.message}`);
-  return git;
-}
-
 export async function main(
   argv: string[],
   deps: CliDeps = {}
@@ -300,7 +288,6 @@ export async function main(
         storage: { type: 'string' },
         // The old name of --storage: small is repo, large is bucket.
         size: { type: 'string' },
-        publish: { type: 'string' },
         bucket: { type: 'string' },
         'media-domain': { type: 'string' },
         'account-id': { type: 'string' },
@@ -309,7 +296,6 @@ export async function main(
         pm: { type: 'string' },
         yes: { type: 'boolean', short: 'y', default: false },
         'no-install': { type: 'boolean', default: false },
-        'no-git': { type: 'boolean', default: false },
         help: { type: 'boolean', short: 'h', default: false },
       },
     });
@@ -336,10 +322,6 @@ export async function main(
   const storageFlag =
     oneOf<StorageMode>('storage', values.storage, ['bucket', 'repo']) ??
     (size && (size === 'large' ? 'bucket' : 'repo'));
-  const publishFlag = oneOf<PublishMethod>('publish', values.publish, [
-    'git',
-    'deploy',
-  ]);
   const pmFlag = oneOf('pm', values.pm, PMS);
   if (values.bucket !== undefined && !BUCKET_NAME.test(values.bucket))
     throw new Exit(`--bucket: ${BUCKET_RULE}`);
@@ -356,14 +338,10 @@ export async function main(
   const secretFlag = values['secret-access-key']?.trim();
   if (Boolean(keyFlag) !== Boolean(secretFlag))
     throw new Exit('Pass --access-key-id and --secret-access-key together.');
-  if (hostFlag && hostFlag !== 'cloudflare') {
-    if (values.storage === 'bucket')
-      throw new Exit(
-        'Bucket mode is set up with Cloudflare R2: use --host cloudflare, or --storage repo.'
-      );
-    if (publishFlag && publishFlag !== HOST_PUBLISH[hostFlag])
-      throw new Exit(`--publish ${publishFlag} needs --host cloudflare.`);
-  }
+  if (hostFlag === 'local' && storageFlag === 'bucket')
+    throw new Exit(
+      'Photo storage is set up with Cloudflare R2: use --host cloudflare, or --storage repo.'
+    );
   // Without a terminal to ask in, use the defaults.
   const ask = !values.yes && (deps.interactive ?? Boolean(process.stdin.isTTY));
 
@@ -407,9 +385,8 @@ export async function main(
           })
         )
       : '');
-  // Bucket mode and direct deploys are set up on Cloudflare only.
-  const cloudflareOnly =
-    values.storage === 'bucket' || publishFlag === 'deploy';
+  // Photo storage is set up on Cloudflare only.
+  const cloudflareOnly = storageFlag === 'bucket';
   const host: Host =
     hostFlag ??
     (ask && !cloudflareOnly
@@ -423,18 +400,29 @@ export async function main(
       : 'cloudflare');
 
   let storage: StorageMode = 'repo';
-  let publish = HOST_PUBLISH[host];
   let bucket: Answers['bucket'];
   let token: BucketToken | undefined;
   // The simplest path is the default: the resized photos go up with the
-  // site. Bucket mode (R2) is an opt-in, with --storage bucket.
+  // site. Photo storage (R2) is the answer for a large library.
   if (host === 'cloudflare') {
     // A bucket-only flag (--bucket, --media-domain, the R2 token) asks for
-    // bucket mode as well.
+    // photo storage as well.
     const bucketFlags = [values.bucket, values['media-domain'], keyFlag].some(
       (v) => v !== undefined
     );
-    storage = storageFlag ?? (bucketFlags ? 'bucket' : 'repo');
+    storage =
+      storageFlag ??
+      (bucketFlags
+        ? 'bucket'
+        : ask
+          ? answered(
+              await select<StorageMode>({
+                message: 'How big is your photo library?',
+                options: SIZES,
+                initialValue: 'repo',
+              })
+            )
+          : 'repo');
     if (storage === 'bucket') log.info(BUCKET_NOTE);
   }
 
@@ -503,10 +491,7 @@ export async function main(
     }
   }
 
-  // Publishing from this computer is the default; git (Cloudflare builds
-  // from a GitHub repository) is an opt-in, with --publish git or later in
-  // the admin.
-  if (host === 'cloudflare') publish = publishFlag ?? 'deploy';
+  const publish = host === 'cloudflare' ? 'deploy' : 'build';
 
   const userAgent = env.npm_config_user_agent ?? '';
   const agent = userAgent.split('/')[0];
@@ -564,12 +549,6 @@ export async function main(
   };
   if (storage === 'bucket')
     outcome.cloudflare = await setUpBucket(run, dir, answers, ask);
-  // After the install and the account id, so the first commit has the
-  // lockfile and the final config.
-  if (publish === 'git')
-    outcome.git = values['no-git']
-      ? { status: 'skipped' }
-      : await gitRepository(run, dir);
 
   outro('Your gallery is ready.');
   process.stdout.write(`\n${nextSteps(answers, outcome)}`);

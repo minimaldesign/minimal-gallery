@@ -9,7 +9,7 @@ describe('next steps', () => {
     host: 'cloudflare',
     storage: 'bucket',
     bucket: { name: 'photos-media', domain: '', accountId: '' },
-    publish: 'git',
+    publish: 'deploy',
     packageManager: 'npm',
   };
   const outcome: Outcome = {
@@ -17,7 +17,6 @@ describe('next steps', () => {
     dir: '/home/someone/photos',
     installed: true,
     launcher: false,
-    git: { status: 'committed' },
   };
 
   it('lists the login, the bucket and the account id when wrangler could not', () => {
@@ -62,11 +61,7 @@ describe('next steps', () => {
     expect(steps).toContain(
       'R2, photos-media, Settings, Custom Domains, Connect Domain'
     );
-    expect(steps).toContain('gh repo create --private --source . --push');
-    expect(steps).toContain('Workers and Pages, Create, Import a repository');
-    expect(steps).toContain(
-      'Build command: npm run build. Deploy command: npx wrangler deploy.'
-    );
+    expect(steps).toContain('deploys it to Cloudflare');
     // Numbered from 1, with the publishing steps after the first two.
     expect(steps).toMatch(/^ {2}1\. cd photos$/m);
     expect(steps).toMatch(/^ {2}3\. Connect media\.example\.org/m);
@@ -86,43 +81,21 @@ describe('next steps', () => {
     expect(steps).not.toContain('wrangler login');
   });
 
-  it('asks for a public repository for GitHub Pages', () => {
+  it('builds into dist/ for your own host', () => {
     const steps = nextSteps(
-      { ...answers, host: 'github', storage: 'repo', bucket: undefined },
+      {
+        ...answers,
+        host: 'local',
+        storage: 'repo',
+        bucket: undefined,
+        publish: 'build',
+      },
       outcome
     );
-    expect(steps).toContain('gh repo create --public --source . --push');
-    expect(steps).toContain('set the source to GitHub Actions');
-    expect(steps).not.toContain('bucket');
-  });
-
-  it('gives the commands git could not run', () => {
-    const steps = nextSteps(answers, {
-      ...outcome,
-      git: {
-        status: 'failed',
-        message: 'fatal: unable to auto-detect email address',
-      },
-    });
     expect(steps).toContain(
-      'git said: fatal: unable to auto-detect email address'
+      'npm run publish builds the site into dist/, ready to upload to your host.'
     );
-    expect(steps).toContain('git add -A && git commit -m "Create the gallery"');
-  });
-
-  it('asks for the lockfile to be committed after a first commit made before the install', () => {
-    const repo = { ...answers, storage: 'repo' as const, bucket: undefined };
-    const before = nextSteps(repo, { ...outcome, installed: false });
-    expect(before).toContain('npm install');
-    expect(before).toContain(
-      'git add package-lock.json && git commit -m "Add the lockfile"'
-    );
-    const pnpm = nextSteps(
-      { ...repo, host: 'github', packageManager: 'pnpm' },
-      { ...outcome, installed: false }
-    );
-    expect(pnpm).toContain('git add pnpm-lock.yaml');
-    // installed first: the lockfile is in the first commit
-    expect(nextSteps(repo, outcome)).not.toContain('lockfile');
+    expect(steps).not.toContain('bucket');
+    expect(steps).not.toContain('Before the first publish');
   });
 });

@@ -16,13 +16,6 @@ afterEach(async () => {
 
 const checks = async (): Promise<PublishChecks> => ({
   method: 'deploy',
-  git: {
-    repo: false,
-    remote: null,
-    branch: null,
-    ghInstalled: false,
-    ghAuthed: false,
-  },
   deploy: {
     wranglerInstalled: true,
     loggedIn: true,
@@ -85,7 +78,7 @@ describe('publish and connect jobs', () => {
     const id = started.body.job;
     // One job at a time.
     expect(
-      (await server.call('POST', '/publish', { method: 'git' })).status
+      (await server.call('POST', '/publish', { method: 'build' })).status
     ).toBe(409);
     expect((await server.call('POST', '/connect/cloudflare')).status).toBe(409);
 

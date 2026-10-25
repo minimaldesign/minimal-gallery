@@ -45,12 +45,7 @@ export {
   placeholderMessage,
 } from './placeholders.ts';
 export type { ConfigPlaceholder } from './placeholders.ts';
-export {
-  doctor,
-  formatDoctorReport,
-  PAGES_FILE_LIMIT,
-  REPO_BYTE_LIMIT,
-} from './doctor.ts';
+export { doctor, formatDoctorReport, PAGES_FILE_LIMIT } from './doctor.ts';
 export type { DoctorReport, Recommendation } from './doctor.ts';
 export {
   defaultLadder,

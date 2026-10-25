@@ -113,15 +113,24 @@ describe('doctor', () => {
     expect(r.issues.join()).toMatch(/no manifest/);
     expect(r.publish).toBeNull();
 
-    // Publishing from this computer: the repository size is not a limit.
+    // Publishing to Cloudflare: the file limit applies.
     await writeFile(
       join(dir, 'package.json'),
       JSON.stringify({ minimalgallery: { publish: 'deploy' } })
     );
     expect((await doctor(dir)).publish).toBe('deploy');
     expect(formatDoctorReport(await doctor(dir))).toMatch(
-      /uploaded with the site/
+      /more photos before the file limit/
     );
+
+    // Building for the owner’s host: no Cloudflare limit.
+    await writeFile(
+      join(dir, 'package.json'),
+      JSON.stringify({ minimalgallery: { publish: 'build' } })
+    );
+    const own = await doctor(dir);
+    expect(own.message).toMatch(/does not apply/);
+    expect(formatDoctorReport(own)).not.toMatch(/headroom/);
   });
 });
 

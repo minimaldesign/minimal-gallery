@@ -14,14 +14,9 @@ export type { UploadResult } from './bucket.ts';
 export { adminDevArgs, ADMIN_PATH } from './commands/admin.ts';
 export {
   choosePublishMethod,
-  commitOriginalsSetting,
-  gitChanges,
-  isSidecar,
-  selectChanges,
   lastUrl,
   siteUrl,
   wranglerProjectName,
-  type GitChange,
   type PublishMethod,
 } from './commands/publish.ts';
 export { upgradeCommands } from './commands/upgrade.ts';

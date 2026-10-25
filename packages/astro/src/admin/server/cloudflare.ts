@@ -268,7 +268,7 @@ export async function setAccount(
 /** Write `minimalgallery.publish` into package.json. */
 export async function setPublishMethod(
   galleryDir: string,
-  method: 'git' | 'deploy' | 'build'
+  method: 'deploy' | 'build'
 ): Promise<void> {
   const path = join(galleryDir, 'package.json');
   let pkg: Record<string, any>;

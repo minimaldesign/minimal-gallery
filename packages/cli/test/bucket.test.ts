@@ -1,4 +1,4 @@
-import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -22,15 +22,6 @@ const saved = { ...process.env };
 beforeEach(async () => {
   dir = await mkdtemp(join(tmpdir(), 'mg-cli-bucket-'));
   s3 = await startMockS3({ publicRead: true });
-  // git with no global or system config, and a fixed identity.
-  Object.assign(process.env, {
-    GIT_CONFIG_GLOBAL: '/dev/null',
-    GIT_CONFIG_NOSYSTEM: '1',
-    GIT_AUTHOR_NAME: 'Test',
-    GIT_AUTHOR_EMAIL: 'test@example.com',
-    GIT_COMMITTER_NAME: 'Test',
-    GIT_COMMITTER_EMAIL: 'test@example.com',
-  });
   delete process.env.MG_S3_ACCESS_KEY_ID;
   delete process.env.MG_S3_SECRET_ACCESS_KEY;
 });
@@ -76,18 +67,15 @@ async function bucketGallery(credentials = true, storage: object = {}) {
   return root;
 }
 
-const git = (cwd: string, ...args: string[]) =>
-  execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
-
-async function withRemote(root: string) {
-  const remote = join(dir, 'remote.git');
-  git(dir, 'init', '-q', '--bare', '-b', 'main', remote);
-  git(root, 'init', '-q', '-b', 'main');
-  git(root, 'remote', 'add', 'origin', remote);
-  git(root, 'add', '.gitignore');
-  git(root, 'commit', '-q', '-m', 'start');
-  git(root, 'push', '-q', '-u', 'origin', 'main');
-  return remote;
+/** A stand-in for astro in the gallery: `astro build` writes dist/index.html. */
+async function fakeAstro(root: string) {
+  const bin = join(root, 'node_modules', '.bin');
+  await mkdir(bin, { recursive: true });
+  await writeFile(
+    join(bin, 'astro'),
+    '#!/bin/sh\nmkdir -p dist && echo built > dist/index.html\n',
+    { mode: 0o755 }
+  );
 }
 
 async function stageFiles(root: string): Promise<string[]> {
@@ -145,32 +133,22 @@ describe('sync in bucket mode', () => {
 });
 
 describe('publish in bucket mode', () => {
-  it('uploads before the commit and the push, and names the site', async () => {
+  it('uploads before the build', async () => {
     const root = await bucketGallery();
-    const remote = await withRemote(root);
-    await writeFile(
-      join(root, 'package.json'),
-      '{"minimalgallery":{"publish":"git"}}'
-    );
-
-    expect(await publishCommand(['--yes'], root)).toBe(0);
+    await fakeAstro(root);
+    expect(await publishCommand(['--build', '--yes'], root)).toBe(0);
     expect(s3.objects.size).toBe(4);
-    const pushed = git(remote, 'ls-tree', '-r', '--name-only', 'main');
-    expect(pushed).toContain('.minimalgallery/manifest/trip__a.json');
-    // The originals stay on this computer, even with no .gitignore rule.
-    expect(pushed).not.toContain('photos/trip/a.jpg');
-    expect(pushed).not.toContain('.env');
-    expect(pushed).not.toContain('cache/media');
+    expect(await stageFiles(root)).toEqual([]);
+    expect(existsSync(join(root, 'dist', 'index.html'))).toBe(true);
   });
 
-  it('commits nothing when the upload cannot happen', async () => {
+  it('builds nothing when the upload cannot happen', async () => {
     const root = await bucketGallery(false);
-    const remote = await withRemote(root);
-    await expect(publishCommand(['--git', '--yes'], root)).rejects.toThrow(
+    await fakeAstro(root);
+    await expect(publishCommand(['--build', '--yes'], root)).rejects.toThrow(
       /nothing was published/
     );
-    expect(git(remote, 'rev-list', '--count', 'main')).toBe('1');
-    expect(git(root, 'status', '--porcelain')).not.toBe('');
+    expect(existsSync(join(root, 'dist'))).toBe(false);
   });
 });
 
@@ -180,18 +158,13 @@ describe('scaffold stand-ins in the config', () => {
   };
   const standInPublicUrl = { publicUrl: PUBLIC_URL_PLACEHOLDER };
 
-  it('stop publish before the pipeline, the upload, the commit and the deploy', async () => {
+  it('stop publish before the pipeline, the upload, the build and the deploy', async () => {
     const root = await bucketGallery(true, standInPublicUrl);
-    const remote = await withRemote(root);
-    await expect(publishCommand(['--git', '--yes'], root)).rejects.toThrow(
-      /storage\.publicUrl: replace https:\/\/media\.example\.com .*Custom Domains.*\nNothing was published\.$/s
-    );
     await expect(publishCommand(['--deploy', '--yes'], root)).rejects.toThrow(
-      /Nothing was published/
+      /storage\.publicUrl: replace https:\/\/media\.example\.com .*Custom Domains.*\nNothing was published\.$/s
     );
     expect(s3.requests).toEqual([]);
     expect(await stageFiles(root)).toEqual([]);
-    expect(git(remote, 'rev-list', '--count', 'main')).toBe('1');
 
     await bucketGallery(true, standInEndpoint);
     await expect(publishCommand(['--build', '--yes'], root)).rejects.toThrow(

@@ -604,7 +604,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
         onlyKeys(body, ['method']);
         const method = body.method as PublishMethod;
         if (!PUBLISH_METHODS.includes(method))
-          throw badRequest("method must be 'git', 'deploy' or 'build'.");
+          throw badRequest("method must be 'deploy' or 'build'.");
         const job = await startJob('publish', method);
         sendJson(res, 202, { job: job.id });
       },
@@ -618,7 +618,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
         if ('method' in body) {
           const method = body.method as PublishMethod;
           if (!PUBLISH_METHODS.includes(method))
-            throw badRequest("method must be 'git', 'deploy' or 'build'.");
+            throw badRequest("method must be 'deploy' or 'build'.");
           await setPublishMethod(galleryDir, method);
         }
         if ('accountId' in body)

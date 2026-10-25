@@ -1,9 +1,8 @@
 /**
  * `doctor`: a health report for a gallery, read from the manifests and the
  * photos folder. It never encodes. It projects the number of files a
- * Cloudflare deploy would hold, against its 20,000-file limit, and, when the
- * gallery publishes from git, the size of the repository against 1 GB, and
- * recommends a storage mode.
+ * Cloudflare deploy would hold, against its 20,000-file limit, and
+ * recommends a storage mode: repo, or photo storage (bucket mode).
  */
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
@@ -28,15 +27,12 @@ import { walkPhotos, type UnsupportedFile } from './walk.ts';
 
 /** Files in one Cloudflare deploy (a Worker version’s static assets). */
 export const PAGES_FILE_LIMIT = 20_000;
-/** A repository size to stay under when the gallery publishes from git. */
-export const REPO_BYTE_LIMIT = 1_000_000_000;
-/** Past these, bucket mode is recommended before it is needed. */
+/** Past this, photo storage (bucket mode) is recommended before it is needed. */
 export const FILE_ADVICE = 16_000;
-export const REPO_BYTE_ADVICE = 500_000_000;
 
-/** What setting up a bucket involves, said wherever bucket mode is advised. */
+/** What setting up photo storage involves, said wherever it is advised. */
 const BUCKET_COST =
-  'Enabling R2 in the Cloudflare dashboard asks for a payment method, even on the free tier.';
+  'See https://docs.minimalgallery.net/hosting/photo-storage/. Enabling R2 in the Cloudflare dashboard asks for a payment method, even on the free tier.';
 /**
  * Files every build has besides photo and context pages: feed, map, random,
  * 404, sitemap, robots, icons, CSS and JS bundles. An estimate.
@@ -51,14 +47,9 @@ export interface DoctorReport {
   /**
    * How the gallery publishes (`minimalgallery.publish` in package.json, else
    * `deploy` when there is a wrangler config), or null when that is unknown.
-   * The repository size only matters for `git`.
+   * Cloudflare’s file limit does not apply to `build`, for the owner’s host.
    */
-  publish: 'git' | 'deploy' | 'build' | null;
-  /**
-   * `minimalgallery.commitOriginals` in package.json: git publishing commits
-   * the originals too, so they count towards the repository size.
-   */
-  commitOriginals: boolean;
+  publish: 'deploy' | 'build' | null;
   originals: GalleryConfig['originals'];
   photos: number;
   albums: number;
@@ -68,8 +59,8 @@ export interface DoctorReport {
   orphans: string[];
   /**
    * Manifests of photos whose originals are not on this computer and never
-   * were (a clone, or photos added on another computer). They stay in the
-   * gallery and are never pruned here.
+   * were (a copy of the gallery made without them). They stay in the gallery
+   * and are never pruned here.
    */
   absent: string[];
   /** Photos dated from the file’s mtime. */
@@ -91,12 +82,8 @@ export interface DoctorReport {
     total: number;
     limit: number;
   };
-  /**
-   * Bytes of photos media committed to the repository: the derivatives in
-   * repo mode, published originals, and with `commitOriginals` the
-   * originals themselves (`originals` of the total).
-   */
-  repo: { bytes: number; originals: number; limit: number };
+  /** Bytes of photo media published with the site: the derivatives in repo mode, and published originals. */
+  siteMedia: { bytes: number };
   /**
    * Bucket mode only, read from the disk without the network: staged files
    * the manifests reference (waiting for upload), and whether credentials
@@ -104,10 +91,7 @@ export interface DoctorReport {
    */
   bucket: { staged: number; stagedBytes: number; credentials: boolean } | null;
   /** How many more photos fit at the current average, before each limit. */
-  headroom: {
-    photosUntilFileLimit: number;
-    photosUntilByteLimit: number | null;
-  };
+  headroom: { photosUntilFileLimit: number };
   recommendation: Recommendation;
   message: string;
   issues: string[];
@@ -151,33 +135,24 @@ async function readManifests(dir: string): Promise<{
   return { photos, albums, invalid: invalid.sort() };
 }
 
-/** Build the report for a gallery directory. */
 /**
  * How the gallery publishes, as the CLI decides it: `minimalgallery.publish`
  * in package.json, else `deploy` when a wrangler config exists, else null.
  */
-async function publishSettings(dir: string): Promise<{
-  publish: DoctorReport['publish'];
-  commitOriginals: boolean;
-}> {
-  let settings: { publish?: unknown; commitOriginals?: unknown } = {};
+async function publishSetting(dir: string): Promise<DoctorReport['publish']> {
+  let setting: unknown;
   try {
     const pkg = JSON.parse(await readFile(join(dir, 'package.json'), 'utf8'));
-    settings = pkg?.minimalgallery ?? {};
+    setting = pkg?.minimalgallery?.publish;
   } catch {}
-  const commitOriginals = settings.commitOriginals === true;
-  const setting = settings.publish;
-  if (setting === 'git' || setting === 'deploy' || setting === 'build')
-    return { publish: setting, commitOriginals };
-  return {
-    publish:
-      existsSync(join(dir, 'wrangler.jsonc')) ||
-      existsSync(join(dir, 'wrangler.json'))
-        ? 'deploy'
-        : null,
-    commitOriginals,
-  };
+  if (setting === 'deploy' || setting === 'build') return setting;
+  return existsSync(join(dir, 'wrangler.jsonc')) ||
+    existsSync(join(dir, 'wrangler.json'))
+    ? 'deploy'
+    : null;
 }
+
+/** Build the report for a gallery directory. */
 
 export async function doctor(
   dir: string,
@@ -302,76 +277,57 @@ export async function doctor(
       );
   }
 
-  const { publish, commitOriginals } = await publishSettings(dir);
-  // The repository only grows with the photos when the site is built from it.
-  const repoMatters = publish === 'git' || publish === null;
+  const publish = await publishSetting(dir);
+  // The owner’s own host has no file limit we know of.
+  const ownHost = publish === 'build';
   const repoMedia = config.storage.mode === 'repo';
   const originalsInRepo = config.originals === 'repo';
   const mediaFiles =
     (repoMedia ? derivFiles : 0) + (originalsInRepo ? origFiles : 0);
-  const committedOriginals =
-    commitOriginals && repoMatters
-      ? current.reduce((s, m) => s + m.original.bytes, 0)
-      : 0;
-  const repoBytes =
-    (repoMedia ? derivBytes : 0) +
-    (originalsInRepo ? origBytes : 0) +
-    committedOriginals;
+  const siteBytes =
+    (repoMedia ? derivBytes : 0) + (originalsInRepo ? origBytes : 0);
   const photoPages = visible.length;
   const contextFiles = contextTotal * 2;
   const total = photoPages + contextFiles + FIXED_SITE_FILES + mediaFiles;
 
-  // Headroom at the current per-photo averages. Contexts grow too, but far
+  // Headroom at the current per-photo average. Contexts grow too, but far
   // more slowly than photos; they are held at today’s count.
   const n = Math.max(1, current.length);
   const filesPerPhoto =
     1 +
     (repoMedia ? derivFiles / n : 0) +
     (originalsInRepo ? origFiles / n : 0);
-  const bytesPerPhoto = repoBytes / n;
   const photosUntilFileLimit = Math.max(
     0,
     Math.floor((PAGES_FILE_LIMIT - total) / filesPerPhoto)
   );
-  const photosUntilByteLimit =
-    bytesPerPhoto > 0
-      ? Math.max(0, Math.floor((REPO_BYTE_LIMIT - repoBytes) / bytesPerPhoto))
-      : null;
 
-  // Bucket mode moves the derivatives out of the repository, not the
-  // committed originals, so the advice is about the media without them.
-  const mediaBytes = repoBytes - committedOriginals;
-  const overRepo = repoMatters && mediaBytes > REPO_BYTE_LIMIT;
-  if (committedOriginals && repoBytes > REPO_BYTE_ADVICE)
-    issues.push(
-      `the committed originals bring the repository to ${formatBytes(repoBytes)} (GitHub recommends under 1 GB): remove "commitOriginals" from the "minimalgallery" field of package.json to keep them out of git`
-    );
   let recommendation: Recommendation;
   let message: string;
-  if (total > PAGES_FILE_LIMIT || overRepo) {
+  if (ownHost) {
+    recommendation = 'repo-ok';
+    message = repoMedia
+      ? 'Repo mode is fine: the site is built for your own host, so Cloudflare’s 20,000-file limit does not apply.'
+      : 'Bucket mode: the photos are in photo storage, and the site is built for your own host.';
+  } else if (total > PAGES_FILE_LIMIT) {
     recommendation = 'move-to-bucket';
-    message =
-      config.storage.mode === 'repo'
-        ? `Move to bucket mode: ${overRepo ? 'the repository is over 1 GB' : 'the deploy is over Cloudflare’s 20,000-file limit'}. Set storage: { mode: "s3", ... } in minimalgallery.config.ts. ${BUCKET_COST}`
-        : 'Even with derivatives in the bucket, the HTML pages alone are over 20,000 files. Hide albums, drop facets, or host on a service without a file limit.';
-  } else if (
-    repoMedia &&
-    (total > FILE_ADVICE || (repoMatters && mediaBytes > REPO_BYTE_ADVICE))
-  ) {
+    message = repoMedia
+      ? `Add photo storage (bucket mode): the site is over Cloudflare’s 20,000-file limit. Set storage: { mode: "s3", ... } in minimalgallery.config.ts. ${BUCKET_COST}`
+      : 'Even with the photos in photo storage, the HTML pages alone are over 20,000 files. Hide albums, drop facets, or host the site on a service without a file limit.';
+  } else if (repoMedia && total > FILE_ADVICE) {
     recommendation = 'consider-bucket';
-    message = `Repo mode works today, but the gallery is getting close to ${total > FILE_ADVICE ? 'Cloudflare’s 20,000-file limit' : '1 GB of photos in the repository'}. Plan the move to bucket mode before then. ${BUCKET_COST}`;
+    message = `Repo mode works today, but the site is getting close to Cloudflare’s 20,000-file limit. Plan to add photo storage (bucket mode) before then. ${BUCKET_COST}`;
   } else {
     recommendation = 'repo-ok';
     message = repoMedia
       ? 'Repo mode is fine.'
-      : 'Bucket mode: derivatives are outside the deploy; the pages are well within the limits.';
+      : 'Bucket mode: the photos are in photo storage, and the pages are well within the limits.';
   }
 
   return {
     galleryDir: dir,
     storage: config.storage.mode,
     publish,
-    commitOriginals,
     originals: config.originals,
     photos: walked ? walked.photos.length + absent.length : manifests.length,
     albums: walked
@@ -399,13 +355,9 @@ export async function doctor(
       total,
       limit: PAGES_FILE_LIMIT,
     },
-    repo: {
-      bytes: repoBytes,
-      originals: committedOriginals,
-      limit: REPO_BYTE_LIMIT,
-    },
+    siteMedia: { bytes: siteBytes },
     bucket,
-    headroom: { photosUntilFileLimit, photosUntilByteLimit },
+    headroom: { photosUntilFileLimit },
     recommendation,
     message,
     issues,
@@ -460,34 +412,24 @@ export function formatDoctorReport(r: DoctorReport): string {
       `${r.contexts.total} (archive, ${r.contexts.albums} albums, ${facetList || 'no facets'})`,
     ],
     [
-      'pages files',
-      `${r.pages.total} of ${r.pages.limit} (${pct(r.pages.total, r.pages.limit)}): ${r.pages.photoPages} photo pages, ${r.pages.contextFiles} context pages and JSON, ${r.pages.mediaFiles} media, ~${r.pages.fixedFiles} other`,
+      'site files',
+      r.publish === 'build'
+        ? `${r.pages.total}: ${r.pages.photoPages} photo pages, ${r.pages.contextFiles} context pages and JSON, ${r.pages.mediaFiles} media, ~${r.pages.fixedFiles} other`
+        : `${r.pages.total} of ${r.pages.limit} (${pct(r.pages.total, r.pages.limit)}): ${r.pages.photoPages} photo pages, ${r.pages.contextFiles} context pages and JSON, ${r.pages.mediaFiles} media, ~${r.pages.fixedFiles} other`,
     ],
-    [
-      'repo media',
-      r.publish === 'git' || r.publish === null
-        ? `${formatBytes(r.repo.bytes)} of ${formatBytes(r.repo.limit)} (${pct(r.repo.bytes, r.repo.limit)})` +
-          (r.repo.originals
-            ? `, ${formatBytes(r.repo.originals)} of it originals`
-            : '')
-        : `${formatBytes(r.repo.bytes)}, uploaded with the site (no repository limit when publishing from this computer)`,
-    ],
-    [
-      'headroom',
-      `about ${r.headroom.photosUntilFileLimit} more photos before the file limit` +
-        (r.headroom.photosUntilByteLimit !== null
-          ? r.publish === 'git' || r.publish === null
-            ? `, ${r.headroom.photosUntilByteLimit} before 1 GB`
-            : ''
-          : ''),
-    ]
+    ['site media', `${formatBytes(r.siteMedia.bytes)}, published with the site`]
   );
+  if (r.publish !== 'build')
+    rows.push([
+      'headroom',
+      `about ${r.headroom.photosUntilFileLimit} more photos before the file limit`,
+    ]);
   const w = Math.max(...rows.map(([k]) => k.length));
   const lines = rows.map(([k, v]) => `${k.padEnd(w)}  ${v}`);
   lines.push('', r.message);
   if (r.absent.length)
     lines.push(
-      `The originals of ${r.absent.length} photo(s) are not on this computer, as in a clone of the repository. They stay in the gallery as their manifests describe them and are never pruned here; edit or delete them on the computer that has their originals.`
+      `The originals of ${r.absent.length} photo(s) are not on this computer, as in a copy of the gallery made without them. They stay in the gallery as their manifests describe them and are never pruned here; edit or delete them on the computer that has their originals.`
     );
   for (const i of r.issues) lines.push(`issue: ${i}`);
   return lines.join('\n');

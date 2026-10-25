@@ -667,88 +667,14 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                     </span>
                   </label>
                   <label class="choice_option">
-                    <input type="radio" name="method" value="git" />
-                    <span class="choice_label">Publish from GitHub</span>
-                    <span class="choice_note">
-                      Commits your changes and pushes them to GitHub, and your
-                      host builds the site from there. Gives you a history of
-                      every published version, a backup on GitHub, and
-                      publishing from more than one computer.
-                    </span>
-                  </label>
-                  <label class="choice_option">
                     <input type="radio" name="method" value="build" />
-                    <span class="choice_label">Build only</span>
+                    <span class="choice_label">Build for my own host</span>
                     <span class="choice_note">
                       Makes the site in the <code>dist</code> folder, ready to
-                      upload anywhere you like.
+                      upload to any web host.
                     </span>
                   </label>
                 </fieldset>
-              </section>
-
-              <section
-                class="panel_section publish_guide"
-                data-method="git"
-                aria-label="GitHub">
-                <div class="notice" data-guide="gh-missing" hidden>
-                  <p class="notice_title">
-                    Install the GitHub command line tool
-                  </p>
-                  <p>
-                    Publishing this way uses GitHub’s own tool. Get it from
-                    <a
-                      href="https://cli.github.com"
-                      target="_blank"
-                      rel="noopener">
-                      cli.github.com
-                    </a>
-                    , then come back and sign in.
-                  </p>
-                </div>
-                <div class="notice" data-guide="gh-login" hidden>
-                  <p class="notice_title">Sign in to GitHub once</p>
-                  <p>
-                    Open Terminal, run this, and follow its questions. Then come
-                    back here.
-                  </p>
-                  <div class="copyable">
-                    <code class="copyable_value">gh auth login</code>
-                    <button
-                      type="button"
-                      class="bt copyable_button"
-                      data-copy="gh auth login">
-                      <span class="copyable_label">Copy</span>
-                      <span class="copyable_done">Copied</span>
-                    </button>
-                  </div>
-                  <div class="notice_actions">
-                    <button type="button" class="bt" data-action="recheck">
-                      I’ve signed in
-                    </button>
-                  </div>
-                </div>
-                <div class="notice" data-guide="git-repo" hidden>
-                  <p class="notice_title">
-                    This folder is not a git repository yet
-                  </p>
-                  <p>
-                    Publishing this way needs the gallery folder in a GitHub
-                    repository, connected to your host. Pick Upload to
-                    Cloudflare if you would rather skip GitHub.
-                  </p>
-                </div>
-                <div class="notice" data-guide="git-host" hidden>
-                  <p class="notice_title">Let Cloudflare build from GitHub</p>
-                  <p>
-                    Once the gallery is on GitHub, connect the repository in the
-                    Cloudflare dashboard: Workers and Pages, Create, Import a
-                    repository. Build command <code>npm run build</code>, deploy
-                    command <code>npx wrangler deploy</code>. From then on,
-                    every push publishes the site.
-                  </p>
-                </div>
-                <p class="panel_note" data-guide="git-ready" hidden></p>
               </section>
 
               <section
@@ -816,7 +742,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 aria-label="Build">
                 <p class="panel_note">
                   The site goes into the <code>dist</code> folder of your
-                  gallery. Upload that folder to any static host.
+                  gallery. Upload everything in that folder to your host.
                 </p>
               </section>
 
@@ -826,11 +752,11 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 hidden
                 data-bucket>
                 <h2 class="panel_heading" id="p-bucket">
-                  Media storage
+                  Photo storage
                 </h2>
                 <p class="panel_note" data-bind="bucket-text"></p>
                 <div class="notice notice-attention" hidden data-bucket-keys>
-                  <p class="notice_title">The bucket’s keys are missing</p>
+                  <p class="notice_title">The photo storage keys are missing</p>
                   <p>
                     Add them to the <code>.env</code> file in your gallery
                     folder, as <code>MG_S3_ACCESS_KEY_ID</code> and

@@ -14,7 +14,7 @@ import sharp from 'sharp';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { addPhotos } from '../src/add.ts';
 import { albumSlug } from '../src/album.ts';
-import { choosePublishMethod, gitChanges } from '../src/commands/publish.ts';
+import { choosePublishMethod } from '../src/commands/publish.ts';
 import { upgradeCommands } from '../src/commands/upgrade.ts';
 import { detectPackageManager } from '../src/exec.ts';
 import { findGalleryRoot } from '../src/root.ts';
@@ -138,32 +138,28 @@ describe('addPhotos', () => {
 
 describe('publish and upgrade helpers', () => {
   it('reads the publish method from flags, then package.json, then wrangler.jsonc', async () => {
-    await expect(choosePublishMethod(dir, {})).rejects.toThrow(
-      /Say how to publish/
-    );
+    expect(await choosePublishMethod(dir, {})).toBe('build');
     await writeFile(join(dir, 'wrangler.jsonc'), '{ "name": "x" }');
     expect(await choosePublishMethod(dir, {})).toBe('deploy');
     await writeFile(
       join(dir, 'package.json'),
-      JSON.stringify({ minimalgallery: { publish: 'git' } })
+      JSON.stringify({ minimalgallery: { publish: 'build' } })
     );
-    expect(await choosePublishMethod(dir, {})).toBe('git');
-    expect(await choosePublishMethod(dir, { build: true })).toBe('build');
+    expect(await choosePublishMethod(dir, {})).toBe('build');
+    expect(await choosePublishMethod(dir, { deploy: true })).toBe('deploy');
     await expect(
-      choosePublishMethod(dir, { git: true, deploy: true })
+      choosePublishMethod(dir, { build: true, deploy: true })
     ).rejects.toThrow();
   });
 
-  it('parses git status -z, with the old path of a rename', () => {
-    expect(
-      gitChanges(
-        '?? photos/a.jpg\0R  photos/b.jpg\0photos/old.jpg\0 M custom.css\0'
-      )
-    ).toEqual([
-      { path: 'photos/a.jpg', status: '??' },
-      { path: 'photos/b.jpg', status: 'R ', from: 'photos/old.jpg' },
-      { path: 'custom.css', status: ' M' },
-    ]);
+  it('explains that publishing with git is gone', async () => {
+    await writeFile(
+      join(dir, 'package.json'),
+      JSON.stringify({ minimalgallery: { publish: 'git' } })
+    );
+    await expect(choosePublishMethod(dir, {})).rejects.toThrow(
+      /publishing with git is gone/
+    );
   });
 
   it('detects the package manager and builds upgrade commands', async () => {

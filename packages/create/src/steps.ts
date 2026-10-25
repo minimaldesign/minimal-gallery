@@ -2,8 +2,6 @@
  * The next steps printed at the end: numbered, and only what is left to do
  * after the scaffold has done what it could.
  */
-import { relative } from 'node:path';
-import { FIRST_COMMIT, type GitSetup } from './git.ts';
 import { runCommand, type Answers } from './templates.ts';
 import type { BucketCreation } from './wrangler.ts';
 
@@ -24,25 +22,9 @@ export interface Outcome {
     /** wrangler’s error, when the bucket creation failed. */
     error?: string;
   };
-  /** Git publishing: what the repository setup did; `skipped` with --no-git. */
-  git?: GitSetup | { status: 'skipped' };
 }
 
 const shellPath = (p: string) => (/[\s'"$]/.test(p) ? `"${p}"` : p);
-
-const HOST_BUILDS = {
-  cloudflare: 'Cloudflare',
-  github: 'GitHub Pages',
-  netlify: 'Netlify',
-  local: '',
-};
-
-const LOCKFILE = {
-  npm: 'package-lock.json',
-  pnpm: 'pnpm-lock.yaml',
-  yarn: 'yarn.lock',
-  bun: 'bun.lock',
-};
 
 /** Each step is a first line and optional indented lines below it. */
 type Step = string[];
@@ -102,63 +84,6 @@ function bucketSteps(answers: Answers, outcome: Outcome): Step[] {
   return steps;
 }
 
-function gitSteps(answers: Answers, outcome: Outcome): Step[] {
-  const pm = answers.packageManager;
-  const git = outcome.git ?? { status: 'skipped' };
-  const steps: Step[] = [];
-  const commit = `git init -b main && git add -A && git commit -m "${FIRST_COMMIT}"`;
-  if (git.status === 'unavailable')
-    steps.push([
-      'Install git (https://git-scm.com), then in the folder:',
-      commit,
-    ]);
-  else if (git.status === 'skipped')
-    steps.push(['Make the folder a git repository:', commit]);
-  else if (git.status === 'failed')
-    steps.push([
-      `Make the first commit (git said: ${git.message}):`,
-      `git add -A && git commit -m "${FIRST_COMMIT}"`,
-    ]);
-  // The first commit was made before an install: publish commits the
-  // gallery’s own files only, so the lockfile the host installs from has
-  // to be committed by hand once.
-  else if (git.status === 'committed' && !outcome.installed)
-    steps.push([
-      `After ${pm} install, commit the lockfile: the host installs from it.`,
-      `git add ${LOCKFILE[pm]} && git commit -m "Add the lockfile"`,
-    ]);
-
-  let rootDir = '';
-  if (git.status === 'inside') {
-    rootDir = relative(git.root, outcome.dir);
-    steps.push([
-      `Commit the folder and push it with the repository it is in, ${git.root}.`,
-    ]);
-  } else {
-    // GitHub Pages needs a public repository on the free plan.
-    const visibility = answers.host === 'github' ? 'public' : 'private';
-    steps.push([
-      `Put it on GitHub: gh repo create --${visibility} --source . --push`,
-      `Without the GitHub CLI, create a ${visibility} repository on github.com and push this folder to it.`,
-    ]);
-  }
-
-  if (answers.host === 'cloudflare')
-    steps.push([
-      'Connect the repository in the Cloudflare dashboard: Workers and Pages, Create, Import a repository.',
-      `Build command: ${runCommand(pm, 'build')}. Deploy command: npx wrangler deploy.${rootDir ? ` Root directory: ${rootDir}.` : ''}`,
-    ]);
-  else if (answers.host === 'github')
-    steps.push([
-      'In the repository’s settings, under Pages, set the source to GitHub Actions.',
-    ]);
-  else if (answers.host === 'netlify')
-    steps.push([
-      `Import the repository in Netlify: Add new project, Import an existing project.${rootDir ? ` Base directory: ${rootDir}.` : ''}`,
-    ]);
-  return steps;
-}
-
 export function nextSteps(answers: Answers, outcome: Outcome): string {
   const pm = answers.packageManager;
   const now: Step[] = [[`cd ${shellPath(outcome.folder)}`]];
@@ -176,7 +101,6 @@ export function nextSteps(answers: Answers, outcome: Outcome): string {
   const before: Step[] = [];
   if (answers.storage === 'bucket' && answers.bucket)
     before.push(...bucketSteps(answers, outcome));
-  if (answers.publish === 'git') before.push(...gitSteps(answers, outcome));
 
   const publish = runCommand(pm, 'publish');
   const upload =
@@ -184,16 +108,14 @@ export function nextSteps(answers: Answers, outcome: Outcome): string {
       ? 'uploads new photos to the bucket, then '
       : '';
   let last: string;
-  if (answers.publish === 'git')
-    last = `Then publish from the admin, or with ${publish}: it ${upload}commits and pushes, and ${HOST_BUILDS[answers.host]} builds the site.`;
-  else if (answers.publish === 'deploy') {
+  if (answers.publish === 'deploy') {
     const login =
       outcome.cloudflare?.login === 'logged-in'
         ? ''
         : ' The first time, the admin’s Publish page connects Cloudflare: you sign in, or create a free account, in your browser and choose the name of your workers.dev address.';
     last = `Then publish from the admin, or with ${publish}: it ${upload}builds the site and deploys it to Cloudflare.${login}`;
   } else
-    last = `${publish} builds the site into dist/, ready to upload to any static host.`;
+    last = `${publish} builds the site into dist/, ready to upload to your host.`;
 
   let n = 0;
   const render = (steps: Step[]) =>

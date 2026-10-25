@@ -17,12 +17,8 @@ import {
 } from './cloudflare.ts';
 import { conflict } from './http.ts';
 
-export type PublishMethod = 'git' | 'deploy' | 'build';
-export const PUBLISH_METHODS: readonly PublishMethod[] = [
-  'git',
-  'deploy',
-  'build',
-];
+export type PublishMethod = 'deploy' | 'build';
+export const PUBLISH_METHODS: readonly PublishMethod[] = ['deploy', 'build'];
 
 export interface Job {
   id: string;
@@ -217,38 +213,23 @@ async function workerName(root: string): Promise<string | null> {
 
 export interface PublishChecks {
   method: PublishMethod;
-  git: {
-    repo: boolean;
-    remote: string | null;
-    branch: string | null;
-    ghInstalled: boolean;
-    ghAuthed: boolean;
-  };
   deploy: CloudflareStatus & {
     wranglerInstalled: boolean;
     worker: string | null;
   };
 }
 
-/** What the publish page needs to know before the first click. Spawns git, gh and wrangler. */
+/** What the publish page needs to know before the first click. Spawns wrangler. */
 export async function publishChecks(
   galleryDir: string,
   cloudflare: CloudflareClient = wranglerClient(galleryDir)
 ): Promise<PublishChecks> {
-  const git = (args: string[]) => capture('git', args, galleryDir);
   const wranglerBin = localBin(galleryDir, 'wrangler');
-  const [inside, remote, branch, ghVersion, ghStatus, cf, pkg, worker] =
-    await Promise.all([
-      git(['rev-parse', '--is-inside-work-tree']),
-      git(['remote', 'get-url', 'origin']),
-      git(['branch', '--show-current']),
-      capture('gh', ['--version'], galleryDir),
-      capture('gh', ['auth', 'status'], galleryDir),
-      cloudflareStatus(galleryDir, cloudflare),
-      readJson(join(galleryDir, 'package.json')),
-      workerName(galleryDir),
-    ]);
-  const repo = inside.code === 0 && inside.out.trim() === 'true';
+  const [cf, pkg, worker] = await Promise.all([
+    cloudflareStatus(galleryDir, cloudflare),
+    readJson(join(galleryDir, 'package.json')),
+    workerName(galleryDir),
+  ]);
   const setting = pkg?.minimalgallery?.publish;
   const hasWrangler =
     existsSync(join(galleryDir, 'wrangler.jsonc')) ||
@@ -257,18 +238,9 @@ export async function publishChecks(
     ? setting
     : hasWrangler
       ? 'deploy'
-      : repo && remote.code === 0
-        ? 'git'
-        : 'build';
+      : 'build';
   return {
     method,
-    git: {
-      repo,
-      remote: repo && remote.code === 0 ? remote.out.trim() || null : null,
-      branch: repo && branch.code === 0 ? branch.out.trim() || null : null,
-      ghInstalled: ghVersion.code === 0,
-      ghAuthed: ghStatus.code === 0,
-    },
     deploy: {
       ...cf,
       wranglerInstalled: !!wranglerBin,

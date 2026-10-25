@@ -174,16 +174,17 @@ describe('connecting Cloudflare', () => {
       galleryDir: dir,
       cloudflare: fakeCloudflare().client,
     });
-    await server.call('PUT', '/publish/settings', { method: 'git' });
+    await server.call('PUT', '/publish/settings', { method: 'build' });
     const pkg = JSON.parse(await readFile(join(dir, 'package.json'), 'utf8'));
     expect(pkg).toEqual({
       name: 'my-gallery',
-      minimalgallery: { publish: 'git' },
+      minimalgallery: { publish: 'build' },
     });
-    expect((await server.call('GET', '/publish')).body.method).toBe('git');
-    expect(
-      (await server.call('PUT', '/publish/settings', { method: 'ftp' })).status
-    ).toBe(400);
+    expect((await server.call('GET', '/publish')).body.method).toBe('build');
+    for (const method of ['ftp', 'git'])
+      expect(
+        (await server.call('PUT', '/publish/settings', { method })).status
+      ).toBe(400);
   });
 
   it('needs no workers.dev name for a Worker on its own domain', async () => {

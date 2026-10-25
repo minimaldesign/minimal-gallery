@@ -1,10 +1,11 @@
 /** Files whose content depends on the answers. Static files live in `template/`. */
 
-export type Host = 'cloudflare' | 'github' | 'netlify' | 'local';
-/** `repo`: resized photos committed with the site. `bucket`: in a Cloudflare R2 bucket. */
+/** `cloudflare`: publish uploads to Cloudflare. `local`: publish builds dist/ for any host. */
+export type Host = 'cloudflare' | 'local';
+/** `repo`: resized photos published with the site. `bucket`: photo storage in a Cloudflare R2 bucket. */
 export type StorageMode = 'repo' | 'bucket';
 /** The `minimalgallery.publish` setting in package.json. */
-export type PublishMethod = 'git' | 'deploy' | 'build';
+export type PublishMethod = 'deploy' | 'build';
 export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
 
 export interface BucketAnswers {
@@ -88,23 +89,14 @@ export function bucketName(project: string): string {
   return `${project.slice(0, 57).replace(/-+$/, '')}-media`;
 }
 
-/** The publishing method each host uses. Cloudflare asks; the others have one. */
-export const HOST_PUBLISH: Record<Host, PublishMethod> = {
-  cloudflare: 'deploy',
-  github: 'git',
-  netlify: 'git',
-  local: 'build',
-};
-
 export function r2Endpoint(accountId: string): string {
   return `https://${accountId || ACCOUNT_ID_PLACEHOLDER}.r2.cloudflarestorage.com`;
 }
 
 /**
  * The package managers whose version package.json pins (`packageManager`:
- * `pnpm@10.20.0`, `yarn@4.5.0`), so GitHub’s pnpm/action-setup, Netlify,
- * Cloudflare and Corepack install with the same one as this computer. npm
- * and Bun need none.
+ * `pnpm@10.20.0`, `yarn@4.5.0`), so Corepack installs the same one on every
+ * computer. npm and Bun need none.
  */
 export const PINNED_MANAGERS: readonly PackageManager[] = ['pnpm', 'yarn'];
 
@@ -201,9 +193,6 @@ export function galleryConfig(answers: Answers): string {
   if (answers.author) lines.push(...prop(2, 'author', answers.author));
   lines.push(
     '  // The public address, for canonical links, the feeds and share images.',
-    ...(answers.host === 'github'
-      ? ['  // On GitHub Pages the workflow passes it to the build.']
-      : []),
     "  // site: 'https://photos.example.com',",
     ...storageLines(answers),
     '});',
@@ -212,22 +201,8 @@ export function galleryConfig(answers: Answers): string {
   return lines.join('\n');
 }
 
-export function astroConfig(answers: Answers): string {
-  const site =
-    answers.host === 'github'
-      ? [
-          '  // GitHub Pages: the workflow (.github/workflows/deploy.yml) passes',
-          '  // site and base to astro build from the repository’s Pages settings.',
-          '  // A project site (https://<user>.github.io/<repo>/), a user site and a',
-          '  // custom domain then build without editing this file, and a renamed',
-          '  // repository needs no change; builds on this computer stay at the',
-          '  // root. Set them here only to build for Pages somewhere else: written',
-          '  // here they have to follow every rename, and the workflow’s values',
-          '  // win over them.',
-          "  // site: 'https://<user>.github.io',",
-          "  // base: '/<repo>',",
-        ]
-      : ["  // site: 'https://photos.example.com',"];
+export function astroConfig(): string {
+  const site = ["  // site: 'https://photos.example.com',"];
   return [
     '// @ts-check',
     "import { defineConfig } from 'astro/config';",
@@ -277,7 +252,7 @@ export function envExample(answers: Answers): string {
     lines.push(
       '',
       '# Only for running wrangler deploy from another CI service. On your computer,',
-      '# npx wrangler login is enough, and Cloudflare’s own builds need neither.',
+      '# npx wrangler login is enough.',
       '# CLOUDFLARE_ACCOUNT_ID=',
       '# CLOUDFLARE_API_TOKEN='
     );
@@ -301,19 +276,11 @@ export function wranglerJsonc(
   date: string
 ): string {
   const pm = answers.packageManager;
-  const comment =
-    answers.publish === 'git'
-      ? [
-          '// Cloudflare Workers (static assets) for this gallery. Cloudflare builds it',
-          '// from the connected repository on every push (build command',
-          `// ${runCommand(pm, 'build')}, deploy command npx wrangler deploy), and`,
-          '// wrangler deploy uploads ./dist under this name.',
-        ]
-      : [
-          `// Cloudflare Workers (static assets) for this gallery. ${runCommand(pm, 'publish')}`,
-          '// processes new photos, runs astro build, then wrangler deploy, which uploads',
-          '// ./dist under this name.',
-        ];
+  const comment = [
+    `// Cloudflare Workers (static assets) for this gallery. ${runCommand(pm, 'publish')}`,
+    '// processes new photos, runs astro build, then wrangler deploy, which uploads',
+    '// ./dist under this name.',
+  ];
   if (answers.storage === 'bucket')
     comment.push(
       '// The photos are not in ./dist: the R2 bucket’s custom domain serves them,',
@@ -360,90 +327,6 @@ const RUN: Record<PackageManager, string> = {
 
 export const runCommand = (pm: PackageManager, script: string) =>
   `${RUN[pm]} ${script}`;
-
-export function netlifyToml(pm: PackageManager): string {
-  return `# Netlify builds the site from the committed manifests and resized copies.
-# Photos are processed on your computer, never here.
-[build]
-  command = "${runCommand(pm, 'build')}"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "24"
-
-[[headers]]
-  for = "/_mg/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Astro’s build assets carry a content hash in their names, so they never change.
-[[headers]]
-  for = "/_astro/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-`;
-}
-
-/** `npm run build --`: a script command that takes more arguments after it. */
-const BUILD_WITH_ARGS: Record<PackageManager, string> = {
-  npm: 'npm run build --',
-  pnpm: 'pnpm run build',
-  yarn: 'yarn run build',
-  bun: 'bun run build',
-};
-
-export function githubPagesWorkflow(pm: PackageManager): string {
-  return `# Builds the site from the committed manifests and resized copies, and
-# publishes it to GitHub Pages. In the repository settings, under Pages, set
-# the source to GitHub Actions.
-#
-# configure-pages reads the address GitHub serves the site at, which the
-# build gets as --site and --base, so a project site
-# (https://<user>.github.io/<repo>/), a user site and a custom domain all
-# work without editing astro.config.mjs. withastro/action installs with the
-# package manager of the committed lockfile, at the version package.json’s
-# packageManager names, on Node 24, and keeps Astro’s build cache between
-# runs.
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    # The scaffold creates the repository on main; master is for one made
-    # with a plain git init.
-    branches: [main, master]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - id: pages
-        uses: actions/configure-pages@v6
-      - uses: withastro/action@v6
-        with:
-          build-cmd: ${BUILD_WITH_ARGS[pm]} --site "\${{ steps.pages.outputs.origin }}" --base "\${{ steps.pages.outputs.base_path || '/' }}"
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: \${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
-`;
-}
 
 export function launcher(pm: PackageManager): string {
   return `#!/bin/sh
