@@ -38,7 +38,7 @@ Owner workflow: Lightroom export into folders, a browser admin or CLI for ingest
 
 ## Brand Commitments
 
-- Name: minimal gallery (two words in copy; the package and domain stay minimalgallery). Domain minimalgallery.net is itself a demo gallery.
+- Name: minimal gallery (two words in copy; the package and domain stay minimalgallery). Domain minimalgallery.net is Yann’s own photo gallery, built with the tool; it is never called a demo.
 - Theme CSS is built on mCSS (Yann’s framework).
 - The photo is the page; browsing is a layer over it; metadata is navigation. (From the plan.)
 

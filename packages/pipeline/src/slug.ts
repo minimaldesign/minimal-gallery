@@ -4,7 +4,7 @@
  *
  * Difference from v0.8: the legacy regex replaced each character on its own
  * and kept `+`. Here every run of non-alphanumeric characters becomes a
- * single `_`, as specified for v2. The two agree for every file in the demo
+ * single `_`, as specified for v2. The two agree for every file in examples/demo
  * gallery.
  */
 export function slugify(input: string): string {

@@ -1,11 +1,11 @@
 ---
 /**
- * The hero: a wall of square thumbnails from the demo gallery, as the
+ * The hero: a wall of square thumbnails from minimalgallery.net, as the
  * gallery’s own grid shows them. The photos are read from
- * examples/demo/photos, so the docs follow the demo; one that is no longer
+ * examples/demo/photos, so the docs follow the gallery; one that is no longer
  * there is left out. Each links to its page on minimalgallery.net. The wall
  * is decorative for assistive technology and the keyboard (the intro’s
- * “See the demo” link is the way in), so its links are out of the tab order.
+ * “See it in action” link is the way in), so its links are out of the tab order.
  */
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
@@ -22,7 +22,7 @@ const files = import.meta.glob<ImageMetadata>(
   { import: 'default' }
 );
 
-// The demo’s URL for a photo: the album folder, then the file name in
+// The gallery’s URL for a photo: the album folder, then the file name in
 // lowercase with every run of other characters replaced by “_” (the
 // pipeline’s slug rule).
 const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '_');

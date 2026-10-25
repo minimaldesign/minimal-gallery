@@ -1,6 +1,6 @@
 // Cloudflare config for docs.minimalgallery.net: a Worker that serves the
-// built site as static assets. Unlike the demo, which publishes the way a
-// user's gallery does, Workers Builds builds it from master. The custom
+// built site as static assets. Unlike minimalgallery.net, which publishes the
+// way a user's gallery does, Workers Builds builds it from master. The custom
 // domain below makes the first deploy create its DNS record and certificate.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",

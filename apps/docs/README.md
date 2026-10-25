@@ -30,7 +30,7 @@ The CSS is mCSS, as in the gallery. Every value comes from the gallery’s theme
 
 Cloudflare Workers Builds builds this site from `master` and deploys it as the Worker `minimalgallery-docs`, served at docs.minimalgallery.net. Every push to `master` publishes it. Do not deploy the docs from a computer.
 
-The demo is different on purpose: it publishes from a computer with `pnpm demo:publish`, the way a user’s gallery does, and Workers Builds is disconnected from its Worker (`minimalgallery-demo`).
+minimalgallery.net is different on purpose: it publishes from a computer with `pnpm demo:publish`, the way a user’s gallery does, and Workers Builds is disconnected from its Worker (`minimalgallery-demo`).
 
 ### How the Worker was set up
 
@@ -48,7 +48,7 @@ Set up on October 25, 2026, in the Cloudflare account that holds the minimalgall
    | Enable Preview builds | On by default: every branch builds a preview version and adds a check to its PR. |
    | Protect with Cloudflare Access | Off. |
    | Advanced settings, Path | `apps/docs`: the root directory, where `wrangler.jsonc` is. The build command’s `cd ../..` assumes it. |
-   | API token | The existing **Workers Builds** token, made on October 23, 2026 for the demo’s builds. |
+   | API token | The existing **Workers Builds** token, made on October 23, 2026 for the gallery’s builds. |
 
 3. **Deploy.** The form has no production branch field: Cloudflare uses the repository’s default branch, `master`. It shows under **Settings**, **Build**, **Branch control**.
 

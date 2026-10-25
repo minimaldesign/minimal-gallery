@@ -1,6 +1,6 @@
 /* MOSAIC
 
-   The demo gallery’s photos as its grid shows them: square crops, flat,
+   The gallery’s photos as its grid shows them: square crops, flat,
    3px apart (the gallery’s --mg-grid-gap). It fills whatever box it is
    given and crops at the edges; the block that places it decides the box
    and any fade. */

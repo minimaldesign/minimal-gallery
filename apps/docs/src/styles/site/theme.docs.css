@@ -60,8 +60,10 @@
     --bt-primary-background-color-hover: var(--mg-gray-700);
     --bt-primary-border-color: var(--mg-accent);
     --bt-primary-border-color-hover: var(--mg-gray-700);
-    --bt-outline-border-color: var(--mg-hairline);
-    --bt-outline-border-color-hover: var(--mg-white-a14);
+    /* A hairline is too faint for a button's edge on the dark ground: next
+       to a solid primary, an outline button read as bare text. */
+    --bt-outline-border-color: var(--mg-gray-400);
+    --bt-outline-border-color-hover: var(--mg-ink-faint);
     --bt-outline-color-hover: var(--mg-ink);
     --bt-outline-background-color-hover: var(--mg-control-hover);
   }

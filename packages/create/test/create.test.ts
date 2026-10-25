@@ -585,15 +585,15 @@ describe('create-minimalgallery', () => {
     await create(['routes', '--yes'], fake.run);
     const pages = join(tmp, 'routes', 'src', 'pages');
     const written = await readdir(pages);
-    // Every route of the demo, but its v0.8 redirect map.
-    const demo = (
+    // Every route of minimalgallery.net, but its v0.8 redirect map.
+    const gallery = (
       await readdir(
         fileURLToPath(
           new URL('../../../examples/demo/src/pages', import.meta.url)
         )
       )
     ).filter((f) => f !== 'legacy-ids.json.ts');
-    expect(written.sort()).toEqual(demo.sort());
+    expect(written.sort()).toEqual(gallery.sort());
     for (const f of ['feed.xml.ts', 'feed.json.ts', 'sitemap.xml.ts']) {
       const route = await read(pages, f);
       expect(route).toContain('siteOf(site)');

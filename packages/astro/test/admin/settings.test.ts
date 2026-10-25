@@ -17,7 +17,7 @@ afterEach(async () => {
 });
 
 describe('settings', () => {
-  it('edits the demo config in place, keeping its comments', async () => {
+  it('edits the gallery config in place, keeping its comments', async () => {
     const dir = await tempGallery();
     const file = join(dir, 'minimalgallery.config.ts');
     await copyFile(

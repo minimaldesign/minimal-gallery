@@ -57,7 +57,7 @@ export interface FacetDef {
 /**
  * Palette order follows the prototype: years, months, places, then the
  * gear and exposure values, then keywords. Days across years have pages
- * (linked from the info pane's date) but no palette group: the demo has 88.
+ * (linked from the info pane's date) but no palette group: minimalgallery.net has 88.
  */
 export const FACETS: FacetDef[] = [
   {

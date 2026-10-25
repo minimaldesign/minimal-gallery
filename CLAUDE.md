@@ -18,7 +18,7 @@ Static photo gallery toolkit: an Astro 7.4 integration plus a local Node pipelin
 
 ## Publishing
 
-- The demo publishes the way a user’s gallery does, so the real user path gets used: `pnpm demo:publish` builds the packages, then runs `minimalgallery publish` in `examples/demo`, which processes new photos, builds the site and uploads `dist/` with `wrangler deploy` from Yann’s Mac. Pushing to `master` does not deploy anything, so the live site can be behind `master` until the next publish. Yann runs the publish; never run it, or `wrangler deploy`, without his go-ahead.
+- minimalgallery.net is Yann’s photo gallery, not a demo: never call it “the demo” in copy or docs (the folder `examples/demo`, the Worker `minimalgallery-demo` and the `demo:*` scripts keep their names). It publishes the way a user’s gallery does, so the real user path gets used: `pnpm demo:publish` builds the packages, then runs `minimalgallery publish` in `examples/demo`, which processes new photos, builds the site and uploads `dist/` with `wrangler deploy` from Yann’s Mac. Pushing to `master` does not deploy anything, so the live site can be behind `master` until the next publish. Yann runs the publish; never run it, or `wrangler deploy`, without his go-ahead.
 - The docs site is not a gallery and builds from git: Cloudflare Workers Builds builds `apps/docs` on every push to `master` and deploys it as the Worker `minimalgallery-docs`, served at docs.minimalgallery.net (see `apps/docs/README.md`). Do not deploy the docs from a machine.
 - Commit and push only when Yann asks. Branch for anything bigger than a small fix.
 
@@ -26,7 +26,7 @@ Static photo gallery toolkit: an Astro 7.4 integration plus a local Node pipelin
 
 - Node 24.11 via nodenv (`.node-version`), pnpm 10 (after a global install run `nodenv rehash`), ExifTool and cjxl installed.
 - Yann keeps the prototype served on port 4410 and the app’s preview may hold 4322; use 4421 and up for your own servers.
-- The demo is in site mode (`storage: { mode: 'site' }`, the default): its manifests (`examples/demo/.minimalgallery/manifest`) are committed, so each photo keeps its `added` date, and the resized photos (`public/_mg`) are ignored: the pipeline encodes them on the computer that builds, `demo:publish` on Yann’s Mac and the CI job on GitHub. After changing photos or the pipeline, run `node packages/pipeline/dist/cli.js examples/demo` after `pnpm build` and commit the manifests. Moving the demo to bucket mode later is the checklist in PR #8.
+- The gallery is in site mode (`storage: { mode: 'site' }`, the default): its manifests (`examples/demo/.minimalgallery/manifest`) are committed, so each photo keeps its `added` date, and the resized photos (`public/_mg`) are ignored: the pipeline encodes them on the computer that builds, `demo:publish` on Yann’s Mac and the CI job on GitHub. After changing photos or the pipeline, run `node packages/pipeline/dist/cli.js examples/demo` after `pnpm build` and commit the manifests. Moving the demo to bucket mode later is the checklist in PR #8.
 - The admin runs only under `astro dev` (`pnpm --filter minimalgallery-demo run admin`, at `/_mg/admin/`); its local HTTP API is described in `packages/astro/src/admin/README.md`.
 
 ## Open work

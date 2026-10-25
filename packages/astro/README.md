@@ -66,7 +66,7 @@ The integration registers Geist and Geist Mono with Astro’s Fonts API (self-ho
 
 ## Routes
 
-The theme is a set of components; the site owns its routes, so each can be replaced. The demo in `examples/demo/src/pages` is the reference, and every file is a few lines. `create-minimalgallery` writes the same routes, without the v0.8 ones (`legacy-ids.json.ts`, `<LegacyRedirect>`), and with feed and sitemap routes that write no file while the site has no address:
+The theme is a set of components; the site owns its routes, so each can be replaced. minimalgallery.net’s routes, in `examples/demo/src/pages`, are the reference, and every file is a few lines. `create-minimalgallery` writes the same routes, without the v0.8 ones (`legacy-ids.json.ts`, `<LegacyRedirect>`), and with feed and sitemap routes that write no file while the site has no address:
 
 | File | URLs | Renders |
 | --- | --- | --- |

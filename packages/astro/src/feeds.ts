@@ -1,5 +1,5 @@
 /**
- * Feeds and the sitemap, for a site's routes to serve (the demo's are in
+ * Feeds and the sitemap, for a site's routes to serve (minimalgallery.net's are in
  * `examples/demo/src/pages`): RSS 2.0 at `/feed.xml` and JSON Feed 1.1 at
  * `/feed.json` with the newest photos (by the date they were added, once
  * the manifests carry it), each with its JPEG as the image and

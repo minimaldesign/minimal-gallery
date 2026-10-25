@@ -320,7 +320,7 @@
 }
 
 /* ZOOMED: the photo at 1:1 of its largest derivative, panned by drag
-   (mg.js) or by scrolling. A derivative under 1600px (the demo's 700px
+   (mg.js) or by scrolling. A derivative under 1600px (minimalgallery.net's 700px
    files) is doubled, so zoom still magnifies. */
 .stage:has(.stage_zoom:checked) {
   .stage_scroller {
