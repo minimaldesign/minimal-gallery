@@ -1,122 +1,69 @@
 ---
-title: Hosting
-description: Which host to pick for a minimal gallery, the free limits that matter for photos, repo mode and bucket mode, and the two ways to publish.
+title: Putting it online
+description: The three ways to publish a minimal gallery, chosen by the size of your photo library and where you want it to live.
 ---
 
-A minimal gallery is a static site: your computer processes the photos, and the host only builds the HTML and serves files. This page compares the three hosts the scaffold sets up, explains where the resized photos live, and describes the two ways to publish.
+Your computer resizes the photos and builds the site. Publishing puts the result online. There are three ways to do it, and the choice mostly depends on how many photos you have.
 
-## Which host
+## Small library: Cloudflare
 
-- **Cloudflare** is recommended. You publish straight from your computer, with no git repository and no GitHub account; static files are served with no bandwidth charge; and a deploy can hold 20,000 files, roughly 3,000 full-size photos. Bucket mode on Cloudflare R2 is planned for galleries that outgrow that. See [Cloudflare](/hosting/cloudflare/).
-- **GitHub Pages** is fine for small galleries. The published site is limited to 1 GB, the repository must be public on a free account, and there is no bucket mode. See [GitHub Pages](/hosting/github-pages/).
-- **Netlify** works, but is not recommended for large galleries. Its free plan is paid in credits, and a gallery spends them on bandwidth and on every publish; when they run out, the site is paused until the next month. See [Netlify](/hosting/netlify/).
+- Holds [about 3,000 photos](#how-many-photos-fit).
+- Free, with no charge for visitors: Cloudflare serves the gallery’s files at no cost however many people look at it.
+- Needs one free Cloudflare account. `npm run publish` uploads the gallery from your computer, and later publishes send only what changed.
+- The gallery gets an address like `my-gallery.<your name>.workers.dev`, and you can add your own domain.
 
-Vercel is not supported: its free Hobby plan is for non-commercial, personal use only.
+This is the default. See [Cloudflare](/hosting/cloudflare/).
 
-Pick the host when `npm create minimalgallery@latest` asks “Where will it live?”. The scaffold writes that host’s config file and sets how `npm run publish` publishes. “Just build it locally” writes no host config: `npm run publish` builds the site into `dist/`, and you upload that folder to any static host.
+## Large library: Cloudflare with photo storage
 
-## Free limits that matter for a photo gallery
+- For more than [about 3,000 photos](#how-many-photos-fit).
+- The resized photos go to a separate photo storage space on Cloudflare (R2), served from an address of yours such as `media.example.com`. The site itself holds only the pages, so it stays far below Cloudflare’s limits.
+- Free for the first 10 GB of photos, [about 6,500 photos](#how-many-photos-fit). Above that, Cloudflare charges $0.015 per GB a month, about 1.5 cents per 650 photos. Visitors cost nothing, as with a small library.
+- Needs your own domain, with its DNS on Cloudflare, and a payment method on your Cloudflare account: Cloudflare asks for one before it turns on R2, even within the free 10 GB.
 
-|  | Cloudflare | GitHub Pages | Netlify |
-| --- | --- | --- | --- |
-| Files per site | 20,000 per deploy | No published limit | No published limit |
-| Site size | No total limit | 1 GB | No published limit |
-| Bandwidth | Unlimited for static files | 100 GB a month, a soft limit | 20 credits per GB, out of 300 credits a month |
-| Builds | 3,000 build minutes a month, 20 minutes per build | Free on public repositories; a deploy times out after 10 minutes | Build minutes are not counted; each production deploy costs 15 credits |
-| File size | 25 MiB per file | 100 MiB per file in the repository | No published limit |
-| Cache headers | Yes, with `_headers` | No | Yes, in `netlify.toml` |
-| Bucket mode | Planned (R2) | No | No |
+See [Photo storage](/hosting/photo-storage/).
 
-Each photo adds one HTML page and, in repo mode, about five resized files of about 1.5 MB in total for a 24-megapixel original. Each album and each facet value (a year, a camera, a keyword) adds an HTML page and a JSON file. `npm run doctor` counts all of them for your gallery.
+## Your own host
 
-## Repo mode and bucket mode
+- Works with any web host: one you already pay for, your own server, a friend’s.
+- `npm run publish` builds the whole site into the `dist` folder, and you upload that folder with the tool your host provides.
+- The domain, the upload and the server settings are up to you and your host. minimal gallery sets nothing up there.
 
-In **repo mode** (the default, and for now the only mode), the pipeline writes the resized copies to `public/_mg/` and one manifest per photo to `.minimalgallery/manifest/`, inside the gallery folder. The resized copies are published with the pages: uploaded with the site when you publish from your computer, or committed with the manifests when your host builds from git (the originals are not; see [Originals and git](#originals-and-git)). Nothing else is needed: no storage account, no keys. The name comes from the config value, `storage: { mode: 'repo' }`; a git repository is not required.
+See [Your own host](/hosting/your-own-host/).
 
-In **bucket mode**, the resized copies go to an S3-compatible bucket such as Cloudflare R2, served from a subdomain like `media.example.com`. The deploy then holds only the pages, so a gallery can grow far past the file and size limits above. It is an option for large galleries, not the default: it needs a bucket, a domain and an access key, and Cloudflare asks for a payment method before it enables R2, even on the free tier.
+`npm create minimalgallery@latest` asks “Where will it live?” (Cloudflare or your own host) and, on Cloudflare, “How big is your photo library?”. The answers set how `npm run publish` publishes, in `package.json`, and where the resized photos go, in `minimalgallery.config.ts`. Both can change later.
 
-:::caution[Not built yet]
+## How many photos fit
 
-Bucket mode is not available yet: the s3 storage adapter rejects every write. Every gallery runs in repo mode for now.
+The photo counts on these pages are estimates for full-size photos from a recent camera, about 24 megapixels. How many of your photos fit depends on how large they are:
 
-:::
+- **On Cloudflare, the limit is a number of files.** A site can hold 20,000 files. Each photo adds its own page and up to five resized copies, one for each size the gallery shows. A photo only gets the copies that are no larger than itself, so a full-size photo uses six files and a photo exported at 1,600 pixels uses four. With the album and filter pages, that is about 3,000 full-size photos, or about 4,500 photos exported at 1,600 pixels.
+- **In photo storage, the limit is a size.** The free tier holds 10 GB. The five copies of a 24-megapixel photo weigh about 1.5 MB together, so about 6,500 full-size photos fit. Smaller photos make smaller copies, and more of them fit.
 
-`npm run doctor` tells you when repo mode is getting tight. It projects the number of files in the deploy and the size of the resized copies, and prints one of three verdicts:
+`npm run doctor` counts your own gallery: the files the site holds, how many more photos fit at your current average, and one of three verdicts:
 
 - “Repo mode is fine.”
-- Plan the move to bucket mode: past 500 photos or 500 MB of resized copies.
-- Move to bucket mode: the deploy is over 20,000 files, or the resized copies are over 1 GB.
+- “Repo mode works today, but the site is getting close to Cloudflare’s 20,000-file limit. Plan to add photo storage (bucket mode) before then.” This comes past 16,000 files.
+- “Add photo storage (bucket mode): the site is over Cloudflare’s 20,000-file limit.”
 
-Until bucket mode ships, the way to make each photo smaller is the derivative ladder: fewer or smaller variants per photo. See [Configuration](/reference/configuration/). Changing the ladder re-encodes every photo.
+For a gallery built for your own host, doctor skips Cloudflare’s limit.
 
-## Why processing never runs on the host
+## Words on these pages
 
-The pipeline reads every original, converts its colors and encodes five resized copies, mostly AVIF. That takes a few seconds per photo on a recent computer. On a host’s build machine it would run again on every build, need every original on that machine, and a gallery of a few thousand photos would run past the free build time limits.
+- **Repo mode** is the default: the resized photos are published with the site, from the gallery’s `public/_mg` folder. The name comes from the config, `storage: { mode: 'repo' }`. It has nothing to do with git.
+- **Photo storage** keeps the resized photos in a storage space of their own, outside the site. Storage services call such a space a bucket, so the command line and the config call it **bucket mode**: `storage: { mode: 's3' }` in `minimalgallery.config.ts`, after S3, the protocol these services share. Cloudflare’s photo storage service is called R2.
+- **`dist`** is the folder each build writes inside the gallery folder. It holds the whole site, and it is what gets uploaded.
 
-So the work happens once, on your computer, and only for new or changed photos. The host’s build runs `astro build`, which reads the committed manifests and writes the pages. It never opens an original and never encodes an image.
+## Why the photos are processed on your computer
 
-## Two ways to publish
+The pipeline reads every original, converts its colors and encodes up to five resized copies, mostly AVIF. That takes a few seconds per photo on a recent computer. It happens once, when a photo is new or changed, and the result is kept in the gallery folder. Building the site afterwards only writes the pages, and never opens an original.
 
-| Method | Command | What it does | Hosts |
-| --- | --- | --- | --- |
-| Direct upload | `minimalgallery publish --deploy` | Processes new photos, builds the site on your computer and uploads `dist/` with `wrangler deploy`. No git repository needed. | Cloudflare (the default) |
-| Git | `minimalgallery publish --git` | Processes new photos, commits the gallery’s changes and pushes. The host builds and deploys the site from the repository. | GitHub Pages, Netlify, and Cloudflare if you choose it |
-
-`npm run publish` runs `minimalgallery publish`, and the `minimalgallery.publish` field in `package.json` picks the method: `"git"`, `"deploy"` or `"build"` (build into `dist/` and stop). The scaffold sets `"deploy"` for Cloudflare, `"git"` for GitHub Pages and Netlify, and `"build"` for a local build. Both methods show what they are about to do and ask before they push or upload; `--yes` skips the question. See [Command line](/reference/cli/).
-
-Direct upload is the default on Cloudflare because it needs nothing beyond a Cloudflare account. Only new or changed files are sent, so a publish after the first is quick, and Cloudflare keeps every version you deploy. The gallery folder on your computer is then the only copy of your photos, sidecars and album order, so keep it in your backups.
-
-Choose git when you want more than that: every published version kept as a commit, a copy of the gallery on GitHub or GitLab, or publishing from more than one computer. GitHub Pages and Netlify always publish from git. [Cloudflare](/hosting/cloudflare/#publish-from-git-optional) explains how to switch a gallery to git.
-
-## Originals and git
-
-When the gallery publishes with git, the original photos stay on your computer, out of the repository. The host’s build never opens them, and a repository of originals soon outgrows what git hosts accept: GitHub recommends staying under 1 GB and rejects files over 100 MiB. On GitHub Pages’ free plan the repository is also public, so anyone could download your full-resolution files. The repository holds what the site is built from: the manifests, the resized copies in repo mode, and, from `photos/`, only the sidecars (`.md`, `.json`, `.xmp`) and each album’s `_album.md`.
-
-Two things keep the originals out. The scaffold’s `.gitignore` ignores every file under `photos/` except the sidecars:
-
-```gitignore title=".gitignore"
-photos/**
-!photos/**/
-!photos/**/*.md
-!photos/**/*.json
-!photos/**/*.xmp
-!photos/**/*.XMP
-```
-
-And `minimalgallery publish --git` commits the same files from `photos/`, whatever `.gitignore` says. The repository is then not a backup of your photos: keep the gallery folder in your backups, as with direct upload.
-
-`originals: 'repo'` in `minimalgallery.config.ts` is a different setting: it publishes a copy of each original on the site, in `public/_mg/`, and that copy is committed with the resized ones.
-
-### Publishing from another computer
-
-A clone of the repository has every manifest but none of the originals. It builds and publishes the same site: a photo whose original is not on that computer stays in the gallery as its manifest describes it, and pruning (`minimalgallery sync --prune`, or the admin after a deletion) never removes it there. Only a photo deleted on a computer that had it is pruned. Edit or delete a photo on the computer that has its original; edits to its sidecar on another computer wait until the pipeline runs where the original is. `npm run doctor` counts the photos whose originals are not on the computer it runs on.
-
-### Committing the originals anyway
-
-To keep the originals in the repository too, for example in a private repository you use as a backup, delete the `photos` lines from `.gitignore` and set `commitOriginals` in `package.json`:
-
-```json title="package.json"
-"minimalgallery": { "publish": "git", "commitOriginals": true }
-```
-
-`npm run doctor` then counts the originals in the repository size.
-
-### A gallery that already commits its originals
-
-A gallery created with an earlier version may have its originals in git already. `publish --git` keeps committing edits and deletions of the originals git tracks, adds no new ones, and says so each time. To stop tracking them, add the lines above to `.gitignore`, then run:
-
-```sh
-git rm -r --cached --quiet photos && git add photos && git commit -m "Stop tracking original photos"
-```
-
-The files stay on your computer, and the next publish pushes the commit. Earlier commits still contain the originals: removing them means rewriting the repository’s history (with `git filter-repo`, for example), which minimal gallery does not do. To keep committing originals instead, set `commitOriginals`.
+That is also why the gallery folder matters: it holds your originals, your captions and the record of every photo. Keep it in your backups. See [Backups](/backups/).
 
 ## Custom domains
 
-Each host serves the gallery on its own address first (`*.workers.dev`, `*.github.io`, `*.netlify.app`). Whichever host you use, set `site` in `astro.config.mjs` to the final address so canonical links and share images point to it.
+Whichever way you publish, set `site` in `minimalgallery.config.ts` to the gallery’s final address, so the feeds, the sitemap and link previews point to it.
 
-**Cloudflare:** the domain’s DNS must be on Cloudflare, in your account. Add the domain to the Worker as a custom domain, in the dashboard or in `wrangler.jsonc`, and Cloudflare creates the DNS record and the certificate. See [Custom domain](/hosting/cloudflare/#custom-domain) and Cloudflare’s [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) docs.
-
-**GitHub Pages:** enter the domain in the repository’s Pages settings, then point a CNAME record (for a subdomain) or four A records (for an apex domain) at GitHub. See [Custom domain](/hosting/github-pages/#custom-domain) and GitHub’s [Managing a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) docs.
-
-**Netlify:** add the domain under **Domain management**, then use Netlify DNS or point a record at the project’s `netlify.app` address from your DNS provider. See [Custom domain](/hosting/netlify/#custom-domain) and Netlify’s [domain docs](https://docs.netlify.com/manage/domains/get-started-with-domains/).
+- **Cloudflare:** the domain’s DNS must be on Cloudflare. See [Custom domain](/hosting/cloudflare/#custom-domain).
+- **Photo storage** needs a domain on Cloudflare too, for the photos’ address. See [Photo storage](/hosting/photo-storage/).
+- **Your own host:** follow your host’s instructions.

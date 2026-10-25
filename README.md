@@ -9,7 +9,7 @@ A static photo gallery toolkit for photographers: drop JPGs into folders, get a 
 | `@minimalgallery/pipeline` | `packages/pipeline` | Reads `photos/`, writes resized copies and one JSON manifest per photo. Pure Node. |
 | `@minimalgallery/astro` | `packages/astro` | Astro integration, content loader and the default theme. |
 | `minimalgallery` | `packages/cli` | The command line: `add`, `sync`, `doctor`, `publish`, `watch`, `admin`, `upgrade`. |
-| `create-minimalgallery` | `packages/create` | `npm create minimalgallery@latest`: scaffolds a gallery for Cloudflare Workers (static assets), GitHub Pages, Netlify or a local build. |
+| `create-minimalgallery` | `packages/create` | `npm create minimalgallery@latest`: scaffolds a gallery that publishes to Cloudflare Workers (static assets), with photo storage on R2 for a large library, or builds a folder for your own host. |
 
 Also here: `examples/demo/` (the demo gallery at [minimalgallery.net](https://minimalgallery.net), whose photos are the test fixture), `apps/docs/` (the product site and the docs) and `design/` (the brief and the clickable prototype).
 

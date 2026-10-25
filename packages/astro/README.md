@@ -79,7 +79,7 @@ The theme is a set of components; the site owns its routes, so each can be repla
 | `feed.json.ts` | `/feed.json` | JSON Feed 1.1, the same photos (`jsonFeed`) |
 | `sitemap.xml.ts` | `/sitemap.xml` | Every context page, every photo page with its image (`sitemap`) |
 | `robots.txt.ts` | `/robots.txt` | Crawling allowed, and the sitemap’s address (`robotsTxt`) |
-| `404.astro` | `/404.html` | `<NotFoundPage />`, which Cloudflare (`not_found_handling: "404-page"`), GitHub Pages and Netlify serve for an unknown address |
+| `404.astro` | `/404.html` | `<NotFoundPage />`, which Cloudflare (`not_found_handling: "404-page"`) and most web hosts serve for an unknown address |
 | `legacy-ids.json.ts` | `/legacy-ids.json` | v0.8 photo id to page URL |
 
 Facet slugs and labels come from each manifest’s `facets` (the pipeline’s `photoFacets()`). An album whose first folder segment is a facet route (`year`, `camera`, …), `grid`, `legacy-ids`, `feed`, `random`, `_astro` or `_mg` fails the build with a message naming it (`RESERVED_SEGMENTS` in `@minimalgallery/astro/facets`).

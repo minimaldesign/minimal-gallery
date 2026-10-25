@@ -8,8 +8,7 @@ This page takes you from nothing to a gallery online: create the project, add ph
 ## What you need
 
 - **Node.js 22.18 or later.** Download the LTS installer from [nodejs.org](https://nodejs.org) and run it. To check, open Terminal and type `node --version`: it should print `v22.18.0` or a higher number.
-- **A free Cloudflare account**, to host the gallery. You can sign up at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up) now or when you first publish.
-- **A GitHub account, if you want one.** You need it to host on GitHub Pages, or to keep the gallery in a git repository that your host builds from. See [Choosing a host](/hosting/). Publishing through git also needs git itself; on a Mac, typing `git` in Terminal offers to install it.
+- **A free Cloudflare account**, to put the gallery online. You can sign up at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up) now or when you first publish. If you would rather use a web host you already have, you need none; see [Putting it online](/hosting/).
 - **Photos as JPEG files.** PNG, WebP, AVIF and TIFF work too. Export HEIC and RAW files as JPEG first.
 
 Terminal is in Applications › Utilities. You type a command, press Return, and wait for the prompt to come back before typing the next one.
@@ -29,8 +28,8 @@ It asks a few questions. Press Return to accept the answer it suggests.
 - **Where should the gallery go?** The folder’s name, `my-gallery` by default. It must be new or empty. On Cloudflare the folder name also becomes the site’s name, so `my-gallery` is published at an address like `my-gallery.<your-subdomain>.workers.dev`.
 - **Gallery name.** The title at the start of the breadcrumb on every page and in the browser tab. `Photos` by default; you can change it later.
 - **Your name.** Shown as the gallery’s author. Leave it empty to skip it.
-- **Where will it live?** Cloudflare (recommended, free), GitHub Pages (free, up to 1 GB), Netlify (works, not recommended for large galleries) or “Just build it locally”, which builds a folder you can upload to any static host. This decides what `npm run publish` does later.
-- **Roughly how many photos?** Under 500 or more than 500. Every gallery starts in repo mode, where the resized photos are stored and published with the site. Bucket mode, which keeps them in a Cloudflare R2 bucket so large galleries stay under the hosts’ limits, is announced but not available yet. `npm run doctor` tells you how close you are to those limits.
+- **Where will it live?** Cloudflare (free, published from your computer with one command) or “My own host”, which builds a folder you upload to any web host yourself. This decides what `npm run publish` does later. See [Putting it online](/hosting/).
+- **How big is your photo library?** Cloudflare only. “Up to about 3,000 photos” keeps the resized photos with the site, which is free. “More than that” adds photo storage on Cloudflare, which needs your own domain and a payment method on your Cloudflare account; see [Photo storage](/hosting/photo-storage/). The count depends on the size of your photos; see [How many photos fit](/hosting/#how-many-photos-fit).
 - **Package manager.** Keep `npm` unless you know you want another one.
 
 It then writes the project and installs its packages, which takes a minute or two. The new folder holds:
@@ -42,9 +41,7 @@ It then writes the project and installs its packages, which takes a minute or tw
 | `package.json` | The commands you run: `npm run admin`, `npm run publish`, `npm run doctor`. |
 | `astro.config.mjs`, `src/` | The site’s pages. You can leave them as they are. |
 | `wrangler.jsonc`, `public/_headers` | Cloudflare only: the site’s name on Cloudflare and its cache rules. |
-| `.github/workflows/deploy.yml` | GitHub Pages only: the build that publishes the site. |
-| `netlify.toml` | Netlify only: the build settings. |
-| `.env.example` | Where secret keys would go. Repo mode needs none. |
+| `.env.example` | Where secret keys would go. Only photo storage needs one. |
 | `Open minimalgallery.command` | macOS only: double-click it to open the gallery next time. |
 
 It ends by printing the next commands to run.
@@ -109,7 +106,7 @@ Titles, captions, keywords, ratings, capture dates and places come from the phot
 | Image Sizing | Resize to Fit: Long Edge, 3200 pixels, or leave it off for full size. The largest copy the site makes is 3200 pixels on the long edge. |
 | Metadata | Include: All Metadata. Leave Remove Location Info unchecked to keep places and GPS positions. |
 
-Save these settings as a preset (Add, at the bottom left of the dialog) and change only the subfolder name for each new album. With the preview or `npx minimalgallery watch` running, each export appears in the gallery a few seconds after Lightroom finishes it. Export size does not affect the repository on GitHub Pages and Netlify: the exports stay on your computer, and only their resized copies are committed.
+Save these settings as a preset (Add, at the bottom left of the dialog) and change only the subfolder name for each new album. With the preview or `npx minimalgallery watch` running, each export appears in the gallery a few seconds after Lightroom finishes it. Export size does not change what is published: the exports stay on your computer, and only their resized copies go online.
 
 The fields map like this:
 
@@ -211,15 +208,13 @@ npx wrangler login
 
 Your browser opens on Cloudflare. Sign in, or create the free account on the same page, allow access, and go back to Terminal. Run `npm run publish` again. It processes any new photos, shows what it is about to do (build the site, then upload it) and asks “Go ahead?”. Choose Yes: it builds the site into `dist/` and uploads it to Cloudflare. On a new Cloudflare account, it first asks to register a `workers.dev` subdomain: answer yes and type a name, which becomes part of your gallery’s address. The last lines show that address.
 
-Every later publish is the same command, without the login, and sends only what changed. No git repository or GitHub account is involved; to publish from git instead, or to use your own domain, see [Cloudflare](/hosting/cloudflare/).
+Every later publish is the same command, without the login, and sends only what changed. To use your own domain, see [Cloudflare](/hosting/cloudflare/). With photo storage, publish uploads the new photos first; see [Photo storage](/hosting/photo-storage/).
 
-### GitHub Pages or Netlify
+### Your own host
 
-`npm run publish` commits what changed in the gallery (manifests, resized copies, the photos’ sidecars, the config file and `custom.css`) and pushes it; your host then builds and publishes the site. The original photos stay on your computer, out of the repository, so keep the gallery folder in your backups; see [Originals and git](/hosting/#originals-and-git). Before the first publish, the gallery folder has to be a git repository connected to the host. [GitHub Pages](/hosting/github-pages/) and [Netlify](/hosting/netlify/) walk through it.
+`npm run publish` builds the site into `dist/`. Upload everything in that folder to your host; [Your own host](/hosting/your-own-host/) explains how, and the settings that help.
 
-### Built locally
-
-`npm run publish` builds the site into `dist/`. Upload that folder to any static host.
+Either way, the gallery folder is the only copy of your originals and captions: keep it in your backups. See [Backups](/backups/).
 
 ## Next time
 

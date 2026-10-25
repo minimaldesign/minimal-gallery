@@ -44,15 +44,9 @@ When no folder matches, the command stops with exit code 1 and says how to creat
 | Code | Meaning |
 | --- | --- |
 | `0` | Success. `doctor` exits 0 whatever it finds, and `watch` exits 0 when you stop it. |
-| `1` | A failure: no gallery found, an unknown command or option, a missing argument, a gallery in bucket mode, a photo that failed to process in `add` or `sync`, or no Cloudflare login for `publish --deploy`. Running `minimalgallery` with no command prints the usage and exits 1. |
+| `1` | A failure: no gallery found, an unknown command or option, a missing argument, a photo that failed to process in `add` or `sync`, an upload to photo storage that failed or had no access key, or no Cloudflare login for `publish --deploy`. Running `minimalgallery` with no command prints the usage and exits 1. |
 | `130` | You declined or canceled `publish`’s confirmation. |
-| any other | The exit code of a program that failed: `git`, `astro`, `wrangler` or the package manager. `admin` exits with the dev server’s code. |
-
-:::caution[Bucket mode]
-
-In bucket mode (`storage: { mode: 's3' }`), `add`, `sync`, `watch`, `admin` and `publish` stop before processing anything, because the s3 adapter is not built yet. See [Storage modes](/reference/configuration/#storage-modes).
-
-:::
+| any other | The exit code of a program that failed: `astro`, `wrangler` or the package manager. `admin` exits with the dev server’s code. |
 
 ### add
 
@@ -83,13 +77,15 @@ The photos of every subfolder go into the one album; the subfolders are not kept
 ### sync
 
 ```sh
-minimalgallery sync [--prune] [--force]
+minimalgallery sync [--prune] [--force] [--no-upload] [--yes]
 ```
 
 | Option | Meaning |
 | --- | --- |
-| `--prune` | Also remove the manifests and derivatives of photos deleted on this computer, then empty folders and interrupted writes. A photo whose original was never on this computer, as in a clone of the repository, is kept; see [Originals and git](/hosting/#originals-and-git). |
+| `--prune` | Also remove the manifests and derivatives of photos deleted on this computer, then empty folders and interrupted writes. A photo whose original was never on this computer is kept. With [photo storage](/hosting/photo-storage/), also list the files in the bucket that no photo uses and delete them after asking. |
 | `--force` | Encode every photo again. |
+| `--no-upload` | With photo storage, keep the new copies on this computer; the next `sync` or `publish` uploads them. |
+| `--yes`, `-y` | Do not ask before deleting files from the bucket. |
 
 `sync` processes every photo in `photos/` that is new or changed:
 
@@ -99,40 +95,46 @@ minimalgallery sync [--prune] [--force]
 
 It prints a summary: albums, photos, encoded, metadata only, unchanged, failed, bytes written and time, and how many photos have no original on this computer when some do. Without `--prune`, it also says how many deleted photos still have derivatives.
 
+With photo storage, `sync` then uploads the new copies to the bucket, using the access key in `.env`. Without the key it keeps them on this computer and exits 1.
+
 `sync` exits 1 when any photo fails, which includes a HEIC or RAW file with no JPEG next to it. Every other photo is still processed.
 
 ### doctor
 
 ```sh
-minimalgallery doctor
+minimalgallery doctor [--bucket]
 ```
+
+| Option | Meaning |
+| --- | --- |
+| `--bucket` | With photo storage, also check the bucket end to end: upload a small test file, find it in a listing, read it back through `publicUrl` with its cache header, then delete it. Each step says what to fix when it fails. |
 
 `doctor` reads the manifests and the `photos/` folder, encodes nothing and changes nothing. It prints:
 
 - the storage mode and the `originals` setting;
 - photo, album and undated counts (with the photos whose originals are not on this computer), derivative files and bytes, and published originals when there are any;
 - the number of contexts: the archive, the albums and every facet value;
-- the projected deploy: one page per visible photo, one page and one JSON file per context, the derivatives in repo mode and about 20 other files, against Cloudflare’s limit of 20,000 files;
-- the media bytes in the repository against 1 GB (the originals too, with `commitOriginals`), and about how many more photos fit before each limit;
-- a recommendation: repo mode is fine; plan bucket mode (past 500 photos or 500 MB); or move to bucket mode (over a limit);
-- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), HEIC or RAW files with no JPEG, and committed originals past 500 MB.
+- with photo storage, the files waiting for upload and whether the access key is set;
+- the projected site: one page per visible photo, one page and one JSON file per context, the derivatives in repo mode and about 20 other files, against Cloudflare’s limit of 20,000 files, and about how many more photos fit before it;
+- the bytes of photos published with the site;
+- a recommendation: repo mode is fine; plan to add photo storage (past 16,000 files); or add photo storage (over the limit). For a gallery built for your own host (`"publish": "build"`), Cloudflare’s limit does not apply and the recommendation says so;
+- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), HEIC or RAW files with no JPEG, and, with photo storage, a missing access key or a value the scaffold left as a stand-in.
 
-A photo whose original is not on this computer and never was is not an issue: in a clone of the repository, every photo is in that case. `doctor` counts them and does not ask to prune them.
+A photo whose original is not on this computer and never was, as in a copy of the gallery made without its originals, is not an issue. `doctor` counts those photos and does not ask to prune them.
 
-`doctor` can recommend bucket mode, which is not built yet. It exits 0.
+`doctor` exits 0, and `doctor --bucket` exits 1 when a step of the check fails.
 
 ### publish
 
 ```sh
-minimalgallery publish [--git | --deploy | --build] [--yes]
+minimalgallery publish [--deploy | --build] [--yes]
 ```
 
 | Option | Meaning |
 | --- | --- |
-| `--git` | Process photos, commit the gallery’s changed files and push. Your host builds the site from the repository. |
 | `--deploy` | Process photos, build the site and upload it to Cloudflare Workers with `wrangler deploy`. |
-| `--build` | Process photos and build the site into `dist/`. |
-| `--yes`, `-y` | Do not ask before committing, pushing or deploying. |
+| `--build` | Process photos and build the site into `dist/`, for [your own host](/hosting/your-own-host/). |
+| `--yes`, `-y` | Do not ask before deploying. |
 
 Without a flag, the method comes from the gallery’s `package.json`, which the scaffold sets for your host:
 
@@ -142,20 +144,11 @@ Without a flag, the method comes from the gallery’s `package.json`, which the 
 }
 ```
 
-The value is `"git"`, `"deploy"` or `"build"`. With `--git`, `"commitOriginals": true` in the same field commits the original photos too. When neither a flag nor that field is set, `publish` uses `--deploy` if the gallery has a `wrangler.jsonc` file, and otherwise stops and asks you to choose.
+The value is `"deploy"` or `"build"`. When neither a flag nor that field is set, `publish` uses `--deploy` if the gallery has a `wrangler.jsonc` file, and `--build` otherwise. A gallery from an earlier version with `"git"` there stops with a message: publishing with git is gone, and the gallery can keep its repository, committed and pushed by hand. See [Backups](/backups/#keeping-the-gallery-in-git).
 
-Before it commits, pushes or deploys, `publish` lists the steps and asks you to confirm. In a shell with no terminal attached it stops instead, unless you pass `--yes`. Photos that fail to process are reported with a warning, and `publish` goes on without them. Every method needs Astro installed in the gallery (`npm install`).
+With [photo storage](/hosting/photo-storage/), both methods upload the new photos to the bucket before they build the site. If the upload fails, nothing else is published.
 
-#### `--git`
-
-1. Checks that the gallery is in a git repository.
-2. Processes the photos.
-3. Commits the changes under `photos/`, `.minimalgallery/`, `public/`, `custom.css` and the config file, with the message “Update gallery, YYYY-MM-DD”. From `photos/` it takes the sidecars (`.md`, `.json`, `.xmp`, `_album.md`) and the files git already tracks, not new originals, unless `commitOriginals` is set; from `.minimalgallery/`, never the cache. Other changes in the repository are left alone.
-4. Pushes to the branch’s upstream. A branch with no upstream is pushed with `git push -u origin HEAD`; with no `origin` remote, `publish` stops and says how to add one.
-
-When nothing has changed and nothing is waiting to be pushed, it says so and exits 0.
-
-It warns when the repository and the setting disagree: originals tracked from an earlier version (with the commands to stop tracking them), new originals that `.gitignore` does not ignore, or originals that `.gitignore` keeps out while `commitOriginals` is on. See [Originals and git](/hosting/#originals-and-git).
+Before it deploys, `publish` lists the steps and asks you to confirm. In a shell with no terminal attached it stops instead, unless you pass `--yes`. Photos that fail to process are reported with a warning, and `publish` goes on without them. Every method needs Astro installed in the gallery (`npm install`).
 
 #### `--deploy`
 
@@ -165,7 +158,7 @@ It warns when the repository and the setting disagree: originals tracked from an
 
 #### `--build`
 
-Processes the photos and runs `astro build`. The site is in `dist/`, ready to upload to any static host. It does not ask for confirmation.
+Processes the photos and runs `astro build`. The site is in `dist/`, ready to upload to your host. It does not ask for confirmation.
 
 ### watch
 
@@ -233,15 +226,19 @@ This creates a gallery folder, installs its packages and prints the next steps. 
 npm create minimalgallery@latest my-gallery -- --host cloudflare --name "Kyoto" --yes
 ```
 
-With pnpm, yarn or bun, pass them directly: `pnpm create minimalgallery my-gallery --host github`.
+With pnpm, yarn or bun, pass them directly: `pnpm create minimalgallery my-gallery --host local`.
 
 | Option | Meaning |
 | --- | --- |
 | `[folder]` | Where to create the gallery. The folder must not exist, or hold nothing but `.DS_Store` or `.git`. |
 | `--name <text>` | The gallery’s name. Default: `Photos`. |
 | `--author <text>` | Your name. Default: none. |
-| `--host <host>` | `cloudflare` (the default), `github`, `netlify` or `local`. |
-| `--size <size>` | `small` (under 500 photos, the default) or `large`. |
+| `--host <host>` | `cloudflare` (the default) publishes to Cloudflare from your computer. `local` builds a folder to upload to [your own host](/hosting/your-own-host/). |
+| `--storage <mode>` | Cloudflare only. `repo` (the default) publishes the resized photos with the site. `bucket` sets up [photo storage](/hosting/photo-storage/) on R2. `--size small` and `--size large` are older spellings of the two. |
+| `--bucket <name>` | Photo storage: the bucket’s name. Default: `<folder>-media`. |
+| `--media-domain <domain>` | Photo storage: the address the photos are served from, such as `media.example.com`. |
+| `--account-id <id>` | Photo storage: the Cloudflare account id. Default: from `wrangler whoami`, when you are logged in. |
+| `--access-key-id <id>`, `--secret-access-key <key>` | Photo storage: the R2 access key, written to `.env` only. |
 | `--pm <name>` | `npm`, `pnpm`, `yarn` or `bun`. Default: the package manager that runs the command, else npm. |
 | `--yes`, `-y` | Use the default for anything not given, without asking. |
 | `--no-install` | Do not install the packages. |
@@ -256,15 +253,12 @@ Each question is asked only when its option is missing. With `--yes`, or when no
 | Where should the gallery go? | a folder name | `my-gallery` |
 | Gallery name | text | `Photos` |
 | Your name | text, or empty to skip | empty |
-| Where will it live? | Cloudflare, GitHub Pages, Netlify, Just build it locally | Cloudflare |
-| Roughly how many photos? | Under 500, More than 500 | Under 500 |
+| Where will it live? | Cloudflare, My own host | Cloudflare |
+| How big is your photo library? | Up to about 3,000 photos, More than that. Cloudflare only. | Up to about 3,000 photos |
+| Bucket name, Media domain, R2 access key id, R2 secret access key | text, each optional but the name | Photo storage only |
 | Package manager | npm, pnpm, yarn, bun | the detected one |
 
-:::note[More than 500 photos]
-
-Choosing more than 500 photos prints a note about bucket mode and adds a comment to the config, but the gallery starts in repo mode: bucket mode is not built yet.
-
-:::
+With photo storage, the scaffold also reads your account id with `wrangler whoami` and creates the bucket when you are logged in to Cloudflare. Whatever it could not do (log in, create the bucket, connect the media domain, create the access key) is listed in the next steps. It never makes the folder a git repository.
 
 The command exits 0 when the gallery is created, 1 for an unknown option, an option value it does not accept or a folder that is not empty, and 130 when you cancel a question. A failed install does not stop it: it prints the end of the install’s output and adds the install command to the next steps.
 
@@ -274,11 +268,11 @@ Every gallery gets these files:
 
 | File | Contents |
 | --- | --- |
-| `package.json` | The scripts `dev`, `build`, `preview`, `admin`, `publish` and `doctor`; the `minimalgallery.publish` method for your host; `@minimalgallery/astro`, `@minimalgallery/pipeline`, `astro` and `minimalgallery` as dependencies; Node 22.18 or later; with pnpm or Yarn, `packageManager` with the version on your computer, so hosts install the same one. |
-| `minimalgallery.config.ts` | `name`, `author` when you gave one, `storage: { mode: 'repo' }`, and a commented `site`. See [Configuration](/reference/configuration/). |
+| `package.json` | The scripts `dev`, `build`, `preview`, `admin`, `publish` and `doctor`; the `minimalgallery.publish` method for your host; `@minimalgallery/astro`, `@minimalgallery/pipeline`, `astro` and `minimalgallery` as dependencies; Node 22.18 or later; with pnpm or Yarn, `packageManager` with the version on your computer, so every computer installs the same one. |
+| `minimalgallery.config.ts` | `name`, `author` when you gave one, `storage` (`{ mode: 'repo' }`, or the bucket for photo storage), and a commented `site`. See [Configuration](/reference/configuration/). |
 | `astro.config.mjs` | Static output, trailing slashes, the minimal gallery integration, incremental builds, and a commented `site`. |
-| `.env.example` | The bucket credentials, commented out. |
-| `.gitignore` | `node_modules`, `dist`, `.astro`, `.env` files, `.minimalgallery/cache`, and every file under `photos/` except the sidecars and `_album.md`. Manifests and `public/_mg` are committed, since hosts build the site from them; the originals are not. |
+| `.env.example` | The photo storage access key, commented out in repo mode. With photo storage and a key given, `.env` holds the key. |
+| `.gitignore` | For a repository you may make yourself: `node_modules`, `dist`, `.astro`, `.env` files, `.minimalgallery/cache`, and every file under `photos/` except the sidecars and `_album.md`. See [Backups](/backups/#keeping-the-gallery-in-git). |
 | `tsconfig.json` | Astro’s strict TypeScript settings. |
 | `photos/README.md` | How to organize photos. |
 | `src/content.config.ts` | The `albums` and `photos` collections. |
@@ -290,14 +284,12 @@ Then, by host:
 
 | Host | Also writes | `publish` method |
 | --- | --- | --- |
-| Cloudflare | `wrangler.jsonc`, which names the Worker after the folder and serves `./dist`; `public/_headers`, which caches `/_mg/*` and `/_astro/*` for a year. `package.json` gets a `deploy` script and `wrangler` as a development dependency, and `.env.example` lists `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` for deploying from CI. | `deploy` |
-| GitHub Pages | `.github/workflows/deploy.yml`, which builds the site on each push to `main` or `master`, with the address and base path from the repository’s Pages settings, and publishes it to GitHub Pages. `astro.config.mjs` gets commented `site` and `base` lines, only for building elsewhere. | `git` |
-| Netlify | `netlify.toml`, with the build command, `dist` as the publish folder, Node 24 and the same cache headers. | `git` |
-| Just build it locally | nothing more | `build` |
+| Cloudflare | `wrangler.jsonc`, which names the Worker after the folder and serves `./dist`; `public/_headers`, which caches `/_mg/*` and `/_astro/*` for a year (only `/_astro/*` with photo storage). `package.json` gets a `deploy` script and `wrangler` as a development dependency, and `.env.example` lists `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` for deploying from an automated build service. | `deploy` |
+| My own host | nothing more | `build` |
 
 The `deploy` script runs `astro build && wrangler deploy`; unlike `npm run publish`, it does not process photos first.
 
-On macOS, every gallery also gets `Open minimalgallery.command`. Double-click it to install the packages when they are missing and run `admin`. Hosting is covered step by step in [Cloudflare](/hosting/cloudflare/), [GitHub Pages](/hosting/github-pages/) and [Netlify](/hosting/netlify/).
+On macOS, every gallery also gets `Open minimalgallery.command`. Double-click it to install the packages when they are missing and run `admin`. Publishing is covered step by step in [Putting it online](/hosting/).
 
 ## mg-pipeline
 
@@ -309,7 +301,7 @@ mg-pipeline doctor <gallery folder> [--json report.json]
 `mg-pipeline` is the binary of `@minimalgallery/pipeline`, installed with every gallery. It runs the same processing and the same `doctor` as `minimalgallery`, with these differences:
 
 - It takes the gallery folder as an argument and does not look upward for one.
-- It does not check for bucket mode first, so a gallery in s3 mode fails while processing.
+- It never uploads: with photo storage, the new copies wait on this computer for `minimalgallery sync` or `publish`.
 - It prints a longer summary: workers and threads, manifests and files written, the total derivative files and bytes, and encode times per photo.
 - It can write the summary, or the doctor report, to a JSON file.
 
