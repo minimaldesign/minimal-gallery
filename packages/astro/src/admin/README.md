@@ -125,8 +125,8 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
   description: string | null;
   author: string | null;
   site: string | null;
-  storage: { mode: 'repo' } | { mode: 's3', bucket: string, publicUrl: string, credentials: boolean };
-  originals: 'none' | 'repo' | 'bucket';
+  storage: { mode: 'site' } | { mode: 's3', bucket: string, publicUrl: string, credentials: boolean };
+  originals: 'none' | 'site' | 'bucket';
   albumsSort: 'date' | 'name' | 'manual';
   defaults: { fit, strip, crop, view, size, backdrop };
 }
@@ -248,8 +248,7 @@ A comment line is sent every 15 s to keep the connection open.
 
 ```ts
 {
-  method: 'git' | 'deploy' | 'build';  // package.json "minimalgallery.publish", else deploy with wrangler.jsonc, else git with a remote, else build
-  git: { repo: boolean, remote: string | null, branch: string | null, ghInstalled: boolean, ghAuthed: boolean };
+  method: 'deploy' | 'build';  // package.json "minimalgallery.publish", else deploy with wrangler.jsonc, else build
   deploy: {
     wranglerInstalled: boolean, loggedIn: boolean, worker: string | null;
     accounts: { id, name }[];          // the login's accounts (wrangler whoami --json)
@@ -266,11 +265,11 @@ A comment line is sent every 15 s to keep the connection open.
 }
 ```
 
-The `gh` and `wrangler` checks spawn those tools, so this call can take a second or two; the answer is cached for 30 s, and a connect job clears the cache.
+The `wrangler` checks spawn it, so this call can take a second or two; the answer is cached for 30 s, and a connect job clears the cache.
 
 `POST /publish` `{ method }` → `202 { job }` (the job id). Waits for the queue to be idle, pauses it, then runs the gallery’s own `minimalgallery publish --<method> --yes` (from `node_modules/.bin`), streams its output as `log` events and ends with a `job` event: `state: 'done'` with `url` (the last `https://` address it printed, else the config’s `site`), or `state: 'failed'` with the exit `code`. `409` while another job runs.
 
-`POST /connect/cloudflare` → `202 { job }`: runs `wrangler login`, which opens the browser (to sign in, or to create an account), and streams it the same way. GitHub has no connect call: the UI shows `gh auth login` as guidance.
+`POST /connect/cloudflare` → `202 { job }`: runs `wrangler login`, which opens the browser (to sign in, or to create an account), and streams it the same way.
 
 `wrangler deploy` cannot ask anything without a terminal, so the admin settles two things before a first upload:
 
@@ -283,4 +282,4 @@ The content loader already reloads when a manifest changes, so the preview follo
 
 ## Media in bucket mode
 
-With `storage: { mode: 's3' }` the dev server serves `<base>_mg/<key>` from the stage (`.minimalgallery/cache/media/<key>`), and redirects (`302`) to `${publicUrl}/<key>` when the key is not staged. The content loader, in dev only, rewrites the photos’ media URLs from `publicUrl` to `<base>_mg/`, so the preview works before anything is uploaded. In repo mode Vite serves `public/_mg` as usual.
+With `storage: { mode: 's3' }` the dev server serves `<base>_mg/<key>` from the stage (`.minimalgallery/cache/media/<key>`), and redirects (`302`) to `${publicUrl}/<key>` when the key is not staged. The content loader, in dev only, rewrites the photos’ media URLs from `publicUrl` to `<base>_mg/`, so the preview works before anything is uploaded. In site mode Vite serves `public/_mg` as usual.

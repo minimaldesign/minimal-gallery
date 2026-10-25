@@ -24,6 +24,5 @@ All four share one version number. [Version history](/versions/) lists what chan
 
 - Node 22.18 or later, from [nodejs.org](https://nodejs.org/). The installer for your system is enough.
 - npm, pnpm, Yarn or Bun. npm comes with Node.
-- Git, if your host builds from a repository (Cloudflare Workers Builds, GitHub Pages, Netlify).
 
 A desktop app is parked for later. If one ships, its installers will be listed here.

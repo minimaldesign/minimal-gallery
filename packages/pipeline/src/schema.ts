@@ -160,7 +160,7 @@ export const PhotoManifest = z.object({
     relativePath: z.string(),
     /** ICC profile description of the source, or null when untagged. */
     icc: z.string().nullable(),
-    /** Present when the config publishes originals (`originals: 'repo' | 'bucket'`). */
+    /** Present when the config publishes originals (`originals: 'site' | 'bucket'`). */
     key: z.string().optional(),
     url: z.string().optional(),
   }),

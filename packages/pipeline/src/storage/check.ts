@@ -44,7 +44,7 @@ export interface BucketCheck {
  * Put a probe object under `_minimalgallery-check/`, find it in a listing,
  * HEAD it, GET it through `publicUrl` (reporting the status and
  * `Cache-Control`), then delete it. Never throws for a failed step: each
- * step reports its own result. Throws a `BucketError` in repo mode.
+ * step reports its own result. Throws a `BucketError` in site mode.
  */
 export async function checkBucket(
   galleryDir: string,

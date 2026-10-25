@@ -8,19 +8,18 @@ dist
 !.env.example
 
 # The pipeline’s scratch files, its record of the photos this folder has had
-# (seen.json: a clone without them must not take them for deleted), and in
-# bucket mode the resized photos waiting for upload
-# (.minimalgallery/cache/media). The manifests (.minimalgallery/manifest)
-# are committed, and in repo mode the resized photos (public/_mg) too: hosts
-# build the site from them.
+# (seen.json), and in bucket mode the resized photos waiting for upload
+# (.minimalgallery/cache/media). Everything else the pipeline writes, the
+# manifests (.minimalgallery/manifest) and the resized photos (public/_mg),
+# can be kept in git.
 .minimalgallery/cache
 
-# The original photos stay out of git: hosts build the site from the
-# manifests and resized photos, never from the files in photos/, and a
-# repository of originals outgrows GitHub’s limits (on GitHub Pages it is
-# also public). The sidecars (.md, .json, .xmp) and each album’s _album.md
-# are committed. To commit the originals too, delete these lines and set
-# "minimalgallery": { "commitOriginals": true } in package.json.
+# If you keep this gallery in git, the original photos stay out of it: a
+# repository of full-size originals soon outgrows what GitHub and other git
+# hosts accept, and a public repository would let anyone download them. The
+# sidecars (.md, .json, .xmp) and each album’s _album.md are kept. To keep
+# the originals in the repository too, delete these lines. Either way, back
+# up the gallery folder itself: https://docs.minimalgallery.net/backups/
 photos/**
 !photos/**/
 !photos/**/*.md

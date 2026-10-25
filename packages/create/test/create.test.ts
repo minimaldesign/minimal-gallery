@@ -30,7 +30,7 @@ import {
   vi,
 } from 'vitest';
 import { Exit, main } from '../src/cli.ts';
-import { spawnRunner, type Captured, type Runner } from '../src/run.ts';
+import type { Captured, Runner } from '../src/run.ts';
 import { LAUNCHER_NAME, scaffold } from '../src/scaffold.ts';
 import {
   ACCOUNT_ID_PLACEHOLDER,
@@ -147,10 +147,10 @@ describe('create-minimalgallery', () => {
     expect(PUBLIC_URL_PLACEHOLDER).toBe(PIPELINE_PUBLIC_URL);
   });
 
-  it('scaffolds a Cloudflare gallery in repo mode with --yes --no-install', async () => {
+  it('scaffolds a Cloudflare gallery in site mode with --yes --no-install', async () => {
     const dir = join(tmp, 'My Gallery');
-    // The real command, spawned. Repo mode and direct deploys run neither
-    // wrangler nor git, and --size small is the old spelling of --storage repo.
+    // The real command, spawned. Site mode runs neither wrangler nor git, and
+    // --size small is the old spelling of --storage site.
     const { stdout } = await execFileAsync(
       process.execPath,
       [
@@ -166,8 +166,6 @@ describe('create-minimalgallery', () => {
         'cloudflare',
         '--size',
         'small',
-        '--publish',
-        'deploy',
       ],
       { env: { ...process.env, npm_config_user_agent: 'npm/11.0.0 node/v24' } }
     );
@@ -243,7 +241,7 @@ describe('create-minimalgallery', () => {
     const config = await loadGalleryConfig(dir);
     expect(config.name).toBe('Yann’s photos');
     expect(config.author).toBe("O'Neil");
-    expect(config.storage.mode).toBe('repo');
+    expect(config.storage.mode).toBe('site');
   });
 
   it('refuses a folder that is not empty', async () => {
@@ -257,7 +255,7 @@ describe('create-minimalgallery', () => {
     ).rejects.toMatchObject({ code: 1 });
   });
 
-  it('publishes from this computer in repo mode by default on Cloudflare', async () => {
+  it('publishes from this computer in site mode by default on Cloudflare', async () => {
     const fake = fakeRunner({ git: freshGit });
     expect(await create(['cf-default', '--yes'], fake.run)).toBe(0);
     const dir = join(tmp, 'cf-default');
@@ -265,7 +263,7 @@ describe('create-minimalgallery', () => {
     expect(fake.wrangler()).toEqual([]);
     expect(fake.calls.some((c) => c.command === 'git')).toBe(false);
     const config = await loadGalleryConfig(dir);
-    expect(config.storage).toEqual({ mode: 'repo' });
+    expect(config.storage).toEqual({ mode: 'site' });
     const pkg = JSON.parse(await read(dir, 'package.json'));
     expect(pkg.minimalgallery.publish).toBe('deploy');
     expect(await read(dir, 'public/_headers')).toContain('/_mg/*');
@@ -275,13 +273,10 @@ describe('create-minimalgallery', () => {
     expect(output).toContain('connects Cloudflare');
   });
 
-  it('sets up bucket mode and git publishing when asked', async () => {
+  it('sets up photo storage when asked', async () => {
     const fake = fakeRunner({ git: freshGit });
     expect(
-      await create(
-        ['cf-bucket', '--yes', '--storage', 'bucket', '--publish', 'git'],
-        fake.run
-      )
+      await create(['cf-bucket', '--yes', '--storage', 'bucket'], fake.run)
     ).toBe(0);
     const dir = join(tmp, 'cf-bucket');
 
@@ -292,19 +287,13 @@ describe('create-minimalgallery', () => {
     ]);
     const createCall = fake.calls.find((c) => c.args.includes('r2'));
     expect(createCall?.env).toEqual({ CLOUDFLARE_ACCOUNT_ID: ACCOUNT });
-    // git: after the install, so the first commit has the lockfile.
-    const order = fake.calls.map((c) =>
-      c.command === 'git' ? `git ${c.args[0]}` : c.args.at(-1)
-    );
-    expect(order).toEqual([
+    // No git repository: keeping the gallery in git is up to its owner.
+    expect(fake.calls.map((c) => c.args.at(-1))).toEqual([
       'install',
       'whoami',
       'cf-bucket-media',
-      'git rev-parse',
-      'git init',
-      'git add',
-      'git commit',
     ]);
+    expect(await exists(join(dir, '.git'))).toBe(false);
 
     const config = await loadGalleryConfig(dir);
     expect(config.storage).toEqual({
@@ -320,7 +309,7 @@ describe('create-minimalgallery', () => {
     expect(source).not.toMatch(/not available yet/);
 
     const pkg = JSON.parse(await read(dir, 'package.json'));
-    expect(pkg.minimalgallery.publish).toBe('git');
+    expect(pkg.minimalgallery.publish).toBe('deploy');
     expect(pkg.devDependencies.wrangler).toBeDefined();
     expect(await exists(join(dir, '.env'))).toBe(false);
     const example = await read(dir, '.env.example');
@@ -347,7 +336,7 @@ describe('create-minimalgallery', () => {
     expect(headers).not.toContain('/_mg/*');
     const wrangler = await read(dir, 'wrangler.jsonc');
     expect(wrangler).toContain('needs no bucket binding');
-    expect(wrangler).toContain('npx wrangler deploy');
+    expect(wrangler).toContain('then wrangler deploy');
 
     // Next steps: only what is left.
     expect(output).toContain('Created the R2 bucket cf-bucket-media');
@@ -358,8 +347,7 @@ describe('create-minimalgallery', () => {
     );
     expect(output).toContain('Then set publicUrl in minimalgallery.config.ts');
     expect(output).toContain('Create an R2 API token');
-    expect(output).toContain('gh repo create --private --source . --push');
-    expect(output).toContain('Workers and Pages, Create, Import a repository');
+    expect(output).toContain('uploads new photos to the bucket');
   });
 
   it('writes the bucket answers to the config and the token only to .env', async () => {
@@ -382,14 +370,12 @@ describe('create-minimalgallery', () => {
         key,
         '--secret-access-key',
         secret,
-        '--publish',
-        'deploy',
       ],
       fake.run
     );
     const dir = join(tmp, 'cf-flags');
 
-    // The account id was given: no whoami. Deploying: no git.
+    // The account id was given: no whoami. And never git.
     expect(fake.wrangler()).toEqual([
       ['--yes', 'wrangler', 'r2', 'bucket', 'create', 'holiday-photos'],
     ]);
@@ -439,18 +425,7 @@ describe('create-minimalgallery', () => {
 
   it('leaves placeholders and the steps when wrangler is not logged in', async () => {
     const fake = fakeRunner({ whoami: ok(WHOAMI_LOGGED_OUT) });
-    await create(
-      [
-        'cf-logged-out',
-        '--yes',
-        '--storage',
-        'bucket',
-        '--publish',
-        'git',
-        '--no-git',
-      ],
-      fake.run
-    );
+    await create(['cf-logged-out', '--yes', '--storage', 'bucket'], fake.run);
     const dir = join(tmp, 'cf-logged-out');
 
     // No bucket creation without a login.
@@ -475,7 +450,7 @@ describe('create-minimalgallery', () => {
       'npx wrangler r2 bucket create cf-logged-out-media'
     );
     expect(output).toContain('copy your account id from npx wrangler whoami');
-    expect(output).toContain('git init -b main');
+    expect(output).not.toContain('git init');
   });
 
   it('takes the first of several accounts with --yes', async () => {
@@ -491,147 +466,23 @@ describe('create-minimalgallery', () => {
     expect(output).toContain('Using the Cloudflare account “Studio”');
   });
 
-  it('publishes repo mode from git with --publish git, without wrangler', async () => {
+  it('builds locally for your own host, with no Cloudflare files or bucket questions', async () => {
     const fake = fakeRunner({ git: freshGit });
-    await create(
-      ['cf-repo', '--yes', '--storage', 'repo', '--publish', 'git'],
-      fake.run
-    );
+    await create(['own-host', '--yes', '--host', 'local'], fake.run);
     expect(fake.wrangler()).toEqual([]);
-    const config = await loadGalleryConfig(join(tmp, 'cf-repo'));
-    expect(config.storage).toEqual({ mode: 'repo' });
-    expect(await read(join(tmp, 'cf-repo'), '.env.example')).toContain(
-      '# MG_S3_ACCESS_KEY_ID='
-    );
+    expect(fake.calls.some((c) => c.command === 'git')).toBe(false);
+    expect(output).toContain('ready to upload to your host');
     expect(output).not.toContain('bucket');
-    expect(output).toContain('gh repo create --private --source . --push');
-  });
-
-  it('makes a real first commit without the secrets', async () => {
-    // git runs for real in the temporary folder, with no user or system config.
-    const git: Runner = (command, args, options) =>
-      spawnRunner(command, args, {
-        ...options,
-        env: {
-          GIT_CONFIG_GLOBAL: '/dev/null',
-          GIT_CONFIG_NOSYSTEM: '1',
-          GIT_AUTHOR_NAME: 'Test',
-          GIT_AUTHOR_EMAIL: 'test@example.com',
-          GIT_COMMITTER_NAME: 'Test',
-          GIT_COMMITTER_EMAIL: 'test@example.com',
-        },
-      });
-    const fake = fakeRunner({ git });
-    await create(
-      [
-        'cf-git',
-        '--yes',
-        '--publish',
-        'git',
-        '--access-key-id',
-        'f'.repeat(32),
-        '--secret-access-key',
-        'e'.repeat(64),
-      ],
-      fake.run
-    );
-    const dir = join(tmp, 'cf-git');
-    expect(output).toContain('Created the git repository, with a first commit');
-    const files = (await git('git', ['ls-files'], { cwd: dir })).stdout.split(
-      '\n'
-    );
-    expect(files).toContain('minimalgallery.config.ts');
-    expect(files).toContain('.env.example');
-    expect(files).toContain('.gitignore');
-    expect(files).not.toContain('.env');
-    const branch = await git('git', ['branch', '--show-current'], { cwd: dir });
-    expect(branch.stdout.trim()).toBe('main');
-  });
-
-  it('keeps GitHub Pages, Netlify and local builds in repo mode, with no bucket questions', async () => {
-    const fake = fakeRunner({ git: freshGit });
-    await create(['gh-cli', '--yes', '--host', 'github'], fake.run);
-    expect(fake.wrangler()).toEqual([]);
-    expect(output).toContain('gh repo create --public --source . --push');
-    expect(output).toContain('set the source to GitHub Actions');
-    expect(output).not.toContain('bucket');
-    const ghPkg = JSON.parse(await read(join(tmp, 'gh-cli'), 'package.json'));
-    expect(ghPkg.minimalgallery.publish).toBe('git');
-
-    const base = {
-      name: 'Photos',
-      author: '',
-      storage: 'repo' as const,
-      packageManager: 'pnpm' as const,
-    };
-    const opts = { version: '1.2.3', platform: 'linux' as const };
-
-    const gh = await scaffold(
-      join(tmp, 'gh'),
-      { ...base, host: 'github', publish: 'git' },
-      { ...opts, packageManager: 'pnpm@10.20.0' }
-    );
-    expect(gh).toContain('.github/workflows/deploy.yml');
-    expect(gh).not.toContain(LAUNCHER_NAME);
-    expect(gh).not.toContain('.env');
-    const workflow = await read(
-      join(tmp, 'gh'),
-      '.github/workflows/deploy.yml'
-    );
-    // pushes to either first branch name deploy
-    expect(workflow).toContain('branches: [main, master]');
-    expect(workflow).toContain('uses: actions/configure-pages@v6');
-    expect(workflow).toContain('uses: withastro/action@v6');
-    expect(workflow).toContain('uses: actions/deploy-pages@v5');
-    // site and base come from the Pages settings, not from astro.config.mjs
-    expect(workflow).toContain(
-      `build-cmd: pnpm run build --site "\${{ steps.pages.outputs.origin }}" --base "\${{ steps.pages.outputs.base_path || '/' }}"`
-    );
-    expect(workflow).toContain('url: ${{ steps.deployment.outputs.page_url }}');
-    expect(
-      JSON.parse(await read(join(tmp, 'gh'), 'package.json')).packageManager
-    ).toBe('pnpm@10.20.0');
-    const ghAstro = await read(join(tmp, 'gh'), 'astro.config.mjs');
-    expect(ghAstro).toContain(
-      'the workflow (.github/workflows/deploy.yml) passes'
-    );
-    expect(ghAstro).toContain("  // base: '/<repo>',");
-    const ghConfig = await loadGalleryConfig(join(tmp, 'gh'));
-    expect(ghConfig.author).toBeUndefined();
-    expect(ghConfig.storage).toEqual({ mode: 'repo' });
-
-    const nl = await scaffold(
-      join(tmp, 'nl'),
-      { ...base, host: 'netlify', publish: 'git' },
-      opts
-    );
-    expect(nl).toContain('netlify.toml');
-    const toml = await read(join(tmp, 'nl'), 'netlify.toml');
-    expect(toml).toContain('for = "/_mg/*"');
-    expect(toml).toContain('for = "/_astro/*"');
-    const nlPkg = JSON.parse(await read(join(tmp, 'nl'), 'package.json'));
-    expect(nlPkg.dependencies.minimalgallery).toBe('^1.2.3');
-    expect(nlPkg.minimalgallery.publish).toBe('git');
-    expect(nlPkg.devDependencies).toBeUndefined();
-    expect((await loadGalleryConfig(join(tmp, 'nl'))).storage.mode).toBe(
-      'repo'
-    );
-
-    const local = await scaffold(
-      join(tmp, 'local'),
-      { ...base, host: 'local', publish: 'build' },
-      opts
-    );
-    expect(
-      local.filter((f) => /wrangler|netlify|workflows|_headers/.test(f))
-    ).toEqual([]);
-    expect((await loadGalleryConfig(join(tmp, 'local'))).storage.mode).toBe(
-      'repo'
-    );
-    for (const name of ['gh', 'nl', 'local'])
-      expect(await read(join(tmp, name), '.env.example')).not.toContain(
-        'not available yet'
-      );
+    expect(output).not.toContain('Cloudflare');
+    const dir = join(tmp, 'own-host');
+    const pkg = JSON.parse(await read(dir, 'package.json'));
+    expect(pkg.minimalgallery.publish).toBe('build');
+    expect(pkg.scripts.deploy).toBeUndefined();
+    expect(pkg.devDependencies).toBeUndefined();
+    for (const file of ['wrangler.jsonc', 'public/_headers', '.git'])
+      expect(await exists(join(dir, file)), file).toBe(false);
+    expect((await loadGalleryConfig(dir)).storage).toEqual({ mode: 'site' });
+    expect(await read(dir, '.env.example')).not.toContain('CLOUDFLARE');
   });
 
   it('lists every file it writes', async () => {
@@ -642,7 +493,7 @@ describe('create-minimalgallery', () => {
         name: 'Photos',
         author: '',
         host: 'cloudflare',
-        storage: 'repo',
+        storage: 'site',
         publish: 'deploy',
         packageManager: 'npm',
       },
@@ -664,7 +515,7 @@ describe('create-minimalgallery', () => {
 
   it('pins pnpm and Yarn in package.json, from the user agent or --version', async () => {
     const fromAgent = fakeRunner();
-    await main(['pm-agent', '--yes', '--no-install', '--host', 'github'], {
+    await main(['pm-agent', '--yes', '--no-install', '--host', 'local'], {
       run: fromAgent.run,
       interactive: false,
       cwd: tmp,
@@ -676,9 +527,6 @@ describe('create-minimalgallery', () => {
       await read(join(tmp, 'pm-agent'), 'package.json')
     );
     expect(agentPkg.packageManager).toBe('pnpm@10.21.1');
-    expect(
-      await read(join(tmp, 'pm-agent'), '.github/workflows/deploy.yml')
-    ).toContain('build-cmd: pnpm run build --site');
 
     const asked = fakeRunner();
     await create(
@@ -712,7 +560,7 @@ describe('create-minimalgallery', () => {
     const fake = fakeRunner();
     await expect(
       create(
-        ['x1', '--yes', '--host', 'github', '--storage', 'bucket'],
+        ['x1', '--yes', '--host', 'local', '--storage', 'bucket'],
         fake.run
       )
     ).rejects.toThrow(Exit);
@@ -726,11 +574,8 @@ describe('create-minimalgallery', () => {
       create(['x4', '--yes', '--media-domain', 'not a domain'], fake.run)
     ).rejects.toThrow('--media-domain');
     await expect(
-      create(
-        ['x5', '--yes', '--host', 'netlify', '--publish', 'deploy'],
-        fake.run
-      )
-    ).rejects.toThrow('--host cloudflare');
+      create(['x5', '--yes', '--host', 'github'], fake.run)
+    ).rejects.toThrow('--host must be one of: cloudflare, local');
     expect(fake.calls).toEqual([]);
     expect(await exists(join(tmp, 'x1'))).toBe(false);
   });
@@ -761,7 +606,7 @@ describe('create-minimalgallery', () => {
   it('makes valid Cloudflare Worker and R2 bucket names', () => {
     expect(projectName('My Gallery')).toBe('my-gallery');
     expect(projectName('Café ’25')).toBe('cafe-25');
-    expect(projectName('***')).toBe('my-gallery');
+    expect(projectName('***')).toBe('mg');
     expect(bucketName('my-gallery')).toBe('my-gallery-media');
     const long = bucketName(projectName('a'.repeat(80)));
     expect(long.length).toBeLessThanOrEqual(63);

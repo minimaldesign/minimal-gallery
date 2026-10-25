@@ -1,36 +1,13 @@
 ---
 title: Cloudflare
-description: Host a minimal gallery on Cloudflare Workers with static assets, uploaded from your computer or built from a git repository, with cache headers, a custom domain and hotlink protection.
+description: Publish a minimal gallery to Cloudflare from your computer, with cache headers, a custom domain, the free plan’s limits and hotlink protection.
 ---
 
-This page sets up a gallery on Cloudflare: the Worker the scaffold configures, the two ways to publish (from your computer, the default, or from a git repository with Workers Builds), cache headers, a custom domain, the limits, hotlink protection, and the planned bucket mode on R2.
-
-## Workers with static assets
-
-Cloudflare serves static sites from Workers: its Pages documentation now tells new projects to start with Workers. A gallery is a Worker with no code of its own, only static assets. `wrangler.jsonc` names the Worker and points it at `dist/`, the folder `astro build` writes. Requests for static files are free and unlimited, on the free plan too.
-
-The scaffold writes this file when you pick Cloudflare:
-
-```jsonc title="wrangler.jsonc"
-{
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-gallery",
-  "compatibility_date": "2026-10-23",
-  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
-}
-```
-
-- `name` is the Worker’s name. The first deploy serves the gallery at `https://my-gallery.<your-subdomain>.workers.dev`. The scaffold makes it from the folder name, in lowercase letters, digits and dashes.
-- `assets.directory` is the folder that is uploaded.
-- `not_found_handling: "404-page"` answers an unknown URL with the nearest `404.html` and a 404 status. Workers does not guess this from the files, so it has to be set.
-
-With the default HTML handling, a URL without its trailing slash, like `/japan-2025`, redirects to `/japan-2025/`, which matches the gallery’s `trailingSlash: 'always'`.
-
-The scaffold also adds `wrangler` to the gallery’s `devDependencies`, so every computer and every build uses the same version.
+This page covers a gallery on Cloudflare: publishing from your computer, what the scaffold sets up, cache headers, a custom domain, the limits and hotlink protection. It suits a library of [about 3,000 photos](/hosting/#how-many-photos-fit); for more, add [photo storage](/hosting/photo-storage/).
 
 ## Publish from your computer
 
-Direct upload builds the site on your computer and sends it to Cloudflare. It needs no git repository and no GitHub account, and it is the scaffold’s default for Cloudflare (`"publish": "deploy"` in `package.json`).
+`npm run publish` builds the site on your computer and uploads it to Cloudflare. The scaffold sets this up when you pick Cloudflare (`"publish": "deploy"` in `package.json`). You can also publish from the admin’s Publish page, which runs the same command.
 
 ```sh
 npx wrangler login
@@ -41,49 +18,37 @@ The first time:
 
 1. `npx wrangler login` opens your browser on Cloudflare. Sign in, or create a free account on the same page, then allow access. You do this once per computer.
 2. `npm run publish` processes new photos, shows the plan (`astro build`, then `wrangler deploy`) and asks before it goes ahead. Pass `--yes` to skip the question: `npm run publish -- --yes`.
-3. On a new Cloudflare account, `wrangler deploy` asks to register a `workers.dev` subdomain. Answer yes and type a name: it becomes the address of everything you publish on this account, `https://my-gallery.<name>.workers.dev` for this gallery.
+3. On a new Cloudflare account, `wrangler deploy` asks to register a `workers.dev` subdomain. Answer yes and type a name: it becomes the address of everything you publish on this account, `https://mg.<name>.workers.dev` for this gallery.
 4. The first upload creates the Worker, and the last lines show the gallery’s address.
 
 Later publishes send only new or changed files. Cloudflare keeps every version you deploy: `npx wrangler rollback` in the gallery folder puts the previous one back.
 
 The `deploy` script (`npm run deploy`) runs `astro build && wrangler deploy` without processing new photos first. Use `npm run publish` unless you know every photo is already processed.
 
-To deploy from another CI service (GitHub Actions, for example) rather than Workers Builds, run `npm run deploy` there with `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` set as secrets. `.env.example` lists both.
+To publish from an automated build service instead, such as GitHub Actions, run `npm run deploy` there with `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` set as secrets. `.env.example` lists both. The service needs the processed photos (`.minimalgallery/manifest` and `public/_mg`), since it does not process any.
 
-## Publish from git (optional)
+## What the scaffold sets up
 
-With Workers Builds, Cloudflare builds the gallery from a GitHub or GitLab repository: every push to the production branch builds the site and deploys it. Choose it when you want every published version kept as a commit, a copy of the gallery on GitHub or GitLab, or to publish from more than one computer. Nothing goes live without a commit.
+Cloudflare serves static sites from Workers: its Pages documentation now tells new projects to start with Workers. A gallery is a Worker with no code of its own, only static assets. `wrangler.jsonc` names the Worker and points it at `dist/`, the folder `astro build` writes. Requests for static files are free and unlimited, on the free plan too.
 
-1. Push the gallery to a new GitHub or GitLab repository. Commit the lockfile your package manager wrote (`package-lock.json`, `pnpm-lock.yaml`, `yarn.lock` or `bun.lock`).
-2. In the Cloudflare dashboard, open **Workers & Pages**, select **Create application**, choose GitHub or GitLab, and pick the repository. If the Worker already exists (from a direct upload), open it instead and select **Connect** under **Settings** > **Build**.
-3. Fill in the build settings:
+The scaffold writes this file when you pick Cloudflare:
 
-   | Field | Value |
-   | --- | --- |
-   | Git branch | The branch you push to, usually `main`. This is the production branch. |
-   | Root directory | Empty when the gallery is at the root of the repository; otherwise the gallery’s folder. |
-   | Build command | `npm run build` (or `pnpm run build`, `yarn run build`, `bun run build`) |
-   | Deploy command | `npx wrangler deploy`, the default |
-
-4. Save and deploy. Every later push to the production branch starts a new build.
-
-The Worker’s name in the dashboard must match `name` in `wrangler.jsonc`, or the build fails.
-
-The build runs `astro build` only. It reads the committed manifests and resized copies, so no photo is processed on Cloudflare. The build image uses Node.js 24 by default; to pin a version, commit a `.node-version` file containing `24`.
-
-Then set the gallery to publish with git, so `npm run publish` commits and pushes instead of uploading. This sets `"minimalgallery": { "publish": "git" }` in `package.json`:
-
-```sh
-npm pkg set minimalgallery.publish=git
+```jsonc title="wrangler.jsonc"
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "mg",
+  "compatibility_date": "2026-10-23",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
+}
 ```
 
-From then on, `npm run publish` processes new photos, commits the manifests, resized copies and sidecars, and pushes. Cloudflare builds and deploys from there. The originals stay out of the repository; see [Originals and git](/hosting/#originals-and-git).
+- `name` is the Worker’s name. The first deploy serves the gallery at `https://mg.<your-subdomain>.workers.dev`. The scaffold makes it from the folder name, in lowercase letters, digits and dashes.
+- `assets.directory` is the folder that is uploaded.
+- `not_found_handling: "404-page"` answers an unknown URL with the nearest `404.html` and a 404 status. Workers does not guess this from the files, so it has to be set.
 
-:::tip[Keep the build cache]
+With the default HTML handling, a URL without its trailing slash, like `/japan-2025`, redirects to `/japan-2025/`, which matches the gallery’s `trailingSlash: 'always'`.
 
-Under **Settings** > **Build** > **Build cache**, select **Enable**. Cloudflare then keeps `node_modules/.astro` between builds, where Astro stores its incremental build cache, so pages whose photos have not changed are not rendered again. The cache is kept for 7 days after it was last used.
-
-:::
+The scaffold also adds `wrangler` to the gallery’s `devDependencies`, so every computer and every build uses the same version.
 
 ## Cache headers
 
@@ -113,7 +78,7 @@ In the dashboard, open the Worker, go to **Settings** > **Domains & Routes**, se
 
 ```jsonc title="wrangler.jsonc"
 {
-  "name": "my-gallery",
+  "name": "mg",
   "compatibility_date": "2026-10-23",
   "routes": [
     { "pattern": "photos.example.com", "custom_domain": true },
@@ -125,12 +90,12 @@ In the dashboard, open the Worker, go to **Settings** > **Domains & Routes**, se
 
 Cloudflare creates the DNS record and the certificate. A hostname that already has a CNAME record cannot become a custom domain: delete that record first.
 
-Then set `site` in `astro.config.mjs` to the new address, for canonical links and share images:
+Then set `site` in `minimalgallery.config.ts` to the new address, for canonical links, the feeds and share images:
 
-```js title="astro.config.mjs"
+```ts title="minimalgallery.config.ts"
 export default defineConfig({
+  name: 'Photos',
   site: 'https://photos.example.com',
-  // …
 });
 ```
 
@@ -140,9 +105,8 @@ See Cloudflare’s [Custom Domains](https://developers.cloudflare.com/workers/co
 
 On the Workers free plan:
 
-- **20,000 files per deploy** (100,000 on Workers Paid). Every photo page, every album and facet page with its JSON file and, in repo mode, every resized copy counts. `npm run doctor` projects the count and the number of photos left before the limit.
-- **25 MiB per file.** Resized copies are far below it. An original published with `originals: 'repo'` can be larger (a big TIFF, for example), and the deploy then fails.
-- **Workers Builds:** 3,000 build minutes a month, 20 minutes per build, one build at a time.
+- **20,000 files per deploy** (100,000 on Workers Paid), [about 3,000 full-size photos](/hosting/#how-many-photos-fit). Every photo page, every album and filter page with its JSON file and, in site mode, every resized copy counts. `npm run doctor` projects the count and the number of photos left before the limit. Past it, add [photo storage](/hosting/photo-storage/).
+- **25 MiB per file.** Resized copies are far below it. An original published with `originals: 'site'` can be larger (a big TIFF, for example), and the deploy then fails.
 
 Static file requests and bandwidth are not limited.
 
@@ -160,38 +124,3 @@ Hotlinking is another site showing your photos with an `<img>` that points at yo
   Requests with no referrer stay allowed, as with Hotlink Protection: some browsers and privacy tools send none, and a direct visit to a photo URL has none either.
 
 See Cloudflare’s [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/) and [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) docs.
-
-## Bucket mode on R2
-
-:::caution[Not available yet]
-
-The s3 storage adapter rejects every write in this version, so bucket mode cannot be used yet. This section describes the planned setup.
-
-:::
-
-In bucket mode the resized copies go to a Cloudflare R2 bucket, served from a subdomain such as `media.example.com`, and the deploy holds only the pages. A gallery then stays under 20,000 files far longer: only the HTML pages and JSON files count.
-
-The setup will be:
-
-1. Enable R2 in the Cloudflare dashboard, under **R2 Object Storage**. Cloudflare asks for a payment method before it enables R2, even if the gallery stays within the free tier. Then create an R2 bucket. In the bucket’s **Settings**, under **Custom Domains**, add `media.example.com`. The domain must be a zone in the same Cloudflare account as the bucket. Do not use the bucket’s `r2.dev` address for a public gallery: it is rate limited and meant for development.
-2. Create an R2 API token that can read and write the bucket. Its keys go in `MG_S3_ACCESS_KEY_ID` and `MG_S3_SECRET_ACCESS_KEY`, as environment variables or in the gallery’s `.env` file, never in the config. `.env` is not committed.
-
-3. Point the gallery at the bucket in `minimalgallery.config.ts`:
-
-   ```ts title="minimalgallery.config.ts"
-   storage: {
-     mode: 's3',
-     bucket: 'photos',
-     endpoint: 'https://<account id>.r2.cloudflarestorage.com',
-     region: 'auto',
-     publicUrl: 'https://media.example.com',
-   },
-   ```
-
-`npm run publish` will upload new resized copies to the bucket before it commits or deploys. The R2 free tier includes 10 GB of storage a month, 1 million Class A and 10 million Class B operations a month, and no egress charges.
-
-The rules in `_headers` apply to the Worker’s files only, not to files served from the bucket. For hotlink protection, write the WAF rule for the `media.` hostname:
-
-```txt
-http.host eq "media.example.com" and http.referer ne "" and not http.referer contains "photos.example.com"
-```

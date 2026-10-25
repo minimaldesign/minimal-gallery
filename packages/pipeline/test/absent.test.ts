@@ -170,24 +170,6 @@ describe('photos whose originals are not here', () => {
     expect(home).toMatchObject({ orphans: ['home__d'], absent: [] });
     expect(home.issues.join()).toMatch(/1 orphaned manifest/);
   });
-
-  it('count towards the repository size with commitOriginals', async () => {
-    const dir = await gallery();
-    const pkg = (minimalgallery: object) =>
-      writeFile(join(dir, 'package.json'), JSON.stringify({ minimalgallery }));
-    await pkg({ publish: 'git' });
-    const without = await doctor(dir);
-    expect(without).toMatchObject({
-      commitOriginals: false,
-      repo: { originals: 0 },
-    });
-    await pkg({ publish: 'git', commitOriginals: true });
-    const r = await doctor(dir);
-    expect(r.commitOriginals).toBe(true);
-    expect(r.repo.originals).toBeGreaterThan(0);
-    expect(r.repo.bytes).toBe(without.repo.bytes + r.repo.originals);
-    expect(formatDoctorReport(r)).toMatch(/of it originals/);
-  });
 });
 
 describe('withAbsentAlbums', () => {

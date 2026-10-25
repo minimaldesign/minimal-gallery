@@ -44,7 +44,7 @@ describe('bucket mode in dev', () => {
       await readFile(join(dir, '.minimalgallery/manifest/a__two.json'), 'utf8')
     );
     // Stage One’s derivatives, as the bucket storage would; Two’s are
-    // "uploaded" (not staged). Repo files go away.
+    // "uploaded" (not staged). Files in public/_mg go away.
     for (const v of one.variants) {
       const to = join(dir, '.minimalgallery/cache/media', v.key);
       await mkdir(dirname(to), { recursive: true });
@@ -84,7 +84,7 @@ describe('bucket mode in dev', () => {
     ).toBe(true);
   });
 
-  it('serves public/_mg itself in repo mode and leaves the rest to Vite', async () => {
+  it('serves public/_mg itself in site mode and leaves the rest to Vite', async () => {
     const dir = await tempGallery();
     await writeJpeg(join(dir, 'photos/a/One.jpg'));
     await processGallery(dir);

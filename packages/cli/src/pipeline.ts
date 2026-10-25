@@ -17,7 +17,7 @@ export interface RunOptions {
 
 /** Said when a run keeps photos whose originals are not on this computer. */
 export const absentNote = (n: number) =>
-  `The originals of ${n} photo(s) are not on this computer, as in a clone of the repository. They stay in the gallery as their manifests describe them and are never pruned here; edit or delete them on the computer that has their originals.`;
+  `The originals of ${n} photo(s) are not on this computer, as in a copy of the gallery made without them. They stay in the gallery as their manifests describe them and are never pruned here; edit or delete them on the computer that has their originals.`;
 
 /**
  * Run the pipeline over the gallery. In bucket mode the derivatives are

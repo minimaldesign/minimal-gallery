@@ -50,7 +50,7 @@ export interface UploadResult {
 }
 
 /**
- * Upload the files bucket mode has staged. Does nothing in repo mode or when
+ * Upload the files bucket mode has staged. Does nothing in site mode or when
  * nothing is waiting. While the config holds a scaffold stand-in, or without
  * credentials, it warns, or, when `required` (publishing), stops with a
  * `CliError` so the site is never published pointing at files that are not

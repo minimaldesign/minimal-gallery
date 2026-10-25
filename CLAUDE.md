@@ -18,14 +18,15 @@ Static photo gallery toolkit: an Astro 7.4 integration plus a local Node pipelin
 
 ## Publishing
 
-- Git is the source of truth. `master` is production: Cloudflare Workers Builds builds `examples/demo` on every push to `master` (root directory `examples/demo`, build `cd ../.. && pnpm install --frozen-lockfile && pnpm demo:ci`, deploy `npx wrangler deploy`). Do not upload with `wrangler deploy` from a machine.
+- The demo publishes the way a user’s gallery does, so the real user path gets used: `pnpm demo:publish` builds the packages, then runs `minimalgallery publish` in `examples/demo`, which processes new photos, builds the site and uploads `dist/` with `wrangler deploy` from Yann’s Mac. Pushing to `master` does not deploy anything, so the live site can be behind `master` until the next publish. Yann runs the publish; never run it, or `wrangler deploy`, without his go-ahead.
+- The docs site publishes the same way: `pnpm docs:publish` builds `apps/docs` and uploads it as the Worker `minimalgallery-docs`, served at docs.minimalgallery.net. The same go-ahead rule applies.
 - Commit and push only when Yann asks. Branch for anything bigger than a small fix.
 
 ## Local setup facts
 
 - Node 24.11 via nodenv (`.node-version`), pnpm 10 (after a global install run `nodenv rehash`), ExifTool and cjxl installed.
 - Yann keeps the prototype served on port 4410 and the app’s preview may hold 4322; use 4421 and up for your own servers.
-- The demo is in repo mode: its manifests (`examples/demo/.minimalgallery/manifest`) are committed, so each photo keeps its `added` date, and the resized photos (`public/_mg`) are ignored: `demo:ci` encodes them before the build, in Cloudflare’s build too. After changing photos or the pipeline, run `node packages/pipeline/dist/cli.js examples/demo` after `pnpm build` and commit the manifests. Moving the demo to bucket mode later is the checklist in PR #8.
+- The demo is in site mode (`storage: { mode: 'site' }`, the default): its manifests (`examples/demo/.minimalgallery/manifest`) are committed, so each photo keeps its `added` date, and the resized photos (`public/_mg`) are ignored: the pipeline encodes them on the computer that builds, `demo:publish` on Yann’s Mac and the CI job on GitHub. After changing photos or the pipeline, run `node packages/pipeline/dist/cli.js examples/demo` after `pnpm build` and commit the manifests. Moving the demo to bucket mode later is the checklist in PR #8.
 - The admin runs only under `astro dev` (`pnpm --filter minimalgallery-demo run admin`, at `/_mg/admin/`); its local HTTP API is described in `packages/astro/src/admin/README.md`.
 
 ## Open work

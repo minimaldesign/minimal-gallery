@@ -14,7 +14,7 @@ import {
   writeBucketIndex,
 } from './bucket.ts';
 import { BucketError, bucketFromConfig, s3Config } from './from-config.ts';
-import { repoStorage } from './repo.ts';
+import { folderStorage } from './folder.ts';
 import { md5, type S3Object, type S3Storage } from './s3.ts';
 
 /** Options shared by the bucket functions. */
@@ -144,7 +144,7 @@ export interface PendingUploads {
 /**
  * Staged files the manifests reference: the files waiting for upload. Local
  * only, no network, so the doctor, `watch` and the admin can show it at any
- * time. Empty in repo mode.
+ * time. Empty in site mode.
  */
 export async function pendingUploads(
   galleryDir: string,
@@ -335,7 +335,7 @@ export async function uploadToBucket(
   const bucket = bucketFromConfig(config, galleryDir, options);
   const p = await plan(galleryDir, config, bucket);
   const stageDir = join(galleryDir, STAGE_DIR);
-  const stage = repoStorage({ root: stageDir });
+  const stage = folderStorage({ root: stageDir });
   const indexFile = join(galleryDir, BUCKET_INDEX_FILE);
   const id = bucketId(s);
   const known = new Set(p.listing.keys());

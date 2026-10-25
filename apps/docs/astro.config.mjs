@@ -9,6 +9,11 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   site: 'https://docs.minimalgallery.net',
   trailingSlash: 'always',
+  // Pages that were removed when the docs dropped GitHub Pages and Netlify.
+  redirects: {
+    '/hosting/github-pages/': '/hosting/',
+    '/hosting/netlify/': '/hosting/',
+  },
   // Geist and Geist Mono, self-hosted from their Fontsource packages, as in
   // the gallery. Latin only: the docs are in English.
   fonts: [
@@ -100,12 +105,13 @@ export default defineConfig({
           items: [{ label: 'Getting started', link: '/getting-started/' }],
         },
         {
-          label: 'Hosting',
+          label: 'Putting it online',
           items: [
-            { label: 'Choosing a host', link: '/hosting/' },
+            { label: 'Choosing how', link: '/hosting/' },
             { label: 'Cloudflare', link: '/hosting/cloudflare/' },
-            { label: 'GitHub Pages', link: '/hosting/github-pages/' },
-            { label: 'Netlify', link: '/hosting/netlify/' },
+            { label: 'Photo storage', link: '/hosting/photo-storage/' },
+            { label: 'Your own host', link: '/hosting/your-own-host/' },
+            { label: 'Backups', link: '/backups/' },
           ],
         },
         {

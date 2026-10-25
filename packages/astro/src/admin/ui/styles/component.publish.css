@@ -8,7 +8,6 @@
 .publish_guide {
   display: none;
 
-  .publish:has(input[name='method'][value='git']:checked) &[data-method='git'],
   .publish:has(input[name='method'][value='deploy']:checked)
     &[data-method='deploy'],
   .publish:has(input[name='method'][value='build']:checked)

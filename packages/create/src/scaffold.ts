@@ -6,10 +6,8 @@ import {
   dotEnv,
   envExample,
   galleryConfig,
-  githubPagesWorkflow,
   headers,
   launcher,
-  netlifyToml,
   packageJson,
   projectName,
   wranglerJsonc,
@@ -78,7 +76,7 @@ export async function scaffold(
     'package.json',
     packageJson(answers, project, options.version, options.packageManager)
   );
-  await write('astro.config.mjs', astroConfig(answers));
+  await write('astro.config.mjs', astroConfig());
   await write('minimalgallery.config.ts', galleryConfig(answers));
   await write('.env.example', envExample(answers));
   // The bucket token, when given: only here, never in the config. Git ignores .env.
@@ -89,10 +87,6 @@ export async function scaffold(
     const date = options.date ?? new Date().toISOString().slice(0, 10);
     await write('wrangler.jsonc', wranglerJsonc(answers, project, date));
     await write('public/_headers', headers(answers.storage));
-  } else if (answers.host === 'github') {
-    await write('.github/workflows/deploy.yml', githubPagesWorkflow(pm));
-  } else if (answers.host === 'netlify') {
-    await write('netlify.toml', netlifyToml(pm));
   }
 
   if ((options.platform ?? process.platform) === 'darwin') {

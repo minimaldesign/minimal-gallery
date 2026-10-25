@@ -56,7 +56,7 @@ export interface Gallery {
   description: string | null;
   author: string | null;
   site: string | null;
-  storage: { mode: 'repo' | 's3'; bucket?: string; credentials?: boolean };
+  storage: { mode: 'site' | 's3'; bucket?: string; credentials?: boolean };
   albumsSort: 'date' | 'name' | 'manual';
 }
 

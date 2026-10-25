@@ -103,12 +103,12 @@ describe('settings', () => {
     const text = await readFile(file, 'utf8');
     for (const line of scaffold.split('\n').filter((l) => l.includes('//')))
       expect(text).toContain(line.trim());
-    expect(text).toContain("storage: { mode: 'repo' }");
+    expect(text).toContain("storage: { mode: 'site' }");
     expect(text).toContain("author: 'Someone else'");
     expect(await loadConfig(dir)).toMatchObject({
       name: 'Test',
       author: 'Someone else',
-      storage: { mode: 'repo' },
+      storage: { mode: 'site' },
       defaults: { fit: 'fit' },
     });
 

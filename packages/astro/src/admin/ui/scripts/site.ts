@@ -134,14 +134,7 @@ async function save(
 /* ------------------------------------------------------------------ */
 
 interface PublishInfo {
-  method: 'git' | 'deploy' | 'build';
-  git: {
-    repo: boolean;
-    remote: string | null;
-    branch: string | null;
-    ghInstalled: boolean;
-    ghAuthed: boolean;
-  };
+  method: 'deploy' | 'build';
   deploy: {
     wranglerInstalled: boolean;
     loggedIn: boolean;
@@ -182,7 +175,7 @@ const guide = (name: string) => $(`[data-guide="${name}"]`, publishForm);
 
 export async function loadPublish() {
   publishForm.setAttribute('aria-busy', 'true');
-  status(publishForm, 'Checking GitHub and Cloudflare…');
+  status(publishForm, 'Checking Cloudflare…');
   try {
     info = await api<PublishInfo>('GET', '/publish');
   } catch (error) {
@@ -193,16 +186,7 @@ export async function loadPublish() {
   const method = field(publishForm, 'method') as RadioNodeList;
   if (!method.value) method.value = info.method;
 
-  const { git, deploy, bucket } = info;
-  guide('gh-missing').hidden = git.ghInstalled;
-  guide('gh-login').hidden = !git.ghInstalled || git.ghAuthed;
-  guide('git-repo').hidden = git.repo;
-  const ready = guide('git-ready');
-  ready.hidden = !(git.repo && git.ghAuthed);
-  ready.textContent = `Signed in to GitHub. Publishing commits the gallery and pushes ${
-    git.branch ?? 'the current branch'
-  }${git.remote ? ` to ${git.remote}` : ''}.`;
-  guide('git-host').hidden = !deploy.worker;
+  const { deploy, bucket } = info;
   guide('cf-login').hidden = deploy.loggedIn;
   // after the login: which account, then the workers.dev name, once
   const step = cloudflareStep(deploy);
@@ -229,10 +213,10 @@ export async function loadPublish() {
   bucketSection.hidden = !bucket;
   if (bucket) {
     bound('bucket-text', publishForm).textContent = bucket.pending
-      ? `Your photos are served from a storage bucket. ${count(bucket.pending, 'file')} ${
+      ? `Your photos are served from photo storage. ${count(bucket.pending, 'file')} ${
           bucket.pending === 1 ? 'waits' : 'wait'
         } to be uploaded; publishing uploads them first.`
-      : 'Your photos are served from a storage bucket, and every file is already there.';
+      : 'Your photos are served from photo storage, and every file is already there.';
     $('[data-bucket-keys]', publishForm).hidden = bucket.credentials;
   }
 

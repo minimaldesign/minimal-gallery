@@ -10,7 +10,7 @@ import {
 import { dirname, join, relative, sep } from 'node:path';
 import type { Storage } from './types.ts';
 
-export interface RepoStorageOptions {
+export interface FolderStorageOptions {
   /** Directory written to, usually `<gallery>/public/_mg`. */
   root: string;
   /** URL prefix for that directory, usually `/_mg`. */
@@ -18,10 +18,10 @@ export interface RepoStorageOptions {
 }
 
 /** Stores derivatives in the site’s `public/` folder, so they ship with the build. */
-export function repoStorage({
+export function folderStorage({
   root,
   baseUrl = '/_mg',
-}: RepoStorageOptions): Storage {
+}: FolderStorageOptions): Storage {
   const pathOf = (key: string) => {
     if (key.includes('..')) throw new Error(`invalid storage key: ${key}`);
     return join(root, ...key.split('/'));

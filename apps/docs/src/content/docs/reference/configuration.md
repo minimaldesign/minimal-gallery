@@ -13,7 +13,7 @@ import { defineConfig } from '@minimalgallery/pipeline/config';
 export default defineConfig({
   name: 'Yann’s photos',
   author: 'Yann',
-  storage: { mode: 'repo' },
+  storage: { mode: 'site' },
   originals: 'none',
   color: 'srgb',
   defaults: { fit: 'fill', backdrop: 'photo' },
@@ -38,9 +38,9 @@ Two programs read the file:
 | `author` | `string` | none | site | The gallery’s author. Passed to the theme, which does not display it yet. |
 | `description` | `string` | none | site | A description of the gallery. Passed to the theme, which does not display it yet. |
 | `site` | URL | none | nothing yet | The public address of the gallery. It is validated but not read. Set `site` in `astro.config.mjs` for canonical links. |
-| `storage` | object | `{ mode: 'repo' }` | pipeline | Where the derivatives go. See [Storage modes](#storage-modes). |
+| `storage` | object | `{ mode: 'site' }` | pipeline | Where the derivatives go. See [Storage modes](#storage-modes). |
 | `ladder` | array | five variants | pipeline | The derivatives written for each photo. See [Derivative ladder](#derivative-ladder). |
-| `originals` | `'none' \| 'repo' \| 'bucket'` | `'none'` | pipeline | Whether the original files are published. See [Originals](#originals). |
+| `originals` | `'none' \| 'site' \| 'bucket'` | `'none'` | pipeline | Whether the original files are published. See [Originals](#originals). |
 | `color` | `'srgb' \| 'p3'` | `'srgb'` | pipeline | Color space of the derivatives. `'p3'` encodes them in Display P3 and keeps wide-gamut color. |
 | `defaults` | object | see below | site | Starting values of the viewer’s settings. See [Viewer defaults](#viewer-defaults). |
 | `albums.sort` | `'date' \| 'name' \| 'manual'` | `'date'` | pipeline | Photo order in albums whose `_album.md` does not set `sort`. See [Sidecars](/reference/sidecars/#_albummd). |
@@ -52,7 +52,7 @@ Changing `ladder` or `color` re-encodes every photo on the next run.
 | Value | What happens |
 | --- | --- |
 | `'none'` | The originals stay private. Only the derivatives are published. |
-| `'repo'` | Each original is copied to `public/_mg/<photo id>/<hash8>-original.<ext>` and deployed with the site, whatever the storage mode. |
+| `'site'` | Each original is copied to `public/_mg/<photo id>/<hash8>-original.<ext>` and deployed with the site, whatever the storage mode. |
 | `'bucket'` | Each original is uploaded to the bucket. It needs `storage: { mode: 's3', ... }`; any other storage mode is a validation error. |
 
 A published original’s URL is written to the photo’s manifest (`original.url`). The theme does not link to originals yet.
@@ -116,20 +116,22 @@ Besides reading the config, the integration:
 
 ## Storage modes
 
-| Mode | Derivatives are written to | Served from | Status |
-| --- | --- | --- | --- |
-| `repo` (default) | `public/_mg/<photo id>/<hash8>-<variant>.<ext>` | `/_mg/...` on the site | Works. |
-| `s3` | an S3-compatible bucket: Cloudflare R2, Backblaze B2, AWS S3 | `publicUrl` | Not built yet. |
+| Mode | Derivatives are written to | Served from |
+| --- | --- | --- |
+| `repo` (default) | `public/_mg/<photo id>/<hash8>-<variant>.<ext>` | `/_mg/...` on the site |
+| `s3`, photo storage | an S3-compatible bucket: Cloudflare R2, Backblaze B2, AWS S3, MinIO | `publicUrl` |
 
-### Repo mode
+### Site mode
 
-The derivatives live in the site’s `public/` folder, are committed with the gallery and deployed with every build. This works up to a few hundred photos. `minimalgallery doctor` projects the deploy’s file count and the repository size against the hosts’ limits, and says when to plan a move (past 500 photos or 500 MB).
+The derivatives live in the site’s `public/` folder and are published with every build. On Cloudflare this works up to [about 3,000 full-size photos](/hosting/#how-many-photos-fit). `minimalgallery doctor` projects the site’s file count against Cloudflare’s limit, and says when to add photo storage (past 16,000 files).
 
 ```ts title="minimalgallery.config.ts"
-storage: { mode: 'repo' },
+storage: { mode: 'site' },
 ```
 
 ### s3 mode
+
+The derivatives go to a bucket and are served from `publicUrl`. The docs call this photo storage, and the command line calls it bucket mode. [Photo storage](/hosting/photo-storage/) sets it up step by step on Cloudflare R2.
 
 ```ts title="minimalgallery.config.ts"
 storage: {
@@ -148,22 +150,18 @@ storage: {
 | `region` | `string` | `'auto'` | The bucket’s region. R2 uses `auto`. |
 | `publicUrl` | URL | required | The public address that serves the bucket, usually a custom domain. Derivative URLs start with it. |
 
-Credentials never go in the config. They come from two environment variables, read from the environment of the command that processes the photos:
+Credentials never go in the config. They come from two variables, read from the environment first, then from the gallery’s `.env` file:
 
 | Variable | Value |
 | --- | --- |
 | `MG_S3_ACCESS_KEY_ID` | The access key id of an API token that can write to the bucket. |
 | `MG_S3_SECRET_ACCESS_KEY` | Its secret access key. |
 
-:::caution[Not built yet]
-
-The s3 adapter is not implemented: it computes URLs from `publicUrl` but rejects every read and write. In s3 mode, `minimalgallery add`, `sync`, `watch`, `admin` and `publish` stop with a message, and `mg-pipeline` fails. Use repo mode for now.
-
-:::
+While encoding, the pipeline writes the derivatives to `.minimalgallery/cache/media` on this computer, never to the network. `minimalgallery sync` and `publish` upload them, with `Cache-Control: public, max-age=31536000, immutable`. `minimalgallery doctor --bucket` checks the bucket end to end.
 
 ### Keys and caching
 
-Every stored file is named `<photo id>/<hash8>-<variant>.<ext>`, where `hash8` is the first eight characters of the source file’s xxhash64. A new version of a photo gets a new name, so a URL never changes for a given file and can be cached forever. The scaffold sets `Cache-Control: public, max-age=31536000, immutable` on `/_mg/*` for Cloudflare (`public/_headers`) and Netlify (`netlify.toml`).
+Every stored file is named `<photo id>/<hash8>-<variant>.<ext>`, where `hash8` is the first eight characters of the source file’s xxhash64. A new version of a photo gets a new name, so a URL never changes for a given file and can be cached forever. The scaffold sets `Cache-Control: public, max-age=31536000, immutable` on `/_mg/*` for Cloudflare in `public/_headers`, and publish sets it on every file it uploads to photo storage. For your own host, see [Cache rules](/hosting/your-own-host/#cache-rules).
 
 When a photo is re-encoded, its earlier derivatives are removed. When a photo is deleted, its derivatives stay until you run `minimalgallery sync --prune`; `watch` and `admin` prune them on their own.
 

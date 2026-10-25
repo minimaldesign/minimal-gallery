@@ -4,7 +4,7 @@ import { configPlaceholders, placeholderMessage } from '../placeholders.ts';
 import { STAGE_DIR } from '../schema.ts';
 import { BUCKET_INDEX_FILE, bucketId, bucketStorage } from './bucket.ts';
 import { bucketCredentials, MISSING_CREDENTIALS } from './env.ts';
-import { repoStorage } from './repo.ts';
+import { folderStorage } from './folder.ts';
 import { s3Storage, type S3Storage } from './s3.ts';
 import type { Storage } from './types.ts';
 
@@ -32,7 +32,7 @@ export class BucketError extends Error {
 type S3Config = Extract<GalleryConfig['storage'], { mode: 's3' }>;
 
 /**
- * Storage for the derivatives, from the config’s `storage` key. In repo mode,
+ * Storage for the derivatives, from the config’s `storage` key. In site mode,
  * `public/_mg`. In s3 mode, the staged bucket storage (see `bucketStorage`):
  * writes go to `<gallery>/.minimalgallery/cache/media`, never to the network.
  * Credentials are read from `env` (default `process.env`), then from the
@@ -44,8 +44,8 @@ export function storageFromConfig(
   env: NodeJS.ProcessEnv = process.env
 ): Storage {
   const s = config.storage;
-  if (s.mode === 'repo')
-    return repoStorage({ root: join(galleryDir, 'public', '_mg') });
+  if (s.mode === 'site')
+    return folderStorage({ root: join(galleryDir, 'public', '_mg') });
   // With the scaffold’s stand-in endpoint there is no bucket to ask.
   const credentials = configPlaceholders(config).some(
     (p) => p.key === 'storage.endpoint'
@@ -78,14 +78,14 @@ export function bucketFromConfig(
 }
 
 /**
- * The s3 storage config, for remote operations. A `BucketError` in repo mode,
+ * The s3 storage config, for remote operations. A `BucketError` in site mode,
  * or while the config still holds a stand-in from create-minimalgallery.
  */
 export function s3Config(config: Pick<GalleryConfig, 'storage'>): S3Config {
   if (config.storage.mode !== 's3')
     throw new BucketError(
       'not-bucket-mode',
-      "The gallery is in repo mode: set storage: { mode: 's3', ... } in minimalgallery.config.ts to use a bucket."
+      "The gallery is in site mode: set storage: { mode: 's3', ... } in minimalgallery.config.ts to use a bucket."
     );
   const placeholders = configPlaceholders(config);
   if (placeholders.length)
@@ -95,7 +95,7 @@ export function s3Config(config: Pick<GalleryConfig, 'storage'>): S3Config {
 
 /**
  * Storage for published originals, or null when `originals: 'none'`.
- * `repo` always writes to `public/_mg`, even when derivatives go to a bucket.
+ * `site` always writes to `public/_mg`, even when derivatives go to a bucket.
  */
 export function originalsStorageFromConfig(
   config: Pick<GalleryConfig, 'storage' | 'originals'>,
@@ -103,9 +103,9 @@ export function originalsStorageFromConfig(
   derivatives: Storage
 ): Storage | null {
   if (config.originals === 'none') return null;
-  if (config.originals === 'repo')
-    return config.storage.mode === 'repo'
+  if (config.originals === 'site')
+    return config.storage.mode === 'site'
       ? derivatives
-      : repoStorage({ root: join(galleryDir, 'public', '_mg') });
+      : folderStorage({ root: join(galleryDir, 'public', '_mg') });
   return derivatives;
 }

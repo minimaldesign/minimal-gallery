@@ -51,7 +51,7 @@ const defaultVariants: z.input<typeof LadderVariantConfig>[] =
 
 export const StorageConfig = z.discriminatedUnion('mode', [
   /** Derivatives in `public/_mg`, committed and deployed with the site. */
-  z.object({ mode: z.literal('repo') }),
+  z.object({ mode: z.literal('site') }),
   /**
    * An S3-compatible bucket (Cloudflare R2, Backblaze B2, AWS S3). Credentials
    * are never in the config: they come from `MG_S3_ACCESS_KEY_ID` and
@@ -93,7 +93,7 @@ export const GalleryConfigSchema = z
     site: z.url().optional(),
     /** The “Powered by minimal gallery” line and the version in the keys pane. */
     credit: z.boolean().default(true),
-    storage: StorageConfig.default({ mode: 'repo' }),
+    storage: StorageConfig.default({ mode: 'site' }),
     ladder: z
       .array(LadderVariantConfig)
       .min(1)
@@ -103,10 +103,10 @@ export const GalleryConfigSchema = z
       .prefault(defaultVariants),
     /**
      * Whether the original files are published. `none` (default) keeps them
-     * private; `repo` copies them to `public/_mg`; `bucket` uploads them to
+     * private; `site` copies them to `public/_mg`; `bucket` uploads them to
      * the s3 storage.
      */
-    originals: z.enum(['none', 'bucket', 'repo']).default('none'),
+    originals: z.enum(['none', 'bucket', 'site']).default('none'),
     /** Colour space of the derivatives. `p3` keeps wide-gamut colour. */
     color: z.enum(['srgb', 'p3']).default('srgb'),
     defaults: ViewerDefaults.prefault({}),

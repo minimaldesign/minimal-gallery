@@ -1,6 +1,7 @@
 // Cloudflare config for docs.minimalgallery.net: a Worker that serves the
-// built site as static assets, like the demo gallery. Workers Builds builds
-// it from master; nothing is deployed from a machine.
+// built site as static assets, like the demo gallery. `pnpm docs:publish`
+// builds it and uploads dist from this computer. The custom domain below
+// makes wrangler create the DNS record and the certificate on first deploy.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "minimalgallery-docs",
@@ -10,7 +11,4 @@
     "directory": "./dist",
     "not_found_handling": "404-page",
   },
-  // Cloudflare builds other branches than master with `wrangler preview`,
-  // which needs this block; it can stay empty.
-  "previews": {},
 }
