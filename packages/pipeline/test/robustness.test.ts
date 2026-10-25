@@ -105,7 +105,7 @@ describe('doctor', () => {
       undated: 1,
       missingManifests: ['photos/a/three.jpg'],
       derivatives: { files: 4 },
-      recommendation: 'repo-ok',
+      recommendation: 'site-ok',
     });
     // Archive + album + year, month, day, camera, aperture for the dated photo.
     expect(r.contexts.total).toBe(7);
@@ -141,7 +141,7 @@ describe('config in processing', () => {
     const sharp = (await import('sharp')).default;
     const dir = await tempGallery();
     await writeJpeg(join(dir, 'photos/a/one.jpg'));
-    const config = resolveConfig({ originals: 'repo', color: 'p3' });
+    const config = resolveConfig({ originals: 'site', color: 'p3' });
     const s = await processGallery(dir, { concurrency: 1, config });
     expect(s.encoded).toBe(1);
     const { readFile } = await import('node:fs/promises');

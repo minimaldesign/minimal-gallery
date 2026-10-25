@@ -147,10 +147,10 @@ describe('create-minimalgallery', () => {
     expect(PUBLIC_URL_PLACEHOLDER).toBe(PIPELINE_PUBLIC_URL);
   });
 
-  it('scaffolds a Cloudflare gallery in repo mode with --yes --no-install', async () => {
+  it('scaffolds a Cloudflare gallery in site mode with --yes --no-install', async () => {
     const dir = join(tmp, 'My Gallery');
-    // The real command, spawned. Repo mode runs neither wrangler nor git, and
-    // --size small is the old spelling of --storage repo.
+    // The real command, spawned. Site mode runs neither wrangler nor git, and
+    // --size small is the old spelling of --storage site.
     const { stdout } = await execFileAsync(
       process.execPath,
       [
@@ -241,7 +241,7 @@ describe('create-minimalgallery', () => {
     const config = await loadGalleryConfig(dir);
     expect(config.name).toBe('Yann’s photos');
     expect(config.author).toBe("O'Neil");
-    expect(config.storage.mode).toBe('repo');
+    expect(config.storage.mode).toBe('site');
   });
 
   it('refuses a folder that is not empty', async () => {
@@ -255,7 +255,7 @@ describe('create-minimalgallery', () => {
     ).rejects.toMatchObject({ code: 1 });
   });
 
-  it('publishes from this computer in repo mode by default on Cloudflare', async () => {
+  it('publishes from this computer in site mode by default on Cloudflare', async () => {
     const fake = fakeRunner({ git: freshGit });
     expect(await create(['cf-default', '--yes'], fake.run)).toBe(0);
     const dir = join(tmp, 'cf-default');
@@ -263,7 +263,7 @@ describe('create-minimalgallery', () => {
     expect(fake.wrangler()).toEqual([]);
     expect(fake.calls.some((c) => c.command === 'git')).toBe(false);
     const config = await loadGalleryConfig(dir);
-    expect(config.storage).toEqual({ mode: 'repo' });
+    expect(config.storage).toEqual({ mode: 'site' });
     const pkg = JSON.parse(await read(dir, 'package.json'));
     expect(pkg.minimalgallery.publish).toBe('deploy');
     expect(await read(dir, 'public/_headers')).toContain('/_mg/*');
@@ -481,7 +481,7 @@ describe('create-minimalgallery', () => {
     expect(pkg.devDependencies).toBeUndefined();
     for (const file of ['wrangler.jsonc', 'public/_headers', '.git'])
       expect(await exists(join(dir, file)), file).toBe(false);
-    expect((await loadGalleryConfig(dir)).storage).toEqual({ mode: 'repo' });
+    expect((await loadGalleryConfig(dir)).storage).toEqual({ mode: 'site' });
     expect(await read(dir, '.env.example')).not.toContain('CLOUDFLARE');
   });
 
@@ -493,7 +493,7 @@ describe('create-minimalgallery', () => {
         name: 'Photos',
         author: '',
         host: 'cloudflare',
-        storage: 'repo',
+        storage: 'site',
         publish: 'deploy',
         packageManager: 'npm',
       },
@@ -606,7 +606,7 @@ describe('create-minimalgallery', () => {
   it('makes valid Cloudflare Worker and R2 bucket names', () => {
     expect(projectName('My Gallery')).toBe('my-gallery');
     expect(projectName('Café ’25')).toBe('cafe-25');
-    expect(projectName('***')).toBe('my-gallery');
+    expect(projectName('***')).toBe('mg');
     expect(bucketName('my-gallery')).toBe('my-gallery-media');
     const long = bucketName(projectName('a'.repeat(80)));
     expect(long.length).toBeLessThanOrEqual(63);

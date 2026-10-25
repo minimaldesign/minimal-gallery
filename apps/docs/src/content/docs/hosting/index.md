@@ -10,7 +10,7 @@ Your computer resizes the photos and builds the site. Publishing puts the result
 - Holds [about 3,000 photos](#how-many-photos-fit).
 - Free, with no charge for visitors: Cloudflare serves the gallery’s files at no cost however many people look at it.
 - Needs one free Cloudflare account. `npm run publish` uploads the gallery from your computer, and later publishes send only what changed.
-- The gallery gets an address like `my-gallery.<your name>.workers.dev`, and you can add your own domain.
+- The gallery gets an address like `mg.<your name>.workers.dev`, and you can add your own domain.
 
 This is the default. See [Cloudflare](/hosting/cloudflare/).
 
@@ -35,22 +35,45 @@ See [Your own host](/hosting/your-own-host/).
 
 ## How many photos fit
 
-The photo counts on these pages are estimates for full-size photos from a recent camera, about 24 megapixels. How many of your photos fit depends on how large they are:
+The photo counts on these pages are estimates for full-size photos from a recent camera, about 24 megapixels. How many of your photos fit depends on how large they are, because that decides how many files each photo becomes.
 
-- **On Cloudflare, the limit is a number of files.** A site can hold 20,000 files. Each photo adds its own page and up to five resized copies, one for each size the gallery shows. A photo only gets the copies that are no larger than itself, so a full-size photo uses six files and a photo exported at 1,600 pixels uses four. With the album and filter pages, that is about 3,000 full-size photos, or about 4,500 photos exported at 1,600 pixels.
-- **In photo storage, the limit is a size.** The free tier holds 10 GB. The five copies of a 24-megapixel photo weigh about 1.5 MB together, so about 6,500 full-size photos fit. Smaller photos make smaller copies, and more of them fit.
+### The files each photo becomes
+
+A screen should never download more pixels than it can show, so the pipeline makes several resized copies of each photo, and each browser picks the one that fits its screen: a phone gets a small copy, a large high-density display a big one. Most copies are AVIF, which is about half the size of a JPEG of the same quality. One JPEG is kept for the places that cannot show AVIF.
+
+| File | Long edge | Format | What it is for | Made for |
+| --- | --- | --- | --- | --- |
+| The photo’s page |  | HTML | The photo’s own address, which works without JavaScript | every photo |
+| `grid` | 640 px | AVIF | Thumbnails in the grid and the list | every photo |
+| `w1280` | 1,280 px | AVIF | The viewer on phones and small windows | photos at least 1,280 px long |
+| `w2048` | 2,048 px | AVIF | The viewer on laptops and most desktop screens | photos at least 2,048 px long |
+| `w3200` | 3,200 px | AVIF | The viewer on large and high-density screens | photos at least 3,200 px long |
+| `jpeg1600` | 1,600 px | JPEG | Link previews, feeds, and browsers that cannot show AVIF | every photo |
+
+A photo never gets a copy larger than itself: the copies marked “every photo” are made at the photo’s own size when it is smaller, and the others are skipped. So:
+
+- a full-size photo, 6,000 by 4,000 pixels, becomes 6 files, about 1.5 MB of copies;
+- a photo exported at 1,600 pixels on its long edge becomes 4 files (its page, `grid`, `w1280` and `jpeg1600`);
+- a photo exported at 1,200 pixels becomes 3 files.
+
+Each album, and each filter value such as a year, a camera or a keyword, adds 2 more files to the site: a page and a small JSON file. [Configuration](/reference/configuration/#derivative-ladder) explains how to change the list of copies.
+
+### What that means for each limit
+
+- **On Cloudflare, the limit is a number of files.** A site can hold 20,000 files. At 6 files per photo, with the album and filter pages, that is about 3,000 full-size photos. At 4 files per photo, about 4,500 photos exported at 1,600 pixels.
+- **In photo storage, the limit is a size.** The free tier holds 10 GB, and the copies of a full-size photo weigh about 1.5 MB, so about 6,500 full-size photos fit. Smaller photos make fewer and smaller copies, and more of them fit. The pages stay on Cloudflare, at one file per photo.
 
 `npm run doctor` counts your own gallery: the files the site holds, how many more photos fit at your current average, and one of three verdicts:
 
-- “Repo mode is fine.”
-- “Repo mode works today, but the site is getting close to Cloudflare’s 20,000-file limit. Plan to add photo storage (bucket mode) before then.” This comes past 16,000 files.
+- “Site mode is fine.”
+- “Site mode works today, but the site is getting close to Cloudflare’s 20,000-file limit. Plan to add photo storage (bucket mode) before then.” This comes past 16,000 files.
 - “Add photo storage (bucket mode): the site is over Cloudflare’s 20,000-file limit.”
 
 For a gallery built for your own host, doctor skips Cloudflare’s limit.
 
 ## Words on these pages
 
-- **Repo mode** is the default: the resized photos are published with the site, from the gallery’s `public/_mg` folder. The name comes from the config, `storage: { mode: 'repo' }`. It has nothing to do with git.
+- **Site mode** is the default: the resized photos are published with the site, from the gallery’s `public/_mg` folder. In the config it is `storage: { mode: 'site' }`.
 - **Photo storage** keeps the resized photos in a storage space of their own, outside the site. Storage services call such a space a bucket, so the command line and the config call it **bucket mode**: `storage: { mode: 's3' }` in `minimalgallery.config.ts`, after S3, the protocol these services share. Cloudflare’s photo storage service is called R2.
 - **`dist`** is the folder each build writes inside the gallery folder. It holds the whole site, and it is what gets uploaded.
 

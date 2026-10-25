@@ -6,7 +6,7 @@
  */
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
-import { repoStorage } from './repo.ts';
+import { folderStorage } from './folder.ts';
 import { S3Error, type S3Storage } from './s3.ts';
 import type { Storage } from './types.ts';
 
@@ -101,7 +101,7 @@ export interface BucketStorage extends Storage {
 export function bucketStorage(options: BucketStorageOptions): BucketStorage {
   const { stageDir, remote = null, index } = options;
   const publicUrl = options.publicUrl.replace(/\/+$/, '');
-  const stage = repoStorage({ root: stageDir, baseUrl: publicUrl });
+  const stage = folderStorage({ root: stageDir, baseUrl: publicUrl });
   let offline: S3Error | null = null;
   let known: Promise<Set<string> | null> | undefined;
   const knownKeys = () =>

@@ -86,7 +86,7 @@ describe('next steps', () => {
       {
         ...answers,
         host: 'local',
-        storage: 'repo',
+        storage: 'site',
         bucket: undefined,
         publish: 'build',
       },

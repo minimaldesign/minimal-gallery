@@ -2,8 +2,8 @@
 
 /** `cloudflare`: publish uploads to Cloudflare. `local`: publish builds dist/ for any host. */
 export type Host = 'cloudflare' | 'local';
-/** `repo`: resized photos published with the site. `bucket`: photo storage in a Cloudflare R2 bucket. */
-export type StorageMode = 'repo' | 'bucket';
+/** `site`: resized photos published with the site. `bucket`: photo storage in a Cloudflare R2 bucket. */
+export type StorageMode = 'site' | 'bucket';
 /** The `minimalgallery.publish` setting in package.json. */
 export type PublishMethod = 'deploy' | 'build';
 export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
@@ -78,7 +78,7 @@ export function projectName(input: string): string {
     .replace(/^-+|-+$/g, '')
     .slice(0, 58)
     .replace(/-+$/, '');
-  return slug || 'my-gallery';
+  return slug || 'mg';
 }
 
 /** R2 bucket names: 3 to 63 lowercase letters, digits and dashes, no dash at either end. */
@@ -140,18 +140,18 @@ export function packageJson(
 }
 
 function storageLines(answers: Answers): string[] {
-  if (answers.storage === 'repo' || !answers.bucket)
+  if (answers.storage === 'site' || !answers.bucket)
     return [
-      '  // Repo mode: the resized photos are published with the site. Good up to',
+      '  // Site mode: the resized photos are published with the site. Good up to',
       '  // a few thousand photos (Cloudflare takes 20,000 files per site);',
       `  // ${runCommand(answers.packageManager, 'doctor')} says how close the gallery is.`,
-      "  storage: { mode: 'repo' },",
+      "  storage: { mode: 'site' },",
     ];
   const { name, domain, accountId } = answers.bucket;
   const lines = [
     '  // Bucket mode: the resized photos live in the Cloudflare R2 bucket below,',
     '  // served from its custom domain. Publish uploads new ones before it',
-    '  // commits or deploys. The API token is in .env, never in this file.',
+    '  // deploys. The API token is in .env, never in this file.',
     '  storage: {',
     "    mode: 's3',",
     ...prop(4, 'bucket', name),
@@ -242,7 +242,7 @@ export function envExample(answers: Answers): string {
         ]
       : [
           ENV_INTRO,
-          '# Repo mode needs none.',
+          '# Site mode needs none.',
           '',
           '# Bucket mode only: the API token for the S3-compatible bucket.',
           '# MG_S3_ACCESS_KEY_ID=',

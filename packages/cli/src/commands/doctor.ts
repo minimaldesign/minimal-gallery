@@ -26,7 +26,7 @@ export async function doctorCommand(args: string[], dir?: string) {
   const config = await loadConfig(root);
   if (config.storage.mode !== 's3')
     throw new CliError(
-      'The gallery is in repo mode, so there is no bucket to check.'
+      'The gallery is in site mode, so there is no bucket to check.'
     );
   stopOnPlaceholders(config, 'The bucket was not checked.');
   let check;

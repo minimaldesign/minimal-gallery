@@ -65,8 +65,8 @@ export {
   isHeic,
   UnsupportedInputError,
 } from './formats.ts';
-export { repoStorage } from './storage/repo.ts';
-export type { RepoStorageOptions } from './storage/repo.ts';
+export { folderStorage } from './storage/folder.ts';
+export type { FolderStorageOptions } from './storage/folder.ts';
 export { s3Storage, S3Error, CACHE_CONTROL } from './storage/s3.ts';
 export type {
   S3StorageOptions,

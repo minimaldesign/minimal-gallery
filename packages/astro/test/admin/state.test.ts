@@ -44,7 +44,7 @@ describe('GET /state', () => {
     expect(status).toBe(200);
     expect(body.gallery).toMatchObject({
       name: 'Photos',
-      storage: { mode: 'repo' },
+      storage: { mode: 'site' },
       originals: 'none',
       albumsSort: 'date',
       defaults: { fit: 'fill', size: 2 },

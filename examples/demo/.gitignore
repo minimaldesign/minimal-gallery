@@ -1,5 +1,5 @@
-# Repo mode: the resized photos (public/_mg) are encoded before each build,
-# in CI too, and deployed with the site. The manifests are committed, so
+# Site mode: the resized photos (public/_mg) are encoded on the computer
+# that builds (pnpm demo:publish, or CI) and published with the site. The manifests are committed, so
 # each photo keeps the date it was added; .minimalgallery/cache holds the
 # pipeline's scratch files.
 .minimalgallery/cache/

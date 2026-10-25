@@ -24,7 +24,7 @@ In the config and on the command line, photo storage is called bucket mode: stor
 
 `npm create minimalgallery@latest` sets up photo storage when you pick Cloudflare and answer “More than that” to “How big is your photo library?”. It then asks for:
 
-- **Bucket name**, `my-gallery-media` by default: the name of the storage space.
+- **Bucket name**, `mg-media` by default: the name of the storage space.
 - **Media domain**, such as `media.example.com`, the address the photos are served from. You can leave it empty and set it later.
 - **R2 access key id** and **secret access key**, the key that lets `npm run publish` upload photos. You can leave them empty and add them later.
 
@@ -50,7 +50,7 @@ If you are logged in to Cloudflare (`npx wrangler login`), it finds your account
 
 ## An existing gallery
 
-To move a gallery from repo mode to photo storage, when `npm run doctor` says so:
+To move a gallery from site mode to photo storage, when `npm run doctor` says so:
 
 1. Turn on R2 and create a bucket in the dashboard, under **R2 Object Storage**.
 2. Connect the media domain and create the access key, as in steps 1 and 2 above.
@@ -59,7 +59,7 @@ To move a gallery from repo mode to photo storage, when `npm run doctor` says so
    ```ts title="minimalgallery.config.ts"
    storage: {
      mode: 's3',
-     bucket: 'my-gallery-media',
+     bucket: 'mg-media',
      endpoint: 'https://<account id>.r2.cloudflarestorage.com',
      region: 'auto',
      publicUrl: 'https://media.example.com',
@@ -69,7 +69,7 @@ To move a gallery from repo mode to photo storage, when `npm run doctor` says so
 4. Run `npx minimalgallery doctor --bucket` to check it.
 5. Run `npm run publish`. It processes every photo again for the new address, uploads the copies, then builds and uploads the site. The first time takes about as long as the gallery’s first processing did.
 
-Once the site is published this way, the copies in `public/_mg` are no longer used, and you can delete that folder (unless `originals: 'repo'` publishes your originals from it).
+Once the site is published this way, the copies in `public/_mg` are no longer used, and you can delete that folder (unless `originals: 'site'` publishes your originals from it).
 
 ## Publishing
 

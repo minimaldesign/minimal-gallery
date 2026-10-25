@@ -25,7 +25,7 @@ The gallery folder is created inside the folder Terminal is in, which is your ho
 
 It asks a few questions. Press Return to accept the answer it suggests.
 
-- **Where should the gallery go?** The folder’s name, `my-gallery` by default. It must be new or empty. On Cloudflare the folder name also becomes the site’s name, so `my-gallery` is published at an address like `my-gallery.<your-subdomain>.workers.dev`.
+- **Where should the gallery go?** The folder’s name, `mg` by default. It must be new or empty. On Cloudflare the folder name also becomes the site’s name, so `mg` is published at an address like `mg.<your-subdomain>.workers.dev`.
 - **Gallery name.** The title at the start of the breadcrumb on every page and in the browser tab. `Photos` by default; you can change it later.
 - **Your name.** Shown as the gallery’s author. Leave it empty to skip it.
 - **Where will it live?** Cloudflare (free, published from your computer with one command) or “My own host”, which builds a folder you upload to any web host yourself. This decides what `npm run publish` does later. See [Putting it online](/hosting/).
@@ -59,7 +59,7 @@ Your originals are never changed. Resized copies go to `public/_mg/`, and what t
 Move into the gallery folder and start the preview:
 
 ```sh
-cd my-gallery
+cd mg
 npm run admin
 ```
 
@@ -145,7 +145,7 @@ export default defineConfig({
   name: 'Field notes',
   author: 'Ana Ruiz',
   site: 'https://photos.example.com',
-  storage: { mode: 'repo' },
+  storage: { mode: 'site' },
   defaults: { fit: 'fit', strip: true, backdrop: 'photo' },
 });
 ```
@@ -251,4 +251,4 @@ Then publish without the confirmation:
 npx minimalgallery publish --yes
 ```
 
-`npx minimalgallery sync` processes changes without publishing (`--prune` also removes the copies of deleted photos), `npx minimalgallery watch` runs the folder watcher on its own, and `npm run dev` starts the preview without it. The create command takes its answers as options, for example `npm create minimalgallery@latest my-gallery -- --host cloudflare --yes`. Every command and option is in [Command line](/reference/cli/), and every sidecar field in [Sidecars](/reference/sidecars/).
+`npx minimalgallery sync` processes changes without publishing (`--prune` also removes the copies of deleted photos), `npx minimalgallery watch` runs the folder watcher on its own, and `npm run dev` starts the preview without it. The create command takes its answers as options, for example `npm create minimalgallery@latest mg -- --host cloudflare --yes`. Every command and option is in [Command line](/reference/cli/), and every sidecar field in [Sidecars](/reference/sidecars/).

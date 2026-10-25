@@ -16,7 +16,7 @@ The whole gallery folder. What matters in it:
 | `minimalgallery.config.ts`, `custom.css` | Your settings and your style changes. |
 | `.env` | With photo storage, its access key. Back it up somewhere private, since anyone with it can change your photo storage. |
 
-Two folders can be left out, since they are made again when needed: `node_modules`, which `npm install` restores, and `dist`, which every build writes. In repo mode, `public/_mg` holds the resized photos, which the pipeline can make again from the originals; keeping it in the backup saves that time.
+Two folders can be left out, since they are made again when needed: `node_modules`, which `npm install` restores, and `dist`, which every build writes. In site mode, `public/_mg` holds the resized photos, which the pipeline can make again from the originals; keeping it in the backup saves that time.
 
 Time Machine, a backup app, or an external disk all work. A folder synced by iCloud Drive or Dropbox works too, but `node_modules` holds tens of thousands of small files: leave it out of the sync if your service lets you.
 
@@ -56,7 +56,7 @@ Git is not made for large files, and full-size originals soon outgrow what git h
 - **History.** Git keeps every version of every file forever. Re-export a photo after an edit and the repository holds both versions, even after you delete one.
 - **Privacy.** In a public repository, anyone can download your full-resolution files.
 
-So the repository holds what the gallery is made of, without the originals: the sidecars, the manifests, the settings and, in repo mode, the resized copies. It is not a backup of your photos. Keep backing up the gallery folder as above.
+So the repository holds what the gallery is made of, without the originals: the sidecars, the manifests, the settings and, in site mode, the resized copies. It is not a backup of your photos. Keep backing up the gallery folder as above.
 
 ### Keeping the originals in git anyway
 

@@ -115,9 +115,9 @@ minimalgallery doctor [--bucket]
 - photo, album and undated counts (with the photos whose originals are not on this computer), derivative files and bytes, and published originals when there are any;
 - the number of contexts: the archive, the albums and every facet value;
 - with photo storage, the files waiting for upload and whether the access key is set;
-- the projected site: one page per visible photo, one page and one JSON file per context, the derivatives in repo mode and about 20 other files, against Cloudflare’s limit of 20,000 files, and about how many more photos fit before it;
+- the projected site: one page per visible photo, one page and one JSON file per context, the derivatives in site mode and about 20 other files, against Cloudflare’s limit of 20,000 files, and about how many more photos fit before it;
 - the bytes of photos published with the site;
-- a recommendation: repo mode is fine; plan to add photo storage (past 16,000 files); or add photo storage (over the limit). For a gallery built for your own host (`"publish": "build"`), Cloudflare’s limit does not apply and the recommendation says so;
+- a recommendation: site mode is fine; plan to add photo storage (past 16,000 files); or add photo storage (over the limit). For a gallery built for your own host (`"publish": "build"`), Cloudflare’s limit does not apply and the recommendation says so;
 - issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), HEIC or RAW files with no JPEG, and, with photo storage, a missing access key or a value the scaffold left as a stand-in.
 
 A photo whose original is not on this computer and never was, as in a copy of the gallery made without its originals, is not an issue. `doctor` counts those photos and does not ask to prune them.
@@ -217,10 +217,10 @@ npm create minimalgallery@latest
 This creates a gallery folder, installs its packages and prints the next steps. It asks for what it needs; options answer the questions ahead of time. With npm, put `--` before the options:
 
 ```sh
-npm create minimalgallery@latest my-gallery -- --host cloudflare --name "Kyoto" --yes
+npm create minimalgallery@latest mg -- --host cloudflare --name "Kyoto" --yes
 ```
 
-With pnpm, yarn or bun, pass them directly: `pnpm create minimalgallery my-gallery --host local`.
+With pnpm, yarn or bun, pass them directly: `pnpm create minimalgallery mg --host local`.
 
 | Option | Meaning |
 | --- | --- |
@@ -244,7 +244,7 @@ Each question is asked only when its option is missing. With `--yes`, or when no
 
 | Question | Choices | Default |
 | --- | --- | --- |
-| Where should the gallery go? | a folder name | `my-gallery` |
+| Where should the gallery go? | a folder name | `mg` |
 | Gallery name | text | `Photos` |
 | Your name | text, or empty to skip | empty |
 | Where will it live? | Cloudflare, My own host | Cloudflare |
@@ -263,9 +263,9 @@ Every gallery gets these files:
 | File | Contents |
 | --- | --- |
 | `package.json` | The scripts `dev`, `build`, `preview`, `admin`, `publish` and `doctor`; the `minimalgallery.publish` method for your host; `@minimalgallery/astro`, `@minimalgallery/pipeline`, `astro` and `minimalgallery` as dependencies; Node 22.18 or later; with pnpm or Yarn, `packageManager` with the version on your computer, so every computer installs the same one. |
-| `minimalgallery.config.ts` | `name`, `author` when you gave one, `storage` (`{ mode: 'repo' }`, or the bucket for photo storage), and a commented `site`. See [Configuration](/reference/configuration/). |
+| `minimalgallery.config.ts` | `name`, `author` when you gave one, `storage` (`{ mode: 'site' }`, or the bucket for photo storage), and a commented `site`. See [Configuration](/reference/configuration/). |
 | `astro.config.mjs` | Static output, trailing slashes, the minimal gallery integration, incremental builds, and a commented `site`. |
-| `.env.example` | The photo storage access key, commented out in repo mode. With photo storage and a key given, `.env` holds the key. |
+| `.env.example` | The photo storage access key, commented out in site mode. With photo storage and a key given, `.env` holds the key. |
 | `.gitignore` | For a repository you may make yourself: `node_modules`, `dist`, `.astro`, `.env` files, `.minimalgallery/cache`, and every file under `photos/` except the sidecars and `_album.md`. See [Backups](/backups/#keeping-the-gallery-in-git). |
 | `tsconfig.json` | Astro’s strict TypeScript settings. |
 | `photos/README.md` | How to organize photos. |

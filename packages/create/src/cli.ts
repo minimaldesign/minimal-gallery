@@ -37,7 +37,7 @@ const USAGE = `Usage: npm create minimalgallery@latest [folder] [options]
   --host <host>              cloudflare (the default): publish to Cloudflare from
                              this computer; local: build a folder to upload to
                              any host yourself
-  --storage <mode>           on Cloudflare, for the resized photos. repo (the
+  --storage <mode>           on Cloudflare, for the resized photos. site (the
                              default): they are published with the site, up to
                              Cloudflare's 20,000-file limit, roughly 3,000 photos;
                              bucket: photo storage in a Cloudflare R2 bucket, for
@@ -67,7 +67,7 @@ const HOSTS: Array<{ value: Host; label: string; hint: string }> = [
 
 const SIZES: Array<{ value: StorageMode; label: string; hint: string }> = [
   {
-    value: 'repo',
+    value: 'site',
     label: 'Up to about 3,000 photos',
     hint: 'the photos are published with the site; free',
   },
@@ -286,7 +286,7 @@ export async function main(
         author: { type: 'string' },
         host: { type: 'string' },
         storage: { type: 'string' },
-        // The old name of --storage: small is repo, large is bucket.
+        // The old name of --storage: small is site, large is bucket.
         size: { type: 'string' },
         bucket: { type: 'string' },
         'media-domain': { type: 'string' },
@@ -320,8 +320,8 @@ export async function main(
   );
   const size = oneOf('size', values.size, ['small', 'large']);
   const storageFlag =
-    oneOf<StorageMode>('storage', values.storage, ['bucket', 'repo']) ??
-    (size && (size === 'large' ? 'bucket' : 'repo'));
+    oneOf<StorageMode>('storage', values.storage, ['bucket', 'site']) ??
+    (size && (size === 'large' ? 'bucket' : 'site'));
   const pmFlag = oneOf('pm', values.pm, PMS);
   if (values.bucket !== undefined && !BUCKET_NAME.test(values.bucket))
     throw new Exit(`--bucket: ${BUCKET_RULE}`);
@@ -340,7 +340,7 @@ export async function main(
     throw new Exit('Pass --access-key-id and --secret-access-key together.');
   if (hostFlag === 'local' && storageFlag === 'bucket')
     throw new Exit(
-      'Photo storage is set up with Cloudflare R2: use --host cloudflare, or --storage repo.'
+      'Photo storage is set up with Cloudflare R2: use --host cloudflare, or --storage site.'
     );
   // Without a terminal to ask in, use the defaults.
   const ask = !values.yes && (deps.interactive ?? Boolean(process.stdin.isTTY));
@@ -353,11 +353,11 @@ export async function main(
       ? answered(
           await text({
             message: 'Where should the gallery go?',
-            placeholder: 'my-gallery',
-            defaultValue: 'my-gallery',
+            placeholder: 'mg',
+            defaultValue: 'mg',
           })
         )
-      : 'my-gallery');
+      : 'mg');
   const dir = resolve(cwd, folder);
   if (!(await isEmptyDir(dir)))
     throw new Exit(`${dir} is not empty. Pick a new folder name.`);
@@ -399,7 +399,7 @@ export async function main(
         )
       : 'cloudflare');
 
-  let storage: StorageMode = 'repo';
+  let storage: StorageMode = 'site';
   let bucket: Answers['bucket'];
   let token: BucketToken | undefined;
   // The simplest path is the default: the resized photos go up with the
@@ -419,10 +419,10 @@ export async function main(
               await select<StorageMode>({
                 message: 'How big is your photo library?',
                 options: SIZES,
-                initialValue: 'repo',
+                initialValue: 'site',
               })
             )
-          : 'repo');
+          : 'site');
     if (storage === 'bucket') log.info(BUCKET_NOTE);
   }
 

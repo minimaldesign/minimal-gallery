@@ -143,7 +143,7 @@ function galleryInfo(config: GalleryConfig, credentials: boolean) {
             publicUrl: s.publicUrl,
             credentials,
           }
-        : { mode: 'repo' as const },
+        : { mode: 'site' as const },
     originals: config.originals,
     albumsSort: config.albums.sort,
     defaults: config.defaults,

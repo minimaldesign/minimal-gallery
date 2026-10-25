@@ -2,7 +2,7 @@
  * Media in dev. Bucket mode: `<base>_mg/<key>` is served from the stage
  * (`.minimalgallery/cache/media/<key>`), where the pipeline writes until a
  * publish uploads, and redirected to the bucket’s public URL otherwise.
- * Repo mode: served from `public/_mg` here rather than by Vite, whose list
+ * Site mode: served from `public/_mg` here rather than by Vite, whose list
  * of public files learns about a new derivative only after its watcher
  * does, so a thumbnail announced by a `photo` event would 404 for a moment.
  */
@@ -46,7 +46,7 @@ async function send(req: IncomingMessage, res: ServerResponse, file: string) {
 
 /**
  * Serve one media key. `publicUrl` is the bucket’s address in bucket mode,
- * null in repo mode. Returns false to leave the request to Vite.
+ * null in site mode. Returns false to leave the request to Vite.
  */
 export async function serveMedia(
   req: IncomingMessage,
@@ -69,7 +69,7 @@ export async function serveMedia(
     await send(req, res, staged);
     return true;
   }
-  // Originals kept in the repo (`originals: 'repo'`) are left to Vite.
+  // Originals published with the site (`originals: 'site'`) are left to Vite.
   if (await isFile(inRepo)) return false;
   res.writeHead(302, {
     Location: `${publicUrl.replace(/\/+$/, '')}/${parts.map(encodeURIComponent).join('/')}`,

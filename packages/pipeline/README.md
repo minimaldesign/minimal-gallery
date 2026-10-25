@@ -33,9 +33,9 @@ mg-pipeline doctor <galleryDir> [--json report.json]
 `doctor` reads the manifests and the photos folder without encoding anything, and prints:
 
 - photo, album and undated counts (with the photos whose originals are not on this computer), derivative files and bytes;
-- the projected Cloudflare deploy: one HTML page per visible photo, one HTML page and one `<context>.json` per context (the archive, each album, each facet value), the derivatives in repo mode, and about 20 other files;
+- the projected Cloudflare deploy: one HTML page per visible photo, one HTML page and one `<context>.json` per context (the archive, each album, each facet value), the derivatives in site mode, and about 20 other files;
 - that count against Cloudflare’s 20,000-file limit, with the number of photos left before it, and the bytes of photo media published with the site (`siteMedia`);
-- a recommendation: repo mode is fine; plan to add photo storage, bucket mode (past 16,000 files); or add it (over the limit). Both pieces of advice link the photo storage docs and say that enabling R2 asks for a payment method, even on the free tier. A gallery built for its own host (`"publish": "build"` in `package.json`) gets no Cloudflare advice;
+- a recommendation: site mode is fine; plan to add photo storage, bucket mode (past 16,000 files); or add it (over the limit). Both pieces of advice link the photo storage docs and say that enabling R2 asks for a payment method, even on the free tier. A gallery built for its own host (`"publish": "build"` in `package.json`) gets no Cloudflare advice;
 - in bucket mode, the staged files waiting for upload and whether credentials are set, read from the disk without the network;
 - issues: photos with no manifest, manifests of deleted photos, HEIC or RAW files without a JPEG, missing bucket credentials.
 
@@ -50,7 +50,7 @@ export default defineConfig({
   name: 'Yann’s photos',
   author: 'Yann',
   site: 'https://photos.example.com',
-  storage: { mode: 'repo' },
+  storage: { mode: 'site' },
   originals: 'none',
   color: 'srgb',
   defaults: { fit: 'fill', backdrop: 'photo' },
@@ -65,9 +65,9 @@ export default defineConfig({
 | `description` | none | Site description. |
 | `site` | none | Public URL, for canonical links, the feed and `og:image`. |
 | `credit` | `true` | The “Powered by minimal gallery” line; `false` removes it. |
-| `storage` | `{ mode: 'repo' }` | Where derivatives go; see below. |
+| `storage` | `{ mode: 'site' }` | Where derivatives go; see below. |
 | `ladder` | the five variants below | Array of `{ name, longEdge, format: 'avif' \| 'jpeg' \| 'webp', quality, chroma?: '4:2:0' \| '4:4:4', always?: boolean }`. `always` writes the variant even when the source is smaller, at source size. |
-| `originals` | `'none'` | `'repo'` copies originals to `public/_mg`; `'bucket'` uploads them to the s3 storage (needs `storage.mode: 's3'`). |
+| `originals` | `'none'` | `'site'` copies originals to `public/_mg`; `'bucket'` uploads them to the s3 storage (needs `storage.mode: 's3'`). |
 | `color` | `'srgb'` | `'p3'` encodes derivatives in Display P3, keeping wide-gamut color. |
 | `defaults.fit` | `'fill'` | Viewer: `'fill'` covers the window, `'fit'` shows the whole photo. |
 | `defaults.strip` | `false` | Viewer: filmstrip on. |
@@ -83,7 +83,7 @@ The pipeline reads `storage`, `ladder`, `originals` and `color`; the rest is for
 
 ## Storage modes
 
-- **repo** (default): derivatives are written to `public/_mg/<photoId>/<hash8>-<variant>.<ext>` and served from `/_mg/...`. They are published with the site. On Cloudflare that fits about 3,000 full-size photos (six files each against the 20,000-file limit); `doctor` says when to add photo storage.
+- **site** (default): derivatives are written to `public/_mg/<photoId>/<hash8>-<variant>.<ext>` and served from `/_mg/...`. They are published with the site. On Cloudflare that fits about 3,000 full-size photos (six files each against the 20,000-file limit); `doctor` says when to add photo storage.
 - **s3** (bucket mode): an S3-compatible bucket (Cloudflare R2, Backblaze B2, MinIO, AWS S3), served from `publicUrl`. See Bucket mode.
 
   ```ts
@@ -102,7 +102,7 @@ Keys are content-addressed: `hash8` comes from the source file’s hash and the 
 
 ## Bucket mode
 
-The pipeline never writes to the network. In bucket mode it writes derivatives (and originals, with `originals: 'bucket'`) to a local stage, `.minimalgallery/cache/media/<key>`, and the manifests point at `${publicUrl}/<key>` from the start. Encoding works offline, and nothing is public before a publish. `sync` and `publish` then call `uploadToBucket`, which moves each staged file to the bucket, so the stage holds only the files waiting for upload. With `originals: 'repo'`, originals still go to `public/_mg`.
+The pipeline never writes to the network. In bucket mode it writes derivatives (and originals, with `originals: 'bucket'`) to a local stage, `.minimalgallery/cache/media/<key>`, and the manifests point at `${publicUrl}/<key>` from the start. Encoding works offline, and nothing is public before a publish. `sync` and `publish` then call `uploadToBucket`, which moves each staged file to the bucket, so the stage holds only the files waiting for upload. With `originals: 'site'`, originals still go to `public/_mg`.
 
 ### Credentials
 

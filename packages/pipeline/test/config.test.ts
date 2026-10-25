@@ -18,7 +18,7 @@ describe('config', () => {
     expect(config).toEqual(defaultConfig);
     expect(config).toMatchObject({
       name: 'Photos',
-      storage: { mode: 'repo' },
+      storage: { mode: 'site' },
       originals: 'none',
       color: 'srgb',
       defaults: {

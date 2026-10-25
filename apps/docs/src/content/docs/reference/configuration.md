@@ -13,7 +13,7 @@ import { defineConfig } from '@minimalgallery/pipeline/config';
 export default defineConfig({
   name: 'Yann’s photos',
   author: 'Yann',
-  storage: { mode: 'repo' },
+  storage: { mode: 'site' },
   originals: 'none',
   color: 'srgb',
   defaults: { fit: 'fill', backdrop: 'photo' },
@@ -38,9 +38,9 @@ Two programs read the file:
 | `author` | `string` | none | site | The gallery’s author. Passed to the theme, which does not display it yet. |
 | `description` | `string` | none | site | A description of the gallery. Passed to the theme, which does not display it yet. |
 | `site` | URL | none | nothing yet | The public address of the gallery. It is validated but not read. Set `site` in `astro.config.mjs` for canonical links. |
-| `storage` | object | `{ mode: 'repo' }` | pipeline | Where the derivatives go. See [Storage modes](#storage-modes). |
+| `storage` | object | `{ mode: 'site' }` | pipeline | Where the derivatives go. See [Storage modes](#storage-modes). |
 | `ladder` | array | five variants | pipeline | The derivatives written for each photo. See [Derivative ladder](#derivative-ladder). |
-| `originals` | `'none' \| 'repo' \| 'bucket'` | `'none'` | pipeline | Whether the original files are published. See [Originals](#originals). |
+| `originals` | `'none' \| 'site' \| 'bucket'` | `'none'` | pipeline | Whether the original files are published. See [Originals](#originals). |
 | `color` | `'srgb' \| 'p3'` | `'srgb'` | pipeline | Color space of the derivatives. `'p3'` encodes them in Display P3 and keeps wide-gamut color. |
 | `defaults` | object | see below | site | Starting values of the viewer’s settings. See [Viewer defaults](#viewer-defaults). |
 | `albums.sort` | `'date' \| 'name' \| 'manual'` | `'date'` | pipeline | Photo order in albums whose `_album.md` does not set `sort`. See [Sidecars](/reference/sidecars/#_albummd). |
@@ -52,7 +52,7 @@ Changing `ladder` or `color` re-encodes every photo on the next run.
 | Value | What happens |
 | --- | --- |
 | `'none'` | The originals stay private. Only the derivatives are published. |
-| `'repo'` | Each original is copied to `public/_mg/<photo id>/<hash8>-original.<ext>` and deployed with the site, whatever the storage mode. |
+| `'site'` | Each original is copied to `public/_mg/<photo id>/<hash8>-original.<ext>` and deployed with the site, whatever the storage mode. |
 | `'bucket'` | Each original is uploaded to the bucket. It needs `storage: { mode: 's3', ... }`; any other storage mode is a validation error. |
 
 A published original’s URL is written to the photo’s manifest (`original.url`). The theme does not link to originals yet.
@@ -121,12 +121,12 @@ Besides reading the config, the integration:
 | `repo` (default) | `public/_mg/<photo id>/<hash8>-<variant>.<ext>` | `/_mg/...` on the site |
 | `s3`, photo storage | an S3-compatible bucket: Cloudflare R2, Backblaze B2, AWS S3, MinIO | `publicUrl` |
 
-### Repo mode
+### Site mode
 
-The derivatives live in the site’s `public/` folder and are published with every build. On Cloudflare this works up to [about 3,000 full-size photos](/hosting/#how-many-photos-fit). `minimalgallery doctor` projects the site’s file count against Cloudflare’s limit, and says when to add photo storage (past 16,000 files). The name is the setting’s; it has nothing to do with git.
+The derivatives live in the site’s `public/` folder and are published with every build. On Cloudflare this works up to [about 3,000 full-size photos](/hosting/#how-many-photos-fit). `minimalgallery doctor` projects the site’s file count against Cloudflare’s limit, and says when to add photo storage (past 16,000 files).
 
 ```ts title="minimalgallery.config.ts"
-storage: { mode: 'repo' },
+storage: { mode: 'site' },
 ```
 
 ### s3 mode

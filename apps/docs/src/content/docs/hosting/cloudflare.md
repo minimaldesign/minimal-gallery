@@ -18,7 +18,7 @@ The first time:
 
 1. `npx wrangler login` opens your browser on Cloudflare. Sign in, or create a free account on the same page, then allow access. You do this once per computer.
 2. `npm run publish` processes new photos, shows the plan (`astro build`, then `wrangler deploy`) and asks before it goes ahead. Pass `--yes` to skip the question: `npm run publish -- --yes`.
-3. On a new Cloudflare account, `wrangler deploy` asks to register a `workers.dev` subdomain. Answer yes and type a name: it becomes the address of everything you publish on this account, `https://my-gallery.<name>.workers.dev` for this gallery.
+3. On a new Cloudflare account, `wrangler deploy` asks to register a `workers.dev` subdomain. Answer yes and type a name: it becomes the address of everything you publish on this account, `https://mg.<name>.workers.dev` for this gallery.
 4. The first upload creates the Worker, and the last lines show the gallery’s address.
 
 Later publishes send only new or changed files. Cloudflare keeps every version you deploy: `npx wrangler rollback` in the gallery folder puts the previous one back.
@@ -36,13 +36,13 @@ The scaffold writes this file when you pick Cloudflare:
 ```jsonc title="wrangler.jsonc"
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-gallery",
+  "name": "mg",
   "compatibility_date": "2026-10-23",
   "assets": { "directory": "./dist", "not_found_handling": "404-page" },
 }
 ```
 
-- `name` is the Worker’s name. The first deploy serves the gallery at `https://my-gallery.<your-subdomain>.workers.dev`. The scaffold makes it from the folder name, in lowercase letters, digits and dashes.
+- `name` is the Worker’s name. The first deploy serves the gallery at `https://mg.<your-subdomain>.workers.dev`. The scaffold makes it from the folder name, in lowercase letters, digits and dashes.
 - `assets.directory` is the folder that is uploaded.
 - `not_found_handling: "404-page"` answers an unknown URL with the nearest `404.html` and a 404 status. Workers does not guess this from the files, so it has to be set.
 
@@ -78,7 +78,7 @@ In the dashboard, open the Worker, go to **Settings** > **Domains & Routes**, se
 
 ```jsonc title="wrangler.jsonc"
 {
-  "name": "my-gallery",
+  "name": "mg",
   "compatibility_date": "2026-10-23",
   "routes": [
     { "pattern": "photos.example.com", "custom_domain": true },
@@ -105,8 +105,8 @@ See Cloudflare’s [Custom Domains](https://developers.cloudflare.com/workers/co
 
 On the Workers free plan:
 
-- **20,000 files per deploy** (100,000 on Workers Paid), [about 3,000 full-size photos](/hosting/#how-many-photos-fit). Every photo page, every album and filter page with its JSON file and, in repo mode, every resized copy counts. `npm run doctor` projects the count and the number of photos left before the limit. Past it, add [photo storage](/hosting/photo-storage/).
-- **25 MiB per file.** Resized copies are far below it. An original published with `originals: 'repo'` can be larger (a big TIFF, for example), and the deploy then fails.
+- **20,000 files per deploy** (100,000 on Workers Paid), [about 3,000 full-size photos](/hosting/#how-many-photos-fit). Every photo page, every album and filter page with its JSON file and, in site mode, every resized copy counts. `npm run doctor` projects the count and the number of photos left before the limit. Past it, add [photo storage](/hosting/photo-storage/).
+- **25 MiB per file.** Resized copies are far below it. An original published with `originals: 'site'` can be larger (a big TIFF, for example), and the deploy then fails.
 
 Static file requests and bandwidth are not limited.
 

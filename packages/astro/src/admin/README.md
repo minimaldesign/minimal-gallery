@@ -125,8 +125,8 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
   description: string | null;
   author: string | null;
   site: string | null;
-  storage: { mode: 'repo' } | { mode: 's3', bucket: string, publicUrl: string, credentials: boolean };
-  originals: 'none' | 'repo' | 'bucket';
+  storage: { mode: 'site' } | { mode: 's3', bucket: string, publicUrl: string, credentials: boolean };
+  originals: 'none' | 'site' | 'bucket';
   albumsSort: 'date' | 'name' | 'manual';
   defaults: { fit, strip, crop, view, size, backdrop };
 }
@@ -282,4 +282,4 @@ The content loader already reloads when a manifest changes, so the preview follo
 
 ## Media in bucket mode
 
-With `storage: { mode: 's3' }` the dev server serves `<base>_mg/<key>` from the stage (`.minimalgallery/cache/media/<key>`), and redirects (`302`) to `${publicUrl}/<key>` when the key is not staged. The content loader, in dev only, rewrites the photos’ media URLs from `publicUrl` to `<base>_mg/`, so the preview works before anything is uploaded. In repo mode Vite serves `public/_mg` as usual.
+With `storage: { mode: 's3' }` the dev server serves `<base>_mg/<key>` from the stage (`.minimalgallery/cache/media/<key>`), and redirects (`302`) to `${publicUrl}/<key>` when the key is not staged. The content loader, in dev only, rewrites the photos’ media URLs from `publicUrl` to `<base>_mg/`, so the preview works before anything is uploaded. In site mode Vite serves `public/_mg` as usual.

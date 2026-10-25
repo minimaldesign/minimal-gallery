@@ -25,7 +25,7 @@ const hostname = (url: string) => {
   }
 };
 
-/** The stand-ins the storage config still holds, in config order. Empty in repo mode. */
+/** The stand-ins the storage config still holds, in config order. Empty in site mode. */
 export function configPlaceholders(config: {
   storage: { mode: string; endpoint?: string; publicUrl?: string };
 }): ConfigPlaceholder[] {

@@ -294,6 +294,6 @@ A rating is stored as a whole number from 1 to 5, or as unrated.
 
 :::caution[Hidden is not private]
 
-Hidden photos are still processed. In repo mode their derivatives are written to `public/_mg/` and deployed with the site, so anyone who has a derivative’s URL can load it. To keep a photo off the web, move it out of `photos/` and run `minimalgallery sync --prune`.
+Hidden photos are still processed. In site mode their derivatives are written to `public/_mg/` and deployed with the site, so anyone who has a derivative’s URL can load it. To keep a photo off the web, move it out of `photos/` and run `minimalgallery sync --prune`.
 
 :::

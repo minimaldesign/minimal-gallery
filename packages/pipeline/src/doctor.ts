@@ -2,7 +2,7 @@
  * `doctor`: a health report for a gallery, read from the manifests and the
  * photos folder. It never encodes. It projects the number of files a
  * Cloudflare deploy would hold, against its 20,000-file limit, and
- * recommends a storage mode: repo, or photo storage (bucket mode).
+ * recommends a storage mode: site, or photo storage (bucket mode).
  */
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
@@ -39,7 +39,7 @@ const BUCKET_COST =
  */
 export const FIXED_SITE_FILES = 20;
 
-export type Recommendation = 'repo-ok' | 'consider-bucket' | 'move-to-bucket';
+export type Recommendation = 'site-ok' | 'consider-bucket' | 'move-to-bucket';
 
 export interface DoctorReport {
   galleryDir: string;
@@ -77,17 +77,17 @@ export interface DoctorReport {
     /** One HTML page and one `<context>.json` per context. */
     contextFiles: number;
     fixedFiles: number;
-    /** Derivatives and originals served from the deploy (repo mode only). */
+    /** Derivatives and originals served from the deploy (site mode only). */
     mediaFiles: number;
     total: number;
     limit: number;
   };
-  /** Bytes of photo media published with the site: the derivatives in repo mode, and published originals. */
+  /** Bytes of photo media published with the site: the derivatives in site mode, and published originals. */
   siteMedia: { bytes: number };
   /**
    * Bucket mode only, read from the disk without the network: staged files
    * the manifests reference (waiting for upload), and whether credentials
-   * are set. Null in repo mode.
+   * are set. Null in site mode.
    */
   bucket: { staged: number; stagedBytes: number; credentials: boolean } | null;
   /** How many more photos fit at the current average, before each limit. */
@@ -280,12 +280,12 @@ export async function doctor(
   const publish = await publishSetting(dir);
   // The owner’s own host has no file limit we know of.
   const ownHost = publish === 'build';
-  const repoMedia = config.storage.mode === 'repo';
-  const originalsInRepo = config.originals === 'repo';
+  const mediaInSite = config.storage.mode === 'site';
+  const originalsInSite = config.originals === 'site';
   const mediaFiles =
-    (repoMedia ? derivFiles : 0) + (originalsInRepo ? origFiles : 0);
+    (mediaInSite ? derivFiles : 0) + (originalsInSite ? origFiles : 0);
   const siteBytes =
-    (repoMedia ? derivBytes : 0) + (originalsInRepo ? origBytes : 0);
+    (mediaInSite ? derivBytes : 0) + (originalsInSite ? origBytes : 0);
   const photoPages = visible.length;
   const contextFiles = contextTotal * 2;
   const total = photoPages + contextFiles + FIXED_SITE_FILES + mediaFiles;
@@ -295,8 +295,8 @@ export async function doctor(
   const n = Math.max(1, current.length);
   const filesPerPhoto =
     1 +
-    (repoMedia ? derivFiles / n : 0) +
-    (originalsInRepo ? origFiles / n : 0);
+    (mediaInSite ? derivFiles / n : 0) +
+    (originalsInSite ? origFiles / n : 0);
   const photosUntilFileLimit = Math.max(
     0,
     Math.floor((PAGES_FILE_LIMIT - total) / filesPerPhoto)
@@ -305,22 +305,22 @@ export async function doctor(
   let recommendation: Recommendation;
   let message: string;
   if (ownHost) {
-    recommendation = 'repo-ok';
-    message = repoMedia
-      ? 'Repo mode is fine: the site is built for your own host, so Cloudflare’s 20,000-file limit does not apply.'
+    recommendation = 'site-ok';
+    message = mediaInSite
+      ? 'Site mode is fine: the site is built for your own host, so Cloudflare’s 20,000-file limit does not apply.'
       : 'Bucket mode: the photos are in photo storage, and the site is built for your own host.';
   } else if (total > PAGES_FILE_LIMIT) {
     recommendation = 'move-to-bucket';
-    message = repoMedia
+    message = mediaInSite
       ? `Add photo storage (bucket mode): the site is over Cloudflare’s 20,000-file limit. Set storage: { mode: "s3", ... } in minimalgallery.config.ts. ${BUCKET_COST}`
       : 'Even with the photos in photo storage, the HTML pages alone are over 20,000 files. Hide albums, drop facets, or host the site on a service without a file limit.';
-  } else if (repoMedia && total > FILE_ADVICE) {
+  } else if (mediaInSite && total > FILE_ADVICE) {
     recommendation = 'consider-bucket';
-    message = `Repo mode works today, but the site is getting close to Cloudflare’s 20,000-file limit. Plan to add photo storage (bucket mode) before then. ${BUCKET_COST}`;
+    message = `Site mode works today, but the site is getting close to Cloudflare’s 20,000-file limit. Plan to add photo storage (bucket mode) before then. ${BUCKET_COST}`;
   } else {
-    recommendation = 'repo-ok';
-    message = repoMedia
-      ? 'Repo mode is fine.'
+    recommendation = 'site-ok';
+    message = mediaInSite
+      ? 'Site mode is fine.'
       : 'Bucket mode: the photos are in photo storage, and the pages are well within the limits.';
   }
 

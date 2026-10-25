@@ -146,9 +146,9 @@ describe('bucket mode with the mock', () => {
     });
   });
 
-  it('keeps originals in public/_mg with originals: repo', async () => {
-    const repoOriginals = configFor({ originals: 'repo' });
-    await processGallery(dir, { config: repoOriginals });
+  it('keeps originals in public/_mg with originals: site', async () => {
+    const siteOriginals = configFor({ originals: 'site' });
+    await processGallery(dir, { config: siteOriginals });
     const staged = [...(await stagedFiles(dir)).keys()];
     expect(staged).toHaveLength(4);
     expect(staged.some((k) => k.includes('-original'))).toBe(false);
@@ -157,7 +157,7 @@ describe('bucket mode with the mock', () => {
     );
     expect(m.original.url).toBe(`/_mg/${m.original.key}`);
     expect(await exists(join(dir, 'public/_mg', m.original.key))).toBe(true);
-    expect((await pendingUploads(dir, { config: repoOriginals })).files).toBe(
+    expect((await pendingUploads(dir, { config: siteOriginals })).files).toBe(
       4
     );
   });
@@ -280,7 +280,7 @@ describe('bucket mode with the mock', () => {
     ]);
   });
 
-  it('refuses remote operations in repo mode', async () => {
+  it('refuses remote operations in site mode', async () => {
     await expect(
       planBucketSync(dir, { config: resolveConfig({}) })
     ).rejects.toMatchObject({ code: 'not-bucket-mode' });
