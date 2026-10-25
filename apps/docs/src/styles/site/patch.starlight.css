@@ -79,9 +79,12 @@
 }
 
 /* HEADER: the HUD surface (the recipe of global.surface.css in the
-   gallery, which cannot be mixed onto Starlight’s markup) */
+   gallery, which cannot be mixed onto Starlight’s markup). Starlight
+   also puts a .header class on the box inside the page header and on
+   every code block’s caption bar, so the selector names the element:
+   a bare .header drew a second outlined box in the header. */
 
-.header {
+header.header {
   border-block-end: var(--border-sm) solid var(--mg-hairline);
   background-color: var(--mg-surface-fill);
   backdrop-filter: blur(var(--mg-hud-blur)) saturate(1.15);
@@ -105,6 +108,13 @@
 /* The divider before the theme picker, which this site does not have */
 .social-icons::after {
   content: none;
+}
+
+/* Starlight’s search button is 2.5rem tall: taller than what the
+   HUD-height header leaves inside its padding, so it spilled over the
+   header’s bottom edge. It takes that inner height instead. */
+site-search button[data-open-modal] {
+  height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
 }
 
 /* SIDEBAR */

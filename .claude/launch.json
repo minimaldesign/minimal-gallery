@@ -63,6 +63,22 @@
         "design/prototype"
       ],
       "port": 4400
+    },
+    {
+      "name": "docs-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "minimalgallery-docs",
+        "exec",
+        "astro",
+        "preview",
+        "--port",
+        "4422",
+        "--host",
+        "127.0.0.1"
+      ],
+      "port": 4422
     }
   ]
 }
