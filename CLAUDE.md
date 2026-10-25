@@ -19,7 +19,7 @@ Static photo gallery toolkit: an Astro 7.4 integration plus a local Node pipelin
 ## Publishing
 
 - The demo publishes the way a user’s gallery does, so the real user path gets used: `pnpm demo:publish` builds the packages, then runs `minimalgallery publish` in `examples/demo`, which processes new photos, builds the site and uploads `dist/` with `wrangler deploy` from Yann’s Mac. Pushing to `master` does not deploy anything, so the live site can be behind `master` until the next publish. Yann runs the publish; never run it, or `wrangler deploy`, without his go-ahead.
-- The docs site publishes the same way: `pnpm docs:publish` builds `apps/docs` and uploads it as the Worker `minimalgallery-docs`, served at docs.minimalgallery.net. The same go-ahead rule applies.
+- The docs site is not a gallery and builds from git: Cloudflare Workers Builds builds `apps/docs` on every push to `master` and deploys it as the Worker `minimalgallery-docs`, served at docs.minimalgallery.net (see `apps/docs/README.md`). Do not deploy the docs from a machine.
 - Commit and push only when Yann asks. Branch for anything bigger than a small fix.
 
 ## Local setup facts
