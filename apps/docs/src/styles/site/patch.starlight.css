@@ -180,7 +180,8 @@ header.header > .header {
 
   /* Full ink and a heavier weight set links apart from the muted text
      around them, but bold text has both too, so prose links also carry
-     a quiet underline that fades out on hover. The sidebar, the header
+     a quiet underline. On hover the link turns to the text color and
+     loses its underline. The sidebar, the header
      and the table of contents keep their links bare. */
   a:not(:where(.not-content *)) {
     color: var(--mg-accent);
@@ -189,11 +190,12 @@ header.header > .header {
     text-decoration-thickness: 1px;
     text-decoration-color: var(--mg-ink-faint);
     text-underline-offset: 0.2em;
-    transition: text-decoration-color var(--mg-duration-quick)
-      var(--mg-ease-out);
+    transition:
+      color var(--mg-duration-quick) var(--mg-ease-out),
+      text-decoration-color var(--mg-duration-quick) var(--mg-ease-out);
 
     &:hover {
-      color: var(--mg-gray-700);
+      color: var(--docs-text);
       text-decoration-color: transparent;
     }
   }

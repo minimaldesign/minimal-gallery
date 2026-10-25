@@ -67,11 +67,12 @@
     text-decoration-thickness: 1px;
     text-decoration-color: var(--mg-ink-faint);
     text-underline-offset: 0.2em;
-    transition: text-decoration-color var(--mg-duration-quick)
-      var(--mg-ease-out);
+    transition:
+      color var(--mg-duration-quick) var(--mg-ease-out),
+      text-decoration-color var(--mg-duration-quick) var(--mg-ease-out);
 
     &:hover {
-      color: var(--mg-gray-700);
+      color: var(--docs-text);
       text-decoration-color: transparent;
     }
   }
