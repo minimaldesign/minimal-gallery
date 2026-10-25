@@ -172,11 +172,11 @@ const og = url && {
     next={next}
     hero={start === 'view'}
   />
+  <Hud photo={photo} context={context} />
   <section
     class:list={['table', { 'table-start': start === 'grid' }]}
     id="grid"
     aria-label={context.label}>
-    <Hud photo={photo} context={context} />
     <div class="table_scroller">
       <PanelHead context={context} list={start === 'grid'} />
       <div class="table_body">

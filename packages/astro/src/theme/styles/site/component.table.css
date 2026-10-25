@@ -5,10 +5,9 @@
    panel, which is exactly one window tall. Inside it an inner scroller
    whose first child is the panel header (breadcrumb, count, toggles,
    Filter), stuck at its top, then the photos (grid or ledger) with the
-   date rail. The HUD lives here too: fixed at the top of the window over
-   the viewer, not displayed at all once the page is snapped to the panel,
-   so the panel header is the top of the window and nothing scrolls above
-   it. Context pages open here (table-start, plus #grid on every link). */
+   date rail. The HUD sits between the viewer and the panel (viewer_hud),
+   so the rising panel covers it. Context pages open here (table-start,
+   plus #grid on every link). */
 
 .table {
   position: relative;
@@ -18,29 +17,17 @@
   height: 100dvh;
   background-color: var(--mg-ground);
   color: var(--mg-ink);
-  container-type: scroll-state;
   scroll-snap-align: start;
+
+  /* a third of the way down is enough to leave the panel: the page can
+     then only settle on the viewer (data-leaving, mg.js) */
+  :root[data-leaving='panel'] & {
+    scroll-snap-align: none;
+  }
 }
 
 .table-start {
   scroll-initial-target: nearest;
-}
-
-/* The HUD: fixed over the viewer, gone once snapped to the panel.
-   data-panel (mg.js, from the scroll position) is the main path; the
-   snapped query is an extra. */
-.table_hud {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: var(--z-5);
-
-  :root[data-panel] & {
-    display: none;
-  }
-
-  @container scroll-state(snapped: block) {
-    display: none;
-  }
 }
 
 .table_scroller {
@@ -57,6 +44,13 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  /* chrome hidden from the keyboard (data-idle) and the panel opened: no
+     cursor over the photos either, until the pointer moves (mg.js) */
+  :root[data-idle] &,
+  :root[data-idle] & * {
+    cursor: none;
   }
 }
 

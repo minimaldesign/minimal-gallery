@@ -150,6 +150,11 @@
       display: none;
     }
   }
+
+  /* no cursor (data-idle, the panel opened from the keyboard): no hover */
+  :root[data-idle] .ledger_thumb:hover & {
+    display: none;
+  }
 }
 
 .ledger_previewImage {

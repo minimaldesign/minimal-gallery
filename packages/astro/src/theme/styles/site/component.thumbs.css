@@ -116,6 +116,10 @@
     filter: brightness(1.12);
   }
 
+  :root[data-idle] .thumbs_link:hover & {
+    filter: none;
+  }
+
   :root:is(
       [data-crop='original'],
       :not([data-crop]):has(input[name='crop'][value='original']:checked)
@@ -200,6 +204,12 @@
     .thumbs_link:hover & {
       display: none;
     }
+  }
+
+  /* no cursor (data-idle, the panel opened from the keyboard): the
+     thumbnail under it is not hovered, only the focused one has a tip */
+  :root[data-idle] .thumbs_link:hover:not(:focus-visible) & {
+    display: none;
   }
 
   /* the title on its own line, then date and place, muted */

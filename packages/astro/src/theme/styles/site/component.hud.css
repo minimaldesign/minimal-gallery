@@ -9,7 +9,7 @@
    mode (the photo fills the window) it floats as a detached bar with a
    margin and rounded corners; in contain mode it is the full-width bar.
    While the
-   panel is up it is not displayed at all (table_hud); the panel header
+   panel is up it is not displayed at all (viewer_hud); the panel header
    carries the breadcrumb and Filter there. */
 
 .hud {

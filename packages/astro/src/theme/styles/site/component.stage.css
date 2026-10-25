@@ -5,7 +5,7 @@
    near-black ground, as if projected in a dark room. The fit is a radio
    pair in the HUD (input name fit, owner default --mg-fit). It sits on top of
    every page; the context's photos (the table) lie below it and rise over
-   it as the page scrolls. The HUD (placed by table_hud) floats over it;
+   it as the page scrolls. The HUD (placed by viewer_hud) floats over it;
    the strip is pinned to the bottom of the stage. With a mouse: click the photo for
    the next one, the left third for the previous one. With script a step
    stays in the page and crossfades two images (see stage_photo). On a touch screen

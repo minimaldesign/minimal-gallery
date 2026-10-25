@@ -15,6 +15,8 @@ const base = $('meta[name="mg-root"]').content;
 const coarse = matchMedia('(pointer: coarse)').matches;
 // syncPanel() runs from restore(), early: its state is declared up here
 let synced = false;
+// the snap point the page last rested on: 'viewer' or 'panel'
+let from = 'viewer';
 // the panel's play button asked for a slideshow: it starts at the viewer
 let playSoon = false;
 // the strip's latest glide (center() runs early too): a newer one takes over
@@ -531,13 +533,20 @@ if (!coarse) {
   addEventListener('pointermove', wake, { passive: true });
   if (!ss.mgIdle) wake({ movementX: 1 });
 }
-// the panel is up: the chrome stays and the photo crumb goes. CSS does
-// this with a scroll-state query; data-panel backs it up in every engine
-// (and is the only path where those queries are missing).
-// When the panel opens (after load), the photo that was in full view gets
-// focus, so arrow keys start from it.
+// the panel is up (data-panel): the chrome stays and the photo crumb goes.
+// Chrome hidden from the keyboard stays hidden, and so does the cursor,
+// until the pointer moves. When the panel opens (after load), the photo
+// that was in full view gets focus, so arrow keys start from it.
+// SNAP: the page settles on the viewer or the panel (CSS, y mandatory),
+// and a third of the way is enough to leave either: past it, data-leaving
+// takes away the snap point being left, so the page settles on the other.
 function syncPanel() {
   const up = atPanel();
+  const end = root.scrollHeight - innerHeight;
+  if (scrollY < 2) from = 'viewer';
+  else if (up) from = 'panel';
+  const left = from === 'viewer' ? scrollY > end / 3 : scrollY < (end * 2) / 3;
+  left ? (root.dataset.leaving = from) : delete root.dataset.leaving;
   if (playSoon && scrollY < 2) {
     playSoon = false;
     play(true);
@@ -546,8 +555,10 @@ function syncPanel() {
   synced = true;
   root.toggleAttribute('data-panel', up);
   if (up) {
-    delete root.dataset.idle;
-    ss.mgIdle = '';
+    if (root.dataset.idle !== 'key') {
+      delete root.dataset.idle;
+      ss.mgIdle = '';
+    }
     if (root.hasAttribute('data-play')) play(false, false);
   }
   if (opened && !d.activeElement?.closest('.table_scroller')) select(pick());
@@ -920,7 +931,8 @@ let drag;
 addEventListener('pointermove', (e) => {
   const g = e.target.closest?.('.thumbs');
   if (g && e.pointerType === 'mouse') {
-    root.dataset.pointer ??= '';
+    // not the synthetic moves after a scroll: the pointer stays unused
+    if (e.movementX || e.movementY) root.dataset.pointer ??= '';
     g.style.setProperty('--x', e.clientX);
     g.style.setProperty('--y', e.clientY);
   }

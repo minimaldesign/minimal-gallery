@@ -119,9 +119,9 @@ Every page is the same: the **viewer** (stage) on top, and below it the **table*
 | `p/<slug>.html` | the photo’s album, or `?in=` | the viewer |
 | `filter.html` | Nikon D200, palette open above the grid | the grid |
 
-**Two states, firm snapping.** `scroll-snap-type: y mandatory` on the page with exactly two snap points: the top of the viewer and the top of the panel. A drag that stops halfway settles to one of them; measured: a scroll to 20% or 40% of the window settles at the viewer, 60% or 85% at the panel. **The panel is exactly one window tall.** Inside it, an inner scroller starts at the top of the window; its first child is the panel header, sticky at 0, followed by the photos and the date rail. The HUD lives in the panel’s markup: fixed at the top of the window over the viewer, and not displayed at all once the page is snapped to the panel. So the panel header is the top of the window and nothing scrolls above it.
+**Two states, firm snapping.** `scroll-snap-type: y mandatory` on the page with exactly two snap points: the top of the viewer and the top of the panel. A drag always settles on one of them, and a third of the way is enough to leave either: `mg.js` sets `data-leaving` once the page is a third of the way from the point it rested on, and that point’s snap alignment is dropped, so the page can only settle on the other. The top snap point is an empty `::before` on the body, not the body itself (a snap area taller than the window let WebKit rest anywhere in it) nor the sticky stage (Chrome and Firefox snap to where it is stuck). **The panel is exactly one window tall.** Inside it, an inner scroller starts at the top of the window; its first child is the panel header, sticky at 0, followed by the photos and the date rail. The HUD sits between the viewer and the panel: fixed at the top of the window over the viewer, under the panel, which covers it as it rises, and not displayed at all once the page is snapped to the panel. So the panel header is the top of the window and nothing scrolls above it.
 
-Panel state comes from the scroll position: `mg.js` sets `data-panel` on load, `scroll`, `scrollend`, `resize` and after keyboard moves, and the idle timer does nothing while it is set. A `scroll-state(snapped: block)` query on the panel is an extra.
+Panel state comes from the scroll position: `mg.js` sets `data-panel` on load, `scroll`, `scrollend`, `resize` and after keyboard moves, and the idle timer does nothing while it is set.
 
 Measured (round 4c), header top 0, scroller top 0, HUD `display: none`, no thumbnail above the header, in each of these:
 
@@ -266,7 +266,7 @@ Never moves: the photo while viewed, and the HUD and panes during navigation (`v
 | Instant next and previous | Neighbor images preloaded (`link rel=preload as=image`, low priority); the step itself is in the page | Normal loads | Works | Works |
 | Display toggles | Radios and a checkbox read by `:root:has()` | Work, not remembered | Works | Works |
 | Two-state snapping | `scroll-snap-type: y mandatory`, two snap points | Works | Works | Works |
-| HUD hidden while the panel is up | `data-panel` from the scroll position; `@container scroll-state(snapped: block)` as an extra | HUD stays fixed over the panel | `data-panel` | `data-panel` |
+| HUD hidden while the panel is up | `data-panel` from the scroll position | HUD stays fixed over the panel | `data-panel` | `data-panel` |
 | List sorting | Header buttons; `mg.js` reorders rows by each cell’s `data-sort` (ISO dates, seconds, f-numbers, millimeters, ISO, lowercase text), cycling ascending, descending, default; `aria-sort` and a drawn chevron on the active header | Default order | Works | Works |
 | Keyboard selection in the panel | Focus moved by `mg.js`; Enter is the native link | Tab order only | Works | Works |
 | Strip carousel | `::scroll-button`, `::scroll-marker`, `scroll-initial-target` | Snapping row | Snapping row, centered by mg.js | Same |
