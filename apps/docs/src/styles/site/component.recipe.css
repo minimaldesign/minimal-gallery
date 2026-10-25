@@ -59,12 +59,20 @@
 .recipe_more {
   margin-block-start: var(--md2);
 
+  /* Underlined like a link in the docs' prose */
   a {
     color: var(--mg-ink);
     font-weight: var(--mg-weight-medium);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--mg-ink-faint);
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color var(--mg-duration-quick)
+      var(--mg-ease-out);
 
     &:hover {
       color: var(--mg-gray-700);
+      text-decoration-color: currentColor;
     }
   }
 }
