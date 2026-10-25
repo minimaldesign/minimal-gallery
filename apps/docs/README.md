@@ -28,4 +28,36 @@ The CSS is mCSS, as in the gallery. Every value comes from the gallery’s theme
 
 ## Deploying
 
-Cloudflare Workers Builds builds this site from `master`, as the Worker `minimalgallery-docs`: root directory `apps/docs`, build command `cd ../.. && pnpm install --frozen-lockfile && pnpm --filter minimalgallery-docs build`, deploy command `npx wrangler deploy`. Every push to `master` publishes it. The demo is different on purpose: it publishes from a computer, the way a user’s gallery does. The custom domain in `wrangler.jsonc` makes the first deploy create the `docs.minimalgallery.net` DNS record and certificate, since the minimalgallery.net zone is in the same Cloudflare account. Do not deploy the docs from a machine.
+Cloudflare Workers Builds builds this site from `master` and deploys it as the Worker `minimalgallery-docs`, served at docs.minimalgallery.net. Every push to `master` publishes it. Do not deploy the docs from a computer.
+
+The demo is different on purpose: it publishes from a computer with `pnpm demo:publish`, the way a user’s gallery does, and Workers Builds is disconnected from its Worker (`minimalgallery-demo`).
+
+### How the Worker was set up
+
+Set up on October 25, 2026, in the Cloudflare account that holds the minimalgallery.net zone:
+
+1. **Workers & Pages** (under **Compute**), **Create**, **Import a repository**, then GitHub and `minimaldesign/minimal-gallery`.
+2. The form, top to bottom:
+
+   | Field | Value |
+   | --- | --- |
+   | Project name | `minimalgallery-docs`. It must match `name` in `wrangler.jsonc`, or the build fails. |
+   | Build command | `cd ../.. && pnpm install --frozen-lockfile && pnpm --filter minimalgallery-docs build`. Cloudflare prefills `pnpm run build`, which would build the packages at the root instead of the docs. |
+   | Deploy command | `npx wrangler deploy`, the default. |
+   | Preview command | `npx wrangler preview`, the default. It builds the other branches and needs the empty `previews` block in `wrangler.jsonc`. |
+   | Enable Preview builds | On by default: every branch builds a preview version and adds a check to its PR. |
+   | Protect with Cloudflare Access | Off. |
+   | Advanced settings, Path | `apps/docs`: the root directory, where `wrangler.jsonc` is. The build command’s `cd ../..` assumes it. |
+   | API token | The existing **Workers Builds** token, made on October 23, 2026 for the demo’s builds. |
+
+3. **Deploy.** The form has no production branch field: Cloudflare uses the repository’s default branch, `master`. It shows under **Settings**, **Build**, **Branch control**.
+
+The custom domain needs no DNS work by hand. `routes` in `wrangler.jsonc` declares `docs.minimalgallery.net` with `custom_domain: true`, and since the zone is in the same account, the first deploy creates the DNS record and the certificate. The address can take a few minutes to answer after that.
+
+Optional, under **Settings**, **Build**, **Build cache**: **Enable** keeps Astro’s cache between builds, so unchanged pages are not rendered again.
+
+### If it needs redoing
+
+- A failed build’s log is under the Worker’s **Deployments** tab.
+- To stop the builds, open the Worker, **Settings**, **Build**, and **Disconnect** the repository. The live site stays as it is; the **Overview** keeps showing the GitHub commit of the live deployment until another one replaces it.
+- Renaming the Worker means changing `name` in `wrangler.jsonc` in the same push.
