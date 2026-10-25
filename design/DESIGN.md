@@ -23,7 +23,7 @@ A slide show in a dark room: the photo is the page, on a near-black neutral grou
 | --- | --- | --- |
 | Surface | `global.surface.css` | `.surface` mixed onto any overlay |
 | Toggles | `component.toggle.css` | `.toggle` (segmented fieldset) or `.toggle-plain`, `.toggle_option` label with a hidden input, `.toggle_svg`, `.toggle_tip` (label plus `kbd`), `.toggle_on`/`.toggle_off` for state-swapping icons |
-| HUD | `component.hud.css` | `header.hud.surface.table_hud`: `.hud_crumbs` (`ol`, h1 last), `.hud_actions`. Floats with margin and radius in fill mode, a full-width bar in fit mode, hidden in panel state |
+| HUD | `component.hud.css` | `header.hud.surface.viewer_hud`: `.hud_crumbs` (`ol`, h1 last), `.hud_actions`. Floats with margin and radius in fill mode, a full-width bar in fit mode, hidden in panel state |
 | Stage | `component.stage.css` | `.stage` > `main.stage_frame[tabindex=-1]` > `.stage_scroller` > `a.stage_next` > `img.stage_photo`; `a.stage_prev` (left third); hidden `.stage_zoom` checkbox; `.stage_strip`; `.stage_hint`. Chevron cursors on the zones, no href at the ends |
 | Strip | `component.strip.css` | `nav.strip.surface` > `ol.strip_list` > `li.strip_item` > `a.strip_link[aria-current]` > `img.strip_image`. On when `input[name=strip]` is checked |
 | Panel | `component.table.css` | `section.table#grid`: the HUD, `.table_scroller` (size container) > `header.table_head.surface` (`.table_crumbs`, `.table_count`, `.table_tools`, `.table_gridOnly`), then `.table_body` > `.table_photos` + `.table_rail` |
