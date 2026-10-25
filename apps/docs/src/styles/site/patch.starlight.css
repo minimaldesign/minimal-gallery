@@ -115,18 +115,28 @@ header.header {
    header’s bottom edge. It takes that inner height instead. */
 site-search button[data-open-modal] {
   height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
-  /* Starlight stops it at 22rem, an edge that lines up with nothing. It
-     already starts at the text column’s left edge; as wide as the
-     column, it ends at its right edge too. */
-  max-width: var(--sl-content-width);
 
-  /* The shortcut as a quiet hint, not a pair of outlined keys */
+  /* The shortcut as a quiet hint, not a pair of outlined keys, with the
+     two characters set together */
   kbd {
+    gap: 0;
     padding: 0;
     border: none;
     background: none;
     color: var(--mg-ink-faint);
   }
+}
+
+/* The search box, at Starlight’s 22rem, is centered in the header: the
+   title and the right-hand group get equal columns on either side.
+   Below Starlight’s 50rem breakpoint the header is a flex row, where
+   these grid settings do nothing. */
+header.header > .header {
+  grid-template-columns: 1fr minmax(0, 22rem) 1fr;
+}
+
+.right-group {
+  justify-self: end;
 }
 
 /* SIDEBAR */
