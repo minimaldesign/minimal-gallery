@@ -505,8 +505,9 @@ function reveal(e, late) {
 }
 
 // CHROME: on a mouse, only real pointer movement shows it and it fades
-// after the idle time; over the grid it stays. Arrow keys hide it at once,
-// and the hidden state carries to the next page.
+// after the idle time; over the grid it stays. Arrow keys and g hide it at
+// once, with the cursor (data-idle="key", which the panel keeps), and the
+// hidden state carries to the next page.
 let idle;
 const show = () => {
   delete root.dataset.idle;
@@ -755,6 +756,7 @@ function select(el) {
 }
 const toViewer = () => scrollTo({ top: 0, behavior: 'smooth' });
 const toPanel = () => {
+  hide('key');
   $('#grid').scrollIntoView({ behavior: 'smooth' });
   select(pick());
 };
