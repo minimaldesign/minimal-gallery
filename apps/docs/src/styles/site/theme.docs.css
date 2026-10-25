@@ -23,6 +23,13 @@
   }
 
   :root {
+    /* WHITE: the gallery’s ink and accent (0.97) suit a page of photos,
+       where white is rare. A page of text has far more of it, so the docs
+       take both a step down. */
+    --docs-white: oklch(0.92 0 0);
+    --mg-ink: var(--docs-white);
+    --mg-accent: var(--docs-white);
+
     /* TEXT: long reading is muted ink; headings, links and code are full
        ink, so they stand out without underlines or color */
     --docs-text: var(--mg-ink-muted);
