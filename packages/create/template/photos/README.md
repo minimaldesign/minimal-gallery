@@ -11,7 +11,7 @@ photos/
     birthdays/      albums can be nested
 ```
 
-- JPEG, PNG, WebP, AVIF and TIFF are read. Export HEIC and RAW files as JPEG first.
+- JPEG, PNG, WebP, AVIF, TIFF and HEIC (iPhone) are read. Export RAW files as JPEG first.
 - Titles, captions, keywords and dates come from the photos’ own metadata, so a Lightroom export with metadata included needs no extra work.
 - Your originals are never changed. Resized copies go to `public/_mg/` in site mode, or to your storage bucket when you publish in bucket mode, and the details the site reads go to `.minimalgallery/`.
 - Photos placed directly in this folder, outside an album folder, are skipped.

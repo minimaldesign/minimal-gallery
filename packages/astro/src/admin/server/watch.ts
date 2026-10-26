@@ -41,7 +41,7 @@ export function bridgeWatcher(
     add: (path) => {
       if (!inPhotos(path)) return;
       const k = kind(path);
-      // HEIC and RAW files are reported by the run, so they count too.
+      // RAW files are reported by the run, so they count too.
       queue.schedule({ paths: k === 'photo' ? [path] : [] });
     },
     change: (path) => {

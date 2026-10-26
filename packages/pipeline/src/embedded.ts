@@ -12,6 +12,7 @@ import {
   toKeywords,
   toNumber,
 } from './normalize.ts';
+import { lacksMetaBox } from './formats.ts';
 import { xmpToLayer } from './xmp.ts';
 
 export interface EmbeddedLayers {
@@ -39,6 +40,8 @@ type Tags = Record<string, any>;
  * output and the two then cannot be told apart.
  */
 export async function readEmbedded(bytes: Uint8Array): Promise<EmbeddedLayers> {
+  // A truncated HEIC or AVIF would hang exifr; its decode reports the error.
+  if (lacksMetaBox(bytes)) return { xmp: {}, iptc: {}, exif: {} };
   const raw: Tags =
     (await exifr
       .parse(bytes, {

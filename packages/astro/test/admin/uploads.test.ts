@@ -17,16 +17,6 @@ afterEach(async () => {
   server = undefined;
 });
 
-/** The first bytes of an HEIC file, as in the pipeline’s own tests. */
-function heicBytes(): Buffer {
-  const brands = ['heic', '\0\0\0\0', 'mif1', 'heic'].join('');
-  const size = 8 + brands.length;
-  const head = Buffer.alloc(size + 64);
-  head.writeUInt32BE(size, 0);
-  head.write(`ftyp${brands}`, 4, 'latin1');
-  return head;
-}
-
 describe('chunked uploads', () => {
   it('adds a photo in chunks, dedupes by content, renames a clash', async () => {
     const dir = await tempGallery();
@@ -98,11 +88,10 @@ describe('chunked uploads', () => {
     ]);
   });
 
-  it('skips HEIC and RAW, by name and by content', async () => {
+  it('skips RAW and other formats by name, and takes HEIC', async () => {
     const dir = await tempGallery();
     server = await startServer({ galleryDir: dir });
     for (const [name, reason] of [
-      ['IMG_0001.HEIC', 'HEIC: export a JPEG instead'],
       ['DSC_0412.NEF', 'RAW: export a JPEG instead'],
       ['notes.txt', 'not a supported photo format'],
     ]) {
@@ -115,19 +104,13 @@ describe('chunked uploads', () => {
       expect(r.status).toBe(200);
       expect(r.body).toEqual({ status: 'skipped', reason });
     }
-    const disguised = await upload(
-      server,
-      'phone',
-      'IMG_0002.jpg',
-      heicBytes()
-    );
-    expect(disguised.result).toEqual({
-      status: 'skipped',
-      reason: 'HEIC: export a JPEG instead',
+    const heic = await server.call('POST', '/uploads', {
+      album: 'phone',
+      name: 'IMG_0001.HEIC',
+      size: 10,
+      lastModified: 0,
     });
-    await expect(
-      stat(join(dir, 'photos/phone/IMG_0002.jpg'))
-    ).rejects.toThrow();
+    expect(heic.status).toBe(201);
   });
 
   it('moves sidecars with their photo, under its final name', async () => {

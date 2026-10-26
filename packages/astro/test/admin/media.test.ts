@@ -169,13 +169,13 @@ describe('the watcher bridge', () => {
       queued
     );
 
-    // A HEIC copied in is reported once, with the fix.
-    const heic = join(dir, 'photos/finder/IMG_0001.HEIC');
-    await writeFile(heic, 'not really');
-    watcher.emit('add', heic);
+    // A RAW file copied in is reported once, with the fix.
+    const raw = join(dir, 'photos/finder/DSC_0001.NEF');
+    await writeFile(raw, 'not really');
+    watcher.emit('add', raw);
     const error = await events.waitFor((e) => e.event === 'error');
-    expect(error.data.path).toBe('photos/finder/IMG_0001.HEIC');
-    expect(error.data.message).toMatch(/Export the photo as JPEG/);
+    expect(error.data.path).toBe('photos/finder/DSC_0001.NEF');
+    expect(error.data.message).toMatch(/Export a JPEG/);
 
     await rm(photo);
     watcher.emit('unlink', photo);

@@ -21,8 +21,6 @@ import {
 import { extname, join } from 'node:path';
 import {
   hashBytes,
-  HEIC_EXTENSIONS,
-  isHeic,
   PHOTO_EXTENSIONS,
   RAW_EXTENSIONS,
 } from '@minimalgallery/pipeline';
@@ -80,7 +78,6 @@ export interface UploadContext {
 export function skipReason(name: string): string | null {
   const ext = extname(name).toLowerCase();
   if (PHOTO_EXTENSIONS.has(ext)) return null;
-  if (HEIC_EXTENSIONS.has(ext)) return 'HEIC: export a JPEG instead';
   if (RAW_EXTENSIONS.has(ext)) return 'RAW: export a JPEG instead';
   if (SIDECAR_EXTENSIONS.has(ext))
     return 'a sidecar is added with its photo, in the same drop';
@@ -262,10 +259,6 @@ async function completePhoto(
 ): Promise<CompleteResult> {
   const { galleryDir, entry } = ctx;
   const bytes = await readFile(u.file);
-  if (isHeic(bytes)) {
-    await rm(u.file, { force: true });
-    return { status: 'skipped', reason: 'HEIC: export a JPEG instead' };
-  }
   const hash = await hashBytes(bytes);
   const manifests = await readManifests(galleryDir);
   for (const m of manifests.values())

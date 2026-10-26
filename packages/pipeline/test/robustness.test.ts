@@ -25,26 +25,31 @@ describe('unsupported inputs', () => {
     expect(isHeic(new Uint8Array([0xff, 0xd8, 0xff, 0xe0]))).toBe(false);
   });
 
-  it('reports HEIC and RAW files with the fix and keeps going', async () => {
+  it('reports RAW files with the fix and keeps going', async () => {
     const dir = await tempGallery();
     const p = (f: string) => join(dir, 'photos/trip', f);
     await writeJpeg(p('good.jpg'));
     await mkdir(join(dir, 'photos/trip'), { recursive: true });
-    await writeFile(p('IMG_0001.HEIC'), heicBytes());
-    await writeFile(p('renamed.jpg'), heicBytes());
     await writeFile(p('DSC_0001.NEF'), 'raw');
     // A RAW + JPEG pair: the JPEG is used, the RAW file is ignored quietly.
     await writeFile(p('pair.NEF'), 'raw');
     await writeJpeg(p('pair.jpg'));
+    // An HEIC + JPEG pair too.
+    await writeFile(p('IMG_0001.HEIC'), heicBytes());
+    await writeJpeg(p('IMG_0001.JPG'));
+    // HEIC content is decoded as HEIC under any name, so a truncated one
+    // fails to decode, whatever its extension.
+    await writeFile(p('IMG_0002.HEIC'), heicBytes());
+    await writeFile(p('renamed.jpg'), heicBytes());
     const s = await processGallery(dir, { concurrency: 2 });
-    expect(s.encoded).toBe(2);
+    expect(s.encoded).toBe(3);
     expect(s.errors.map((e) => [e.path, e.kind])).toEqual([
       ['photos/trip/DSC_0001.NEF', 'raw'],
-      ['photos/trip/IMG_0001.HEIC', 'heic'],
-      ['photos/trip/renamed.jpg', 'heic'],
+      ['photos/trip/IMG_0002.HEIC', 'decode'],
+      ['photos/trip/renamed.jpg', 'decode'],
     ]);
-    expect(s.errors[1].message).toMatch(/Export the photo as JPEG/);
-    expect(s.warnings.join()).toMatch(/1 RAW or HEIC file\(s\) ignored/);
+    expect(s.errors[0].message).toMatch(/Export a JPEG/);
+    expect(s.warnings.join()).toMatch(/2 RAW or HEIC file\(s\) ignored/);
     const albums = JSON.parse(
       await (
         await import('node:fs/promises')

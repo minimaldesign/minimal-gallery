@@ -1,6 +1,8 @@
 import sharp from 'sharp';
 import { rgbaToThumbHash } from 'thumbhash';
 import { oklch } from 'culori';
+import { isHeic } from './formats.ts';
+import { decodeHeic } from './heic.ts';
 import {
   variantsFor,
   type ColorSpace,
@@ -86,7 +88,9 @@ export function iccDescription(icc: Uint8Array | undefined): string | null {
  */
 export default async function encode(task: EncodeTask): Promise<EncodeResult> {
   const started = performance.now();
-  const { bytes, ladder, color = 'srgb' } = task;
+  const { ladder, color = 'srgb' } = task;
+  // Sharp cannot decode HEVC, so HEIC becomes a TIFF that keeps its profile.
+  const bytes = isHeic(task.bytes) ? await decodeHeic(task.bytes) : task.bytes;
   const meta = await sharp(bytes).metadata();
   const width = meta.autoOrient?.width ?? meta.width ?? 0;
   const height = meta.autoOrient?.height ?? meta.height ?? 0;

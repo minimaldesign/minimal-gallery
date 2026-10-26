@@ -9,7 +9,7 @@ This page takes you from nothing to a gallery online: create the project, add ph
 
 - **Node.js 22.18 or later.** Download the LTS installer from [nodejs.org](https://nodejs.org) and run it. To check, open Terminal and type `node --version`: it should print `v22.18.0` or a higher number.
 - **A free Cloudflare account**, to put the gallery online. You can sign up at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up) now or when you first publish. If you would rather use a web host you already have, you need none; see [Putting it online](/hosting/).
-- **Photos as JPEG files.** PNG, WebP, AVIF and TIFF work too. Export HEIC and RAW files as JPEG first.
+- **Photos as JPEG files**, or HEIC files straight from an iPhone. PNG, WebP, AVIF and TIFF work too. Export RAW files as JPEG first.
 
 Terminal is in Applications › Utilities. You type a command, press Return, and wait for the prompt to come back before typing the next one.
 
@@ -224,7 +224,7 @@ In the gallery folder, run:
 npx minimalgallery upgrade
 ```
 
-It updates the minimal gallery packages to their latest versions with the gallery’s package manager, then runs `doctor`. Doctor reports the number of photos and files, the projected size of the published site against the host’s limits, and anything that needs attention, such as HEIC or RAW files without a JPEG. It changes nothing. Your next publish builds the site with the new version.
+It updates the minimal gallery packages to their latest versions with the gallery’s package manager, then runs `doctor`. Doctor reports the number of photos and files, the projected size of the published site against the host’s limits, and anything that needs attention, such as RAW files without a JPEG. It changes nothing. Your next publish builds the site with the new version.
 
 ## Working from the terminal
 

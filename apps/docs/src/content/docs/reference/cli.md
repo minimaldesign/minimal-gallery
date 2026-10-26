@@ -64,7 +64,7 @@ npx minimalgallery add ~/Pictures/Export/japan --album "Japan 2025"
 
 `add` copies photos into `photos/<album>/` and then processes the whole gallery, as `sync` does:
 
-1. It collects the photos. A folder is read with all its subfolders; names that start with `.` are skipped. An `.xmp` sidecar named after a photo (`DSC_0412.jpg.xmp` or `DSC_0412.xmp`) is copied with it. Other files are listed as skipped, HEIC and RAW files with the advice to export a JPEG.
+1. It collects the photos. A folder is read with all its subfolders; names that start with `.` are skipped. An `.xmp` sidecar named after a photo (`DSC_0412.jpg.xmp` or `DSC_0412.xmp`) is copied with it. HEIC files from an iPhone are photos too. Other files are listed as skipped, RAW files with the advice to export a JPEG.
 2. It turns the album name into a folder name with the same rule as album ids: `"Japan 2025"` gives `photos/japan_2025/`. A `/` in the name makes a nested album: `--album family/birthdays`.
 3. It leaves out duplicates: a photo whose content matches a photo anywhere in `photos/`, or one earlier in the same batch, is listed as already in the gallery and not copied.
 4. It renames on a clash: a file name already used in the album, or one that would give the same photo id, gets `-2`, `-3` and so on (`DSC_0412.jpg` becomes `DSC_0412-2.jpg`). Its sidecars are renamed to match.
@@ -97,7 +97,7 @@ It prints a summary: albums, photos, encoded, metadata only, unchanged, failed, 
 
 With photo storage, `sync` then uploads the new copies to the bucket, using the access key in `.env`. Without the key it keeps them on this computer and exits 1.
 
-`sync` exits 1 when any photo fails, which includes a HEIC or RAW file with no JPEG next to it. Every other photo is still processed.
+`sync` exits 1 when any photo fails, which includes a RAW file with no JPEG next to it. Every other photo is still processed.
 
 ### doctor
 
@@ -118,7 +118,7 @@ minimalgallery doctor [--bucket]
 - the projected site: one page per visible photo, one page and one JSON file per context, the derivatives in site mode and about 20 other files, against Cloudflare’s limit of 20,000 files, and about how many more photos fit before it;
 - the bytes of photos published with the site;
 - a recommendation: site mode is fine; plan to add photo storage (past 16,000 files); or add photo storage (over the limit). For a gallery built for your own host (`"publish": "build"`), Cloudflare’s limit does not apply and the recommendation says so;
-- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), HEIC or RAW files with no JPEG, and, with photo storage, a missing access key or a value the scaffold left as a stand-in.
+- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), RAW files with no JPEG, and, with photo storage, a missing access key or a value the scaffold left as a stand-in.
 
 A photo whose original is not on this computer and never was, as in a copy of the gallery made without its originals, is not an issue. `doctor` counts those photos and does not ask to prune them.
 

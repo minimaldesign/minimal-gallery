@@ -190,7 +190,7 @@ export async function doctor(
   const errorsUnsupported = unsupported.filter((u) => !u.hasSibling);
   if (errorsUnsupported.length)
     issues.push(
-      `${errorsUnsupported.length} HEIC or RAW file(s) without a JPEG: export them as JPEG`
+      `${errorsUnsupported.length} RAW file(s) without a JPEG: export them as JPEG`
     );
   if (missingManifests.length)
     issues.push(
