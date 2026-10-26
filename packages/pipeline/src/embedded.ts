@@ -28,6 +28,8 @@ export interface EmbeddedLayers {
   exifCreateDate?: string;
   /** IPTC DateCreated, often date-only, used only before falling back to mtime. */
   iptcDate?: string;
+  /** EXIF Orientation, part of the image data hash: it turns the pixels. */
+  orientation?: unknown;
 }
 
 type Tags = Record<string, any>;
@@ -134,6 +136,7 @@ export async function readEmbedded(bytes: Uint8Array): Promise<EmbeddedLayers> {
     exifOffset: date ? parseOffset(exif.OffsetTimeOriginal) : undefined,
     exifCreateDate: parseExifDate(exif.CreateDate),
     iptcDate: parseIptcDate(iptc.DateCreated, iptc.TimeCreated),
+    orientation: ifd0.Orientation,
   };
 }
 

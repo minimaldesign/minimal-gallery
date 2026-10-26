@@ -112,6 +112,12 @@ export const GalleryConfigSchema = z
      * the s3 storage.
      */
     originals: z.enum(['none', 'bucket', 'site']).default('none'),
+    /**
+     * Where the admin saves a photo’s metadata edits. `sidecar` (default)
+     * writes `<file>.xmp` next to the photo and never changes the photo;
+     * `photo` writes them into the photo file itself.
+     */
+    saveEdits: z.enum(['sidecar', 'photo']).default('sidecar'),
     /** Colour space of the derivatives. `p3` keeps wide-gamut colour. */
     color: z.enum(['srgb', 'p3']).default('srgb'),
     defaults: ViewerDefaults.prefault({}),

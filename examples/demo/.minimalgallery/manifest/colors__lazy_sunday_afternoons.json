@@ -9,7 +9,7 @@
   "caption": null,
   "date": "2009-05-10T14:22:09",
   "dateSource": "xmp",
-  "camera": null,
+  "camera": "Nikon D200",
   "lens": "24.0-70.0 mm f/2.8",
   "exposure": {
     "shutter": null,
@@ -69,7 +69,10 @@
     "year": "2009",
     "month": "05",
     "day": "05-10",
-    "camera": null,
+    "camera": {
+      "slug": "nikon-d200",
+      "label": "Nikon D200"
+    },
     "lens": {
       "slug": "24-0-70-0-mm-f-2-8",
       "label": "24.0-70.0 mm f/2.8"
@@ -83,9 +86,10 @@
     "place": null
   },
   "sourceHash": "01879adebcced07f",
+  "pixelsHash": "f311fb24ef44b59c",
   "sourceSize": 232863,
-  "inputsHash": "87b66e7f2b0c0139",
-  "pipelineVersion": "0.4.0",
+  "inputsHash": "457ab0c5d26664e3",
+  "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e1fab3872e8c26c2"
+  "digest": "d076555745af7517"
 }

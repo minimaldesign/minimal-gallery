@@ -52,7 +52,7 @@ Add an album before you start the preview: with an empty `photos/` folder, the p
 
 An album is a folder inside `photos/`. In Finder, open the gallery folder and drag a folder of photos into `photos/`. The folder’s name becomes the album’s title (`kyoto-temples` becomes “Kyoto temples”), and an album can hold other albums. Photos placed directly in `photos/`, outside any album folder, are skipped.
 
-Your originals are never changed. Resized copies go to `public/_mg/`, and what the site reads about each photo (title, date, camera, dominant color) goes to `.minimalgallery/`.
+Your originals are not changed, unless you ask the admin to save titles and captions inside them (see [Sidecars](/reference/sidecars/#saving-edits-inside-the-photo)). Resized copies go to `public/_mg/`, and what the site reads about each photo (title, date, camera, dominant color) goes to `.minimalgallery/`.
 
 ## 3. Open the preview
 
@@ -85,7 +85,7 @@ Open a second Terminal window and move into the gallery folder: type `cd` and a 
 npx minimalgallery add ~/Pictures/Export/kyoto
 ```
 
-It copies the photos into `photos/kyoto/` and processes them. Photos already in the gallery are skipped, a file name that is already taken gets a `-2` suffix, and `.xmp`, `.md` and `.json` files next to a photo come with it. Photos in subfolders of the folder you add all go into the one album. To choose the album’s name, add `--album "japan 2025"`: the folder name is lowercased, with spaces and punctuation turned into underscores, so the photos go to `photos/japan_2025/`.
+It copies the photos into `photos/kyoto/` and processes them. Photos already in the gallery are skipped, a file name that is already taken gets a `-2` suffix, and an `.xmp` sidecar next to a photo comes with it. Photos in subfolders of the folder you add all go into the one album. To choose the album’s name, add `--album "japan 2025"`: the folder name is lowercased, with spaces and punctuation turned into underscores, so the photos go to `photos/japan_2025/`.
 
 When the preview is not running, `npx minimalgallery sync` processes new and changed photos. You can also skip that step: `npm run publish` processes them before every publish.
 
@@ -234,15 +234,16 @@ The preview is optional. If you prefer Terminal and your own editor, the whole c
 npx minimalgallery add ~/Pictures/Export/kyoto --album "japan 2025/kyoto"
 ```
 
-Edit a sidecar next to a photo, here `photos/japan_2025/kyoto/DSC_0412.md`, in any editor. Its fields win over the photo’s own metadata, and its text is the caption:
+Edit the album’s `_album.md`, here `photos/japan_2025/kyoto/_album.md`, in any editor. The fields under a photo’s name win over the photo’s own metadata:
 
-```md title="photos/japan_2025/kyoto/DSC_0412.md"
+```md title="photos/japan_2025/kyoto/_album.md"
 ---
-title: Philosopher’s Path, early
-keywords: [canal, cherry blossom]
+photos:
+  DSC_0412.jpg:
+    title: Philosopher’s Path, early
+    caption: The canal before the crowds.
+    keywords: [canal, cherry blossom]
 ---
-
-The canal before the crowds.
 ```
 
 Then publish without the confirmation:

@@ -42,6 +42,7 @@ Two programs read the file:
 | `storage` | object | `{ mode: 'site' }` | pipeline | Where the derivatives go. See [Storage modes](#storage-modes). |
 | `ladder` | array | five variants | pipeline | The derivatives written for each photo. See [Derivative ladder](#derivative-ladder). |
 | `originals` | `'none' \| 'site' \| 'bucket'` | `'none'` | pipeline | Whether the original files are published. See [Originals](#originals). |
+| `saveEdits` | `'sidecar' \| 'photo'` | `'sidecar'` | admin | Where the admin saves a photo’s title, caption and other details: in `<file>.xmp` next to the photo, or inside the photo file. See [Saving edits inside the photo](/reference/sidecars/#saving-edits-inside-the-photo). |
 | `color` | `'srgb' \| 'p3'` | `'srgb'` | pipeline | Color space of the derivatives. `'p3'` encodes them in Display P3 and keeps wide-gamut color. |
 | `defaults` | object | see below | site | Starting values of the viewer’s settings. See [Viewer defaults](#viewer-defaults). |
 | `albums.sort` | `'date' \| 'name' \| 'manual'` | `'date'` | pipeline | Photo order in albums whose `_album.md` does not set `sort`. See [Sidecars](/reference/sidecars/#_albummd). |

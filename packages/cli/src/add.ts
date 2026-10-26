@@ -26,7 +26,7 @@ export const PHOTO_EXTENSIONS = new Set([
   ...HEIC_EXTENSIONS,
 ]);
 /** Sidecars copied with their photo when they sit next to it. */
-const SIDECAR_EXTENSIONS = ['.xmp', '.md', '.json'];
+const SIDECAR_EXTENSIONS = ['.xmp'];
 
 export interface AddedFile {
   /** Source path. */
@@ -103,7 +103,7 @@ function defaultAlbumName(inputs: string[], dirs: Set<string>): string {
  * content is already somewhere in `photos/` (or earlier in the same batch)
  * are reported as duplicates and not copied. A name already used in the
  * album, or one that would give the same photo id, gets a `-2`, `-3` suffix.
- * Sidecars (`.xmp`, `.md`, `.json` with the same base name) come along.
+ * Sidecars (`photo.jpg.xmp` and `photo.xmp`) come along.
  * Modification times are kept, since the pipeline falls back to them for
  * undated photos. Nothing is processed here.
  */
@@ -207,11 +207,16 @@ export async function addPhotos(
     known.set(hash, relative(root, to));
 
     const sidecars: string[] = [];
-    for (const sideExt of SIDECAR_EXTENSIONS) {
-      for (const variant of [sideExt, sideExt.toUpperCase()]) {
-        const side = join(dirname(from), `${stem}${variant}`);
+    // `photo.jpg.xmp`, named after the whole file, then `photo.xmp`.
+    const bases: Array<[from: string, to: string]> = [
+      [basename(from), name],
+      [stem, newStem],
+    ];
+    for (const [fromBase, toBase] of bases) {
+      for (const variant of ['.xmp', '.XMP']) {
+        const side = join(dirname(from), `${fromBase}${variant}`);
         if (!sidecarSet.has(side) && !(await pathExists(side))) continue;
-        const sideName = `${newStem}${sideExt}`;
+        const sideName = `${toBase}.xmp`;
         if (takenNames.has(sideName.toLowerCase())) break;
         await copyAndKeepTime(side, join(albumDir, sideName));
         takenNames.add(sideName.toLowerCase());

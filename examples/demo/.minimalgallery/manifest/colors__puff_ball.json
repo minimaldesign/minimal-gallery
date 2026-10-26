@@ -89,9 +89,10 @@
     "place": null
   },
   "sourceHash": "0740d05350dc4106",
+  "pixelsHash": "4486cafe6e5d4eec",
   "sourceSize": 139843,
-  "inputsHash": "87b66e7f2b0c0139",
-  "pipelineVersion": "0.4.0",
+  "inputsHash": "457ab0c5d26664e3",
+  "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c0c4ae239c4ec2a4"
+  "digest": "3a21b7d40f99d44b"
 }

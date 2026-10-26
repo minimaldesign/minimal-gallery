@@ -144,20 +144,30 @@ describe('chunked uploads', () => {
     expect(await readFile(join(dir, 'photos/trip/DSC_1-2.xmp'), 'utf8')).toBe(
       xmp.toString()
     );
-    // A sidecar after its photo is placed at once.
-    const md = await upload(
+    // A sidecar after its photo is placed at once; `<file>.xmp` keeps the
+    // photo’s extension in its name.
+    const own = await upload(
       server,
       'trip',
-      'DSC_1.md',
-      Buffer.from('---\ntitle: Hi\n---\n'),
-      {
-        sidecarOf: photoId,
-      }
+      'DSC_1.jpg.xmp',
+      Buffer.from(
+        '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title><rdf:Alt><rdf:li xml:lang="x-default">Hi</rdf:li></rdf:Alt></dc:title></rdf:Description></rdf:RDF></x:xmpmeta>'
+      ),
+      { sidecarOf: photoId }
     );
-    expect(md.result).toEqual({
+    expect(own.result).toEqual({
       status: 'added',
-      path: 'photos/trip/DSC_1-2.md',
+      path: 'photos/trip/DSC_1-2.jpg.xmp',
     });
+    // Other sidecar formats are refused.
+    const md = await server.call('POST', '/uploads', {
+      album: 'trip',
+      name: 'DSC_1.md',
+      size: 10,
+      lastModified: 0,
+      sidecarOf: photoId,
+    });
+    expect(md.status).toBe(400);
     await settled(dir);
     const m = JSON.parse(
       await readFile(

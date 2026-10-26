@@ -688,7 +688,7 @@ function fillPhoto() {
     b.hidden = !inAlbum;
 }
 
-/** The overrides the form asks for that differ from what the .md holds now. */
+/** The overrides the form asks for that differ from what the sidecar holds now. */
 function changedOverrides() {
   if (!detail) return {};
   const out: Record<string, unknown> = {};
@@ -786,18 +786,27 @@ photoForm.addEventListener('submit', async (event) => {
   submit.setAttribute('aria-busy', 'true');
   try {
     const result = await api<{
+      extracted: Detail['extracted'];
       overrides: Detail['overrides'];
       overridesFile: string | null;
+      savedTo: 'sidecar' | 'photo';
     }>('PUT', `/photos/${encodeURIComponent(id)}/overrides`, changes);
     if (detail?.id === id) {
+      // Saved into the photo, the values are the file’s own now.
+      detail.extracted = result.extracted;
       detail.overrides = result.overrides;
       detail.overridesFile = result.overridesFile;
       fillPhoto();
+      const onlyHidden = Object.keys(changes).every((k) => k === 'hidden');
       status(
         photoForm,
-        result.overridesFile
-          ? `Saved to ${result.overridesFile}.`
-          : 'Saved. The file’s own values apply again.'
+        onlyHidden
+          ? 'Saved to the album’s _album.md.'
+          : result.savedTo === 'photo'
+            ? `Saved into photos/${detail.source}.`
+            : result.overridesFile
+              ? `Saved to ${result.overridesFile}.`
+              : 'Saved. The photo’s own values apply again.'
       );
     }
   } catch (error) {

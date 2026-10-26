@@ -76,8 +76,8 @@ One theme ships in v2, inside the astro package. The theme contract (layout slot
 photos/
   japan-2025/                album = folder; nesting allowed
     _album.md                frontmatter: title, description, sort, order[], hidden, date
-    DSC_0412.jpg             original, never modified, kept out of git
-    DSC_0412.md              per-photo override: frontmatter + markdown caption
+    DSC_0412.jpg             original, kept out of git
+    DSC_0412.jpg.xmp         per-photo override written by the admin (XMP)
     DSC_0412.xmp             Lightroom sidecar, read only
 .minimalgallery/manifest/<photoId>.json   committed; the contract between local processing and CI
 public/_mg/<photoId>/<hash8>-<variant>.avif   repo storage mode only
@@ -162,7 +162,7 @@ Persona: a photo enthusiast on a Mac with Lightroom, who has opened a terminal a
 8. **Next time.** Double-click the `.command` file (or run `npm run admin`), drop, publish. For a folder-based habit, `minimalgallery watch` plus a Lightroom export preset pointed at `photos/<album>/` with metadata included: titles, captions and keywords flow through XMP and no sidecars are ever written by hand.
 9. **Upgrading.** `npx minimalgallery upgrade` updates the packages, migrates the config if a version changed, and runs `doctor`, which reports file count, bytes, and anything it would change.
 
-Power-user variant, no admin: `minimalgallery add ~/Export/japan --album japan-2025`, edit a `.md` sidecar in any editor, `minimalgallery publish`.
+Power-user variant, no admin: `minimalgallery add ~/Export/japan --album japan-2025`, edit the album’s `_album.md` in any editor, `minimalgallery publish`.
 
 Option B variant: download and open the app; “Create a gallery” replaces steps 2 and 3 with a folder picker; everything from step 4 on is the same screens in a native window, with publish credentials in the keychain.
 
@@ -181,7 +181,7 @@ First run:
 
 Adding photos: 3. Sidebar: album tree. Main pane: the current album’s grid with a drop zone. Dropping a Finder folder on the sidebar creates an album; dropping files on the grid adds to it (dropped folders are read recursively in every modern browser via `webkitGetAsEntry`). 4. Each file uploads to localhost in chunks, is hashed and deduped, written to `photos/<album>/`, then processed by Node; progress streams back over SSE and the thumb appears as soon as its ladder is done. The live collection refreshes the preview.
 
-Editing: 5. Click a photo for an inspector: title, caption (markdown), date, location, keywords, hidden. Extracted values show greyed with an override affordance; saving writes `<name>.md` containing only the overridden fields. Album inspector and drag-to-reorder write `_album.md`. Originals are never modified.
+Editing: 5. Click a photo for an inspector: title, caption (markdown), date, location, keywords, hidden. Extracted values show greyed with an override affordance; saving writes `<file>.xmp` containing only the overridden fields, or into the photo itself with `saveEdits: 'photo'` (revised 2026-10-25, see below). Album inspector and drag-to-reorder write `_album.md`.
 
 Publishing: 6. A Publish button runs `minimalgallery publish`: `sync` pending derivatives to R2 in bucket mode, then `git commit && git push` (host builds) or `astro build && wrangler pages deploy dist`. First time, a guided `wrangler login`. Deploy log and final URL shown in the page.
 
@@ -227,6 +227,12 @@ Decision: A ships in Phase 3. B is not implemented now; during Phase 1 setup the
 - To try once R2 is enabled for the demo: wrangler’s remote R2 binding. `startRemoteProxySession` and `getPlatformProxy`, public exports of wrangler 4.152, give Node a binding on the real bucket that uses the wrangler login. Objects then go through a temporary preview Worker instead of the Cloudflare API, so the 1,200-request limit should apply only to starting the session, not to each file. The binding has `put` with HTTP metadata (Content-Type, Cache-Control), `head`, `list` (1,000 keys per page) and `delete` of up to 1,000 keys per call, which covers staging, upload, prune and `checkBucket`. Unknown until it runs against real R2: how fast thousands of files upload, whether those requests count toward the Workers daily request quota (100,000 on the free plan), whether the 100 MB request body limit of Workers applies (it would matter for originals only), and how long a session takes to start. It also starts workerd on the owner’s computer, which makes wrangler a runtime dependency of publish. If it holds up, it replaces the R2 API token step in the scaffold and the admin, with S3 keys still winning when they are set (CI, B2, MinIO).
 - Git publishing leaves the original photos out of the repository, in every git setup (GitHub Pages, Netlify, Cloudflare with `--publish git`; repo and bucket mode), decided by Yann. The host build never reads them, a repository of originals passes GitHub’s 1 GB recommendation and 100 MiB file limit, and on GitHub Pages’ free plan it is public, full-resolution files included. The scaffold’s `.gitignore` ignores every file under `photos/` except the sidecars (`.md`, `.json`, `.xmp`, so `_album.md` too), and `publish --git` commits the same files whatever `.gitignore` says. `"minimalgallery": { "commitOriginals": true }` in `package.json` is the opt-in for an owner who wants the repository as a backup; `doctor` then counts the originals in the repository size. A gallery that already tracks originals keeps them tracked: publish commits their edits and deletions, adds no new ones, and prints the commands to stop tracking them. History is never rewritten.
 - A clone without the originals must publish the same site, so the pipeline separates a deleted photo from an absent one. A manifest whose photo is missing counts as deleted, and can be pruned, only when this gallery folder had the photo before, as recorded in `.minimalgallery/cache/seen.json` (ignored by git, and tied to the folder’s path so a copied cache is not trusted). Otherwise the photo is absent: it stays in its album (an album whose folder is missing is rebuilt from the manifests), and its manifest and derivatives are never rewritten or pruned. A clone therefore writes the same `_albums.json` as the computer with every original. `doctor` counts absent photos instead of calling them orphans. Edits and deletions happen on the computer that has the original.
+
+## Decisions added 2026-10-25
+
+- Photo sidecars are XMP, not markdown (decided by Yann). The admin writes `<file>.xmp` (`DSC_0412.jpg.xmp`) with ExifTool (`exiftool-vendored`), holding only the edited fields; `<name>.md` and `<name>.json` photo sidecars are no longer read. `<name>.xmp` from another app is still read, below the album map. `hidden` and the album order have no standard tag and live in `_album.md`.
+- Edits can be saved inside the photo (decided by Yann; the earlier “originals are never modified” rule was a planning default, not a requirement). `saveEdits: 'sidecar' | 'photo'` in the config, a choice in the admin’s settings. In photo mode a save writes XMP plus the EXIF and IPTC copies (MWG), then removes the field from `<file>.xmp` and the album entry, so a saved value is never hidden by an older copy; the precedence order stays fixed. Switching offers to move the existing sidecars into the photos.
+- Derivatives are reused by an image data hash (`pixelsHash`: a JPEG or PNG without its metadata segments, plus the EXIF orientation), so metadata written into a file does not re-encode it. Other formats hash whole.
 
 ## Hosting
 

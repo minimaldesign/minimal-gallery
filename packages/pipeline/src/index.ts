@@ -127,6 +127,8 @@ export { hashBytes } from './hash.ts';
 export type { UnsupportedFile } from './walk.ts';
 export { mergeLayers } from './merge.ts';
 export { xmpToLayer } from './xmp.ts';
+export { sidecarPath } from './sidecars.ts';
+export { imageDataHash } from './pixels.ts';
 export {
   inspectPhoto,
   readPhotoOverrides,

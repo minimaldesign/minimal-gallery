@@ -17,12 +17,11 @@ dist
 # If you keep this gallery in git, the original photos stay out of it: a
 # repository of full-size originals soon outgrows what GitHub and other git
 # hosts accept, and a public repository would let anyone download them. The
-# sidecars (.md, .json, .xmp) and each album’s _album.md are kept. To keep
-# the originals in the repository too, delete these lines. Either way, back
-# up the gallery folder itself: https://docs.minimalgallery.net/backups/
+# sidecars (.xmp) and each album’s _album.md are kept. To keep the originals
+# in the repository too, delete these lines. Either way, back up the gallery
+# folder itself: https://docs.minimalgallery.net/backups/
 photos/**
 !photos/**/
 !photos/**/*.md
-!photos/**/*.json
 !photos/**/*.xmp
 !photos/**/*.XMP

@@ -166,19 +166,25 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
     keywords, copyright, author, hidden,
     from: { [field]: 'album' | 'xmp-sidecar' | 'xmp' | 'iptc' | 'exif' | 'filename' | 'none' };
   };
-  overrides: { title?, caption?, date?, keywords?, place?, gps?, hidden?, copyright?, author?, ... }; // what <name>.md sets now
-  overridesFile: string | null;  // 'photos/colors/Red_door.md' when it exists
-  jsonSidecar: object | null;    // fields a <name>.json sets (the admin never edits it; .md wins field by field)
+  overrides: { title?, caption?, date?, keywords?, place?, gps?, copyright?, author?, hidden? }; // what <file>.xmp sets now, and hidden from the photo’s _album.md entry
+  overridesFile: string | null;  // 'photos/colors/Red_door.jpg.xmp' when it exists
 }
 ```
 
-`extracted` is what the photo shows when its `.md` sets nothing: the album’s `photos:` map in `_album.md`, the `.xmp` sidecar, embedded XMP, IPTC, EXIF, then the file name (for the title). A date no layer has is `null`, with `from.date: 'none'`. Show these values greyed; the override affordance writes `overrides`.
+`extracted` is what the photo shows when its `<file>.xmp` sets nothing: the album’s `photos:` map in `_album.md` (without `hidden`), the `<name>.xmp` sidecar, embedded XMP, IPTC, EXIF, then the file name (for the title). A date no layer has is `null`, with `from.date: 'none'`. Show these values greyed; the override affordance writes `overrides`.
 
-`PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, place?: { city?, state?, country?, location? }, gps?: { lat, lon }, hidden?, copyright?, author? }` → `{ overrides, overridesFile }`
+`PUT /photos/:id/overrides` `{ title?, caption?, date?, keywords?, place?: { city?, state?, country?, location? }, gps?: { lat, lon }, hidden?, copyright?, author? }` → `{ extracted, overrides, overridesFile, savedTo: 'sidecar' | 'photo' }`, the inspector’s fields as `GET /photos/:id` gives them after the write.
 
 - A key that is absent is left as it is; a key set to `null` is removed (in `place`, per sub-field; an empty `place` is removed).
-- `caption` is the markdown body of `<name>.md`. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `keywords`: an array of strings. `gps`: decimal degrees, latitude from -90 to 90 and longitude from -180 to 180, rounded to six decimals and written on one line (`gps: { lat: 35.0116, lon: 135.7681 }`); it only feeds the manifest (for a map), the photo’s own EXIF is never changed.
-- `<name>.md` holds only the overridden fields. Keys and comments the admin does not manage are kept. The file is deleted when nothing is left. The original photo is never touched.
+- `caption` is markdown. `date`: `YYYY-MM-DD`, `YYYY-MM-DDTHH:MM` or `YYYY-MM-DDTHH:MM:SS`. `keywords`: an array of strings. `gps`: decimal degrees, latitude from -90 to 90 and longitude from -180 to 180, rounded to six decimals.
+- ExifTool writes the fields. With `saveEdits: 'sidecar'` (the default) they go to `<file>.xmp`, which holds only the overridden fields; another app’s XMP in the same file is kept, and the file is deleted when no XMP is left. The photo is never touched.
+- With `saveEdits: 'photo'`, values are written into the photo (XMP, and the EXIF and IPTC copies through MWG), then removed from `<file>.xmp` and from the photo’s `_album.md` entry. A `null` removes those two copies and never deletes anything from the photo.
+- `hidden` is written to the photo’s entry in the album’s `_album.md` `photos:` map in both modes (`true` sets it, `false` or `null` removes it).
+
+`GET /edits/sidecars` → `{ photos }`: how many photos have a `<file>.xmp` that sets a field the admin edits.
+
+`POST /edits/sidecars/embed` → `{ moved, failed: [{ path, message }] }`: writes the fields of every such sidecar into its photo, as a save with `saveEdits: 'photo'` would, and deletes the sidecars left empty. A run is queued.
+
 - A run is queued; the photo comes back through a `photo` event.
 - `404` when the photo has no manifest (an unknown id, or a photo the pipeline has not processed yet).
 
@@ -200,7 +206,7 @@ Chunked, deduplicated by content hash (xxhash64, the pipeline’s `sourceHash`).
    - `201 { id, chunkSize }`, or
    - `200 { status: 'skipped', reason }` right away for a RAW name (“RAW: export a JPEG instead”) or an unsupported format, so its bytes are never sent. HEIC (`.heic`, `.heif`, `.hif`) is accepted like JPEG.
 
-   `album`: an album id; its folder is created when it does not exist. `name`: the file name, no folders. `size` in bytes. `lastModified`: milliseconds since the epoch (`File.lastModified`); it becomes the file’s modification time, as in a Finder copy. The pipeline never reads it as a date. `sidecarOf`: for an `.xmp`, `.md` or `.json` dropped with its photo, the upload id of that photo; the sidecar follows the photo’s final name.
+   `album`: an album id; its folder is created when it does not exist. `name`: the file name, no folders. `size` in bytes. `lastModified`: milliseconds since the epoch (`File.lastModified`); it becomes the file’s modification time, as in a Finder copy. The pipeline never reads it as a date. `sidecarOf`: for an `.xmp` dropped with its photo (`DSC_0412.jpg.xmp` or `DSC_0412.xmp`), the upload id of that photo; the sidecar follows the photo’s final name.
 
 2. `PUT /uploads/:id?offset=<n>`, body the raw bytes of one chunk (at most `chunkSize`, 4 MiB) → `{ received }`. Chunks go in order. Sending an offset already received again (a retry) rewrites from there; an offset past `received` gives `409 { error, received }`, so the client can resume from `received`.
 3. `POST /uploads/:id/complete` → one of:
@@ -234,11 +240,11 @@ A comment line is sent every 15 s to keep the connection open.
 
 ### Settings
 
-`GET /settings` → `{ name, description, author, site, albumsSort, defaults: { fit, strip, crop, view, size, backdrop }, customCss }`. Values as resolved, defaults filled in; `description`, `author` and `site` are `null` when unset; `customCss` is `''` when the file does not exist.
+`GET /settings` → `{ name, description, author, site, albumsSort, saveEdits, defaults: { fit, strip, crop, view, size, backdrop }, customCss }`. Values as resolved, defaults filled in; `description`, `author` and `site` are `null` when unset; `customCss` is `''` when the file does not exist.
 
 `PUT /settings` with any of those keys → the settings object.
 
-- `name`, `description`, `author`, `site`, `albumsSort` (`albums.sort` in the file) and `defaults.*` are edited in `minimalgallery.config.ts` in place: comments and keys the admin does not manage stay as written. `null` removes a key (its default applies). The edit is validated with the pipeline’s schema first; `400` names the bad key. The dev server then restarts (the theme reads the config at startup).
+- `name`, `description`, `author`, `site`, `albumsSort` (`albums.sort` in the file), `saveEdits` (no key in the file for `'sidecar'`) and `defaults.*` are edited in `minimalgallery.config.ts` in place: comments and keys the admin does not manage stay as written. `null` removes a key (its default applies). The edit is validated with the pipeline’s schema first; `400` names the bad key. The dev server then restarts (the theme reads the config at startup).
 - `customCss` writes `custom.css`. Vite reloads it in the preview; when the file did not exist before, the dev server restarts once so the theme links it.
 - A `settings` event follows. A changed `albumsSort` queues a run.
 

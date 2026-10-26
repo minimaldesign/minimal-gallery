@@ -14,7 +14,7 @@ import { SEEN_FILE, withAbsentAlbums } from '../src/absent.ts';
 import { doctor, formatDoctorReport } from '../src/doctor.ts';
 import { processGallery } from '../src/process.ts';
 import { walkPhotos } from '../src/walk.ts';
-import { tempGallery, write, writeJpeg } from './helpers.ts';
+import { tempGallery, write, writeJpeg, xmp } from './helpers.ts';
 
 const MANIFESTS = '.minimalgallery/manifest';
 
@@ -26,7 +26,7 @@ async function gallery(): Promise<string> {
     color: '#3c3',
     date: '2005:02:28 10:00:00',
   });
-  await write(join(dir, 'photos/trip/a.md'), '---\ntitle: First\n---\n');
+  await write(join(dir, 'photos/trip/a.jpg.xmp'), xmp({ title: 'First' }));
   await writeJpeg(join(dir, 'photos/trip/day 2/c.jpg'), { color: '#c3c' });
   await writeJpeg(join(dir, 'photos/home/d.jpg'), { color: '#33c' });
   await write(join(dir, 'photos/home/_album.md'), '---\ntitle: Home\n---\n');
@@ -76,7 +76,7 @@ describe('photos whose originals are not here', () => {
     const dir = await gallery();
     const before = await snapshot(join(dir, MANIFESTS));
     const copy = await clone(dir);
-    expect(await readdir(join(copy, 'photos/trip'))).toEqual(['a.md']);
+    expect(await readdir(join(copy, 'photos/trip'))).toEqual(['a.jpg.xmp']);
 
     const s = await processGallery(copy, { concurrency: 1, prune: true });
     expect(s).toMatchObject({

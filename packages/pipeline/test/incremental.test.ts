@@ -10,7 +10,7 @@ import {
 import { join } from 'node:path';
 import { resolveConfig } from '../src/config.ts';
 import { processGallery } from '../src/process.ts';
-import { tempGallery, write, writeJpeg } from './helpers.ts';
+import { tempGallery, withXmp, write, writeJpeg, xmp } from './helpers.ts';
 
 describe('incremental processing', () => {
   it('skips, re-reads metadata, re-encodes and prunes as needed', async () => {
@@ -31,8 +31,8 @@ describe('incremental processing', () => {
 
     // Sidecar edit: manifest rewritten, nothing encoded.
     await write(
-      join(dir, 'photos/album/one.md'),
-      '---\ntitle: New title\n---\n'
+      join(dir, 'photos/album/one.jpg.xmp'),
+      xmp({ title: 'New title' })
     );
     const third = await processGallery(dir, opts);
     expect(third.metadataOnly).toBe(1);
@@ -51,6 +51,25 @@ describe('incremental processing', () => {
     const fourth = await processGallery(dir, opts);
     expect(fourth.metadataOnly).toBe(1);
     expect(fourth.encoded).toBe(0);
+
+    // Metadata written into the file: new file, same image data, no encode.
+    await rm(join(dir, 'photos/album/one.jpg.xmp'));
+    await writeFile(
+      photo,
+      withXmp(await readFile(photo), xmp({ caption: 'In the file' }))
+    );
+    const embedded = await processGallery(dir, opts);
+    expect(embedded.metadataOnly).toBe(1);
+    expect(embedded.encoded).toBe(0);
+    const e = JSON.parse(
+      await readFile(
+        join(dir, '.minimalgallery/manifest/album__one.json'),
+        'utf8'
+      )
+    );
+    expect(e.caption).toBe('In the file');
+    expect(e.sourceHash).not.toBe(m.sourceHash);
+    expect(e.pixelsHash).toBe(m.pixelsHash);
 
     // New pixels: re-encoded, old derivatives removed.
     await writeJpeg(photo, { color: '#3c3' });
@@ -93,7 +112,10 @@ describe('incremental processing', () => {
       file('album__one'),
       JSON.stringify({ ...first, added: old })
     );
-    await write(join(dir, 'photos/album/one.md'), '---\ntitle: Edited\n---\n');
+    await write(
+      join(dir, 'photos/album/one.jpg.xmp'),
+      xmp({ title: 'Edited' })
+    );
     await processGallery(dir);
     expect((await read('album__one')).added).toBe(old);
     await writeJpeg(photo, { color: '#3c3' });

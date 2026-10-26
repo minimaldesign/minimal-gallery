@@ -3,7 +3,7 @@
  * dev) become run requests, so photos copied in with Finder show up live.
  * `minimalgallery admin` therefore starts no watcher of its own.
  */
-import { extname, join, sep } from 'node:path';
+import { basename, extname, join, sep } from 'node:path';
 import { PHOTO_EXTENSIONS } from '@minimalgallery/pipeline';
 import type { RunQueue } from './queue.ts';
 
@@ -14,7 +14,7 @@ export interface WatcherLike {
   add?(paths: string | string[]): unknown;
 }
 
-const SIDECARS = new Set(['.md', '.xmp', '.json']);
+const SIDECARS = new Set(['.xmp']);
 
 /** Connect a watcher to the queue. Returns the function that disconnects it. */
 export function bridgeWatcher(
@@ -34,7 +34,7 @@ export function bridgeWatcher(
   const kind = (path: string) => {
     const ext = extname(path).toLowerCase();
     if (PHOTO_EXTENSIONS.has(ext)) return 'photo';
-    if (SIDECARS.has(ext)) return 'sidecar';
+    if (SIDECARS.has(ext) || basename(path) === '_album.md') return 'sidecar';
     return 'other';
   };
   const listeners: Record<string, (path: string) => void> = {

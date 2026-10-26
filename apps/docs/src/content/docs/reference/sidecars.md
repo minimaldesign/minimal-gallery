@@ -11,9 +11,9 @@ This page covers the `photos/` folder: how folders become albums, the files you 
 photos/
   japan-2025/              an album, at /japan_2025/
     _album.md              album title, sort order, description
-    DSC_0412.jpg           the original, never modified
-    DSC_0412.md            fields and caption for this photo
-    DSC_0412.xmp           Lightroom sidecar, read only
+    DSC_0412.jpg           the original
+    DSC_0412.jpg.xmp       title, caption and other fields for this photo
+    DSC_0412.xmp           a sidecar another app wrote, read only
   family/
     birthdays/             a nested album, at /family/birthdays/
       IMG_1042.jpg
@@ -22,8 +22,8 @@ photos/
 - Every folder under `photos/` is an album. Albums can be nested.
 - A photo placed directly in `photos/`, outside an album folder, is skipped with a warning.
 - Files and folders whose name starts with `.` are skipped.
-- Next to each photo, the pipeline looks for `<name>.md`, `<name>.json` and `<name>.xmp`, where `<name>` is the photo’s file name without its extension. Each folder can hold one `_album.md`. Any other file is ignored.
-- Your originals and sidecars are only read, never changed.
+- Next to each photo, the pipeline looks for two XMP sidecars: `<file>.xmp`, named after the photo’s whole file name (`DSC_0412.jpg.xmp`), and `<name>.xmp`, named after the file name without its extension (`DSC_0412.xmp`). Each folder can hold one `_album.md`. Any other file is ignored.
+- The pipeline only reads. The admin writes `<file>.xmp` and `_album.md` when you edit a photo or an album, and it writes into the photo itself only if you choose to; see [Saving edits inside the photo](#saving-edits-inside-the-photo).
 
 The pipeline writes what it reads to one JSON manifest per photo, in `.minimalgallery/manifest/`. The fields are defined in [`schema.ts`](https://github.com/minimaldesign/minimal-gallery/blob/master/packages/pipeline/src/schema.ts). Editing a sidecar rewrites the photo’s manifest on the next run without encoding the photo again.
 
@@ -66,7 +66,7 @@ Renaming a file or a folder changes its id and its URL. The old manifest and der
 
 For each field, the first source that sets it wins, from highest to lowest:
 
-1. `<name>.md`, then `<name>.json` (when both exist, `.md` wins field by field)
+1. `<file>.xmp`
 2. the photo’s entry in the album’s `_album.md` `photos:` map
 3. `<name>.xmp`
 4. the XMP embedded in the photo
@@ -110,7 +110,7 @@ Two weeks between Tokyo and Kyoto, in the last days of the cherry blossom.
 | `order` | list of strings | `[]` | For `sort: manual`: the photos to put first, in this order. Each entry is a file name, a file name without its extension, or a photo slug. |
 | `hidden` | `boolean` | `false` | Leaves the album and its photos out of the site. See [Hidden photos and albums](#hidden-photos-and-albums). |
 | `date` | date | none | An album date. It is stored in the album’s manifest; the theme does not use it yet. |
-| `photos` | map | none | Fields for individual photos, keyed by file name, file name without its extension, or photo slug. Each entry takes the same fields as a [photo sidecar](#namemd), without a body. |
+| `photos` | map | none | Fields for individual photos, keyed by file name, file name without its extension, or photo slug. See [Photo entries](#photo-entries). |
 
 The body, after the frontmatter, is the album’s description, in Markdown. `description` is not a frontmatter field.
 
@@ -122,23 +122,9 @@ Sort modes:
 
 An `_album.md` that does not validate stops the whole run, with the file name and the error.
 
-## `<name>.md`
+### Photo entries
 
-```md title="photos/japan-2025/DSC_0412.md"
----
-title: Fushimi Inari at dusk
-date: 2025-04-03 18:42:10
-keywords: [torii, Kyoto, dusk]
-rating: 4
-place:
-  city: Kyoto
-  country: Japan
----
-
-The last light on the upper gates, after the crowds had gone down.
-```
-
-The frontmatter sets fields; the body, when there is one, is the caption, in Markdown. The body wins over a `caption` field.
+Each entry in `photos:` can set these fields. The admin writes `hidden` here; the other fields are for editing by hand.
 
 | Field | Type | Meaning |
 | --- | --- | --- |
@@ -148,57 +134,67 @@ The frontmatter sets fields; the body, when there is one, is the caption, in Mar
 | `camera` | `string` | The camera, as shown and used for the camera pages. |
 | `lens` | `string` | The lens, as shown and used for the lens pages. |
 | `keywords` | list of strings, or one string | Keywords. A single string is split on commas and semicolons. Duplicates that differ only in case are dropped. |
-| `rating` | `number` | Stars, 1 to 5. See [Ratings](#ratings). |
 | `copyright` | `string` | Copyright notice. |
 | `author` | `string` | The photographer. |
 | `hidden` | `boolean` | Leaves the photo out of the site. See [Hidden photos and albums](#hidden-photos-and-albums). |
 | `place` | object | Any of `city`, `state`, `country` and `location` (the IPTC sub-location: a neighborhood, a park, a building). |
 | `gps` | object | `lat` and `lon` in decimal degrees, and optionally `alt` in meters. |
 
-Exposure values (shutter speed, aperture, focal length, ISO and the rest) cannot be set in a sidecar; they come from EXIF only.
+Exposure values (shutter speed, aperture, focal length, ISO and the rest) cannot be set here; they come from EXIF only.
 
 The place is shown as the city (else the state, else the location) and the country, “Kyoto, Japan”, and that label is the photo’s place page: `/place/kyoto-japan/`.
 
 Fields that are not in this table are ignored without a warning, so check the spelling of a field that seems to have no effect. A field with the wrong type, or a date that cannot be read, fails that photo: it is reported, its manifest is not written or updated, and the other photos are processed.
 
-## `<name>.json`
+## XMP sidecars
 
-The same fields as the `.md` frontmatter, as a JSON object. The caption goes in `caption`.
+XMP is the standard format photo apps use for titles, captions, keywords and places. A sidecar holds the same XMP a photo can carry inside it, in a separate file, so the photo itself is left as it is.
 
-```json title="photos/japan-2025/DSC_0412.json"
-{
-  "title": "Fushimi Inari at dusk",
-  "date": "2025-04-03T18:42:10",
-  "keywords": ["torii", "Kyoto", "dusk"],
-  "gps": { "lat": 34.9671, "lon": 135.7727 }
-}
-```
+- `<file>.xmp` (`DSC_0412.jpg.xmp`) is the sidecar the admin writes when you edit a photo. It holds only the fields you changed. Clearing a field in the admin removes it, and the file is deleted once it holds nothing.
+- `<name>.xmp` (`DSC_0412.xmp`) is read too, below the album’s `photos:` map, for sidecars another app wrote. The admin never writes it.
 
-When a photo has both a `.md` and a `.json` sidecar, a field set in the `.md` file wins.
+Both can be named with `.xmp` or `.XMP`, and both are read the way the XMP inside a photo is read:
 
-## `<name>.xmp`
+| XMP property | Sets |
+| --- | --- |
+| `dc:title` | `title` |
+| `dc:description` | `caption` |
+| `dc:subject` | `keywords` |
+| `dc:creator` | `author` |
+| `dc:rights` | `copyright` |
+| `photoshop:City` | `place.city` |
+| `photoshop:State` | `place.state` |
+| `photoshop:Country` | `place.country` |
+| `Iptc4xmpCore:Location` | `place.location` |
+| `exif:DateTimeOriginal`, else `photoshop:DateCreated`, else `xmp:CreateDate` | `date`, only when the value includes a time |
+| `tiff:Make` and `tiff:Model` | `camera` |
+| `aux:Lens`, else `exifEX:LensModel` | `lens` |
+| `exif:GPSLatitude` and `exif:GPSLongitude` | `gps` |
 
-An XMP sidecar is read the same way as the XMP embedded in a photo; the sidecar wins over the embedded packet. The file can be named `<name>.xmp` or `<name>.XMP`. A sidecar named after the full file name, such as `DSC_0412.jpg.xmp`, is not read.
+For a text with several languages, the `x-default` one is used. Properties are matched by namespace, so files that use other prefixes (`xap:` for `xmp:`) are read too. Exposure values are not read from XMP.
 
-Lightroom writes `<name>.xmp` next to RAW files. Export a JPEG with the same name into the same folder, and the RAW file is ignored while its `.xmp` sidecar applies to the JPEG.
+A caption is shown as Markdown wherever it comes from. Other apps show it as plain text, so `*asterisks*` and `[links](…)` appear as typed there.
 
-| XMP property | Lightroom field | Sets |
-| --- | --- | --- |
-| `dc:title` | Title | `title` |
-| `dc:description` | Caption | `caption` |
-| `dc:subject` | Keywords | `keywords` |
-| `dc:creator` | Creator | `author` |
-| `dc:rights` | Copyright | `copyright` |
-| `xmp:Rating` | Rating | `rating` |
-| `photoshop:City` | City | `place.city` |
-| `photoshop:State` | State / Province | `place.state` |
-| `photoshop:Country` | Country | `place.country` |
-| `Iptc4xmpCore:Location` | Sublocation | `place.location` |
-| `exif:DateTimeOriginal`, else `photoshop:DateCreated`, else `xmp:CreateDate` | Capture Time | `date`, only when the value includes a time |
-| `aux:Lens`, else `exifEX:LensModel` | Lens | `lens` |
-| `exif:GPSLatitude` and `exif:GPSLongitude` | GPS | `gps` |
+## Saving edits inside the photo
 
-For a text with several languages, the `x-default` one is used. Properties are matched by namespace, so files that use other prefixes (`xap:` for `xmp:`) are read too. The camera and the exposure values are not read from XMP.
+In the admin’s settings, “Save title, caption and other details” chooses where the photo inspector saves. In the config it is `saveEdits`:
+
+- `'sidecar'` (the default): in `<file>.xmp`. The photo is never changed.
+- `'photo'`: inside the photo file, where other apps see the values too.
+
+Inside the photo, each field is written to its XMP property and, through ExifTool’s [MWG](https://exiftool.org/TagNames/MWG.html) tags, to its EXIF and IPTC copies (IPTC only when the photo already has IPTC data), so other apps agree with the gallery. The pipeline tells metadata from pixels in a JPEG or a PNG, so these edits do not encode the photo again; a photo in another format is encoded once more after each save.
+
+Saving a field into the photo removes it from `<file>.xmp` and from the photo’s `photos:` entry in `_album.md`, which both rank above the photo’s own data: a value you save is never hidden by an older copy. Clearing a field removes those copies but never deletes anything from the photo. `hidden` has no standard place in a photo file, so it is always saved in `_album.md`.
+
+When you switch to saving inside the photo, the settings page counts the photos whose `<file>.xmp` still holds fields, and “Move them into the photos” writes those fields into each photo and deletes the sidecars that are left empty.
+
+:::caution[Exporting again replaces them]
+
+Edits saved inside a photo live in that file only. Exporting the photo again from your editor over the same file replaces them with what the editor writes. Sidecars survive a new export.
+
+:::
+
+The originals are not in git (see [Backups](/backups/)), but each photo’s manifest is, and it holds the values read from the photo: a copy of the gallery without the originals still builds the same site.
 
 ## IPTC and EXIF
 
@@ -237,7 +233,7 @@ The photo’s own IPTC and EXIF data fill in what no sidecar or XMP sets.
 
 :::note
 
-Ratings, `author`, `copyright` and `gps` are stored in each manifest, but the theme does not show them yet.
+`author`, `copyright` and `gps` are stored in each manifest, but the theme does not show them yet.
 
 :::
 
@@ -249,7 +245,7 @@ The first source that has a date wins, and `dateSource` in the manifest records 
 
 | Order | Source | `dateSource` |
 | --- | --- | --- |
-| 1 | `date` in `<name>.md` or `<name>.json` | `sidecar` |
+| 1 | `<file>.xmp`, when the value includes a time | `sidecar` |
 | 2 | `date` in the album’s `photos:` map | `album` |
 | 3 | `<name>.xmp`, when the value includes a time | `xmp` |
 | 4 | embedded XMP, when the value includes a time | `xmp` |
@@ -260,9 +256,9 @@ The first source that has a date wins, and `dateSource` in the manifest records 
 
 Time zone offsets written in XMP or IPTC are dropped: they belong to the computer that edited the file, not to the place the photo was taken. The only offset kept is EXIF OffsetTimeOriginal, stored as `tz` (`+09:00`), and only when `date` is the camera’s own DateTimeOriginal. Most cameras made before 2016 do not record it.
 
-A photo with `dateSource: none` is undated. It stays in its album and in the archive, sorted after the dated photos, but it is left out of the year, month and day pages, and its information pane shows no date. The file’s own modification or creation date is never used: it says when the file was copied or exported, not when the photo was taken. To date such a photo, write its date in a sidecar, as below. The admin marks every undated photo, and its mark leads to the date field.
+A photo with `dateSource: none` is undated. It stays in its album and in the archive, sorted after the dated photos, but it is left out of the year, month and day pages, and its information pane shows no date. The file’s own modification or creation date is never used: it says when the file was copied or exported, not when the photo was taken. To date such a photo, type its date in the admin, or write it in the album’s `photos:` map as below. The admin marks every undated photo, and its mark leads to the date field.
 
-### Writing a date in a sidecar
+### Writing a date in `_album.md`
 
 These forms are accepted:
 
@@ -275,20 +271,13 @@ An offset at the end of a string (`+09:00`, `Z`) is dropped, and the time is kep
 
 :::caution[Offsets in YAML]
 
-In a `.md` sidecar or `_album.md`, an unquoted date and time with an offset, such as `date: 2025-04-03T18:42:10+09:00`, is converted to UTC by the YAML parser before minimal gallery sees it, and the stored time moves by nine hours. Leave the offset out, or put the value in quotes.
+In `_album.md`, an unquoted date and time with an offset, such as `date: 2025-04-03T18:42:10+09:00`, is converted to UTC by the YAML parser before minimal gallery sees it, and the stored time moves by nine hours. Leave the offset out, or put the value in quotes.
 
 :::
 
-## Ratings
-
-A rating is stored as a whole number from 1 to 5, or as unrated.
-
-- From XMP, a rating of 0 (Lightroom’s “unrated”) or -1 (rejected) is stored as unrated.
-- In a sidecar or the album’s `photos:` map, the value is rounded and kept between 0 and 5, and 0 or less is stored as unrated. Because 0 counts as a value, `rating: 0` in a sidecar clears a rating that comes from XMP.
-
 ## Hidden photos and albums
 
-`hidden: true` on a photo (in a sidecar or the album’s `photos:` map) or on an album (in its `_album.md`) leaves it out of the site: a hidden photo gets no page and is not listed in any album, in the archive or on any facet page; a hidden album gets no page, and neither do its photos.
+`hidden: true` on a photo (in the album’s `photos:` map, where the admin’s “Hidden” box writes it) or on an album (in its `_album.md`) leaves it out of the site: a hidden photo gets no page and is not listed in any album, in the archive or on any facet page; a hidden album gets no page, and neither do its photos.
 
 `hidden` on an album applies to that folder only. To hide a nested album as well, set `hidden: true` in its own `_album.md`.
 
