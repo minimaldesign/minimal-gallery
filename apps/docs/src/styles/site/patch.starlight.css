@@ -129,7 +129,7 @@ site-search button[data-open-modal] {
     padding: 0;
     border: none;
     background: none;
-    color: var(--mg-ink-faint);
+    color: var(--mg-ink-muted);
   }
 }
 
@@ -178,6 +178,12 @@ header.header > .header {
 /* CONTENT */
 
 .sl-markdown-content {
+  /* Paragraphs and lists keep a reading measure; tables and code blocks
+     still take the column’s full width */
+  > :is(p, ul, ol, dl) {
+    max-inline-size: var(--docs-measure);
+  }
+
   :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
     color: var(--docs-heading);
     font-weight: var(--mg-weight-medium);

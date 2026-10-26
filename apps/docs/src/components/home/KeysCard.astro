@@ -4,7 +4,8 @@
  * card: the same rows and the keys block’s CSS (component.keys.css,
  * imported from @minimalgallery/astro), without the pane’s close label,
  * drag handle and version line. The rows are copied from the theme’s
- * KeysPane.astro; keep the two in step.
+ * KeysPane.astro; keep the two in step. On the page it sits under a section
+ * heading, so its title is an h3 and the section’s heading an h4.
  */
 interface Props {
   class?: string;
@@ -26,9 +27,9 @@ const KEYS: Array<[string[], string]> = [
 ---
 
 <div class:list={['keysCard surface', className]}>
-  <p class="keysCard_title">Keyboard shortcuts</p>
+  <h3 class="keysCard_title">Keyboard shortcuts</h3>
   <section class="keys_section">
-    <h3 class="keys_heading">Viewing mode</h3>
+    <h4 class="keys_heading">Viewing mode</h4>
     <dl class="keys_list">
       {KEYS.map(([combo, action]) => (
         <>

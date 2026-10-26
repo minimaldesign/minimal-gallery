@@ -43,7 +43,9 @@
   gap: var(--sm2);
 }
 
+/* The padding takes a 13px link to a 26px target */
 .siteBar_link {
+  padding-block: var(--xs1);
   color: var(--mg-ink-muted);
 
   &:hover {

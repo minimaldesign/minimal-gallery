@@ -64,3 +64,18 @@
   gap: var(--xs2);
   margin: 0;
 }
+
+/* Where the project stands, until the first release: small, under the
+   buttons it qualifies */
+.intro_status {
+  margin: 0;
+  color: var(--docs-text);
+  font-size: var(--mg-size-hud);
+
+  a {
+    color: var(--mg-ink);
+    text-decoration-line: underline;
+    text-decoration-color: var(--mg-ink-faint);
+    text-underline-offset: 0.2em;
+  }
+}
