@@ -8,7 +8,7 @@ Your computer resizes the photos and builds the site. Publishing puts the result
 ## Small library: Cloudflare
 
 - Holds [about 3,000 photos](#how-many-photos-fit).
-- Free, with no charge for visitors: Cloudflare serves the gallery’s files at no cost however many people look at it.
+- Free, however many people visit the gallery.
 - Needs one free Cloudflare account. `npm run publish` uploads the gallery from your computer, and later publishes send only what changed.
 - The gallery gets an address like `mg.<your name>.workers.dev`, and you can add your own domain.
 
@@ -39,7 +39,7 @@ The photo counts on these pages are estimates for full-size photos from a recent
 
 ### The files each photo becomes
 
-A screen should never download more pixels than it can show, so the pipeline makes several resized copies of each photo, and each browser picks the one that fits its screen: a phone gets a small copy, a large high-density display a big one. Most copies are AVIF, which is about half the size of a JPEG of the same quality. One JPEG is kept for the places that cannot show AVIF.
+To keep pages fast, minimal gallery makes several resized copies of each photo, and each browser downloads the one that fits its screen: a phone gets a small copy, a large high-resolution display a big one. Most copies are AVIF, which is about half the size of a JPEG of the same quality. One JPEG is kept for the places that cannot show AVIF.
 
 | File | Long edge | Format | What it is for | Made for |
 | --- | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ A photo never gets a copy larger than itself: the copies marked “every photo�
 - a photo exported at 1,600 pixels on its long edge becomes 4 files (its page, `grid`, `w1280` and `jpeg1600`);
 - a photo exported at 1,200 pixels becomes 3 files.
 
-Each album, and each filter value such as a year, a camera or a keyword, adds 2 more files to the site: a page and a small JSON file. [Configuration](/reference/configuration/#derivative-ladder) explains how to change the list of copies.
+Each album, and each filter value such as a year, a camera or a keyword, adds 2 more files to the site: a page and a small JSON file. [Configuration](/reference/configuration/#resized-copies) explains how to change the list of copies.
 
 ### What that means for each limit
 
@@ -73,13 +73,14 @@ For a gallery built for your own host, doctor skips Cloudflare’s limit.
 
 ## Words on these pages
 
+- **The pipeline** is the part of minimal gallery that reads your photos and makes their resized copies. It runs on your computer.
 - **Site mode** is the default: the resized photos are published with the site, from the gallery’s `public/_mg` folder. In the config it is `storage: { mode: 'site' }`.
 - **Photo storage** keeps the resized photos in a storage space of their own, outside the site. Storage services call such a space a bucket, so the command line and the config call it **bucket mode**: `storage: { mode: 's3' }` in `minimalgallery.config.ts`, after S3, the protocol these services share. Cloudflare’s photo storage service is called R2.
 - **`dist`** is the folder each build writes inside the gallery folder. It holds the whole site, and it is what gets uploaded.
 
 ## Why the photos are processed on your computer
 
-The pipeline reads every original, converts its colors and encodes up to five resized copies, mostly AVIF. That takes a few seconds per photo on a recent computer. It happens once, when a photo is new or changed, and the result is kept in the gallery folder. Building the site afterwards only writes the pages, and never opens an original.
+Making the resized copies takes a few seconds per photo on a recent computer. It happens once, when a photo is new or changed, and the copies are kept in the gallery folder. Building the site afterwards only writes the pages, so it’s quick.
 
 That is also why the gallery folder matters: it holds your originals, your captions and the record of every photo. Keep it in your backups. See [Backups](/backups/).
 

@@ -3,11 +3,11 @@ title: Your own host
 description: Build a minimal gallery into a folder and upload it to any web host, with the settings that make it work well there.
 ---
 
-A minimal gallery is a folder of ordinary files once it is built, so any web host can serve it: a hosting plan you already pay for, your own server, a friend’s. This page covers building that folder, uploading it, and the few settings that help.
+Once it is built, a minimal gallery is a folder of ordinary web files, so any web host can serve it: a hosting plan you already pay for, your own server, or a friend’s. This page covers building that folder, uploading it, and a few settings that help.
 
 ## Build the site
 
-When `npm create minimalgallery@latest` asks “Where will it live?”, pick **My own host**. The gallery is then set up to build for your host (`"publish": "build"` in `package.json`), and nothing about Cloudflare is written.
+When `npm create minimalgallery@latest` asks “Where will it live?”, pick **My own host**. The gallery is then set up to build for your host, with nothing for Cloudflare.
 
 ```sh
 npm run publish
@@ -25,7 +25,7 @@ rsync -av --delete dist/ me@example.com:public_html/
 
 `--delete` removes files the new build no longer has, such as the copies of a deleted photo. Without it they stay on the server, unused.
 
-Resized photos keep their names until the photo itself changes, so after the first upload, an app that only sends new and changed files sends little.
+Resized photos keep their names until the photo itself changes. After the first upload, an app that only sends new and changed files has little to send.
 
 ## What your host needs to do
 
@@ -66,4 +66,4 @@ For another server, ask your host how to set a `Cache-Control` header on the `/_
 
 ## Limits
 
-minimal gallery sets none on your own host, and `npm run doctor` skips Cloudflare’s file limit for a gallery built this way. Check your plan’s disk space: each full-size photo adds about 1.5 MB of resized copies. See [How many photos fit](/hosting/#how-many-photos-fit).
+minimal gallery adds no limits of its own, and `npm run doctor` doesn’t check Cloudflare’s file limit for a gallery built this way. Check your plan’s disk space: each full-size photo adds about 1.5 MB of resized copies. See [How many photos fit](/hosting/#how-many-photos-fit).

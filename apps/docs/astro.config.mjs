@@ -66,7 +66,7 @@ export default defineConfig({
     starlight({
       title: 'minimal gallery',
       description:
-        'A static photo gallery for photographers: folders of photos in, a fast gallery on free hosting out.',
+        'A photo gallery for photographers: turn folders of photos into a fast website, on free hosting.',
       favicon: '/favicon.svg',
       logo: { src: './src/assets/logo.svg' },
       social: [
