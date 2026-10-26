@@ -20,6 +20,10 @@
       "types": "./dist/slug.d.ts",
       "default": "./dist/slug.js"
     },
+    "./admin": {
+      "types": "./dist/admin.d.ts",
+      "default": "./dist/admin.js"
+    },
     "./config": {
       "types": "./dist/config.d.ts",
       "default": "./dist/config.js"

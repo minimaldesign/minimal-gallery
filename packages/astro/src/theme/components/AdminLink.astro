@@ -1,0 +1,19 @@
+---
+/**
+ * A link to the admin, first in the header's tools, under `astro dev` only:
+ * the built site has no admin, so the link is not in it.
+ */
+import { adminPage } from '../../admin/token.ts';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+const href = import.meta.env.DEV ? adminPage() : undefined;
+---
+
+{href && (
+  <a class:list={['adminLink', className]} href={href}>
+    Admin
+  </a>
+)}

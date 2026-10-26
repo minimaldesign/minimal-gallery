@@ -16,6 +16,7 @@
 @import url(./site/global.transitions.css);
 
 @import url(./site/component.logo.css);
+@import url(./site/component.adminLink.css);
 @import url(./site/component.toggle.css);
 @import url(./site/component.playButton.css);
 @import url(./site/component.hud.css);

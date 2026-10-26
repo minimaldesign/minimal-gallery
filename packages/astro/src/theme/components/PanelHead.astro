@@ -10,6 +10,7 @@
  */
 import config from 'virtual:minimalgallery/config';
 import { contextHref, type Context } from '../../gallery.ts';
+import AdminLink from './AdminLink.astro';
 import FilterButton from './FilterButton.astro';
 import HomeLink from './HomeLink.astro';
 import PlayButton from './PlayButton.astro';
@@ -46,6 +47,7 @@ const n = context.photos.length;
     </span>
   </nav>
   <div class="table_tools">
+    <AdminLink class="table_admin" />
     <PlayButton class="table_play" />
     <fieldset class="toggle table_gridOnly">
       <legend class="a11y-srOnly">Thumbnail shape</legend>

@@ -162,7 +162,9 @@
   gap: var(--xs2);
 }
 
-/* the play button stands apart: an empty icon's width after it */
+/* the admin link and the play button stand apart: an empty icon's width
+   after each */
+.table_admin,
 .table_play {
   margin-inline-end: calc(var(--md2) * var(--mg-hud-density));
 }

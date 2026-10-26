@@ -53,9 +53,9 @@ describe('admin security', () => {
         403
       );
     // The page itself is checked too.
-    expect(
-      (await raw('GET', '/_mg/admin/', { host: 'evil.example' })).status
-    ).toBe(403);
+    expect((await raw('GET', '/admin/', { host: 'evil.example' })).status).toBe(
+      403
+    );
 
     expect(
       (await call('GET', '/state', undefined, { 'x-mg-admin': '' })).status
@@ -64,9 +64,9 @@ describe('admin security', () => {
       (await call('GET', '/state', undefined, { 'x-mg-admin': 'nope' })).status
     ).toBe(403);
     // ?token= is for the event stream only.
-    expect(
-      (await raw('GET', `/_mg/admin/api/state?token=${token}`)).status
-    ).toBe(403);
+    expect((await raw('GET', `/admin/api/state?token=${token}`)).status).toBe(
+      403
+    );
     expect(
       (
         await call('GET', '/state', undefined, {
@@ -81,14 +81,14 @@ describe('admin security', () => {
         })
       ).status
     ).toBe(200);
-    const preflight = await raw('OPTIONS', '/_mg/admin/api/state', {
+    const preflight = await raw('OPTIONS', '/admin/api/state', {
       origin: 'http://evil.example',
       'access-control-request-method': 'PUT',
     });
     expect(preflight.status).toBe(403);
     expect(preflight.headers['access-control-allow-origin']).toBeUndefined();
 
-    const events = await raw('GET', '/_mg/admin/api/events');
+    const events = await raw('GET', '/admin/api/events');
     expect(events.status).toBe(403);
   });
 
@@ -130,13 +130,13 @@ describe('admin security', () => {
     expect((await server.raw('GET', '/repo/_mg/admin__x/a.avif')).text).toBe(
       'not admin'
     );
-    const state = await server.raw('GET', '/repo/_mg/admin/api/state', {
+    const state = await server.raw('GET', '/repo/admin/api/state', {
       'x-mg-admin': server.token,
     });
     expect(state.status).toBe(200);
     expect(getAdminInfo(dir)).toEqual({
       token: server.token,
-      api: '/repo/_mg/admin/api',
+      api: '/repo/admin/api',
     });
   });
 });

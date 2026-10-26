@@ -129,7 +129,9 @@
   margin-inline-start: auto;
 }
 
-/* the play button stands apart: an empty icon's width after it */
+/* the admin link and the play button stand apart: an empty icon's width
+   after each */
+.hud_admin,
 .hud_play {
   margin-inline-end: calc(var(--md2) * var(--mg-hud-density));
 }

@@ -2,12 +2,14 @@
 /**
  * HUD: fixed at the top over the viewer, not displayed while the panel is
  * up. Left, the breadcrumb (gallery / context / photo title as the h1);
- * right, the slideshow's play button, a space, then icon toggles in this
- * order: Filter, Info, Filmstrip, Fit photo or Fill window, Keyboard
- * shortcuts. Every tooltip carries its key.
+ * right, the admin link (under `astro dev` only), the slideshow's play
+ * button, a space, then icon toggles in this order: Filter, Info,
+ * Filmstrip, Fit photo or Fill window, Keyboard shortcuts. Every tooltip
+ * carries its key.
  */
 import config from 'virtual:minimalgallery/config';
 import { contextHref, type Context, type Photo } from '../../gallery.ts';
+import AdminLink from './AdminLink.astro';
 import FilterButton from './FilterButton.astro';
 import HomeLink from './HomeLink.astro';
 import Icon from './Icon.astro';
@@ -42,6 +44,7 @@ const { defaults } = config;
     </ol>
   </nav>
   <div class="hud_actions">
+    <AdminLink class="hud_admin" />
     <PlayButton class="hud_play" />
     <FilterButton />
     <div class="toggle toggle-plain">

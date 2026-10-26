@@ -108,6 +108,8 @@ export interface AdminApiOptions {
   publishChecks?: (galleryDir: string) => Promise<PublishChecks>;
   /** Replaces wrangler and Cloudflare’s API for the publish settings (tests). */
   cloudflare?: CloudflareClient;
+  /** The admin page's path without the base. Default `/admin/`. */
+  path?: string;
   /** Quiet time before a run. Default 1500 ms. */
   debounceMs?: number;
   log?: (message: string) => void;
@@ -115,7 +117,7 @@ export interface AdminApiOptions {
 
 export interface AdminApi {
   token: string;
-  /** The API base URL, `<base>_mg/admin/api`. */
+  /** The API base URL, `<base>admin/api`. */
   api: string;
   /** Handles admin and bucket-media requests; resolves false for anything else. */
   handle(req: IncomingMessage, res: ServerResponse): Promise<boolean>;
@@ -157,7 +159,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
   const { galleryDir } = options;
   const base = options.base ?? '/';
   const prefix = base.replace(/\/+$/, '');
-  const adminPath = `${prefix}/_mg/admin`;
+  const adminPath = `${prefix}${(options.path ?? '/admin/').replace(/\/+$/, '')}`;
   const apiPath = `${adminPath}/api`;
   const mediaPath = `${prefix}/_mg/`;
   const mediaBase = mediaBaseOf(base);

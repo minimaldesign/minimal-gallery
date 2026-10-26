@@ -38,7 +38,7 @@ It publishes the way any user’s gallery does: `pnpm demo:publish` runs `minima
 ## Admin
 
 ```sh
-pnpm --filter minimalgallery-demo admin  # start astro dev and open /_mg/admin/
+pnpm --filter minimalgallery-demo admin  # start astro dev and open /admin/
 ```
 
 The browser admin works on the gallery: drop photos in, edit titles, captions and albums, change the settings and publish. It processes photos as they land in `photos/` and the preview reloads as they do. It exists only under `astro dev`, so a built site holds none of it. Its local HTTP API is described in `packages/astro/src/admin/README.md`.
