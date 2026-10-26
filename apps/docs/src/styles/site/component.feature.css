@@ -1,0 +1,90 @@
+/* FEATURE
+
+   One feature: a few lines of text and a picture, side by side on wide
+   screens and the text first on a phone. The picture is on the left;
+   feature-reverse puts it on the right, so a run of features can
+   alternate. The picture is a screenshot (feature_shot), framed like a
+   window, or a photo (feature_photo) with something drawn over it
+   (feature_overlay), as the gallery draws its panes over a photo. */
+
+.feature {
+  --feature-columns: minmax(0, 3fr) minmax(0, 2fr);
+  --feature-media-column: 1;
+
+  padding-block: var(--xl1);
+}
+
+.feature-reverse {
+  --feature-columns: minmax(0, 2fr) minmax(0, 3fr);
+  --feature-media-column: 2;
+}
+
+.feature_inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--md2);
+  align-items: center;
+
+  @media (--lg) {
+    grid-template-columns: var(--feature-columns);
+    gap: var(--lg1);
+  }
+}
+
+.feature_media {
+  position: relative;
+
+  @media (--lg) {
+    grid-row: 1;
+    grid-column: var(--feature-media-column);
+  }
+}
+
+.feature_body {
+  @media (--lg) {
+    grid-row: 1;
+  }
+}
+
+.feature_title {
+  margin: 0 0 var(--xs3);
+  color: var(--docs-heading);
+  font-size: var(--docs-size-section);
+  font-weight: var(--mg-weight-medium);
+}
+
+.feature_text {
+  margin: 0;
+  color: var(--docs-text);
+  line-height: var(--leading-lg);
+  text-wrap: pretty;
+}
+
+.feature_shot {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-lg);
+  background-color: var(--mg-gray-100);
+  box-shadow: var(--mg-surface-shadow);
+}
+
+/* A photo filling the media box, with the overlay centered on it */
+.feature_photo {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+.feature_overlay {
+  position: relative;
+  margin: var(--md2) auto;
+
+  @media (--md) {
+    margin-block: var(--lg1);
+  }
+}

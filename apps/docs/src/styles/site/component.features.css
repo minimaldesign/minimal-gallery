@@ -1,0 +1,47 @@
+/* FEATURES
+
+   The rest of what the gallery does, after the featured ones: a title,
+   then a list in up to three columns, each item a name in full ink and a
+   line in muted ink, above the gallery's hairline. */
+
+.features {
+  padding-block: var(--xl1);
+}
+
+.features_title {
+  margin: 0 0 var(--md2);
+  color: var(--docs-heading);
+  font-size: var(--docs-size-section);
+  font-weight: var(--mg-weight-medium);
+}
+
+.features_list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sm3) var(--md2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (--md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (--lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.features_item {
+  padding-block-start: var(--xs3);
+  border-block-start: var(--border-sm) solid var(--mg-hairline);
+  color: var(--docs-text);
+  line-height: var(--leading-lg);
+  text-wrap: pretty;
+
+  b {
+    display: block;
+    color: var(--docs-heading);
+    font-weight: var(--mg-weight-medium);
+  }
+}

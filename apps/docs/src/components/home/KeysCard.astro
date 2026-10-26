@@ -1,0 +1,49 @@
+---
+/**
+ * The gallery’s keyboard shortcuts pane, viewing mode only, drawn as a
+ * card: the same rows and the keys block’s CSS (component.keys.css,
+ * imported from @minimalgallery/astro), without the pane’s close label,
+ * drag handle and version line. The rows are copied from the theme’s
+ * KeysPane.astro; keep the two in step.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+
+const KEYS: Array<[string[], string]> = [
+  [['←', '→'], 'Previous / next photo'],
+  [['Space'], 'Slideshow'],
+  [['r'], '<b>R</b>andom photo'],
+  [['↑'], 'Open browsing mode'],
+  [['z'], '<b>Z</b>oom to 1:1 and back'],
+  [['i'], 'Photo <b>i</b>nformation'],
+  [['f'], '<b>F</b>ill window / <b>f</b>it photo'],
+  [['s'], 'Film<b>s</b>trip'],
+  [['/', ' or ', '⌘K'], 'Filter'],
+  [['?'], 'Keyboard shortcuts'],
+];
+---
+
+<div class:list={['keysCard surface', className]}>
+  <p class="keysCard_title">Keyboard shortcuts</p>
+  <section class="keys_section">
+    <h3 class="keys_heading">Viewing mode</h3>
+    <dl class="keys_list">
+      {KEYS.map(([combo, action]) => (
+        <>
+          <dt>
+            {combo.map((k) =>
+              k.startsWith(' ') ? (
+                <span class="keys_or">{k.trim()}</span>
+              ) : (
+                <kbd>{k}</kbd>
+              )
+            )}
+          </dt>
+          <dd set:html={action} />
+        </>
+      ))}
+    </dl>
+  </section>
+</div>

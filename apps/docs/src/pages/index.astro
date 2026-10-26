@@ -1,55 +1,88 @@
 ---
 /**
  * docs.minimalgallery.net: the one-pager. The gallery is the hero (a wall
- * of Yann’s photos from minimalgallery.net as its grid shows them, under the same translucent
- * surfaces), then the promise, three pillars, three commands and the way
- * to the gallery and the docs. Draft copy, to be edited by Yann.
+ * of photos from minimalgallery.net as its grid shows them, under the same
+ * translucent surfaces), then the promise, three pillars, the featured
+ * parts of the gallery with the rest in a list, the admin, three steps and
+ * the story behind the project, told in the first person.
  */
+import { Image } from 'astro:assets';
 import Home from '../layouts/Home.astro';
-import Command from '../components/home/Command.astro';
+import KeysCard from '../components/home/KeysCard.astro';
 import Mosaic from '../components/home/Mosaic.astro';
 import Logo from '../assets/logo.svg';
+import admin from '../assets/admin.jpg';
+import filters from '../assets/filters.jpg';
+import haleakala from '../../../../examples/demo/photos/colors/Haleakala.jpg';
 
 const GALLERY = 'https://minimalgallery.net/';
 const GITHUB = 'https://github.com/minimaldesign/minimal-gallery';
+const STUDIO = 'https://minimaldesign.net/';
 
 const pillars = [
   {
-    title: 'Organized by your metadata',
-    text: 'Dates, cameras, lenses and exposure come from EXIF; titles, captions, keywords and ratings from your Lightroom export. Every value is a page with its own address: click f/1.4 and see every photo taken at f/1.4.',
+    title: 'Photos first',
+    text: 'Each photo fills the screen on a dark background, and the controls fade away while you look. Visitors step through an album with the arrow keys, a click or a swipe, and every photo has its own link to share.',
   },
   {
-    title: 'Photos first, in every browser',
-    text: 'Each photo fills the window on a near-black ground, and the controls fade when the pointer rests. Keys, clicks and swipes step between photos without a page load in Chrome, Safari and Firefox. Every photo has its own URL and works without JavaScript.',
+    title: 'Organized for you',
+    text: 'Drop in folders of photos and each one becomes an album. The camera, lens, aperture, shutter speed and date in every file are sorted for you, so visitors can browse everything shot at f/1.4 or in one year.',
   },
   {
-    title: 'Free hosting, nothing to run',
-    text: 'Photos are resized once, on your computer, and the site is built there too. Publishing uploads it to Cloudflare’s free plan, or builds a folder for any web host you like. The gallery is a folder on your computer, and it stays yours.',
+    title: 'Publish with one click',
+    text: 'Edit everything in the built-in admin on your computer, then publish with one click. It’s a plain website, so free hosting or almost any web host will do. The gallery is a folder on your computer, and it stays yours.',
   },
+];
+
+const features = [
+  ['Slideshow', 'Press Space to play or pause any filtered set of photos.'],
+  [
+    'Random photo',
+    'Press R for a surprise, never the same photo twice until you’ve seen them all.',
+  ],
+  [
+    'Filmstrip',
+    'A strip of thumbnails under the photo, to jump anywhere in the album.',
+  ],
+  [
+    'Grid or list',
+    'Thumbnails in three sizes, cropped square or whole, or a list you can sort by any column.',
+  ],
+  ['Zoom to 1:1', 'See every pixel of a high-resolution photo.'],
+  [
+    'Photo details',
+    'Camera, lens, exposure, date, place and your caption, one key away.',
+  ],
+  [
+    'Fill or fit',
+    'Fill the window edge to edge, or see the whole photo in its original aspect ratio.',
+  ],
+  ['Timeline', 'Jump through the years from the rail beside the grid.'],
+  [
+    'Made for phones too',
+    'Swipe between photos, and panels open as sheets at the bottom of the screen.',
+  ],
 ];
 
 const steps = [
   {
-    title: 'Create the gallery',
-    command: 'npm create minimalgallery@latest',
-    text: 'Asks for a name and where the gallery will live, then sets up the folder and installs what it needs.',
+    title: 'Create your gallery',
+    text: 'Set up a gallery folder on your computer. The admin opens in your browser, with a checklist for the first steps.',
   },
   {
-    title: 'Add photos',
-    command: 'npx minimalgallery add ~/Pictures/Export/japan',
-    text: 'Copies a folder in as an album and makes the resized copies. Your originals are never changed.',
+    title: 'Organize your photos',
+    text: 'Drag in photos or whole folders. Folders become albums and the details in each file are sorted for you. Add titles and captions, and preview the gallery as you go.',
   },
   {
-    title: 'Publish',
-    command: 'npm run publish',
-    text: 'Builds the site and puts it online. On Cloudflare, the first publish asks you to log in once.',
+    title: 'Publish online',
+    text: 'Press Publish, and the gallery goes online on free hosting or the web host of your choice. Add more photos whenever you like and publish again.',
   },
 ];
 ---
 
 <Home
-  title="minimal gallery: a photo gallery from folders of photos"
-  description="minimal gallery is a static site generator for photographers: a fast gallery organized by the metadata in your photos, on free hosting.">
+  title="minimal gallery: your photos in a beautiful modern gallery, for free"
+  description="minimal gallery shows your photos online in a clean, modern gallery that puts the photos first. Up to about 3,000 high-resolution photos on free hosting, with no subscription.">
   <header class="siteBar surface">
     <a class="siteBar_home" href="/">
       <Logo class="siteBar_logo" aria-hidden="true" />
@@ -69,18 +102,15 @@ const steps = [
     <section class="intro" aria-labelledby="intro-title">
       <div class="intro_panel surface">
         <h1 class="intro_title" id="intro-title">
-          A fast photo gallery from folders of photos.
+          All your photos, in a beautiful modern gallery. For free.
         </h1>
         <p class="intro_lede">
-          minimal gallery is a static site generator for photographers. It
-          builds a gallery from your folders, organized by the dates, cameras,
-          lenses, places and keywords already in your files, and publishes it to
-          free hosting. No server, no subscription.
+          minimal gallery shows your work in a clean, modern interface where
+          nothing competes with the photos: they fill the screen, the controls
+          step aside, and moving from one to the next is instant. Put up to
+          about 3,000 high-resolution photos online and host them for free. No
+          subscription, ever.
         </p>
-        <Command
-          class="intro_command"
-          command="npm create minimalgallery@latest"
-        />
         <p class="intro_actions">
           <a class="bt bt-primary" href="/getting-started/">
             Get started
@@ -106,24 +136,129 @@ const steps = [
       </div>
     </section>
 
+    <section class="feature wrap" aria-labelledby="keys-title">
+      <div class="feature_inner">
+        <div class="feature_body">
+          <h2 class="feature_title" id="keys-title">
+            Full keyboard support
+          </h2>
+          <p class="feature_text">
+            Every part of the gallery is one key away. The arrow keys step
+            through the photos, Space starts a slideshow, I shows a photo’s
+            details and slash opens the filters. Press the question mark at any
+            time to see them all.
+          </p>
+        </div>
+        <div class="feature_media">
+          <Image
+            class="feature_photo"
+            src={haleakala}
+            alt=""
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 1024px) 42rem, 100vw"
+            format="avif"
+            quality={55}
+            loading="lazy"
+            decoding="async"
+          />
+          <KeysCard class="feature_overlay" />
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="feature feature-reverse wrap"
+      aria-labelledby="filters-title">
+      <div class="feature_inner">
+        <div class="feature_body">
+          <h2 class="feature_title" id="filters-title">
+            Filter by anything in your photos
+          </h2>
+          <p class="feature_text">
+            Press slash and every album, year, month, place, camera, lens and
+            f-number in the gallery is there, with the number of photos for
+            each. Type a few letters to narrow the list, then pick one to see
+            just those photos.
+          </p>
+        </div>
+        <div class="feature_media">
+          <Image
+            class="feature_shot"
+            src={filters}
+            alt="The filter panel open over a photo of cherry blossoms above a pond: a search field, then buttons for every album, year, month, place and camera in the gallery, each with its number of photos."
+            widths={[640, 960, 1280, 1920]}
+            sizes="(min-width: 1024px) 42rem, 100vw"
+            format="avif"
+            quality={65}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="features wrap" aria-labelledby="features-title">
+      <div>
+        <h2 class="features_title" id="features-title">
+          And there’s more
+        </h2>
+        <ul class="features_list">
+          {features.map(([name, text]) => (
+            <li class="features_item">
+              <b>{name}</b>
+              {text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="feature wrap" aria-labelledby="admin-title">
+      <div class="feature_inner">
+        <div class="feature_body">
+          <h2 class="feature_title" id="admin-title">
+            Everything in one place
+          </h2>
+          <p class="feature_text">
+            The admin opens in your browser and works on your own computer.
+            Select a photo to edit its title, caption and date, or move it
+            within its album. Add photos and albums, change the settings and
+            publish, all from the same window.
+          </p>
+        </div>
+        <div class="feature_media">
+          <Image
+            class="feature_shot"
+            src={admin}
+            alt="The minimal gallery admin: albums in a sidebar, a grid of photos, and a photo of Takayama selected, with its title, caption and date taken ready to edit in a panel on the right."
+            widths={[640, 960, 1280, 1920]}
+            sizes="(min-width: 1024px) 42rem, 100vw"
+            format="avif"
+            quality={65}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
     <section class="recipe wrap" aria-labelledby="recipe-title">
       <div>
         <h2 class="recipe_title" id="recipe-title">
-          Three commands
+          Three steps
         </h2>
         <ol class="recipe_list">
           {steps.map((step) => (
             <li class="recipe_step">
               <h3 class="recipe_stepTitle">{step.title}</h3>
-              <Command class="recipe_command" command={step.command} />
               <p class="recipe_text">{step.text}</p>
             </li>
           ))}
         </ol>
-        <p class="recipe_more">
-          Node 22.18 or later is all you install.{' '}
-          <a href="/getting-started/">Getting started</a> walks through the
-          first gallery, step by step.
+        <p class="recipe_actions">
+          <a class="bt bt-primary" href="/getting-started/">
+            Get started
+          </a>
         </p>
       </div>
     </section>
@@ -131,20 +266,32 @@ const steps = [
     <section class="closing wrap" aria-labelledby="closing-title">
       <div>
         <h2 class="closing_title" id="closing-title">
-          See it with real photos
+          Why I built minimal gallery
         </h2>
         <p class="closing_text">
-          minimalgallery.net is Yann’s photo gallery, built with these tools,
-          and the photos above are from it. Open a photo, press the arrow keys,
-          scroll down to the grid, or press <kbd>/</kbd> to filter by camera,
-          year or place.
+          I built the first minimal gallery about 20 years ago, to host my own
+          photo blog. Since then, the way we share photos has changed. Everyone
+          posts to Instagram, where a photo is a small image in a feed, between
+          ads, scrolled past in seconds.
+        </p>
+        <p class="closing_text">
+          I wanted something different: a place where the photos come first, at
+          full size, with nothing competing for attention. A gallery I own, that
+          costs nothing to host, and that anyone can use and improve. So I
+          rebuilt minimal gallery from scratch for today’s web: fast, modern,
+          open source and free.
+        </p>
+        <p class="closing_text">
+          minimalgallery.net is my own gallery, and the photos at the top of
+          this page come from it. Open a photo, step through with the arrow
+          keys, or browse by camera, year or place.
         </p>
         <p class="closing_actions">
           <a class="bt bt-primary" href={GALLERY}>
             Visit minimalgallery.net
           </a>
           <a class="bt bt-outline" href="/getting-started/">
-            Read the docs
+            Get started
           </a>
         </p>
       </div>
@@ -160,7 +307,9 @@ const steps = [
         <a href="/downloads/">Downloads</a>
         <a href={GITHUB}>Source on GitHub</a>
       </nav>
-      <p class="siteFooter_credit">Photos by Yann, from minimalgallery.net.</p>
+      <p class="siteFooter_credit">
+        <a href={STUDIO}>A minimal design</a>
+      </p>
     </div>
   </footer>
 </Home>

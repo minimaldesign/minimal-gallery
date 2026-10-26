@@ -1,0 +1,21 @@
+/* KEYS CARD
+
+   The gallery’s keyboard shortcuts pane as a static card: the pane’s
+   width, padding, radius, shadow and title, mixed with .surface for the
+   material. The rows inside are the gallery’s keys block. */
+
+.keysCard {
+  inline-size: min(23rem, 100%);
+  padding: var(--sm1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--mg-surface-shadow);
+  font-size: var(--mg-size-hud);
+}
+
+.keysCard_title {
+  margin: 0 0 var(--sm1);
+  color: var(--mg-ink);
+  font-size: var(--text-md);
+  font-weight: var(--mg-weight-medium);
+  line-height: var(--leading-sm);
+}

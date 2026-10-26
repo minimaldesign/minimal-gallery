@@ -24,7 +24,7 @@ Nothing needs `pnpm build` first: the theme CSS is read from `packages/astro/src
 
 ## Styles
 
-The CSS is mCSS, as in the gallery. Every value comes from the gallery’s theme in `@minimalgallery/astro` (`theme.mg.tokens.css`, `theme.mg.ui.css`, `global.surface.css`), imported rather than copied, so a change to the gallery’s look reaches the docs. The hero photos are read from `examples/demo/photos` (the list is in `src/components/home/Mosaic.astro`).
+The CSS is mCSS, as in the gallery. Every value comes from the gallery’s theme in `@minimalgallery/astro` (`theme.mg.tokens.css`, `theme.mg.ui.css`, `global.surface.css`), imported rather than copied, so a change to the gallery’s look reaches the docs. The hero photos are read from `examples/demo/photos` (the list is in `src/components/home/Mosaic.astro`). The screenshots in `src/assets` are 1280 × 800 captures at 2x, taken under `astro dev` with Astro’s dev toolbar and the gallery’s Admin link removed: `admin.jpg` is the admin with a photo selected, `filters.jpg` the filter panel open on `/colors/sakura_impression/`. Retake them when the admin or the panel changes. The keyboard section’s card (`src/components/home/KeysCard.astro`) copies its rows from the theme’s `KeysPane.astro`.
 
 ## Deploying
 

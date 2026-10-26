@@ -58,10 +58,6 @@
   text-wrap: pretty;
 }
 
-.intro_command {
-  margin-block-start: var(--xs1);
-}
-
 .intro_actions {
   display: flex;
   flex-wrap: wrap;

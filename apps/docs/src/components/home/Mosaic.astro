@@ -15,7 +15,7 @@ interface Props {
 }
 const { class: className } = Astro.props;
 
-// The photos, chosen by Yann. The glob names them one by one so that only
+// The photos, chosen by hand. The glob names them one by one so that only
 // these are bundled.
 const files = import.meta.glob<ImageMetadata>(
   '../../../../../examples/demo/photos/{feelings/Montauk,feelings/Mushroom,people/Last_day_in_Kyoto,people/Arashiyama Smile,feelings/The_Path,colors/Takayama,feelings/Shirakawa-Go,feelings/A Quiet Evening,light/Prayers,people/On_Christmas,colors/sunk,feelings/Cycles,feelings/Jonathan,light/Reflection,shapes/Coney_Island_Tower,light/Loin_des_yeux_mais_pas_le_reste,people/Saxophonist,colors/Painter,feelings/Disparate,feelings/Ahead,people/Dancing_in_the_rain,light/The_coming,people/Baby_Surfer,colors/Haleakala,colors/Puff_Ball,shapes/Chocolate_DNA,feelings/Waking_up_02,light/Kyoto_Station,colors/Sakura_Impression,colors/Ohara_Garden,motion/Hanami_fire,light/Kyoto_Sunset,people/Gion_crowd,light/Hanamikoji,people/Kyoto_Kids,shapes/wired,people/sararimen,colors/Bleeding_Metal,people/Konnichiwa,light/Kyoto_Night,people/Kyoto_Bikers,colors/blue_door,feelings/Chain,shapes/amarre,people/Naima,light/snow,feelings/Cold,people/Apple_in_Paris,feelings/Itchy,colors/Upstate_NY}.jpg',

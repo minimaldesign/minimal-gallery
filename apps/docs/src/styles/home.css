@@ -16,12 +16,15 @@
 @import './site/theme.docs.css';
 
 @import '@minimalgallery/astro/theme/styles/site/global.surface.css';
+@import '@minimalgallery/astro/theme/styles/site/component.keys.css';
 
 @import './site/component.siteBar.css';
-@import './site/component.command.css';
 @import './site/component.mosaic.css';
 @import './site/component.intro.css';
 @import './site/component.pillars.css';
+@import './site/component.keysCard.css';
+@import './site/component.feature.css';
+@import './site/component.features.css';
 @import './site/component.recipe.css';
 @import './site/component.closing.css';
 @import './site/component.siteFooter.css';
