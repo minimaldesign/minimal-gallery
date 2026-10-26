@@ -17,7 +17,7 @@ You’ll need to type a few commands in Terminal. If you’re not used to it, do
 
 - **Node.js 22.18 or later.** Download the LTS installer from [nodejs.org](https://nodejs.org) and run it. To check that it worked, open Terminal and type `node --version`: it should print `v22.18.0` or a higher number.
 - **A free Cloudflare account**, to put the gallery online. You can sign up at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up) now or when you first publish. If you’d rather use a web host you already have, you don’t need one; see [Putting it online](/hosting/).
-- **Your photos as JPEG files**, or HEIC files straight from an iPhone. PNG, WebP, AVIF and TIFF work too. RAW files need to be exported as JPEG from your photo editor first.
+- **Your photos**, in JPEG, HEIC, PNG, WebP, AVIF or TIFF. Export RAW files to one of these formats from your photo editor first.
 
 Terminal is in Applications › Utilities. Type a command, press Return, and wait until it finishes before typing the next one.
 
