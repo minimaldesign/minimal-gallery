@@ -1,6 +1,10 @@
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
-import { unsupportedKindOfExtension, type UnsupportedKind } from './formats.ts';
+import {
+  HEIC_EXTENSIONS,
+  unsupportedKindOfExtension,
+  type UnsupportedKind,
+} from './formats.ts';
 import { albumIdFromPath, photoIdFor, fileSlug } from './slug.ts';
 
 export const PHOTO_EXTENSIONS = new Set([
@@ -11,6 +15,7 @@ export const PHOTO_EXTENSIONS = new Set([
   '.avif',
   '.tif',
   '.tiff',
+  ...HEIC_EXTENSIONS,
 ]);
 
 export interface WalkedAlbum {
@@ -36,15 +41,15 @@ export interface WalkedPhoto {
   source: string;
 }
 
-/** A HEIC or RAW file found under `photos/`. */
+/** A RAW file, or a HEIC file that loses to a photo of the same name. */
 export interface UnsupportedFile {
   /** Relative to the gallery directory. */
   relativePath: string;
   kind: UnsupportedKind;
   /**
    * True when a supported image with the same name sits next to it (a RAW +
-   * JPEG pair): the JPEG is used and this file is ignored, which is not an
-   * error.
+   * JPEG or HEIC + JPEG pair): the JPEG is used and this file is ignored,
+   * which is not an error. Always true for HEIC.
    */
   hasSibling: boolean;
 }
@@ -64,8 +69,9 @@ const extOf = (name: string) => {
 /**
  * Walk `<gallery>/photos/`. Every folder is an album; nesting is allowed.
  * Dotfiles and dot-folders are skipped, as are sidecars (`.md`, `.xmp`,
- * `.json`) and any file that is not a supported image. HEIC and RAW files
- * are listed in `unsupported`.
+ * `.json`) and any file that is not a supported image. RAW files, and HEIC
+ * files with a JPEG or other non-HEIC photo of the same name, are listed in
+ * `unsupported`.
  * Throws when two albums or two photos map to the same id.
  */
 export async function walkPhotos(galleryDir: string): Promise<WalkResult> {
@@ -86,9 +92,15 @@ export async function walkPhotos(galleryDir: string): Promise<WalkResult> {
     const entries = (await readdir(absDir, { withFileTypes: true })).sort(
       (a, b) => a.name.localeCompare(b.name)
     );
+    // Names of the photos that win over a RAW or HEIC file of the same name.
     const stems = new Set(
       entries
-        .filter((e) => e.isFile() && PHOTO_EXTENSIONS.has(extOf(e.name)))
+        .filter(
+          (e) =>
+            e.isFile() &&
+            PHOTO_EXTENSIONS.has(extOf(e.name)) &&
+            !HEIC_EXTENSIONS.has(extOf(e.name))
+        )
         .map((e) =>
           e.name.slice(0, e.name.length - extOf(e.name).length).toLowerCase()
         )
@@ -113,14 +125,15 @@ export async function walkPhotos(galleryDir: string): Promise<WalkResult> {
       }
       if (!e.isFile()) continue;
       const ext = extOf(e.name);
+      const hasSibling = stems.has(
+        e.name.slice(0, e.name.length - ext.length).toLowerCase()
+      );
       const badKind = unsupportedKindOfExtension(ext);
-      if (badKind) {
+      if (badKind || (HEIC_EXTENSIONS.has(ext) && hasSibling)) {
         unsupported.push({
           relativePath: `photos/${childRel}`,
-          kind: badKind,
-          hasSibling: stems.has(
-            e.name.slice(0, e.name.length - ext.length).toLowerCase()
-          ),
+          kind: badKind ?? 'heic',
+          hasSibling,
         });
         continue;
       }

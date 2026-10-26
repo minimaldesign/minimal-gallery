@@ -32,10 +32,10 @@ The pipeline writes what it reads to one JSON manifest per photo, in `.minimalga
 | Kind | Extensions | What happens |
 | --- | --- | --- |
 | Read | `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`, `.tif`, `.tiff` | Processed. Extensions are matched in any case. |
-| HEIC | `.heic`, `.heif`, `.hif` | Reported as failed, with the fix: export a JPEG. |
+| HEIC | `.heic`, `.heif`, `.hif` | Processed, like JPEG. The color profile is kept (Display P3 on an iPhone). An HDR gain map and a Live Photo’s video are not used. |
 | RAW | `.3fr`, `.arw`, `.cr2`, `.cr3`, `.crw`, `.dcr`, `.dng`, `.erf`, `.iiq`, `.k25`, `.kdc`, `.mef`, `.mos`, `.mrw`, `.nef`, `.nrw`, `.orf`, `.pef`, `.raf`, `.raw`, `.rw2`, `.rwl`, `.sr2`, `.srf`, `.srw`, `.x3f` | Reported as failed, with the fix: export a JPEG from your RAW editor. |
 
-A HEIC or RAW file with a supported image of the same name next to it (`DSC_0412.NEF` and `DSC_0412.jpg`) is not an error: the image is used, the HEIC or RAW file is ignored, and the run prints how many were ignored. A HEIC file saved with a `.jpg` name is recognized from its content and reported as HEIC.
+A RAW or HEIC file with another supported image of the same name next to it (`DSC_0412.NEF` and `DSC_0412.jpg`, or `IMG_0412.HEIC` and `IMG_0412.JPG`) is not an error: the other image is used, the RAW or HEIC file is ignored, and the run prints how many were ignored. A HEIC file saved with a `.jpg` name is recognized from its content and read as HEIC.
 
 ## Ids, slugs and URLs
 

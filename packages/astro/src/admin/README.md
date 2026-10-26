@@ -198,7 +198,7 @@ Chunked, deduplicated by content hash (xxhash64, the pipeline’s `sourceHash`).
 
 1. `POST /uploads` `{ album, name, size, lastModified, sidecarOf? }` →
    - `201 { id, chunkSize }`, or
-   - `200 { status: 'skipped', reason }` right away for a HEIC or RAW name (“HEIC: export a JPEG instead”) or an unsupported format, so its bytes are never sent.
+   - `200 { status: 'skipped', reason }` right away for a RAW name (“RAW: export a JPEG instead”) or an unsupported format, so its bytes are never sent. HEIC (`.heic`, `.heif`, `.hif`) is accepted like JPEG.
 
    `album`: an album id; its folder is created when it does not exist. `name`: the file name, no folders. `size` in bytes. `lastModified`: milliseconds since the epoch (`File.lastModified`); it becomes the file’s modification time, as in a Finder copy. The pipeline never reads it as a date. `sidecarOf`: for an `.xmp`, `.md` or `.json` dropped with its photo, the upload id of that photo; the sidecar follows the photo’s final name.
 
@@ -206,7 +206,7 @@ Chunked, deduplicated by content hash (xxhash64, the pipeline’s `sourceHash`).
 3. `POST /uploads/:id/complete` → one of:
    - `{ status: 'added', photoId, path }`: moved into `photos/<album>/` (`path` is relative to the gallery, `photos/colors/Red_door.jpg`). A name or photo id already used in the album gets `-2`, `-3`. A run is queued; the thumbnail arrives as a `photo` event.
    - `{ status: 'duplicate', sameAs, path }`: the same content is already a photo (`sameAs` is its photo id, `path` its file) or was uploaded earlier in this session. Nothing is written.
-   - `{ status: 'skipped', reason }`: HEIC content under another extension, or a sidecar whose photo was not added.
+   - `{ status: 'skipped', reason }`: a sidecar whose photo was not added.
    - for a sidecar: `{ status: 'added', path }`, or `{ status: 'waiting' }` when its photo is not complete yet (it is moved when the photo completes).
 
    `409 { error, received }` when bytes are missing.

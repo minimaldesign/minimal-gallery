@@ -209,7 +209,7 @@ export class RunQueue {
           this.#emitQueue();
         },
       });
-      // Files the walk refused (HEIC, RAW) have no callback: report the
+      // Files the walk refused (RAW) have no callback: report the
       // ones the previous run did not.
       const now = new Set<string>();
       for (const error of summary.errors) {

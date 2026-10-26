@@ -37,7 +37,7 @@ mg-pipeline doctor <galleryDir> [--json report.json]
 - that count against Cloudflare’s 20,000-file limit, with the number of photos left before it, and the bytes of photo media published with the site (`siteMedia`);
 - a recommendation: site mode is fine; plan to add photo storage, bucket mode (past 16,000 files); or add it (over the limit). Both pieces of advice link the photo storage docs and say that enabling R2 asks for a payment method, even on the free tier. A gallery built for its own host (`"publish": "build"` in `package.json`) gets no Cloudflare advice;
 - in bucket mode, the staged files waiting for upload and whether credentials are set, read from the disk without the network;
-- issues: photos with no manifest, manifests of deleted photos, HEIC or RAW files without a JPEG, missing bucket credentials.
+- issues: photos with no manifest, manifests of deleted photos, RAW files without a JPEG, missing bucket credentials.
 
 ## Configuration
 
@@ -164,7 +164,7 @@ photos/
 
 Album id: slugged folder path joined by `/`. Photo id: `<album slug>__<file slug>`, where a nested album’s segments are joined by `_`. Slug: lowercase, every run of non-alphanumeric characters replaced by `_` (the v0.8 convention). Two files or folders that give the same id stop the run with an error.
 
-Supported inputs: JPEG, PNG, WebP, AVIF, TIFF. HEIC and RAW files (`.heic`, `.nef`, `.cr3`, `.dng` and the like) are reported with the fix: export a JPEG. HEIC saved under a `.jpg` name is recognized from its content. A RAW or HEIC file with a JPEG of the same name next to it is ignored, and the JPEG is used.
+Supported inputs: JPEG, PNG, WebP, AVIF, TIFF, and HEIC/HEIF from iPhones (`.heic`, `.heif`, `.hif`). HEIC saved under a `.jpg` name is recognized from its content. Sharp’s prebuilt binaries cannot decode HEVC, so HEIC is decoded first, inside the encode worker, to an uncompressed TIFF that keeps its color profile (Display P3 on an iPhone): with macOS’s `sips` on a Mac, and with libheif compiled to WebAssembly (`libheif-js`) elsewhere and when `sips` fails. The two give the same pixels to within one level in 255 on average. `sourceHash` is still the hash of the HEIC file. An HDR gain map and a Live Photo’s video are not used. RAW files (`.nef`, `.cr3`, `.dng` and the like) are reported with the fix: export a JPEG. A RAW or HEIC file with a JPEG or other photo of the same name next to it is ignored, and that photo is used.
 
 ## Manifest
 

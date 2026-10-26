@@ -66,6 +66,8 @@ export {
   isHeic,
   UnsupportedInputError,
 } from './formats.ts';
+export { decodeHeic, defaultHeicDecoder } from './heic.ts';
+export type { HeicDecoder } from './heic.ts';
 export { folderStorage } from './storage/folder.ts';
 export type { FolderStorageOptions } from './storage/folder.ts';
 export { s3Storage, S3Error, CACHE_CONTROL } from './storage/s3.ts';

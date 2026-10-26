@@ -23,6 +23,7 @@ export const PHOTO_EXTENSIONS = new Set([
   '.avif',
   '.tif',
   '.tiff',
+  ...HEIC_EXTENSIONS,
 ]);
 /** Sidecars copied with their photo when they sit next to it. */
 const SIDECAR_EXTENSIONS = ['.xmp', '.md', '.json'];
@@ -87,7 +88,6 @@ async function pathExists(path: string): Promise<boolean> {
 
 function skipReason(file: string): string {
   const ext = extname(file).toLowerCase();
-  if (HEIC_EXTENSIONS.has(ext)) return 'HEIC: export a JPEG instead';
   if (RAW_EXTENSIONS.has(ext)) return 'RAW: export a JPEG instead';
   return 'not a supported photo format';
 }

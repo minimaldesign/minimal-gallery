@@ -24,11 +24,7 @@ import type { EncodeResult, EncodeTask } from './encode.ts';
 import { readEmbedded } from './embedded.ts';
 import { isDated, photoFacets, sortPhotos } from './facets.ts';
 import { readFileStats, writeFileStats, type FileStat } from './filestats.ts';
-import {
-  isHeic,
-  UnsupportedInputError,
-  UNSUPPORTED_MESSAGES,
-} from './formats.ts';
+import { UnsupportedInputError, UNSUPPORTED_MESSAGES } from './formats.ts';
 import { hashBytes, hashString, stableStringify } from './hash.ts';
 import {
   ladderHash as computeLadderHash,
@@ -174,6 +170,9 @@ const CONTENT_TYPES: Record<string, string> = {
   '.avif': 'image/avif',
   '.tif': 'image/tiff',
   '.tiff': 'image/tiff',
+  '.heic': 'image/heic',
+  '.heif': 'image/heif',
+  '.hif': 'image/heif',
 };
 const EXTENSIONS = { avif: 'avif', jpeg: 'jpg', webp: 'webp' } as const;
 
@@ -549,8 +548,6 @@ export async function processGallery(
     const t0 = performance.now();
     const { photo, sidecars, albumEntry, reusable } = job;
     const bytes = await readFile(photo.abs);
-    if (isHeic(bytes))
-      throw new UnsupportedInputError(photo.relativePath, 'heic');
     const sourceHash = await hashBytes(bytes);
     const embedded = await readEmbedded(bytes);
     const originalKey = originalsStorage
