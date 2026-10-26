@@ -3,9 +3,9 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { processGallery } from '../src/process.ts';
 import { xmpToLayer } from '../src/xmp.ts';
-import { tempGallery, write, writeJpeg } from './helpers.ts';
+import { tempGallery, write, writeJpeg, xmp } from './helpers.ts';
 
-const LIGHTROOM_XMP = `<x:xmpmeta xmlns:x="adobe:ns:meta/">
+const OTHER_XMP = `<x:xmpmeta xmlns:x="adobe:ns:meta/">
  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about=""
     xmlns:xmp="http://ns.adobe.com/xap/1.0/"
@@ -24,8 +24,8 @@ const LIGHTROOM_XMP = `<x:xmpmeta xmlns:x="adobe:ns:meta/">
 </x:xmpmeta>`;
 
 describe('XMP sidecars', () => {
-  it('reads Lightroom attribute and element forms', () => {
-    expect(xmpToLayer(LIGHTROOM_XMP)).toEqual({
+  it('reads the attribute and element forms', () => {
+    expect(xmpToLayer(OTHER_XMP)).toEqual({
       title: 'XMP title',
       caption: 'XMP caption',
       keywords: ['bamboo', 'forest'],
@@ -40,27 +40,31 @@ describe('XMP sidecars', () => {
 });
 
 describe('override precedence', () => {
-  it('sidecar > _album.md map > .xmp > EXIF > file name', async () => {
+  it('<file>.xmp > _album.md map > <name>.xmp > EXIF > file name', async () => {
     const dir = await tempGallery();
     const p = (f: string) => join(dir, 'photos/kyoto', f);
     await writeJpeg(p('a.jpg'));
     await writeJpeg(p('b.jpg'));
     await writeJpeg(p('c.jpg'));
     await writeJpeg(p('d_e-f.jpg'));
-    // a: every layer sets a title; the .md sidecar wins, its body is the caption.
+    // a: every layer sets a title; the photo’s own sidecar wins.
     await write(
-      p('a.md'),
-      '---\ntitle: From md\ndate: 2020-01-02\n---\n\nMarkdown *caption*.\n'
+      p('a.jpg.xmp'),
+      xmp({
+        title: 'From sidecar',
+        caption: 'Markdown *caption*.',
+        date: '2020-01-02T00:00:00',
+      })
     );
-    await write(p('a.xmp'), LIGHTROOM_XMP);
-    // b: album map beats the .xmp sidecar; .xmp still fills the fields the map leaves out.
-    await write(p('b.xmp'), LIGHTROOM_XMP);
+    await write(p('a.xmp'), OTHER_XMP);
+    // b: album map beats <name>.xmp, which still fills the fields the map leaves out.
+    await write(p('b.xmp'), OTHER_XMP);
     await write(
       p('_album.md'),
       '---\ntitle: Kyoto\nsort: name\nphotos:\n  a.jpg: { title: From album }\n  b.jpg: { title: From album }\n---\nAlbum text.\n'
     );
-    // c: only the .xmp sidecar.
-    await write(p('c.xmp'), LIGHTROOM_XMP);
+    // c: only <name>.xmp.
+    await write(p('c.xmp'), OTHER_XMP);
     await processGallery(dir, { concurrency: 2 });
     const read = async (id: string) =>
       JSON.parse(
@@ -70,7 +74,7 @@ describe('override precedence', () => {
         )
       );
     const a = await read('kyoto__a');
-    expect(a.title).toBe('From md');
+    expect(a.title).toBe('From sidecar');
     expect(a.caption).toBe('Markdown *caption*.');
     expect(a.date).toBe('2020-01-02T00:00:00');
     expect(a.dateSource).toBe('sidecar');

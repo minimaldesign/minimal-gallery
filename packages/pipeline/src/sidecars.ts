@@ -45,48 +45,33 @@ export function overridesToLayer(o: PhotoOverrides, where: string): Layer {
 }
 
 export interface PhotoSidecars {
+  /** `<file>.xmp` (`DSC_0412.jpg.xmp`): the sidecar the admin writes. */
   sidecar: Layer;
+  /** `<name>.xmp` (`DSC_0412.xmp`): a sidecar another app wrote. */
   xmpSidecar: Layer;
   /** Raw text of every sidecar read, for the inputs hash. */
   raw: string;
 }
 
+/** The sidecar the admin writes for a photo: its full file name plus `.xmp`. */
+export const sidecarPath = (abs: string) => `${abs}.xmp`;
+
+const readXmp = async (base: string) =>
+  (await readText(`${base}.xmp`)) ?? (await readText(`${base}.XMP`));
+
 /**
- * Read `<name>.md`, `<name>.json` and `<name>.xmp` next to a photo. When both
- * `.md` and `.json` exist, `.md` wins field by field.
+ * Read `<file>.xmp` and `<name>.xmp` next to a photo (`DSC_0412.jpg.xmp` and
+ * `DSC_0412.xmp`). The first wins field by field.
  */
 export async function readPhotoSidecars(
-  absNoExt: string,
-  label: string
+  abs: string,
+  absNoExt: string
 ): Promise<PhotoSidecars> {
-  const [md, json, xmp] = await Promise.all([
-    readText(`${absNoExt}.md`),
-    readText(`${absNoExt}.json`),
-    readText(`${absNoExt}.xmp`).then(
-      async (t) => t ?? (await readText(`${absNoExt}.XMP`))
-    ),
-  ]);
-  let sidecar: Layer = {};
-  if (json !== undefined) {
-    const parsed = PhotoOverrides.safeParse(JSON.parse(json));
-    if (!parsed.success)
-      throw new Error(`${label}.json: ${parsed.error.message}`);
-    sidecar = overridesToLayer(parsed.data, `${label}.json`);
-  }
-  if (md !== undefined) {
-    const fm = matter(md);
-    const parsed = PhotoOverrides.safeParse(fm.data);
-    if (!parsed.success)
-      throw new Error(`${label}.md: ${parsed.error.message}`);
-    const layer = overridesToLayer(parsed.data, `${label}.md`);
-    const body = fm.content.trim();
-    if (body) layer.caption = body;
-    sidecar = { ...sidecar, ...layer };
-  }
+  const [own, other] = await Promise.all([readXmp(abs), readXmp(absNoExt)]);
   return {
-    sidecar,
-    xmpSidecar: xmp ? xmpToLayer(xmp) : {},
-    raw: JSON.stringify([md ?? null, json ?? null, xmp ?? null]),
+    sidecar: own ? xmpToLayer(own) : {},
+    xmpSidecar: other ? xmpToLayer(other) : {},
+    raw: JSON.stringify([own ?? null, other ?? null]),
   };
 }
 

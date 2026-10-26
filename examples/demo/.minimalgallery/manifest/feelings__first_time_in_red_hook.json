@@ -97,9 +97,10 @@
     }
   },
   "sourceHash": "42744e17b36d61b7",
+  "pixelsHash": "4f43ad3caf2328d8",
   "sourceSize": 150110,
-  "inputsHash": "87b66e7f2b0c0139",
-  "pipelineVersion": "0.4.0",
+  "inputsHash": "457ab0c5d26664e3",
+  "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2eb81531afe30f3d"
+  "digest": "75b1336830f342dc"
 }

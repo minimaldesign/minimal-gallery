@@ -63,8 +63,8 @@ const extOf = (name: string) => {
 
 /**
  * Walk `<gallery>/photos/`. Every folder is an album; nesting is allowed.
- * Dotfiles and dot-folders are skipped, as are sidecars (`.md`, `.xmp`,
- * `.json`) and any file that is not a supported image. HEIC and RAW files
+ * Dotfiles and dot-folders are skipped, as are sidecars (`.xmp`, `_album.md`)
+ * and any file that is not a supported image. HEIC and RAW files
  * are listed in `unsupported`.
  * Throws when two albums or two photos map to the same id.
  */

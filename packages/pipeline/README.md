@@ -157,9 +157,9 @@ The `minio/minio` image is no longer published on Docker Hub; the Chainguard bui
 photos/
   japan-2025/          album = folder; nesting allowed
     _album.md          frontmatter: title, sort, order[], hidden, date, photos{}
-    DSC_0412.jpg       original, never modified
-    DSC_0412.md        per-photo override: frontmatter + markdown caption
-    DSC_0412.xmp       Lightroom sidecar, read only
+    DSC_0412.jpg       original
+    DSC_0412.jpg.xmp   XMP sidecar the admin writes: only the edited fields
+    DSC_0412.xmp       XMP sidecar another app wrote, read only
 ```
 
 Album id: slugged folder path joined by `/`. Photo id: `<album slug>__<file slug>`, where a nested album’s segments are joined by `_`. Slug: lowercase, every run of non-alphanumeric characters replaced by `_` (the v0.8 convention). Two files or folders that give the same id stop the run with an error.
@@ -182,7 +182,7 @@ The shape is defined, with comments on each field, by the Zod schemas in [`src/s
 
 ## Metadata precedence
 
-Highest first, field by field: `<name>.md` or `<name>.json` sidecar, the `photos:` map in the album’s `_album.md`, `<name>.xmp` sidecar, embedded XMP, IPTC, EXIF, the file name. The `.md` body is the caption. `place` and `exposure` merge per sub-field, so a sidecar can set only the city and keep the country from IPTC.
+Highest first, field by field: the `<file>.xmp` sidecar, the `photos:` map in the album’s `_album.md`, the `<name>.xmp` sidecar, embedded XMP, IPTC, EXIF, the file name. `place` and `exposure` merge per sub-field, so a sidecar can set only the city and keep the country from IPTC.
 
 ## Dates
 

@@ -40,7 +40,7 @@ export const UPLOAD_DIR = '.minimalgallery/cache/uploads';
 export const CHUNK_SIZE = 4 * 1024 * 1024;
 const MAX_SIZE = 4 * 1024 * 1024 * 1024;
 const MAX_SIDECAR_SIZE = 16 * 1024 * 1024;
-export const SIDECAR_EXTENSIONS = new Set(['.xmp', '.md', '.json']);
+export const SIDECAR_EXTENSIONS = new Set(['.xmp']);
 const STALE_MS = 24 * 60 * 60 * 1000;
 
 export type CompleteResult =
@@ -62,7 +62,7 @@ export interface Upload {
   /** Set once completed. */
   result?: CompleteResult;
   /** For an added photo: its folder and file name without extension, for its sidecars. */
-  placed?: { dir: string; stem: string };
+  placed?: { dir: string; file: string; stem: string };
   /** Sidecars that completed before this photo. */
   waiting: Upload[];
   /** Chunk writes run one after another. */
@@ -128,7 +128,7 @@ export async function createUpload(
     if (!parent || parent.sidecarOf)
       throw badRequest('sidecarOf must be the upload id of a photo.');
     if (!SIDECAR_EXTENSIONS.has(ext))
-      throw badRequest('A sidecar is an .xmp, .md or .json file.');
+      throw badRequest('A sidecar is an .xmp file.');
     if ((size as number) > MAX_SIDECAR_SIZE)
       throw badRequest('This sidecar is too large.');
   } else {
@@ -325,7 +325,7 @@ async function completePhoto(
   const path = `photos/${relativeToPhotos(galleryDir, target)}`;
   const photoId = photoIdFor(u.album, name);
   entry.added.set(hash, { photoId, path });
-  u.placed = { dir, stem: stripExtension(name) };
+  u.placed = { dir, file: name, stem: stripExtension(name) };
   ctx.added();
   return { status: 'added', photoId, path };
 }
@@ -364,9 +364,12 @@ async function placeSidecar(
     await rm(u.file, { force: true });
     return { status: 'skipped', reason: 'its photo was not added' };
   }
+  // `photo.jpg.xmp` keeps the photo’s extension in its name, `photo.xmp` does not.
+  const full =
+    stripExtension(u.name).toLowerCase() === photo.name.toLowerCase();
   const target = join(
     photo.placed.dir,
-    `${photo.placed.stem}${extname(u.name).toLowerCase()}`
+    `${full ? photo.placed.file : photo.placed.stem}.xmp`
   );
   if (await stat(target).catch(() => null)) {
     await rm(u.file, { force: true });

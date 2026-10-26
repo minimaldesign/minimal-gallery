@@ -68,7 +68,7 @@ describe('slugs and ids', () => {
   it('skips dotfiles and sidecars', async () => {
     const dir = await tempGallery();
     await writeJpeg(join(dir, 'photos/a/one.jpg'));
-    await write(join(dir, 'photos/a/one.md'), 'caption');
+    await write(join(dir, 'photos/a/one.jpg.xmp'), '<x/>');
     await write(join(dir, 'photos/a/one.xmp'), '<x/>');
     await write(join(dir, 'photos/a/.DS_Store'), '');
     await writeJpeg(join(dir, 'photos/a/b/two.jpg'));

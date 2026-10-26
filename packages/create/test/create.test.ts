@@ -322,12 +322,12 @@ describe('create-minimalgallery', () => {
     expect(gitignore).toMatch(/^\.env$/m);
     expect(gitignore).not.toMatch(/^\.minimalgallery\/?$/m);
     // Originals stay out of git; sidecars and _album.md do not.
+    expect(gitignore).not.toContain('*.json');
     expect(gitignore.split('\n')).toEqual(
       expect.arrayContaining([
         'photos/**',
         '!photos/**/',
         '!photos/**/*.md',
-        '!photos/**/*.json',
         '!photos/**/*.xmp',
       ])
     );

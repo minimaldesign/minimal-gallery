@@ -9,7 +9,6 @@ import { join } from 'node:path';
 import {
   inspectPhoto,
   processGallery,
-  readPhotoOverrides,
   bucketCredentials,
 } from '@minimalgallery/pipeline';
 import {
@@ -17,7 +16,6 @@ import {
   type GalleryConfig,
 } from '@minimalgallery/pipeline/config';
 import type { PhotoManifest } from '@minimalgallery/pipeline/schema';
-import { stripExtension } from '@minimalgallery/pipeline/slug';
 import { createAlbum, orderAlbum, updateAlbum } from './albums.ts';
 import {
   registerSubdomain,
@@ -51,7 +49,13 @@ import {
   type PublishMethod,
 } from './jobs.ts';
 import { serveMedia } from './media.ts';
-import { validateOverrides, writeOverrides } from './overrides.ts';
+import {
+  embedSidecarEdits,
+  endExiftool,
+  photosWithSidecarEdits,
+  validateOverrides,
+  writeOverrides,
+} from './overrides.ts';
 import { RunQueue, type ProcessFn, type QueueEvent } from './queue.ts';
 import { dropGalleryEntry, galleryEntry } from './registry.ts';
 import {
@@ -470,14 +474,42 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
         const rel = m.original.relativePath;
         if (!rel.startsWith('photos/') || rel.split('/').includes('..'))
           throw badRequest(`The manifest of ${id} has a bad path.`);
-        const relNoExt = stripExtension(rel);
-        const absNoExt = join(galleryDir, ...relNoExt.split('/'));
-        const exists = await writeOverrides(absNoExt, patch);
+        const { saveEdits } = await config;
+        await writeOverrides(
+          join(galleryDir, ...rel.split('/')),
+          patch,
+          saveEdits
+        );
         queue.schedule();
+        // The photo may have changed too: send what the inspector shows again.
         sendJson(res, 200, {
-          overrides: (await readPhotoOverrides(absNoExt)) ?? {},
-          overridesFile: exists ? `${relNoExt}.md` : null,
+          ...(await inspectPhoto(galleryDir, m.source)),
+          savedTo: saveEdits,
         });
+      },
+    ],
+    [
+      'GET',
+      /^\/edits\/sidecars$/,
+      async (_req, res) => {
+        const paths = [...(await readManifests(galleryDir)).values()].map(
+          (m) => m.original.relativePath
+        );
+        sendJson(res, 200, {
+          photos: (await photosWithSidecarEdits(galleryDir, paths)).length,
+        });
+      },
+    ],
+    [
+      'POST',
+      /^\/edits\/sidecars\/embed$/,
+      async (_req, res) => {
+        const paths = [...(await readManifests(galleryDir)).values()].map(
+          (m) => m.original.relativePath
+        );
+        const summary = await embedSidecarEdits(galleryDir, paths);
+        queue.schedule();
+        sendJson(res, 200, summary);
       },
     ],
     [
@@ -725,6 +757,7 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
       if (dispose) {
         queue.dispose();
         await queue.idle();
+        await endExiftool();
         dropGalleryEntry(galleryDir);
       }
     },

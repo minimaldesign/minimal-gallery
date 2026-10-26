@@ -30,6 +30,7 @@ import {
   UNSUPPORTED_MESSAGES,
 } from './formats.ts';
 import { hashBytes, hashString, stableStringify } from './hash.ts';
+import { imageDataHash } from './pixels.ts';
 import {
   ladderHash as computeLadderHash,
   type LadderConfig,
@@ -67,7 +68,7 @@ import { walkPhotos, type WalkedAlbum, type WalkedPhoto } from './walk.ts';
  * rebuilt from the metadata; derivatives are kept. Derivative changes bump
  * ENCODER_VERSION in `ladder.ts` instead.
  */
-export const PIPELINE_VERSION = '0.4.0';
+export const PIPELINE_VERSION = '0.5.0';
 
 export { MANIFEST_DIR, ALBUMS_FILE } from './schema.ts';
 
@@ -266,6 +267,7 @@ export async function manifestDigest(
  */
 const ReusableManifest = z.looseObject({
   sourceHash: z.string(),
+  pixelsHash: z.string().optional(),
   ladderHash: z.string(),
   width: z.number().int(),
   height: z.number().int(),
@@ -434,10 +436,7 @@ export async function processGallery(
     try {
       const st = await stat(photo.abs);
       const albumEntry = albumEntryFor(albumFiles.get(photo.albumId), photo);
-      const sidecars = await readPhotoSidecars(
-        photo.absNoExt,
-        photo.relativePath.replace(/\.[^.]+$/, '')
-      );
+      const sidecars = await readPhotoSidecars(photo.abs, photo.absNoExt);
       const inputsHash = await hashString(
         `${PIPELINE_VERSION}\n${sidecars.raw}\n${stableStringify(albumEntry ?? null)}`
       );
@@ -553,6 +552,7 @@ export async function processGallery(
       throw new UnsupportedInputError(photo.relativePath, 'heic');
     const sourceHash = await hashBytes(bytes);
     const embedded = await readEmbedded(bytes);
+    const pixelsHash = await imageDataHash(bytes, embedded.orientation);
     const originalKey = originalsStorage
       ? originalKeyFor(photo, sourceHash)
       : undefined;
@@ -571,7 +571,12 @@ export async function processGallery(
       !options.force &&
       reusable &&
       reusable.ladderHash === ladderHash &&
-      reusable.sourceHash === sourceHash &&
+      // Same image data: metadata written into the file changes only the
+      // source hash. Manifests from before the image data hash compare the
+      // whole file.
+      (reusable.pixelsHash
+        ? reusable.pixelsHash === pixelsHash
+        : reusable.sourceHash === sourceHash) &&
       (await present(reusable.variants.map((v) => [storage, v.key])))
     ) {
       // Same pixels: keep the derivatives, rebuild the metadata. URLs are
@@ -730,6 +735,7 @@ export async function processGallery(
       },
       facets: photoFacets(meta),
       sourceHash,
+      pixelsHash,
       sourceSize: job.size,
       inputsHash: job.inputsHash,
       pipelineVersion: PIPELINE_VERSION,

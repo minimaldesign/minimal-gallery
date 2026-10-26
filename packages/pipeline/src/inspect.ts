@@ -1,17 +1,15 @@
 /**
  * What the admin’s photo inspector shows: the metadata a photo has without
- * its own sidecar (`<name>.md` or `<name>.json`), field by field, and what
- * those sidecars set now. Nothing is written and nothing is encoded.
+ * its own sidecar (`<file>.xmp`), field by field, and what that sidecar sets
+ * now. Nothing is written and nothing is encoded.
  */
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import matter from 'gray-matter';
 import { readEmbedded } from './embedded.ts';
 import type { Layer, LayerName } from './layers.ts';
 import { mergeLayers, type MergedMetadata } from './merge.ts';
-import { parseUserDate } from './normalize.ts';
 import type { PhotoOverrides } from './schema.ts';
-import { overridesToLayer, readAlbumFile } from './sidecars.ts';
+import { overridesToLayer, readAlbumFile, sidecarPath } from './sidecars.ts';
 import { fileSlug, stripExtension, titleFromFile } from './slug.ts';
 import { xmpToLayer } from './xmp.ts';
 
@@ -41,12 +39,13 @@ export interface InspectedPhoto {
   extracted: MergedMetadata & {
     from: Partial<Record<InspectedField, ExtractedSource>>;
   };
-  /** What `<name>.md` sets now: its frontmatter as written, and its body as `caption`. */
+  /**
+   * What the admin manages now: the fields `<file>.xmp` sets, and `hidden`
+   * from the photo’s entry in `_album.md`.
+   */
   overrides: Record<string, unknown>;
-  /** `<name>.md` relative to the gallery directory, or null when there is none. */
+  /** `<file>.xmp` relative to the gallery directory, or null when there is none. */
   overridesFile: string | null;
-  /** What `<name>.json` sets, or null when there is none. */
-  jsonSidecar: Record<string, unknown> | null;
 }
 
 const isSet = (v: unknown) =>
@@ -64,28 +63,32 @@ async function readText(path: string): Promise<string | undefined> {
   }
 }
 
-/** YAML reads `2005-02-27` as a Date; show it as the wall-clock string the pipeline keeps. */
-function plainValues(data: Record<string, unknown>): Record<string, unknown> {
-  const out: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(data))
-    out[k] = v instanceof Date ? (parseUserDate(v) ?? null) : v;
-  return out;
-}
+/** The fields the admin edits, as `<file>.xmp` sets them. */
+const OVERRIDE_FIELDS = [
+  'title',
+  'caption',
+  'date',
+  'keywords',
+  'copyright',
+  'author',
+  'place',
+  'gps',
+] as const;
 
 /**
- * Read `<name>.md` as the pipeline reads it (gray-matter): the frontmatter
- * keys as written, plus the trimmed body as `caption` when there is one.
- * Undefined when the file does not exist.
+ * Read `<file>.xmp` (`abs` is the photo’s path) as the pipeline reads it: the
+ * fields the admin edits that it sets. Undefined when the file does not
+ * exist.
  */
 export async function readPhotoOverrides(
-  absNoExt: string
+  abs: string
 ): Promise<Record<string, unknown> | undefined> {
-  const md = await readText(`${absNoExt}.md`);
-  if (md === undefined) return undefined;
-  const fm = matter(md);
-  const out = plainValues(fm.data);
-  const body = fm.content.trim();
-  if (body) out.caption = body;
+  const xml = await readText(sidecarPath(abs));
+  if (xml === undefined) return undefined;
+  const layer = xmpToLayer(xml);
+  const out: Record<string, unknown> = {};
+  for (const key of OVERRIDE_FIELDS)
+    if (isSet(layer[key])) out[key] = layer[key];
   return out;
 }
 
@@ -102,16 +105,15 @@ export async function inspectPhoto(
   const albumDir = join(galleryDir, 'photos', ...parts);
   const abs = join(albumDir, file);
   const absNoExt = join(albumDir, stripExtension(file));
-  const relNoExt = ['photos', ...parts, stripExtension(file)].join('/');
+  const relPath = ['photos', ...parts, file].join('/');
 
-  const [bytes, album, xmp, overrides, json] = await Promise.all([
+  const [bytes, album, xmp, overrides] = await Promise.all([
     readFile(abs),
     readAlbumFile(join(albumDir, '_album.md')),
     readText(`${absNoExt}.xmp`).then(
       async (t) => t ?? (await readText(`${absNoExt}.XMP`))
     ),
-    readPhotoOverrides(absNoExt),
-    readText(`${absNoExt}.json`),
+    readPhotoOverrides(abs),
   ]);
   const embedded = await readEmbedded(bytes);
 
@@ -119,11 +121,14 @@ export async function inspectPhoto(
   const albumEntry: PhotoOverrides | undefined = map
     ? (map[file] ?? map[stripExtension(file)] ?? map[fileSlug(file)])
     : undefined;
+  // `hidden` from the album entry is reported as an override: the admin
+  // writes it there.
+  const { hidden, ...albumFields } = albumEntry ?? {};
   const layers: Array<[Exclude<LayerName, 'sidecar'>, Layer]> = [
     [
       'album',
       albumEntry
-        ? overridesToLayer(albumEntry, `${parts.join('/')}/_album.md`)
+        ? overridesToLayer(albumFields, `${parts.join('/')}/_album.md`)
         : {},
     ],
     ['xmp-sidecar', xmp ? xmpToLayer(xmp) : {}],
@@ -179,8 +184,10 @@ export async function inspectPhoto(
 
   return {
     extracted: { ...merged, from },
-    overrides: overrides ?? {},
-    overridesFile: overrides ? `${relNoExt}.md` : null,
-    jsonSidecar: json === undefined ? null : plainValues(JSON.parse(json)),
+    overrides: {
+      ...overrides,
+      ...(hidden !== undefined ? { hidden } : {}),
+    },
+    overridesFile: overrides ? `${relPath}.xmp` : null,
   };
 }
