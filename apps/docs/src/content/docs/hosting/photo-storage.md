@@ -5,7 +5,7 @@ description: Keep a large library’s resized photos in Cloudflare R2, served fr
 
 With photo storage, the resized photos live in a storage space of their own on Cloudflare, called R2, and are served from an address of yours such as `media.example.com`. The site holds only the pages. It is for a library of more than [about 3,000 photos](/hosting/#how-many-photos-fit), or one that is growing toward it.
 
-In the config and on the command line, photo storage is called bucket mode: storage services call such a space a bucket. The setting is `storage: { mode: 's3' }`, after S3, the protocol these services share.
+In the config file and on the command line, photo storage is called bucket mode, because storage services call such a space a bucket. The setting is `storage: { mode: 's3' }`, named after S3, the standard these services share.
 
 ## What it costs
 
@@ -81,7 +81,7 @@ When you delete photos, their copies stay in the bucket. `npx minimalgallery syn
 
 ## Hotlink protection
 
-The site’s cache rules in `public/_headers` do not apply to the bucket: publish sets the cache header on each photo it uploads. To stop other sites from showing your photos, write the [WAF custom rule](/hosting/cloudflare/#hotlink-protection) for the media domain instead:
+To stop other sites from showing your photos, create the [firewall rule](/hosting/cloudflare/#hotlink-protection) for the media domain, with this expression:
 
 ```txt
 http.host eq "media.example.com" and http.referer ne "" and not http.referer contains "photos.example.com"
@@ -89,4 +89,4 @@ http.host eq "media.example.com" and http.referer ne "" and not http.referer con
 
 ## Other storage services
 
-Bucket mode works with any service that speaks S3: Backblaze B2, Amazon S3 or MinIO, with their own `endpoint` and `region`. The scaffold and these pages set up R2 only, since it is free for visitors and comes with Cloudflare hosting. See [Configuration](/reference/configuration/#storage-modes) for the settings.
+Bucket mode works with any S3-compatible service, such as Backblaze B2, Amazon S3 or MinIO, with their own `endpoint` and `region`. `npm create minimalgallery` and these pages cover R2 only, since visitors cost nothing on it and it comes with Cloudflare hosting. See [Configuration](/reference/configuration/#storage-modes) for the settings.

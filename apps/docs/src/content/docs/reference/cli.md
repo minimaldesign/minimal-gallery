@@ -1,9 +1,9 @@
 ---
 title: Command line
-description: The minimalgallery commands, npm create minimalgallery and the mg-pipeline binary, with their options and exit codes.
+description: The minimalgallery commands, npm create minimalgallery and the mg-pipeline command, with their options and exit codes.
 ---
 
-This page covers three command-line tools: `minimalgallery`, which you run inside a gallery to add, process, check and publish photos; `npm create minimalgallery@latest`, which creates a gallery; and `mg-pipeline`, the processing binary of `@minimalgallery/pipeline`.
+This page covers three command-line tools: `minimalgallery`, which you run inside a gallery to add, process, check and publish photos; `npm create minimalgallery@latest`, which creates a gallery; and `mg-pipeline`, which runs the photo processing on its own.
 
 ## minimalgallery
 
@@ -16,7 +16,7 @@ minimalgallery <command> [options] [--dir <folder>]
 | [`add`](#add) | Copies photos into an album folder, then processes the gallery. |
 | [`sync`](#sync) | Processes new and changed photos. |
 | [`doctor`](#doctor) | Reports counts and sizes against the hosting limits. Changes nothing. |
-| [`publish`](#publish) | Processes photos, then commits and pushes, deploys to Cloudflare, or builds. |
+| [`publish`](#publish) | Processes photos, then uploads the site to Cloudflare or builds it for your own host. |
 | [`watch`](#watch) | Processes photos as they are added, changed or removed in `photos/`. |
 | [`admin`](#admin) | Starts the Astro dev server and opens the browser admin. |
 | [`upgrade`](#upgrade) | Updates the minimal gallery packages, then runs `doctor`. |
@@ -82,18 +82,18 @@ minimalgallery sync [--prune] [--force] [--no-upload] [--yes]
 
 | Option | Meaning |
 | --- | --- |
-| `--prune` | Also remove the manifests and derivatives of photos deleted on this computer, then empty folders and interrupted writes. A photo whose original was never on this computer is kept. With [photo storage](/hosting/photo-storage/), also list the files in the bucket that no photo uses and delete them after asking. |
+| `--prune` | Also remove the manifests and resized copies of photos deleted on this computer, then empty folders and interrupted writes. A photo whose original was never on this computer is kept. With [photo storage](/hosting/photo-storage/), also list the files in the bucket that no photo uses and delete them after asking. |
 | `--force` | Encode every photo again. |
 | `--no-upload` | With photo storage, keep the new copies on this computer; the next `sync` or `publish` uploads them. |
 | `--yes`, `-y` | Do not ask before deleting files from the bucket. |
 
 `sync` processes every photo in `photos/` that is new or changed:
 
-- A photo with the same size, modification time, sidecars and settings as at the last run on this computer, whose derivatives are all present, is skipped. The first run in a fresh copy of the gallery (a clone, another computer) reads every photo once, but writes no manifest that has not changed.
+- A photo with the same size, modification time, sidecars and settings as at the last run on this computer, whose resized copies are all present, is skipped. The first run in a fresh copy of the gallery (a clone, another computer) reads every photo once, but writes no manifest that has not changed.
 - A photo whose file content is unchanged, for example when only a sidecar was edited, gets a new manifest without being encoded again. Metadata edited inside the photo file changes its content, so that photo is encoded again.
-- Any other photo is encoded, and the derivatives of its earlier version are removed.
+- Any other photo is encoded, and the resized copies of its earlier version are removed.
 
-It prints a summary: albums, photos, encoded, metadata only, unchanged, failed, bytes written and time, and how many photos have no original on this computer when some do. Without `--prune`, it also says how many deleted photos still have derivatives.
+It prints a summary: albums, photos, encoded, metadata only, unchanged, failed, bytes written and time, and how many photos have no original on this computer when some do. Without `--prune`, it also says how many deleted photos still have resized copies.
 
 With photo storage, `sync` then uploads the new copies to the bucket, using the access key in `.env`. Without the key it keeps them on this computer and exits 1.
 
@@ -112,13 +112,13 @@ minimalgallery doctor [--bucket]
 `doctor` reads the manifests and the `photos/` folder, encodes nothing and changes nothing. It prints:
 
 - the storage mode and the `originals` setting;
-- photo, album and undated counts (with the photos whose originals are not on this computer), derivative files and bytes, and published originals when there are any;
-- the number of contexts: the archive, the albums and every facet value;
+- photo, album and undated counts (with the photos whose originals are not on this computer), the number of resized copies and their total size, and published originals when there are any;
+- the number of photo sets with a page of their own: all photos, each album and every filter value, such as a year or a camera;
 - with photo storage, the files waiting for upload and whether the access key is set;
-- the projected site: one page per visible photo, one page and one JSON file per context, the derivatives in site mode and about 20 other files, against Cloudflare’s limit of 20,000 files, and about how many more photos fit before it;
+- the projected site: one page per visible photo, one page and one JSON file per photo set, the resized copies in site mode and about 20 other files, against Cloudflare’s limit of 20,000 files, and about how many more photos fit before it;
 - the bytes of photos published with the site;
 - a recommendation: site mode is fine; plan to add photo storage (past 16,000 files); or add photo storage (over the limit). For a gallery built for your own host (`"publish": "build"`), Cloudflare’s limit does not apply and the recommendation says so;
-- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), RAW files with no JPEG, and, with photo storage, a missing access key or a value the scaffold left as a stand-in.
+- issues: photos with no manifest (run `sync`), manifests of photos deleted on this computer (run `sync --prune`), RAW files with no JPEG, and, with photo storage, a missing access key or a value `npm create minimalgallery` left as a stand-in.
 
 A photo whose original is not on this computer and never was, as in a copy of the gallery made without its originals, is not an issue. `doctor` counts those photos and does not ask to prune them.
 
@@ -136,7 +136,7 @@ minimalgallery publish [--deploy | --build] [--yes]
 | `--build` | Process photos and build the site into `dist/`, for [your own host](/hosting/your-own-host/). |
 | `--yes`, `-y` | Do not ask before deploying. |
 
-Without a flag, the method comes from the gallery’s `package.json`, which the scaffold sets for your host:
+Without a flag, the method comes from the gallery’s `package.json`, which `npm create minimalgallery` sets for your host:
 
 ```json title="package.json"
 {
@@ -152,7 +152,7 @@ Before it deploys, `publish` lists the steps and asks you to confirm. In a shell
 
 #### `--deploy`
 
-1. Reads the Worker’s `name` from `wrangler.jsonc` or `wrangler.json`. The scaffold writes this file for the Cloudflare host.
+1. Reads the Worker’s `name` from `wrangler.jsonc` or `wrangler.json`. `npm create minimalgallery` writes this file for the Cloudflare host.
 2. Runs `wrangler whoami`, with the gallery’s own wrangler or else `npx wrangler`. When you are not logged in, it prints `npx wrangler login` and exits 1. You log in once per computer.
 3. Processes the photos, asks to confirm, runs `astro build`, then `wrangler deploy`.
 
@@ -172,8 +172,8 @@ minimalgallery watch [--delay <ms>]
 
 `watch` processes the gallery once when it starts, then again after each batch of changes in `photos/`:
 
-- It waits until each file has finished writing, so a copy from Finder or an export from Lightroom is read once it is complete.
-- The first run, and any run after files were deleted, also prunes the manifests and derivatives of photos deleted on this computer.
+- It waits until each file has finished writing, so a copy from Finder or an export from your photo editor is read once it is complete.
+- The first run, and any run after files were deleted, also prunes the manifests and resized copies of photos deleted on this computer.
 - Changes that arrive during a run start another run when it finishes.
 - Files and folders whose name starts with `.` are ignored.
 
@@ -232,7 +232,7 @@ With pnpm, yarn or bun, pass them directly: `pnpm create minimalgallery mg --hos
 | `--name <text>` | The gallery’s name. Default: `Photos`. |
 | `--author <text>` | Your name. Default: none. |
 | `--host <host>` | `cloudflare` (the default) publishes to Cloudflare from your computer. `local` builds a folder to upload to [your own host](/hosting/your-own-host/). |
-| `--storage <mode>` | Cloudflare only. `repo` (the default) publishes the resized photos with the site. `bucket` sets up [photo storage](/hosting/photo-storage/) on R2. `--size small` and `--size large` are older spellings of the two. |
+| `--storage <mode>` | Cloudflare only. `site` (the default) publishes the resized photos with the site. `bucket` sets up [photo storage](/hosting/photo-storage/) on R2. `--size small` and `--size large` are older spellings of the two. |
 | `--bucket <name>` | Photo storage: the bucket’s name. Default: `<folder>-media`. |
 | `--media-domain <domain>` | Photo storage: the address the photos are served from, such as `media.example.com`. |
 | `--account-id <id>` | Photo storage: the Cloudflare account id. Default: from `wrangler whoami`, when you are logged in. |
@@ -256,7 +256,7 @@ Each question is asked only when its option is missing. With `--yes`, or when no
 | Bucket name, Media domain, R2 access key id, R2 secret access key | text, each optional but the name | Photo storage only |
 | Package manager | npm, pnpm, yarn, bun | the detected one |
 
-With photo storage, the scaffold also reads your account id with `wrangler whoami` and creates the bucket when you are logged in to Cloudflare. Whatever it could not do (log in, create the bucket, connect the media domain, create the access key) is listed in the next steps. It never makes the folder a git repository.
+With photo storage, the create command also reads your account id with `wrangler whoami` and creates the bucket when you are logged in to Cloudflare. Whatever it could not do (log in, create the bucket, connect the media domain, create the access key) is listed in the next steps. It never makes the folder a git repository.
 
 The command exits 0 when the gallery is created, 1 for an unknown option, an option value it does not accept or a folder that is not empty, and 130 when you cancel a question. A failed install does not stop it: it prints the end of the install’s output and adds the install command to the next steps.
 
@@ -296,16 +296,16 @@ mg-pipeline <gallery folder> [--prune] [--force] [--concurrency N] [--threads N]
 mg-pipeline doctor <gallery folder> [--json report.json]
 ```
 
-`mg-pipeline` is the binary of `@minimalgallery/pipeline`, installed with every gallery. It runs the same processing and the same `doctor` as `minimalgallery`, with these differences:
+`mg-pipeline` comes with `@minimalgallery/pipeline`, installed with every gallery. It runs the same processing and the same `doctor` as `minimalgallery`, with these differences:
 
 - It takes the gallery folder as an argument and does not look upward for one.
 - It never uploads: with photo storage, the new copies wait on this computer for `minimalgallery sync` or `publish`.
-- It prints a longer summary: workers and threads, manifests and files written, the total derivative files and bytes, and encode times per photo.
+- It prints a longer summary: workers and threads, manifests and files written, the number of resized copies and their total size, and encode times per photo.
 - It can write the summary, or the doctor report, to a JSON file.
 
 | Option | Meaning |
 | --- | --- |
-| `--prune` | Remove the manifests, derivatives and empty folders of photos deleted from this folder, and interrupted writes. Photos whose originals this folder never had are kept. |
+| `--prune` | Remove the manifests, resized copies and empty folders of photos deleted from this folder, and interrupted writes. Photos whose originals this folder never had are kept. |
 | `--force` | Encode every photo again. |
 | `--concurrency N` | The number of encoding workers. Default: the number of CPUs or the number of photos to encode, whichever is smaller. |
 | `--threads N` | libvips threads per worker. Default: the number of CPUs divided by the number of workers, at least 1. |

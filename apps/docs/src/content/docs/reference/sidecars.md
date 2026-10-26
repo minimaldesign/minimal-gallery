@@ -23,7 +23,7 @@ photos/
 - A photo placed directly in `photos/`, outside an album folder, is skipped with a warning.
 - Files and folders whose name starts with `.` are skipped.
 - Next to each photo, the pipeline looks for two XMP sidecars: `<file>.xmp`, named after the photo’s whole file name (`DSC_0412.jpg.xmp`), and `<name>.xmp`, named after the file name without its extension (`DSC_0412.xmp`). Each folder can hold one `_album.md`. Any other file is ignored.
-- The pipeline only reads. The admin writes `<file>.xmp` and `_album.md` when you edit a photo or an album, and it writes into the photo itself only if you choose to; see [Saving edits inside the photo](#saving-edits-inside-the-photo).
+- Processing photos only reads these files. The admin writes `<file>.xmp` and `_album.md` when you edit a photo or an album, and it writes into the photo itself only if you choose to; see [Saving edits inside the photo](#saving-edits-inside-the-photo).
 
 The pipeline writes what it reads to one JSON manifest per photo, in `.minimalgallery/manifest/`. The fields are defined in [`schema.ts`](https://github.com/minimaldesign/minimal-gallery/blob/master/packages/pipeline/src/schema.ts). Editing a sidecar rewrites the photo’s manifest on the next run without encoding the photo again.
 
@@ -60,7 +60,7 @@ Letters outside the Latin alphabet are replaced too: a folder named `東京` get
 
 The first folder of an album path cannot slug to a name the site uses for its own pages: `year`, `month`, `on`, `place`, `camera`, `lens`, `focal`, `aperture`, `shutter`, `iso`, `keyword`, `grid`, `_astro` or `_mg`. The build fails with a message naming the album.
 
-Renaming a file or a folder changes its id and its URL. The old manifest and derivatives stay until you run `minimalgallery sync --prune`; `minimalgallery watch` prunes them on its own.
+Renaming a file or a folder changes its id and its URL. The old manifest and resized copies stay until you run `minimalgallery sync --prune`; `minimalgallery watch` prunes them on its own.
 
 ## Metadata precedence
 
@@ -277,12 +277,12 @@ In `_album.md`, an unquoted date and time with an offset, such as `date: 2025-04
 
 ## Hidden photos and albums
 
-`hidden: true` on a photo (in the album’s `photos:` map, where the admin’s “Hidden” box writes it) or on an album (in its `_album.md`) leaves it out of the site: a hidden photo gets no page and is not listed in any album, in the archive or on any facet page; a hidden album gets no page, and neither do its photos.
+`hidden: true` on a photo (in the album’s `photos:` map, where the admin’s “Hidden” box writes it) or on an album (in its `_album.md`) leaves it out of the site: a hidden photo gets no page and is not listed in any album, in the archive or on any filter page; a hidden album gets no page, and neither do its photos.
 
 `hidden` on an album applies to that folder only. To hide a nested album as well, set `hidden: true` in its own `_album.md`.
 
 :::caution[Hidden is not private]
 
-Hidden photos are still processed. In site mode their derivatives are written to `public/_mg/` and deployed with the site, so anyone who has a derivative’s URL can load it. To keep a photo off the web, move it out of `photos/` and run `minimalgallery sync --prune`.
+Hidden photos are still processed. In site mode their resized copies are written to `public/_mg/` and deployed with the site, so anyone who has a resized copy’s address can load it. To keep a photo off the web, move it out of `photos/` and run `minimalgallery sync --prune`.
 
 :::

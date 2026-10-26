@@ -13,7 +13,7 @@ The first release is in preparation. Until it is out, the packages are only in t
 
 | Package | What it is | Installed by |
 | --- | --- | --- |
-| [`create-minimalgallery`](https://www.npmjs.com/package/create-minimalgallery) | The scaffold behind `npm create minimalgallery@latest`: asks a few questions and writes a new gallery folder. | `npm create`, never installed |
+| [`create-minimalgallery`](https://www.npmjs.com/package/create-minimalgallery) | What runs when you type `npm create minimalgallery@latest`: it asks a few questions and creates a new gallery folder. | `npm create`, never installed |
 | [`minimalgallery`](https://www.npmjs.com/package/minimalgallery) | The command line: `add`, `sync`, `doctor`, `publish`, `watch`, `admin`, `upgrade`. See [Command line](/reference/cli/). | Each gallery |
 | [`@minimalgallery/astro`](https://www.npmjs.com/package/@minimalgallery/astro) | The Astro integration, the content loader and the theme. See [Theme and tokens](/theme/). | Each gallery |
 | [`@minimalgallery/pipeline`](https://www.npmjs.com/package/@minimalgallery/pipeline) | The photo processing that runs on your computer: metadata, resized copies, manifests. See [Configuration](/reference/configuration/). | Each gallery |
@@ -25,4 +25,4 @@ All four share one version number. [Version history](/versions/) lists what chan
 - Node 22.18 or later, from [nodejs.org](https://nodejs.org/). The installer for your system is enough.
 - npm, pnpm, Yarn or Bun. npm comes with Node.
 
-A desktop app is parked for later. If one ships, its installers will be listed here.
+There may be a desktop app later. If there is, it will be available here.
