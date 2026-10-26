@@ -21,6 +21,7 @@ export interface Settings {
   author: string | null;
   site: string | null;
   albumsSort: GalleryConfig['albums']['sort'];
+  saveEdits: GalleryConfig['saveEdits'];
   defaults: GalleryConfig['defaults'];
   customCss: string;
 }
@@ -31,6 +32,7 @@ const SETTINGS_KEYS = [
   'author',
   'site',
   'albumsSort',
+  'saveEdits',
   'defaults',
   'customCss',
 ] as const;
@@ -67,6 +69,7 @@ export async function readSettings(galleryDir: string): Promise<Settings> {
     author: config.author ?? null,
     site: config.site ?? null,
     albumsSort: config.albums.sort,
+    saveEdits: config.saveEdits,
     defaults: config.defaults,
     customCss: customCss ?? '',
   };
@@ -91,6 +94,12 @@ function configEdits(body: Record<string, unknown>): ConfigEdit[] {
       edits.push([[key], v && v.trim() ? v.trim() : null]);
     }
   if ('albumsSort' in body) edits.push([['albums', 'sort'], body.albumsSort]);
+  // The default is written as no key at all.
+  if ('saveEdits' in body)
+    edits.push([
+      ['saveEdits'],
+      body.saveEdits === 'sidecar' ? null : body.saveEdits,
+    ]);
   if ('defaults' in body) {
     const d = body.defaults;
     if (!d || typeof d !== 'object' || Array.isArray(d))

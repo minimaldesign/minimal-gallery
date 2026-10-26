@@ -12,7 +12,7 @@
  * - with no album to go into (every photo, or the tree's top), loose files
  *   ask which album they belong to.
  *
- * Sidecars (.xmp, .md, .json) travel with the photo of the same name. A
+ * Sidecars (`photo.xmp` or `photo.jpg.xmp`) travel with their photo. A
  * photo the API adds shows in the grid at once from the local file, dimmed,
  * until its `photo` event brings the real thumbnail.
  */
@@ -35,7 +35,7 @@ import {
 } from './core.ts';
 import { createAlbum, isReordering } from './photos.ts';
 
-const SIDECARS = new Set(['xmp', 'md', 'json']);
+const SIDECARS = new Set(['xmp']);
 const CONCURRENCY = 3;
 
 interface Picked {

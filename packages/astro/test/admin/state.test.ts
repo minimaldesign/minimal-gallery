@@ -12,6 +12,10 @@ import {
   type TestServer,
 } from './helpers.ts';
 
+/** An XMP packet around `body`, with extra attributes on its description. */
+const packet = (body: string, attributes = '') =>
+  `<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/" ${attributes}>${body}</rdf:Description></rdf:RDF></x:xmpmeta>`;
+
 let server: TestServer | undefined;
 afterEach(async () => {
   await server?.close();
@@ -99,8 +103,14 @@ describe('GET /state', () => {
   it('gives the inspector extracted values apart from the sidecar', async () => {
     const dir = await gallery();
     await write(
-      join(dir, 'photos/colors/Red.md'),
-      '---\ntitle: From the sidecar\n---\nA caption.\n'
+      join(dir, 'photos/colors/Red.jpg.xmp'),
+      packet(
+        '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">From the sidecar</rdf:li></rdf:Alt></dc:title><dc:description><rdf:Alt><rdf:li xml:lang="x-default">A caption.</rdf:li></rdf:Alt></dc:description>'
+      )
+    );
+    await write(
+      join(dir, 'photos/colors/_album.md'),
+      '---\nphotos:\n  Red.jpg: { hidden: true }\n---\n'
     );
     await processGallery(dir);
     server = await startServer({ galleryDir: dir });
@@ -114,11 +124,13 @@ describe('GET /state', () => {
     expect(body.extracted.from.camera).toBe('exif');
     expect(body.extracted.date).toBe('2005-02-27T18:16:10');
     expect(body.extracted.from.date).toBe('exif');
+    expect(body.extracted.hidden).toBe(false);
     expect(body.overrides).toEqual({
       title: 'From the sidecar',
       caption: 'A caption.',
+      hidden: true,
     });
-    expect(body.overridesFile).toBe('photos/colors/Red.md');
+    expect(body.overridesFile).toBe('photos/colors/Red.jpg.xmp');
     expect(body.preview).toMatch(/^\/_mg\/colors__red\//);
     expect(body.variants.every((v: any) => v.url.startsWith('/_mg/'))).toBe(
       true
@@ -128,35 +140,38 @@ describe('GET /state', () => {
 });
 
 describe('PUT /photos/:id/overrides', () => {
-  it('writes only the overridden fields, keeps the rest, never touches the photo', async () => {
+  it('writes only the overridden fields to <file>.xmp, keeps the rest, never touches the photo', async () => {
     const dir = await gallery();
     const photo = join(dir, 'photos/colors/Red.jpg');
     const before = await sha256(photo);
-    const md = join(dir, 'photos/colors/Red.md');
+    const sidecar = join(dir, 'photos/colors/Red.jpg.xmp');
+    // Another app’s field in the same sidecar.
     await write(
-      md,
-      '---\n# written by hand\nlightroom: keep me\ntitle: Old\n---\nOld caption\n'
+      sidecar,
+      packet(
+        '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">Old</rdf:li></rdf:Alt></dc:title><dc:description><rdf:Alt><rdf:li xml:lang="x-default">Old caption</rdf:li></rdf:Alt></dc:description>',
+        'xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmp:Label="Blue"'
+      )
     );
     server = await startServer({ galleryDir: dir });
 
     const put = await server.call('PUT', '/photos/colors__red/overrides', {
-      title: 'Red door',
+      title: 'Red “door”',
       date: '2005-03-01',
       keywords: ['door', 'red', 'door'],
       place: { city: 'Kyoto', country: 'Japan' },
     });
     expect(put.status).toBe(200);
-    expect(put.body.overridesFile).toBe('photos/colors/Red.md');
-    let text = await readFile(md, 'utf8');
-    expect(text).toContain('# written by hand');
-    expect(text).toContain('lightroom: keep me');
-    expect(text).toContain('title: Red door');
+    expect(put.body.savedTo).toBe('sidecar');
+    expect(put.body.overridesFile).toBe('photos/colors/Red.jpg.xmp');
+    let text = await readFile(sidecar, 'utf8');
+    expect(text).toContain('Blue');
+    expect(text).toContain('Red “door”');
     expect(text).toContain('Old caption');
-    expect(text).not.toMatch(/hidden|copyright|author/);
-    expect(put.body.overrides).toMatchObject({
-      lightroom: 'keep me',
-      title: 'Red door',
-      date: '2005-03-01',
+    expect(text).not.toMatch(/Creator|Rights/);
+    expect(put.body.overrides).toEqual({
+      title: 'Red “door”',
+      date: '2005-03-01T00:00:00',
       keywords: ['door', 'red'],
       place: { city: 'Kyoto', country: 'Japan' },
       caption: 'Old caption',
@@ -170,7 +185,7 @@ describe('PUT /photos/:id/overrides', () => {
       )
     );
     expect(m).toMatchObject({
-      title: 'Red door',
+      title: 'Red “door”',
       date: '2005-03-01T00:00:00',
       dateSource: 'sidecar',
       keywords: ['door', 'red'],
@@ -184,10 +199,10 @@ describe('PUT /photos/:id/overrides', () => {
       place: { city: null },
       date: null,
     });
-    text = await readFile(md, 'utf8');
+    text = await readFile(sidecar, 'utf8');
     expect(text).not.toContain('Old caption');
-    expect(text).not.toContain('city');
-    expect(text).toContain('country: Japan');
+    expect(text).not.toContain('City');
+    expect(text).toContain('Japan');
 
     // Bad values, and ratings (not kept), are refused before anything is written.
     for (const body of [
@@ -201,20 +216,26 @@ describe('PUT /photos/:id/overrides', () => {
         (await server.call('PUT', '/photos/colors__red/overrides', body)).status
       ).toBe(400);
 
-    // Only the hand-written key is left: the file stays.
+    // Only the other app’s field is left: the file stays.
     const cleared = await server.call('PUT', '/photos/colors__red/overrides', {
       title: null,
       keywords: null,
       place: null,
     });
-    expect(cleared.body.overrides).toEqual({ lightroom: 'keep me' });
+    expect(cleared.body.overrides).toEqual({});
+    expect(await readFile(sidecar, 'utf8')).toContain('Blue');
     // Nothing at all: the file goes.
-    await write(md, '---\ntitle: Only this\n---\n');
+    await write(
+      sidecar,
+      packet(
+        '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">Only this</rdf:li></rdf:Alt></dc:title>'
+      )
+    );
     const gone = await server.call('PUT', '/photos/colors__red/overrides', {
       title: null,
     });
-    expect(gone.body).toEqual({ overrides: {}, overridesFile: null });
-    await expect(stat(md)).rejects.toThrow();
+    expect(gone.body).toMatchObject({ overrides: {}, overridesFile: null });
+    await expect(stat(sidecar)).rejects.toThrow();
 
     expect(await sha256(photo)).toBe(before);
     expect(
@@ -222,7 +243,7 @@ describe('PUT /photos/:id/overrides', () => {
     ).toBe(404);
   });
 
-  it('writes map coordinates on one line and shows the camera data', async () => {
+  it('writes map coordinates, hides through _album.md and shows the camera data', async () => {
     const dir = await gallery();
     server = await startServer({ galleryDir: dir });
     const bare = await server.call('GET', '/photos/colors__bare');
@@ -242,11 +263,16 @@ describe('PUT /photos/:id/overrides', () => {
     });
 
     const put = await server.call('PUT', '/photos/colors__bare/overrides', {
-      gps: { lat: 35.01160009, lon: 135.7681 },
+      gps: { lat: -35.01160009, lon: 135.7681 },
+      hidden: true,
     });
     expect(put.status).toBe(200);
-    expect(await readFile(join(dir, 'photos/colors/Bare.md'), 'utf8')).toBe(
-      '---\ngps: { lat: 35.0116, lon: 135.7681 }\n---\n'
+    expect(put.body.overrides).toEqual({
+      gps: { lat: -35.0116, lon: 135.7681 },
+      hidden: true,
+    });
+    expect(await readFile(join(dir, 'photos/colors/_album.md'), 'utf8')).toBe(
+      '---\nphotos:\n  Bare.jpg:\n    hidden: true\n---\n'
     );
     await settled(dir);
     const m = JSON.parse(
@@ -255,7 +281,8 @@ describe('PUT /photos/:id/overrides', () => {
         'utf8'
       )
     );
-    expect(m.gps).toEqual({ lat: 35.0116, lon: 135.7681 });
+    expect(m.gps).toEqual({ lat: -35.0116, lon: 135.7681 });
+    expect(m.hidden).toBe(true);
 
     for (const gps of [
       { lat: 91, lon: 0 },
@@ -269,8 +296,83 @@ describe('PUT /photos/:id/overrides', () => {
           .status
       ).toBe(400);
 
-    await server.call('PUT', '/photos/colors__bare/overrides', { gps: null });
-    await expect(stat(join(dir, 'photos/colors/Bare.md'))).rejects.toThrow();
+    await server.call('PUT', '/photos/colors__bare/overrides', {
+      gps: null,
+      hidden: false,
+    });
+    await expect(
+      stat(join(dir, 'photos/colors/Bare.jpg.xmp'))
+    ).rejects.toThrow();
+    await expect(stat(join(dir, 'photos/colors/_album.md'))).rejects.toThrow();
+  });
+
+  it('saves into the photo, and clears the copies that would hide it', async () => {
+    const dir = await gallery();
+    const photo = join(dir, 'photos/colors/Red.jpg');
+    const before = await sha256(photo);
+    const sidecar = join(dir, 'photos/colors/Red.jpg.xmp');
+    await write(
+      sidecar,
+      packet(
+        '<dc:title><rdf:Alt><rdf:li xml:lang="x-default">Sidecar title</rdf:li></rdf:Alt></dc:title><dc:description><rdf:Alt><rdf:li xml:lang="x-default">Sidecar caption</rdf:li></rdf:Alt></dc:description>'
+      )
+    );
+    await write(
+      join(dir, 'photos/colors/_album.md'),
+      '---\nphotos:\n  Red.jpg: { title: Album title }\n---\n'
+    );
+    await processGallery(dir);
+    const manifest = async () =>
+      JSON.parse(
+        await readFile(
+          join(dir, '.minimalgallery/manifest/colors__red.json'),
+          'utf8'
+        )
+      );
+    const keys = (await manifest()).variants.map((v: any) => v.key);
+    server = await startServer({ galleryDir: dir });
+    expect((await server.call('GET', '/edits/sidecars')).body).toEqual({
+      photos: 1,
+    });
+    await server.call('PUT', '/settings', { saveEdits: 'photo' });
+
+    const put = await server.call('PUT', '/photos/colors__red/overrides', {
+      title: 'In the photo',
+      date: '2006-01-02T03:04',
+      gps: { lat: 35.0116, lon: -135.7681 },
+    });
+    expect(put.status).toBe(200);
+    expect(put.body.savedTo).toBe('photo');
+    expect(await sha256(photo)).not.toBe(before);
+    // The sidecar keeps the caption only; the album entry is gone.
+    expect(put.body.overrides).toEqual({ caption: 'Sidecar caption' });
+    expect(put.body.extracted).toMatchObject({
+      title: 'In the photo',
+      date: '2006-01-02T03:04:00',
+      gps: { lat: 35.0116, lon: -135.7681 },
+    });
+    expect(put.body.extracted.from.title).toBe('xmp');
+    await expect(stat(join(dir, 'photos/colors/_album.md'))).rejects.toThrow();
+
+    // The rest of the sidecar moves into the photo; the sidecar goes.
+    const moved = await server.call('POST', '/edits/sidecars/embed');
+    expect(moved.body).toEqual({ moved: 1, failed: [] });
+    await expect(stat(sidecar)).rejects.toThrow();
+    expect((await server.call('GET', '/edits/sidecars')).body).toEqual({
+      photos: 0,
+    });
+
+    await settled(dir);
+    const m = await manifest();
+    expect(m).toMatchObject({
+      title: 'In the photo',
+      caption: 'Sidecar caption',
+      date: '2006-01-02T03:04:00',
+      dateSource: 'xmp',
+      gps: { lat: 35.0116, lon: -135.7681 },
+    });
+    // New metadata, same pixels: the derivatives are kept.
+    expect(m.variants.map((v: any) => v.key)).toEqual(keys);
   });
 
   it('quotes values YAML would read as something else', async () => {

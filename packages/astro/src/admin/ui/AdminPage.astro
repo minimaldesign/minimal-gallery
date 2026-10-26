@@ -265,7 +265,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                   class="a11y-srOnly"
                   type="file"
                   multiple
-                  accept="image/*,.heic,.heif,.xmp,.md,.json"
+                  accept="image/*,.heic,.heif,.xmp"
                   data-pick
                 />
               </label>
@@ -330,7 +330,7 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                   class="a11y-srOnly"
                   type="file"
                   multiple
-                  accept="image/*,.heic,.heif,.xmp,.md,.json"
+                  accept="image/*,.heic,.heif,.xmp"
                   data-pick
                 />
               </label>
@@ -475,6 +475,40 @@ const root = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                     newest first until you drag photos around.
                   </p>
                 </fieldset>
+              </section>
+
+              <section class="panel_section" aria-labelledby="s-edits">
+                <h2 class="panel_heading" id="s-edits">
+                  Photo details
+                </h2>
+                <fieldset class="entry entry-choice">
+                  <legend>Save title, caption and other details</legend>
+                  <span class="entry_label" aria-hidden="true">
+                    Save title, caption and other details
+                  </span>
+                  <div class="choice">
+                    <label class="choice_option">
+                      <input type="radio" name="saveEdits" value="sidecar" />
+                      Next to the photo
+                    </label>
+                    <label class="choice_option">
+                      <input type="radio" name="saveEdits" value="photo" />
+                      Inside the photo
+                    </label>
+                  </div>
+                  <p class="entry_hint">
+                    “Next to the photo” writes a small .xmp file beside it and
+                    never changes the photo. “Inside the photo” writes them into
+                    the photo file, where other apps see them too; exporting the
+                    photo again from your editor replaces them.
+                  </p>
+                </fieldset>
+                <div class="entry" data-sidecar-edits hidden>
+                  <p class="entry_hint" data-bind="sidecar-edits"></p>
+                  <button class="bt" type="button" data-action="embed-sidecars">
+                    Move them into the photos
+                  </button>
+                </div>
               </section>
 
               <section class="panel_section" aria-labelledby="s-viewer">

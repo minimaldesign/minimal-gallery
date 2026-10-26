@@ -169,8 +169,10 @@ export const PhotoManifest = z.object({
   }),
   facets: PhotoFacets,
   sourceHash: z.string(),
+  /** Hash of the image data without metadata (JPEG, PNG), else of the whole file. */
+  pixelsHash: z.string(),
   sourceSize: z.number().int(),
-  /** Hash of the sidecar inputs (.md/.json/.xmp and the album’s per-photo entry). */
+  /** Hash of the sidecar inputs (the `.xmp` sidecars and the album’s per-photo entry). */
   inputsHash: z.string(),
   pipelineVersion: z.string(),
   /** Hash of everything that shapes the derivatives: ladder, colour space, encoder version. */

@@ -1,6 +1,7 @@
 import { XMLParser } from 'fast-xml-parser';
 import type { Layer } from './layers.ts';
 import {
+  normalizeCamera,
   parseExifDate,
   parseIsoLikeDate,
   parseXmpGps,
@@ -152,6 +153,8 @@ export function xmpToLayer(xml: string): Layer {
     : undefined;
   // A date-only value (no time) is too coarse to override a camera timestamp.
   if (parsed && date && /T\d/.test(date)) layer.date = parsed;
+  const camera = normalizeCamera(get('tiff:Make'), get('tiff:Model'));
+  if (camera) layer.camera = camera;
   const lens = get('aux:Lens') ?? get('exifEX:LensModel');
   if (lens) layer.lens = lens;
   const lat = get('exif:GPSLatitude');

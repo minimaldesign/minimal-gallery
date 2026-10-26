@@ -15,6 +15,7 @@ interface Settings {
   author: string | null;
   site: string | null;
   albumsSort: string;
+  saveEdits: 'sidecar' | 'photo';
   defaults: Record<string, string | number | boolean>;
   customCss: string;
 }
@@ -39,6 +40,7 @@ export async function loadSettings() {
     return;
   }
   if (settingsForm.dataset.dirty === undefined) fillSettings();
+  void showSidecarEdits();
   if (cssForm.dataset.dirty === undefined)
     (field(cssForm, 'customCss') as HTMLInputElement).value =
       settings.customCss;
@@ -53,6 +55,8 @@ function fillSettings() {
       settings[name] ?? '';
   (field(settingsForm, 'albumsSort') as RadioNodeList).value =
     settings.albumsSort;
+  (field(settingsForm, 'saveEdits') as RadioNodeList).value =
+    settings.saveEdits;
   for (const key of DEFAULTS)
     (field(settingsForm, key) as RadioNodeList).value = String(
       settings.defaults[key]
@@ -76,6 +80,9 @@ settingsForm.addEventListener('submit', async (event) => {
   }
   const sort = (field(settingsForm, 'albumsSort') as RadioNodeList).value;
   if (sort && sort !== settings.albumsSort) changes.albumsSort = sort;
+  const saveEdits = (field(settingsForm, 'saveEdits') as RadioNodeList).value;
+  if (saveEdits && saveEdits !== settings.saveEdits)
+    changes.saveEdits = saveEdits;
   const defaults: Record<string, unknown> = {};
   for (const key of DEFAULTS) {
     const raw = (field(settingsForm, key) as RadioNodeList).value;
@@ -121,6 +128,7 @@ async function save(
     settings = await api<Settings>('PUT', '/settings', changes);
     delete form.dataset.dirty;
     status(form, done(settings));
+    void showSidecarEdits();
     emit('refresh');
   } catch (error) {
     status(form, `Not saved: ${(error as Error).message}`);
@@ -128,6 +136,53 @@ async function save(
     submit.removeAttribute('aria-busy');
   }
 }
+
+/**
+ * With edits saved inside the photos, offer to move what the sidecars hold
+ * there too, so each value has one place.
+ */
+async function showSidecarEdits() {
+  const box = $<HTMLElement>('[data-sidecar-edits]', settingsForm);
+  if (settings?.saveEdits !== 'photo') {
+    box.hidden = true;
+    return;
+  }
+  let photos = 0;
+  try {
+    ({ photos } = await api<{ photos: number }>('GET', '/edits/sidecars'));
+  } catch {
+    // Not worth an error: the offer comes back on the next visit.
+  }
+  box.hidden = photos === 0;
+  bound('sidecar-edits', box).textContent =
+    `${count(photos, 'photo has its', 'photos have their')} details in an .xmp file next to it, from before.`;
+}
+
+$<HTMLButtonElement>(
+  '[data-action="embed-sidecars"]',
+  settingsForm
+).addEventListener('click', async (event) => {
+  const button = event.currentTarget as HTMLButtonElement;
+  button.setAttribute('aria-busy', 'true');
+  try {
+    const { moved, failed } = await api<{
+      moved: number;
+      failed: Array<{ path: string; message: string }>;
+    }>('POST', '/edits/sidecars/embed');
+    status(
+      settingsForm,
+      failed.length
+        ? `Moved into ${count(moved, 'photo', 'photos')}. Not moved: ${failed.map((f) => `${f.path} (${f.message})`).join(', ')}.`
+        : `Moved into ${count(moved, 'photo', 'photos')}.`
+    );
+    emit('refresh');
+  } catch (error) {
+    status(settingsForm, `Not moved: ${(error as Error).message}`);
+  } finally {
+    button.removeAttribute('aria-busy');
+    void showSidecarEdits();
+  }
+});
 
 /* ------------------------------------------------------------------ */
 /* PUBLISH                                                             */

@@ -45,7 +45,6 @@ The `.gitignore` the scaffold writes keeps the original photos out of the reposi
 photos/**
 !photos/**/
 !photos/**/*.md
-!photos/**/*.json
 !photos/**/*.xmp
 !photos/**/*.XMP
 ```
@@ -56,7 +55,7 @@ Git is not made for large files, and full-size originals soon outgrow what git h
 - **History.** Git keeps every version of every file forever. Re-export a photo after an edit and the repository holds both versions, even after you delete one.
 - **Privacy.** In a public repository, anyone can download your full-resolution files.
 
-So the repository holds what the gallery is made of, without the originals: the sidecars, the manifests, the settings and, in site mode, the resized copies. It is not a backup of your photos. Keep backing up the gallery folder as above.
+So the repository holds what the gallery is made of, without the originals: the sidecars, the manifests, the settings and, in site mode, the resized copies. Edits saved inside the photos (see [Saving edits inside the photo](/reference/sidecars/#saving-edits-inside-the-photo)) are in the originals, so only the manifests carry them into the repository. It is not a backup of your photos. Keep backing up the gallery folder as above.
 
 ### Keeping the originals in git anyway
 
