@@ -1,7 +1,7 @@
 /* RECIPE
 
-   The three commands from an empty folder to a website, numbered, each
-   with its command well and one line of explanation. */
+   The three steps from an empty folder to a website, numbered, each with
+   a few lines of explanation, then the way to the getting started guide. */
 
 .recipe {
   padding-block: var(--xl1);
@@ -49,31 +49,17 @@
   }
 }
 
-.recipe_text,
-.recipe_more {
+.recipe_text {
   margin: 0;
   color: var(--docs-text);
   line-height: var(--leading-lg);
+  text-wrap: pretty;
 }
 
-.recipe_more {
-  margin-block-start: var(--md2);
-
-  /* Underlined like a link in the docs' prose */
-  a {
-    color: var(--mg-ink);
-    font-weight: var(--mg-weight-medium);
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--mg-ink-faint);
-    text-underline-offset: 0.2em;
-    transition:
-      color var(--mg-duration-quick) var(--mg-ease-out),
-      text-decoration-color var(--mg-duration-quick) var(--mg-ease-out);
-
-    &:hover {
-      color: var(--docs-text);
-      text-decoration-color: transparent;
-    }
-  }
+.recipe_actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--xs2);
+  margin: var(--md2) 0 0;
 }

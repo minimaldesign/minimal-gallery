@@ -1,6 +1,6 @@
 /* SITE FOOTER
 
-   The name, the links that matter after reading, and the photo credit,
+   The name, the links that matter after reading, and the studio credit,
    in the gallery’s small text above a hairline. */
 
 .siteFooter {
@@ -40,5 +40,12 @@
 .siteFooter_credit {
   margin: 0;
   margin-inline-start: auto;
-  color: var(--mg-ink-faint);
+
+  a {
+    color: var(--mg-ink-faint);
+
+    &:hover {
+      color: var(--mg-ink);
+    }
+  }
 }
