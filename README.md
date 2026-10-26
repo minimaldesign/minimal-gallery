@@ -46,7 +46,7 @@ The browser admin works on the gallery: drop photos in, edit titles, captions an
 ## Docs
 
 ```sh
-pnpm --filter minimalgallery-docs dev    # serve the docs on port 4421
+pnpm --filter minimalgallery-docs dev    # serve the docs on port 4801
 pnpm --filter minimalgallery-docs build  # build the docs into apps/docs/dist
 ```
 
