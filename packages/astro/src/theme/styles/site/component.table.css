@@ -119,8 +119,12 @@
 
   a {
     overflow: hidden;
-    color: inherit;
     text-overflow: ellipsis;
+  }
+
+  /* the context, muted like its crumb; the link home is a .logo */
+  .table_context {
+    color: inherit;
 
     &:hover {
       color: var(--link-color-hover);

@@ -37,6 +37,7 @@ Two programs read the file:
 | `name` | `string` | `'Photos'` | site | The gallery’s name, shown in the header and in every page title. |
 | `author` | `string` | none | site | The gallery’s author. Passed to the theme, which does not display it yet. |
 | `description` | `string` | none | site | A description of the gallery. Passed to the theme, which does not display it yet. |
+| `logo` | `string` | none | site | Path to an SVG file, relative to the gallery folder, shown before the name at the start of the header. Shapes without a fill of their own are drawn in the theme’s text color, so a one-color logo needs no fill at all. |
 | `site` | URL | none | nothing yet | The public address of the gallery. It is validated but not read. Set `site` in `astro.config.mjs` for canonical links. |
 | `storage` | object | `{ mode: 'site' }` | pipeline | Where the derivatives go. See [Storage modes](#storage-modes). |
 | `ladder` | array | five variants | pipeline | The derivatives written for each photo. See [Derivative ladder](#derivative-ladder). |

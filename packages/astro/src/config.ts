@@ -5,6 +5,7 @@
  * viewer defaults to the values of their theme tokens.
  */
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import {
   loadConfig,
   resolveConfig as resolvePipelineConfig,
@@ -41,6 +42,8 @@ export interface GalleryConfig {
   /** The site's public URL from the config file, when it has one. */
   site: string | null;
   credit: boolean;
+  /** The logo file and its markup, inlined before the name in the header. */
+  logo: { file: string; svg: string } | null;
   /** This package's version, shown in the keyboard shortcuts pane. */
   version: string;
   defaults: ViewerDefaults;
@@ -64,7 +67,8 @@ const { version } = JSON.parse(
 
 export function themeConfig(
   c: PipelineConfig & ThemeOptions,
-  options: ThemeOptions = {}
+  options: ThemeOptions = {},
+  logo: GalleryConfig['logo'] = null
 ): GalleryConfig {
   const d = c.defaults;
   return {
@@ -74,6 +78,7 @@ export function themeConfig(
     site: c.site ?? null,
     // the config file's own key once the pipeline's schema has it
     credit: options.credit ?? c.credit ?? true,
+    logo,
     version,
     defaults: {
       fit: d.fit === 'fit' ? 'contain' : 'cover',
@@ -122,5 +127,39 @@ export async function resolveConfig(
     },
     'minimalgallery integration options'
   );
-  return themeConfig(merged, { credit });
+  const logo = merged.logo ? readLogo(resolve(galleryDir, merged.logo)) : null;
+  return themeConfig(merged, { credit }, logo);
+}
+
+/**
+ * The logo as markup to inline in the header: the XML prolog, doctype and
+ * comments dropped, the root's size left to CSS (component.logo.css), and
+ * the root hidden from assistive technology, since the name next to it is
+ * the link text. Shapes without a fill of their own take the text color.
+ */
+export function inlineLogo(source: string, file: string): string {
+  const body = source
+    .replace(/<\?xml[\s\S]*?\?>/g, '')
+    .replace(/<!DOCTYPE[^>]*>/gi, '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .trim();
+  const root = /^<svg\b[^>]*>/i.exec(body)?.[0];
+  if (!root) throw new Error(`${file}: the logo is not an SVG file`);
+  const attrs = root
+    .slice(4)
+    .replace(/\s(?:width|height|class|aria-hidden|focusable)="[^"]*"/gi, '');
+  return (
+    `<svg class="logo_mark" aria-hidden="true" focusable="false"${attrs}` +
+    body.slice(root.length)
+  );
+}
+
+function readLogo(file: string): GalleryConfig['logo'] {
+  let source: string;
+  try {
+    source = readFileSync(file, 'utf8');
+  } catch {
+    throw new Error(`logo: cannot read ${file}`);
+  }
+  return { file, svg: inlineLogo(source, file) };
 }

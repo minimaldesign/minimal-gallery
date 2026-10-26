@@ -93,6 +93,11 @@ export const GalleryConfigSchema = z
     site: z.url().optional(),
     /** The “Powered by minimal gallery” line and the version in the keys pane. */
     credit: z.boolean().default(true),
+    /** An SVG file shown before the name in the header, relative to the gallery directory. */
+    logo: z
+      .string()
+      .regex(/\.svg$/i, { message: 'use an .svg file' })
+      .optional(),
     storage: StorageConfig.default({ mode: 'site' }),
     ladder: z
       .array(LadderVariantConfig)

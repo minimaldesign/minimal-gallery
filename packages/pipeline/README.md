@@ -65,6 +65,7 @@ export default defineConfig({
 | `description` | none | Site description. |
 | `site` | none | Public URL, for canonical links, the feed and `og:image`. |
 | `credit` | `true` | The “Powered by minimal gallery” line; `false` removes it. |
+| `logo` | none | Path to an `.svg` file, relative to the gallery directory, shown before the name in the header. |
 | `storage` | `{ mode: 'site' }` | Where derivatives go; see below. |
 | `ladder` | the five variants below | Array of `{ name, longEdge, format: 'avif' \| 'jpeg' \| 'webp', quality, chroma?: '4:2:0' \| '4:4:4', always?: boolean }`. `always` writes the variant even when the source is smaller, at source size. |
 | `originals` | `'none'` | `'site'` copies originals to `public/_mg`; `'bucket'` uploads them to the s3 storage (needs `storage.mode: 's3'`). |

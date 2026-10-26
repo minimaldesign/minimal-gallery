@@ -68,6 +68,7 @@ export default defineConfig({
       description:
         'A static photo gallery for photographers: folders of photos in, a fast gallery on free hosting out.',
       favicon: '/favicon.svg',
+      logo: { src: './src/assets/logo.svg' },
       social: [
         {
           icon: 'github',

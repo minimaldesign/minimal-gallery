@@ -8,6 +8,7 @@
 import Home from '../layouts/Home.astro';
 import Command from '../components/home/Command.astro';
 import Mosaic from '../components/home/Mosaic.astro';
+import Logo from '../assets/logo.svg';
 
 const GALLERY = 'https://minimalgallery.net/';
 const GITHUB = 'https://github.com/minimaldesign/minimal-gallery';
@@ -51,6 +52,7 @@ const steps = [
   description="minimal gallery is a static site generator for photographers: a fast gallery organized by the metadata in your photos, on free hosting.">
   <header class="siteBar surface">
     <a class="siteBar_home" href={GALLERY}>
+      <Logo class="siteBar_logo" aria-hidden="true" />
       minimal gallery
     </a>
     <nav class="siteBar_nav" aria-label="Site">

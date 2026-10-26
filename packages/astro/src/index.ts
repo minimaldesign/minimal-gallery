@@ -50,6 +50,7 @@ export default function minimalgallery(
         const galleryDir = resolve(root, dir ?? '.');
         const gallery = await resolveConfig(galleryDir, overrides);
         setSharedOptions({ ...options, galleryDir });
+        if (gallery.logo) params.addWatchFile(gallery.logo.file);
         const customCss = resolve(galleryDir, 'custom.css');
         // 4800 unless astro.config.mjs or --port chose another. Strict, so a
         // taken port stops the server instead of moving it to the next one

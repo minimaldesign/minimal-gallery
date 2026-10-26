@@ -7,13 +7,9 @@
  * shortcuts. Every tooltip carries its key.
  */
 import config from 'virtual:minimalgallery/config';
-import {
-  contextHref,
-  withBase,
-  type Context,
-  type Photo,
-} from '../../gallery.ts';
+import { contextHref, type Context, type Photo } from '../../gallery.ts';
 import FilterButton from './FilterButton.astro';
+import HomeLink from './HomeLink.astro';
 import Icon from './Icon.astro';
 import PlayButton from './PlayButton.astro';
 import Tip from './Tip.astro';
@@ -31,7 +27,7 @@ const { defaults } = config;
   <nav class="hud_crumbs" aria-label="Breadcrumb">
     <ol>
       <li>
-        <a href={withBase('/')}>{config.title}</a>
+        <HomeLink />
       </li>
       {context.title && (
         <li>

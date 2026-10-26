@@ -25,6 +25,19 @@
   font-weight: var(--mg-weight-medium);
 }
 
+/* The logo, as in the gallery’s header: inline (the framework draws every
+   svg as a block), centered on the height of a capital */
+.siteBar_logo {
+  --siteBar-logo-size: 0.875em;
+
+  display: inline-block;
+  block-size: var(--siteBar-logo-size);
+  inline-size: auto;
+  margin-inline-end: 0.5em;
+  vertical-align: calc(0.5cap - var(--siteBar-logo-size) / 2);
+  fill: var(--mg-ink);
+}
+
 .siteBar_nav {
   display: flex;
   gap: var(--sm2);

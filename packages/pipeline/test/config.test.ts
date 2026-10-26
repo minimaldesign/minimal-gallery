@@ -126,6 +126,12 @@ export default {
     expect(resolveConfig({ credit: false }).credit).toBe(false);
   });
 
+  it('takes an SVG file as the logo and nothing else', () => {
+    expect(resolveConfig({}).logo).toBeUndefined();
+    expect(resolveConfig({ logo: './logo.svg' }).logo).toBe('./logo.svg');
+    expect(() => resolveConfig({ logo: './logo.png' })).toThrow(/\.svg/);
+  });
+
   it('defineConfig returns its input', () => {
     const c = { name: 'x' };
     expect(defineConfig(c)).toBe(c);

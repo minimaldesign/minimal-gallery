@@ -1,0 +1,18 @@
+---
+/**
+ * The link home at the start of every header: the gallery's logo, when the
+ * config names one, then its name.
+ */
+import config from 'virtual:minimalgallery/config';
+import { withBase } from '../../gallery.ts';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<a class:list={['logo', className]} href={withBase('/')}>
+  {config.logo && <Fragment set:html={config.logo.svg} />}
+  {config.title}
+</a>

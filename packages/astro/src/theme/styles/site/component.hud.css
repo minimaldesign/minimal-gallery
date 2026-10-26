@@ -95,7 +95,8 @@
     }
   }
 
-  a {
+  /* the context, muted like its crumb; the link home is a .logo */
+  .hud_context {
     color: inherit;
 
     &:hover {

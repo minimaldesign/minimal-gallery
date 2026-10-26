@@ -100,9 +100,15 @@ header.header {
 }
 
 .site-title {
+  gap: 0.5em;
   color: var(--mg-ink);
   font-size: 0.9375rem;
   font-weight: var(--mg-weight-medium);
+
+  /* The logo at the size of the gallery’s, centered on the name */
+  img {
+    block-size: 0.875em;
+  }
 }
 
 /* The divider before the theme picker, which this site does not have */

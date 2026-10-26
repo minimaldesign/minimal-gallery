@@ -51,6 +51,7 @@ Options passed to `minimalgallery({ ... })` override the same keys of that file.
 | Key | Default | Used for |
 | --- | --- | --- |
 | `name` | `'Photos'` | Page titles, the breadcrumb, `og:site_name`, the feeds |
+| `logo` | none | An SVG inlined before the name in the header; shapes without a fill of their own are drawn in `--mg-ink` |
 | `description` | `` `Photographs in ${name}.` `` | The home page’s description, the feeds |
 | `author` | none | The JSON Feed’s `authors` |
 | `site` | none | Absolute URLs when `astro.config.mjs` has no `site` |

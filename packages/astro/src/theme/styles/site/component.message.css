@@ -24,12 +24,7 @@
   padding-inline: calc(
     var(--sm1) * var(--mg-hud-density) + var(--mg-safe-left)
   );
-  color: var(--mg-ink-muted);
   font-size: var(--mg-size-hud);
-
-  &:hover {
-    color: var(--link-color-hover);
-  }
 }
 
 .message_title {

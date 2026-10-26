@@ -1,0 +1,29 @@
+/* LOGO
+
+   The link home in every header (HomeLink.astro): the owner's logo, when
+   the config names one, then the gallery's name, in ink at medium weight
+   like the docs site's title. The mark is inline (the framework draws
+   every svg as a block) and centered on the height of a capital, in ink
+   even while the name takes the hover color; shapes with a fill of their
+   own keep it. The link stays inline, so the header's baseline alignment
+   is unchanged; where it sits is up to the header that uses it. */
+
+.logo {
+  color: var(--mg-ink);
+  font-weight: var(--mg-weight-medium);
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+}
+
+.logo_mark {
+  --logo-size: 0.875em;
+
+  display: inline-block;
+  block-size: var(--logo-size);
+  inline-size: auto;
+  margin-inline-end: 0.5em;
+  vertical-align: calc(0.5cap - var(--logo-size) / 2);
+  fill: var(--mg-ink);
+}

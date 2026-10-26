@@ -7,7 +7,7 @@
  * it to do), and search engines are asked not to index it.
  */
 import config from 'virtual:minimalgallery/config';
-import { withBase } from '../../gallery.ts';
+import HomeLink from '../components/HomeLink.astro';
 import GalleryLayout from './GalleryLayout.astro';
 
 interface Props {
@@ -23,9 +23,7 @@ const { title } = Astro.props;
   script={false}>
   <meta slot="head" name="robots" content="noindex" />
   <main class="message">
-    <a class="message_home" href={withBase('/')}>
-      {config.title}
-    </a>
+    <HomeLink class="message_home" />
     <h1 class="message_title">{title}</h1>
     {Astro.slots.has('default') && (
       <p class="message_text">

@@ -9,8 +9,9 @@
  * (`list` false): hidden without it, and grid until it runs.
  */
 import config from 'virtual:minimalgallery/config';
-import { contextHref, withBase, type Context } from '../../gallery.ts';
+import { contextHref, type Context } from '../../gallery.ts';
 import FilterButton from './FilterButton.astro';
+import HomeLink from './HomeLink.astro';
 import PlayButton from './PlayButton.astro';
 import ToggleOption from './ToggleOption.astro';
 
@@ -30,7 +31,7 @@ const n = context.photos.length;
   <nav class="table_crumbs" aria-label="Context">
     <ol>
       <li>
-        <a href={withBase('/')}>{config.title}</a>
+        <HomeLink />
       </li>
       {context.title && (
         <li>
