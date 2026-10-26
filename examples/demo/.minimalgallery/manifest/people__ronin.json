@@ -59,7 +59,7 @@
     }
   ],
   "original": {
-    "bytes": 103891,
+    "bytes": 102566,
     "width": 700,
     "height": 465,
     "relativePath": "photos/people/Ronin.jpg",
@@ -85,11 +85,11 @@
     "keywords": [],
     "place": null
   },
-  "sourceHash": "62189e6548cdc7e6",
+  "sourceHash": "9ef964f5e458ffd5",
   "pixelsHash": "a163674bdd53a3cc",
-  "sourceSize": 103891,
-  "inputsHash": "25259531af505784",
+  "sourceSize": 102566,
+  "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "fbe2d38407331748"
+  "digest": "c17a766bc846a6b4"
 }

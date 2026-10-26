@@ -64,7 +64,7 @@
     }
   ],
   "original": {
-    "bytes": 165412,
+    "bytes": 163518,
     "width": 700,
     "height": 465,
     "relativePath": "photos/feelings/Fading_away.jpg",
@@ -96,11 +96,11 @@
       "label": "Warsaw, Poland"
     }
   },
-  "sourceHash": "44504932c13da6fa",
+  "sourceHash": "df5948737c1f042e",
   "pixelsHash": "e6e852c93516b90f",
-  "sourceSize": 165412,
-  "inputsHash": "52ad151cdaaa50f8",
+  "sourceSize": 163518,
+  "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "59fd47c3b0292943"
+  "digest": "0fffec3ec0fcc5d1"
 }
