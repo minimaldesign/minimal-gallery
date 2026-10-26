@@ -28,7 +28,9 @@
   flex-wrap: wrap;
   gap: var(--xs3) var(--sm2);
 
+  /* The padding takes a 13px link to a 26px target */
   a {
+    padding-block: var(--xs1);
     color: var(--mg-ink-muted);
 
     &:hover {
@@ -42,7 +44,9 @@
   margin-inline-start: auto;
 
   a {
-    color: var(--mg-ink-faint);
+    display: inline-block;
+    padding-block: var(--xs1);
+    color: var(--mg-ink-muted);
 
     &:hover {
       color: var(--mg-ink);

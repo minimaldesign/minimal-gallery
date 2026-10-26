@@ -37,7 +37,8 @@
        ink, so they stand out without underlines or color */
     --docs-text: var(--mg-ink-muted);
     --docs-heading: var(--mg-ink);
-    --docs-measure: 40rem;
+    /* About 70 characters of Geist at 16px */
+    --docs-measure: 33rem;
     --docs-tracking-display: -0.02em;
     --docs-size-display: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
     --docs-size-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);

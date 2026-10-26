@@ -44,8 +44,10 @@ const photos = await Promise.all(
     })
 );
 
-// Large screens hold more squares than there are photos: the wall repeats
-// from the start rather than leaving a gap.
+// The squares grow with the window (component.mosaic.css), so the photos
+// fill most screens once. A very large one can still hold more squares
+// than there are photos: the wall repeats from the start rather than
+// leaving a gap.
 const wall = [...photos, ...photos.slice(0, 20)];
 ---
 
@@ -57,11 +59,11 @@ const wall = [...photos, ...photos.slice(0, 20)];
           class="mosaic_image"
           src={photo.image}
           alt=""
-          width={480}
-          height={480}
+          width={640}
+          height={640}
           fit="cover"
-          widths={[240, 360, 480]}
-          sizes="(min-width: 1858px) 260px, (min-width: 858px) 14vw, 120px"
+          widths={[240, 360, 480, 640]}
+          sizes="(min-width: 2286px) 320px, (min-width: 858px) 14vw, 120px"
           format="avif"
           quality={55}
           loading={i < 16 ? 'eager' : 'lazy'}

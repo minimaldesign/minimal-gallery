@@ -1,7 +1,9 @@
 /* RECIPE
 
    The three steps from an empty folder to a website, numbered, each with
-   a few lines of explanation, then the way to the getting started guide. */
+   a few lines of explanation, then the way to the getting started guide
+   and the first command it asks for, so the reader knows before the
+   click that setting up means typing in Terminal. */
 
 .recipe {
   padding-block: var(--xl1);
@@ -44,7 +46,7 @@
 
   &::before {
     content: counter(recipe) '  ';
-    color: var(--mg-ink-faint);
+    color: var(--mg-ink-muted);
     white-space: pre;
   }
 }
@@ -59,7 +61,17 @@
 .recipe_actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--xs2);
-  margin: var(--md2) 0 0;
+  align-items: center;
+  gap: var(--xs3) var(--sm2);
+  margin-block-start: var(--md2);
+}
+
+.recipe_command {
+  margin: 0;
+  color: var(--docs-text);
+  font-size: var(--mg-size-hud);
+
+  code {
+    user-select: all;
+  }
 }

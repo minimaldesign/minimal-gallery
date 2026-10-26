@@ -5,7 +5,13 @@
    feature-reverse puts it on the right, so a run of features can
    alternate. The picture is a screenshot (feature_shot), framed like a
    window, or a photo (feature_photo) with something drawn over it
-   (feature_overlay), as the gallery draws its panes over a photo. */
+   (feature_overlay), as the gallery draws its panes over a photo.
+
+   A whole screenshot is too small to read at a phone’s width, so below
+   the lg breakpoint the frame shows one part of it, enlarged: the
+   markup says how much (--feature-shot-zoom) and where the part starts,
+   as a share of the screenshot’s width and height (--feature-shot-x,
+   --feature-shot-y). */
 
 .feature {
   --feature-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -61,13 +67,31 @@
 }
 
 .feature_shot {
-  display: block;
-  inline-size: 100%;
-  block-size: auto;
+  --feature-shot-zoom: 1;
+  --feature-shot-x: 0%;
+  --feature-shot-y: 0%;
+
+  overflow: hidden;
   border: var(--border-sm) solid var(--mg-hairline);
   border-radius: var(--radius-lg);
   background-color: var(--mg-gray-100);
   box-shadow: var(--mg-surface-shadow);
+
+  @media (--lg-n-below) {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+.feature_shotImage {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: none;
+  block-size: auto;
+
+  @media (--lg-n-below) {
+    inline-size: calc(var(--feature-shot-zoom) * 100%);
+    translate: calc(var(--feature-shot-x) * -1) calc(var(--feature-shot-y) * -1);
+  }
 }
 
 /* A photo filling the media box, with the overlay centered on it */

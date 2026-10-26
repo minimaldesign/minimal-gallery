@@ -5,6 +5,12 @@ description: Create a gallery, add your photos, preview it on your computer and 
 
 This guide walks you through creating a gallery, adding your photos, previewing it on your computer and putting it online.
 
+:::note[Not published yet]
+
+The first release is in preparation. Until it is out, `npm create minimalgallery@latest` doesn’t work yet: the packages are only in the [repository](https://github.com/minimaldesign/minimal-gallery). See [Downloads](/downloads/).
+
+:::
+
 You’ll need to type a few commands in Terminal. If you’re not used to it, don’t worry: each step tells you exactly what to type. The guide is written for a Mac, and the commands are the same on Windows and Linux.
 
 ## What you need

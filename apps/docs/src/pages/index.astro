@@ -14,10 +14,12 @@ import Logo from '../assets/logo.svg';
 import admin from '../assets/admin.jpg';
 import filters from '../assets/filters.jpg';
 import haleakala from '../../../../examples/demo/photos/colors/Haleakala.jpg';
+import takayama from '../../../../examples/demo/photos/colors/Takayama.jpg';
 
 const GALLERY = 'https://minimalgallery.net/';
 const GITHUB = 'https://github.com/minimaldesign/minimal-gallery';
 const STUDIO = 'https://minimaldesign.net/';
+const COMMAND = 'npm create minimalgallery@latest';
 
 const pillars = [
   {
@@ -29,8 +31,8 @@ const pillars = [
     text: 'Drop in folders of photos and each one becomes an album. The camera, lens, aperture, shutter speed and date in every file are sorted for you, so visitors can browse everything shot at f/1.4 or in one year.',
   },
   {
-    title: 'Publish with one click',
-    text: 'Edit everything in the built-in admin on your computer, then publish with one click. It’s a plain website, so free hosting or almost any web host will do. The gallery is a folder on your computer, and it stays yours.',
+    title: 'A site you own',
+    text: 'The gallery is a folder on your computer, and the site it makes is a plain website, so free hosting or almost any web host will do. No account with us and no subscription: the photos and the site stay yours.',
   },
 ];
 
@@ -67,7 +69,7 @@ const features = [
 const steps = [
   {
     title: 'Create your gallery',
-    text: 'Set up a gallery folder on your computer. The admin opens in your browser, with a checklist for the first steps.',
+    text: 'Type one command in Terminal and answer a few questions; the guide tells you exactly what to type, and all you need first is Node.js, a free download. Then the admin opens in your browser, with a checklist for the first steps.',
   },
   {
     title: 'Organize your photos',
@@ -75,14 +77,20 @@ const steps = [
   },
   {
     title: 'Publish online',
-    text: 'Press Publish, and the gallery goes online on free hosting or the web host of your choice. Add more photos whenever you like and publish again.',
+    text: 'Press Publish in the admin, and the gallery goes online on free hosting or the web host of your choice. Add more photos whenever you like and publish again.',
   },
 ];
 ---
 
 <Home
-  title="minimal gallery: your photos in a beautiful modern gallery, for free"
-  description="minimal gallery shows your photos online in a clean, modern gallery that puts the photos first. Up to about 3,000 high-resolution photos on free hosting, with no subscription.">
+  title="minimal gallery: your photos at full size, with nothing in the way, for free"
+  description="minimal gallery puts your photos online full screen, with nothing competing with them. Up to about 3,000 high-resolution photos on free hosting, with no subscription."
+  image={takayama}
+  imageAlt="Takayama: a stone lantern above a river, with the town and wooded hills behind it.">
+  <a class="a11y-skipLink" href="#main">
+    Skip to content
+  </a>
+
   <header class="siteBar surface">
     <a class="siteBar_home" href="/">
       <Logo class="siteBar_logo" aria-hidden="true" />
@@ -98,18 +106,16 @@ const steps = [
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <section class="intro" aria-labelledby="intro-title">
       <div class="intro_panel surface">
         <h1 class="intro_title" id="intro-title">
-          All your photos, in a beautiful modern gallery. For free.
+          Your photos at full size, with nothing in the way. For free.
         </h1>
         <p class="intro_lede">
-          minimal gallery shows your work in a clean, modern interface where
-          nothing competes with the photos: they fill the screen, the controls
-          hide while you look, and the next photo appears instantly. Put up to
-          about 3,000 high-resolution photos online and host them for free. No
-          subscription, ever.
+          Each photo fills the screen, the controls hide while you look, and the
+          next one appears instantly. Put up to about 3,000 high-resolution
+          photos online on free hosting. No subscription, ever.
         </p>
         <p class="intro_actions">
           <a class="bt bt-primary" href="/getting-started/">
@@ -117,7 +123,12 @@ const steps = [
           </a>
           <a class="bt bt-outline" href={GALLERY}>
             See it in action
+            <span class="a11y-srOnly">&#32;on minimalgallery.net</span>
           </a>
+        </p>
+        <p class="intro_status">
+          The first release is in preparation. Until it’s out, the code is
+          on&#32;<a href={GITHUB}>GitHub</a>.
         </p>
       </div>
       <Mosaic class="intro_mosaic" />
@@ -154,7 +165,7 @@ const steps = [
             class="feature_photo"
             src={haleakala}
             alt=""
-            widths={[640, 960, 1280]}
+            widths={[640, haleakala.width]}
             sizes="(min-width: 1024px) 42rem, 100vw"
             format="avif"
             quality={55}
@@ -182,17 +193,21 @@ const steps = [
           </p>
         </div>
         <div class="feature_media">
-          <Image
+          <div
             class="feature_shot"
-            src={filters}
-            alt="The filter panel open over a photo of cherry blossoms above a pond: a search field, then buttons for every album, year, month, place and camera in the gallery, each with its number of photos."
-            widths={[640, 960, 1280, 1920]}
-            sizes="(min-width: 1024px) 42rem, 100vw"
-            format="avif"
-            quality={65}
-            loading="lazy"
-            decoding="async"
-          />
+            style="--feature-shot-zoom: 3; --feature-shot-x: 22.5%; --feature-shot-y: 12%">
+            <Image
+              class="feature_shotImage"
+              src={filters}
+              alt="The filter panel open over a photo of cherry blossoms above a pond: a search field, then buttons for every album, year, month, place and camera in the gallery, each with its number of photos."
+              widths={[640, 960, 1280, 1920, 2560]}
+              sizes="(min-width: 1024px) 42rem, 300vw"
+              format="avif"
+              quality={65}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -200,7 +215,7 @@ const steps = [
     <section class="features wrap" aria-labelledby="features-title">
       <div>
         <h2 class="features_title" id="features-title">
-          And there’s more
+          Also in every gallery
         </h2>
         <ul class="features_list">
           {features.map(([name, text]) => (
@@ -217,7 +232,7 @@ const steps = [
       <div class="feature_inner">
         <div class="feature_body">
           <h2 class="feature_title" id="admin-title">
-            Everything in one place
+            The admin
           </h2>
           <p class="feature_text">
             The admin opens in your browser and works on your own computer.
@@ -227,17 +242,21 @@ const steps = [
           </p>
         </div>
         <div class="feature_media">
-          <Image
+          <div
             class="feature_shot"
-            src={admin}
-            alt="The minimal gallery admin: albums in a sidebar, a grid of photos, and a photo of Takayama selected, with its title, caption and date taken ready to edit in a panel on the right."
-            widths={[640, 960, 1280, 1920]}
-            sizes="(min-width: 1024px) 42rem, 100vw"
-            format="avif"
-            quality={65}
-            loading="lazy"
-            decoding="async"
-          />
+            style="--feature-shot-zoom: 3.5; --feature-shot-x: 71.4%; --feature-shot-y: 0%">
+            <Image
+              class="feature_shotImage"
+              src={admin}
+              alt="The minimal gallery admin: albums in a sidebar, a grid of photos, and a photo of Takayama selected, with its title, caption and date taken ready to edit in a panel on the right."
+              widths={[640, 960, 1280, 1920, 2560]}
+              sizes="(min-width: 1024px) 42rem, 350vw"
+              format="avif"
+              quality={65}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -245,7 +264,7 @@ const steps = [
     <section class="recipe wrap" aria-labelledby="recipe-title">
       <div>
         <h2 class="recipe_title" id="recipe-title">
-          Three steps
+          From a folder of photos to a website
         </h2>
         <ol class="recipe_list">
           {steps.map((step) => (
@@ -255,11 +274,14 @@ const steps = [
             </li>
           ))}
         </ol>
-        <p class="recipe_actions">
+        <div class="recipe_actions">
           <a class="bt bt-primary" href="/getting-started/">
             Get started
           </a>
-        </p>
+          <p class="recipe_command">
+            The first command:&#32;<code>{COMMAND}</code>
+          </p>
+        </div>
       </div>
     </section>
 
