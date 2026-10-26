@@ -63,7 +63,7 @@ cd mg
 npm run admin
 ```
 
-It opens the admin in your browser, usually at `http://localhost:4321/_mg/admin/`, with a checklist for your first steps. The admin processes the photos in `photos/` and keeps watching that folder. From it you can drop in photos and folders, edit titles, captions and albums, change the settings and publish, and its Preview button opens the gallery as visitors will see it. The first start resizes every photo before the browser opens. Each photo becomes up to five copies, so a large folder takes a few minutes, and Terminal prints one line when it is done. Later starts skip photos that have not changed.
+It opens the admin in your browser, at `http://localhost:4800/_mg/admin/`, with a checklist for your first steps. The admin processes the photos in `photos/` and keeps watching that folder. From it you can drop in photos and folders, edit titles, captions and albums, change the settings and publish, and its Preview button opens the gallery as visitors will see it. The first start resizes every photo before the browser opens. Each photo becomes up to five copies, so a large folder takes a few minutes, and Terminal prints one line when it is done. Later starts skip photos that have not changed.
 
 The preview runs as long as that Terminal window stays open. Press Ctrl+C in it to stop.
 

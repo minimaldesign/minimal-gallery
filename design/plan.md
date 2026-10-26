@@ -154,7 +154,7 @@ Persona: a photo enthusiast on a Mac with Lightroom, who has opened a terminal a
 
 1. **Discover.** minimalgallery.net is itself a gallery built with the tool (the demo set). Its only chrome beyond the gallery is a “Make yours” link to docs.minimalgallery.net, whose getting-started page lists what you need: Node 22+ (installer link), a free Cloudflare account, and optionally GitHub.
 2. **Create** (terminal, once). `npm create minimalgallery@latest` asks, with `@clack/prompts`: gallery name, your name, where it will live (Cloudflare, preselected and recommended; GitHub Pages; Netlify; or “build locally”). There is no photo-count question: every gallery starts in repo mode (see the publishing decision of 2026-10-23). It scaffolds, installs, writes the host config and `.env.example`, and on macOS drops a double-clickable `Open minimalgallery.command` in the folder so the next step never needs a terminal again. It prints the next command.
-3. **Open the admin** (terminal, once, or the `.command` file). `npm run admin` starts the dev server and opens `localhost:4321/_mg/admin`. The first-run screen is a four-step checklist with live ticks: add photos, name the gallery, preview, publish. The grid is an empty state with one large drop target and a line about the Lightroom export preset.
+3. **Open the admin** (terminal, once, or the `.command` file). `npm run admin` starts the dev server and opens `localhost:4800/_mg/admin`. The first-run screen is a four-step checklist with live ticks: add photos, name the gallery, preview, publish. The grid is an empty state with one large drop target and a line about the Lightroom export preset.
 4. **Add photos.** Drop a folder from Finder: an album appears, thumbnails fill in as each ladder finishes, and a “needs attention” badge marks photos whose date came from mtime, that have no EXIF, or that duplicate an existing file. Clicking the badge opens the inspector on the right field.
 5. **Look.** The Preview button opens the real site in a new tab; it live-reloads as photos land. A `?` overlay shows the keyboard map the first time.
 6. **Make it yours.** Settings: name, tagline, sort and landing behaviour, and the theme tokens the design phase exposes (accent, backdrop mode: photo colour, neutral dark, light). A custom CSS panel writes `custom.css` and the preview updates live.
@@ -177,7 +177,7 @@ What the user installs: Node 22+ (and git, unless using direct deploy).
 First run:
 
 1. `npm create minimalgallery@latest my-gallery` asks name, host (Cloudflare), and scaffolds.
-2. `npm run admin` starts the dev server and opens `http://localhost:4321/_mg/admin` in the default browser.
+2. `npm run admin` starts the dev server and opens `http://localhost:4800/_mg/admin` in the default browser.
 
 Adding photos: 3. Sidebar: album tree. Main pane: the current album’s grid with a drop zone. Dropping a Finder folder on the sidebar creates an album; dropping files on the grid adds to it (dropped folders are read recursively in every modern browser via `webkitGetAsEntry`). 4. Each file uploads to localhost in chunks, is hashed and deduped, written to `photos/<album>/`, then processed by Node; progress streams back over SSE and the thumb appears as soon as its ladder is done. The live collection refreshes the preview.
 

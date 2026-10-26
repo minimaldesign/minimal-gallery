@@ -3,7 +3,7 @@
 docs.minimalgallery.net: the product site. The home page is a one-pager in the gallery’s own design; the docs behind it are [Starlight](https://starlight.astro.build), restyled with the gallery’s tokens.
 
 ```sh
-pnpm --filter minimalgallery-docs dev       # http://localhost:4421
+pnpm --filter minimalgallery-docs dev       # http://localhost:4801
 pnpm --filter minimalgallery-docs build     # into apps/docs/dist
 pnpm --filter minimalgallery-docs preview
 ```

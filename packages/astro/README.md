@@ -64,6 +64,8 @@ Options passed to `minimalgallery({ ... })` override the same keys of that file.
 
 The integration registers Geist and Geist Mono with Astro’s Fonts API (self-hosted from their Fontsource packages) and sets Vite’s PostCSS chain for the theme (`@csstools/postcss-global-data` with the mCSS custom media, `postcss-mixins`, `postcss-preset-env` on Baseline 2024 with native cascade layers kept). An inline PostCSS config replaces a project’s `postcss.config.*`; add your own plugins there if you need them.
 
+**Port.** `astro dev` and `astro preview` serve on port 4800 (`DEFAULT_PORT`) instead of Astro’s 4321, so a gallery keeps one address its owner can bookmark. `server.port` in `astro.config.mjs` or `--port` wins; the integration treats Astro’s default of 4321 as “not set”, so a project that wants 4321 passes `--port 4321`. Vite’s `strictPort` is on for both servers: a taken port is an error, not a silent move to the next port.
+
 ## Routes
 
 The theme is a set of components; the site owns its routes, so each can be replaced. minimalgallery.net’s routes, in `examples/demo/src/pages`, are the reference, and every file is a few lines. `create-minimalgallery` writes the same routes, without the v0.8 ones (`legacy-ids.json.ts`, `<LegacyRedirect>`), and with feed and sitemap routes that write no file while the site has no address:

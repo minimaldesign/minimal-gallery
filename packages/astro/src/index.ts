@@ -14,6 +14,11 @@ export type { MinimalgalleryOptions } from './options.ts';
 export type { GalleryConfig, ViewerDefaults } from './config.ts';
 export { galleryLoader } from './loader.ts';
 
+/** The dev and preview port, the same on every start so it can be bookmarked. */
+export const DEFAULT_PORT = 4800;
+/** Astro's own default: a project with this port did not choose one. */
+const ASTRO_PORT = 4321;
+
 const CONFIG_ID = 'virtual:minimalgallery/config';
 const CUSTOM_ID = 'virtual:minimalgallery/custom.css';
 const EMPTY_CUSTOM = '\0minimalgallery-custom.css';
@@ -46,8 +51,19 @@ export default function minimalgallery(
         const gallery = await resolveConfig(galleryDir, overrides);
         setSharedOptions({ ...options, galleryDir });
         const customCss = resolve(galleryDir, 'custom.css');
+        // 4800 unless astro.config.mjs or --port chose another. Strict, so a
+        // taken port stops the server instead of moving it to the next one
+        // and leaving a bookmark on whatever else is listening there.
+        const portFlag = process.argv.some(
+          (a) => a === '--port' || a.startsWith('--port=')
+        );
+        const port =
+          config.server.port === ASTRO_PORT && !portFlag
+            ? DEFAULT_PORT
+            : config.server.port;
 
         updateConfig({
+          server: { port },
           // Geist and Geist Mono, self-hosted: the variable files, Latin
           // first (the layout preloads it), other subsets by unicode-range
           fonts: [
@@ -73,6 +89,8 @@ export default function minimalgallery(
             },
           ],
           vite: {
+            server: { strictPort: true },
+            preview: { strictPort: true },
             // The helpers import `astro:content`, so Vite must bundle this
             // package rather than load it from node_modules as plain Node code.
             ssr: { noExternal: ['@minimalgallery/astro'] },

@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev --port 4421",
+    "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview --port 4421"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.7",

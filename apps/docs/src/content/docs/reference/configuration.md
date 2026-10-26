@@ -112,7 +112,21 @@ Besides reading the config, the integration:
 - sets Vite’s PostCSS chain for the theme, which replaces a project’s own `postcss.config.*` (add your plugins to the integration’s chain if you need them);
 - writes the viewer defaults into the theme tokens;
 - links `custom.css` from the gallery folder after the theme, when the file exists;
+- serves `astro dev` and `astro preview` on port 4800, so the admin and the preview keep one address you can bookmark (see [Changing the port](#changing-the-port));
 - warns when `experimental.incrementalBuild` is on and `build.concurrency` is above 1, since Astro then renders every page.
+
+### Changing the port
+
+The admin and the preview use port 4800, so their address stays `http://localhost:4800/` and a bookmark keeps working. When something else on your computer already uses that port, the server stops with “Port 4800 is already in use” rather than moving to another port. Choose a different one with Astro’s own `server.port`:
+
+```js title="astro.config.mjs"
+export default defineConfig({
+  server: { port: 4900 },
+  // …
+});
+```
+
+For a single start, pass it to the command: `npm run admin -- --port 4900`, or `npx astro preview --port 4900` for the preview of a build.
 
 ## Storage modes
 

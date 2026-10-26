@@ -182,13 +182,17 @@ It prints one line per run, with the counts and the time. An error is printed an
 ### admin
 
 ```sh
-minimalgallery admin [-- <astro dev options>]
+minimalgallery admin [--port <number>] [-- <astro dev options>]
 ```
 
-`admin` runs `astro dev` and opens the browser admin at `/_mg/admin/`. From it you add photos by dropping them in, edit titles, captions and albums, change the settings and publish. It processes photos as they land in `photos/`, including files you copy there in Finder, and the preview reloads as they do. It runs only on this computer and is never part of the built site. Options after `--` go to `astro dev`:
+`admin` runs `astro dev` and opens the browser admin at `/_mg/admin/`. From it you add photos by dropping them in, edit titles, captions and albums, change the settings and publish. It processes photos as they land in `photos/`, including files you copy there in Finder, and the preview reloads as they do. It runs only on this computer and is never part of the built site.
+
+The admin is at `http://localhost:4800/_mg/admin/` on every start, so you can bookmark it. `--port` chooses another port for one start; to change it for good, set `server.port` in `astro.config.mjs` ([Changing the port](/reference/configuration/#changing-the-port)). When the port is taken, `admin` stops with an error instead of moving to the next free port.
+
+Options after `--` go to `astro dev`:
 
 ```sh
-npx minimalgallery admin -- --port 4400
+npx minimalgallery admin -- --host
 ```
 
 Ctrl+C stops the dev server. `admin` exits with the dev server’s exit code, and needs Astro installed in the gallery.
