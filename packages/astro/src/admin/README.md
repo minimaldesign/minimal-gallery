@@ -2,11 +2,11 @@
 
 The admin exists only under `astro dev`. In `astro:config:setup`, when `command === 'dev'`, the integration (`inject.ts`):
 
-- injects the page `/_mg/admin/` (entrypoint `ui/AdminPage.astro`, `prerender: false`; the UI routes with the hash: `#/`, `#/album/<id>`, `#/settings`, `#/publish`);
+- injects the page `/admin/`, or `/mg/admin/` when a top-level album slugs to `admin` or `src/pages` has an `admin` route (`adminPath` in `@minimalgallery/pipeline/admin`, which `minimalgallery admin` also uses to open it) (entrypoint `ui/AdminPage.astro`, `prerender: false`; the UI routes with the hash: `#/`, `#/album/<id>`, `#/settings`, `#/publish`);
 - watches the gallery’s config file, so a settings edit restarts the dev server and the theme reads the new values;
 - adds a dev-only Vite plugin that mounts the API (`server/`) at the front of the dev server’s middleware stack, ahead of Astro’s base and trailing-slash handling.
 
-`astro build` loads none of it: the built site holds no `_mg/admin` string and no admin file.
+`astro build` loads none of it: the built site holds no admin page, API, link or file.
 
 The API is a framework-free Node handler, so a test (plain `http.createServer`) or a desktop shell can host it:
 
@@ -33,7 +33,7 @@ const { token, api } = getAdminInfo();
 <meta name="mg-admin-api" content={api} />
 ```
 
-`getAdminInfo()` returns `{ token, api }`: the per-process token and the API base URL (`<base>_mg/admin/api`, no trailing slash). `getAdminToken()` returns the token alone. Both read a `globalThis` registry, so they work from the page’s module, which Vite loads separately from the integration. They throw when the admin is not running (outside `astro dev`).
+`getAdminInfo()` returns `{ token, api }`: the per-process token and the API base URL (`<base>admin/api`, no trailing slash). `adminPage()` returns the page’s URL, or `undefined` when the admin is not running; the theme’s Admin link and the empty home page use it. `getAdminToken()` returns the token alone. Both read a `globalThis` registry, so they work from the page’s module, which Vite loads separately from the integration. They throw when the admin is not running (outside `astro dev`).
 
 ## State that survives a dev-server restart
 
@@ -44,14 +44,14 @@ A settings edit rewrites `minimalgallery.config.ts`, and Astro restarts the dev 
 
 ## Security
 
-- Every request to `<base>_mg/admin*` (the page and the API) gets `403` unless the socket’s remote address is loopback and the `Host` header is `localhost`, `127.0.0.1` or `[::1]`, with any port. This stops other machines on the network and DNS rebinding.
+- Every request to `<base>admin*` (the page and the API, under `mg/admin` in the fallback) gets `403` unless the socket’s remote address is loopback and the `Host` header is `localhost`, `127.0.0.1` or `[::1]`, with any port. This stops other machines on the network and DNS rebinding.
 - Every API call needs the header `x-mg-admin: <token>`. `GET /events` (EventSource cannot send headers) takes `?token=<token>` instead.
 - A present `Origin` header must be the same origin as `Host`; no CORS headers are ever sent, and `OPTIONS` gets `403`.
 - Ids, album paths and file names are validated: no `..`, no separators in names, no dotfiles.
 
 ## HTTP API
 
-Base: `<base>_mg/admin/api` (with Astro’s default base, `/_mg/admin/api`). Request and response bodies are JSON unless noted. Errors are `{ "error": "<message>" }` with status `400` (bad input, including unknown keys), `403` (refused), `404` (unknown id or route), `405` (known route, other method), `409` (conflict, state given in the body), `413` (body too large) or `500`.
+Base: `<base>admin/api` (with Astro’s default base, `/admin/api`; `/mg/admin/api` in the fallback). Request and response bodies are JSON unless noted. Errors are `{ "error": "<message>" }` with status `400` (bad input, including unknown keys), `403` (refused), `404` (unknown id or route), `405` (known route, other method), `409` (conflict, state given in the body), `413` (body too large) or `500`.
 
 An album id in a path is one URL segment: encode it with `encodeURIComponent` (`japan_2025/kyoto` becomes `japan_2025%2Fkyoto`).
 

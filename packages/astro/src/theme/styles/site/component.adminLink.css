@@ -1,0 +1,14 @@
+/* ADMIN LINK
+
+   The link to the admin in the HUD and the panel header (AdminLink.astro),
+   rendered under astro dev only. Muted like a breadcrumb's context, so it
+   reads as a tool of the preview rather than part of the gallery; where it
+   sits is up to the header that uses it. */
+
+.adminLink {
+  color: var(--mg-ink-muted);
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+}

@@ -6,7 +6,7 @@
  * `astro dev` points at the admin.
  */
 import type { Context, Photo } from '../../gallery.ts';
-import { withBase } from '../../gallery.ts';
+import { adminPage } from '../../admin/token.ts';
 import MessagePage from './MessagePage.astro';
 import Viewer from './Viewer.astro';
 
@@ -18,7 +18,7 @@ interface Props {
   start?: 'view' | 'grid';
 }
 const { photo, context, start } = Astro.props;
-const admin = import.meta.env.DEV && withBase('/_mg/admin/');
+const admin = import.meta.env.DEV && adminPage();
 ---
 
 {photo ? (

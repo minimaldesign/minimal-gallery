@@ -21,6 +21,7 @@ export {
   titleFromFolder,
 } from './slug.ts';
 export * from './facets.ts';
+export { adminPath, ADMIN_PATH, ADMIN_FALLBACK_PATH } from './admin.ts';
 export {
   defineConfig,
   loadConfig,

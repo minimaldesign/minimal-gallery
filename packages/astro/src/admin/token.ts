@@ -10,7 +10,7 @@ export const REGISTRY_KEY = Symbol.for('@minimalgallery/astro/admin');
 export interface AdminInfo {
   /** Sent as `x-mg-admin` on every API call (`?token=` for the event stream). */
   token: string;
-  /** The API base URL, `<base>_mg/admin/api`, without a trailing slash. */
+  /** The API base URL, `<base>admin/api`, without a trailing slash. */
   api: string;
 }
 
@@ -39,4 +39,14 @@ export function getAdminInfo(galleryDir?: string): AdminInfo {
 
 export function getAdminToken(galleryDir?: string): string {
   return getAdminInfo(galleryDir).token;
+}
+
+/**
+ * The admin page's URL (`<base>admin/`), or undefined when the admin is not
+ * running: under `astro build`, or before the dev server has started it.
+ */
+export function adminPage(galleryDir?: string): string | undefined {
+  const root = registryRoot();
+  const entry = root.galleries.get(galleryDir ?? root.current ?? '');
+  return entry?.api.replace(/api$/, '');
 }

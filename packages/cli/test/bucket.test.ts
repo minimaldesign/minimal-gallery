@@ -211,14 +211,19 @@ describe('publish and admin helpers', () => {
   });
 
   it('opens the admin unless asked otherwise', () => {
-    expect(adminDevArgs([])).toEqual(['dev', '--open', '/_mg/admin/']);
+    expect(adminDevArgs([])).toEqual(['dev', '--open', '/admin/']);
     expect(adminDevArgs(['--port', '4421'])).toEqual([
       'dev',
       '--open',
-      '/_mg/admin/',
+      '/admin/',
       '--port',
       '4421',
     ]);
     expect(adminDevArgs(['--open=/'])).toEqual(['dev', '--open=/']);
+    expect(adminDevArgs([], '/mg/admin/')).toEqual([
+      'dev',
+      '--open',
+      '/mg/admin/',
+    ]);
   });
 });

@@ -147,7 +147,7 @@ export async function startServer(
           : JSON.stringify(body);
     return raw(
       method,
-      `/_mg/admin/api${path}`,
+      `/admin/api${path}`,
       {
         'x-mg-admin': api.token,
         ...(payload !== undefined && !Buffer.isBuffer(body)
@@ -205,7 +205,7 @@ function openEvents(port: number, token: string): Promise<EventStream> {
       {
         host: '127.0.0.1',
         port,
-        path: `/_mg/admin/api/events?token=${encodeURIComponent(token)}`,
+        path: `/admin/api/events?token=${encodeURIComponent(token)}`,
         headers: { host: `localhost:${port}` },
       },
       (res) => {

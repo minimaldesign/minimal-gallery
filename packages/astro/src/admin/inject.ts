@@ -6,6 +6,8 @@
 import type { HookParameters } from 'astro';
 import { utimes } from 'node:fs/promises';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { adminPath, ADMIN_PATH } from '@minimalgallery/pipeline/admin';
 import { findConfigFile } from '@minimalgallery/pipeline/config';
 
 type ViteDevServer = HookParameters<'astro:server:setup'>['server'];
@@ -17,8 +19,13 @@ export async function setupAdmin(
   const { command, config, injectRoute, addWatchFile, updateConfig, logger } =
     params;
   if (command !== 'dev') return;
+  const path = adminPath(galleryDir, fileURLToPath(config.root));
+  if (path !== ADMIN_PATH)
+    logger.warn(
+      `An album or a page already uses ${ADMIN_PATH}, so the admin is at ${path}.`
+    );
   injectRoute({
-    pattern: '/_mg/admin',
+    pattern: path.replace(/\/$/, ''),
     entrypoint: new URL('./ui/AdminPage.astro', import.meta.url),
     prerender: false,
   });
@@ -37,6 +44,7 @@ export async function setupAdmin(
       const api = createAdminApi({
         galleryDir,
         base: config.base,
+        path,
         watcher: server.watcher,
         // Touching the watched config restarts through Astro, which runs
         // the integration again; a plain Vite restart would not.
