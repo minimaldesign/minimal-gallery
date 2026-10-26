@@ -183,7 +183,7 @@ Albums come from `_albums.json` (written at the end of each run) plus album fold
 
 `GET /edits/sidecars` → `{ photos }`: how many photos have a `<file>.xmp` that sets a field the admin edits.
 
-`POST /edits/sidecars/embed` → `{ moved, failed: [{ path, message }] }`: writes the fields of every such sidecar into its photo, as a save with `saveEdits: 'photo'` would, and deletes the sidecars left empty. A run is queued.
+`POST /edits/sidecars/embed` → `{ moved, failed: [{ path, message }] }`: writes the fields of every such sidecar into its photo, as a save with `saveEdits: 'photo'` would, and deletes the sidecars left empty. A run is queued. `409` unless the config says `saveEdits: 'photo'`.
 
 - A run is queued; the photo comes back through a `photo` event.
 - `404` when the photo has no manifest (an unknown id, or a photo the pipeline has not processed yet).

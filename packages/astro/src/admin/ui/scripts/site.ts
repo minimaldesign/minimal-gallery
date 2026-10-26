@@ -95,12 +95,7 @@ settingsForm.addEventListener('submit', async (event) => {
     status(settingsForm, 'Nothing to save.');
     return;
   }
-  await save(
-    settingsForm,
-    changes,
-    (saved) =>
-      `Saved. The preview restarts with the new settings${saved.name ? `, as “${saved.name}”` : ''}.`
-  );
+  await save(settingsForm, changes, () => 'Saved.');
 });
 
 cssForm.addEventListener('submit', async (event) => {
@@ -138,12 +133,14 @@ async function save(
 }
 
 /**
- * With edits saved inside the photos, offer to move what the sidecars hold
- * there too, so each value has one place.
+ * With metadata saved inside the photos, offer to move what the sidecars
+ * hold there too, so each value has one place. Only once that choice is
+ * saved, and while the form still shows it.
  */
 async function showSidecarEdits() {
   const box = $<HTMLElement>('[data-sidecar-edits]', settingsForm);
-  if (settings?.saveEdits !== 'photo') {
+  const chosen = (field(settingsForm, 'saveEdits') as RadioNodeList).value;
+  if (settings?.saveEdits !== 'photo' || chosen !== 'photo') {
     box.hidden = true;
     return;
   }
@@ -154,9 +151,17 @@ async function showSidecarEdits() {
     // Not worth an error: the offer comes back on the next visit.
   }
   box.hidden = photos === 0;
-  bound('sidecar-edits', box).textContent =
-    `${count(photos, 'photo has its', 'photos have their')} details in an .xmp file next to it, from before.`;
+  bound('sidecar-edits', box).textContent = count(
+    photos,
+    'photo has its metadata in an .xmp file next to it.',
+    'photos have their metadata in .xmp files next to them.'
+  );
 }
+
+settingsForm.addEventListener('change', (event) => {
+  if ((event.target as HTMLInputElement).name === 'saveEdits')
+    void showSidecarEdits();
+});
 
 $<HTMLButtonElement>(
   '[data-action="embed-sidecars"]',
@@ -172,12 +177,12 @@ $<HTMLButtonElement>(
     status(
       settingsForm,
       failed.length
-        ? `Moved into ${count(moved, 'photo', 'photos')}. Not moved: ${failed.map((f) => `${f.path} (${f.message})`).join(', ')}.`
-        : `Moved into ${count(moved, 'photo', 'photos')}.`
+        ? `Embedded in ${count(moved, 'photo', 'photos')}. Not embedded: ${failed.map((f) => `${f.path} (${f.message})`).join(', ')}.`
+        : `Embedded in ${count(moved, 'photo', 'photos')}.`
     );
     emit('refresh');
   } catch (error) {
-    status(settingsForm, `Not moved: ${(error as Error).message}`);
+    status(settingsForm, `Not embedded: ${(error as Error).message}`);
   } finally {
     button.removeAttribute('aria-busy');
     void showSidecarEdits();

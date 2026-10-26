@@ -504,6 +504,11 @@ export function createAdminApi(options: AdminApiOptions): AdminApi {
       'POST',
       /^\/edits\/sidecars\/embed$/,
       async (_req, res) => {
+        if ((await config).saveEdits !== 'photo')
+          throw new HttpError(
+            409,
+            'Saving metadata inside the photo is off: choose “Inside the photo” in the settings and save first.'
+          );
         const paths = [...(await readManifests(galleryDir)).values()].map(
           (m) => m.original.relativePath
         );

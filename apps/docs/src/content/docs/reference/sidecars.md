@@ -177,7 +177,7 @@ A caption is shown as Markdown wherever it comes from. Other apps show it as pla
 
 ## Saving edits inside the photo
 
-In the admin’s settings, “Save title, caption and other details” chooses where the photo inspector saves. In the config it is `saveEdits`:
+In the admin’s settings, “Where to save title, caption and other metadata”, under Photo metadata, chooses where the photo inspector saves. In the config it is `saveEdits`:
 
 - `'sidecar'` (the default): in `<file>.xmp`. The photo is never changed.
 - `'photo'`: inside the photo file, where other apps see the values too.
@@ -186,7 +186,7 @@ Inside the photo, each field is written to its XMP property and, through ExifToo
 
 Saving a field into the photo removes it from `<file>.xmp` and from the photo’s `photos:` entry in `_album.md`, which both rank above the photo’s own data: a value you save is never hidden by an older copy. Clearing a field removes those copies but never deletes anything from the photo. `hidden` has no standard place in a photo file, so it is always saved in `_album.md`.
 
-When you switch to saving inside the photo, the settings page counts the photos whose `<file>.xmp` still holds fields, and “Move them into the photos” writes those fields into each photo and deletes the sidecars that are left empty.
+Once “Inside the photo” is saved, the settings page counts the photos whose `<file>.xmp` still holds fields, and “Embed metadata into photos” writes those fields into each photo and deletes the sidecars that are left empty.
 
 :::caution[Exporting again replaces them]
 

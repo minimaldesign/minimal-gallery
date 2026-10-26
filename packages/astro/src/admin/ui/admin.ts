@@ -10,6 +10,7 @@
 import {
   $,
   API,
+  ApiError,
   TOKEN,
   api,
   app,
@@ -84,8 +85,14 @@ async function refresh() {
   try {
     app.state = await api<State>('GET', '/state');
   } catch (error) {
+    // No answer at all: the dev server is restarting (a settings edit causes
+    // one). The event stream refreshes again when it reconnects.
+    if (!(error instanceof ApiError)) {
+      bound('queue').textContent = 'Reconnecting…';
+      return;
+    }
     bound('queue').textContent = 'The admin is not answering.';
-    toast('The gallery could not be read', (error as Error).message);
+    toast('The gallery could not be read', error.message);
     return;
   }
   renderAll();

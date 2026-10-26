@@ -10,7 +10,7 @@
    file's value applies again). A select works the same way with an empty
    first option. entry-check is a checkbox with its label beside it;
    entry-choice is a fieldset holding a .choice group. data-attention marks
-   a field a flag points at. */
+   a field a flag points at. A button in an entry is as wide as its label. */
 
 .entry {
   display: grid;
@@ -19,6 +19,14 @@
   margin: 0;
   padding: 0;
   border: 0;
+
+  > .bt {
+    justify-self: start;
+  }
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .entry_head {

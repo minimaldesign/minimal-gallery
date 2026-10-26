@@ -334,6 +334,11 @@ describe('PUT /photos/:id/overrides', () => {
     expect((await server.call('GET', '/edits/sidecars')).body).toEqual({
       photos: 1,
     });
+    // Embedding is refused until the settings choose the photo.
+    expect((await server.call('POST', '/edits/sidecars/embed')).status).toBe(
+      409
+    );
+    expect(await stat(sidecar)).toBeTruthy();
     await server.call('PUT', '/settings', { saveEdits: 'photo' });
 
     const put = await server.call('PUT', '/photos/colors__red/overrides', {
