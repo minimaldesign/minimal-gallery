@@ -1,6 +1,6 @@
 # minimalgallery
 
-A static photo gallery toolkit for photographers: drop JPGs into folders, get a fast, EXIF-organized gallery on free hosting. It’s an Astro integration plus a local processing pipeline. The 2005 PHP original is kept in `legacy/`.
+A free, open-source photo gallery toolkit for photo enthusiasts: drop photos into folders, get a fast, EXIF-organized gallery, published to free hosting in one command. It’s an Astro integration plus a local processing pipeline. The 2005 PHP original is kept in `legacy/`.
 
 ## Get started
 
