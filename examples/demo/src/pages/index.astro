@@ -2,6 +2,7 @@
 // Home: all photos, opened on the viewer with the newest photo.
 import ViewerPage from '@minimalgallery/astro/theme/ViewerPage.astro';
 import LegacyRedirect from '@minimalgallery/astro/theme/LegacyRedirect.astro';
+import Plausible from '../components/Plausible.astro';
 import { ARCHIVE_ID, getContext } from '@minimalgallery/astro/gallery';
 
 const context = (await getContext(ARCHIVE_ID))!;
@@ -9,4 +10,5 @@ const context = (await getContext(ARCHIVE_ID))!;
 
 <ViewerPage photo={context.photos[0]} context={context}>
   <LegacyRedirect slot="head" />
+  <Plausible slot="head" />
 </ViewerPage>
