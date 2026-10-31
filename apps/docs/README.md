@@ -19,7 +19,7 @@ Nothing needs `pnpm build` first: the theme CSS is read from `packages/astro/src
 | `src/pages/versions.astro` | The version history, from the changesets changelogs (`src/lib/changelog.ts`). |
 | `src/styles/starlight.css` | Starlight’s custom CSS: the gallery’s tokens, then `site/patch.starlight.css`, which maps Starlight onto them. |
 | `src/styles/site/theme.docs.css` | What the product site adds to the gallery’s theme, shared by both. |
-| `src/components/starlight/` | Starlight overrides: the fonts in the head, and no light theme. |
+| `src/components/starlight/` | Starlight overrides: the fonts and Plausible in the head, and no light theme. |
 | `wrangler.jsonc` | The Cloudflare Worker that serves `dist/` at docs.minimalgallery.net. |
 
 ## Styles
