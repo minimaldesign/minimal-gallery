@@ -1,13 +1,16 @@
 ---
 /**
  * Starlight’s head, plus the self-hosted Geist files (Astro’s Fonts API,
- * registered in astro.config.mjs), with the text face preloaded.
+ * registered in astro.config.mjs), with the text face preloaded, and
+ * Plausible.
  */
 import Default from '@astrojs/starlight/components/Head.astro';
 import { Font } from 'astro:assets';
+import Plausible from '../Plausible.astro';
 ---
 
 <Default />
 <Font cssVariable="--mg-font-text" preload />
 <Font cssVariable="--mg-font-mono" />
 <meta name="theme-color" content="#0f0f0f" />
+<Plausible />

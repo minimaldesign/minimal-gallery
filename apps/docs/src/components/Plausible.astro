@@ -1,0 +1,25 @@
+---
+// Plausible Analytics, the same snippet as the gallery: the docs are a
+// subdomain of minimalgallery.net, so their visits land in the same site and
+// the Hostname filter tells them apart. Both scripts are `is:inline` so
+// Astro leaves them as Plausible wrote them. Visits from localhost are
+// ignored by the script, so `astro dev` and `astro preview` add nothing.
+---
+
+<script
+  is:inline
+  async
+  src="https://analytics.minimaldesign.net/js/pa-pPCqywz4G71dGli1M-bYR.js"></script>
+<script is:inline>
+  window.plausible =
+    window.plausible ||
+    function () {
+      (plausible.q = plausible.q || []).push(arguments);
+    };
+  plausible.init =
+    plausible.init ||
+    function (i) {
+      plausible.o = i || {};
+    };
+  plausible.init();
+</script>
