@@ -3,6 +3,7 @@
 // opened on its photos, with the viewer above on the context's first photo.
 import type { GetStaticPaths } from 'astro';
 import ViewerPage from '@minimalgallery/astro/theme/ViewerPage.astro';
+import Plausible from '../../components/Plausible.astro';
 import {
   ARCHIVE_ID,
   getContexts,
@@ -24,4 +25,6 @@ export const getStaticPaths = (async () => {
 const { context } = Astro.props as { context: Context };
 ---
 
-<ViewerPage photo={context.photos[0]} context={context} start="grid" />
+<ViewerPage photo={context.photos[0]} context={context} start="grid">
+  <Plausible slot="head" />
+</ViewerPage>

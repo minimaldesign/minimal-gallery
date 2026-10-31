@@ -1,0 +1,26 @@
+---
+// Plausible Analytics (the site added to analytics.minimaldesign.net). Both
+// scripts are `is:inline` so Astro leaves them as Plausible wrote them. The
+// loader is async, so it never holds up a step between photos, and Plausible
+// counts the steps itself: its script records a pageview on every pushState.
+// Visits from localhost are ignored by the script, so `astro dev` and
+// `astro preview` add nothing to the numbers.
+---
+
+<script
+  is:inline
+  async
+  src="https://analytics.minimaldesign.net/js/pa-pPCqywz4G71dGli1M-bYR.js"></script>
+<script is:inline>
+  window.plausible =
+    window.plausible ||
+    function () {
+      (plausible.q = plausible.q || []).push(arguments);
+    };
+  plausible.init =
+    plausible.init ||
+    function (i) {
+      plausible.o = i || {};
+    };
+  plausible.init();
+</script>

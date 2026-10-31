@@ -3,6 +3,7 @@
 // switches the context in the browser.
 import type { GetStaticPaths } from 'astro';
 import ViewerPage from '@minimalgallery/astro/theme/ViewerPage.astro';
+import Plausible from '../../components/Plausible.astro';
 import {
   albumContextOf,
   getPhotos,
@@ -26,4 +27,6 @@ export const getStaticPaths = (async () =>
 const { photo, context } = Astro.props as { photo: Photo; context: Context };
 ---
 
-<ViewerPage photo={photo} context={context} />
+<ViewerPage photo={photo} context={context}>
+  <Plausible slot="head" />
+</ViewerPage>
