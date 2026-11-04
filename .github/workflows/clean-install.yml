@@ -1,0 +1,46 @@
+# Installs the packages the way a new user gets them, before they reach npm:
+# scripts/clean-install.mjs publishes them to a throwaway Verdaccio registry,
+# runs `npm create minimalgallery@latest` with an empty home folder and cache,
+# adds three photos (one HEIC), and runs publish --build, doctor and wrangler’s
+# dry run. GitHub’s runners are close to a new computer: no ExifTool, no cjxl.
+#
+# Runs on pull requests that change the packages, by hand, and from
+# release.yml before anything is published.
+
+name: Clean install
+
+on:
+  pull_request:
+    paths:
+      - 'packages/**'
+      - 'pnpm-lock.yaml'
+      - 'scripts/clean-install.mjs'
+      - '.github/workflows/clean-install.yml'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-install:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-latest, pm: npm, host: cloudflare }
+          - { os: ubuntu-latest, pm: npm, host: cloudflare }
+          - { os: ubuntu-latest, pm: pnpm, host: local }
+    name: ${{ matrix.os }}, ${{ matrix.pm }}, ${{ matrix.host }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      # The pnpm version comes from packageManager in package.json.
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node scripts/clean-install.mjs --pm ${{ matrix.pm }} --host ${{ matrix.host }}

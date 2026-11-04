@@ -35,8 +35,13 @@ permissions:
   id-token: write
 
 jobs:
-  release:
+  # Nothing is published unless the packages install on a clean computer.
+  clean-install:
     if: vars.RELEASES_ENABLED == 'true'
+    uses: ./.github/workflows/clean-install.yml
+
+  release:
+    needs: clean-install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
