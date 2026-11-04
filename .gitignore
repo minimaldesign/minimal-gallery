@@ -8,3 +8,4 @@ dist
 !.env.example
 .minimalgallery/cache
 examples/map-test/
+examples/fullres/
