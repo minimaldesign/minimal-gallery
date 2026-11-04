@@ -11,6 +11,7 @@
 //   node bench/phone.mjs [--url http://localhost:4421] [--devices iphone,pixel]
 
 import { chromium, devices, webkit } from 'playwright';
+import { siteOnly } from './third-party.mjs';
 import { parseArgs } from 'node:util';
 
 const { values: opt } = parseArgs({
@@ -36,7 +37,7 @@ const json = async (path) => (await fetch(opt.url + path)).json();
 
 async function run(key) {
   const [engine, profile] = DEVICES[key];
-  const browser = await engine.launch();
+  const browser = siteOnly(await engine.launch(), opt.url);
   const context = await browser.newContext({ ...devices[profile] });
   const page = await context.newPage();
   const ok = (name, cond, detail) => check(profile, name, cond, detail);
