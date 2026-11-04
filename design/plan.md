@@ -100,23 +100,40 @@ Context model (decided in the round 3 design review, 2026-10-22): a context is t
 
 ### Derivative ladder and budgets
 
-| Variant | Long edge | Format | Typical bytes (24 MP source) |
+| Variant | Long edge | Format | Measured mean (max), 20 full-resolution photos |
 | --- | --- | --- | --- |
-| `grid` | 640 | AVIF | 40 KB |
-| `w1280` | 1280 | AVIF | 120 KB |
-| `w2048` | 2048 | AVIF | 300 KB |
-| `w3200` (pro / zoom) | 3200 | AVIF 4:4:4 | 700 KB |
-| `jpeg1600` (fallback, og:image) | 1600 | JPEG q80 | 350 KB |
+| `grid` | 640 | AVIF q55 | 35 KB (83 KB) |
+| `w1280` | 1280 | AVIF q55 | 113 KB (269 KB) |
+| `w2048` | 2048 | AVIF q55 | 240 KB (517 KB) |
+| `w3200` (pro / zoom) | 3200 | AVIF q60 4:4:4 | 576 KB (935 KB) |
+| `jpeg1600` (fallback, og:image) | 1600 | JPEG q80 (mozjpeg) | 291 KB (701 KB) |
 
-About 5 files and 1.5 MB per photo. Thumbs are the full photo at `grid` size, never cropped (the v0.8 “artsy” detail crop is dropped; it contradicts showing full photos). Colour: convert to sRGB with ICC embedded (the demo set is Adobe RGB, so this is mandatory), P3 opt-in. Keys are content-addressed (`<hash8>-<variant>`): immutable, cached forever.
+Measured 2026-11-04 (#5) on 20 photos from Yann’s archive, 4.1 MB mean source: Pixel 6 and iPhone 12 MP JPEGs (sRGB and Display P3), a Nikon D7000 (16 MP) and a Leica D-LUX 4. About 4.9 files and 1.23 MB per photo (`w3200` is skipped for the two sources under 3200 px). Thumbs are the full photo at `grid` size, never cropped (the v0.8 “artsy” detail crop is dropped; it contradicts showing full photos). Colour: converted to sRGB with the profile embedded, P3 opt-in; checked against macOS ColorSync on six Display P3 iPhone photos (the four not rotated by EXIF were within about 1 level in 255 on average, unconverted pixels 2 to 3). Keys are content-addressed (`<hash8>-<variant>`): immutable, cached forever.
 
-| Storage mode | Ceiling | Limited by |
+Tuning, the same photos, scored with SSIMULACRA2 (higher is better; one libvips thread, so times are relative):
+
+| Setting                                 | Mean KB | Mean ms | Score |
+| --------------------------------------- | ------- | ------- | ----- |
+| `w2048` AVIF q55, effort 2              | 250     | 510     | 70.5  |
+| `w2048` AVIF q55, effort 3 (the ladder) | 239     | 815     | 70.4  |
+| `w2048` AVIF q55, effort 4              | 233     | 3,578   | 70.8  |
+| `w2048` AVIF q55, effort 6              | 229     | 10,353  | 71.2  |
+| `w3200` AVIF q60 4:4:4 (the ladder)     | 601     | 1,917   | 75.2  |
+| `w3200` AVIF q60 4:2:0                  | 585     | 1,676   | 74.5  |
+| `w3200` AVIF q65 4:2:0                  | 663     | 1,704   | 76.6  |
+| `jpeg1600` q75                          | 247     | 127     | 73.7  |
+| `jpeg1600` q80 (the ladder)             | 290     | 139     | 76.5  |
+| `jpeg1600` q85                          | 342     | 155     | 79.3  |
+| `w4096` AVIF q60 4:4:4                  | 861     | 2,765   | 75.0  |
+
+What the numbers decided: the ladder stays as it is. Effort 4 and above save 2 to 4% for 4 to 13 times the time. At `w3200`, 4:4:4 costs no more than 4:2:0 at the same score (4:2:0 would need about q62, about 610 KB). JPEG q75 saves 15% but the JPEG is only the fallback and the social preview. A `w4096` zoom variant adds 43% over `w3200` for 12 MP sources, so it is not in the default ladder; an owner with high-resolution sources can add one. JPEG XL: see “Decisions added 2026-11-04”. `originals` stays `'none'` by default: an original is 3.4 times all of its derivatives together.
+
+| Storage mode | Ceiling at 1.23 MB and 4.9 files per photo | Limited by |
 | --- | --- | --- |
-| Repo, Cloudflare Pages free | ~3,000 photos by the 20k file cap; ~700 practical | Git repo size (1 GB at 1.5 MB/photo) |
-| R2 bucket, 10 GB free | ~6,500 photos, derivatives only | Bytes |
-| R2 + Pages | ~15,000 photos | 20k files, now HTML only |
+| Site mode, Cloudflare Workers static assets | about 3,400 photos (`doctor`: 20k files, with the context pages) | Files |
+| R2 bucket, 10 GB free | about 8,000 photos, derivatives only | Bytes |
 
-`doctor` projects both numbers and recommends bucket mode above about 500 photos.
+`doctor` reports the file headroom from the gallery’s own counts and says when to add photo storage.
 
 ### Storage adapter
 
@@ -233,6 +250,15 @@ Decision: A ships in Phase 3. B is not implemented now; during Phase 1 setup the
 - Photo sidecars are XMP, not markdown (decided by Yann). The admin writes `<file>.xmp` (`DSC_0412.jpg.xmp`) with ExifTool (`exiftool-vendored`), holding only the edited fields; `<name>.md` and `<name>.json` photo sidecars are no longer read. `<name>.xmp` from another app is still read, below the album map. `hidden` and the album order have no standard tag and live in `_album.md`.
 - Edits can be saved inside the photo (decided by Yann; the earlier “originals are never modified” rule was a planning default, not a requirement). `saveEdits: 'sidecar' | 'photo'` in the config, a choice in the admin’s settings. In photo mode a save writes XMP plus the EXIF and IPTC copies (MWG), then removes the field from `<file>.xmp` and the album entry, so a saved value is never hidden by an older copy; the precedence order stays fixed. Switching offers to move the existing sidecars into the photos.
 - Derivatives are reused by an image data hash (`pixelsHash`: a JPEG or PNG without its metadata segments, plus the EXIF orientation), so metadata written into a file does not re-encode it. Other formats hash whole.
+
+## Decisions added 2026-11-04 (Phase 4)
+
+- Hosting is Cloudflare or the owner’s own host (the `hosting-simplified` changeset); GitHub Pages and Netlify are no longer part of Phase 4.
+- The first npm release is `2.0.0`, with no beta published first (decided by Yann). Changesets leaves pre mode (`changeset pre exit`) just before it.
+- Every release is tested from packed packages on a clean install first: `scripts/clean-install.mjs` publishes them to a throwaway Verdaccio registry and scaffolds a gallery with an empty home folder, cache and PATH. The Clean install workflow runs it on macOS and Ubuntu for pull requests that touch `packages/`, and `release.yml` runs it before publishing.
+- The map page uses OpenFreeMap’s vector tiles (no key, no limits, OpenMapTiles schema), chosen by Yann over Protomaps, OpenStreetMap’s raster tiles and keyed providers. It depends on one maintainer, so the tiles and fonts are config values (`map.tiles`, `map.glyphs`), and `design/map-tiles.md` says how to switch. The basemap style is built in `map.js` from `--mg-map-*` tokens; the photos are DOM thumbnails over GeoJSON clusters.
+- HDR gain maps (issue #27) and download original (issue #29) are out of 2.0.0, parked as enhancements.
+- JPEG XL output is not built: measured, it is larger than AVIF at the gallery’s quality. 14 full-resolution photos (Pixel 6, iPhone XS Max, Nikon D7000, Leica D-LUX 4) resized to 2048 px; each AVIF made as the pipeline makes `w2048` (q55, effort 3, 4:2:0), then `cjxl` 0.11.2 at effort 7 with its distance searched until the SSIMULACRA2 score matched the AVIF’s (scores 67 to 77). JXL was 1.08 times the AVIF bytes in total (3,635 KB against 3,363 KB; per photo from 0.96 to 1.31) and took about twice as long to encode (about 420 ms against 230 ms). JXL’s advantage is at high fidelity, which the ladder does not use, and only Safari would get it. Sharp has no JXL encoder either, so it would also add `cjxl` as a dependency. Revisit if the ladder moves to high-fidelity settings.
 
 ## Hosting
 
