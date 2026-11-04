@@ -232,7 +232,9 @@ if (!linked && points.length) {
   map.fitBounds(bounds, { padding: 80, maxZoom: 13, animate: false });
 }
 
-map.on('load', () => {
+// on the style, not on 'load': 'load' waits for the basemap's tiles, and
+// the photos must show even when the tile server is slow or down
+map.once('style.load', () => {
   map.addSource('photos', {
     type: 'geojson',
     data: {
