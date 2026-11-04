@@ -307,12 +307,12 @@ mg-pipeline doctor <gallery folder> [--json report.json]
 | --- | --- |
 | `--prune` | Remove the manifests, resized copies and empty folders of photos deleted from this folder, and interrupted writes. Photos whose originals this folder never had are kept. |
 | `--force` | Encode every photo again. |
-| `--concurrency N` | The number of encoding workers. Default: the number of CPUs or the number of photos to encode, whichever is smaller. |
+| `--concurrency N` | The number of encoding workers. Default: a third of the CPUs, rounded up, or the number of photos to encode, whichever is smaller. |
 | `--threads N` | libvips threads per worker. Default: the number of CPUs divided by the number of workers, at least 1. |
 | `--quiet`, `-q` | Print only the summary. |
 | `--json <file>` | Also write the summary, or the doctor report, to this file as JSON. |
 | `--help`, `-h` | Print the usage. |
 
-With the defaults, a full gallery gets one thread per worker, and a single new photo gets every core.
+With the defaults, a full gallery gets two or three threads per worker, and a single new photo gets every core.
 
 `mg-pipeline` exits 1 when any photo fails, when the number of arguments is wrong, when `--concurrency` or `--threads` is not a whole number of 1 or more, or on any other error. `mg-pipeline doctor` exits 0.
