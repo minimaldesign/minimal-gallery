@@ -236,6 +236,38 @@ export const facetHref = (key: FacetKey, slug: string) =>
 /** The first value of a facet on a photo. */
 export const facetOf = (p: Photo, key: FacetKey) => p.facets[key]?.[0];
 
+// THE MAP
+
+/** A photo on the map page: where, its page, its thumbnail and title. */
+export interface MapPoint {
+  lat: number;
+  lon: number;
+  href: string;
+  src: string;
+  title: string;
+}
+
+/**
+ * The photos with GPS coordinates, newest first, for the map page. Empty
+ * when the config turns the map off, so nothing links to it.
+ */
+export async function getMapPoints(): Promise<MapPoint[]> {
+  if (!config.map) return [];
+  return (await getPhotos()).flatMap((p) =>
+    p.gps
+      ? [
+          {
+            lat: Math.round(p.gps.lat * 1e5) / 1e5,
+            lon: Math.round(p.gps.lon * 1e5) / 1e5,
+            href: withBase(p.url),
+            src: withBase(thumbOf(p).url),
+            title: p.title,
+          },
+        ]
+      : []
+  );
+}
+
 // URLS for feeds, the sitemap and link previews
 
 /**

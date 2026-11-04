@@ -803,6 +803,8 @@ const keys = {
   v: () => $('input[name="view"]:not(:checked)').click(),
   '?': () => $('input[name="keys"]').click(),
   g: toPanel,
+  // the map page, when the gallery has one (the panel header links it)
+  m: () => $('[data-map-link]')?.click(),
 };
 // the viewer's own keys: in the panel, Space scrolls and r does nothing
 const viewing = {

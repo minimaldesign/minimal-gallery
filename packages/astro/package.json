@@ -17,7 +17,8 @@
     "./theme/RandomPage.astro": "./src/theme/layouts/RandomPage.astro",
     "./theme/NotFoundPage.astro": "./src/theme/layouts/NotFoundPage.astro",
     "./theme/components/*": "./src/theme/components/*",
-    "./theme/styles/*": "./src/theme/styles/*"
+    "./theme/styles/*": "./src/theme/styles/*",
+    "./theme/MapPage.astro": "./src/theme/layouts/MapPage.astro"
   },
   "files": [
     "src"
@@ -36,6 +37,8 @@
     "@minimalgallery/pipeline": "workspace:*",
     "exiftool-vendored": "^39.0.1",
     "magicast": "^0.5.5",
+    "maplibre-gl": "^6.16.0",
+    "pmtiles": "^4.5.0",
     "postcss": "^8.5.31",
     "postcss-mixins": "^12.1.2",
     "postcss-preset-env": "^10.6.1",

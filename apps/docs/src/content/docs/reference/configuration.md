@@ -45,6 +45,7 @@ Two programs read the file:
 | `saveEdits` | `'sidecar' \| 'photo'` | `'sidecar'` | admin | Where the admin saves a photo’s title, caption and other details: in `<file>.xmp` next to the photo, or inside the photo file. See [Saving edits inside the photo](/reference/sidecars/#saving-edits-inside-the-photo). |
 | `color` | `'srgb' \| 'p3'` | `'srgb'` | pipeline | Color space of the resized copies. `'p3'` makes them in Display P3, which keeps wide-gamut color. |
 | `defaults` | object | see below | site | Starting values of the viewer’s settings. See [Viewer defaults](#viewer-defaults). |
+| `map` | object or `false` | OpenFreeMap | site | The map page, `/map/`. See [Map](#map). |
 | `albums.sort` | `'date' \| 'name' \| 'manual'` | `'date'` | pipeline | Photo order in albums whose `_album.md` does not set `sort`. See [Sidecars](/reference/sidecars/#_albummd). |
 
 Changing `ladder` or `color` makes new copies of every photo on the next run.
@@ -73,6 +74,26 @@ The `defaults` object sets how the viewer looks on a visitor’s first visit. Vi
 | `defaults.backdrop` | `'neutral' \| 'photo' \| 'light'` | `'neutral'` | The background around the photo: the theme’s neutral background color, a tint of each photo’s own color, or a pale gray. |
 
 When the site is built, each default is written into the matching theme token (`--mg-fit`, `--mg-strip`, `--mg-grid-crop`, `--mg-grid-view`, `--mg-grid-size`, `--mg-backdrop`), so the page is right as soon as it loads. The tokens are listed in [Theme and tokens](/theme/).
+
+### Map
+
+When some photos have GPS coordinates, the gallery has a map page at `/map/`, linked from the Map button in the header of the photo grid (or the `m` key). Each photo is a thumbnail that opens its page; nearby photos are grouped, and a group zooms in when you choose it. Without located photos, the button is not shown.
+
+The map is drawn from [OpenFreeMap](https://openfreemap.org), free OpenStreetMap maps that need no account or key. Its colors come from the theme’s `--mg-map-*` tokens, so `custom.css` can change them.
+
+| Key | Default | Meaning |
+| --- | --- | --- |
+| `map.tiles` | `'https://tiles.openfreemap.org/planet'` | The map’s vector tiles: a TileJSON URL, or `pmtiles://` followed by the URL of a PMTiles file. They must use the OpenMapTiles schema, like OpenFreeMap’s. |
+| `map.glyphs` | `'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf'` | Where the map’s label font (Noto Sans) comes from. |
+
+`map: false` turns the map off: no page content and no button.
+
+```ts title="minimalgallery.config.ts"
+export default defineConfig({
+  // your own copy of the map, in an R2 bucket
+  map: { tiles: 'pmtiles://https://media.example.com/planet.pmtiles' },
+});
+```
 
 ## Astro integration options
 

@@ -267,6 +267,7 @@ function checkSite(gallery) {
       fail(`dist/${path} is missing (${what})`);
   };
   must('index.html', 'the home page');
+  must('map/index.html', 'the map page');
   const manifest = join(gallery, '.minimalgallery', 'manifest');
   // One manifest per photo, plus _albums.json.
   const photos = readdirSync(manifest).filter(

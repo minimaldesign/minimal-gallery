@@ -132,6 +132,19 @@ export default {
     expect(() => resolveConfig({ logo: './logo.png' })).toThrow(/\.svg/);
   });
 
+  it('puts the map on OpenFreeMap unless the config says otherwise', () => {
+    expect(resolveConfig({}).map).toEqual({
+      tiles: 'https://tiles.openfreemap.org/planet',
+      glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
+    });
+    expect(resolveConfig({ map: false }).map).toBe(false);
+    expect(
+      resolveConfig({
+        map: { tiles: 'pmtiles://https://example.com/w.pmtiles' },
+      }).map
+    ).toMatchObject({ tiles: 'pmtiles://https://example.com/w.pmtiles' });
+  });
+
   it('defineConfig returns its input', () => {
     const c = { name: 'x' };
     expect(defineConfig(c)).toBe(c);

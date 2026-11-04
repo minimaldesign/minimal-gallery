@@ -186,6 +186,7 @@ describe('create-minimalgallery', () => {
       'src/pages/sitemap.xml.ts',
       'src/pages/robots.txt.ts',
       'src/pages/random.astro',
+      'src/pages/map.astro',
       'photos/README.md',
       '.gitignore',
       '.env.example',

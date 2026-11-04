@@ -47,6 +47,8 @@ export interface GalleryConfig {
   /** This package's version, shown in the keyboard shortcuts pane. */
   version: string;
   defaults: ViewerDefaults;
+  /** The map page’s tiles and label fonts; null when the config turns it off. */
+  map: { tiles: string; glyphs: string } | null;
 }
 
 /** Which token in theme.mg.tokens.css carries each viewer default. */
@@ -88,6 +90,7 @@ export function themeConfig(
       size: SIZES[d.size],
       backdrop: d.backdrop,
     },
+    map: c.map === false ? null : { ...c.map },
   };
 }
 

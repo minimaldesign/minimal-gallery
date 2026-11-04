@@ -1,0 +1,7 @@
+/* The map page's own CSS, linked from MapPage.astro only: MapLibre's
+   stylesheet, demoted to the external layer so the theme wins, and the
+   patch that dresses its controls in the theme. The page's block
+   (component.mapView.css) is in mg.css with the others. */
+
+@import url('maplibre-gl/dist/maplibre-gl.css') layer(external);
+@import url(./site/patch.maplibre.css);

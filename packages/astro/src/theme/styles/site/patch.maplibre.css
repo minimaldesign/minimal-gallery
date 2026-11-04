@@ -1,0 +1,71 @@
+/* PATCH: MAPLIBRE
+
+   MapLibre's controls (zoom buttons, attribution) in the theme's dark
+   surface instead of their white boxes. Linked from styles/map.css, on
+   the map page only, after MapLibre's own stylesheet. The one file that
+   selects MapLibre's classes. */
+
+.maplibregl-ctrl-group {
+  overflow: hidden;
+  border: var(--border-sm) solid var(--mg-hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--mg-surface-fill-solid);
+  box-shadow: var(--mg-surface-shadow);
+
+  &:not(:empty) {
+    box-shadow: var(--mg-surface-shadow);
+  }
+
+  button {
+    width: var(--lg2);
+    height: var(--lg2);
+
+    & + button {
+      border-top: var(--border-sm) solid var(--mg-hairline);
+    }
+
+    &:not(:disabled):hover {
+      background-color: var(--mg-control-hover);
+    }
+
+    &:focus-visible {
+      box-shadow: inset 0 0 0 var(--border-md) var(--mg-accent);
+    }
+  }
+
+  /* the + and − glyphs are black SVGs: drawn light instead */
+  .maplibregl-ctrl-icon {
+    filter: invert(1);
+    opacity: 0.8;
+  }
+}
+
+.maplibregl-ctrl-bottom-right,
+.maplibregl-ctrl-bottom-left {
+  margin-block-end: var(--mg-safe-bottom);
+}
+
+.maplibregl-ctrl-attrib {
+  background-color: var(--mg-surface-fill-solid);
+  color: var(--mg-ink-muted);
+  font-size: var(--mg-size-small);
+
+  a {
+    color: var(--mg-ink-muted);
+
+    &:hover {
+      color: var(--mg-ink);
+    }
+  }
+
+  &.maplibregl-compact {
+    border-radius: var(--radius-lg);
+  }
+
+  /* the ⓘ button is a black SVG too */
+  .maplibregl-ctrl-attrib-button {
+    background-color: transparent;
+    filter: invert(1);
+    opacity: 0.6;
+  }
+}

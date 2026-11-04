@@ -23,7 +23,7 @@ import {
 } from './facets.ts';
 
 /** Bump when the derivation below changes, so cached entries are rebuilt. */
-export const ADAPTER_VERSION = '4';
+export const ADAPTER_VERSION = '5';
 
 export interface Variant {
   name: string;
@@ -61,6 +61,8 @@ export interface PhotoRecord {
   place: string | null;
   /** Detail shown before the place in the info pane (the sublocation). */
   placeDetail: string | null;
+  /** Where the photo was taken, for the map page; null without GPS. */
+  gps: { lat: number; lon: number } | null;
   keywords: string[];
   width: number;
   height: number;
@@ -149,6 +151,7 @@ export function adaptPhoto(m: PhotoManifest): PhotoRecord {
     iso,
     place,
     placeDetail: place && detail && !place.startsWith(detail) ? detail : null,
+    gps: m.gps ? { lat: m.gps.lat, lon: m.gps.lon } : null,
     keywords: f.keywords.map((k) => k.label),
     width: m.width,
     height: m.height,

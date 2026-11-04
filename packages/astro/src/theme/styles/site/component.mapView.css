@@ -1,0 +1,156 @@
+/* MAP VIEW
+
+   The map page (MapPage.astro, map.js): the map fills the window under a
+   header that repeats the panel header's breadcrumb (home / Map, the
+   count). Photos are small square prints on the map; a group of nearby
+   photos shows its newest one with a count. The basemap's colors are the
+   --mg-map-* tokens in theme.mg.ui.css. */
+
+.mapView {
+  --mapView-photo-size: var(--lg3);
+  --mapView-photo-border: var(--border-md);
+
+  overflow: hidden;
+  height: 100svh;
+}
+
+.mapView_head {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-3);
+  display: flex;
+  align-items: center;
+  min-height: var(--mg-panel-head-height);
+  padding-inline: calc(var(--sm1) + var(--mg-safe-left))
+    calc(var(--sm1) + var(--mg-safe-right));
+  border-width: 0 0 var(--border-sm);
+  font-size: var(--mg-size-hud);
+
+  @media (--md-n-below) {
+    padding-inline: calc(var(--xs3) + var(--mg-safe-left))
+      calc(var(--xs3) + var(--mg-safe-right));
+  }
+}
+
+.mapView_crumbs {
+  display: flex;
+  align-items: baseline;
+  gap: var(--xs2);
+  min-width: 0;
+  white-space: nowrap;
+
+  ol {
+    display: flex;
+    gap: var(--xs2);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: var(--xs2);
+    min-width: 0;
+    color: var(--mg-ink-muted);
+
+    & + li::before {
+      content: '/' / '';
+      color: var(--mg-ink-faint);
+    }
+
+    &:last-child {
+      color: var(--mg-ink);
+      font-weight: var(--mg-weight-medium);
+    }
+  }
+}
+
+.mapView_count {
+  color: var(--mg-ink-muted);
+}
+
+.mapView_canvas {
+  position: fixed;
+  inset: 0;
+  background-color: var(--mg-map-land);
+}
+
+.mapView_note {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  margin: 0;
+  color: var(--mg-ink-muted);
+  font-size: var(--text-sm);
+
+  a {
+    color: var(--mg-ink);
+  }
+}
+
+/* a photo, or a group's newest photo: a square print with a dark edge */
+.mapView_photo {
+  display: block;
+  position: relative;
+  width: var(--mapView-photo-size);
+  height: var(--mapView-photo-size);
+  padding: 0;
+  border: var(--mapView-photo-border) solid var(--mg-ground);
+  border-radius: var(--radius-sm);
+  background-color: var(--mg-surface-fill-solid);
+  box-shadow: var(--mg-surface-shadow);
+  cursor: pointer;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--radius-sm) - var(--mapView-photo-border));
+    object-fit: cover;
+  }
+
+  &:hover,
+  &:focus-visible {
+    z-index: 1;
+    border-color: var(--mg-accent);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+/* a group: a little larger, with a second print peeking out behind it */
+.mapView_photo-group {
+  --mapView-photo-size: var(--xl1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: calc(var(--mapView-photo-border) * -1);
+    z-index: -1;
+    border: inherit;
+    border-radius: inherit;
+    background-color: var(--mg-surface-fill-solid);
+    translate: var(--xs1) calc(var(--xs1) * -1);
+  }
+}
+
+/* the number of photos in a group, on its corner */
+.mapView_groupCount {
+  position: absolute;
+  inset-block-end: calc(var(--xs2) * -1);
+  inset-inline-end: calc(var(--xs2) * -1);
+  min-width: 1.6em;
+  padding: 0 var(--xs1);
+  border-radius: var(--radius-lg);
+  background-color: var(--mg-ground);
+  color: var(--mg-ink);
+  font-size: var(--mg-size-small);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--mg-weight-medium);
+  line-height: 1.6;
+  text-align: center;
+}

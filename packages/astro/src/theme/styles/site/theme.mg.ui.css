@@ -28,6 +28,17 @@
     --mg-control-active: var(--mg-white-a14);
     --mg-scrim: oklch(0 0 0 / 0.35);
 
+    /* MAP: the colors of the map page's basemap (map.js reads them) */
+    --mg-map-water: var(--mg-gray-50);
+    --mg-map-land: var(--mg-ground);
+    --mg-map-park: oklch(0.16 0.01 150);
+    --mg-map-building: var(--mg-gray-200);
+    --mg-map-road: var(--mg-gray-300);
+    --mg-map-road-major: var(--mg-gray-400);
+    --mg-map-boundary: var(--mg-gray-400);
+    --mg-map-label: var(--mg-gray-600);
+    --mg-map-label-halo: var(--mg-ground);
+
     /* LAYOUT */
     --mg-info-inset: var(--lg1);
     --mg-panel-head-height: var(--lg3);

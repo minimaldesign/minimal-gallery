@@ -69,6 +69,14 @@ export const StorageConfig = z.discriminatedUnion('mode', [
 export type StorageConfig = z.infer<typeof StorageConfig>;
 
 /** Starting values of the viewer’s settings; visitors can change them. */
+/**
+ * The map’s default tiles and label fonts: OpenFreeMap, free and without a
+ * key. design/map-tiles.md says what to switch to if it goes away.
+ */
+export const MAP_TILES = 'https://tiles.openfreemap.org/planet';
+export const MAP_GLYPHS =
+  'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf';
+
 export const ViewerDefaults = z.object({
   /** `fill` covers the window and crops the edges; `fit` shows the whole photo. */
   fit: z.enum(['fill', 'fit']).default('fill'),
@@ -121,6 +129,21 @@ export const GalleryConfigSchema = z
     /** Colour space of the derivatives. `p3` keeps wide-gamut colour. */
     color: z.enum(['srgb', 'p3']).default('srgb'),
     defaults: ViewerDefaults.prefault({}),
+    /**
+     * The map page (`/map/`), shown when photos have GPS coordinates.
+     * `false` turns it off. `tiles` is a TileJSON URL or a `pmtiles://`
+     * URL of vector tiles in the OpenMapTiles schema, `glyphs` the font
+     * URL template for its labels; both default to OpenFreeMap.
+     */
+    map: z
+      .union([
+        z.literal(false),
+        z.object({
+          tiles: z.string().default(MAP_TILES),
+          glyphs: z.string().default(MAP_GLYPHS),
+        }),
+      ])
+      .prefault({}),
     albums: z
       .object({
         /** Sort for albums whose `_album.md` does not set one. */
