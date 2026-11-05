@@ -6,11 +6,16 @@
  * photo and a count, and zooms in when chosen. A photo links to its page.
  *
  * Loaded by MapView.astro the first time the view is shown; the theme
- * script (mg.js) sends `show()` the photos with a location and the map
- * area. Moving the map (a drag, a pinch, the buttons, a group) sets the
- * area, which mg.js applies to the grid, the list and the steps. The
- * colors are the `--mg-map-*` tokens, read from the page, so custom.css
+ * script (mg.js) sends `show()` the photos with a location, the map
+ * area and the photo shown. The view opens on that photo (its print, or
+ * the group holding it, is marked), as the grid and the list mark it.
+ * Moving the map (a drag, a pinch, the buttons, a group) sets the area,
+ * which mg.js applies to the grid, the list and the steps. The colors
+ * are the `--mg-map-*` tokens, read from the page, so custom.css
  * restyles the basemap too.
+ *
+ * `locate()` draws the info pane's small map (InfoPane.astro): the same
+ * basemap, still, around a pin where the photo shown was taken.
  *
  * Scrolling (a mouse wheel, two fingers on a trackpad) is left to the
  * page, so it moves between the panel and the viewer as in the other
@@ -289,20 +294,29 @@ function style() {
 
 let map;
 let points = [];
+// the index in `points` of the photo shown, -1 without one
+let current = -1;
 let onArea = () => {};
 const shown = new Map();
+// the zoom around the photo shown: streets in the view, the town on the
+// info pane's small map
+const VIEW_ZOOM = 14;
+const SPOT_ZOOM = 13;
 
 /**
  * Shows the map with these photos (`[{ lat, lon, href, thumb, title }]`,
- * newest first) on the area (`[west, south, east, north]`), or on all of
- * them when there is none.
+ * newest first) on the area (`[west, south, east, north]`), or around
+ * the photo shown (`current`, an index in the photos, -1 without one),
+ * or on all of them.
  */
 export async function show(detail) {
   onArea = detail.onArea;
   const same =
     points.length === detail.points.length &&
-    points.every((p, i) => p.href === detail.points[i].href);
+    points.every((p, i) => p.href === detail.points[i].href) &&
+    current === detail.current;
   points = detail.points;
+  current = detail.current;
   note.hidden = points.length > 0;
   if (!points.length) return;
   if (!map) await mount();
@@ -317,32 +331,61 @@ export async function show(detail) {
 
 function fit(area) {
   if (area) return map.fitBounds(area, { padding: 0, animate: false });
+  const p = points[current];
+  if (p) return map.jumpTo({ center: [p.lon, p.lat], zoom: VIEW_ZOOM });
   const bounds = new LngLatBounds();
-  for (const p of points) bounds.extend([p.lon, p.lat]);
+  for (const q of points) bounds.extend([q.lon, q.lat]);
   map.fitBounds(bounds, { padding: 80, maxZoom: 13, animate: false });
 }
 
+// `cur` is the photo's index when it is the one shown, else -1: a group
+// keeps the largest, so it knows whether it holds the photo shown
 const features = () => ({
   type: 'FeatureCollection',
   features: points.map((p, i) => ({
     type: 'Feature',
     geometry: { type: 'Point', coordinates: [p.lon, p.lat] },
-    properties: { i },
+    properties: { i, cur: i === current ? i : -1 },
   })),
 });
 
+// MapLibre's stylesheet, the pmtiles protocol and the worker, once, for
+// both maps
+let ready;
+function prepare() {
+  return (ready ??= (async () => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = cssUrl;
+    const loaded = new Promise((r) => (link.onload = link.onerror = r));
+    document.head.append(link);
+    await loaded;
+    if (tiles.startsWith('pmtiles://')) {
+      const { Protocol } = await import('pmtiles');
+      addProtocol('pmtiles', new Protocol().tile);
+    }
+    setWorkerUrl(workerUrl);
+  })());
+}
+
+// the attribution stays folded to its ⓘ until the visitor opens it
+// (MapLibre shows it open until the first drag)
+function attribution(m, container) {
+  m.addControl(new AttributionControl({ compact: true }), 'bottom-left');
+  const fold = () => {
+    const a = container.querySelector(
+      '.maplibregl-ctrl-attrib.maplibregl-compact'
+    );
+    if (!a) return;
+    a.classList.remove('maplibregl-compact-show');
+    a.removeAttribute('open');
+    m.off('data', fold);
+  };
+  m.on('data', fold);
+}
+
 async function mount() {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = cssUrl;
-  const loaded = new Promise((r) => (link.onload = link.onerror = r));
-  document.head.append(link);
-  await loaded;
-  if (tiles.startsWith('pmtiles://')) {
-    const { Protocol } = await import('pmtiles');
-    addProtocol('pmtiles', new Protocol().tile);
-  }
-  setWorkerUrl(workerUrl);
+  await prepare();
   map = new MapLibre({
     container: root,
     style: style(),
@@ -357,17 +400,7 @@ async function mount() {
     fadeDuration: still ? 0 : 300,
   });
   map.touchZoomRotate.disableRotation();
-  map.addControl(new AttributionControl({ compact: true }), 'bottom-left');
-  // the attribution stays folded to its ⓘ until the visitor opens it
-  // (MapLibre shows it open until the first drag)
-  const fold = () => {
-    const a = root.querySelector('.maplibregl-ctrl-attrib.maplibregl-compact');
-    if (!a) return;
-    a.classList.remove('maplibregl-compact-show');
-    a.removeAttribute('open');
-    map.off('data', fold);
-  };
-  map.on('data', fold);
+  attribution(map, root);
   map.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
   // the visitor moved the map (not a fit): that is the area
   // the prints' size follows the zoom (component.mapView.css)
@@ -388,8 +421,12 @@ async function mount() {
       cluster: true,
       clusterRadius: 64,
       clusterMaxZoom: 17,
-      // the newest photo of a group: the list is newest first
-      clusterProperties: { first: ['min', ['get', 'i']] },
+      // the newest photo of a group (the list is newest first), and the
+      // photo shown when the group holds it
+      clusterProperties: {
+        first: ['min', ['get', 'i']],
+        cur: ['max', ['get', 'cur']],
+      },
     });
     // invisible: it makes the source load, the thumbnails are DOM markers
     map.addLayer({
@@ -444,11 +481,14 @@ function place() {
 
 function markerFor(f) {
   const props = f.properties;
-  const p = points[props.cluster ? props.first : props.i];
+  // the photo shown, when this is it or its group holds it
+  const cur = props.cur >= 0;
+  const p = points[cur ? props.cur : props.cluster ? props.first : props.i];
   const el = document.createElement(props.cluster ? 'button' : 'a');
   el.className = props.cluster
     ? 'mapView_photo mapView_photo-group'
     : 'mapView_photo';
+  if (cur) el.setAttribute('aria-current', props.cluster ? 'true' : 'page');
   const img = document.createElement('img');
   img.src = p.thumb;
   img.alt = '';
@@ -457,7 +497,10 @@ function markerFor(f) {
   if (props.cluster) {
     const n = props.point_count;
     el.type = 'button';
-    el.setAttribute('aria-label', `${n} photos here; zoom in`);
+    el.setAttribute(
+      'aria-label',
+      `${n} photos here${cur ? ', this one among them' : ''}; zoom in`
+    );
     const count = document.createElement('span');
     count.className = 'mapView_groupCount';
     count.textContent = n;
@@ -477,4 +520,40 @@ function markerFor(f) {
     el.title = p.title;
   }
   return new Marker({ element: el }).setLngLat(f.geometry.coordinates);
+}
+
+// THE INFO PANE'S MAP: a still map around a pin where the photo shown
+// was taken (`{ lat, lon }`), in `.info_map`, whose link opens the map
+// view on the photo (mg.js). Mounted the first time the pane shows a
+// located photo (`spot` is its promise, so two quick steps mount one
+// map); a step moves it.
+let spot;
+let pin;
+export async function locate({ lat, lon }) {
+  const el = document.querySelector('.info_map');
+  if (!el) return;
+  const center = [lon, lat];
+  if (!spot) {
+    spot = prepare().then(() => {
+      const m = new MapLibre({
+        container: el,
+        style: style(),
+        center,
+        zoom: SPOT_ZOOM,
+        interactive: false,
+        attributionControl: false,
+        renderWorldCopies: false,
+        fadeDuration: still ? 0 : 300,
+      });
+      attribution(m, el);
+      const dot = document.createElement('span');
+      dot.className = 'info_mapPin';
+      pin = new Marker({ element: dot }).setLngLat(center).addTo(m);
+      return m;
+    });
+  }
+  const m = await spot;
+  m.resize();
+  m.jumpTo({ center, zoom: SPOT_ZOOM });
+  pin.setLngLat(center);
 }

@@ -59,3 +59,52 @@
     margin-block-end: 0;
   }
 }
+
+/* where the photo was taken (InfoPane.astro, map.js): a small still map
+   under the record, when the gallery has a map; hidden for a photo
+   without a location. The whole map is a link to the map view, which
+   opens on the photo. It needs the theme script, which draws it once
+   the pane is open. */
+.info_map {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-block-start: var(--sm1);
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--mg-map-land);
+
+  :root:not([data-script]) &,
+  &[hidden] {
+    display: none;
+  }
+}
+
+/* the link covers the map; MapLibre's attribution (z-index 2) stays
+   above it, so its ⓘ still opens */
+.info_mapLink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--mg-accent);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 var(--border-md) var(--mg-accent);
+  }
+}
+
+/* the pin: a dot in the accent with a ground edge. No position: MapLibre's
+   marker class places it (see component.mapView.css). */
+.info_mapPin {
+  display: block;
+  width: var(--xs3);
+  height: var(--xs3);
+  border: var(--border-md) solid var(--mg-ground);
+  border-radius: 50%;
+  background-color: var(--mg-accent);
+  box-shadow: var(--mg-surface-shadow);
+}

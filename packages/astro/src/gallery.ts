@@ -247,7 +247,7 @@ export async function hasMap(): Promise<boolean> {
 }
 
 /** A photo's place on the map, `[lat, lon]` to about a meter. */
-const gpsOf = (p: Photo): [number, number] | undefined =>
+export const gpsOf = (p: Photo): [number, number] | undefined =>
   config.map && p.gps
     ? [Math.round(p.gps.lat * 1e5) / 1e5, Math.round(p.gps.lon * 1e5) / 1e5]
     : undefined;

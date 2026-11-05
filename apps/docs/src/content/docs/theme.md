@@ -40,6 +40,7 @@ Every page is plain HTML and CSS, and works with JavaScript turned off: the phot
 - the filmstrip, and the list view on the home and photo pages, which are built from the context’s data;
 - typing to narrow the filter palette, sorting the list, and dragging the panes;
 - remembering each visitor’s settings;
+- the map view, and a small map at the end of the information pane showing where the photo was taken;
 - keeping previous and next inside the context a photo was opened from. Without the script, a photo page stays in its album.
 
 ## Tokens you can change
@@ -176,7 +177,7 @@ When no token covers a change, write rules against the theme’s classes in `cus
 | Rail | `.rail` | The year rail beside the grid. |
 | Chip | `.chip` | A value in the filter palette. |
 | Pane | `.pane` | The draggable panes. |
-| Information | `.info` | The contents of the information pane. |
+| Information | `.info` | The contents of the information pane, with the photo’s place on a small map at the end (`.info_map`, when photos have a location). |
 | Palette | `.palette` | The filter dialog. |
 | Keys | `.keys` | The contents of the shortcuts pane. |
 | Ledger | `.ledger` | The list view, a sortable table. |
@@ -248,7 +249,7 @@ With a mouse, a click on the right part of the photo goes to the next one, and a
 | `m` | Map view, and back (when photos have a location) |
 | `/` | Filter |
 
-The current photo is selected when the panel opens. In the map view, the arrows move the map and `+` and `-` zoom it.
+The current photo is selected when the panel opens. The map view opens around the current photo, with its thumbnail outlined; in it, the arrows move the map and `+` and `-` zoom it. The small map in the information pane is a link to the map view.
 
 ### Filter
 

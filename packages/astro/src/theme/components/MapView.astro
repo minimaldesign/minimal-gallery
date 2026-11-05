@@ -25,11 +25,19 @@ const map = config.map;
 )}
 
 {map && <script>
-  // mg.js keeps the latest request in self.mgMapWant too, so one sent
-  // before this module ran is not lost
-  const want = (detail: unknown) =>
-    import('../scripts/map.js').then((m) => m.show(detail));
-  document.addEventListener('mg-map', (e) => want((e as CustomEvent).detail));
-  const early = (self as { mgMapWant?: unknown }).mgMapWant;
-  if (early) want(early);
+  // the map view (mg-map) and the info pane's map (mg-locate, see
+  // InfoPane.astro) share map.js. mg.js keeps the latest request of each
+  // in self.mgMapWant and self.mgLocateWant too, so one sent before this
+  // module ran is not lost
+  type Want = { mgMapWant?: unknown; mgLocateWant?: unknown };
+  const load = () => import('../scripts/map.js');
+  const show = (detail: unknown) => load().then((m) => m.show(detail));
+  const locate = (detail: unknown) => load().then((m) => m.locate(detail));
+  document.addEventListener('mg-map', (e) => show((e as CustomEvent).detail));
+  document.addEventListener('mg-locate', (e) =>
+    locate((e as CustomEvent).detail)
+  );
+  const early = self as Want;
+  if (early.mgMapWant) show(early.mgMapWant);
+  if (early.mgLocateWant) locate(early.mgLocateWant);
 </script>}
