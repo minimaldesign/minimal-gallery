@@ -29,7 +29,7 @@ export interface ViewerDefaults {
   fit: 'cover' | 'contain';
   strip: 'on' | 'off';
   crop: 'square' | 'original';
-  view: 'grid' | 'list';
+  view: 'grid' | 'list' | 'map';
   size: 'small' | 'medium' | 'large';
   backdrop: 'neutral' | 'photo' | 'light';
 }

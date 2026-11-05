@@ -4,7 +4,8 @@
  * (stage) on top and, below it, the panel with the context's photos as a
  * grid and as a list. Home and photo pages open on the viewer; album and
  * facet pages open on the panel (`start="grid"`). A photo page carries its album; `?in=` makes the
- * theme script swap in another context from its JSON. The grid is always
+ * theme script swap in another context from its JSON. When photos have a
+ * location the panel also has a map view (MapView.astro). The grid is always
  * in the HTML (its links are the no-script path); the strip and, except on
  * pages that open on the panel, the list rows are built by the theme
  * script from the context JSON when they are shown.
@@ -13,6 +14,7 @@ import config from 'virtual:minimalgallery/config';
 import {
   absolute,
   captionText,
+  hasMap,
   neighbors,
   photoHref,
   ratioOf,
@@ -28,6 +30,7 @@ import Credit from '../components/Credit.astro';
 import InfoPane from '../components/InfoPane.astro';
 import KeysPane from '../components/KeysPane.astro';
 import Ledger from '../components/Ledger.astro';
+import MapView from '../components/MapView.astro';
 import Palette from '../components/Palette.astro';
 import PanelHead from '../components/PanelHead.astro';
 import Rail from '../components/Rail.astro';
@@ -46,6 +49,7 @@ const site = config.title;
 const { prev, next } = await neighbors(context.id, photo.id);
 const n = context.photos.length;
 const plural = `${n} photo${n === 1 ? '' : 's'}`;
+const map = await hasMap();
 
 // Chrome prerenders a thumbnail's page on hover (a real page load). The
 // neighbors are not prerendered: with script a step stays in the page, so
@@ -97,7 +101,8 @@ const og = url && {
   description={description}
   class="viewer"
   style={style}
-  start={start}>
+  start={start}
+  map={map}>
   <Fragment slot="head">
     {canonical && <link rel="canonical" href={canonical} />}
     {
@@ -183,6 +188,7 @@ const og = url && {
         <div class="table_photos">
           <Thumbs context={context} current={photo} />
           <Ledger context={context} current={photo} rows={start === 'grid'} />
+          {map && <MapView />}
           <Credit class="table_credit" />
         </div>
         <Rail context={context} />

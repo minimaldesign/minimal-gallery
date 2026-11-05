@@ -1,10 +1,10 @@
 # Map tiles: OpenFreeMap, the risk, and how to switch
 
-Internal note, written 2026-11-04 when the map page (`/map/`) was built. The code: `packages/astro/src/theme/layouts/MapPage.astro`, `packages/astro/src/theme/scripts/map.js`, and the `map` key in `packages/pipeline/src/config.ts`.
+Internal note, written 2026-11-04 when the map was built (now the panel’s map view). The code: `packages/astro/src/theme/components/MapView.astro`, `packages/astro/src/theme/scripts/map.js`, and the `map` key in `packages/pipeline/src/config.ts`.
 
 ## What the map depends on
 
-The map page draws a basemap with MapLibre from two things fetched by the visitor’s browser:
+The map view draws a basemap with MapLibre from two things fetched by the visitor’s browser:
 
 | What | Default | Config key |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ As checked on 2026-11-04 (GitHub `hyperknot/openfreemap`): the repository dates 
 
 ## How to tell it is down
 
-- The map page shows the thumbnails over a plain background color, with no land, roads or labels.
+- The map view shows the thumbnails over a plain background color, with no land, roads or labels.
 - `curl -s https://tiles.openfreemap.org/planet` does not return TileJSON.
 - Its status and announcements: https://openfreemap.org and the GitHub repository.
 

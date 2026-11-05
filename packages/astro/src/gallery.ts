@@ -238,35 +238,19 @@ export const facetOf = (p: Photo, key: FacetKey) => p.facets[key]?.[0];
 
 // THE MAP
 
-/** A photo on the map page: where, its page, its thumbnail and title. */
-export interface MapPoint {
-  lat: number;
-  lon: number;
-  href: string;
-  src: string;
-  title: string;
+/**
+ * Whether the panel has a map view: the config has not turned the map off
+ * and some photos have GPS coordinates.
+ */
+export async function hasMap(): Promise<boolean> {
+  return !!config.map && (await getPhotos()).some((p) => p.gps);
 }
 
-/**
- * The photos with GPS coordinates, newest first, for the map page. Empty
- * when the config turns the map off, so nothing links to it.
- */
-export async function getMapPoints(): Promise<MapPoint[]> {
-  if (!config.map) return [];
-  return (await getPhotos()).flatMap((p) =>
-    p.gps
-      ? [
-          {
-            lat: Math.round(p.gps.lat * 1e5) / 1e5,
-            lon: Math.round(p.gps.lon * 1e5) / 1e5,
-            href: withBase(p.url),
-            src: withBase(thumbOf(p).url),
-            title: p.title,
-          },
-        ]
-      : []
-  );
-}
+/** A photo's place on the map, `[lat, lon]` to about a meter. */
+const gpsOf = (p: Photo): [number, number] | undefined =>
+  config.map && p.gps
+    ? [Math.round(p.gps.lat * 1e5) / 1e5, Math.round(p.gps.lon * 1e5) / 1e5]
+    : undefined;
 
 // URLS for feeds, the sitemap and link previews
 
@@ -559,6 +543,7 @@ export function contextJson(ctx: Context) {
       tip: tipOf(p),
       cells: cellsOf(p),
       sort: p.sortKeys,
+      gps: gpsOf(p),
     })),
   };
 }

@@ -1,99 +1,50 @@
 /* MAP VIEW
 
-   The map page (MapPage.astro, map.js): the map fills the window under a
-   header that repeats the panel header's breadcrumb (home / Map, the
-   count). Photos are small square prints on the map; a group of nearby
-   photos shows its newest one with a count. The basemap's colors are the
-   --mg-map-* tokens in theme.mg.ui.css. */
+   The panel's third view (MapView.astro, map.js): the context's photos
+   with a location on a map that fills the panel under its header, in
+   place of the grid or the list. Photos are small square prints on the
+   map; a group of nearby photos shows its newest one with a count. The
+   basemap's colors are the --mg-map-* tokens in theme.mg.ui.css. */
 
 .mapView {
   --mapView-photo-size: var(--lg3);
   --mapView-photo-border: var(--border-md);
 
+  display: none;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-inline-end: var(--mg-gutter);
   overflow: hidden;
-  height: 100svh;
-}
-
-.mapView_head {
-  position: fixed;
-  inset-block-start: 0;
-  inset-inline: 0;
-  z-index: var(--z-3);
-  display: flex;
-  align-items: center;
-  min-height: var(--mg-panel-head-height);
-  padding-inline: calc(var(--sm1) + var(--mg-safe-left))
-    calc(var(--sm1) + var(--mg-safe-right));
-  border-width: 0 0 var(--border-sm);
-  font-size: var(--mg-size-hud);
-
-  @media (--md-n-below) {
-    padding-inline: calc(var(--xs3) + var(--mg-safe-left))
-      calc(var(--xs3) + var(--mg-safe-right));
-  }
-}
-
-.mapView_crumbs {
-  display: flex;
-  align-items: baseline;
-  gap: var(--xs2);
-  min-width: 0;
-  white-space: nowrap;
-
-  ol {
-    display: flex;
-    gap: var(--xs2);
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    display: flex;
-    gap: var(--xs2);
-    min-width: 0;
-    color: var(--mg-ink-muted);
-
-    & + li::before {
-      content: '/' / '';
-      color: var(--mg-ink-faint);
-    }
-
-    &:last-child {
-      color: var(--mg-ink);
-      font-weight: var(--mg-weight-medium);
-    }
-  }
-}
-
-.mapView_count {
-  color: var(--mg-ink-muted);
-}
-
-.mapView_canvas {
-  position: fixed;
-  inset: 0;
+  border-radius: var(--radius-md);
   background-color: var(--mg-map-land);
+
+  :root[data-map][data-view='map'] & {
+    display: block;
+  }
 }
 
 .mapView_note {
   display: grid;
   place-content: center;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   margin: 0;
   color: var(--mg-ink-muted);
   font-size: var(--text-sm);
 
-  a {
-    color: var(--mg-ink);
+  &[hidden] {
+    display: none;
   }
 }
 
-/* a photo, or a group's newest photo: a square print with a dark edge */
+/* a photo, or a group's newest photo: a square print with a dark edge.
+   No position here: MapLibre's marker class places it (absolute, with a
+   transform), and an unlayered position would put every marker back in
+   the flow, each pushed down by the ones before it. */
 .mapView_photo {
   display: block;
-  position: relative;
   width: var(--mapView-photo-size);
   height: var(--mapView-photo-size);
   padding: 0;

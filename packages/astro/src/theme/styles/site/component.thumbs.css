@@ -20,6 +20,7 @@
 
   :root:is(
       [data-view='list'],
+      [data-map][data-view='map'],
       :not([data-view]):has(input[name='view'][value='list']:checked)
     )
     & {

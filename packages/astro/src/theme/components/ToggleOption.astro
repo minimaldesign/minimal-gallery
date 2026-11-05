@@ -22,12 +22,25 @@ interface Props {
   id?: string;
   /** Accessible name when it differs from the label. */
   aria?: string;
+  /** A class of the block that uses it, mixed onto the label. */
+  class?: string;
 }
-const { type, name, value, label, icon, checked, shortcut, off, id, aria } =
-  Astro.props;
+const {
+  type,
+  name,
+  value,
+  label,
+  icon,
+  checked,
+  shortcut,
+  off,
+  id,
+  aria,
+  class: mixed,
+} = Astro.props;
 ---
 
-<label class="toggle_option">
+<label class:list={['toggle_option', mixed]}>
   <input
     class="a11y-srOnly"
     type={type}

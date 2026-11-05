@@ -79,7 +79,7 @@ The theme’s other custom properties (the grays, the text and surface colors, s
 | Token | Label | Syntax | Default | Note |
 | --- | --- | --- | --- | --- |
 | `--mg-grid-crop` | Grid thumbnails | `square \| original` | `square`, from `defaults.crop` | Square crops or each photo’s own shape. Visitors can switch; this is the default. |
-| `--mg-grid-view` | Photos view | `grid \| list` | `grid`, from `defaults.view` | A grid of thumbnails or a list with every value. Visitors can switch; this is the default. |
+| `--mg-grid-view` | Photos view | `grid \| list \| map` | `grid`, from `defaults.view` | A grid of thumbnails, a list with every value, or a map (when photos have a location). Visitors can switch; this is the default. |
 | `--mg-grid-size` | Thumbnail size step | `small \| medium \| large` | `medium`, from `defaults.size` | Small, medium or large thumbnails. Visitors can switch; this is the default. |
 | `--mg-row-height` | Thumbnail size | `<length>` | `180px`, `112px` below 768px wide | The medium step, as a square’s side or a row’s height. |
 | `--mg-grid-gap` | Grid gap | `<length>` | `3px` | Space between thumbnails. |
@@ -99,7 +99,7 @@ Six tokens take their default from `defaults` in `minimalgallery.config.ts`. Whe
 | `defaults.fit` | `'fill'`, `'fit'` | `--mg-fit` | `cover`, `contain` |
 | `defaults.strip` | `false`, `true` | `--mg-strip` | `off`, `on` |
 | `defaults.crop` | `'square'`, `'original'` | `--mg-grid-crop` | `square`, `original` |
-| `defaults.view` | `'grid'`, `'list'` | `--mg-grid-view` | `grid`, `list` |
+| `defaults.view` | `'grid'`, `'list'`, `'map'` | `--mg-grid-view` | `grid`, `list`, `map` |
 | `defaults.size` | `1`, `2`, `3` | `--mg-grid-size` | `small`, `medium`, `large` |
 | `defaults.backdrop` | `'neutral'`, `'photo'`, `'light'` | `--mg-backdrop` | `neutral`, `photo`, `light` |
 
@@ -210,7 +210,7 @@ Visitors can change five settings for themselves. Each choice is saved in their 
 | Fit | Fit photo or Fill window, in the HUD | `f` | `mg-fit` | `defaults.fit`, `--mg-fit` |
 | Filmstrip | Filmstrip, in the HUD | `s` | `mg-strip` | `defaults.strip`, `--mg-strip` |
 | Crop | The crop pair, in the panel header | `t` | `mg-crop` | `defaults.crop`, `--mg-grid-crop` |
-| View | The grid and list pair, in the panel header | `v` | `mg-view` | `defaults.view`, `--mg-grid-view` |
+| View | The grid, list and map views, in the panel header | `v`, `m` | `mg-view` | `defaults.view`, `--mg-grid-view` |
 | Size | The size buttons, in the panel header | `1` `2` `3` | `mg-size` | `defaults.size`, `--mg-grid-size` |
 
 The browser also remembers whether the information and shortcuts panes are open and where they were dragged. Only you can change the backdrop, the colors, the sizes and the timing. Nothing is sent anywhere: a visitor who clears your site’s data starts again from your defaults. Without JavaScript, the fit, crop and size controls (and the grid and list switch, on album and filter pages) still work, but a choice lasts only until the next page.
@@ -245,9 +245,10 @@ With a mouse, a click on the right part of the photo goes to the next one, and a
 | `1` `2` `3` | Thumbnail size |
 | `t` | Square crop or original shape |
 | `v` | Grid or list |
+| `m` | Map view, and back (when photos have a location) |
 | `/` | Filter |
 
-The current photo is selected when the panel opens.
+The current photo is selected when the panel opens. In the map view, the arrows move the map and `+` and `-` zoom it.
 
 ### Filter
 

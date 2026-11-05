@@ -10,9 +10,16 @@
  * strip (the toggle is hidden too).
  *
  * The strip carries the context the theme script works in: its id (the
- * JSON), the `?in=` its links take (none for an album) and the photo shown.
+ * JSON), the version of that JSON (a stored copy from an older build is
+ * fetched again), the `?in=` its links take (none for an album) and the
+ * photo shown.
  */
-import { withBase, type Context, type Photo } from '../../gallery.ts';
+import {
+  contextDigest,
+  withBase,
+  type Context,
+  type Photo,
+} from '../../gallery.ts';
 
 interface Props {
   context: Context;
@@ -20,12 +27,14 @@ interface Props {
 }
 const { context, current } = Astro.props;
 const n = context.photos.length;
+const version = await contextDigest(context);
 ---
 
 <nav
   class="strip surface stage_strip"
   aria-label={`${context.label}, ${n} photo${n === 1 ? '' : 's'}`}
   data-context={context.id}
+  data-version={version}
   data-in={context.kind === 'album' ? undefined : context.id}
   data-photo={withBase(current.url)}>
   <ol class="strip_list"></ol>

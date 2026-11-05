@@ -1,11 +1,9 @@
 ---
 '@minimalgallery/pipeline': minor
 '@minimalgallery/astro': minor
-'create-minimalgallery': minor
 ---
 
-A map of the photos, at `/map/`.
+A map view in the panel, next to the grid and the list.
 
-- `@minimalgallery/astro`: `MapPage.astro` puts every photo with GPS coordinates on a map, as thumbnails that open their pages; nearby photos are grouped, with a count, and a group zooms in when chosen. The map is MapLibre on OpenFreeMap’s vector tiles, drawn in the theme’s `--mg-map-*` colors, and loads only on that page. The header of the photo grid gets a Map button, and `m` opens the map, when some photos have a location. Photos carry `gps` (`{ lat, lon }` or `null`).
-- `@minimalgallery/pipeline`: the config’s `map` key: `tiles` (a TileJSON URL, or `pmtiles://` and a PMTiles file’s URL, in the OpenMapTiles schema) and `glyphs` (the label font URL), both OpenFreeMap by default, or `false` to turn the map off. `MAP_TILES` and `MAP_GLYPHS` export the defaults.
-- `create-minimalgallery`: a new gallery gets `src/pages/map.astro`.
+- `@minimalgallery/astro`: when some photos have GPS coordinates, the panel header gets a Map view (and `m`): the photos of the page (all, an album or a filter) on a map, as thumbnails that open their pages; nearby photos are grouped, with a count, and a group zooms in when chosen. Scrolling over the map moves between the panel and the photo as in the other views; a pinch or ⌘ + scroll zooms. Moving the map narrows the grid, the list, the strip and next and previous to the photos in the area on screen, with “18 of 96 photos” and Show all in the header, until Show all or another filter. The map is MapLibre on OpenFreeMap’s vector tiles, drawn in the theme’s `--mg-map-*` colors, and loads only when the map view first opens. Photos carry `gps` (`{ lat, lon }` or `null`), and the context JSON carries each located photo’s `gps`.
+- `@minimalgallery/pipeline`: the config’s `map` key: `tiles` (a TileJSON URL, or `pmtiles://` and a PMTiles file’s URL, in the OpenMapTiles schema) and `glyphs` (the label font URL), both OpenFreeMap by default, or `false` to turn the map off. `MAP_TILES` and `MAP_GLYPHS` export the defaults. `defaults.view` takes `'map'`.

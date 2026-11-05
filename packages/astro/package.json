@@ -17,8 +17,7 @@
     "./theme/RandomPage.astro": "./src/theme/layouts/RandomPage.astro",
     "./theme/NotFoundPage.astro": "./src/theme/layouts/NotFoundPage.astro",
     "./theme/components/*": "./src/theme/components/*",
-    "./theme/styles/*": "./src/theme/styles/*",
-    "./theme/MapPage.astro": "./src/theme/layouts/MapPage.astro"
+    "./theme/styles/*": "./src/theme/styles/*"
   },
   "files": [
     "src"

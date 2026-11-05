@@ -84,7 +84,8 @@ export const ViewerDefaults = z.object({
   strip: z.boolean().default(false),
   /** Grid thumbnails as squares or in each photo’s own shape. */
   crop: z.enum(['square', 'original']).default('square'),
-  view: z.enum(['grid', 'list']).default('grid'),
+  /** The panel’s view; `map` applies only where photos have a location. */
+  view: z.enum(['grid', 'list', 'map']).default('grid'),
   /** Thumbnail size step: 1 small, 2 medium, 3 large. */
   size: z.union([z.literal(1), z.literal(2), z.literal(3)]).default(2),
   /** `neutral` background colour, `photo` tinted by each photo, `light` pale grey. */
@@ -130,7 +131,7 @@ export const GalleryConfigSchema = z
     color: z.enum(['srgb', 'p3']).default('srgb'),
     defaults: ViewerDefaults.prefault({}),
     /**
-     * The map page (`/map/`), shown when photos have GPS coordinates.
+     * The panel’s map view, shown when photos have GPS coordinates.
      * `false` turns it off. `tiles` is a TileJSON URL or a `pmtiles://`
      * URL of vector tiles in the OpenMapTiles schema, `glyphs` the font
      * URL template for its labels; both default to OpenFreeMap.

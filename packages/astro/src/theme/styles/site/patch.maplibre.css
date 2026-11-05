@@ -1,9 +1,15 @@
 /* PATCH: MAPLIBRE
 
    MapLibre's controls (zoom buttons, attribution) in the theme's dark
-   surface instead of their white boxes. Linked from styles/map.css, on
-   the map page only, after MapLibre's own stylesheet. The one file that
-   selects MapLibre's classes. */
+   surface instead of their white boxes. Linked from styles/map.css, which
+   map.js imports when the map view first opens, after MapLibre's own
+   stylesheet. The one file that selects MapLibre's classes. */
+
+/* scrolling over the map moves the page (cooperative gestures, map.js),
+   as in the other views: no “use ⌘ + scroll to zoom” notice over it */
+.maplibregl-cooperative-gesture-screen {
+  display: none;
+}
 
 .maplibregl-ctrl-group {
   overflow: hidden;

@@ -4,8 +4,8 @@
    between exactly two states (y mandatory, theme): the viewer and this
    panel, which is exactly one window tall. Inside it an inner scroller
    whose first child is the panel header (breadcrumb, count, toggles,
-   Filter), stuck at its top, then the photos (grid or ledger) with the
-   date rail. The HUD sits between the viewer and the panel (viewer_hud),
+   Filter), stuck at its top, then the photos (grid, ledger or map) with
+   the date rail (grid only). The HUD sits between the viewer and the panel (viewer_hud),
    so the rising panel covers it. Context pages open here (table-start,
    plus #grid on every link). */
 
@@ -136,9 +136,38 @@
   color: var(--mg-ink-muted);
 }
 
-/* the grid/list pair where the list rows are built by the theme script:
-   hidden without it (the grid stands in for the list) */
+/* Show all, after the count while a map area narrows the photos (the
+   theme script shows it) */
+.table_all {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mg-ink);
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--mg-ink-faint);
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+/* the views where the list rows are built by the theme script: hidden
+   without it (the grid stands in for the list) */
 .table_view-script {
+  :root:not([data-script]) & {
+    display: none;
+  }
+}
+
+/* the map view needs the theme script on every page */
+.table_viewMap {
   :root:not([data-script]) & {
     display: none;
   }
@@ -148,6 +177,7 @@
 .table_gridOnly {
   :root:is(
       [data-view='list'],
+      [data-map][data-view='map'],
       :not([data-view]):has(input[name='view'][value='list']:checked)
     )
     & {
@@ -198,6 +228,7 @@
 
   :root:is(
       [data-view='list'],
+      [data-map][data-view='map'],
       :not([data-view]):has(input[name='view'][value='list']:checked)
     )
     & {
@@ -218,9 +249,13 @@
 }
 
 /* the credit, centered under the last row of the grid or the list, or at
-   the bottom of the panel */
+   the bottom of the panel; the map fills the panel instead */
 .table_credit {
   margin-block-start: auto;
   padding-block-start: var(--md1);
   text-align: center;
+
+  :root[data-map][data-view='map'] & {
+    display: none;
+  }
 }
