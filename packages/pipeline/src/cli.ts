@@ -12,7 +12,7 @@ const USAGE = `Usage:
 Processing reads minimalgallery.config.ts in <galleryDir> when present.
   --prune         remove manifests, derivatives and empty folders of deleted photos
   --force         re-encode every photo
-  --concurrency   encoding workers (default: min(CPUs, photos to encode))
+  --concurrency   encoding workers (default: min(ceil(CPUs / 3), photos to encode))
   --threads       libvips threads per worker (default: max(1, CPUs / workers))
   --quiet         print only the summary
   --json          also write the summary or report as JSON`;

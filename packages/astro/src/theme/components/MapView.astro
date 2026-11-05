@@ -1,0 +1,35 @@
+---
+/**
+ * The panel's map view: the context's photos with GPS coordinates on a
+ * map, when the gallery has a map (PanelHead shows the Map option then).
+ * Empty in the HTML: the theme script (mg.js) sends the photos and the
+ * map area in an `mg-map` event, and the script below loads MapLibre and
+ * map.js the first time the view is shown, so no other page pays for it.
+ */
+import config from 'virtual:minimalgallery/config';
+
+const map = config.map;
+---
+
+{map && (
+  <div
+    class="mapView"
+    role="region"
+    aria-label="Map of these photos"
+    data-tiles={map.tiles}
+    data-glyphs={map.glyphs}>
+    <p class="mapView_note" hidden>
+      None of these photos has a location.
+    </p>
+  </div>
+)}
+
+{map && <script>
+  // mg.js keeps the latest request in self.mgMapWant too, so one sent
+  // before this module ran is not lost
+  const want = (detail: unknown) =>
+    import('../scripts/map.js').then((m) => m.show(detail));
+  document.addEventListener('mg-map', (e) => want((e as CustomEvent).detail));
+  const early = (self as { mgMapWant?: unknown }).mgMapWant;
+  if (early) want(early);
+</script>}

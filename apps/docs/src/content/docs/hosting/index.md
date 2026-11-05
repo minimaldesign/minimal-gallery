@@ -18,7 +18,7 @@ This is the default. See [Cloudflare](/hosting/cloudflare/).
 
 - For more than [about 3,000 photos](#how-many-photos-fit).
 - The resized photos go to a separate photo storage space on Cloudflare (R2), served from an address of yours such as `media.example.com`. The site itself holds only the pages, so it stays far below Cloudflare’s limits.
-- Free for the first 10 GB of photos, [about 6,500 photos](#how-many-photos-fit). Above that, Cloudflare charges $0.015 per GB a month, about 1.5 cents per 650 photos. Visitors cost nothing, as with a small library.
+- Free for the first 10 GB of photos, [about 8,000 photos](#how-many-photos-fit). Above that, Cloudflare charges $0.015 per GB a month, about 1.5 cents per 800 photos. Visitors cost nothing, as with a small library.
 - Needs your own domain, with its DNS on Cloudflare, and a payment method on your Cloudflare account: Cloudflare asks for one before it turns on R2, even within the free 10 GB.
 
 See [Photo storage](/hosting/photo-storage/).
@@ -52,7 +52,7 @@ To keep pages fast, minimal gallery makes several resized copies of each photo, 
 
 A photo never gets a copy larger than itself: the copies marked “every photo” are made at the photo’s own size when it is smaller, and the others are skipped. So:
 
-- a full-size photo, 6,000 by 4,000 pixels, becomes 6 files, about 1.5 MB of copies;
+- a full-size photo from a phone or a camera, 4,000 by 3,000 pixels or more, becomes 6 files, about 1.2 MB of copies on average;
 - a photo exported at 1,600 pixels on its long edge becomes 4 files (its page, `grid`, `w1280` and `jpeg1600`);
 - a photo exported at 1,200 pixels becomes 3 files.
 
@@ -61,7 +61,7 @@ Each album, and each filter value such as a year, a camera or a keyword, adds 2 
 ### What that means for each limit
 
 - **On Cloudflare, the limit is a number of files.** A site can hold 20,000 files. At 6 files per photo, with the album and filter pages, that is about 3,000 full-size photos. At 4 files per photo, about 4,500 photos exported at 1,600 pixels.
-- **In photo storage, the limit is a size.** The free tier holds 10 GB, and the copies of a full-size photo weigh about 1.5 MB, so about 6,500 full-size photos fit. Smaller photos make fewer and smaller copies, and more of them fit. The pages stay on Cloudflare, at one file per photo.
+- **In photo storage, the limit is a size.** The free tier holds 10 GB, and the copies of a full-size photo weigh about 1.2 MB, so about 8,000 full-size photos fit. Smaller photos make fewer and smaller copies, and more of them fit. The pages stay on Cloudflare, at one file per photo.
 
 `npm run doctor` counts your own gallery: the files the site holds, how many more photos fit at your current average, and one of three verdicts:
 
@@ -80,7 +80,7 @@ For a gallery built for your own host, doctor skips Cloudflare’s limit.
 
 ## Why the photos are processed on your computer
 
-Making the resized copies takes a few seconds per photo on a recent computer. It happens once, when a photo is new or changed, and the copies are kept in the gallery folder. Building the site afterwards only writes the pages, so it’s quick.
+Making the resized copies takes under a second per full-size photo on a recent Mac (about 0.7 s for a 12-megapixel phone photo on an M3 Pro). It happens once, when a photo is new or changed, and the copies are kept in the gallery folder. Building the site afterwards only writes the pages, so it’s quick.
 
 That is also why the gallery folder matters: it holds your originals, your captions and the record of every photo. Keep it in your backups. See [Backups](/backups/).
 

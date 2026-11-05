@@ -27,7 +27,7 @@ mg-pipeline doctor <galleryDir> [--json report.json]
 
 - `--prune` removes the manifests and derivatives of photos deleted from this folder, and derivatives no manifest names, then empty folders and interrupted writes. Each removed photo id is printed. Absent photos are never pruned.
 - `--force` re-encodes every photo.
-- `--concurrency` sets the number of encoding workers; `--threads` sets libvips threads per worker. By default they follow the batch: workers = min(CPUs, photos to encode), threads = max(1, floor(CPUs / workers)). A full gallery gets one thread per worker; a single new photo gets every core.
+- `--concurrency` sets the number of encoding workers; `--threads` sets libvips threads per worker. By default they follow the batch: workers = min(ceil(CPUs / 3), photos to encode), threads = max(1, floor(CPUs / workers)). A full gallery gets two or three threads per worker, which measured fastest for both 700 px and 12 MP photos; a single new photo gets every core.
 - The exit code is 1 when any photo failed (an unsupported format, a file that cannot be decoded). The other photos are still processed.
 
 `doctor` reads the manifests and the photos folder without encoding anything, and prints:

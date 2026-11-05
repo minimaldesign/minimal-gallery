@@ -184,7 +184,9 @@ describe('sortPhotos', () => {
 
 describe('workerPlan', () => {
   it('sizes workers and threads to the batch', () => {
-    expect(workerPlan(10, 241)).toEqual({ workers: 10, threadsPerWorker: 1 });
+    expect(workerPlan(10, 241)).toEqual({ workers: 4, threadsPerWorker: 2 });
+    expect(workerPlan(11, 96)).toEqual({ workers: 4, threadsPerWorker: 2 });
+    expect(workerPlan(4, 50)).toEqual({ workers: 2, threadsPerWorker: 2 });
     expect(workerPlan(10, 3)).toEqual({ workers: 3, threadsPerWorker: 3 });
     expect(workerPlan(10, 1)).toEqual({ workers: 1, threadsPerWorker: 10 });
     expect(workerPlan(10, 0)).toEqual({ workers: 1, threadsPerWorker: 10 });
@@ -196,7 +198,7 @@ describe('workerPlan', () => {
       threadsPerWorker: 2,
     });
     expect(workerPlan(10, 241, { threadsPerWorker: 3 })).toEqual({
-      workers: 10,
+      workers: 4,
       threadsPerWorker: 3,
     });
   });

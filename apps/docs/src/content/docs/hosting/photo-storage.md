@@ -9,7 +9,7 @@ In the config file and on the command line, photo storage is called bucket mode,
 
 ## What it costs
 
-- **The first 10 GB are free**, [about 6,500 full-size photos](/hosting/#how-many-photos-fit). Above that, R2 charges $0.015 per GB a month: about 1.5 cents for each further 650 photos.
+- **The first 10 GB are free**, [about 8,000 full-size photos](/hosting/#how-many-photos-fit). Above that, R2 charges $0.015 per GB a month: about 1.5 cents for each further 800 photos.
 - **Visitors are free.** R2 does not charge for the photos it serves.
 - **Uploads and changes** are free within a monthly allowance (a million writes and ten million reads) that a gallery stays far below.
 - **A payment method is required.** Cloudflare asks for one before it turns on R2, even if the gallery stays within the free tier.

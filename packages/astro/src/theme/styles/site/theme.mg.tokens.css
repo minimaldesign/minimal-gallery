@@ -111,9 +111,9 @@
   initial-value: square;
 }
 
-/* label: Photos view; group: Grid; note: a grid of thumbnails or a list with every value; visitors can switch, this is the default */
+/* label: Photos view; group: Grid; note: a grid of thumbnails, a list with every value, or a map (when photos have a location); visitors can switch, this is the default */
 @property --mg-grid-view {
-  syntax: 'grid | list';
+  syntax: 'grid | list | map';
   inherits: true;
   initial-value: grid;
 }

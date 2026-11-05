@@ -36,6 +36,8 @@ interface Props {
   start?: 'view' | 'grid';
   /** Loads the theme script. Default true; pages with no viewer leave it out. */
   script?: boolean;
+  /** The panel has a map view: `data-map`, so a stored map view applies. */
+  map?: boolean;
 }
 const {
   title,
@@ -44,11 +46,15 @@ const {
   class: className,
   start,
   script = true,
+  map = false,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-start={start === 'grid' ? 'grid' : undefined}>
+<html
+  lang="en"
+  data-start={start === 'grid' ? 'grid' : undefined}
+  data-map={map ? '' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta

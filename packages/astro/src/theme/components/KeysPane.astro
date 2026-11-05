@@ -5,8 +5,10 @@
  * spaces around it is a word (“or”), everything else is a key cap. The
  * shortcut letter is bold in its description.
  */
+import { hasMap } from '../../gallery.ts';
 import Credit from './Credit.astro';
 
+const map = await hasMap();
 const KEYS: Array<[string, Array<[string[], string]>]> = [
   [
     'Viewing mode',
@@ -14,7 +16,7 @@ const KEYS: Array<[string, Array<[string[], string]>]> = [
       [['←', '→'], 'Previous / next photo'],
       [['Space'], 'Slideshow'],
       [['r'], '<b>R</b>andom photo'],
-      [['↑'], 'Open browsing mode'],
+      [['↑', ' or ', 'Esc'], 'Open browsing mode'],
       [['z'], '<b>Z</b>oom to 1:1 and back'],
       [['i'], 'Photo <b>i</b>nformation'],
       [['f'], '<b>F</b>ill window / <b>f</b>it photo'],
@@ -32,6 +34,13 @@ const KEYS: Array<[string, Array<[string[], string]>]> = [
       [['1', '2', '3'], 'Thumbnail size'],
       [['t'], 'Crop or original <b>t</b>humbnail'],
       [['v'], 'Grid or list <b>v</b>iew'],
+      ...(map
+        ? ([
+            [['m'], '<b>M</b>ap view, and back'],
+            [['←', '→', '↑', '↓'], 'Move the map'],
+            [['+', '−'], 'Zoom the map'],
+          ] as Array<[string[], string]>)
+        : []),
       [['/'], 'Filter'],
     ],
   ],

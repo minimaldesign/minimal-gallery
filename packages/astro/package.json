@@ -36,6 +36,8 @@
     "@minimalgallery/pipeline": "workspace:*",
     "exiftool-vendored": "^39.0.1",
     "magicast": "^0.5.5",
+    "maplibre-gl": "^6.16.0",
+    "pmtiles": "^4.5.0",
     "postcss": "^8.5.31",
     "postcss-mixins": "^12.1.2",
     "postcss-preset-env": "^10.6.1",

@@ -109,9 +109,14 @@ const restore = () => {
       continue;
     }
     root.dataset[n] = v;
-    for (const i of $$(`input[name="${n}"]`))
+    const inputs = $$(`input[name="${n}"]`);
+    for (const i of inputs)
       i.checked =
         i.type === 'checkbox' ? v === (i.value || 'on') : i.value === v;
+    // a stored map view on a page without a map: the grid (the CSS reads
+    // data-view='map' only with data-map)
+    if (n === 'view' && !inputs.some((i) => i.checked))
+      inputs[0].checked = true;
   }
   for (const n of ['info', 'keys'])
     if ($(`input[name="${n}"]`).checked) placePane($(`#${n}`));
@@ -129,11 +134,13 @@ d.addEventListener('change', (e) => {
         : t.value;
   if (t.name === 'strip' && t.checked)
     withCtx((c) => {
-      strip(c);
+      strip(c, false);
       center();
     });
   if (t.name === 'view' && t.value === 'list' && t.checked) withCtx(list);
-  if (t.name === 'view' && root.hasAttribute('data-panel')) {
+  if (t.name === 'view' && t.value === 'grid' && t.checked) withCtx(thumbs);
+  if (t.name === 'view' && t.value === 'map' && t.checked) withCtx(showMap);
+  if (t.name === 'view' && root.hasAttribute('data-panel') && !mapView()) {
     const was = d.activeElement?.closest?.('a')?.pathname;
     select(items().find((a) => a.pathname === was) || pick());
   }
@@ -179,6 +186,28 @@ const query = linkIn
   ? `?in=${encodeURIComponent(linkIn).replace(/%2F/g, '/')}`
   : '';
 const inCtx = (p) => p.href + query;
+// MAP AREA: moving the map view sets an area ([west, south, east, north],
+// sessionStorage mgArea, with its context id); while it is set the grid,
+// the list, the strip, the count and every step (keys, slideshow, random)
+// have only the photos inside it, on this page and on the photos opened
+// from it. Show all clears it, and so does any other context.
+let area = null;
+try {
+  const a = JSON.parse(ss.mgArea || 'null');
+  if (a?.ctx === ctxId) area = a.b;
+  else ss.removeItem('mgArea');
+} catch {}
+const inArea = (p, [w, s, e, n]) =>
+  !!p.gps &&
+  p.gps[0] >= s &&
+  p.gps[0] <= n &&
+  (w <= e ? p.gps[1] >= w && p.gps[1] <= e : p.gps[1] >= w || p.gps[1] <= e);
+// the context's photos for this area (c.all keeps every one); the photo
+// shown may be outside it: then next is the area's first photo
+function narrow(c) {
+  c.photos = area ? c.all.filter((p) => inArea(p, area)) : c.all;
+  c.i = c.photos.findIndex((p) => p.href === here);
+}
 // the photo shown, matched by its page path (slugs repeat); a step moves it
 let here = own.photo;
 let context; // { photos, i, title, href } once loaded
@@ -189,10 +218,15 @@ function withCtx(fn, fail) {
   waiting.push([fn, fail]);
   if (waiting.length > 1) return;
   const key = `mgCtx-${ctxId}`;
+  // the page knows its own context's version: a copy stored by an older
+  // build (another publish, a changed theme) is fetched again
+  const mine = ctxId === own.context;
+  if (mine && ss[`${key}-v`] !== own.version) ss.removeItem(key);
   const got = (t) => {
     const c = JSON.parse(t);
-    c.i = c.photos.findIndex((p) => p.href === here);
-    if (c.i < 0) return;
+    c.all = c.photos;
+    if (!c.all.some((p) => p.href === here)) return;
+    narrow(c);
     context = c;
     for (const [f] of waiting.splice(0)) f(c);
   };
@@ -202,6 +236,7 @@ function withCtx(fn, fail) {
     .then((t) => {
       try {
         ss[key] = t;
+        if (mine) ss[`${key}-v`] = own.version;
       } catch {} // over quota: fetched again next time
       got(t);
     })
@@ -246,7 +281,11 @@ function nav(c) {
     d.head.append(pre);
   }
   const n = ps.length;
-  $('.table_count').textContent = `${n} photo${n === 1 ? '' : 's'}`;
+  $('.table_count').textContent = area
+    ? `${n} of ${c.all.length} photos in the map area`
+    : `${n} photo${n === 1 ? '' : 's'}`;
+  const all = $('[data-area-clear]');
+  if (all) all.hidden = !area;
   for (const crumb of $$('.hud_context, .table_context'))
     if (c.title)
       Object.assign(crumb, {
@@ -256,13 +295,15 @@ function nav(c) {
     else crumb.parentElement.remove();
 }
 // the filmstrip's frames, when the strip is on (the builder is shared with
-// the inline call after the strip, in the head script)
-function strip(c) {
+// the inline call after the strip, in the head script); `fresh` replaces
+// the frames it built (a map area)
+function strip(c, fresh = !!area) {
+  if (fresh) $('.strip').firstElementChild.innerHTML = '';
   mgStrip($('.strip'), c.photos, linkIn || '');
   center();
 }
-// the grid and the rail of another context (`?in=`)
-let gridDone = !ctx;
+// the grid and the rail of another context (`?in=`) or of a map area
+let gridDone = !ctx && !area;
 function thumbs(c) {
   if (gridDone) return;
   gridDone = true;
@@ -284,7 +325,7 @@ function thumbs(c) {
 }
 // the list rows, the first time the list is shown (pages that open on the
 // panel have them in their HTML, unless `?in=` changed the context)
-let listDone = !ctx && !!$('.ledger tbody tr');
+let listDone = !ctx && !area && !!$('.ledger tbody tr');
 function list(c) {
   if (listDone) return;
   listDone = true;
@@ -307,9 +348,56 @@ function list(c) {
 function panel() {
   if (!gridDone) withCtx(thumbs);
   if (!listDone && listView()) withCtx(list);
+  if (mapView() && root.hasAttribute('data-panel')) withCtx(showMap);
 }
-if (ctx) withCtx(nav);
-if ($('input[name="strip"]').checked) withCtx(strip);
+// the map view (MapView.astro loads map.js for it): the context's photos
+// with a location, and the area; moving the map calls setArea. The
+// request is also kept in mgMapWant, for a map module not running yet.
+function showMap(c) {
+  const detail = {
+    points: c.all
+      .filter((p) => p.gps)
+      .map((p) => ({
+        lat: p.gps[0],
+        lon: p.gps[1],
+        href: inCtx(p),
+        thumb: p.thumb,
+        title: p.title,
+      })),
+    area,
+    onArea: setArea,
+  };
+  self.mgMapWant = detail;
+  d.dispatchEvent(new CustomEvent('mg-map', { detail }));
+}
+// an area that leaves no located photo out narrows nothing
+function setArea(b) {
+  withCtx((c) => {
+    const located = c.all.filter((p) => p.gps);
+    area = located.some((p) => !inArea(p, b)) ? b : null;
+    if (area) ss.mgArea = JSON.stringify({ ctx: ctxId, b });
+    else ss.removeItem('mgArea');
+    applyArea(c);
+  });
+}
+function applyArea(c) {
+  narrow(c);
+  gridDone = listDone = false;
+  nav(c);
+  if ($('input[name="strip"]').checked) strip(c, true);
+  if (!mapView()) panel();
+}
+d.addEventListener('click', (e) => {
+  if (!e.target.closest('[data-area-clear]')) return;
+  area = null;
+  ss.removeItem('mgArea');
+  withCtx((c) => {
+    applyArea(c);
+    if (mapView()) showMap(c);
+  });
+});
+if (ctx || area) withCtx(nav);
+if ($('input[name="strip"]').checked) withCtx((c) => strip(c));
 if (root.hasAttribute('data-panel')) panel();
 else {
   const idle = (f) =>
@@ -562,7 +650,9 @@ function syncPanel() {
     }
     if (root.hasAttribute('data-play')) play(false, false);
   }
-  if (opened && !d.activeElement?.closest('.table_scroller')) select(pick());
+  if (opened && mapView()) withCtx(showMap);
+  else if (opened && !d.activeElement?.closest('.table_scroller'))
+    select(pick());
 }
 for (const t of ['scroll', 'scrollend', 'load', 'resize'])
   addEventListener(t, syncPanel, { passive: true });
@@ -735,6 +825,9 @@ const size = (v) => $(`input[name="size"][value="${v}"]`).click();
 function listView() {
   return $('input[name="view"][value="list"]').checked;
 }
+function mapView() {
+  return !!$('input[name="view"][value="map"]')?.checked;
+}
 function items() {
   panel();
   return $$(listView() ? '.ledger tbody td:nth-child(2) a' : '.thumbs_link');
@@ -758,7 +851,7 @@ const toViewer = () => scrollTo({ top: 0, behavior: 'smooth' });
 const toPanel = () => {
   hide('key');
   $('#grid').scrollIntoView({ behavior: 'smooth' });
-  select(pick());
+  if (!mapView()) select(pick());
 };
 const move = (k) => {
   delete root.dataset.pointer;
@@ -800,9 +893,23 @@ const keys = {
   2: () => size('medium'),
   3: () => size('large'),
   t: () => $('input[name="crop"]:not(:checked)').click(),
-  v: () => $('input[name="view"]:not(:checked)').click(),
+  // grid and list; from the map, the grid
+  v: () =>
+    $(
+      `input[name="view"][value="${listView() || mapView() ? 'grid' : 'list'}"]`
+    ).click(),
   '?': () => $('input[name="keys"]').click(),
   g: toPanel,
+  // the map view, when the panel has one (from the viewer, with the panel);
+  // in the map view, back to the grid
+  m: () => {
+    const map = $('input[name="view"][value="map"]');
+    if (!map) return;
+    const up = root.hasAttribute('data-panel');
+    if (up && map.checked) return $('input[name="view"][value="grid"]').click();
+    map.click();
+    if (!up) toPanel();
+  },
 };
 // the viewer's own keys: in the panel, Space scrolls and r does nothing
 const viewing = {
@@ -827,6 +934,14 @@ addEventListener('keydown', (e) => {
   const field = e.target.closest('input[type="search"]');
   const mod = e.metaKey || e.ctrlKey || e.altKey;
   if (k === 'Escape') {
+    // on the viewer: a slideshow stops, a zoomed photo goes back to fit,
+    // and otherwise the panel opens (an open dialog keeps Escape)
+    if (!root.hasAttribute('data-panel') && !$('dialog[open]') && !field) {
+      e.preventDefault();
+      if (root.hasAttribute('data-play')) return play(false);
+      if ($('.stage_zoom').checked) return $('.stage_zoom').click();
+      return toPanel();
+    }
     if (root.hasAttribute('data-play')) play(false);
     // in the filter field, the first Escape clears the search
     if (field?.value) {
@@ -849,6 +964,8 @@ addEventListener('keydown', (e) => {
     palette();
   } else if (field || mod) return;
   else if (root.hasAttribute('data-panel') && /^(Arrow|Home$|End$)/.test(k)) {
+    // in the map view the arrows move the map (map.js)
+    if (mapView()) return;
     e.preventDefault();
     move(k);
   } else if (keys[k]) {

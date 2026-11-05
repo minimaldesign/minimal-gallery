@@ -3,13 +3,15 @@
  * The panel header, the top of the window while the panel is up: the
  * breadcrumb (home / context) and the count; the slideshow's play button
  * and a space; the crop pair and the size triple (grid view only); then
- * the grid/list pair and Filter at the right end, so nothing moves between
- * views. Radios, so they work without script,
- * except the grid/list pair on pages whose list rows are built by script
- * (`list` false): hidden without it, and grid until it runs.
+ * the grid/list/map views and Filter at the right end, so nothing moves
+ * between views. Radios, so they work without script, except the views
+ * on pages whose list rows are built by script (`list` false): hidden
+ * without it, and grid until it runs. The map view (when photos have a
+ * location) needs script everywhere. With a map area chosen, the count
+ * reads “18 of 96 photos in the map area” and Show all clears the area (the theme script).
  */
 import config from 'virtual:minimalgallery/config';
-import { contextHref, type Context } from '../../gallery.ts';
+import { contextHref, hasMap, type Context } from '../../gallery.ts';
 import AdminLink from './AdminLink.astro';
 import FilterButton from './FilterButton.astro';
 import HomeLink from './HomeLink.astro';
@@ -26,6 +28,7 @@ const { defaults } = config;
 // without script and without rows, the list would be empty: grid it is
 const view = list ? defaults.view : 'grid';
 const n = context.photos.length;
+const map = await hasMap();
 ---
 
 <header class="table_head surface">
@@ -45,6 +48,11 @@ const n = context.photos.length;
     <span class="table_count">
       {n} photo{n === 1 ? '' : 's'}
     </span>
+    {map && (
+      <button class="table_all" type="button" data-area-clear hidden>
+        Show all
+      </button>
+    )}
   </nav>
   <div class="table_tools">
     <AdminLink class="table_admin" />
@@ -125,6 +133,18 @@ const n = context.photos.length;
         aria="List view"
         checked={view === 'list'}
       />
+      {map && (
+        <ToggleOption
+          type="radio"
+          name="view"
+          value="map"
+          label="<b>M</b>ap view"
+          icon="map"
+          shortcut="m"
+          aria="Map view"
+          class="table_viewMap"
+        />
+      )}
     </fieldset>
     <FilterButton />
   </div>

@@ -66,4 +66,4 @@ For another server, ask your host how to set a `Cache-Control` header on the `/_
 
 ## Limits
 
-minimal gallery adds no limits of its own, and `npm run doctor` doesn’t check Cloudflare’s file limit for a gallery built this way. Check your plan’s disk space: each full-size photo adds about 1.5 MB of resized copies. See [How many photos fit](/hosting/#how-many-photos-fit).
+minimal gallery adds no limits of its own, and `npm run doctor` doesn’t check Cloudflare’s file limit for a gallery built this way. Check your plan’s disk space: each full-size photo adds about 1.2 MB of resized copies. See [How many photos fit](/hosting/#how-many-photos-fit).

@@ -12,6 +12,7 @@ export const ICONS = {
   contain:
     '<rect x="1.75" y="3.25" width="12.5" height="9.5" rx="1"/><rect x="5.25" y="5.75" width="5.5" height="4.5" rx=".5"/>',
   info: '<circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v4M8 4.75v.25"/>',
+  map: '<path d="M8 14.25s4.75-4.4 4.75-7.75a4.75 4.75 0 0 0-9.5 0C3.25 9.85 8 14.25 8 14.25z"/><circle cx="8" cy="6.5" r="1.5"/>',
   filter: '<path d="M2.25 3.25h11.5l-4.5 5.25v4.25l-2.5 1v-5.25z"/>',
   strip:
     '<rect x="1.75" y="3.75" width="12.5" height="8.5" rx="1"/><path d="M1.75 6h12.5M1.75 10h12.5M6 6v4M10 6v4"/>',

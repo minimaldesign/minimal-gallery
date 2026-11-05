@@ -6,16 +6,23 @@
 # The repository uses Changesets CLI v3, which needs changesets/action v2.
 #
 # DISABLED until the first release. Only the manual trigger is on, and the
-# job stops unless RELEASES_ENABLED is set. To enable:
-#   1. npm: create a granular access token with publish rights for the
-#      account that will own the four packages, and store it as the
-#      NPM_TOKEN repository secret. (Once the packages exist, npm trusted
-#      publishing for this workflow can replace the token.)
-#   2. Repository settings > Actions > General: allow GitHub Actions to
+# job stops unless RELEASES_ENABLED is set. Publishing uses npm trusted
+# publishing (no stored token), which can only be set up on packages that
+# already exist, so 2.0.0 is published once by hand:
+#   1. Publish 2.0.0 from Yann’s Mac: `pnpm exec changeset pre exit`,
+#      `pnpm exec changeset version`, commit and push. Then `npm login`,
+#      `pnpm release` (asks for the 2FA code) and `git push --follow-tags`.
+#   2. npmjs.com, for each of the four packages: Settings > Trusted
+#      publisher > GitHub Actions, repository minimaldesign/minimal-gallery,
+#      workflow release.yml. Then set publishing access to disallow tokens.
+#   3. Repository settings > Actions > General: allow GitHub Actions to
 #      create and approve pull requests.
-#   3. Repository settings > Secrets and variables > Actions > Variables:
+#   4. Repository settings > Secrets and variables > Actions > Variables:
 #      set RELEASES_ENABLED to true.
-#   4. Uncomment the push trigger below.
+#   5. Uncomment the push trigger below.
+# Not tested yet: whether `changeset publish` through pnpm picks up trusted
+# publishing the way `npm publish` does. If the first automated release
+# fails to authenticate, make the publish step call `npm publish`.
 
 name: Release
 
@@ -35,8 +42,13 @@ permissions:
   id-token: write
 
 jobs:
-  release:
+  # Nothing is published unless the packages install on a clean computer.
+  clean-install:
     if: vars.RELEASES_ENABLED == 'true'
+    uses: ./.github/workflows/clean-install.yml
+
+  release:
+    needs: clean-install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -61,6 +73,6 @@ jobs:
           publish-script: pnpm release
           create-github-releases: true
         env:
-          # read by the .npmrc that setup-node writes for registry-url
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # trusted publishing: npm exchanges the id-token for a short-lived
+          # publish token, so no NPM_TOKEN secret is needed
           NPM_CONFIG_PROVENANCE: true

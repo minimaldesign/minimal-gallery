@@ -27,6 +27,7 @@
 // host does: the rules in <dir>/_headers, else max-age=0, must-revalidate.
 
 import { chromium, firefox, webkit } from 'playwright';
+import { siteOnly } from './third-party.mjs';
 import { writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 
@@ -315,7 +316,10 @@ const server = opt.latency ? await proxy() : null;
 const URL_ = server ? `http://localhost:${opt.port}` : opt.url;
 const results = [];
 for (const engine of opt.engines.split(',')) {
-  const browser = await ENGINES[engine].launch({ headless: !opt.headed });
+  const browser = siteOnly(
+    await ENGINES[engine].launch({ headless: !opt.headed }),
+    URL_
+  );
   const version = browser.version();
   for (const name of opt.scenarios.split(',')) {
     process.stderr.write(`${engine} ${version}: ${name}…\n`);

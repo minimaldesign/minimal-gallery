@@ -10,6 +10,7 @@
 //   node bench/behaviours.mjs [--url http://localhost:4421] [--engines webkit]
 
 import { chromium, firefox, webkit } from 'playwright';
+import { siteOnly } from './third-party.mjs';
 import { parseArgs } from 'node:util';
 
 const { values: opt } = parseArgs({
@@ -40,7 +41,7 @@ function early() {
 }
 
 async function run(engine) {
-  const browser = await ENGINES[engine].launch();
+  const browser = siteOnly(await ENGINES[engine].launch(), opt.url);
   const ok = (name, cond, detail) => check(engine, name, cond, detail);
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
@@ -169,6 +170,11 @@ async function run(engine) {
   await page.keyboard.press('Escape');
   await page.waitForTimeout(900);
   ok('Escape: back to the viewer', (await html()).panel === undefined);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(900);
+  ok('Escape on the viewer: the panel', (await html()).panel === '');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(900);
 
   // PALETTE
   await page.keyboard.press('/');

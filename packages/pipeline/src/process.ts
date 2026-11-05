@@ -178,10 +178,16 @@ const CONTENT_TYPES: Record<string, string> = {
 const EXTENSIONS = { avif: 'avif', jpeg: 'jpg', webp: 'webp' } as const;
 
 /**
- * Worker pool size for a batch. Workers = min(CPUs, photos to encode);
- * libvips threads per worker = max(1, floor(CPUs / workers)). A large batch
- * gets one thread per worker; a single photo gets every core in one worker.
- * Either value can be overridden.
+ * Worker pool size for a batch. Workers = min(ceil(CPUs / 3), photos to
+ * encode); libvips threads per worker = max(1, floor(CPUs / workers)). So a
+ * large batch gets two or three libvips threads per worker, and a single
+ * photo gets every core in one worker. Either value can be overridden.
+ *
+ * Measured 2026-11-04 on an 11-core M3 Pro: one worker per core (the old
+ * default) was the slowest plan for 12 MP phone photos (0.95 s per photo
+ * over 96 photos, against 0.66 s with 4 workers × 2 threads) and no faster
+ * for 700 px photos (8.7 s against 6.9 s for 241). design/plan.md has the
+ * numbers.
  */
 export function workerPlan(
   cpus: number,
@@ -192,7 +198,7 @@ export function workerPlan(
   const batch = Math.max(1, files);
   const workers = overrides.concurrency
     ? Math.max(1, Math.floor(overrides.concurrency))
-    : Math.min(cpu, batch);
+    : Math.min(Math.ceil(cpu / 3), batch);
   const threadsPerWorker =
     overrides.threadsPerWorker ?? Math.max(1, Math.floor(cpu / workers));
   return { workers, threadsPerWorker };

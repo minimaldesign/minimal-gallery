@@ -15,9 +15,11 @@
     const on = r.dataset.strip
       ? r.dataset.strip == 'on'
       : getComputedStyle(r).getPropertyValue('--mg-strip').trim() == 'on';
+    const key = 'mgCtx-' + (c || d.context);
     try {
-      ps ??=
-        on && JSON.parse(sessionStorage['mgCtx-' + (c || d.context)]).photos;
+      // a copy from an older build of this page's own context is not used
+      if (c || sessionStorage[key + '-v'] == d.version)
+        ps ??= on && JSON.parse(sessionStorage[key]).photos;
     } catch {}
     if (!ps || n.querySelector('li')) return;
     const e = (s) => String(s).replace(/[&<"]/g, (c) => `&#${c.charCodeAt()};`);
