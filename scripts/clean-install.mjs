@@ -259,7 +259,7 @@ async function test(bundle, work = mkdtempSync(join(tmpdir(), 'mg-clean-'))) {
   }
 }
 
-/** The built site has a home page, both albums, a page per photo and the resized photos. */
+/** The built site has a home page with a map view, a page per photo and the resized photos. */
 function checkSite(gallery) {
   const dist = join(gallery, 'dist');
   const must = (path, what) => {
@@ -267,7 +267,10 @@ function checkSite(gallery) {
       fail(`dist/${path} is missing (${what})`);
   };
   must('index.html', 'the home page');
-  must('map/index.html', 'the map page');
+  // ronin.heic has GPS coordinates: the panel has a map view
+  const home = readFileSync(join(dist, 'index.html'), 'utf8');
+  if (!home.includes('class="mapView"') || !home.includes('value="map"'))
+    fail('the home page has no map view (ronin.heic has a location)');
   const manifest = join(gallery, '.minimalgallery', 'manifest');
   // One manifest per photo, plus _albums.json.
   const photos = readdirSync(manifest).filter(
