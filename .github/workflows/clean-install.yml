@@ -5,7 +5,10 @@
 # dry run. GitHub’s runners are close to a new computer: no ExifTool, no cjxl.
 #
 # Runs on pull requests that change the packages, by hand, and from
-# release.yml before anything is published.
+# release.yml before anything is published. Linux only: GitHub's macOS
+# runners sometimes never start (a job waited 15 minutes and was cancelled
+# on PR #28), so the macOS run is `pnpm test:clean-install` on Yann's Mac,
+# for every significant pull request and before each release (CLAUDE.md).
 
 name: Clean install
 
@@ -28,7 +31,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: macos-latest, pm: npm, host: cloudflare }
           - { os: ubuntu-latest, pm: npm, host: cloudflare }
           - { os: ubuntu-latest, pm: pnpm, host: local }
     name: ${{ matrix.os }}, ${{ matrix.pm }}, ${{ matrix.host }}
