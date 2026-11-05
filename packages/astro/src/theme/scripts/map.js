@@ -7,8 +7,9 @@
  *
  * Loaded by MapView.astro the first time the view is shown; the theme
  * script (mg.js) sends `show()` the photos with a location, the map
- * area and the photo shown. The view opens on that photo (its print, or
- * the group holding it, is marked), as the grid and the list mark it.
+ * area and the photo shown. The view opens on that photo on a photo
+ * page (its print, or the group holding it, is marked, as the grid and
+ * the list mark it), and on every photo on an album or filter page.
  * Moving the map (a drag, a pinch, the buttons, a group) sets the area,
  * which mg.js applies to the grid, the list and the steps. The colors
  * are the `--mg-map-*` tokens, read from the page, so custom.css
@@ -294,8 +295,11 @@ function style() {
 
 let map;
 let points = [];
-// the index in `points` of the photo shown, -1 without one
+// the index in `points` of the photo shown, -1 without one, and whether
+// the view opens on it (a photo page) or on every photo (an album, a
+// filter)
 let current = -1;
+let focus = false;
 let onArea = () => {};
 const shown = new Map();
 // the zoom around the photo shown: streets in the view, the town on the
@@ -306,8 +310,8 @@ const SPOT_ZOOM = 13;
 /**
  * Shows the map with these photos (`[{ lat, lon, href, thumb, title }]`,
  * newest first) on the area (`[west, south, east, north]`), or around
- * the photo shown (`current`, an index in the photos, -1 without one),
- * or on all of them.
+ * the photo shown (`current`, an index in the photos, -1 without one,
+ * when `focus`), or on all of them.
  */
 export async function show(detail) {
   onArea = detail.onArea;
@@ -317,6 +321,7 @@ export async function show(detail) {
     current === detail.current;
   points = detail.points;
   current = detail.current;
+  focus = detail.focus;
   note.hidden = points.length > 0;
   if (!points.length) return;
   if (!map) await mount();
@@ -331,7 +336,7 @@ export async function show(detail) {
 
 function fit(area) {
   if (area) return map.fitBounds(area, { padding: 0, animate: false });
-  const p = points[current];
+  const p = focus && points[current];
   if (p) return map.jumpTo({ center: [p.lon, p.lat], zoom: VIEW_ZOOM });
   const bounds = new LngLatBounds();
   for (const q of points) bounds.extend([q.lon, q.lat]);

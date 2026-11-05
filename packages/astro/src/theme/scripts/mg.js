@@ -366,6 +366,9 @@ function showMap(c) {
       title: p.title,
     })),
     current: located.findIndex((p) => p.href === here),
+    // a page that opens on the panel (an album, a filter) shows every
+    // photo: its "current" photo is only the first one
+    focus: !$('.table-start'),
     area,
     onArea: setArea,
   };

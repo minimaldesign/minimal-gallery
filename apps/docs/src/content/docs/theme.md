@@ -249,7 +249,7 @@ With a mouse, a click on the right part of the photo goes to the next one, and a
 | `m` | Map view, and back (when photos have a location) |
 | `/` | Filter |
 
-The current photo is selected when the panel opens. The map view opens around the current photo, with its thumbnail outlined; in it, the arrows move the map and `+` and `-` zoom it. The small map in the information pane is a link to the map view.
+The current photo is selected when the panel opens. From a photo, the map view opens around that photo, with its thumbnail outlined; on an album or filter page it shows every photo. In it, the arrows move the map and `+` and `-` zoom it. The small map in the information pane is a link to the map view.
 
 ### Filter
 
