@@ -358,8 +358,22 @@ async function mount() {
   });
   map.touchZoomRotate.disableRotation();
   map.addControl(new AttributionControl({ compact: true }), 'bottom-left');
+  // the attribution stays folded to its ⓘ until the visitor opens it
+  // (MapLibre shows it open until the first drag)
+  const fold = () => {
+    const a = root.querySelector('.maplibregl-ctrl-attrib.maplibregl-compact');
+    if (!a) return;
+    a.classList.remove('maplibregl-compact-show');
+    a.removeAttribute('open');
+    map.off('data', fold);
+  };
+  map.on('data', fold);
   map.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
   // the visitor moved the map (not a fit): that is the area
+  // the prints' size follows the zoom (component.mapView.css)
+  const zoom = () => root.style.setProperty('--mapView-zoom', map.getZoom());
+  map.on('zoom', zoom);
+  zoom();
   map.on('moveend', (e) => {
     if (!e.originalEvent && !e.user) return;
     const b = map.getBounds();

@@ -282,7 +282,7 @@ function nav(c) {
   }
   const n = ps.length;
   $('.table_count').textContent = area
-    ? `${n} of ${c.all.length} photos`
+    ? `${n} of ${c.all.length} photos in the map area`
     : `${n} photo${n === 1 ? '' : 's'}`;
   const all = $('[data-area-clear]');
   if (all) all.hidden = !area;
@@ -934,6 +934,14 @@ addEventListener('keydown', (e) => {
   const field = e.target.closest('input[type="search"]');
   const mod = e.metaKey || e.ctrlKey || e.altKey;
   if (k === 'Escape') {
+    // on the viewer: a slideshow stops, a zoomed photo goes back to fit,
+    // and otherwise the panel opens (an open dialog keeps Escape)
+    if (!root.hasAttribute('data-panel') && !$('dialog[open]') && !field) {
+      e.preventDefault();
+      if (root.hasAttribute('data-play')) return play(false);
+      if ($('.stage_zoom').checked) return $('.stage_zoom').click();
+      return toPanel();
+    }
     if (root.hasAttribute('data-play')) play(false);
     // in the filter field, the first Escape clears the search
     if (field?.value) {

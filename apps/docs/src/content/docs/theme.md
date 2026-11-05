@@ -224,7 +224,7 @@ The browser also remembers whether the information and shortcuts panes are open 
 | Key | Action |
 | --- | --- |
 | `←` `→` | Previous or next photo. Nothing happens past the first or last photo, and hidden controls stay hidden. |
-| `↑` | Open browsing mode |
+| `↑` or `Esc` | Open browsing mode. `Esc` first stops a slideshow or leaves the 1:1 zoom. |
 | `z` | Zoom to 1:1 and back |
 | `i` | Photo information |
 | `f` | Fill the window or fit the photo |

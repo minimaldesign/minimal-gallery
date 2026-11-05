@@ -170,6 +170,11 @@ async function run(engine) {
   await page.keyboard.press('Escape');
   await page.waitForTimeout(900);
   ok('Escape: back to the viewer', (await html()).panel === undefined);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(900);
+  ok('Escape on the viewer: the panel', (await html()).panel === '');
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(900);
 
   // PALETTE
   await page.keyboard.press('/');

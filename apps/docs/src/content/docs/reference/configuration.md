@@ -79,7 +79,7 @@ When the site is built, each default is written into the matching theme token (`
 
 When some photos have GPS coordinates, the panel has a third view next to the grid and the list: a map of the photos you are looking at (all of them, an album or a filter). Visitors switch to it with the Map button in the panel header or the `m` key. Each photo is a thumbnail that opens its page; nearby photos are grouped, and a group zooms in when you choose it. Scrolling over the map moves between the panel and the photo, as in the other views; a pinch or ⌘ + scroll zooms, and so do the + and − buttons.
 
-Moving the map narrows the photos to the area on screen: the grid, the list and next and previous then have only those photos, and the count reads “18 of 96 photos”, with Show all next to it. Choosing another filter clears the area too. Without located photos, the Map button is not shown.
+Moving the map narrows the photos to the area on screen: the grid, the list and next and previous then have only those photos, and the count reads “18 of 96 photos in the map area”, with Show all next to it. Choosing another filter clears the area too. Without located photos, the Map button is not shown.
 
 The map is drawn from [OpenFreeMap](https://openfreemap.org), free OpenStreetMap maps that need no account or key. Its colors come from the theme’s `--mg-map-*` tokens, so `custom.css` can change them.
 

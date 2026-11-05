@@ -9,6 +9,9 @@
 .mapView {
   --mapView-photo-size: var(--lg3);
   --mapView-photo-border: var(--border-md);
+  /* the prints grow as the map zooms in (map.js sets --mapView-zoom):
+     their own size up to zoom 12, two and a half times it from zoom 17 */
+  --mapView-scale: clamp(1, 1 + (var(--mapView-zoom, 0) - 12) * 0.3, 2.5);
 
   display: none;
   position: relative;
@@ -45,8 +48,8 @@
    the flow, each pushed down by the ones before it. */
 .mapView_photo {
   display: block;
-  width: var(--mapView-photo-size);
-  height: var(--mapView-photo-size);
+  width: calc(var(--mapView-photo-size) * var(--mapView-scale));
+  height: calc(var(--mapView-photo-size) * var(--mapView-scale));
   padding: 0;
   border: var(--mapView-photo-border) solid var(--mg-ground);
   border-radius: var(--radius-sm);
