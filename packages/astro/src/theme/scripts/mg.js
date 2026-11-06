@@ -354,8 +354,12 @@ function panel() {
 // the map view (MapView.astro loads map.js for it): the context's photos
 // with a location, the area and the photo shown, which the view opens
 // on; moving the map calls setArea. The request is also kept in
-// mgMapWant, for a map module not running yet.
-function showMap(c) {
+// mgMapWant, for a map module not running yet. The view opens around
+// the photo only on a photo page: home and the pages that open on the
+// panel (an album, a filter) show every photo, their "current" photo
+// being only the newest or the first; so does Show all (`all`).
+const photoPage = !$('.table-start') && location.pathname !== base;
+function showMap(c, all = false) {
   const located = c.all.filter((p) => p.gps);
   const detail = {
     points: located.map((p) => ({
@@ -366,9 +370,7 @@ function showMap(c) {
       title: p.title,
     })),
     current: located.findIndex((p) => p.href === here),
-    // a page that opens on the panel (an album, a filter) shows every
-    // photo: its "current" photo is only the first one
-    focus: !$('.table-start'),
+    focus: photoPage && !all,
     area,
     onArea: setArea,
   };
@@ -417,7 +419,7 @@ d.addEventListener('click', (e) => {
   ss.removeItem('mgArea');
   withCtx((c) => {
     applyArea(c);
-    if (mapView()) showMap(c);
+    if (mapView()) showMap(c, true);
   });
 });
 if (ctx || area) withCtx(nav);
