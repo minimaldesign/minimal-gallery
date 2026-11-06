@@ -4,14 +4,20 @@
  * Opened by the Info checkbox (CSS, no script), remembered across photos;
  * only its Close label and `i` close it. The rows come from `infoOf()`,
  * which the context JSON carries too: a step inside the page fills the
- * pane with the same markup.
+ * pane with the same markup. When the gallery has a map, the pane ends
+ * with a small map of where the photo was taken (hidden for a photo
+ * without a location; the theme script shows it for the next one), a
+ * link to the map view, which opens on the photo. It needs script, which
+ * draws it (map.js) once the pane is open.
  */
-import { infoOf, type Photo } from '../../gallery.ts';
+import { gpsOf, hasMap, infoOf, type Photo } from '../../gallery.ts';
 
 interface Props {
   photo: Photo;
 }
 const { photo: p } = Astro.props;
+const map = await hasMap();
+const gps = gpsOf(p);
 ---
 
 <aside
@@ -42,4 +48,9 @@ const { photo: p } = Astro.props;
       </div>
     ))}
   </dl>
+  {map && (
+    <div class="info_map" data-lat={gps?.[0]} data-lon={gps?.[1]} hidden={!gps}>
+      <a class="info_mapLink" href="#grid" aria-label="Show on the map" />
+    </div>
+  )}
 </aside>

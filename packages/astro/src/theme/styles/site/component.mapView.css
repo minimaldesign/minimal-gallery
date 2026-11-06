@@ -65,6 +65,8 @@
     object-fit: cover;
   }
 
+  /* the photo shown (or the group holding it), as the grid marks it */
+  &[aria-current],
   &:hover,
   &:focus-visible {
     z-index: 1;

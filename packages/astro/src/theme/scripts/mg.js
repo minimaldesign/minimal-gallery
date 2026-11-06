@@ -146,6 +146,7 @@ d.addEventListener('change', (e) => {
   }
   if ((t.name === 'info' || t.name === 'keys') && t.checked)
     placePane($(`#${t.name}`));
+  if (t.name === 'info' && t.checked) locate();
   // zoom asks for the 1:1 derivative: the srcset's sizes follow the zoom
   if (t.matches('.stage_zoom')) {
     const img = $$('.stage_photo').at(-1);
@@ -351,25 +352,48 @@ function panel() {
   if (mapView() && root.hasAttribute('data-panel')) withCtx(showMap);
 }
 // the map view (MapView.astro loads map.js for it): the context's photos
-// with a location, and the area; moving the map calls setArea. The
-// request is also kept in mgMapWant, for a map module not running yet.
+// with a location, the area and the photo shown, which the view opens
+// on; moving the map calls setArea. The request is also kept in
+// mgMapWant, for a map module not running yet.
 function showMap(c) {
+  const located = c.all.filter((p) => p.gps);
   const detail = {
-    points: c.all
-      .filter((p) => p.gps)
-      .map((p) => ({
-        lat: p.gps[0],
-        lon: p.gps[1],
-        href: inCtx(p),
-        thumb: p.thumb,
-        title: p.title,
-      })),
+    points: located.map((p) => ({
+      lat: p.gps[0],
+      lon: p.gps[1],
+      href: inCtx(p),
+      thumb: p.thumb,
+      title: p.title,
+    })),
+    current: located.findIndex((p) => p.href === here),
+    // a page that opens on the panel (an album, a filter) shows every
+    // photo: its "current" photo is only the first one
+    focus: !$('.table-start'),
     area,
     onArea: setArea,
   };
   self.mgMapWant = detail;
   d.dispatchEvent(new CustomEvent('mg-map', { detail }));
 }
+// the info pane's small map (InfoPane.astro, map.js): where the photo
+// shown was taken, once the pane is open and the photo has a location
+// (`.info_map` carries it; a step updates it). Its link opens the map
+// view on the photo.
+function locate() {
+  const el = $('.info_map');
+  if (!el || el.hidden || !$('input[name="info"]').checked) return;
+  const detail = { lat: +el.dataset.lat, lon: +el.dataset.lon };
+  self.mgLocateWant = detail;
+  d.dispatchEvent(new CustomEvent('mg-locate', { detail }));
+}
+d.addEventListener('click', (e) => {
+  if (!e.target.closest('.info_mapLink')) return;
+  e.preventDefault();
+  const map = $('input[name="view"][value="map"]');
+  if (!map.checked) map.click();
+  else if (root.hasAttribute('data-panel')) withCtx(showMap);
+  toPanel();
+});
 // an area that leaves no located photo out narrows nothing
 function setArea(b) {
   withCtx((c) => {
@@ -398,17 +422,22 @@ d.addEventListener('click', (e) => {
 });
 if (ctx || area) withCtx(nav);
 if ($('input[name="strip"]').checked) withCtx((c) => strip(c));
-if (root.hasAttribute('data-panel')) panel();
-else {
-  const idle = (f) =>
-    self.requestIdleCallback
-      ? requestIdleCallback(f, { timeout: 2000 })
-      : setTimeout(f, 200);
-  addEventListener('load', () => setTimeout(() => idle(panel), 1000), {
+// once the page has loaded and is idle: the panel, and the info pane's
+// map (MapLibre is not worth the hero's bandwidth)
+const whenIdle = (f) =>
+  self.requestIdleCallback
+    ? requestIdleCallback(f, { timeout: 2000 })
+    : setTimeout(f, 200);
+const later = (f) =>
+  addEventListener('load', () => setTimeout(() => whenIdle(f), 1000), {
     once: true,
   });
+if (root.hasAttribute('data-panel')) panel();
+else {
+  later(panel);
   addEventListener('scroll', panel, { once: true, passive: true });
 }
+later(locate);
 
 // STEP: next and previous (keys, the click zones, a swipe, a strip frame,
 // back and forward between photos of this context) happen inside the page:
@@ -498,6 +527,12 @@ function stepTo(i, push = true) {
         `<div class="info_row"><dt class="info_term">${esc(r.term)}</dt><dd class="info_value${r.exposure ? ' info_value-exposure' : ''}">${r.html}</dd></div>`
     )
     .join('');
+  const spot = $('.info_map');
+  if (spot) {
+    spot.hidden = !p.gps;
+    if (p.gps) [spot.dataset.lat, spot.dataset.lon] = p.gps;
+    locate();
+  }
   const body = d.body.style;
   body.setProperty('--photo', p.color);
   body.setProperty('--photo-ratio', p.ar);
