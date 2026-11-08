@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 5592,
+      "bytes": 5643,
       "format": "avif",
-      "url": "/_mg/shapes__ginza_apple_store/641eafc9-grid.avif",
+      "url": "https://media.minimalgallery.net/shapes__ginza_apple_store/641eafc9-grid.avif",
       "key": "shapes__ginza_apple_store/641eafc9-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 12625,
       "format": "jpeg",
-      "url": "/_mg/shapes__ginza_apple_store/641eafc9-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/shapes__ginza_apple_store/641eafc9-jpeg1600.jpg",
       "key": "shapes__ginza_apple_store/641eafc9-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "89967eca5278a5ab"
+  "digest": "b52806c0439be0cb"
 }

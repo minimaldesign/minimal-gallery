@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 13605,
+      "bytes": 13633,
       "format": "avif",
-      "url": "/_mg/light__kyoto_night/9fcc0b7d-grid.avif",
+      "url": "https://media.minimalgallery.net/light__kyoto_night/9fcc0b7d-grid.avif",
       "key": "light__kyoto_night/9fcc0b7d-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 39683,
       "format": "jpeg",
-      "url": "/_mg/light__kyoto_night/9fcc0b7d-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/light__kyoto_night/9fcc0b7d-jpeg1600.jpg",
       "key": "light__kyoto_night/9fcc0b7d-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "e57afeb9cbc92498"
+  "digest": "6d2767a22f2220aa"
 }

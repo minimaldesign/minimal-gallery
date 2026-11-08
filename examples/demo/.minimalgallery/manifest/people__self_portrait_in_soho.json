@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 21461,
+      "bytes": 21563,
       "format": "avif",
-      "url": "/_mg/people__self_portrait_in_soho/05779138-grid.avif",
+      "url": "https://media.minimalgallery.net/people__self_portrait_in_soho/05779138-grid.avif",
       "key": "people__self_portrait_in_soho/05779138-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 47038,
       "format": "jpeg",
-      "url": "/_mg/people__self_portrait_in_soho/05779138-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__self_portrait_in_soho/05779138-jpeg1600.jpg",
       "key": "people__self_portrait_in_soho/05779138-jpeg1600.jpg"
     }
   ],
@@ -91,5 +91,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "76ccd7be8353222a"
+  "digest": "55c1ff07eb1fe428"
 }

@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 23781,
+      "bytes": 23879,
       "format": "avif",
-      "url": "/_mg/colors__coney_island/4b64ff8a-grid.avif",
+      "url": "https://media.minimalgallery.net/colors__coney_island/4b64ff8a-grid.avif",
       "key": "colors__coney_island/4b64ff8a-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 46388,
       "format": "jpeg",
-      "url": "/_mg/colors__coney_island/4b64ff8a-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/colors__coney_island/4b64ff8a-jpeg1600.jpg",
       "key": "colors__coney_island/4b64ff8a-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "236ac5db77d29478"
+  "digest": "7ecb5ce1f6d69103"
 }

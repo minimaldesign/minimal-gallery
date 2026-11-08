@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 14419,
+      "bytes": 14472,
       "format": "avif",
-      "url": "/_mg/light__hanamikoji/29e2c576-grid.avif",
+      "url": "https://media.minimalgallery.net/light__hanamikoji/29e2c576-grid.avif",
       "key": "light__hanamikoji/29e2c576-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 31701,
       "format": "jpeg",
-      "url": "/_mg/light__hanamikoji/29e2c576-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/light__hanamikoji/29e2c576-jpeg1600.jpg",
       "key": "light__hanamikoji/29e2c576-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "81f6df29932083bb"
+  "digest": "e38f7ee654f75879"
 }

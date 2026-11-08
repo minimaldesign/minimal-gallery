@@ -48,9 +48,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 35248,
+      "bytes": 35459,
       "format": "avif",
-      "url": "/_mg/feelings__la_grosse_papatte/1bf9bfe5-grid.avif",
+      "url": "https://media.minimalgallery.net/feelings__la_grosse_papatte/1bf9bfe5-grid.avif",
       "key": "feelings__la_grosse_papatte/1bf9bfe5-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 70869,
       "format": "jpeg",
-      "url": "/_mg/feelings__la_grosse_papatte/1bf9bfe5-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/feelings__la_grosse_papatte/1bf9bfe5-jpeg1600.jpg",
       "key": "feelings__la_grosse_papatte/1bf9bfe5-jpeg1600.jpg"
     }
   ],
@@ -102,5 +102,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "3c4102202b44a258"
+  "digest": "e111cbdbbfcac09e"
 }

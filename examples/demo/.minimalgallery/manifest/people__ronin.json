@@ -43,10 +43,10 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 13439,
+      "bytes": 13554,
       "format": "avif",
-      "url": "/_mg/people__ronin/03957214-grid.avif",
-      "key": "people__ronin/03957214-grid.avif"
+      "url": "https://media.minimalgallery.net/people__ronin/f692d05d-grid.avif",
+      "key": "people__ronin/f692d05d-grid.avif"
     },
     {
       "name": "jpeg1600",
@@ -54,8 +54,8 @@
       "height": 465,
       "bytes": 26945,
       "format": "jpeg",
-      "url": "/_mg/people__ronin/03957214-jpeg1600.jpg",
-      "key": "people__ronin/03957214-jpeg1600.jpg"
+      "url": "https://media.minimalgallery.net/people__ronin/f692d05d-jpeg1600.jpg",
+      "key": "people__ronin/f692d05d-jpeg1600.jpg"
     }
   ],
   "original": {
@@ -91,5 +91,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c17a766bc846a6b4"
+  "digest": "ec6eacebbd24f8d5"
 }

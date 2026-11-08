@@ -48,9 +48,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 16930,
+      "bytes": 17069,
       "format": "avif",
-      "url": "/_mg/feelings__lonely_in_paris/927c73ea-grid.avif",
+      "url": "https://media.minimalgallery.net/feelings__lonely_in_paris/927c73ea-grid.avif",
       "key": "feelings__lonely_in_paris/927c73ea-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 465,
       "bytes": 43235,
       "format": "jpeg",
-      "url": "/_mg/feelings__lonely_in_paris/927c73ea-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/feelings__lonely_in_paris/927c73ea-jpeg1600.jpg",
       "key": "feelings__lonely_in_paris/927c73ea-jpeg1600.jpg"
     }
   ],
@@ -102,5 +102,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "308f9977c08f59d2"
+  "digest": "49fb7f5d64974aca"
 }

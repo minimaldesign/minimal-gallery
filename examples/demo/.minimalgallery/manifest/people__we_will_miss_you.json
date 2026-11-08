@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 640,
-      "bytes": 23579,
+      "bytes": 23648,
       "format": "avif",
-      "url": "/_mg/people__we_will_miss_you/387b9679-grid.avif",
+      "url": "https://media.minimalgallery.net/people__we_will_miss_you/387b9679-grid.avif",
       "key": "people__we_will_miss_you/387b9679-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 700,
       "bytes": 55361,
       "format": "jpeg",
-      "url": "/_mg/people__we_will_miss_you/387b9679-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__we_will_miss_you/387b9679-jpeg1600.jpg",
       "key": "people__we_will_miss_you/387b9679-jpeg1600.jpg"
     }
   ],
@@ -85,5 +85,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2755189ec5f19395"
+  "digest": "a1235996812931a7"
 }

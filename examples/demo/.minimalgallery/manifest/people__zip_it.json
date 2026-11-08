@@ -46,9 +46,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 34971,
+      "bytes": 34979,
       "format": "avif",
-      "url": "/_mg/people__zip_it/db8bbe45-grid.avif",
+      "url": "https://media.minimalgallery.net/people__zip_it/db8bbe45-grid.avif",
       "key": "people__zip_it/db8bbe45-grid.avif"
     },
     {
@@ -57,7 +57,7 @@
       "height": 465,
       "bytes": 64933,
       "format": "jpeg",
-      "url": "/_mg/people__zip_it/db8bbe45-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__zip_it/db8bbe45-jpeg1600.jpg",
       "key": "people__zip_it/db8bbe45-jpeg1600.jpg"
     }
   ],
@@ -106,5 +106,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "2b46bee74e9e432c"
+  "digest": "76f44e9c59e5e01d"
 }

@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 419,
-      "bytes": 7170,
+      "bytes": 7263,
       "format": "avif",
-      "url": "/_mg/shapes__eugene/5cb8431e-grid.avif",
+      "url": "https://media.minimalgallery.net/shapes__eugene/5cb8431e-grid.avif",
       "key": "shapes__eugene/5cb8431e-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 589,
       "bytes": 26737,
       "format": "jpeg",
-      "url": "/_mg/shapes__eugene/5cb8431e-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/shapes__eugene/5cb8431e-jpeg1600.jpg",
       "key": "shapes__eugene/5cb8431e-jpeg1600.jpg"
     }
   ],
@@ -85,5 +85,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "7b12a0079358ec08"
+  "digest": "db76c52c4c4c2aae"
 }

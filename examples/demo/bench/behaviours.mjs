@@ -10,7 +10,7 @@
 //   node bench/behaviours.mjs [--url http://localhost:4421] [--engines webkit]
 
 import { chromium, firefox, webkit } from 'playwright';
-import { siteOnly } from './third-party.mjs';
+import { media, siteOnly } from './third-party.mjs';
 import { parseArgs } from 'node:util';
 
 const { values: opt } = parseArgs({
@@ -399,8 +399,16 @@ async function run(engine) {
   );
   ok('head: og:title is the photo', head.title === album.photos[ai].title);
   ok('head: large card', head.card === 'summary_large_image');
+  // a photo on the media host (bucket mode) is fetched there; one on the
+  // site's own host, from the build under test
+  const og = head.image && new URL(head.image);
   const img =
-    head.image && (await fetch(opt.url + new URL(head.image).pathname));
+    og &&
+    (await fetch(
+      media && og.origin === new URL(media).origin
+        ? og.href
+        : opt.url + og.pathname
+    ));
   ok(
     'head: og:image is an absolute JPEG',
     /^https?:/.test(head.image ?? '') &&

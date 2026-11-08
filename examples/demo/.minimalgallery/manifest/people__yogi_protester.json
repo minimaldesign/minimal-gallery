@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 44610,
+      "bytes": 44567,
       "format": "avif",
-      "url": "/_mg/people__yogi_protester/44f8b33b-grid.avif",
+      "url": "https://media.minimalgallery.net/people__yogi_protester/44f8b33b-grid.avif",
       "key": "people__yogi_protester/44f8b33b-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 87776,
       "format": "jpeg",
-      "url": "/_mg/people__yogi_protester/44f8b33b-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__yogi_protester/44f8b33b-jpeg1600.jpg",
       "key": "people__yogi_protester/44f8b33b-jpeg1600.jpg"
     }
   ],
@@ -91,5 +91,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "55a6dce8ae56b552"
+  "digest": "2183a5272eefde61"
 }

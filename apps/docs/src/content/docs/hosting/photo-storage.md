@@ -31,7 +31,7 @@ In the config file and on the command line, photo storage is called bucket mode,
 If you are logged in to Cloudflare (`npx wrangler login`), it finds your account and creates the bucket. Whatever it could not do is listed at the end, under “Before the first publish”. Usually that is:
 
 1. **Connect the media domain to the bucket.** In the Cloudflare dashboard, open **R2**, the bucket, **Settings**, then **Custom Domains**, and select **Connect Domain**.
-2. **Create the access key**, if you skipped it. In the dashboard, open **R2**, then **Manage API tokens**, and create a token with **Object Read & Write** on this bucket only. Cloudflare shows its access key id and secret once. Copy `.env.example` to `.env` in the gallery folder and paste them in:
+2. **Create the access key**, if you skipped it. In the dashboard, open **R2**, then on its **Overview** page select **Manage** next to **API Tokens**. Choose **Create Account API token**, with **Object Read & Write** on this bucket only. Cloudflare shows its access key id and secret once. Copy `.env.example` to `.env` in the gallery folder and paste them in:
 
    ```sh title=".env"
    MG_S3_ACCESS_KEY_ID=…

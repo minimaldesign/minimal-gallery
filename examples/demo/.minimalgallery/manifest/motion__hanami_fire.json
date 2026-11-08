@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 10975,
+      "bytes": 11008,
       "format": "avif",
-      "url": "/_mg/motion__hanami_fire/b2bcd570-grid.avif",
+      "url": "https://media.minimalgallery.net/motion__hanami_fire/b2bcd570-grid.avif",
       "key": "motion__hanami_fire/b2bcd570-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 27626,
       "format": "jpeg",
-      "url": "/_mg/motion__hanami_fire/b2bcd570-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/motion__hanami_fire/b2bcd570-jpeg1600.jpg",
       "key": "motion__hanami_fire/b2bcd570-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "cbe7fe502f286f25"
+  "digest": "417e761b92f070bb"
 }

@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 18787,
+      "bytes": 19002,
       "format": "avif",
-      "url": "/_mg/shapes__chocolate_dna/4f7a2d1e-grid.avif",
+      "url": "https://media.minimalgallery.net/shapes__chocolate_dna/4f7a2d1e-grid.avif",
       "key": "shapes__chocolate_dna/4f7a2d1e-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 43547,
       "format": "jpeg",
-      "url": "/_mg/shapes__chocolate_dna/4f7a2d1e-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/shapes__chocolate_dna/4f7a2d1e-jpeg1600.jpg",
       "key": "shapes__chocolate_dna/4f7a2d1e-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b1ce2e112232d9a0"
+  "digest": "2e2a96bc028634e6"
 }
