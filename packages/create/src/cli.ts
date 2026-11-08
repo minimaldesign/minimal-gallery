@@ -465,7 +465,7 @@ export async function main(
       token = { accessKeyId: keyFlag, secretAccessKey: secretFlag };
     else if (ask) {
       log.info(
-        `Publish uploads the photos with an R2 API token: in the Cloudflare dashboard, R2, Manage API tokens, Object Read & Write on ${bucketAnswer}. You can add it to .env later.`
+        `Publish uploads the photos with an R2 API token: in the Cloudflare dashboard, R2 Overview, API Tokens, Manage, Create Account API token, Object Read & Write on ${bucketAnswer}. You can add it to .env later.`
       );
       const accessKeyId = answered(
         await text({

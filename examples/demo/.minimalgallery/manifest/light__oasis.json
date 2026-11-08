@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 428,
-      "bytes": 43920,
+      "bytes": 43938,
       "format": "avif",
-      "url": "/_mg/light__oasis/8a3046ee-grid.avif",
+      "url": "https://media.minimalgallery.net/light__oasis/8a3046ee-grid.avif",
       "key": "light__oasis/8a3046ee-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 602,
       "bytes": 132513,
       "format": "jpeg",
-      "url": "/_mg/light__oasis/8a3046ee-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/light__oasis/8a3046ee-jpeg1600.jpg",
       "key": "light__oasis/8a3046ee-jpeg1600.jpg"
     }
   ],
@@ -88,5 +88,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "631c1920f761f246"
+  "digest": "099a39341be84ee2"
 }

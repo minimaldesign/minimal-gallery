@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 52286,
+      "bytes": 52306,
       "format": "avif",
-      "url": "/_mg/colors__ohara_garden/523bbdcd-grid.avif",
+      "url": "https://media.minimalgallery.net/colors__ohara_garden/523bbdcd-grid.avif",
       "key": "colors__ohara_garden/523bbdcd-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 103796,
       "format": "jpeg",
-      "url": "/_mg/colors__ohara_garden/523bbdcd-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/colors__ohara_garden/523bbdcd-jpeg1600.jpg",
       "key": "colors__ohara_garden/523bbdcd-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "0755a8a254628437"
+  "digest": "63d2a0a73fbcb6fb"
 }

@@ -315,7 +315,7 @@ describe('create-minimalgallery', () => {
     const example = await read(dir, '.env.example');
     expect(example).toMatch(/^MG_S3_ACCESS_KEY_ID=$/m);
     expect(example).toMatch(/^MG_S3_SECRET_ACCESS_KEY=$/m);
-    expect(example).toContain('R2, Manage API tokens');
+    expect(example).toContain('R2 Overview, API Tokens, Manage');
     expect(example).toContain('Object Read & Write on cf-bucket-media');
     const gitignore = await read(dir, '.gitignore');
     expect(gitignore).toMatch(/^\.minimalgallery\/cache$/m);

@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 42058,
+      "bytes": 42188,
       "format": "avif",
-      "url": "/_mg/colors__sakura_impression/858af31a-grid.avif",
+      "url": "https://media.minimalgallery.net/colors__sakura_impression/858af31a-grid.avif",
       "key": "colors__sakura_impression/858af31a-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 82147,
       "format": "jpeg",
-      "url": "/_mg/colors__sakura_impression/858af31a-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/colors__sakura_impression/858af31a-jpeg1600.jpg",
       "key": "colors__sakura_impression/858af31a-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ddbe5944c4c51856"
+  "digest": "2976501daca006d5"
 }

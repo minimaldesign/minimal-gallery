@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 428,
-      "bytes": 6751,
+      "bytes": 6798,
       "format": "avif",
-      "url": "/_mg/light__all_blues/f0d2f013-grid.avif",
+      "url": "https://media.minimalgallery.net/light__all_blues/f0d2f013-grid.avif",
       "key": "light__all_blues/f0d2f013-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 602,
       "bytes": 22890,
       "format": "jpeg",
-      "url": "/_mg/light__all_blues/f0d2f013-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/light__all_blues/f0d2f013-jpeg1600.jpg",
       "key": "light__all_blues/f0d2f013-jpeg1600.jpg"
     }
   ],
@@ -91,5 +91,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "05d64a351d894798"
+  "digest": "300ee11f7a955dbe"
 }

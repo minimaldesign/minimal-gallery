@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 5485,
+      "bytes": 5626,
       "format": "avif",
-      "url": "/_mg/shapes__halloween/5ed2c5a3-grid.avif",
+      "url": "https://media.minimalgallery.net/shapes__halloween/5ed2c5a3-grid.avif",
       "key": "shapes__halloween/5ed2c5a3-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 12142,
       "format": "jpeg",
-      "url": "/_mg/shapes__halloween/5ed2c5a3-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/shapes__halloween/5ed2c5a3-jpeg1600.jpg",
       "key": "shapes__halloween/5ed2c5a3-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "99e456fcdfafc72a"
+  "digest": "e5ba8abbd671eb9a"
 }

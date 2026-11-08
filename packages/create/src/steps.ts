@@ -78,7 +78,7 @@ function bucketSteps(answers: Answers, outcome: Outcome): Step[] {
 
   if (!answers.token)
     steps.push([
-      `Create an R2 API token: Cloudflare dashboard, R2, Manage API tokens, Object Read & Write on ${bucket.name}.`,
+      `Create an R2 API token: Cloudflare dashboard, R2 Overview, API Tokens, Manage, Create Account API token, Object Read & Write on ${bucket.name}.`,
       'Copy .env.example to .env and paste the access key id and the secret into it.',
     ]);
   return steps;

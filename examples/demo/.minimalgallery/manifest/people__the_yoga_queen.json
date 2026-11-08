@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 36380,
+      "bytes": 36471,
       "format": "avif",
-      "url": "/_mg/people__the_yoga_queen/82b2f9ea-grid.avif",
+      "url": "https://media.minimalgallery.net/people__the_yoga_queen/82b2f9ea-grid.avif",
       "key": "people__the_yoga_queen/82b2f9ea-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 69819,
       "format": "jpeg",
-      "url": "/_mg/people__the_yoga_queen/82b2f9ea-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__the_yoga_queen/82b2f9ea-jpeg1600.jpg",
       "key": "people__the_yoga_queen/82b2f9ea-jpeg1600.jpg"
     }
   ],
@@ -91,5 +91,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f7b261c6e9337b11"
+  "digest": "80a262a62469de40"
 }

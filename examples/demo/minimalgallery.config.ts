@@ -17,4 +17,14 @@ export default defineConfig({
   },
 
   saveEdits: 'photo',
+
+  // The resized photos live in R2 and are served from their own domain;
+  // the R2 token is in .env (MG_S3_ACCESS_KEY_ID, MG_S3_SECRET_ACCESS_KEY).
+  storage: {
+    mode: 's3',
+    bucket: 'minimalgallery-media',
+    endpoint:
+      'https://b1b035b6ac2f46a71da25be064506a5c.r2.cloudflarestorage.com',
+    publicUrl: 'https://media.minimalgallery.net',
+  },
 });

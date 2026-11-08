@@ -234,9 +234,9 @@ export function envExample(answers: Answers): string {
           ENV_INTRO,
           '',
           `# The R2 API token that publish uses to upload photos to ${answers.bucket.name}.`,
-          '# Create it in the Cloudflare dashboard: R2, Manage API tokens, with the',
-          `# permission Object Read & Write on ${answers.bucket.name} only. Cloudflare`,
-          '# shows the two values once.',
+          '# Create it in the Cloudflare dashboard: R2 Overview, API Tokens, Manage,',
+          `# Create Account API token, Object Read & Write on ${answers.bucket.name}`,
+          '# only. Cloudflare shows the two values once.',
           'MG_S3_ACCESS_KEY_ID=',
           'MG_S3_SECRET_ACCESS_KEY=',
         ]

@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 9275,
+      "bytes": 9362,
       "format": "avif",
-      "url": "/_mg/people__maria/57bc3431-grid.avif",
+      "url": "https://media.minimalgallery.net/people__maria/57bc3431-grid.avif",
       "key": "people__maria/57bc3431-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 21930,
       "format": "jpeg",
-      "url": "/_mg/people__maria/57bc3431-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__maria/57bc3431-jpeg1600.jpg",
       "key": "people__maria/57bc3431-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "b7ff506d61db6d9e"
+  "digest": "37e324e480abe948"
 }

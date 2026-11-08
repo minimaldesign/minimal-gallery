@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 5588,
+      "bytes": 5669,
       "format": "avif",
-      "url": "/_mg/light__carroll_street/b2d7ac84-grid.avif",
+      "url": "https://media.minimalgallery.net/light__carroll_street/b2d7ac84-grid.avif",
       "key": "light__carroll_street/b2d7ac84-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 10922,
       "format": "jpeg",
-      "url": "/_mg/light__carroll_street/b2d7ac84-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/light__carroll_street/b2d7ac84-jpeg1600.jpg",
       "key": "light__carroll_street/b2d7ac84-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "c25c2e40960bf01f"
+  "digest": "25d8bd878bd20d2a"
 }

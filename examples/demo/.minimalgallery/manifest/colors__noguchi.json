@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 429,
       "height": 640,
-      "bytes": 13007,
+      "bytes": 13193,
       "format": "avif",
-      "url": "/_mg/colors__noguchi/bed6f1ca-grid.avif",
+      "url": "https://media.minimalgallery.net/colors__noguchi/bed6f1ca-grid.avif",
       "key": "colors__noguchi/bed6f1ca-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 899,
       "bytes": 44478,
       "format": "jpeg",
-      "url": "/_mg/colors__noguchi/bed6f1ca-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/colors__noguchi/bed6f1ca-jpeg1600.jpg",
       "key": "colors__noguchi/bed6f1ca-jpeg1600.jpg"
     }
   ],
@@ -85,5 +85,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "be585dad385a5c01"
+  "digest": "38b8ca379b155caf"
 }

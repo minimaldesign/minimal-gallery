@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 428,
-      "bytes": 16131,
+      "bytes": 16255,
       "format": "avif",
-      "url": "/_mg/people__cause_toujours/ed2a44ae-grid.avif",
+      "url": "https://media.minimalgallery.net/people__cause_toujours/ed2a44ae-grid.avif",
       "key": "people__cause_toujours/ed2a44ae-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 602,
       "bytes": 55075,
       "format": "jpeg",
-      "url": "/_mg/people__cause_toujours/ed2a44ae-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__cause_toujours/ed2a44ae-jpeg1600.jpg",
       "key": "people__cause_toujours/ed2a44ae-jpeg1600.jpg"
     }
   ],
@@ -85,5 +85,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "ce7bc9cea5c5ddad"
+  "digest": "0cfbcc3286539b2e"
 }

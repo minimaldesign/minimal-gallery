@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 32161,
+      "bytes": 32304,
       "format": "avif",
-      "url": "/_mg/people__sararimen/287c2c64-grid.avif",
+      "url": "https://media.minimalgallery.net/people__sararimen/287c2c64-grid.avif",
       "key": "people__sararimen/287c2c64-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 64125,
       "format": "jpeg",
-      "url": "/_mg/people__sararimen/287c2c64-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__sararimen/287c2c64-jpeg1600.jpg",
       "key": "people__sararimen/287c2c64-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "f9a90b3ec22e4924"
+  "digest": "a4e6c691138f78de"
 }

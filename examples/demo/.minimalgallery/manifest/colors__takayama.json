@@ -48,9 +48,9 @@
       "name": "grid",
       "width": 640,
       "height": 428,
-      "bytes": 36991,
+      "bytes": 37153,
       "format": "avif",
-      "url": "/_mg/colors__takayama/09887eb1-grid.avif",
+      "url": "https://media.minimalgallery.net/colors__takayama/09887eb1-grid.avif",
       "key": "colors__takayama/09887eb1-grid.avif"
     },
     {
@@ -59,7 +59,7 @@
       "height": 602,
       "bytes": 115493,
       "format": "jpeg",
-      "url": "/_mg/colors__takayama/09887eb1-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/colors__takayama/09887eb1-jpeg1600.jpg",
       "key": "colors__takayama/09887eb1-jpeg1600.jpg"
     }
   ],
@@ -102,5 +102,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "04f40af3b0e27f50"
+  "digest": "87a4889ab5ebfb3c"
 }

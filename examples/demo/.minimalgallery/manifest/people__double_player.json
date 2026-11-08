@@ -43,9 +43,9 @@
       "name": "grid",
       "width": 640,
       "height": 425,
-      "bytes": 30634,
+      "bytes": 30818,
       "format": "avif",
-      "url": "/_mg/people__double_player/b28bad7c-grid.avif",
+      "url": "https://media.minimalgallery.net/people__double_player/b28bad7c-grid.avif",
       "key": "people__double_player/b28bad7c-grid.avif"
     },
     {
@@ -54,7 +54,7 @@
       "height": 465,
       "bytes": 66267,
       "format": "jpeg",
-      "url": "/_mg/people__double_player/b28bad7c-jpeg1600.jpg",
+      "url": "https://media.minimalgallery.net/people__double_player/b28bad7c-jpeg1600.jpg",
       "key": "people__double_player/b28bad7c-jpeg1600.jpg"
     }
   ],
@@ -94,5 +94,5 @@
   "inputsHash": "457ab0c5d26664e3",
   "pipelineVersion": "0.5.0",
   "ladderHash": "bdfeaf80a8e4c82b",
-  "digest": "02658668e37984b8"
+  "digest": "2d3d5416854bd7f2"
 }
